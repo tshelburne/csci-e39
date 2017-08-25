@@ -2,6 +2,7 @@ import http from 'http'
 import Koa from 'koa'
 import logger from 'koa-logger'
 import route from 'koa-route'
+import serve from 'koa-static'
 import views from 'koa-views'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
@@ -13,6 +14,8 @@ import App from './ui/app.jsx'
 const app = new Koa()
 
 if (config.env !== `test`) app.use(logger())
+
+app.use(serve(`public`))
 
 app.use(views(`${__dirname}/ui`, {extension: `pug`}))
 

@@ -1,0 +1,1 @@
+export const scan = (...args) => ins => ins.fold(...args).drop(1)
