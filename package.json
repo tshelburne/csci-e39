@@ -17,11 +17,22 @@
   "license": "UNLICENSED",
   "dependencies": {
     "koa": "^2.3.0",
-    "koa-route": "^3.2.0"
+    "koa-logger": "^3.0.1",
+    "koa-route": "^3.2.0",
+    "koa-static": "^4.0.1",
+    "koa-views": "^6.0.2",
+    "pug": "^2.0.0-rc.3",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "socket.io": "^2.0.3",
+    "xstream": "^10.9.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "webpack": "^3.5.5"
   }
 }
