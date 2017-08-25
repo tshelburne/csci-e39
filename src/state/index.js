@@ -1,3 +1,4 @@
+import io from 'socket.io'
 import xs from 'xstream'
 import create from './support/create'
 
@@ -8,7 +9,23 @@ const INITIAL_STATE = {
 const SET = Symbol(`SET`)
 
 const createState = () => {
-	const action_ = xs.create()
+	const socket = io()
+
+	const test = () => {
+		socket.emit(`test`)
+	}
+
+	const action_ = xs.create({
+		start(listener) {
+			socket.on(`test response`, ({message}) => {
+				listener.next({type: SET, data: {message}})
+			})
+		},
+
+		stop() {
+			socket.close()
+		},
+	})
 
 	const reducer_ = action_.map(action => state => {
 		switch (action.type) {
@@ -23,7 +40,9 @@ const createState = () => {
 
 	return {
 		state_,
-		actions: {},
+		actions: {
+			test,
+		},
 	}
 }
 

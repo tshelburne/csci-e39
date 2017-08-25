@@ -7,6 +7,9 @@ module.exports = {
 		libraryTarget: `var`,
 		library: `MyApp`
 	},
+	externals: {
+		"socket.io": `io`,
+	},
 	module: {
 		loaders: [
 			{ test: /\.js$/, exclude: /node_modules/, loader: `babel-loader` }

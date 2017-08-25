@@ -6,6 +6,7 @@ import serve from 'koa-static'
 import views from 'koa-views'
 import React from 'react'
 import ReactDOMServer from 'react-dom/server'
+import socketio from 'socket.io'
 import config from './config'
 import App from './ui/app.jsx'
 
@@ -28,6 +29,16 @@ app.use(route.get(`/`, async ctx => {
 /* -------------------------------- SERVER --------------------------------- */
 
 const server = http.createServer(app.callback())
+
+const io = socketio(server)
+
+io.on(`connection`, socket => {
+
+	socket.on(`test`, () => {
+		socket.emit(`test response`, {message: `Socket message`})
+	})
+
+})
 
 server.listen(config.port, () => console.log(`=== SERVER ===: listening at localhost:${config.port}`))
 
