@@ -4,8 +4,24 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf build && mkdir build",
+    "build-server": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-server",
+    "prestart": "npm run build",
+    "start": "node build/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "babel-node src/server.js",
+    "watch": "nodemon --watch ./src --exec 'npm run dev'"
   },
-  "author": "",
-  "license": "UNLICENSED"
+  "author": "Tim Shelburne",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "koa": "^2.3.0",
+    "koa-route": "^3.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "nodemon": "^1.11.0"
+  }
 }
