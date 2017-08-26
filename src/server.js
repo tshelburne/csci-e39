@@ -23,6 +23,8 @@ app.use(views(`${__dirname}/ui`, {extension: `pug`}))
 app.use(route.get(`/`, async ctx => {
 	await ctx.render(`index`, {
 		app: renderApp({message: `Initial message`}),
+		host: config.host,
+		port: config.port,
 	})
 }))
 
