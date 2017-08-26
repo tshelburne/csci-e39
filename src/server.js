@@ -22,7 +22,7 @@ app.use(views(`${__dirname}/ui`, {extension: `pug`}))
 
 app.use(route.get(`/`, async ctx => {
 	await ctx.render(`index`, {
-		app: renderApp({message: `Initial message`}),
+		app: renderApp({registration: {status: `init`, message: ``}, actions: {}}),
 		backend: config.backend,
 	})
 }))
@@ -35,8 +35,12 @@ const io = socketio(server)
 
 io.on(`connection`, socket => {
 
-	socket.on(`test`, () => {
-		socket.emit(`test response`, {message: `Socket message`})
+	socket.on(`register`, (studentId) => {
+		if (studentId === `id not set`) return socket.emit(`register.failure`, {message: `STUDENT_ID must be set`})
+
+		setTimeout(() => {
+			socket.emit(`register.success`, {message: `${studentId} registered!`})
+		}, 2000)
 	})
 
 })
