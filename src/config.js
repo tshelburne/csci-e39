@@ -1,6 +1,6 @@
 const config = {
 	env: process.env.ENV || `dev`,
-	host: process.env.HOST || `localhost`,
+	backend: process.env.BACKEND || `localhost:${process.env.PORT}`,
 	port: process.env.PORT || 3000,
 }
 

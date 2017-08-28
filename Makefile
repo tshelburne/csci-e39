@@ -1,5 +1,6 @@
 SHELL := $(SHELL) -e  # insure return codes within line continuations are honored
 
+ENV_BACKEND := 'remote-server'
 ENV_PORT := 3000
 
 REPO := tshelburne/csci-e39
@@ -30,6 +31,9 @@ stop:
 
 watch: image
 	$(RUN) -v $(MOUNT) $(IMAGE) npm run watch
+
+live: image
+	$(RUN) -e BACKEND=$(ENV_BACKEND) $(IMAGE)
 
 publish: image
 	docker push $(IMAGE)
