@@ -16,7 +16,7 @@ module.exports = {
 	},
 	plugins: [
 		new DefinePlugin({
-			__STUDENT_ID__: superStringify(process.env.STUDENT_ID || `id not set`),
+			__STUDENT_ID__: superStringify(process.env.STUDENT_ID),
 		}),
 	],
 	module: {

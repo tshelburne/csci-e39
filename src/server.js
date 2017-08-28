@@ -36,7 +36,7 @@ const io = socketio(server)
 io.on(`connection`, socket => {
 
 	socket.on(`register`, (studentId) => {
-		if (studentId === `id not set`) return socket.emit(`register.failure`, {message: `STUDENT_ID must be set`})
+		if (studentId === `id-not-set`) return socket.emit(`register.failure`, {message: `.id file must exist`})
 
 		setTimeout(() => {
 			socket.emit(`register.success`, {message: `${studentId} registered!`})

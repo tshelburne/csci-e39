@@ -2,13 +2,14 @@ SHELL := $(SHELL) -e  # insure return codes within line continuations are honore
 
 ENV_BACKEND := 'remote-server'
 ENV_PORT := 3000
+ENV_STUDENT_ID := $(or $(shell echo `cat .id`), id-not-set)
 
 REPO := tshelburne/csci-e39
 TAG := $(shell git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)
 IMAGE := $(REPO):$(TAG)
 
 MOUNT := $(shell pwd)/src:/usr/src/app/src
-RUN := docker run -e PORT=$(ENV_PORT) --expose $(ENV_PORT) -p $(ENV_PORT):$(ENV_PORT)
+RUN := docker run -e PORT=$(ENV_PORT) -e STUDENT_ID=$(ENV_STUDENT_ID) --expose $(ENV_PORT) -p $(ENV_PORT):$(ENV_PORT)
 
 .DEFAULT_GOAL := list
 
