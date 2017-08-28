@@ -7,7 +7,7 @@ REPO := tshelburne/csci-e39
 TAG := $(shell git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)
 IMAGE := $(REPO):$(TAG)
 
-MOUNT := $(shell pwd):/usr/src/app/
+MOUNT := $(shell pwd)/src:/usr/src/app/src
 RUN := docker run -e PORT=$(ENV_PORT) --expose $(ENV_PORT) -p $(ENV_PORT):$(ENV_PORT)
 
 .DEFAULT_GOAL := list
