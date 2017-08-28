@@ -3,5 +3,11 @@
 		"transform-object-rest-spread",
 		"transform-react-jsx"
 	],
-	"presets": ["env"]
+	"presets": [
+		["env", {
+			"targets": {
+				"node": "current"
+			}
+		}]
+	]
 }
