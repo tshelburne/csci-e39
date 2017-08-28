@@ -8,6 +8,7 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import socketio from 'socket.io'
 import config from './config'
+import {Student} from './db'
 import App from './ui/app.jsx'
 
 /* ------------------------------- ENDPOINTS ------------------------------- */
@@ -35,12 +36,21 @@ const io = socketio(server)
 
 io.on(`connection`, socket => {
 
-	socket.on(`register`, (studentId) => {
-		if (studentId === `id-not-set`) return socket.emit(`register.failure`, {message: `.id file must exist`})
+	socket.on(`register`, async (studentId) => {
+		try {
+			if (studentId === `id-not-set`) return socket.emit(`register.failure`, {message: `.id file must exist`})
 
-		setTimeout(() => {
-			socket.emit(`register.success`, {message: `${studentId} registered!`})
-		}, 2000)
+			const student = await Student.where(`unique_id`, studentId).fetch()
+			if (!student) return socket.emit(`register.failure`, {message: `Student ID does not exist`})
+			if (!!student.get(`confirmed_at`)) return socket.emit(`register.failure`, {message: `This ID has already been used`})
+
+			const updatedStudent = await student.save({confirmed_at: new Date()}, {patch: true})
+			if (!updatedStudent) return socket.emit(`register.failure`, {message: `Failed to register you - please try again`})
+
+			socket.emit(`register.success`, {message: `${student.get(`name`)} registered!`})
+		} catch (e) {
+			socket.emit(`register.failure`, {message: `Unexpected failure - please try again`})
+		}
 	})
 
 })
