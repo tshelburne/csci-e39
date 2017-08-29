@@ -16,7 +16,7 @@ DK_RUN := docker run $(DK_MOUNT) $(DK_ENV) $(DK_PORTS)
 
 .DEFAULT_GOAL := list
 
-all: clean build start
+all: clean migrate start
 
 clean:
 	rm -rf build node_modules public dev.sqlite3
