@@ -10,8 +10,9 @@ TAG := $(shell git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)
 IMAGE := $(REPO):$(TAG)
 
 DK_MOUNT := -v $(DIR)/src:/usr/src/app/src -v $(DIR)/dev.sqlite3:/usr/src/app/dev.sqlite3
-DK_ENV := -e PORT=$(ENV_PORT) -e STUDENT_ID=$(ENV_STUDENT_ID) -e DATABASE_URL=$(DATABASE_URL) -e DEBUG=knex:*,socket.io:*
+DK_ENV := -e PORT=$(ENV_PORT) -e STUDENT_ID=$(ENV_STUDENT_ID) -e DATABASE_URL=$(DATABASE_URL)
 DK_PORTS := --expose $(ENV_PORT) -p $(ENV_PORT):$(ENV_PORT)
+DK_DEBUG := -e DEBUG=knex:*,socket.io:*
 DK_RUN := docker run $(DK_MOUNT) $(DK_ENV) $(DK_PORTS)
 
 .DEFAULT_GOAL := list
