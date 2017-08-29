@@ -1,4 +1,4 @@
-import io from 'socket.io'
+import io from 'socket.io-client'
 import xs from 'xstream'
 import create from './support/create'
 
@@ -16,9 +16,10 @@ const succeed = message => set({registration: {status: `success`, message}})
 const fail = message => set({registration: {status: `failure`, message}})
 const send = () => set({registration: {status: `sending`, message: ``}})
 
-const createState = (studentId) => {
+// createState :: (URL, String) -> { state_ :: Observable, actions :: Object }
+const createState = (backend, studentId) => {
 	// SOCKET CONNECTION
-	const socket = io()
+	const socket = io(backend)
 
 	const action_ = xs.create({
 		start(listener) {

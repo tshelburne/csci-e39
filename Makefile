@@ -1,6 +1,6 @@
 SHELL := $(SHELL) -e  # insure return codes within line continuations are honored
 
-ENV_BACKEND := 'remote-server'
+ENV_BACKEND := csci-e39.herokuapp.com
 ENV_PORT := 3000
 ENV_STUDENT_ID := $(or $(shell echo `cat .id`), id-not-set)
 
@@ -9,7 +9,8 @@ TAG := $(shell git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)
 IMAGE := $(REPO):$(TAG)
 
 MOUNT := $(shell pwd)/src:/usr/src/app/src
-RUN := docker run -e PORT=$(ENV_PORT) -e STUDENT_ID=$(ENV_STUDENT_ID) --expose $(ENV_PORT) -p $(ENV_PORT):$(ENV_PORT)
+ENV := -e PORT=$(ENV_PORT) -e STUDENT_ID=$(ENV_STUDENT_ID) -e DB_HOST=$(DB_HOST) -e DB_USER=$(DB_USER) -e DB_PASS=$(DB_PASS) -e DB_DATA=$(DB_DATA)
+RUN := docker run $(ENV) --expose $(ENV_PORT) -p $(ENV_PORT):$(ENV_PORT)
 
 .DEFAULT_GOAL := list
 
@@ -38,6 +39,9 @@ live: image
 
 publish: image
 	docker push $(IMAGE)
+
+deploy:
+	heroku container:push web
 
 list:
 	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | xargs

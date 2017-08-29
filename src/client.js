@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import createState, {connect} from './state'
 import App from './ui/app.jsx'
 
-const {state_, actions} = createState(__STUDENT_ID__)
+const {state_, actions} = createState(__BACKEND__, __STUDENT_ID__)
 const ConnectedApp = connect(state_, state => ({...state, actions}))(App)
 
 state_.subscribe({

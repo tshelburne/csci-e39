@@ -1,8 +1,9 @@
-const {DefinePlugin} = require(`webpack`)
+import {DefinePlugin} from 'webpack'
+import config from './src/config'
 
 const superStringify = str => `'${str}'`
 
-module.exports = {
+export default {
 	devtool: `eval-cheap-module-source-map`,
 	entry: `./src/client.js`,
 	output: {
@@ -11,12 +12,10 @@ module.exports = {
 		libraryTarget: `var`,
 		library: `MyApp`
 	},
-	externals: {
-		"socket.io": `io`,
-	},
 	plugins: [
 		new DefinePlugin({
-			__STUDENT_ID__: superStringify(process.env.STUDENT_ID),
+			__STUDENT_ID__: superStringify(config.studentId),
+			__BACKEND__: superStringify(config.backend),
 		}),
 	],
 	module: {
