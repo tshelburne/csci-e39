@@ -15,7 +15,7 @@
     1. `git clone git@github.com:tshelburne/csci-e39.git && cd csci-e39`
     1. `cd csci-e39`
     1. `echo your-id-goes-here > .id`, replacing "your-id-goes-here" with the ID we provided you
-    1. `make all`
+    1. `make build migrate`
 
 ## Automated tasks
 
