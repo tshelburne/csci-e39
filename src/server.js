@@ -8,6 +8,7 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import socketio from 'socket.io'
 import config from './config'
+import {Student} from './db'
 import App from './ui/app.jsx'
 
 /* ------------------------------- ENDPOINTS ------------------------------- */
@@ -22,9 +23,8 @@ app.use(views(`${__dirname}/ui`, {extension: `pug`}))
 
 app.use(route.get(`/`, async ctx => {
 	await ctx.render(`index`, {
-		app: renderApp({message: `Initial message`}),
-		host: config.host,
-		port: config.port,
+		app: renderApp({registration: {status: `init`, message: ``}, actions: {}}),
+		backend: config.backend,
 	})
 }))
 
@@ -36,8 +36,20 @@ const io = socketio(server)
 
 io.on(`connection`, socket => {
 
-	socket.on(`test`, () => {
-		socket.emit(`test response`, {message: `Socket message`})
+	socket.use(ensureStudent(socket))
+
+	socket.on(`register`, async () => {
+		const {student} = socket.ctx
+		try {
+			if (!!student.get(`confirmed_at`)) return socket.emit(`register.failure`, {message: `This ID has already been used`})
+
+			const updatedStudent = await student.save({confirmed_at: new Date()}, {patch: true})
+			if (!updatedStudent) return socket.emit(`register.failure`, {message: `Failed to register you - please try again`})
+
+			socket.emit(`register.success`, {message: `${student.get(`name`)} registered!`})
+		} catch (e) {
+			socket.emit(`register.failure`, {message: `Unexpected failure - please try again`})
+		}
 	})
 
 })
@@ -48,4 +60,26 @@ server.listen(config.port, () => console.log(`=== SERVER ===: listening at local
 
 function renderApp(props) {
 	return ReactDOMServer.renderToString(<App {...props} />)
+}
+
+function ensureStudent(socket) {
+	return async (packet, next) => {
+		const {studentId} = socket.handshake.query
+
+		if (studentId === `id-not-set`) return next(new AuthError(`.id file must exist`))
+
+		const student = await Student.where(`unique_id`, studentId).fetch()
+		if (!student) return next(new AuthError(`Student ID does not exist`))
+
+		socket.ctx = {student}
+
+		next()
+	}
+}
+
+class AuthError extends Error {
+	constructor(message) {
+		super(message)
+		this.data = [`auth.failure`, {message}]
+	}
 }

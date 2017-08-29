@@ -1,24 +1,44 @@
-import io from 'socket.io'
+import io from 'socket.io-client'
 import xs from 'xstream'
 import create from './support/create'
 
 const INITIAL_STATE = {
-	message: `Initial message`,
+	registration: {
+		status: `init`,
+		message: ``,
+	},
 }
 
 const SET = Symbol(`SET`)
 
-const createState = () => {
-	const socket = io()
+const set = data => ({type: SET, data})
+const succeed = message => set({registration: {status: `success`, message}})
+const fail = message => set({registration: {status: `failure`, message}})
+const send = () => set({registration: {status: `sending`, message: ``}})
 
-	const test = () => {
-		socket.emit(`test`)
-	}
+// createState :: (URL, String) -> { state_ :: Observable, actions :: Object }
+const createState = (backend, studentId) => {
+	// SOCKET CONNECTION
+	const socket = io(backend, {
+		query: {studentId},
+	})
 
 	const action_ = xs.create({
 		start(listener) {
-			socket.on(`test response`, ({message}) => {
-				listener.next({type: SET, data: {message}})
+			socket.on(`error`, ([type, data]) => {
+				switch (type) {
+					case `auth.failure`:
+					default:
+						listener.next(fail(data.message))
+				}
+			})
+
+			socket.on(`register.success`, ({message}) => {
+				listener.next(succeed(message))
+			})
+
+			socket.on(`register.failure`, ({message}) => {
+				listener.next(fail(message))
 			})
 		},
 
@@ -26,6 +46,15 @@ const createState = () => {
 			socket.close()
 		},
 	})
+
+	// ACTIONS
+
+	const register = () => {
+		action_.shamefullySendNext(send())
+		socket.emit(`register`)
+	}
+
+	// STATE
 
 	const reducer_ = action_.map(action => state => {
 		switch (action.type) {
@@ -41,7 +70,7 @@ const createState = () => {
 	return {
 		state_,
 		actions: {
-			test,
+			register,
 		},
 	}
 }

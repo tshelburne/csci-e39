@@ -1,10 +1,7 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+import Module from './modules/module-0.jsx'
 
-const App = props => {
-	return <div>
-		<h1>Latest Message</h1>
-		<span>{props.message}</span>
-	</div>
-}
+const App = props => <Module {...props} />
 
 export default App
