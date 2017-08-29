@@ -2,3 +2,4 @@ node_modules
 build
 public
 .id
+dev.sqlite3
