@@ -36,12 +36,11 @@ const io = socketio(server)
 
 io.on(`connection`, socket => {
 
-	socket.on(`register`, async (studentId) => {
-		try {
-			if (studentId === `id-not-set`) return socket.emit(`register.failure`, {message: `.id file must exist`})
+	socket.use(ensureStudent(socket))
 
-			const student = await Student.where(`unique_id`, studentId).fetch()
-			if (!student) return socket.emit(`register.failure`, {message: `Student ID does not exist`})
+	socket.on(`register`, async () => {
+		const {student} = socket.ctx
+		try {
 			if (!!student.get(`confirmed_at`)) return socket.emit(`register.failure`, {message: `This ID has already been used`})
 
 			const updatedStudent = await student.save({confirmed_at: new Date()}, {patch: true})
@@ -61,4 +60,26 @@ server.listen(config.port, () => console.log(`=== SERVER ===: listening at local
 
 function renderApp(props) {
 	return ReactDOMServer.renderToString(<App {...props} />)
+}
+
+function ensureStudent(socket) {
+	return async (packet, next) => {
+		const {studentId} = socket.handshake.query
+
+		if (studentId === `id-not-set`) return next(new AuthError(`.id file must exist`))
+
+		const student = await Student.where(`unique_id`, studentId).fetch()
+		if (!student) return next(new AuthError(`Student ID does not exist`))
+
+		socket.ctx = {student}
+
+		next()
+	}
+}
+
+class AuthError extends Error {
+	constructor(message) {
+		super(message)
+		this.data = [`auth.failure`, {message}]
+	}
 }

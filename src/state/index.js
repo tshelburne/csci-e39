@@ -19,10 +19,20 @@ const send = () => set({registration: {status: `sending`, message: ``}})
 // createState :: (URL, String) -> { state_ :: Observable, actions :: Object }
 const createState = (backend, studentId) => {
 	// SOCKET CONNECTION
-	const socket = io(backend)
+	const socket = io(backend, {
+		query: {studentId},
+	})
 
 	const action_ = xs.create({
 		start(listener) {
+			socket.on(`error`, ([type, data]) => {
+				switch (type) {
+					case `auth.failure`:
+					default:
+						listener.next(fail(data.message))
+				}
+			})
+
 			socket.on(`register.success`, ({message}) => {
 				listener.next(succeed(message))
 			})
@@ -38,13 +48,10 @@ const createState = (backend, studentId) => {
 	})
 
 	// ACTIONS
-	const emit = (type, ...args) => {
-		socket.emit(type, studentId, ...args)
-	}
 
 	const register = () => {
 		action_.shamefullySendNext(send())
-		emit(`register`)
+		socket.emit(`register`)
 	}
 
 	// STATE
