@@ -13,7 +13,7 @@ DK_MOUNT := -v $(DIR)/src:/usr/src/app/src -v $(DIR)/dev.sqlite3:/usr/src/app/de
 DK_ENV := -e PORT=$(ENV_PORT) -e STUDENT_ID=$(ENV_STUDENT_ID) -e DATABASE_URL=$(DATABASE_URL)
 DK_PORTS := --expose $(ENV_PORT) -p $(ENV_PORT):$(ENV_PORT)
 DK_DEBUG := -e DEBUG=knex:*,socket.io:*
-DK_RUN := docker run $(DK_MOUNT) $(DK_ENV) $(DK_PORTS)
+DK_RUN := docker run $(DK_MOUNT) $(DK_ENV)
 
 .DEFAULT_GOAL := list
 
@@ -30,16 +30,16 @@ build:
 	docker build -t $(IMAGE) .
 
 start: build
-	$(DK_RUN) $(IMAGE)
+	$(DK_RUN) $(DK_PORTS) $(IMAGE)
 
 stop:
 	docker stop $(shell docker ps -qa --filter="ancestor=$(IMAGE)")
 
 watch: build
-	$(DK_RUN) $(IMAGE) npm run watch
+	$(DK_RUN) $(DK_PORTS) $(IMAGE) npm run watch
 
 live: build
-	$(DK_RUN) -e BACKEND=$(ENV_BACKEND) $(IMAGE)
+	$(DK_RUN) $(DK_PORTS) -e BACKEND=$(ENV_BACKEND) $(IMAGE)
 
 migration: build
 	$(DK_RUN) $(IMAGE) npm run migration -- $(name)
