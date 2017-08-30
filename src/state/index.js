@@ -1,4 +1,3 @@
-import io from 'socket.io-client'
 import xs from 'xstream'
 import createStatus from './status'
 import create from './support/create'
@@ -10,13 +9,8 @@ const INITIAL_STATE = {
 
 const ERROR = Symbol(`ERROR`)
 
-// createState :: (URL, String) -> { state_ :: Observable, actions :: Object }
-const createState = (backend, studentId) => {
-	// SOCKET CONNECTION
-	const socket = io(backend, {
-		query: {studentId},
-	})
-
+// createState :: Socket -> { state_ :: Observable, actions :: Object }
+const createState = (socket) => {
 	const {state_: registration_, actions: {run: register}} = createStatus(socket, `register`)
 
 	const action_ = xs.create({
