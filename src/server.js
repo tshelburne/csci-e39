@@ -26,8 +26,7 @@ app.use(views(`${__dirname}/ui`, {extension: `pug`}))
 
 app.use(route.get(`/`, async ctx => {
 	await ctx.render(`index`, {
-		app: renderApp({registration: {status: `init`, message: ``}, actions: {}}),
-		backend: config.backend,
+		app: renderApp({auth: {}, registration: {status: `init`, message: ``}, actions: {}}),
 	})
 }))
 
@@ -69,14 +68,19 @@ function ensureStudent(socket) {
 	return async (packet, next) => {
 		const {studentId} = socket.handshake.query
 
-		if (studentId === `id-not-set`) return next(new AuthError(`.id file must exist`))
+		if (studentId === `id-not-set`) return fail(`.id file must exist`)
 
 		const student = await Student.where(`unique_id`, studentId).fetch()
-		if (!student) return next(new AuthError(`Student ID does not exist`))
+		if (!student) return fail(`Student ID does not exist`)
 
 		socket.ctx = {student}
 
-		next()
+		return next()
+
+		function fail(message) {
+			socket.emit(`${packet[0]}.failure`, {message})
+			return next(new AuthError(message))
+		}
 	}
 }
 

@@ -1,20 +1,14 @@
 import io from 'socket.io-client'
 import xs from 'xstream'
+import createStatus from './status'
 import create from './support/create'
 
 const INITIAL_STATE = {
-	registration: {
-		status: `init`,
-		message: ``,
-	},
+	registration: {},
+	errors: [],
 }
 
-const SET = Symbol(`SET`)
-
-const set = data => ({type: SET, data})
-const succeed = message => set({registration: {status: `success`, message}})
-const fail = message => set({registration: {status: `failure`, message}})
-const send = () => set({registration: {status: `sending`, message: ``}})
+const ERROR = Symbol(`ERROR`)
 
 // createState :: (URL, String) -> { state_ :: Observable, actions :: Object }
 const createState = (backend, studentId) => {
@@ -23,22 +17,12 @@ const createState = (backend, studentId) => {
 		query: {studentId},
 	})
 
+	const {state_: registration_, actions: {run: register}} = createStatus(socket, `register`)
+
 	const action_ = xs.create({
 		start(listener) {
 			socket.on(`error`, ([type, data]) => {
-				switch (type) {
-					case `auth.failure`:
-					default:
-						listener.next(fail(data.message))
-				}
-			})
-
-			socket.on(`register.success`, ({message}) => {
-				listener.next(succeed(message))
-			})
-
-			socket.on(`register.failure`, ({message}) => {
-				listener.next(fail(message))
+				return listener.next({type: ERROR, data: {type, data, timestamp: new Date()}})
 			})
 		},
 
@@ -47,25 +31,23 @@ const createState = (backend, studentId) => {
 		},
 	})
 
-	// ACTIONS
-
-	const register = () => {
-		action_.shamefullySendNext(send())
-		socket.emit(`register`)
-	}
-
 	// STATE
 
 	const reducer_ = action_.map(action => state => {
 		switch (action.type) {
-			case SET:
-				return {...state, ...action.data}
+			case ERROR:
+				return {...state, errors: [...state.errors, action.data]}
 
 			default: return state
 		}
 	})
 
-	const state_ = create(reducer_, INITIAL_STATE)
+	const state_ = xs.combine(
+			create(reducer_, INITIAL_STATE),
+			registration_,
+		)
+		.map(([base, registration]) => ({...base, registration}))
+		.remember()
 
 	return {
 		state_,

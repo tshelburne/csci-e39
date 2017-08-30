@@ -9,14 +9,14 @@ const Module0 = ({registration: {status, message}, actions}) =>
 			clicking the button below should register you with our system as having
 			finished the module 0 exercise.
 		</p>
-		<button disabled={status === `sending` || status === `success`} onClick={actions.register}>Click Me</button>
+		<button disabled={status === `pending` || status === `success`} onClick={actions.register}>Click Me</button>
 
 		{isCompleted(status) && <p className={status}>{message}</p>}
 	</div>
 
 Module0.propTypes = {
 	registration: PropTypes.shape({
-		status: PropTypes.oneOf([`init`, `sending`, `success`, `failure`]).isRequired,
+		status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
 		message: PropTypes.string.isRequired,
 	}),
 	actions: PropTypes.object.isRequired,
