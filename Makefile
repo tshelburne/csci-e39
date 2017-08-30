@@ -1,5 +1,6 @@
 SHELL := $(SHELL) -e  # insure return codes within line continuations are honored
-DIR := $(shell pwd)
+HOST_DIR := $(shell pwd)
+DK_DIR := /usr/src/app
 
 ENV_BACKEND := csci-e39.herokuapp.com
 ENV_PORT := 3000
@@ -9,7 +10,7 @@ REPO := tshelburne/csci-e39
 TAG := $(shell git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)
 IMAGE := $(REPO):$(TAG)
 
-DK_MOUNT := -v $(DIR)/src:/usr/src/app/src -v $(DIR)/dev.sqlite3:/usr/src/app/dev.sqlite3
+DK_MOUNT := -v $(HOST_DIR)/src:$(DK_DIR)/src -v $(HOST_DIR)/dev.sqlite3:$(DK_DIR)/dev.sqlite3
 DK_ENV := -e PORT=$(ENV_PORT) -e STUDENT_ID=$(ENV_STUDENT_ID) -e DATABASE_URL=$(DATABASE_URL)
 DK_PORTS := --expose $(ENV_PORT) -p $(ENV_PORT):$(ENV_PORT)
 DK_DEBUG := -e DEBUG=knex:*,socket.io:*
@@ -23,7 +24,7 @@ clean:
 	rm -rf build node_modules public dev.sqlite3
 
 run:
-	echo $(DK_RUN) $(IMAGE) [command]
+	$(DK_RUN) $(IMAGE) $(command)
 
 build:
 	touch dev.sqlite3
