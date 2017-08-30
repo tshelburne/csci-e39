@@ -80,9 +80,15 @@ function ensureStudent(socket) {
 	}
 }
 
-class AuthError extends Error {
-	constructor(message) {
+class SocketError extends Error {
+	constructor(type, message) {
 		super(message)
-		this.data = [`auth.failure`, {message}]
+		this.data = [type, {message}]
+	}
+}
+
+class AuthError extends SocketError {
+	constructor(message) {
+		super(`auth.failure`, message)
 	}
 }
