@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 
-class FileUploader extends React.Component {
+class Uploader extends React.Component {
 
 	constructor() {
 		super(...arguments)
@@ -21,8 +21,8 @@ class FileUploader extends React.Component {
 
 }
 
-FileUploader.propTypes = {
+Uploader.propTypes = {
 	upload: PropTypes.func.isRequired,
 }
 
-export default FileUploader
+export default Uploader

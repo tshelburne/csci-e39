@@ -10,7 +10,7 @@ import ReactDOMServer from 'react-dom/server'
 import socketio from 'socket.io'
 import config from './config'
 import {Student} from './db'
-import uploadStream from './services/uploader'
+import uploadStream from './services/upload-stream'
 import App from './ui/app.jsx'
 
 /* ------------------------------- ENDPOINTS ------------------------------- */

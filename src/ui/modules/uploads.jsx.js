@@ -1,11 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import FileUploader from '../components/file-uploader.jsx'
+import Uploader from '../components/uploader.jsx'
 
 const Uploads = ({uploads, actions}) =>
 	<div>
 		<h1>Upload Images</h1>
-		<FileUploader upload={actions.upload} />
+		<Uploader upload={actions.upload} />
 
 		<h2>Upload Results</h2>
 		<ul>
