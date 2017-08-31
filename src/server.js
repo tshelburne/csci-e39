@@ -10,6 +10,7 @@ import ReactDOMServer from 'react-dom/server'
 import socketio from 'socket.io'
 import config from './config'
 import {Student} from './db'
+import uploadStream from './services/uploader'
 import App from './ui/app.jsx'
 
 /* ------------------------------- ENDPOINTS ------------------------------- */
@@ -26,7 +27,7 @@ app.use(views(`${__dirname}/ui`, {extension: `pug`}))
 
 app.use(route.get(`/`, async ctx => {
 	await ctx.render(`index`, {
-		app: renderApp({auth: {}, registration: {status: `init`, message: ``}, actions: {}}),
+		app: renderApp({uploads: {}, actions: {upload: () => {}}}),
 	})
 }))
 
@@ -54,6 +55,25 @@ io.on(`connection`, socket => {
 		}
 	})
 
+	socket.on(`upload:chunk`, (file, chunk) => {
+		const {student} = socket.ctx
+
+		uploadStream(file, async url => {
+			try {
+				await student.related(`uploads`).create({url, name: file.name})
+				socket.emit(`upload:success`, file, url)
+			} catch (e) {
+				socket.emit(`upload:failure`, file)
+			}
+		}).write(chunk)
+
+		socket.emit(`upload:request-chunk`, file)
+	})
+
+	socket.on(`upload:end`, (file) => {
+		uploadStream(file).end()
+	})
+
 })
 
 server.listen(config.port, () => console.log(`=== SERVER ===: listening at localhost:${config.port}`))
@@ -66,16 +86,20 @@ function renderApp(props) {
 
 function ensureStudent(socket) {
 	return async (packet, next) => {
-		const {studentId} = socket.handshake.query
+		try {
+			const {studentId} = socket.handshake.query
 
-		if (studentId === `id-not-set`) return fail(`.id file must exist`)
+			if (studentId === `id-not-set`) return fail(`.id file must exist`)
 
-		const student = await Student.where(`unique_id`, studentId).fetch()
-		if (!student) return fail(`Student ID does not exist`)
+			const student = await Student.where(`unique_id`, studentId).fetch()
+			if (!student) return fail(`Student ID does not exist`)
 
-		socket.ctx = {student}
+			socket.ctx = {student}
 
-		return next()
+			return next()
+		} catch (e) {
+			return fail(`Unexpected failure - please try again`)
+		}
 
 		function fail(message) {
 			socket.emit(`${packet[0]}:failure`, {message})
