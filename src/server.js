@@ -57,21 +57,30 @@ io.on(`connection`, socket => {
 
 	socket.on(`upload:chunk`, (file, chunk) => {
 		const {student} = socket.ctx
+		try {
+			uploadStream(file, finishUpload).write(chunk)
 
-		uploadStream(file, async url => {
+			return socket.emit(`upload:request-chunk`, file)
+		} catch(e) {
+			return socket.emit(`upload:failure`, file)
+		}
+
+		async function finishUpload(url) {
 			try {
 				await student.related(`uploads`).create({url, name: file.name})
 				socket.emit(`upload:success`, file, url)
 			} catch (e) {
 				socket.emit(`upload:failure`, file)
 			}
-		}).write(chunk)
-
-		socket.emit(`upload:request-chunk`, file)
+		}
 	})
 
 	socket.on(`upload:end`, (file) => {
-		uploadStream(file).end()
+		try {
+			uploadStream(file).end()
+		} catch(e) {
+			socket.emit(`upload:failure`, file,)
+		}
 	})
 
 })
