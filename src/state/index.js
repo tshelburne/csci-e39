@@ -1,9 +1,11 @@
 import xs from 'xstream'
 import createStatus from './status'
+import createUploader from './file-uploader'
 import create from './support/create'
 
 const INITIAL_STATE = {
 	registration: {},
+	uploads: {},
 	errors: [],
 }
 
@@ -12,6 +14,7 @@ const ERROR = Symbol(`ERROR`)
 // createState :: Socket -> { state_ :: Observable, actions :: Object }
 const createState = (socket) => {
 	const {state_: registration_, actions: {run: register}} = createStatus(socket, `register`)
+	const {state_: uploads_, actions: {upload}} = createUploader(socket)
 
 	const action_ = xs.create({
 		start(listener) {
@@ -39,14 +42,16 @@ const createState = (socket) => {
 	const state_ = xs.combine(
 			create(reducer_, INITIAL_STATE),
 			registration_,
+			uploads_,
 		)
-		.map(([base, registration]) => ({...base, registration}))
+		.map(([base, registration, uploads]) => ({...base, registration, uploads}))
 		.remember()
 
 	return {
 		state_,
 		actions: {
 			register,
+			upload,
 		},
 	}
 }
