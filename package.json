@@ -21,6 +21,8 @@
   "license": "UNLICENSED",
   "dependencies": {
     "bookshelf": "^0.10.4",
+    "class-autobind": "^0.1.4",
+    "cloudinary": "^1.9.0",
     "knex": "^0.13.0",
     "koa": "^2.3.0",
     "koa-cors": "0.0.16",
