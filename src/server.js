@@ -43,14 +43,14 @@ io.on(`connection`, socket => {
 	socket.on(`register`, async () => {
 		const {student} = socket.ctx
 		try {
-			if (!!student.get(`confirmed_at`)) return socket.emit(`register.failure`, {message: `This ID has already been used`})
+			if (!!student.get(`confirmed_at`)) return socket.emit(`register:failure`, {message: `This ID has already been used`})
 
 			const updatedStudent = await student.save({confirmed_at: new Date()}, {patch: true})
-			if (!updatedStudent) return socket.emit(`register.failure`, {message: `Failed to register you - please try again`})
+			if (!updatedStudent) return socket.emit(`register:failure`, {message: `Failed to register you - please try again`})
 
-			socket.emit(`register.success`, {message: `${student.get(`name`)} registered!`})
+			socket.emit(`register:success`, {message: `${student.get(`name`)} registered!`})
 		} catch (e) {
-			socket.emit(`register.failure`, {message: `Unexpected failure - please try again`})
+			socket.emit(`register:failure`, {message: `Unexpected failure - please try again`})
 		}
 	})
 
@@ -78,7 +78,7 @@ function ensureStudent(socket) {
 		return next()
 
 		function fail(message) {
-			socket.emit(`${packet[0]}.failure`, {message})
+			socket.emit(`${packet[0]}:failure`, {message})
 			return next(new AuthError(message))
 		}
 	}
@@ -93,6 +93,6 @@ class SocketError extends Error {
 
 class AuthError extends SocketError {
 	constructor(message) {
-		super(`auth.failure`, message)
+		super(`auth:failure`, message)
 	}
 }

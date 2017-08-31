@@ -18,11 +18,11 @@ const createState = (socket, type) => {
 
 	const action_ = xs.create({
 		start(listener) {
-			socket.on(`${type}.success`, ({message}) => {
+			socket.on(`${type}:success`, ({message}) => {
 				listener.next(succeed(message))
 			})
 
-			socket.on(`${type}.failure`, ({message}) => {
+			socket.on(`${type}:failure`, ({message}) => {
 				listener.next(fail(message))
 			})
 		},
