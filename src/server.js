@@ -1,4 +1,5 @@
 import http from 'http'
+import debug from 'debug'
 import Koa from 'koa'
 import cors from 'koa-cors'
 import logger from 'koa-logger'
@@ -12,6 +13,8 @@ import config from './config'
 import {Student} from './db'
 import uploadStream from './services/upload-stream'
 import App from './ui/app.jsx'
+
+const log = debug(`csci-e39:server`)
 
 /* ------------------------------- ENDPOINTS ------------------------------- */
 
@@ -51,6 +54,7 @@ io.on(`connection`, socket => {
 
 			socket.emit(`register:success`, {message: `${student.get(`name`)} registered!`})
 		} catch (e) {
+			log(e)
 			socket.emit(`register:failure`, {message: `Unexpected failure - please try again`})
 		}
 	})
@@ -62,6 +66,7 @@ io.on(`connection`, socket => {
 
 			return socket.emit(`upload:request-chunk`, file)
 		} catch(e) {
+			log(e)
 			return socket.emit(`upload:failure`, file)
 		}
 
@@ -70,6 +75,7 @@ io.on(`connection`, socket => {
 				await student.related(`uploads`).create({url, name: file.name})
 				socket.emit(`upload:success`, file, url)
 			} catch (e) {
+				log(e)
 				socket.emit(`upload:failure`, file)
 			}
 		}
@@ -85,7 +91,7 @@ io.on(`connection`, socket => {
 
 })
 
-server.listen(config.port, () => console.log(`=== SERVER ===: listening at localhost:${config.port}`))
+server.listen(config.port, () => log(`listening at localhost:${config.port}`))
 
 /* -------------------------------- HELPERS -------------------------------- */
 
@@ -107,6 +113,7 @@ function ensureStudent(socket) {
 
 			return next()
 		} catch (e) {
+			log(e)
 			return fail(`Unexpected failure - please try again`)
 		}
 
