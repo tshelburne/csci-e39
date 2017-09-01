@@ -31,7 +31,7 @@ app.use(views(`${__dirname}/ui`, {extension: `pug`}))
 
 app.use(route.get(`/`, async ctx => {
 	await ctx.render(`index`, {
-		app: renderApp({registration: {status: `init`, message: ``}, actions: {}}),
+		app: renderApp({auth: {status: `init`, message: ``}}),
 	})
 }))
 
@@ -41,9 +41,13 @@ const server = http.createServer(app.callback())
 
 const io = socketio(server)
 
+io.use((socket, next) => (socket.ctx = {}) && next())
+
+io.use(authenticate)
+
 io.on(`connection`, socket => {
 
-	socket.use(ensureStudent(socket))
+	socket.use(ensureStudent)
 
 	socket.on(`register`, async () => {
 		const {student} = socket.ctx
@@ -61,6 +65,7 @@ io.on(`connection`, socket => {
 	})
 
 	socket.on(`upload:chunk`, (file, chunk) => {
+		const {student} = socket.ctx
 		try {
 			if (file.size > 500 * KB) return socket.emit(`upload:failure`, file, {message: `Max file size 500KB`})
 			if (!IMAGE_MIMES.includes(file.type)) return socket.emit(`upload:failure`, file, {message: `File must be an image`})
@@ -73,7 +78,6 @@ io.on(`connection`, socket => {
 		}
 
 		async function finish(url) {
-			const {student} = socket.ctx
 			try {
 				const {name, description} = file
 				await student.related(`uploads`).create({url, name, description})
@@ -85,6 +89,11 @@ io.on(`connection`, socket => {
 		}
 	})
 
+	function ensureStudent(packet, next) {
+		if (!socket.ctx.student) return next(new AuthError(`Invalid authentication`))
+		return next()
+	}
+
 })
 
 server.listen(config.port, () => log(`listening at localhost:${config.port}`))
@@ -95,28 +104,22 @@ function renderApp(props) {
 	return ReactDOMServer.renderToString(<App {...props} />)
 }
 
-function ensureStudent(socket) {
-	return async (packet, next) => {
-		try {
-			const {studentId} = socket.handshake.query
+async function authenticate(socket, next) {
+	const fail = message => next(new AuthError(message))
 
-			if (studentId === `id-not-set`) return fail(`.id file must exist`)
+	try {
+		const {studentId} = socket.handshake.query
 
-			const student = await Student.where(`unique_id`, studentId).fetch()
-			if (!student) return fail(`Student ID does not exist`)
+		if (studentId === `id-not-set`) return fail(`.id file must exist`)
 
-			socket.ctx = {student}
+		socket.ctx.student = await Student.where(`unique_id`, studentId).fetch()
+		if (!socket.ctx.student) return fail(`Student ID does not exist`)
 
-			return next()
-		} catch (e) {
-			log(e)
-			return fail(`Unexpected failure - please try again`)
-		}
-
-		function fail(message) {
-			socket.emit(`${packet[0]}:failure`, {message})
-			return next(new AuthError(message))
-		}
+		socket.emit(`auth.success`)
+		return next()
+	} catch (e) {
+		log(e)
+		return fail(`Unexpected failure - please try again`)
 	}
 }
 

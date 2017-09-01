@@ -4,11 +4,13 @@ import createUploads from './uploads'
 import create from './support/create'
 
 const INITIAL_STATE = {
+	auth: {status: `init`, message: ``},
 	registration: {},
 	uploads: {},
 	errors: [],
 }
 
+const AUTH = Symbol(`AUTH`)
 const ERROR = Symbol(`ERROR`)
 
 // createState :: Socket -> { state_ :: Observable, actions :: Object }
@@ -18,8 +20,18 @@ const createState = (socket) => {
 
 	const action_ = xs.create({
 		start(listener) {
+			socket.on(`auth.success`, () => {
+				listener.next({type: AUTH, data: {status: `success`, message: ``}})
+			})
+
 			socket.on(`error`, ([type, data]) => {
-				return listener.next({type: ERROR, data: {type, data, timestamp: new Date()}})
+				switch (type) {
+					case `auth:failure`:
+						return listener.next({type: AUTH, data: {status: `failure`, message: data.message}})
+
+					default:
+						return listener.next({type: ERROR, data: {type, data, timestamp: new Date()}})
+				}
 			})
 		},
 
@@ -32,6 +44,9 @@ const createState = (socket) => {
 
 	const reducer_ = action_.map(action => state => {
 		switch (action.type) {
+			case AUTH:
+				return {...state, auth: action.data}
+
 			case ERROR:
 				return {...state, errors: [...state.errors, action.data]}
 
