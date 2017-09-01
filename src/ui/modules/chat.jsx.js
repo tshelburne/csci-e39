@@ -40,9 +40,9 @@ class Chat extends React.Component {
 
 			<h2>Messages</h2>
 			<ul>
-				{chat.messages.map(({id, student, text, timestamp}) =>
+				{chat.messages.map(({id, student, text, created_at}) =>
 					<li key={id}>
-						<label>{student.name} at {new Date(timestamp).toISOString()}</label>
+						<label>{student.name} at {new Date(created_at).toISOString()}</label>
 						<p>{text}</p>
 					</li>
 				)}
@@ -67,10 +67,10 @@ Chat.propTypes = {
 	chat: PropTypes.shape({
 		typing: PropTypes.arrayOf(studentPropType).isRequired,
 		messages: PropTypes.arrayOf(PropTypes.shape({
-			id: PropTypes.string.isRequired,
+			id: PropTypes.number.isRequired,
 			text: PropTypes.string.isRequired,
 			student: studentPropType,
-			timestamp: PropTypes.instanceOf(Date).isRequired,
+			created_at: PropTypes.string.isRequired,
 		})).isRequired,
 		send: PropTypes.shape({
 			status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,

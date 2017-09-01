@@ -88,5 +88,5 @@ const createState = (socket) => {
 export default createState
 
 function byTimestamp(a, b) {
-	return a.timestamp - b.timestamp
+	return a.created_at - b.created_at
 }
