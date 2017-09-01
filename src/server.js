@@ -13,6 +13,7 @@ import config from './config'
 import {Student} from './db'
 import upload from './services/upload'
 import App from './ui/app.jsx'
+import {IMAGE_MIMES, KB} from './util/constants'
 
 const log = debug(`csci-e39:server`)
 
@@ -61,12 +62,14 @@ io.on(`connection`, socket => {
 
 	socket.on(`upload:chunk`, (file, chunk) => {
 		try {
-			const uploaded = upload(file, chunk, finish)
+			if (file.size > 500 * KB) return socket.emit(`upload:failure`, file, {message: `Max file size 500KB`})
+			if (!IMAGE_MIMES.includes(file.type)) return socket.emit(`upload:failure`, file, {message: `File must be an image`})
 
+			const uploaded = upload(file, chunk, finish)
 			return socket.emit(`upload:request-chunk`, file, uploaded)
 		} catch(e) {
 			log(e)
-			return socket.emit(`upload:failure`, file)
+			return socket.emit(`upload:failure`, file, {message: `Unexpected failure - please try again`})
 		}
 
 		async function finish(url) {
@@ -76,7 +79,7 @@ io.on(`connection`, socket => {
 				return socket.emit(`upload:success`, file, url)
 			} catch (e) {
 				log(e)
-				return socket.emit(`upload:failure`, file)
+				return socket.emit(`upload:failure`, file, {message: `Unexpected failure - please try again`})
 			}
 		}
 	})

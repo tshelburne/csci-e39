@@ -1,11 +1,11 @@
 import xs from 'xstream'
 import create from './support/create'
+import {KB} from '../util/constants'
 import {uuid, isImage} from '../util/functions'
 
 const INITIAL_STATE = {}
 
-const IMAGE_MIMES = [`image/png`, `image/gif`, `image/jpeg`]
-const CHUNK_SIZE = 100000
+const CHUNK_SIZE = 10 * KB
 
 const UPDATE = Symbol(`UPDATE`)
 const FAIL = Symbol(`FAIL`)
@@ -23,8 +23,8 @@ function createState(socket) {
 				listener.next(finish({...file, url}))
 			})
 
-			socket.on(`upload:failure`, (file) => {
-				listener.next(fail(file, `An error occurred`))
+			socket.on(`upload:failure`, (file, {message}) => {
+				listener.next(fail(file, message))
 			})
 		},
 
@@ -38,10 +38,6 @@ function createState(socket) {
 			name: inputFile.name,
 			type: inputFile.type,
 			size: inputFile.size,
-		}
-
-		if (!IMAGE_MIMES.includes(file.type)) {
-			return action_.shamefullySendNext(fail(file, `File must be an image`))
 		}
 
 		action_.shamefullySendNext(start(file))
