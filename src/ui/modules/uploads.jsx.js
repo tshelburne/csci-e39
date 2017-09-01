@@ -7,15 +7,26 @@ const Uploads = ({uploads, actions}) =>
 		<h1>Upload Images</h1>
 		<Uploader upload={actions.upload} />
 
-		<h2>Upload Results</h2>
+		<h2>In Progress</h2>
 		<ul>
-			{Object.keys(uploads).map(id => {
-				const {name, progress, url, error} = uploads[id]
+			{Object.keys(uploads).filter(id => uploads[id].progress < 100).map(id => {
+				const {name, progress} = uploads[id]
 
 				return <li key={id}>
 					<label>{name}</label>
-					<progress className={!error ? `success` : `failure`} value={progress} max="100">{progress}%</progress>
-					{progress === 100 && <img src={url} />}
+					<progress value={progress} max="100">{progress}%</progress>
+				</li>
+			})}
+		</ul>
+
+		<h2>Completed</h2>
+		<ul>
+			{Object.keys(uploads).filter(id => uploads[id].progress === 100).map(id => {
+				const {name, url, error} = uploads[id]
+
+				return <li key={id}>
+					<label>{name}</label>
+					{!error && <img src={url} style={{maxWidth: `200px`}} />}
 					{!!error && <p className="failure">{error}</p>}
 				</li>
 			})}
