@@ -1,4 +1,5 @@
 import xs from 'xstream'
+import {toObjBase} from '../lib/xstream'
 import createStatus from './status'
 import createClassroom from './classroom'
 import createUploads from './uploads'
@@ -63,7 +64,7 @@ const createState = (socket) => {
 			registration_,
 			uploads_,
 		)
-		.map(([base, classroom, registration, uploads]) => ({...base, classroom, registration, uploads}))
+		.compose(toObjBase(`classroom`, `registration`, `uploads`))
 		.remember()
 
 	return {
