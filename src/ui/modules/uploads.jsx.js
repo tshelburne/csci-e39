@@ -10,11 +10,12 @@ const Uploads = ({uploads, actions}) =>
 		<h2>Upload Results</h2>
 		<ul>
 			{Object.keys(uploads).map(id => {
-				const {name, progress, error} = uploads[id]
+				const {name, progress, url, error} = uploads[id]
 
 				return <li key={id}>
 					<label>{name}</label>
 					<progress className={!error ? `success` : `failure`} value={progress} max="100">{progress}%</progress>
+					{progress === 100 && <img src={url} />}
 					{!!error && <p className="failure">{error}</p>}
 				</li>
 			})}

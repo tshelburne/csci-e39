@@ -20,7 +20,7 @@ function createState(socket) {
 	const action_ = xs.create({
 		start(listener) {
 			socket.on(`upload:success`, (file, url) => {
-				listener.next(finish(file))
+				listener.next(finish({...file, url}))
 			})
 
 			socket.on(`upload:failure`, (file) => {
@@ -34,6 +34,7 @@ function createState(socket) {
 	function upload(inputFile) {
 		const file = {
 			id: uuid(),
+			url: ``,
 			name: inputFile.name,
 			type: inputFile.type,
 			size: inputFile.size,

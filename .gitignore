@@ -3,4 +3,4 @@ build
 public
 .id
 dev.sqlite3
-tmp
+public

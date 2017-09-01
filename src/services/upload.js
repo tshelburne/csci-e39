@@ -41,7 +41,9 @@ function stream(file, cb) {
 			return cloudinary.uploader.upload_stream(({url}) => cb(url), {public_id: file.id})
 
 		default:
-			const path = `${__dirname}/../../tmp/uploads/${file.name}`
-			return fs.createWriteStream(path).on(`close`, () => cb(path))
+			const path = `uploads/${file.name}`
+			return fs
+				.createWriteStream(`${__dirname}/../../public/${path}`)
+				.on(`close`, () => cb(`http://localhost:3000/${path}`))
 	}
 }
