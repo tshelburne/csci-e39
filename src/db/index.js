@@ -1,4 +1,5 @@
 import db from './connection'
+import {camelCaseify} from '../util/functions'
 
 export const Student = db.Model.extend({
 	tableName: `students`,
@@ -13,8 +14,8 @@ export const Student = db.Model.extend({
 
 	serialize() {
 		const {unique_id, ...json} = db.Model.prototype.serialize.call(this, ...arguments)
-		return json
-	}
+		return camelCaseify(json)
+	},
 })
 
 export const Message = db.Model.extend({
@@ -22,7 +23,12 @@ export const Message = db.Model.extend({
 
 	student() {
 		return this.belongsTo(Student, `creator_id`)
-	}
+	},
+
+	serialize() {
+		const json = db.Model.prototype.serialize.call(this, ...arguments)
+		return camelCaseify(json)
+	},
 })
 
 export const Upload = db.Model.extend({
@@ -31,4 +37,10 @@ export const Upload = db.Model.extend({
 	student() {
 		return this.belongsTo(Student, `creator_id`)
 	},
+
+	serialize() {
+		const json = db.Model.prototype.serialize.call(this, ...arguments)
+		return camelCaseify(json)
+	},
 })
+

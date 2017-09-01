@@ -25,11 +25,11 @@ const createState = (socket) => {
 	const action_ = xs.create({
 		start(listener) {
 			socket.on(`chat:messages`, (messages) => {
-				listener.next(setMessages(messages))
+				listener.next(setMessages(messages.map(dateify)))
 			})
 
 			socket.on(`chat:message`, (message) => {
-				listener.next(addMessage(message))
+				listener.next(addMessage(dateify(message)))
 			})
 
 			socket.on(`chat:typing`, (list) => {
@@ -87,6 +87,14 @@ const createState = (socket) => {
 
 export default createState
 
+function dateify({createdAt, updatedAt, ...data}) {
+	return {
+		...data,
+		createdAt: new Date(createdAt),
+		updatedAt: new Date(updatedAt),
+	}
+}
+
 function byTimestamp(a, b) {
-	return a.created_at - b.created_at
+	return a.createdAt - b.createdAt
 }
