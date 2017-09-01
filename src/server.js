@@ -31,7 +31,7 @@ app.use(views(`${__dirname}/ui`, {extension: `pug`}))
 
 app.use(route.get(`/`, async ctx => {
 	await ctx.render(`index`, {
-		app: renderApp({uploads: {}, actions: {upload: () => {}}}),
+		app: renderApp({registration: {status: `init`, message: ``}, actions: {}}),
 	})
 }))
 
