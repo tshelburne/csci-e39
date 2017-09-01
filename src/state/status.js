@@ -27,7 +27,9 @@ const createState = (socket, type) => {
 			})
 		},
 
-		stop() {},
+		stop() {
+			socket.close()
+		},
 	})
 
 	// ACTIONS

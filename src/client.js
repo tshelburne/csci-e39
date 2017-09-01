@@ -1,11 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import io from 'socket.io-client'
+import {Manager} from 'socket.io-client'
 import createState, {connect} from './state'
 import App from './ui/app.jsx'
 
-const socket = io(__BACKEND__, {query: {studentId: __STUDENT_ID__}})
-const {state_, actions} = createState(socket)
+const manager = new Manager(__BACKEND__, {query: {studentId: __STUDENT_ID__}})
+const {state_, actions} = createState(manager)
 const ConnectedApp = connect(state_, state => ({...state, actions}))(App)
 
 state_.subscribe({

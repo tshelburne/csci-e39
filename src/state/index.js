@@ -13,14 +13,15 @@ const INITIAL_STATE = {
 const AUTH = Symbol(`AUTH`)
 const ERROR = Symbol(`ERROR`)
 
-// createState :: Socket -> { state_ :: Observable, actions :: Object }
-const createState = (socket) => {
-	const {state_: registration_, actions: {run: register}} = createStatus(socket, `register`)
-	const {state_: uploads_, actions: {upload}} = createUploads(socket)
+// createState :: Manager -> { state_ :: Observable, actions :: Object }
+const createState = (manager) => {
+	const socket = manager.socket(`/`)
+	const {state_: registration_, actions: {run: register}} = createStatus(manager.socket(`/registration`), `register`)
+	const {state_: uploads_, actions: {upload}} = createUploads(manager.socket(`/uploads`))
 
 	const action_ = xs.create({
 		start(listener) {
-			socket.on(`auth.success`, () => {
+			socket.on(`auth:success`, () => {
 				listener.next({type: AUTH, data: {status: `success`, message: ``}})
 			})
 

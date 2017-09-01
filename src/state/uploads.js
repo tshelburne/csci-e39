@@ -28,7 +28,9 @@ function createState(socket) {
 			})
 		},
 
-		stop() {},
+		stop() {
+			socket.close()
+		},
 	})
 
 	function upload(inputFile, {name, description} = {}) {
