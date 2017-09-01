@@ -17,6 +17,13 @@ import {IMAGE_MIMES, KB} from './util/constants'
 
 const log = debug(`csci-e39:server`)
 
+const g = {
+	chat: {
+		typing: [],
+		messages: [],
+	},
+}
+
 /* ------------------------------- ENDPOINTS ------------------------------- */
 
 const app = new Koa()
@@ -93,6 +100,27 @@ io.on(`connection`, socket => {
 				return socket.emit(`upload:failure`, file, {message: `Unexpected failure - please try again`})
 			}
 		}
+	})
+
+	socket.join(`chat`)
+
+	socket.emit(`chat:messages`, g.chat.messages)
+
+	socket.on(`chat:typing:start`, () => {
+		g.chat.typing.push(student)
+		socket.in(`chat`).broadcast.emit(`chat:typing`, g.chat.typing)
+	})
+
+	socket.on(`chat:typing:stop`, () => {
+		g.chat.typing = g.chat.typing.filter(({id}) => id !== student.id)
+		socket.in(`chat`).broadcast.emit(`chat:typing`, g.chat.typing)
+	})
+
+	socket.on(`chat:message`, (data) => {
+		const message = {...data, student, timestamp: new Date()}
+		g.chat.messages = g.chat.messages.slice(0, 30).concat(message)
+		socket.emit(`chat:message:success`, {message: `Message sent`})
+		io.in(`chat`).emit(`chat:message`, message)
 	})
 
 })
