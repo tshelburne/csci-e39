@@ -1,12 +1,14 @@
 import xs from 'xstream'
 import createStatus from './status'
+import createClassroom from './classroom'
 import createUploads from './uploads'
 import create from './support/create'
 
 const INITIAL_STATE = {
 	auth: {status: `init`, message: ``},
-	registration: {},
-	uploads: {},
+	classroom: null,
+	registration: null,
+	uploads: null,
 	errors: [],
 }
 
@@ -15,6 +17,7 @@ const ERROR = Symbol(`ERROR`)
 
 // createState :: Socket -> { state_ :: Observable, actions :: Object }
 const createState = (socket) => {
+	const {state_: classroom_} = createClassroom(socket)
 	const {state_: registration_, actions: {run: register}} = createStatus(socket, `register`)
 	const {state_: uploads_, actions: {upload}} = createUploads(socket)
 
@@ -56,10 +59,11 @@ const createState = (socket) => {
 
 	const state_ = xs.combine(
 			create(reducer_, INITIAL_STATE),
+			classroom_,
 			registration_,
 			uploads_,
 		)
-		.map(([base, registration, uploads]) => ({...base, registration, uploads}))
+		.map(([base, classroom, registration, uploads]) => ({...base, classroom, registration, uploads}))
 		.remember()
 
 	return {
