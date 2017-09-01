@@ -31,11 +31,12 @@ function createState(socket) {
 		stop() {},
 	})
 
-	function upload(inputFile) {
+	function upload(inputFile, {name, description} = {}) {
 		const file = {
 			id: uuid(),
 			url: ``,
-			name: inputFile.name,
+			name: name || inputFile.name,
+			description: description || ``,
 			type: inputFile.type,
 			size: inputFile.size,
 		}

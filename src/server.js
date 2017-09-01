@@ -75,7 +75,8 @@ io.on(`connection`, socket => {
 		async function finish(url) {
 			const {student} = socket.ctx
 			try {
-				await student.related(`uploads`).create({url, name: file.name})
+				const {name, description} = file
+				await student.related(`uploads`).create({url, name, description})
 				return socket.emit(`upload:success`, file, url)
 			} catch (e) {
 				log(e)
