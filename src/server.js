@@ -46,8 +46,14 @@ io.use((socket, next) => (socket.ctx = {}) && next())
 io.use(authenticate)
 
 io.on(`connection`, socket => {
+	const {student} = socket.ctx
+	if (!student) socket.disconnect()
 
-	socket.use(ensureStudent)
+	socket.emit(`student:join`, student.toJSON())
+
+	socket.on(`disconnect`, () => {
+		socket.broadcast.emit(`student:leave`, student.toJSON())
+	})
 
 	socket.on(`register`, async () => {
 		const {student} = socket.ctx
@@ -88,11 +94,6 @@ io.on(`connection`, socket => {
 			}
 		}
 	})
-
-	function ensureStudent(packet, next) {
-		if (!socket.ctx.student) return next(new AuthError(`Invalid authentication`))
-		return next()
-	}
 
 })
 
