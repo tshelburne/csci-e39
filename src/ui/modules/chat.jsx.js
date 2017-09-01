@@ -11,16 +11,24 @@ class Chat extends React.Component {
 	}
 
 	onType(e) {
-		const {startTyping, stopTyping} = this.props.actions.chat
+		const {chat} = this.props.actions
 		const {currentText: prevText} = this.state
 		const currentText = e.target.value
-		if (!currentText.length) stopTyping()
-		if (currentText.length === 1 && !prevText.length) startTyping()
+
+		if (!currentText.length) chat.stopTyping()
+		if (currentText.length === 1 && !prevText.length) chat.startTyping()
+
 		this.setState({currentText})
 	}
 
-	onSend() {
-		this.props.actions.chat.send(this.state.currentText)
+	onSend(e) {
+		if (e.type === `keyup` && e.key !== `Enter`) return
+
+		const {chat} = this.props.actions
+		const {currentText} = this.state
+		if (!currentText.length) return
+
+		chat.send(currentText)
 		this.setState({currentText: ``})
 	}
 
@@ -48,7 +56,7 @@ class Chat extends React.Component {
 				)}
 			</ul>
 
-			<input value={currentText} onChange={this.onType} />
+			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
 			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
 		</div>
 	}
