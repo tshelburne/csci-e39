@@ -5,6 +5,7 @@ import {uuid, isImage} from '../util/functions'
 const INITIAL_STATE = {}
 
 const IMAGE_MIMES = [`image/png`, `image/gif`, `image/jpeg`]
+const CHUNK_SIZE = 100000
 
 const UPDATE = Symbol(`UPDATE`)
 const FAIL = Symbol(`FAIL`)
@@ -42,24 +43,6 @@ function createState(socket) {
 			return action_.shamefullySendNext(fail(file, `File must be an image`))
 		}
 
-		const CHUNK_SIZE = 100000
-		let place = 0
-		function uploadNextChunk({id}) {
-			if (id !== file.id) return
-
-			action_.shamefullySendNext(update(file, place))
-
-			const start = place
-			const end = place = Math.min(start + CHUNK_SIZE, file.size)
-			const slice = inputFile.slice(start, end)
-			reader.readAsArrayBuffer(slice)
-
-			if (end === file.size) {
-				socket.off(`upload:request-chunk`, uploadNextChunk)
-				socket.emit(`upload:end`, file)
-			}
-		}
-
 		action_.shamefullySendNext(start(file))
 
 		const reader = new FileReader()
@@ -68,6 +51,16 @@ function createState(socket) {
 		socket.on(`upload:request-chunk`, uploadNextChunk)
 
 		uploadNextChunk(file)
+
+		function uploadNextChunk({id}, start = 0) {
+			if (id !== file.id || start == null) return
+
+			action_.shamefullySendNext(update(file, start))
+
+			const end = Math.min(start + CHUNK_SIZE, file.size)
+			const slice = inputFile.slice(start, end)
+			reader.readAsArrayBuffer(slice)
+		}
 	}
 
 	const reducer_ = action_.map(action => state => {

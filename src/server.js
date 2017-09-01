@@ -11,7 +11,7 @@ import ReactDOMServer from 'react-dom/server'
 import socketio from 'socket.io'
 import config from './config'
 import {Student} from './db'
-import uploadStream from './services/upload-stream'
+import upload from './services/upload'
 import App from './ui/app.jsx'
 
 const log = debug(`csci-e39:server`)
@@ -60,32 +60,24 @@ io.on(`connection`, socket => {
 	})
 
 	socket.on(`upload:chunk`, (file, chunk) => {
-		const {student} = socket.ctx
 		try {
-			uploadStream(file, finishUpload).write(chunk)
+			const uploaded = upload(file, chunk, finish)
 
-			return socket.emit(`upload:request-chunk`, file)
+			return socket.emit(`upload:request-chunk`, file, uploaded)
 		} catch(e) {
 			log(e)
 			return socket.emit(`upload:failure`, file)
 		}
 
-		async function finishUpload(url) {
+		async function finish(url) {
+			const {student} = socket.ctx
 			try {
 				await student.related(`uploads`).create({url, name: file.name})
-				socket.emit(`upload:success`, file, url)
+				return socket.emit(`upload:success`, file, url)
 			} catch (e) {
 				log(e)
-				socket.emit(`upload:failure`, file)
+				return socket.emit(`upload:failure`, file)
 			}
-		}
-	})
-
-	socket.on(`upload:end`, (file) => {
-		try {
-			uploadStream(file).end()
-		} catch(e) {
-			socket.emit(`upload:failure`, file,)
 		}
 	})
 
