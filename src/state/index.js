@@ -2,6 +2,7 @@ import xs from 'xstream'
 import {toObjBase} from '../lib/xstream'
 import createStatus from './status'
 import createClassroom from './classroom'
+import createChat from './chat'
 import createUploads from './uploads'
 import create from './support/create'
 
@@ -9,6 +10,7 @@ const INITIAL_STATE = {
 	auth: {status: `init`, message: ``},
 	classroom: null,
 	registration: null,
+	chat: null,
 	uploads: null,
 	errors: [],
 }
@@ -21,6 +23,7 @@ const createState = (socket) => {
 	const {state_: classroom_} = createClassroom(socket)
 	const {state_: registration_, actions: {run: register}} = createStatus(socket, `register`)
 	const {state_: uploads_, actions: {upload}} = createUploads(socket)
+	const {state_: chat_, actions: chat} = createChat(socket)
 
 	const action_ = xs.create({
 		start(listener) {
@@ -62,15 +65,17 @@ const createState = (socket) => {
 			create(reducer_, INITIAL_STATE),
 			classroom_,
 			registration_,
+			chat_,
 			uploads_,
 		)
-		.compose(toObjBase(`classroom`, `registration`, `uploads`))
+		.compose(toObjBase(`classroom`, `registration`, `chat`, `uploads`))
 		.remember()
 
 	return {
 		state_,
 		actions: {
 			register,
+			chat,
 			upload,
 		},
 	}
