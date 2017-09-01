@@ -2,7 +2,7 @@ export const up = knex =>
 	knex.schema.createTable(`uploads`, t => {
 		t.increments(`id`).unsigned().primary()
 
-		t.integer(`creator_id`).unsigned().notNull().references(`users.id`)
+		t.integer(`creator_id`).unsigned().notNull().references(`students.id`)
 
 		t.string(`url`).notNull()
 		t.string(`name`).nullable()
