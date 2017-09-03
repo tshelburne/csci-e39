@@ -10,12 +10,18 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server'
 import socketio from 'socket.io'
 import config from './config'
-import {Student} from './db'
+import {Student, Message} from './db'
 import upload from './services/upload'
 import App from './ui/app.jsx'
 import {IMAGE_MIMES, KB} from './util/constants'
 
 const log = debug(`csci-e39:server`)
+
+const g = {
+	chat: {
+		typing: [],
+	},
+}
 
 /* ------------------------------- ENDPOINTS ------------------------------- */
 
@@ -45,7 +51,7 @@ io.use((socket, next) => (socket.ctx = {}) && next())
 
 io.use(authenticate)
 
-io.on(`connection`, socket => {
+io.on(`connection`, async socket => {
 	const {student} = socket.ctx
 	if (!student) socket.disconnect()
 
@@ -94,6 +100,38 @@ io.on(`connection`, socket => {
 			}
 		}
 	})
+
+	socket.join(`chat`)
+
+	socket.on(`chat:typing:start`, () => {
+		g.chat.typing.push(student)
+		socket.in(`chat`).broadcast.emit(`chat:typing`, g.chat.typing)
+	})
+
+	socket.on(`chat:typing:stop`, () => {
+		g.chat.typing = g.chat.typing.filter(({id}) => id !== student.id)
+		socket.in(`chat`).broadcast.emit(`chat:typing`, g.chat.typing)
+	})
+
+	socket.on(`chat:message`, async ({id, text}) => {
+		try {
+			const newMessage = await student.related(`messages`).create({unique_id: id, text})
+			const message = await newMessage.refresh({withRelated: [`student`]})
+			socket.emit(`chat:message:success`, {message: `Message sent`})
+			io.in(`chat`).emit(`chat:message`, message.toJSON())
+		} catch (e) {
+			log(e)
+			socket.emit(`chat:message:failure`, {message: `Unexpected failure - please try again`})
+		}
+	})
+
+	// SEND INITIAL DATA
+
+	const messages = await Message
+		.query(qb => qb.limit(30))
+		.orderBy(`-created_at`)
+		.fetchAll({withRelated: [`student`]})
+	socket.emit(`chat:messages`, messages.toJSON())
 
 })
 

@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "rm -rf build public && mkdir build public",
-    "build-public": "webpack",
-    "build-server": "babel -d ./build ./src -s && cp ./src/ui/index.pug ./build/ui",
+    "clean": "rm -rf build/* public/*",
+    "build-public": "mkdir -p public && webpack",
+    "build-server": "mkdir -p build && babel -d ./build ./src -s && cp ./src/ui/index.pug ./build/ui",
     "build": "npm run clean && npm run build-server && npm run build-public",
     "knex": "babel-node node_modules/.bin/knex",
     "migration": "npm run knex migrate:make",
@@ -14,7 +14,7 @@
     "prestart": "npm run build",
     "start": "node build/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "npm run build-public && babel-node src/server.js",
+    "dev": "npm run clean && npm run build-public && babel-node src/server.js",
     "watch": "nodemon --watch ./src --exec 'npm run dev'"
   },
   "author": "Tim Shelburne",
