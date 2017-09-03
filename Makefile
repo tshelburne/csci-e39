@@ -20,16 +20,20 @@ DK_RUN := docker run $(DK_MOUNT) $(DK_ENV)
 
 all: clean migrate start
 
-clean:
+clean: stop
 	rm -rf build node_modules public dev.sqlite3
-
-run:
-	$(DK_RUN) $(IMAGE) $(command)
+	docker rmi -f $(shell docker images -qa $(REPO))
 
 build:
 	touch dev.sqlite3
 	mkdir -p public/uploads
 	docker build -t $(IMAGE) .
+
+run: build
+	$(DK_RUN) $(args) $(IMAGE) $(command)
+
+shell: build
+	make run args='-it' command='sh'
 
 start: build
 	$(DK_RUN) $(DK_PORTS) $(IMAGE)
