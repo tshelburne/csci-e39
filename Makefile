@@ -36,23 +36,23 @@ shell: build
 	make run args='-it' command='sh'
 
 start: build
-	$(DK_RUN) $(DK_PORTS) $(IMAGE)
+	make run args='$(DK_PORTS)'
 
 stop:
 	docker stop $(shell docker ps -qa --filter="ancestor=$(IMAGE)")
 
 watch: build
-	$(DK_RUN) $(DK_PORTS) $(DK_DEBUG) $(IMAGE) npm run watch
+	make run args='$(DK_PORTS) $(DK_DEBUG)' command='npm run watch'
 
 live: build
-	$(DK_RUN) $(DK_PORTS) -e BACKEND=$(ENV_BACKEND) $(IMAGE)
+	make run args='$(DK_PORTS) -e BACKEND=$(ENV_BACKEND)'
 
 migration: build
-	$(DK_RUN) $(IMAGE) npm run migration -- $(name)
+	make run command='npm run migration -- $(name)'
 
 migrate: build
-	$(DK_RUN) $(IMAGE) npm run migrate
-	$(DK_RUN) $(IMAGE) npx knex seed:run
+	make run command='npm run migrate'
+	make run command='npx knex seed:run'
 
 publish: build
 	docker push $(IMAGE)
