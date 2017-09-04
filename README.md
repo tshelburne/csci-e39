@@ -30,6 +30,7 @@ To see all tasks, run `make`
 
 1. `make clean` resets the directory to a fresh installation
 1. `make watch` starts the app, connects to a local environment, and recompiles when source code changes
+1. `make activate assignment=[assignment name]` updates the app to enable the specific assignment directory
 
 ### DevOps
 
