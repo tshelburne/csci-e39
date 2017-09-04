@@ -21,7 +21,7 @@ const ERROR = Symbol(`ERROR`)
 // createState :: Socket -> { state_ :: Observable, actions :: Object }
 const createState = (socket) => {
 	const {state_: classroom_} = createClassroom(socket)
-	const {state_: registration_, actions: {run: register}} = createStatus(socket, `register`)
+	const {state_: registration_, actions: registration} = createStatus(socket, `register`)
 	const {state_: uploads_, actions: {upload}} = createUploads(socket)
 	const {state_: chat_, actions: chat} = createChat(socket)
 
@@ -46,6 +46,14 @@ const createState = (socket) => {
 			socket.close()
 		},
 	})
+
+	// ACTIONS
+
+	// this protects the run fn from receiving synthetic react events, which won't
+	// stringify down because of cyclic data when socket.io serializes
+	function register() {
+		registration.run()
+	}
 
 	// STATE
 

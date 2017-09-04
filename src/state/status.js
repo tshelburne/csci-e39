@@ -33,6 +33,7 @@ const createState = (socket, type) => {
 	// ACTIONS
 
 	const run = (...args) => {
+		console.log(args)
 		action_.shamefullySendNext(start())
 		socket.emit(type, ...args)
 	}
