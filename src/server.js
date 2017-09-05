@@ -17,11 +17,7 @@ import {IMAGE_MIMES, KB} from './util/constants'
 
 const log = debug(`csci-e39:server`)
 
-const g = {
-	chat: {
-		typing: [],
-	},
-}
+const g = {}
 
 /* ------------------------------- ENDPOINTS ------------------------------- */
 
@@ -55,13 +51,19 @@ io.on(`connection`, async socket => {
 	const {student} = socket.ctx
 	if (!student) socket.disconnect()
 
+	// ================ CLASS ================
+
 	socket.emit(`student:join`, student.toJSON())
 
 	socket.on(`disconnect`, () => {
 		socket.broadcast.emit(`student:leave`, student.toJSON())
 	})
 
-	socket.on(`register`, async () => {
+	// ============= REGISTRATION ============
+
+	socket.on(`register`, handleRegister)
+
+	async function handleRegister() {
 		const {student} = socket.ctx
 		try {
 			if (!!student.get(`confirmed_at`)) return socket.emit(`register:failure`, {message: `This ID has already been used`})
@@ -74,9 +76,13 @@ io.on(`connection`, async socket => {
 			log(e)
 			socket.emit(`register:failure`, {message: `Unexpected failure - please try again`})
 		}
-	})
+	}
 
-	socket.on(`upload:chunk`, (file, chunk) => {
+	// =============== UPLOADS ===============
+
+	socket.on(`upload:chunk`, handleChunkUpload)
+
+	function handleChunkUpload(file, chunk) {
 		const {student} = socket.ctx
 		try {
 			if (file.size > 500 * KB) return socket.emit(`upload:failure`, file, {message: `Max file size 500KB`})
@@ -99,22 +105,33 @@ io.on(`connection`, async socket => {
 				return socket.emit(`upload:failure`, file, {message: `Unexpected failure - please try again`})
 			}
 		}
-	})
+	}
+
+	// ================= CHAT =================
+
+	if (!g.chat) g.chat = {typing: []}
 
 	socket.join(`chat`)
 
-	socket.on(`chat:typing:start`, () => {
-		g.chat.typing.push(student)
-		socket.in(`chat`).broadcast.emit(`chat:typing`, g.chat.typing)
-	})
+	socket.on(`chat:typing:start`, handleStartTyping)
+	socket.on(`chat:typing:stop`, handleStopTyping)
+	socket.on(`chat:message`, handleMessage)
 
-	socket.on(`chat:typing:stop`, () => {
+	function handleStartTyping() {
+		const isTyping = !!g.chat.typing.filter(({id}) => id === student.id).length
+		if (!isTyping) g.chat.typing = g.chat.typing.concat(student)
+		socket.in(`chat`).broadcast.emit(`chat:typing`, g.chat.typing)
+	}
+
+	function handleStopTyping() {
 		g.chat.typing = g.chat.typing.filter(({id}) => id !== student.id)
 		socket.in(`chat`).broadcast.emit(`chat:typing`, g.chat.typing)
-	})
+	}
 
-	socket.on(`chat:message`, async ({id, text}) => {
+	async function handleMessage({id, text}) {
 		try {
+			handleStopTyping()
+
 			const newMessage = await student.related(`messages`).create({unique_id: id, text})
 			const message = await newMessage.refresh({withRelated: [`student`]})
 			socket.emit(`chat:message:success`, {message: `Message sent`})
@@ -123,7 +140,7 @@ io.on(`connection`, async socket => {
 			log(e)
 			socket.emit(`chat:message:failure`, {message: `Unexpected failure - please try again`})
 		}
-	})
+	}
 
 	// SEND INITIAL DATA
 
