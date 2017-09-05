@@ -51,15 +51,19 @@ io.on(`connection`, async socket => {
 	const {student} = socket.ctx
 	if (!student) socket.disconnect()
 
+	const removeStudent = all => all.filter(({id}) => id !== student.id)
+	const addStudent = all => removeStudent(all).concat(student)
+
 	// ================ CLASS ================
 
 	if (!g.classroom) g.classroom = {students: []}
-	g.classroom.students.push(student)
+	g.classroom.students = addStudent(g.classroom.students)
 
-	socket.broadcast.emit(`student:all`, g.classroom.students)
+	socket.broadcast.emit(`student:join`, student)
+	io.emit(`student:all`, g.classroom.students)
 
 	socket.on(`disconnect`, () => {
-		g.classroom.students = g.classroom.students.filter(({id}) => id !== student.id)
+		g.classroom.students = removeStudent(g.classroom.students)
 
 		socket.broadcast.emit(`student:leave`, student)
 		socket.broadcast.emit(`student:all`, g.classroom.students)
@@ -124,13 +128,12 @@ io.on(`connection`, async socket => {
 	socket.on(`chat:message`, handleMessage)
 
 	function handleStartTyping() {
-		const isTyping = !!g.chat.typing.filter(({id}) => id === student.id).length
-		if (!isTyping) g.chat.typing = g.chat.typing.concat(student)
+		g.chat.typing = addStudent(g.chat.typing)
 		socket.in(`chat`).broadcast.emit(`chat:typing`, g.chat.typing)
 	}
 
 	function handleStopTyping() {
-		g.chat.typing = g.chat.typing.filter(({id}) => id !== student.id)
+		g.chat.typing = removeStudent(g.chat.typing)
 		socket.in(`chat`).broadcast.emit(`chat:typing`, g.chat.typing)
 	}
 
