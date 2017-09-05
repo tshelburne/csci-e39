@@ -53,10 +53,16 @@ io.on(`connection`, async socket => {
 
 	// ================ CLASS ================
 
-	socket.emit(`student:join`, student.toJSON())
+	if (!g.classroom) g.classroom = {students: []}
+	g.classroom.students.push(student)
+
+	socket.broadcast.emit(`student:all`, g.classroom.students)
 
 	socket.on(`disconnect`, () => {
-		socket.broadcast.emit(`student:leave`, student.toJSON())
+		g.classroom.students = g.classroom.students.filter(({id}) => id !== student.id)
+
+		socket.broadcast.emit(`student:leave`, student)
+		socket.broadcast.emit(`student:all`, g.classroom.students)
 	})
 
 	// ============= REGISTRATION ============
