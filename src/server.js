@@ -1,7 +1,7 @@
 import http from 'http'
 import debug from 'debug'
 import Koa from 'koa'
-import cors from 'koa-cors'
+import cors from 'kcors'
 import logger from 'koa-logger'
 import route from 'koa-route'
 import serve from 'koa-static'
@@ -25,7 +25,7 @@ const app = new Koa()
 
 if (config.env !== `test`) app.use(logger())
 
-app.use(cors({origin: `*`}))
+app.use(cors())
 
 app.use(serve(`public`))
 
