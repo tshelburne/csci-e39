@@ -32,6 +32,19 @@ class Chat extends React.Component {
 		this.setState({currentText: ``})
 	}
 
+	getTypingMessage() {
+		const {typing} = this.props.chat
+
+		switch (typing.length) {
+			case 0: return null
+			case 1: return `${typing[0].name} is typing...`
+			case 2: return `${typing[0].name} and ${typing[1].name} are typing...`
+			case 3: return `${typing[0].name}, ${typing[1].name}, and ${typing[2].name} are typing...`
+			// len > 3
+			default: return `${typing.length} members are typing...`
+		}
+	}
+
 	render() {
 		const {classroom, chat, actions} = this.props
 		const {currentText} = this.state
@@ -58,6 +71,7 @@ class Chat extends React.Component {
 
 			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
 			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
+			<p>{this.getTypingMessage()}</p>
 		</div>
 	}
 

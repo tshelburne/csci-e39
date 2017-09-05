@@ -5,23 +5,17 @@ const INITIAL_STATE = {
 	students: [],
 }
 
-const ADD = Symbol(`ADD`)
-const RM = Symbol(`RM`)
+const SET = Symbol(`SET`)
 
-const add = student => ({type: ADD, data: student})
-const remove = ({id}) => ({type: RM, data: {id}})
+const set = students => ({type: SET, data: students})
 
 // createState :: Socket -> { state_ :: Observable, actions :: Object }
 const createState = (socket) => {
 
 	const action_ = xs.create({
 		start(listener) {
-			socket.on(`student:join`, (student) => {
-				listener.next(add(student))
-			})
-
-			socket.on(`student:leave`, (student) => {
-				listener.next(remove(student))
+			socket.on(`student:all`, (students) => {
+				listener.next(set(students))
 			})
 		},
 
@@ -31,15 +25,9 @@ const createState = (socket) => {
 	// STATE
 
 	const reducer_ = action_.map(action => state => {
-		// this ensures we don't add the same ID twice
-		const students = state.students.filter(({id}) => id !== action.data.id)
-
 		switch (action.type) {
-			case ADD:
-				return {...state, students: [...students, action.data]}
-
-			case RM:
-				return {...state, students}
+			case SET:
+				return {...state, students: action.data}
 
 			default: return state
 		}
