@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Module from './modules/module-0.jsx'
+import Module from '../../assignments/module-0/index.jsx'
 
 const App = ({auth, ...props}) => {
 	switch (auth.status) {
