@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf build/* public/*",
     "build.public.js": "webpack",
-    "build.public.css": "cp -r assignments/ public/assignments",
+    "build.public.css": "cp -r src/assignments/ public/assignments",
     "build.public": "mkdir -p public && npm run build.public.css && npm run build.public.js",
     "build.server": "mkdir -p build && babel -d ./build ./src -s && cp ./src/ui/index.pug ./build/ui",
     "build": "npm run clean && npm run build.server && npm run build.public",
