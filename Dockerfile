@@ -2,6 +2,7 @@ FROM node:8-slim
 MAINTAINER Tim Shelburne <shelburt02@gmail.com>
 
 RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app/public/uploads
 WORKDIR /usr/src/app
 
 COPY package*.json /usr/src/app/
