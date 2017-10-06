@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Uploader from '../components/uploader.jsx'
+import Uploader from '../../src/ui/components/uploader.jsx'
 
 const Uploads = ({uploads, actions}) =>
 	<div>
