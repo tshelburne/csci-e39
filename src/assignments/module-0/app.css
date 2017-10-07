@@ -498,7 +498,6 @@ body {
 	padding: 20px 40px;
 	background: hsla(152, 100%, 30%, .25);
 	position: relative;
-	transition: height .4s ease;
 	box-shadow: 41px 14px 0px -2px hsla(220, 100%, 27%, .35);
 }
 
@@ -532,6 +531,7 @@ body {
 .call-to-action[disabled] {
 	opacity: .3;
 	position: relative;
+	cursor: not-allowed;
 }
 
 .call-to-action[disabled]:after {
