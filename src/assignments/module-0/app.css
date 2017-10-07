@@ -461,8 +461,8 @@ body {
 	margin: auto;
 	display: grid;
 	grid-template-rows: 1fr 200px;
-    height: 100%;
-    height: 100vh;
+	height: 100%;
+	height: 100vh;
 }
 
 .main-heading {
@@ -472,20 +472,20 @@ body {
 }
 
 .success {
-    font-family: 'Permanent Marker', sans-serif;
-    font-size: 1.4rem;
-    line-height: 1;
-    display: block;
-    text-align: center;
-    border-top: 2px dashed black;
-    padding-top: 20px;
+	font-family: 'Permanent Marker', sans-serif;
+	font-size: 1.4rem;
+	line-height: 1;
+	display: block;
+	text-align: center;
+	border-top: 2px dashed black;
+	padding-top: 20px;
 }
 
 .failure {
 	text-align: center;
 	color: hsla(-35, 72%, 35%, 1);
-    border-top: 2px dashed hsla(-35, 72%, 35%, 1);
-    padding-top: 20px;
+	border-top: 2px dashed hsla(-35, 72%, 35%, 1);
+	padding-top: 20px;
 }
 
 .main-message {
@@ -507,11 +507,11 @@ body {
 	content: '';
 	position: absolute;
 	background: hsla(95, 100%, 68%, .37);
-    height: 106%;
-    left: -31px;
-    width: 101%;
-    top: 19px;
-    z-index: -1;
+	height: 106%;
+	left: -31px;
+	width: 101%;
+	top: 19px;
+	z-index: -1;
 }
 
 .button-block {
@@ -557,5 +557,5 @@ a {
 	grid-template-columns: 1fr 1fr 1fr;
 	text-align: center;
 	grid-row-start: -2;
-  	align-self: end;
+	align-self: end;
 }
