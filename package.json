@@ -17,7 +17,7 @@
     "start": "node build/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "npm run clean && npm run build.public && babel-node src/server.js",
-    "watch": "nodemon --watch ./src --watch ./assignments --exec 'npm run dev'"
+    "watch": "nodemon --ext css,js,pug --watch ./src --exec 'npm run dev'"
   },
   "author": "Tim Shelburne",
   "license": "UNLICENSED",
