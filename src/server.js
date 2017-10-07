@@ -76,12 +76,12 @@ io.on(`connection`, async socket => {
 	async function handleRegister() {
 		const {student} = socket.ctx
 		try {
-			if (!!student.get(`confirmed_at`)) return socket.emit(`register:failure`, {message: `This ID has already been used`})
+			if (!!student.get(`confirmed_at`)) return socket.emit(`register:failure`, {message: `Error: This ID has already been used to complete the assignment.`})
 
 			const updatedStudent = await student.save({confirmed_at: new Date()}, {patch: true})
 			if (!updatedStudent) return socket.emit(`register:failure`, {message: `Failed to register you - please try again`})
 
-			socket.emit(`register:success`, {message: `${student.get(`name`)} registered!`})
+			socket.emit(`register:success`, {message: `${student.get(`name`)} completed Module 0!`})
 		} catch (e) {
 			log(e)
 			socket.emit(`register:failure`, {message: `Unexpected failure - please try again`})

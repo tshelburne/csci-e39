@@ -2,16 +2,27 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Module0 = ({registration: {status, message}, actions}) =>
-	<div>
-		<h1>Almost there!</h1>
-		<p>
-			Congratulations on making it this far! If you've set everything up properly,
-			clicking the button below should register you with our system as having
-			finished the module 0 exercise.
-		</p>
-		<button disabled={status === `pending` || status === `success`} onClick={actions.register}>Click Me</button>
+	<div className="module0-container">
+		<section className="submission-section">
+			<h1 className="main-heading">Almost done!</h1>
+			<p className="main-message">
+				You did it! You've followed the directions and got your project running. Click the button below to register as having completed Module 0.
+			</p>
+			<div className="button-block">
+				<button disabled={status === `pending` || status === `success`}
+					onClick={actions.register}
+					className="call-to-action">
+					Complete Assignment
+				</button>
+			</div>
 
-		{isCompleted(status) && <p className={status}>{message}</p>}
+			{isCompleted(status) && <p className={status}>{message}</p>}
+		</section>
+		<footer className="footer">
+			<p>CSCI-e39</p>
+			<p><a href="mailto:natalya.shelburne@nytimes.com">Natalya Shelburne</a></p>
+			<p>Spring 2018</p>
+		</footer>
 	</div>
 
 Module0.propTypes = {
