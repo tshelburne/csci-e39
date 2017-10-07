@@ -12,8 +12,12 @@ REPO := tshelburne/csci-e39
 TAG := $(shell git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)
 IMAGE := $(REPO):$(TAG)
 
-DK_MOUNT_DEBUG := -v $(HOST_DIR)/build:$(DK_DIR)/build -v $(HOST_DIR)/public:$(DK_DIR)/public
-DK_MOUNT := -v $(HOST_DIR)/src:$(DK_DIR)/src -v $(HOST_DIR)/.id:$(DK_DIR)/.id -v $(HOST_DIR)/dev.sqlite3:$(DK_DIR)/dev.sqlite3
+define mount
+	-v $(HOST_DIR)/$(1):$(DK_DIR)/$(1)
+endef
+
+DK_MOUNT_DEBUG := $(call mount,build) $(call mount,public)
+DK_MOUNT := $(call mount,src) $(call mount,.id) $(call mount,dev.sqlite3) $(call mount,package.json) $(call mount,package-lock.json)
 DK_ENV := -e PORT=$(ENV_PORT) -e STUDENT_ID=$(ENV_STUDENT_ID) -e DATABASE_URL=$(DATABASE_URL)
 DK_PORTS := --expose $(ENV_PORT) -p $(ENV_PORT):$(ENV_PORT)
 DK_DEBUG := -e DEBUG=knex:*,socket.io:*,csci-e39:*
