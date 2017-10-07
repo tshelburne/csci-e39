@@ -7,17 +7,17 @@ const Module0 = ({registration: {status, message}, actions}) =>
 			CSCI-e39
 		</header>
 		<section className="submission-section">
-			<h1 className="main-message">Almost there!</h1>
-			<p>
-				Congratulations on making it this far! If you've followed the directions and set up the project,
-				clicking the button below should register you with our system as having
-				finished the module 0 exercise.
+			<h1 className="main-heading">Almost done!</h1>
+			<p className="main-message">
+				You did it! You've followed the directions and got the project running. Click the button below to register as having completed Module 0.
 			</p>
-			<button disabled={status === `pending` || status === `success`}
-				onClick={actions.register}
-				className="call-to-action">
-				Complete Assignment
-			</button>
+			<div className="button-block">
+				<button disabled={status === `pending` || status === `success`}
+					onClick={actions.register}
+					className="call-to-action">
+					Complete Assignment
+				</button>
+			</div>
 
 			{isCompleted(status) && <p className={status}>{message}</p>}
 		</section>
