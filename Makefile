@@ -38,29 +38,29 @@ run: build
 	docker run $(DK_MOUNT) $(DK_ENV) $(args) $(IMAGE) $(command)
 
 shell: build
-	make run args='-it' command='sh'
+	@make run args='-it' command='sh'
 
 activate: build
-	make run command='sed -i -e "s/assignments\/.*\//assignments\/$(assignment)\//g" src/ui/app.jsx.js src/ui/index.pug'
+	@make run command='sed -i -e "s/assignments\/.*\//assignments\/$(assignment)\//g" src/ui/app.jsx.js src/ui/index.pug'
 
 start: build
-	make run args='$(DK_PORTS)'
+	@make run args='$(DK_PORTS)'
 
 stop:
 	docker stop $(shell docker ps -qa --filter="ancestor=$(IMAGE)")
 
 watch: build
-	make run args='$(DK_PORTS) $(DK_DEBUG)' command='npm run watch'
+	@make run args='$(DK_PORTS) $(DK_DEBUG)' command='npm run watch'
 
 live: build
-	make run args='$(DK_PORTS) -e BACKEND=$(ENV_BACKEND)'
+	@make run args='$(DK_PORTS) -e BACKEND=$(ENV_BACKEND)'
 
 migration: build
-	make run command='npm run migration -- $(name)'
+	@make run command='npm run migration -- $(name)'
 
 migrate: build
-	make run command='npm run migrate'
-	make run command='npx knex seed:run'
+	@make run command='npm run migrate'
+	@make run command='npx knex seed:run'
 
 publish: build
 	docker push $(IMAGE)
