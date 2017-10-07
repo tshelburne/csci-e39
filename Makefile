@@ -19,7 +19,7 @@ endef
 DK_MOUNT_DEBUG := $(call mount,build) $(call mount,public)
 DK_MOUNT := $(call mount,src) $(call mount,.id) $(call mount,dev.sqlite3) $(call mount,package.json) $(call mount,package-lock.json)
 DK_ENV := -e PORT=$(ENV_PORT) -e STUDENT_ID=$(ENV_STUDENT_ID) -e DATABASE_URL=$(DATABASE_URL)
-DK_PORTS := --expose $(ENV_PORT) -p $(ENV_PORT):$(ENV_PORT)
+DK_PORTS := --expose $(ENV_PORT) -p $(ENV_PORT):$(ENV_PORT) --expose 35729 -p 35729:35729
 DK_DEBUG := -e DEBUG=knex:*,socket.io:*,csci-e39:*
 
 .DEFAULT_GOAL := list

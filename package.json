@@ -19,7 +19,8 @@
     "dev": "npm run clean && npm run build.public && babel-node src/server.js",
     "watch.js": "nodemon --ext js,pug --watch ./src --exec 'npm run build.public.js && babel-node src/server.js'",
     "watch.css": "nodemon --ext css --watch ./src --exec 'npm run build.public.css'",
-    "watch": "npm run clean && concurrently 'npm run watch.js' 'npm run watch.css'"
+    "watch.livereload": "livereload 'build, public'",
+    "watch": "npm run clean && concurrently 'npm run watch.js' 'npm run watch.css' 'npm run watch.livereload'"
   },
   "author": "Tim Shelburne",
   "license": "UNLICENSED",
@@ -51,6 +52,7 @@
     "babel-plugin-transform-react-jsx": "^6.24.1",
     "babel-preset-env": "^1.6.0",
     "concurrently": "^3.5.0",
+    "livereload": "^0.6.2",
     "nodemon": "^1.11.0",
     "sqlite3": "3.1.8",
     "webpack": "^3.5.5"
