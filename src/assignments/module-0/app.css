@@ -1,0 +1,54 @@
+body {
+	background: #fbfff3;
+	font-family: "Arial", sans-serif;
+	color: #111;
+}
+
+.module0-container {
+	max-width: 900px;
+	display: grid;
+	margin: auto;
+}
+
+.main-message {
+	font-family: 'Permanent Marker', sans-serif;
+	font-size: 3.4rem;
+}
+
+.submission-section {
+	line-height: 1.5rem;
+	font-weight: 600;	
+	margin-top: 100px;
+	margin-top: 15vh;
+	padding: 20px 40px;
+	background: hsla(121, 100%, 30%, .25);
+	position: relative;
+	box-shadow: 41px 14px 0px -2px hsla(220, 100%, 27%, .35);
+}
+
+.submission-section:after {
+	content: '';
+	position: absolute;
+	background: hsla(77, 100%, 68%, .32);
+    height: 103%;
+    left: -21px;
+    width: 100%;
+    top: 19px;
+    z-index: -1;
+}
+
+.call-to-action {
+	float: right;
+	cursor: pointer;
+	font-weight: inherit;
+	font-size: 1rem;
+	padding: 1rem .5rem;
+	background: hsla(0, 100%, 100%, .6);
+	transition: background-color .23s ease;
+	border: 2px solid #111;
+	border-radius: 3px;
+}
+
+.call-to-action:hover, .call-to-action:active, .call-to-action:focus {
+	background: hsla(0, 100%, 100%, .9);
+}
