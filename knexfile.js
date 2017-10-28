@@ -13,7 +13,8 @@ module.exports = {
 		},
 		seeds: {
 			directory: `./src/db/seeds/`
-		}
+		},
+		useNullAsDefault: true,
 	},
 
 	production: {
@@ -22,7 +23,8 @@ module.exports = {
 		migrations: {
 			directory: `./src/db/migrations`,
 			tableName: `migrations`
-		}
+		},
+		useNullAsDefault: true,
 	}
 
 }
