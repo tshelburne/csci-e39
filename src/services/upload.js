@@ -7,6 +7,13 @@ const g = {
 	uploads: {},
 }
 
+const UPLOAD_DIR = `uploads`
+const ABS_UPLOAD_DIR = `${__dirname}/../../public/${UPLOAD_DIR}`
+
+if (config.env !== `production` && !fs.existsSync(ABS_UPLOAD_DIR)) {
+	fs.mkdirSync(ABS_UPLOAD_DIR)
+}
+
 // upload :: (File, Buffer, URL -> a) -> Maybe Integer
 function upload(file, chunk, fn=noop) {
 	const {id, size} = file
@@ -41,9 +48,8 @@ function stream(file, cb) {
 			return cloudinary.uploader.upload_stream(({url}) => cb(url), {public_id: file.id})
 
 		default:
-			const path = `uploads/${file.name}`
 			return fs
-				.createWriteStream(`${__dirname}/../../public/${path}`)
-				.on(`close`, () => cb(`http://localhost:3000/${path}`))
+				.createWriteStream(`${ABS_UPLOAD_DIR}/${file.name}`)
+				.on(`close`, () => cb(`http://localhost:3000/${UPLOAD_DIR}/${file.name}`))
 	}
 }
