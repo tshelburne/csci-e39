@@ -5,7 +5,9 @@ import Uploader from '../../ui/components/uploader.jsx'
 const Uploads = ({uploads, actions}) =>
 	<div>
 		<h1>Upload Images</h1>
+		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
+		{/* do not delete this uploader component */}
 
 		<h2>In Progress</h2>
 		<ul>

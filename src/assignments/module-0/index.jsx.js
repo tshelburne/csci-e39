@@ -6,7 +6,7 @@ const Module0 = ({registration: {status, message}, actions}) =>
 		<section className="submission-section">
 			<h1 className="main-heading">Almost done!</h1>
 			<p className="main-message">
-				You did it! You've followed the directions and got your project running. Click the button below to register as having completed Module 0.
+				You did it! You followed the directions and got your copy of the application running. Click the button below to register as having completed Module 0.
 			</p>
 			<div className="button-block">
 				<button disabled={status === `pending` || status === `success`}
