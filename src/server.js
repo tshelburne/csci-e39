@@ -79,7 +79,7 @@ io.on(`connection`, async socket => {
 			if (!!student.get(`confirmed_at`)) return socket.emit(`register:failure`, {message: `Error: This ID has already been used to complete the assignment.`})
 
 			const updatedStudent = await student.save({confirmed_at: new Date()}, {patch: true})
-			if (!updatedStudent) return socket.emit(`register:failure`, {message: `Failed to register you - please try again`})
+			if (!updatedStudent) return socket.emit(`register:failure`, {message: `Failed to register you - please try again later. (You may not be in our database of registered students yet)`})
 
 			socket.emit(`register:success`, {message: `${student.get(`name`)} completed Module 0!`})
 		} catch (e) {
@@ -161,7 +161,7 @@ io.on(`connection`, async socket => {
 
 })
 
-server.listen(config.port, () => log(`listening at localhost:${config.port}`))
+server.listen(config.port, () => log(`✅  - listening at localhost:${config.port}`))
 
 /* -------------------------------- HELPERS -------------------------------- */
 
