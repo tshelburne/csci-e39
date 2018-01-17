@@ -9,7 +9,7 @@ ENV_PORT := 3000
 ENV_STUDENT_ID := $(or $(shell echo `cat .id`), id-not-set)
 
 REPO := tshelburne/csci-e39
-TAG := $(shell git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3)
+TAG := $(or $(shell git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3), nobranch)
 IMAGE := $(REPO):$(TAG)
 
 define mount
