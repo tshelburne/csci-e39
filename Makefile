@@ -1,7 +1,7 @@
 # ensure return codes within line continuations are honored
 SHELL := $(SHELL) -e
 
-HOST_DIR := $(shell pwd)
+HOST_DIR := '$(shell pwd)'
 DK_DIR := /usr/src/app
 
 ENV_BACKEND := csci-e39.herokuapp.com
@@ -13,7 +13,7 @@ TAG := $(or $(shell git symbolic-ref HEAD 2>/dev/null | cut -d"/" -f 3), nobranc
 IMAGE := $(REPO):$(TAG)
 
 define mount
-	-v '$(HOST_DIR)/$(1):$(DK_DIR)/$(1)'
+	-v $(HOST_DIR)/$(1):$(DK_DIR)/$(1)
 endef
 
 DK_MOUNT_DEBUG := $(call mount,build) $(call mount,public)
