@@ -1,7 +1,7 @@
 # ensure return codes within line continuations are honored
 SHELL := $(SHELL) -e
 
-HOST_DIR := $(shell pwd)
+HOST_DIR := '$(shell pwd)'
 DK_DIR := /usr/src/app
 
 ENV_BACKEND := csci-e39.herokuapp.com
