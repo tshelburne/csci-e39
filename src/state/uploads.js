@@ -76,6 +76,7 @@ function createState(socket) {
 	})
 
 	const state_ = create(reducer_, INITIAL_STATE)
+		.map(state => Object.values(state))
 
 	return {
 		state_,

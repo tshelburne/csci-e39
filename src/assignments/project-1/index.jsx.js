@@ -11,8 +11,8 @@ const Uploads = ({uploads, actions}) =>
 
 		<h2>In Progress</h2>
 		<ul>
-			{Object.keys(uploads).filter(id => uploads[id].progress < 100).map(id => {
-				const {name, progress} = uploads[id]
+			{uploads.filter(({progress}) => progress < 100).map(file => {
+				const {id, name, progress} = file
 
 				return <li key={id}>
 					<label>{name}</label>
@@ -23,8 +23,8 @@ const Uploads = ({uploads, actions}) =>
 
 		<h2>Completed</h2>
 		<ul>
-			{Object.keys(uploads).filter(id => uploads[id].progress === 100).map(id => {
-				const {name, url, error} = uploads[id]
+			{uploads.filter(({progress}) => progress === 100).map(file => {
+				const {id, name, url, error} = file
 
 				return <li key={id}>
 					<label>{name}</label>
@@ -36,7 +36,13 @@ const Uploads = ({uploads, actions}) =>
 	</div>
 
 Uploads.propTypes = {
-	uploads: PropTypes.object.isRequired,
+	uploads: PropTypes.arrayOf(PropTypes.shape({
+		id: PropTypes.string.isRequired,
+		name: PropTypes.string.isRequired,
+		progress: PropTypes.number.isRequired,
+		url: PropTypes.string,
+		error: PropTypes.string,
+	})).isRequired,
 	actions: PropTypes.object.isRequired,
 }
 
