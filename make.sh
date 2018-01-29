@@ -36,47 +36,48 @@ function all() {
 function clean() {
 	stop
 	rm -rf build node_modules public dev.sqlite3
-	docker rmi -f `docker images -qa $REPO`
+	docker.exe rmi -f `docker.exe images -qa $REPO`
 }
 
 function build() {
 	touch dev.sqlite3
-	docker build -t $IMAGE .
+	docker.exe build -t $IMAGE .
 }
 
 function activate() {
 	local ASSIGNMENT=$1
 	build
-	docker run $DK_MOUNT $DK_ENV $IMAGE sed -i -e "s/assignments\/.*\//assignments\/$ASSIGNMENT\//g" src/ui/app.jsx.js src/ui/index.pug
+	docker.exe run $DK_MOUNT $DK_ENV $IMAGE sed -i -e "s/assignments\/.*\//assignments\/$ASSIGNMENT\//g" src/ui/app.jsx.js src/ui/index.pug
 }
 
 function start() {
 	build
-	docker run $DK_MOUNT $DK_ENV $DK_PORTS $IMAGE
+	docker.exe run $DK_MOUNT $DK_ENV $DK_PORTS $IMAGE
 }
 
 function stop() {
-	docker stop `docker ps -qa --filter="ancestor=$IMAGE"` || true
+	docker.exe stop `docker.exe ps -qa --filter="ancestor=$IMAGE"` || true
 }
 
 function watch() {
 	build
-	docker run $DK_MOUNT $DK_ENV $DK_PORTS $DK_DEBUG $IMAGE npm run watch
+	docker.exe run $DK_MOUNT $DK_ENV $DK_PORTS $DK_DEBUG $IMAGE npm run watch
 }
 
 function live() {
 	build
-	docker run $DK_MOUNT $DK_ENV $DK_PORTS -e BACKEND=$ENV_BACKEND $IMAGE
+	docker.exe run $DK_MOUNT $DK_ENV $DK_PORTS -e BACKEND=$ENV_BACKEND $IMAGE
 }
 
 function migrate() {
 	build
-	docker run $DK_MOUNT $DK_ENV $IMAGE npm run migrate
-	docker run $DK_MOUNT $DK_ENV $IMAGE npx knex seed:run
+	docker.exe run $DK_MOUNT $DK_ENV $IMAGE npm run migrate
+	docker.exe run $DK_MOUNT $DK_ENV $IMAGE npx knex seed:run
 }
 
 CMD=$1; shift
 case $CMD in
+  'test_docker') docker.exe -v;;
 	'all') all;;
 	'clean') clean;;
 	'build') build;;
