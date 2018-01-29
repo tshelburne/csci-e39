@@ -27,6 +27,15 @@ DK_ENV="-e PORT=$ENV_PORT -e STUDENT_ID=$ENV_STUDENT_ID -e DATABASE_URL=$DATABAS
 DK_PORTS="--expose $ENV_PORT -p $ENV_PORT:$ENV_PORT --expose 35729 -p 35729:35729"
 DK_DEBUG="-e DEBUG=knex:*,socket.io:*,csci-e39:*"
 
+# supports both unix and windows
+_docker() {
+	if hash docker 2>/dev/null; then
+		docker "$@"
+	else
+		docker.exe "$@"
+	fi
+}
+
 function all() {
 	clean
 	migrate
@@ -36,48 +45,48 @@ function all() {
 function clean() {
 	stop
 	rm -rf build node_modules public dev.sqlite3
-	docker.exe rmi -f `docker.exe images -qa $REPO`
+	_docker rmi -f `_docker images -qa $REPO`
 }
 
 function build() {
 	touch dev.sqlite3
-	docker.exe build -t $IMAGE .
+	_docker build -t $IMAGE .
 }
 
 function activate() {
 	local ASSIGNMENT=$1
 	build
-	docker.exe run $DK_MOUNT $DK_ENV $IMAGE sed -i -e "s/assignments\/.*\//assignments\/$ASSIGNMENT\//g" src/ui/app.jsx.js src/ui/index.pug
+	_docker run $DK_MOUNT $DK_ENV $IMAGE sed -i -e "s/assignments\/.*\//assignments\/$ASSIGNMENT\//g" src/ui/app.jsx.js src/ui/index.pug
 }
 
 function start() {
 	build
-	docker.exe run $DK_MOUNT $DK_ENV $DK_PORTS $IMAGE
+	_docker run $DK_MOUNT $DK_ENV $DK_PORTS $IMAGE
 }
 
 function stop() {
-	docker.exe stop `docker.exe ps -qa --filter="ancestor=$IMAGE"` || true
+	_docker stop `_docker ps -qa --filter="ancestor=$IMAGE"` || true
 }
 
 function watch() {
 	build
-	docker.exe run $DK_MOUNT $DK_ENV $DK_PORTS $DK_DEBUG $IMAGE npm run watch
+	_docker run $DK_MOUNT $DK_ENV $DK_PORTS $DK_DEBUG $IMAGE npm run watch
 }
 
 function live() {
 	build
-	docker.exe run $DK_MOUNT $DK_ENV $DK_PORTS -e BACKEND=$ENV_BACKEND $IMAGE
+	_docker run $DK_MOUNT $DK_ENV $DK_PORTS -e BACKEND=$ENV_BACKEND $IMAGE
 }
 
 function migrate() {
 	build
-	docker.exe run $DK_MOUNT $DK_ENV $IMAGE npm run migrate
-	docker.exe run $DK_MOUNT $DK_ENV $IMAGE npx knex seed:run
+	_docker run $DK_MOUNT $DK_ENV $IMAGE npm run migrate
+	_docker run $DK_MOUNT $DK_ENV $IMAGE npx knex seed:run
 }
 
 CMD=$1; shift
 case $CMD in
-  'test_docker') docker.exe -v;;
+	'test_docker') _docker -v;;
 	'all') all;;
 	'clean') clean;;
 	'build') build;;
