@@ -7,9 +7,11 @@ const INITIAL_STATE = {}
 
 const CHUNK_SIZE = 10 * KB
 
+const ALL_FILES = Symbol(`ALL_FILES`)
 const UPDATE = Symbol(`UPDATE`)
 const FAIL = Symbol(`FAIL`)
 
+const mergeFiles = files => ({type: ALL_FILES, data: {files}})
 const update = (file, uploaded) => ({type: UPDATE, data: {file, uploaded}})
 const start = file => update(file, 0)
 const finish = file => update(file, file.size)
@@ -19,6 +21,10 @@ function createState(socket) {
 
 	const action_ = xs.create({
 		start(listener) {
+			socket.on(`files:all`, files => {
+				listener.next(mergeFiles(files))
+			})
+
 			socket.on(`upload:success`, (file, url) => {
 				listener.next(finish({...file, url}))
 			})
@@ -64,6 +70,12 @@ function createState(socket) {
 	const reducer_ = action_.map(action => state => {
 		const {file, uploaded, error} = action.data
 		switch (action.type) {
+			case ALL_FILES:
+				return action.data.files.reduce((nextState, file) => ({
+					...nextState,
+					[file.id]: {...file, progress: 100}
+				}), state)
+
 			case UPDATE:
 				const progress = uploaded * 100 / file.size
 				return {...state, [file.id]: {...file, progress}}

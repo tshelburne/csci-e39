@@ -92,6 +92,14 @@ io.on(`connection`, async socket => {
 
 	socket.on(`upload:chunk`, handleChunkUpload)
 
+	// SEND INITIAL DATA
+
+	const files = await student
+		.related(`uploads`)
+		.orderBy(`-created_at`)
+		.fetch()
+	socket.emit(`files:all`, files.toJSON())
+
 	function handleChunkUpload(file, chunk) {
 		const {student} = socket.ctx
 		try {
@@ -127,6 +135,14 @@ io.on(`connection`, async socket => {
 	socket.on(`chat:typing:stop`, handleStopTyping)
 	socket.on(`chat:message`, handleMessage)
 
+	// SEND INITIAL DATA
+
+	const messages = await Message
+		.query(qb => qb.limit(30))
+		.orderBy(`-created_at`)
+		.fetchAll({withRelated: [`student`]})
+	socket.emit(`chat:messages`, messages.toJSON())
+
 	function handleStartTyping() {
 		g.chat.typing = addStudent(g.chat.typing)
 		socket.in(`chat`).broadcast.emit(`chat:typing`, g.chat.typing)
@@ -150,14 +166,6 @@ io.on(`connection`, async socket => {
 			socket.emit(`chat:message:failure`, {message: `Unexpected failure - please try again`})
 		}
 	}
-
-	// SEND INITIAL DATA
-
-	const messages = await Message
-		.query(qb => qb.limit(30))
-		.orderBy(`-created_at`)
-		.fetchAll({withRelated: [`student`]})
-	socket.emit(`chat:messages`, messages.toJSON())
 
 })
 
