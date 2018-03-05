@@ -11,7 +11,7 @@ import ReactDOMServer from 'react-dom/server'
 import socketio from 'socket.io'
 import config from './config'
 import {Student, Message} from './db'
-import upload from './services/upload'
+import {upload, destroy} from './services/upload'
 import App from './ui/app.jsx'
 import {IMAGE_MIMES, KB} from './util/constants'
 
@@ -51,7 +51,11 @@ io.on(`connection`, async socket => {
 	const {student} = socket.ctx
 	if (!student) socket.disconnect()
 
-	const removeStudent = all => all.filter(({id}) => id !== student.id)
+	if (!g.sockets) g.sockets = new Map()
+	g.sockets.set(student.get(`name`), socket)
+	socket.on(`disconnect`, () => g.sockets.delete(student.get(`name`)))
+
+	const removeStudent = all => all.filter(({id}) => id !== student.get(`id`))
 	const addStudent = all => removeStudent(all).concat(student)
 
 	// ================ CLASS ================
@@ -92,6 +96,14 @@ io.on(`connection`, async socket => {
 
 	socket.on(`upload:chunk`, handleChunkUpload)
 
+	socket.on(`file:update`, updateFile)
+	socket.on(`file:delete`, deleteFile)
+	socket.on(`file:share`, shareFile)
+	socket.on(`file:create-album`, createAlbum)
+	socket.on(`file:add-to-album`, addFileToAlbum)
+
+	socket.on(`album:promote`, promoteAlbum)
+
 	// SEND INITIAL DATA
 
 	const files = await student
@@ -123,6 +135,56 @@ io.on(`connection`, async socket => {
 				return socket.emit(`upload:failure`, file, {message: `Unexpected failure - please try again`})
 			}
 		}
+	}
+
+	async function updateFile(id, {name, description}) {
+		try {
+			const file = await student.related(`uploads`).query({where: {id}}).fetchOne()
+			if (!file) return socket.emit(`file:update:failure`, {message: `File not found`})
+			const updated = await file.save({name, description}, {patch: true})
+			socket.emit(`file:update:success`, updated)
+		} catch (e) {
+			log(e)
+			return socket.emit(`file:update:failure`, {message: `Unexpected failure - please try again`})
+		}
+	}
+
+	async function deleteFile(id) {
+		try {
+			const file = await student.related(`uploads`).query({where: {id}}).fetchOne()
+			if (!file) return socket.emit(`file:update:failure`, {message: `File not found`})
+			await destroy(file.toJSON())
+			await file.destroy()
+			socket.emit(`file:delete:success`, file)
+		} catch (e) {
+			log(e)
+			return socket.emit(`file:delete:failure`, {message: `Unexpected failure - please try again`})
+		}
+	}
+
+	async function shareFile(id, name) {
+		try {
+			const file = await student.related(`uploads`).query({where: {id}}).fetchOne()
+			if (!file) return socket.emit(`file:share:failure`, {message: `File not found`})
+			if (!g.sockets.has(name)) return socket.emit(`file:share:failure`, {message: `User is not available`})
+			g.sockets.get(name).emit(`file:received`, file, student)
+			socket.emit(`file:share:success`, file, name)
+		} catch (e) {
+			log(e)
+			return socket.emit(`file:share:failure`, {message: `Unexpected failure - please try again`})
+		}
+	}
+
+	async function createAlbum(ids, name) {
+
+	}
+
+	async function addFileToAlbum(id, albumId) {
+
+	}
+
+	async function promoteAlbum(albumId) {
+
 	}
 
 	// ================= CHAT =================

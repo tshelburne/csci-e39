@@ -15,7 +15,7 @@ if (config.env !== `production` && !fs.existsSync(ABS_UPLOAD_DIR)) {
 }
 
 // upload :: (File, Buffer, URL -> a) -> Maybe Integer
-function upload(file, chunk, fn=noop) {
+export function upload(file, chunk, fn=noop) {
 	const {id, size} = file
 
 	if (!g.uploads[id]) g.uploads[id] = {uploaded: 0, stream: stream(file, finish)}
@@ -38,7 +38,19 @@ function upload(file, chunk, fn=noop) {
 	}
 }
 
-export default upload
+// destroy :: File -> Promise ()
+export function destroy(file) {
+	return new Promise((resolve, reject) => {
+		const finish = err => err ? reject(err) : resolve()
+		switch (config.env) {
+			case `production`:
+				return cloudinary.uploader.destroy(file.id, finish)
+
+			default:
+				return fs.unlink(`${ABS_UPLOAD_DIR}/${idifiedName(file)}`, finish)
+		}
+	})
+}
 
 /* -------------------------------- HELPERS -------------------------------- */
 
@@ -49,7 +61,11 @@ function stream(file, cb) {
 
 		default:
 			return fs
-				.createWriteStream(`${ABS_UPLOAD_DIR}/${file.name}`)
-				.on(`close`, () => cb(`http://localhost:3000/${UPLOAD_DIR}/${file.name}`))
+				.createWriteStream(`${ABS_UPLOAD_DIR}/${idifiedName(file)}`)
+				.on(`close`, () => cb(`http://localhost:3000/${UPLOAD_DIR}/${idifiedName(file)}`))
 	}
+}
+
+function idifiedName(file) {
+	return file.name.replace(/.*(\.\w+)$/, `${file.id}$1`)
 }

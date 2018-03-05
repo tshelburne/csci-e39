@@ -11,7 +11,7 @@ const Uploads = ({uploads, actions}) =>
 
 		<h2>In Progress</h2>
 		<ul>
-			{uploads.filter(({progress}) => progress < 100).map(file => {
+			{uploads.files.filter(({progress}) => progress < 100).map(file => {
 				const {id, name, progress} = file
 
 				return <li key={id}>
@@ -23,7 +23,7 @@ const Uploads = ({uploads, actions}) =>
 
 		<h2>Completed</h2>
 		<ul>
-			{uploads.filter(({progress}) => progress === 100).map(file => {
+			{uploads.files.filter(({progress}) => progress === 100).map(file => {
 				const {id, name, url, error} = file
 
 				return <li key={id}>
@@ -35,14 +35,24 @@ const Uploads = ({uploads, actions}) =>
 		</ul>
 	</div>
 
+const statusPropType = PropTypes.shape({
+	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
+	message: PropTypes.string.isRequired,
+})
+
 Uploads.propTypes = {
-	uploads: PropTypes.arrayOf(PropTypes.shape({
-		id: PropTypes.string.isRequired,
-		name: PropTypes.string.isRequired,
-		progress: PropTypes.number.isRequired,
-		url: PropTypes.string,
-		error: PropTypes.string,
-	})).isRequired,
+	uploads: PropTypes.shape({
+		files: PropTypes.arrayOf(PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			name: PropTypes.string.isRequired,
+			progress: PropTypes.number.isRequired,
+			url: PropTypes.string,
+			error: PropTypes.string,
+		})).isRequired,
+		update: statusPropType.isRequired,
+		delete: statusPropType.isRequired,
+		share: statusPropType.isRequired,
+	}).isRequired,
 	actions: PropTypes.object.isRequired,
 }
 

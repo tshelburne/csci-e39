@@ -22,7 +22,7 @@ const ERROR = Symbol(`ERROR`)
 const createState = (socket) => {
 	const {state_: classroom_} = createClassroom(socket)
 	const {state_: registration_, actions: registration} = createStatus(socket, `register`)
-	const {state_: uploads_, actions: {upload}} = createUploads(socket)
+	const {state_: uploads_, actions: {upload, ...files}} = createUploads(socket)
 	const {state_: chat_, actions: chat} = createChat(socket)
 
 	const action_ = xs.create({
@@ -85,6 +85,7 @@ const createState = (socket) => {
 			register,
 			chat,
 			upload,
+			files,
 		},
 	}
 }
