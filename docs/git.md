@@ -1,10 +1,10 @@
 # git Basics
 
-There are a few basic workflows you should be able to follow in order to work in this
+There are a few common workflows you should be able to follow in order to work in this
 code repository for this class. For a more in-depth (and well-written!) explanation
 of the things below, I would recommend http://rogerdudler.github.io/git-guide/.
 
-## Updating local code from origin:
+## Updating local code from upstream:
 
 The upstream remote repository at tshelburne/csci-e39 will be regularly updated with
 bug fixes, improvements, features, etc. as time progresses. When those updates are
@@ -14,10 +14,10 @@ always working from the latest codebase.
 ### Process:
 1. `git remote -v` will show you a list of all remote repositories
 1. Ensure you see the following in the list:
-    origin	git@github.com:tshelburne/csci-e39.git (fetch)
-    origin	git@github.com:tshelburne/csci-e39.git (push)
-  - if not, run `git remote add origin git@github.com:tshelburne/csci-e39.git`
-1. `git pull origin master` will pull the latest changes from `master`
+    upstream	git@github.com:tshelburne/csci-e39.git (fetch)
+    upstream	git@github.com:tshelburne/csci-e39.git (push)
+  - if not, run `git remote add upstream git@github.com:tshelburne/csci-e39.git`
+1. `git pull upstream master` will pull the latest changes from `master`
 
 
 ## Updating code:
@@ -64,8 +64,8 @@ changes to your fork.
 1. Ensure you see the following in the list:
       origin	git@github.com:[your account name]/csci-e39.git (fetch)
       origin	git@github.com:[your account name]/csci-e39.git (push)
-    - if not, run `git remote add fork git@github.com:[your account name]/csci-e39.git`
-1. `git push fork [current branch name]` will copy the latest changes to a branch with the same name on your fork
+    - if not, run `git remote add origin git@github.com:[your account name]/csci-e39.git`
+1. `git push origin [current branch name]` will copy the latest changes to a branch with the same name on your fork
 
 
 ## Merging code from your fork to upstream:
