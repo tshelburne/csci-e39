@@ -20,7 +20,7 @@ intended to drive collaboration, feel free to help each other. If you have a lot
 with Git, there's no better way to get even better than to help teach it to someone who is new
 to it.
 
-In order to complete Project 1, you will need to do the following (see ./git.md for git help):
+In order to complete Project 1, you will need to do the following (see [git documentation](./git.md) for git help):
 
 1. Sync your local fork of the project ("origin") with our master repository ("upstream")
 so you can work from the most current version of the app.

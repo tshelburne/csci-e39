@@ -18,7 +18,7 @@
 
 ## Repo documentation
 
-See the ./docs directory.
+See the [Docs](./docs) directory.
 
 ## Automated tasks
 
