@@ -26,10 +26,10 @@ const update = file => ({type: UPDATE, data: {file}})
 const remove = file => ({type: REMOVE, data: {file}})
 const received = (file, sharer) => ({type: RECEIVED, data: {file, sharer}})
 
-const progress = (file, uploaded) => ({type: PROGRESS, data: {file, uploaded}})
-const start = file => progress(file, 0)
-const finish = file => progress(file, file.size)
-const fail = (file, error) => ({type: FAIL, data: {file, error}})
+const progress = (refId, file, uploaded) => ({type: PROGRESS, data: {refId, file, uploaded}})
+const start = (refId, file) => progress(refId, file, 0)
+const finish = (refId, file) => progress(refId, file, file.size)
+const fail = (refId, file, error) => ({type: FAIL, data: {refId, file, error}})
 
 function createState(socket) {
 	const {state_: update_, actions: {run: handleUpdateFile}} = createStatus(socket, `file:update`)
@@ -42,12 +42,12 @@ function createState(socket) {
 				listener.next(mergeFiles(files))
 			})
 
-			socket.on(`upload:success`, (file, url) => {
-				listener.next(finish({...file, url}))
+			socket.on(`upload:success`, (uploadRef, file, url) => {
+				listener.next(finish(uploadRef, {...file, url}))
 			})
 
-			socket.on(`upload:failure`, (file, {message}) => {
-				listener.next(fail(file, message))
+			socket.on(`upload:failure`, (uploadRef, file, {message}) => {
+				listener.next(fail(uploadRef, file, message))
 			})
 
 			socket.on(`file:update:success`, file => {
@@ -67,8 +67,8 @@ function createState(socket) {
 	})
 
 	function upload(inputFile, {name, description} = {}) {
+		const refId = uuid()
 		const file = {
-			id: uuid(),
 			url: ``,
 			name: name || inputFile.name,
 			description: description || ``,
@@ -76,19 +76,19 @@ function createState(socket) {
 			size: inputFile.size,
 		}
 
-		action_.shamefullySendNext(start(file))
+		action_.shamefullySendNext(start(refId, file))
 
 		const reader = new FileReader()
-		reader.onload = () => socket.emit(`upload:chunk`, file, reader.result)
+		reader.onload = () => socket.emit(`upload:chunk`, refId, file, reader.result)
 
 		socket.on(`upload:request-chunk`, uploadNextChunk)
 
-		uploadNextChunk(file)
+		uploadNextChunk(refId, file)
 
-		function uploadNextChunk({id}, start = 0) {
-			if (id !== file.id || start == null) return
+		function uploadNextChunk(uploadRef, uploaded, start = 0) {
+			if (uploadRef !== refId || start == null) return
 
-			action_.shamefullySendNext(update(file, start))
+			action_.shamefullySendNext(progress(uploadRef, uploaded, start))
 
 			const end = Math.min(start + CHUNK_SIZE, file.size)
 			const slice = inputFile.slice(start, end)
@@ -109,44 +109,62 @@ function createState(socket) {
 	}
 
 	const reducer_ = action_.map(action => state => {
-		const {file} = action.data
 		switch (action.type) {
 			case MERGE_FILES:
 				const allFiles = action.data.files.reduce(
-					(allFiles, file) => ({...allFiles, [file.id]: {...file, progress: 100}}),
+					(allFiles, file) => ({...allFiles, [file.id]: file}),
 					{}
 				)
 				return {...state, files: {...state.files, ...allFiles}}
 
-			case RECEIVED:
-				return setInFiles(file.id, {...file, sharer: action.data.sharer})
+			case RECEIVED: {
+				const {file} = action.data
+				return setInFiles(file.id, {...file, sharer: action.data.sharer}, state)
+			}
 
-			case UPDATE:
-				return setInFiles(file.id, {...file, progress: 100})
+			case UPDATE: {
+				const {file} = action.data
+				return setInFiles(file.id, file, state)
+			}
 
-			case REMOVE:
-				const {[file.id]: _, ...files} = state.files
-				return {...state, files}
+			case REMOVE: {
+				const {file} = action.data
+				return removeFromFiles(file.id, state)
+			}
 
-			case PROGRESS:
+			case PROGRESS: {
+				const {refId, file} = action.data
 				const progress = action.data.uploaded * 100 / file.size
-				return setInFiles(file.id, {...file, progress})
+				return progress >= 100
+					? setInFiles(file.id, file, removeFromFiles(refId, state))
+					: setInFiles(refId, {...file, progress}, state)
+			}
 
-			case FAIL:
-				return setInFiles(file.id, {...file, progress: 100, error: action.data.error})
+			case FAIL: {
+				const {refId, file} = action.data
+				return setInFiles(refId, {...file, error: action.data.error}, state)
+			}
 
 			default: return state
 		}
 
-		function setInFiles(id, data) {
+		function setInFiles(id, data, state) {
 			return {...state, files: {...state.files, [id]: data}}
+		}
+
+		function removeFromFiles(id, state) {
+			const {[id]: _, ...files} = state.files
+			return {...state, files}
 		}
 	})
 
 	const state_ = xs
 		.combine(create(reducer_, INITIAL_STATE), update_, delete_, share_)
 		.compose(toObjBase(`update`, `delete`, `share`))
-		.map(({files, ...rest}) => ({files: Object.values(files), ...rest}))
+		.map(({files, ...rest}) => ({
+			...rest,
+			files: Object.entries(files).map(([id, value]) => ({...value, id})),
+		}))
 
 	return {
 		state_,

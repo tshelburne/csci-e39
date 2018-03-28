@@ -112,27 +112,27 @@ io.on(`connection`, async socket => {
 		.fetch()
 	socket.emit(`files:all`, files.toJSON())
 
-	function handleChunkUpload(file, chunk) {
+	function handleChunkUpload(refId, file, chunk) {
 		const {student} = socket.ctx
 		try {
-			if (file.size > 500 * KB) return socket.emit(`upload:failure`, file, {message: `Max file size 500KB`})
-			if (!IMAGE_MIMES.includes(file.type)) return socket.emit(`upload:failure`, file, {message: `File must be an image`})
+			if (file.size > 500 * KB) return socket.emit(`upload:failure`, refId, file, {message: `Max file size 500KB`})
+			if (!IMAGE_MIMES.includes(file.type)) return socket.emit(`upload:failure`, refId, file, {message: `File must be an image`})
 
-			const uploaded = upload(file, chunk, finish)
-			return socket.emit(`upload:request-chunk`, file, uploaded)
+			const uploaded = upload(refId, file, chunk, finish)
+			return socket.emit(`upload:request-chunk`, refId, file, uploaded)
 		} catch(e) {
 			log(e)
-			return socket.emit(`upload:failure`, file, {message: `Unexpected failure - please try again`})
+			return socket.emit(`upload:failure`, refId, file, {message: `Unexpected failure - please try again`})
 		}
 
 		async function finish(url) {
 			try {
 				const {name, description} = file
-				await student.related(`uploads`).create({url, name, description})
-				return socket.emit(`upload:success`, file, url)
+				const uploaded = await student.related(`uploads`).create({url, name, description})
+				return socket.emit(`upload:success`, refId, uploaded, url)
 			} catch (e) {
 				log(e)
-				return socket.emit(`upload:failure`, file, {message: `Unexpected failure - please try again`})
+				return socket.emit(`upload:failure`, refId, file, {message: `Unexpected failure - please try again`})
 			}
 		}
 	}
@@ -152,7 +152,7 @@ io.on(`connection`, async socket => {
 	async function deleteFile(id) {
 		try {
 			const file = await student.related(`uploads`).query({where: {id}}).fetchOne()
-			if (!file) return socket.emit(`file:update:failure`, {message: `File not found`})
+			if (!file) return socket.emit(`file:delete:failure`, {message: `File not found`})
 			await destroy(file.toJSON())
 			await file.destroy()
 			socket.emit(`file:delete:success`, file)
