@@ -56,7 +56,9 @@ function build() {
 function activate() {
 	local ASSIGNMENT=$1
 	build
-	_docker run $DK_MOUNT $DK_ENV $IMAGE sed -i -e "s/assignments\/.*\//assignments\/$ASSIGNMENT\//g" src/ui/app.jsx.js src/ui/index.pug
+
+	_docker run $DK_MOUNT $DK_ENV $IMAGE sed -i -e "s/assignments\/.*\//assignments\/$(assignment)\//g" src/ui/app.jsx.js
+	_docker run $DK_MOUNT $DK_ENV $IMAGE sed -i -e "s/css\/.*\//css\/$(assignment)\//g" src/ui/index.pug
 }
 
 function start() {
