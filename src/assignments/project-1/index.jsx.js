@@ -7,7 +7,7 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
-		<h1>Upload Images</h1>
+		<h1>Upload Images small edit inital push</h1>
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
