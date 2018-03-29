@@ -16,6 +16,10 @@
     1. `echo your-id-goes-here > .id`, replacing "your-id-goes-here" with your student ID
     1. `make build migrate`
 
+## Repo documentation
+
+See the [Docs](./docs) directory.
+
 ## Automated tasks
 
 To see all tasks, run `make`
