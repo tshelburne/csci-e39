@@ -41,7 +41,8 @@ shell: build
 	@make run args='-it' command='sh'
 
 activate: build
-	@make run command='sed -i -e "s/assignments\/.*\//assignments\/$(assignment)\//g" src/ui/app.jsx.js src/ui/index.pug'
+	@make run command='sed -i -e "s/assignments\/.*\//assignments\/$(assignment)\//g" src/ui/app.jsx.js'
+	@make run command='sed -i -e "s/css\/.*\//css\/$(assignment)\//g" src/ui/index.pug'
 
 start: build
 	@make run args='$(DK_PORTS)'
