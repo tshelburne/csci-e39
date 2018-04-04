@@ -1,4 +1,5 @@
 @import 'scss/_reset';
+@import url(//fonts.googleapis.com/css?family=Roboto);
 @import 'scss/_variables';
 @import 'scss/uploader';
 @import 'scss/_progress';
@@ -10,7 +11,7 @@
 body {
     background-color: $primary-background-color;
     color: $primary-font-color;
-    font-family: $primary-font, sans-serif;
+    font-family: '$primary-font', sans-serif;
 }
 
 header {
