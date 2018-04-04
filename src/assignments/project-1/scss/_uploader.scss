@@ -1,56 +1,56 @@
 .upload-component {
-    margin: 2rem;
-    display: flex;
-    justify-content: center;
+	margin: 2rem;
+	display: flex;
+	justify-content: center;
 }
 
 .uploader {
-    background-color: $primary-background;
-    margin: 0 auto;
-    display: inline-block;
-    padding: $uploader-padding;
-    border: $primary-border;
-    color: rgba($primary-color, 1);
-    font: $primary-font;
-    border-radius: $button-radius;
-    cursor: pointer;
-    transition: background 0.3s;
-    &:hover {
-        background-color: rgba($quaternary-color, 1);
-        color: rgba($secondary-color, 1);
-        text-shadow: $button-text-shadow;
-        &:before {
-            border-right: $button-before-hover-border;
-            content: '🌤';
-        }
-    }
-    &:active {
-        background-color: $primary-active-background;
-        border-color: $primary-active-border;
-        color: rgba($secondary-color, 1);
-        text-shadow: $button-text-shadow;
-        &:before {
-            border-right: $button-before-active-border;
-            content: '☀️';
-        }
-    }
-    &:before {
-        margin-right: 10px;
-        padding: $button-pseudo-padding;
-        display: inline-block;
-        border-right: $button-before-border;
-        content: '🌥';
-    }
+	background-color: $primary-background;
+	margin: 0 auto;
+	display: inline-block;
+	padding: $uploader-padding;
+	border: $primary-border;
+	color: rgba($primary-color, 1);
+	font: $primary-font;
+	border-radius: $button-radius;
+	cursor: pointer;
+	transition: background 0.3s;
+	&:hover {
+		background-color: rgba($quaternary-color, 1);
+		color: rgba($secondary-color, 1);
+		text-shadow: $button-text-shadow;
+		&:before {
+			border-right: $button-before-hover-border;
+			content: '🌤';
+		}
+	}
+	&:active {
+		background-color: $primary-active-background;
+		border-color: $primary-active-border;
+		color: rgba($secondary-color, 1);
+		text-shadow: $button-text-shadow;
+		&:before {
+			border-right: $button-before-active-border;
+			content: '☀️';
+		}
+	}
+	&:before {
+		margin-right: 10px;
+		padding: $button-pseudo-padding;
+		display: inline-block;
+		border-right: $button-before-border;
+		content: '🌥';
+	}
 }
 
 .uploader-input {
-    width: 0;
-    height: 100%;
-    font-size: 1;
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    opacity: 0;
+	width: 0;
+	height: 100%;
+	font-size: 1;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0;
 }

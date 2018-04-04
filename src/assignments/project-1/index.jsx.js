@@ -13,9 +13,14 @@ const Uploads = ({ uploads, actions }) => {
 			<Header tagline="Jay's Little Image Uploader" />
 
 			<div className="upload-component">
-				{/* do not delete this uploader component */}
-				<Uploader upload={actions.upload} />
-				{/* do not delete this uploader component */}
+				<form action="#">
+					<label tabindex="0" for="uploader" className="uploader">
+						Upload Files
+						{/* do not delete this uploader component */}
+						<Uploader upload={actions.upload} />
+						{/* do not delete this uploader component */}
+					</label>
+				</form>
 			</div>
 
 			<div className="progress-component">

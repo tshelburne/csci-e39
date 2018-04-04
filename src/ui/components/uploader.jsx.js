@@ -15,14 +15,7 @@ class Uploader extends React.Component {
 	}
 
 	render() {
-		return (
-			<div>
-				<label tabindex="0" for="uploader" className="uploader">
-					Upload Files
-				</label>
-				<input className="uploader-input" multiple type="file" onChange={this.handleFiles} />;
-			</div>
-		);
+		return <input className="uploader-input" multiple type="file" onChange={this.handleFiles} />;
 	}
 }
 
