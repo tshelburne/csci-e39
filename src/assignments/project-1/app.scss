@@ -1,0 +1,27 @@
+@import 'scss/_reset';
+@import url(//fonts.googleapis.com/css?family=Roboto);
+@import 'scss/_variables';
+@import 'scss/uploader';
+@import 'scss/_progress';
+@import 'scss/_completed';
+:root {
+    font-size: $primary-font-size;
+}
+
+body {
+    background-color: $primary-background-color;
+    color: $primary-font-color;
+    font-family: '$primary-font', sans-serif;
+}
+
+header {
+    background-color: $header-background-color;
+    height: 6rem;
+    color: $primary-font-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        font-size: 3rem;
+    }
+}
