@@ -1,3 +1,30 @@
+@import 'scss/_reset';
+$white: hsla(0, 100%, 100%, 1);
+$twilight-blue: hsla(192, 100%, 98%, 1);
+$swamp: hsla(193, 100%, 8%, 1);
+$primary-background-color: $twilight-blue;
+$primary-font: 'Roboto';
+$primary-font-color: $swamp;
+$primary-font-size: 10px;
+$header-background-color: $white;
+:root {
+	font-size: $primary-font-size;
+}
+
 body {
-    background-color: white;
+	background-color: $primary-background-color;
+	color: $primary-font-color;
+	font-family: $primary-font, sans-serif;
+}
+
+header {
+	background-color: $header-background-color;
+	height: 6rem;
+	color: $primary-font-color;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	h1 {
+		font-size: 3rem;
+	}
 }
