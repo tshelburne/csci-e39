@@ -1,36 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
-
-const PendingFiles = ({pendingFiles}) => {
-	return <div>
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-	</div>
-}
-
-const CompletedFiles = ({completedFiles}) => {
-	return <ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
-}
+import PendingFiles from './components/pendingFiles.jsx'
+import CompletedFiles from './components/completedFiles.jsx'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
