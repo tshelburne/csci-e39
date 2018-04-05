@@ -2,16 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 
-const Uploads = ({uploads, actions}) => {
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
-
+const PendingFiles = ({pendingFiles}) => {
 	return <div>
-		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
-
 		<h2>In Progress</h2>
 		<ul>
 			{pendingFiles.map(file => {
@@ -23,9 +15,11 @@ const Uploads = ({uploads, actions}) => {
 				</li>
 			})}
 		</ul>
+	</div>
+}
 
-		<h2>Completed</h2>
-		<ul>
+const CompletedFiles = ({completedFiles}) => {
+	return <ul>
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
 
@@ -36,6 +30,21 @@ const Uploads = ({uploads, actions}) => {
 				</li>
 			})}
 		</ul>
+}
+
+const Uploads = ({uploads, actions}) => {
+	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
+	const completedFiles = uploads.files.filter(({progress}) => !progress)
+
+	return <div>
+		<h1>Upload Images</h1>
+		{/* do not delete this uploader component */}
+		<Uploader upload={actions.upload} />
+		{/* do not delete this uploader component */}
+
+		<PendingFiles pendingFiles={pendingFiles} />
+
+		<CompletedFiles completedFiles={completedFiles} />
 	</div>
 }
 
