@@ -6,7 +6,7 @@ const CompletedFiles = ({completedFiles}) => {
 				const {id, name, url, error} = file
 
 				return <li key={id}>
-					<label>{name}</label>
+					<span>{name}</span>
 					{!error && <img src={url} style={{maxWidth: `200px`}} />}
 					{!!error && <p className="failure">{error}</p>}
 				</li>
