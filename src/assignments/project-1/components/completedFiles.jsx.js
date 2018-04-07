@@ -5,9 +5,9 @@ const CompletedFiles = ({completedFiles}) => {
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
 
-				return <li key={id}>
-					<span>{name}</span>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
+				return <li>
+					<span id={id}>{name}</span>
+					{!error && <img src={url} style={{maxWidth: `200px`}} aria-labelledby={id}/>}
 					{!!error && <p className="failure">{error}</p>}
 				</li>
 			})}
