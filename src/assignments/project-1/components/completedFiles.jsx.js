@@ -3,7 +3,7 @@ import CompletedFilesItem from './completedFilesItem.jsx'
 
 
 const CompletedFiles = ({completedFiles}) => {
-	return <div>
+	return <div className="completedFiles">
 				<div className="images-uploaded">Images uploaded: <span>{completedFiles.length}</span></div>
 				<ul>
 					{completedFiles.map( (file) => 
