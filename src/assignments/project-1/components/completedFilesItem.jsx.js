@@ -5,7 +5,7 @@ const CompletedFilesItem = ({file}) => {
 
 	return <li className="completedFilesItem">
 				<span id={id}>{name}</span>
-				{!error && <img src={url} style={{maxWidth: `200px`}} aria-labelledby={id}/>}
+				{!error && <img src={url} aria-labelledby={id}/>}
 				{!!error && <p className="failure">{error}</p>}
 			</li>
 }

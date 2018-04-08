@@ -1,0 +1,17 @@
+
+
+.completedFilesItem {
+	list-style: none;
+	margin-right: 1rem;
+	max-width: 960px;
+
+	& > span:first-child {
+		display: block;
+		margin-bottom: .5rem;
+	}
+
+	& > img {
+		object-fit: contain;
+		width: 100%;
+	}
+}
