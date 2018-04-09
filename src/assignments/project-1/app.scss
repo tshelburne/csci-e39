@@ -1,6 +1,46 @@
+@import '../design-patterns/_normalize';
+
 $primary-color: rgba(150, 143, 179, 1);
 
 $main-color: #0055ff;
+
+
+aside {
+  grid-area: sidebar;
+}
+
+main {
+  grid-area: main;
+}
+
+header {
+  grid-area: header;
+}
+
+footer {
+	grid-area: footer;
+}
+
+.wrapper {
+	display: grid;
+  grid-gap: 10px;
+  grid-template-columns: minmax(100px, 200px) 1fr  1fr;
+  grid-template-areas:
+    "header header header"
+		"main main sidebar"
+    "footer footer footer";
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+}
+
+header.box, footer.box {
+  background-color: #999;
+}
 
 /*********/
 h1 {
@@ -24,14 +64,14 @@ button {
 	}
 }
 
-.XXXuploader {
+.uploader {
 	margin-left: 10px;
 	font-size: 16px;
   font-family: Arial, Helvetica,  sans-serif;
     font-weight: 800;
 }
 
-.XXXuploader-input {
+.uploader-input {
 	/* color: transparent; */
 	outline: none;
 		padding: 12px 12px;
@@ -71,7 +111,7 @@ progress {
 	
 	// Chrome and Safari
 	&::-webkit-progress-bar {
-	background: #fff;
+		background: #fff;
 	}
 	&::-webkit-progress-value {
 		background: $main-color;
