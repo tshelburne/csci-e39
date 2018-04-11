@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Uploader from '../../ui/components/uploader.jsx';
 import Header from './header.jsx';
 import Completed from './completed.jsx';
+import Progress from './progress.jsx';
 
 const Uploads = ({ uploads, actions }) => {
 	const pendingFiles = uploads.files.filter(({ progress }) => progress && progress < 100);
@@ -14,7 +15,7 @@ const Uploads = ({ uploads, actions }) => {
 
 			<div className="upload-component">
 				<form action="#">
-					<label tabindex="0" for="uploader" className="uploader">
+					<label className="uploader">
 						Upload Files
 						{/* do not delete this uploader component */}
 						<Uploader upload={actions.upload} />
@@ -22,41 +23,15 @@ const Uploads = ({ uploads, actions }) => {
 					</label>
 				</form>
 			</div>
-
 			<div className="progress-component">
 				<h2>In Progress</h2>
-				<ul>
-					{pendingFiles.map(file => {
-						const { id, name, progress } = file;
-
-						return (
-							<li key={id}>
-								<label>{name}</label>
-								<progress value={progress} max="100">
-									{progress}%
-								</progress>
-							</li>
-						);
-					})}
-				</ul>
+				<Progress pendingFiles={pendingFiles} />
 			</div>
 
 			<div className="completed-component">
 				<h2>Completed</h2>
 				<div className="completed-grid">
-					<ul>
-						{completedFiles.map(file => {
-							const { id, name, url, error } = file;
-
-							return (
-								<li key={id}>
-									<label>Image {id}</label>
-									{!error && <img src={url} />}
-									{!!error && <p className="failure">{error}</p>}
-								</li>
-							);
-						})}
-					</ul>
+					<Completed completedFiles={completedFiles} />
 				</div>
 			</div>
 		</div>

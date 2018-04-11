@@ -1,8 +1,14 @@
+// named color palette
 $white: hsla(0, 100%, 100%, 1);
 $alto: hsla(0, 0%, 85%, 0.5);
 $twilight-blue: hsla(192, 100%, 98%, 1);
 $swamp: hsla(193, 100%, 8%, 1);
 $mine-shaft: hsla(0, 0%, 13%, 1);
+$primary-color: rgb(0, 0, 0);
+$secondary-color: rgb(255, 255, 255);
+$tertiary-color: rgb(246, 246, 246);
+$quaternary-color: rgb(186, 218, 85);
+$quinary-color: rgb(74, 144, 226);
 $primary-background-color: $alto;
 $primary-font: Roboto;
 $primary-font-color: $swamp;
@@ -13,11 +19,6 @@ $header-background-color: $white;
 $primary-header-color: $swamp;
 $secondary-header-color: $mine-shaft;
 $image-background-color: $white;
-$primary-color: rgb(0, 0, 0);
-$secondary-color: rgb(255, 255, 255);
-$tertiary-color: rgb(246, 246, 246);
-$quaternary-color: rgb(186, 218, 85);
-$quinary-color: rgb(74, 144, 226);
 $primary-background: rgba($tertiary-color, 1);
 $primary-hover-background: rgba($quaternary-color, 1);
 $primary-active-background: rgba($quinary-color, 1);
@@ -25,10 +26,6 @@ $primary-hover-border: darken(rgba($quaternary-color, 1), 23.5);
 $primary-active-border: darken(rgba($quinary-color, 1), 23.5);
 $basic-border: 1px solid;
 $primary-border: $basic-border darken(rgba($tertiary-color, 1), 23.5);
-$primary-font: bold 18px 'Helvetica Neue',
-Helvetica,
-Arial,
-sans-serif;
 // button component variables
 $button-padding: 3px 0;
 $button-pseudo-padding: 6px 10px;
