@@ -1,22 +1,5 @@
 @import "./styles/defs";
 
-@mixin surface-input() {
-	overflow: hidden;
-	text-overflow: ellipsis;
-  cursor: pointer;
-  user-select: none;
-  border: none;
-	font: $secondary-font;
-  color: $secondary-text-color;
-  padding: 1em;
-  border-radius: 2px;
-  font-size: 1.1em;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, .33);
-  background: $secondary-color;
-	
-	&:focus { outline: none; }
-}
-
 :root, body, html {
   margin: 0;
   padding: 0;
