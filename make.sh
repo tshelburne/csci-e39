@@ -62,7 +62,7 @@ function activate() {
 
 function start() {
 	build
-	npm start
+	STUDENT_ID=$ENV_STUDENT_ID npm start
 }
 
 # function stop() {
@@ -71,12 +71,12 @@ function start() {
 
 function watch() {
 	build
-	npm run watch
+	STUDENT_ID=$ENV_STUDENT_ID npm run watch
 }
 
 function live() {
 	build
-	BACKEND=$ENV_BACKEND npm start
+	BACKEND=$ENV_BACKEND STUDENT_ID=$ENV_STUDENT_ID npm start
 }
 
 function migrate() {
