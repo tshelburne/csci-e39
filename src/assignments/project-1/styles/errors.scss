@@ -1,0 +1,15 @@
+@import "./defs";
+
+@mixin errors {
+  color: $error-text-color;
+  background: $error-color;
+  font-weight: 800;
+  padding: 1pt 2pt;
+  border-radius: 1pt;
+}
+
+@mixin error-text-span {
+  &::before {
+    content: '⚠️ ';
+  }
+}

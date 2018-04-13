@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Rajdhani:700|Lato:300,300i,700,700i|Luckiest+Guy');
+/* selected with help of https://material.io/color/#!/?view.left=1&view.right=0&primary.color=4A148C&secondary.color=FF80AB&primary.text.color=FAFAFA */
+$headline-font-family: 'Luckiest Guy', sans-serif;
+
+$primary-color: rgba(74,20,140,1);
+$primary-text-color: rgba(255,250,250,1);
+$primary-font: 10pt/16pt Lato, serif;
+$primary-font-family: Lato, serif;
+
+$secondary-color: rgba(255,128,171,1);
+$secondary-text-color: rgba(250,250,255,1);
+$secondary-font: 10pt/12pt Rajdhani, sans-serif;
+$secondary-font-family: Rajdhani, sans-serif;
+
+$highlight-color: rgba(250,250,255,1);
+$inverse-color: rgba(5,5,0,1);
+
+$error-color: white;
+$error-text-color: red;
