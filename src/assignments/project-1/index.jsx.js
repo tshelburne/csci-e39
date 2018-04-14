@@ -33,12 +33,27 @@ const UploadItem = ({file}) => {
 const FileItem = ({file}) => {
 	const {id, name, url, error} = file;
 
+	let selName, 
+		selUrl;
+
+	const handleClick = (e) => {
+		e.preventDefault();
+		alert('Got click and name is: '+selName.value); 
+	}
+
 	return (
 		<li key={id}>
 			<figure>
 				{!error && <img src={url} alt={name} style={{maxWidth: `100%`}} />}
 				{!error && <figcaption>{name}</figcaption>}
 				{!!error && <p className="failure">{error}</p>}
+				{!error && (
+					<form onSubmit={handleClick}>
+						<input type="hidden" ref={input => selName = input} value={name}/>
+						<input type="hidden" ref={input => selUrl = input} value={url}/>
+						<button>Enlarge</button>
+					</form>)
+				}
 			</figure>
 		</li>
 	)
