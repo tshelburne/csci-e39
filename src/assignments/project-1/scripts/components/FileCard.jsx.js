@@ -21,7 +21,7 @@ class FileCard extends React.Component {
   render() {
     let {id, name, url, error} = this.props.card
     return (
-<article className="FileCard card">
+<article className="FileCard card component">
 	{error 
     ? (
   <figure>  

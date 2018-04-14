@@ -17,7 +17,7 @@ class FileCardList extends React.Component {
   
   render () {
     return (
-<ul className="FileCardList card-list list--images">
+<ul className="FileCardList card-list component list--images">
 	{this.props.cards.map(card => this.state.hiddenCards.includes(card)
       ? '' 
       : (
