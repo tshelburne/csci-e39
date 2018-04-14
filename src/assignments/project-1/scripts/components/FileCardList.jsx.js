@@ -1,4 +1,4 @@
-/** Card component - one for each image */
+/** FileCardList component - a cardlist */
 import React from 'react'
 import PropTypes from 'prop-types'
 
