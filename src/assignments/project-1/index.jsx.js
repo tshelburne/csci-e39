@@ -36,9 +36,9 @@ const FileItem = ({file}) => {
 	return (
 		<li key={id}>
 			<figure>
-			{!error && <img src={url} alt={name} width="304" height="228"/>}
-			{!error && <figcaption>{name}</figcaption>}
-			{!!error && <p className="failure">{error}</p>}
+				{!error && <img src={url} alt={name} style={{maxWidth: `100%`}} />}
+				{!error && <figcaption>{name}</figcaption>}
+				{!!error && <p className="failure">{error}</p>}
 			</figure>
 		</li>
 	)
