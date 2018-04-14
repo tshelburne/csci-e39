@@ -8,22 +8,38 @@ const FileList = ({title, files}) => {
 			<h2>{title}</h2>
 			<ul>
 				{files.map(file => {
-					return (<FileItem file={file}/>)
+					if (title.toLowerCase() == 'completed') {
+						return (<FileItem file={file}/>)
+					} else {
+						return (<UploadItem file={file}/>)
+					}			
 				})}
 			</ul>
 		</div>
 	)
 }
 
-const FileItem = ({file}) => {
-	const {id, name, url, error, progress} = file;
+const UploadItem = ({file}) => {
+	const {id, name, progress} = file;
 
 	return (
 		<li key={id}>
 			<label>{name}</label>
-			{progress && <progress value={progress} max="100">{progress}%</progress>}
-			{!progress && !error && <img src={url} style={{maxWidth: `200px`}} />}
-			{!progress && !!error && <p className="failure">{error}</p>}
+			<progress value={progress} max="100">{progress}%</progress>
+		</li>
+	)
+}
+
+const FileItem = ({file}) => {
+	const {id, name, url, error} = file;
+
+	return (
+		<li key={id}>
+			<figure>
+			{!error && <img src={url} alt={name} width="304" height="228"/>}
+			{!error && <figcaption>{name}</figcaption>}
+			{!!error && <p className="failure">{error}</p>}
+			</figure>
 		</li>
 	)
 }
