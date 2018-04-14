@@ -2,10 +2,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { file } from '../schemas'
 import { PLACEHOLDER_IMAGE } from '../defs'
+import { file as card } from '../schemas'
+const unmount = PropTypes.func
 
-class Card extends React.Component {
+class FileCard extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
@@ -14,21 +15,17 @@ class Card extends React.Component {
       isEditingTitle: true,
       placeholderImg: PLACEHOLDER_IMAGE
     }
-    this.refs = {}
+    this.el = undefined
   }
-  
-  componentDidMount () {
-    console.log(this.refs)
-  }
-  
+
   render() {
-    let {id, name, url, error} = this.props.file
+    let {id, name, url, error} = this.props.card
     return (
-<article className="Card" ref="card">
+<article className="FileCard card">
 	{error 
     ? (
   <figure>  
-    <button className="dismiss" onClick={() => {}}>❌&nbsp;Dismiss</button>  
+      <button className="dismiss" onClick={() => this.props.unmount()}>❌&nbsp;Dismiss</button>  
       <figcaption title={error}>
       <span className="filename failure">{error}</span>
     </figcaption>
@@ -83,19 +80,15 @@ class Card extends React.Component {
     }
   }
   
-  isTruncated (ref) {
-    if(!this.refs[ref])
-      return
-
-    let el = this.refs[ref]
-    
-    return (el.offsetWidth < el.scrollWidth)
+  hideThisElement () {
+    if(this.el)
+      this.el.style.display = 'none'
   }
 }
 
-Card.propTypes = {
-  file, 
-  remove: PropTypes.func
+FileCard.propTypes = { 
+  card,
+  unmount
 }
 
-export default Card
+export default FileCard

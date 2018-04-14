@@ -4,12 +4,11 @@ import PropTypes from 'prop-types'
 import { status as statusPropType, file as filePropType } from './scripts/schemas'
 
 import Uploader from '../../ui/components/uploader.jsx'
-import Card from './scripts/components/Card.jsx.js'
+import FileCardList from './scripts/components/FileCardList.jsx.js'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
-  completedFiles.__proto__.prune = file => this.splice(this.findIndex(f => f === file), 1)
 
 	return <div className="App mountable component">
 		<h1>The Hunt Is On</h1>
@@ -29,9 +28,7 @@ const Uploads = ({uploads, actions}) => {
       
       <section className="completed">
         <h2>Completed</h2>
-        <ul className="list--images">
-        	{completedFiles.map(file => <li key={file.id}><Card file={file} remove={file => this.completedFiles.prune(file)} /></li>)}
-        </ul>
+        <FileCardList cards={completedFiles} />
       </section>
     </section>
 	</div>
@@ -51,7 +48,7 @@ export default Uploads
 
 // project-1
 
-/** Progress Section component - making it reactive as if Uploads had state */
+/** Progress Section component */
 const ProgressSection = ({pendingFiles}) => {
   if(pendingFiles.length) {
     return <section className="progress">
@@ -71,7 +68,6 @@ const ProgressSection = ({pendingFiles}) => {
     return null
   }
 }
-
 
 /** clickUpload (event) => triggers a click on the corresponding input for a given input label, following the implementation spec:
     <label for="unique input label" onclick="clickUpload">Unique Input</label>
