@@ -2,14 +2,14 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 
-const FileList = ({title, files}) => {
+const FileList = ({title, files, eventHandler}) => {
 	return (
 		<div>
 			<h2>{title}</h2>
 			<ul>
 				{files.map(file => {
 					if (title.toLowerCase() == 'completed') {
-						return (<FileItem file={file}/>)
+						return (<FileItem file={file} eventHandler={eventHandler}/>)
 					} else {
 						return (<UploadItem file={file}/>)
 					}			
@@ -30,7 +30,7 @@ const UploadItem = ({file}) => {
 	)
 }
 
-const FileItem = ({file}) => {
+const FileItem = ({file, eventHandler}) => {
 	const {id, name, url, error} = file;
 
 	let selName, 
@@ -38,7 +38,9 @@ const FileItem = ({file}) => {
 
 	const handleClick = (e) => {
 		e.preventDefault();
-		alert('Got click and name is: '+selName.value); 
+		eventHandler(selName.value);
+		alert('Got click and name is: '+selName.value);
+		// render component here
 	}
 
 	return (
@@ -63,6 +65,10 @@ const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
+	const eventHandler = (name) => {
+		alert('I got a name: '+name);
+	}
+
 	return <div className="wrapper">
 		<header className="box">
 			<h1>Upload Images</h1>
@@ -72,7 +78,7 @@ const Uploads = ({uploads, actions}) => {
 			<Uploader upload={actions.upload} />
 			{/* do not delete this uploader component */}
 
-			<FileList title="In Progress" files={pendingFiles} />
+			<FileList title="In Progress" files={pendingFiles} eventHandler={eventHandler}/>
 		</main>
 
 		<aside className="box">
