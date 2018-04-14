@@ -2,6 +2,32 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 
+const FileList = ({title, files}) => {
+	return (
+		<div>
+			<h2>{title}</h2>
+			<ul>
+				{files.map(file => {
+					return (<FileItem file={file}/>)
+				})}
+			</ul>
+		</div>
+	)
+}
+
+const FileItem = ({file}) => {
+	const {id, name, url, error, progress} = file;
+
+	return (
+		<li key={id}>
+			<label>{name}</label>
+			{progress && <progress value={progress} max="100">{progress}%</progress>}
+			{!progress && !error && <img src={url} style={{maxWidth: `200px`}} />}
+			{!progress && !!error && <p className="failure">{error}</p>}
+		</li>
+	)
+}
+
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
@@ -15,32 +41,11 @@ const Uploads = ({uploads, actions}) => {
 			<Uploader upload={actions.upload} />
 			{/* do not delete this uploader component */}
 
-			<h2>In Progress</h2>
-			<ul>
-				{pendingFiles.map(file => {
-					const {id, name, progress} = file
-
-					return <li key={id}>
-						<label>{name}</label>
-						<progress value={progress} max="100">{progress}%</progress>
-					</li>
-				})}
-			</ul>
+			<FileList title="In Progress" files={pendingFiles} />
 		</main>
 
 		<aside className="box">
-			<h2>Completed</h2>
-			<ul>
-				{completedFiles.map(file => {
-					const {id, name, url, error} = file
-
-					return <li key={id}>
-						<label>{name}</label>
-						{!error && <img src={url} style={{maxWidth: `200px`}} />}
-						{!!error && <p className="failure">{error}</p>}
-					</li>
-				})}
-			</ul>
+			<FileList title="Completed" files={completedFiles} />
 		</aside>
 	</div>
 }

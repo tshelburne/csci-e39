@@ -22,24 +22,25 @@ footer {
 }
 
 .wrapper {
-	display: grid;
-  grid-gap: 10px;
-  grid-template-columns: minmax(100px, 200px) 1fr  1fr;
-  grid-template-areas:
+ 	display: grid;
+  	grid-gap: 10px;
+  	grid-template-columns: minmax(100px, 200px) 1fr  1fr;
+  	grid-template-areas:
     "header header header"
 		"main main sidebar"
     "footer footer footer";
 }
 
 .box {
-  background-color: #444;
-  color: #fff;
+/*  background-color: #444; */
+/*  color: #fff; */
+  color: #000;
   border-radius: 5px;
   padding: 20px;
 }
 
 header.box, footer.box {
-  background-color: #999;
+/*  background-color: #999; */
 }
 
 /*********/
@@ -47,6 +48,10 @@ h1 {
 /*	color: red; */
 }
 /*********/
+
+ul {
+	list-style-type: none;
+}
 
 button {
 	color: #fff;
