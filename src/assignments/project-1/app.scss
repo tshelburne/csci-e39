@@ -19,10 +19,6 @@ aside {
   grid-area: sidebar;
 }
 
-aside.box {
-	padding: 0 20px;
-}
-
 main {
   grid-area: main;
 }
@@ -33,6 +29,10 @@ header {
 
 footer {
 	grid-area: footer;
+}
+
+aside.box {
+	padding: 0 20px;
 }
 
 .wrapper {
@@ -58,17 +58,16 @@ header.box, footer.box {
 /*  background-color: #999; */
 }
 
-/*********/
-h1 {
-/*	color: red; */
-}
-/*********/
-
 ul {
 	list-style-type: none;
 }
 
-.box ul {
+header.box > div > ul {
+	margin: 0;
+	padding: 0;
+}
+
+aside.box > div > ul {
 	margin: 0 -2.5em;
 	padding: 0 0;
 }
