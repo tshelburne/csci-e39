@@ -6,35 +6,7 @@ HOST_DIR=`pwd`
 DK_DIR=/usr/src/app
 
 ENV_BACKEND=csci-e39.herokuapp.com
-ENV_PORT=3000
 ENV_STUDENT_ID=`cat .id`
-
-# REPO=tshelburne/csci-e39
-# TAG=master
-# IMAGE=$REPO:$TAG
-
-# function mount() {
-# 	MOUNTED=""
-# 	for TARGET in "$@"; do
-# 		MOUNTED="$MOUNTED -v $HOST_DIR/$TARGET:$DK_DIR/$TARGET"
-# 	done
-# 	echo $MOUNTED
-# }
-
-# DK_MOUNT_DEBUG=`mount build public`
-# DK_MOUNT=`mount src .id dev.sqlite3 package.json package-lock.json`
-# DK_ENV="-e PORT=$ENV_PORT -e STUDENT_ID=$ENV_STUDENT_ID -e DATABASE_URL=$DATABASE_URL"
-# DK_PORTS="--expose $ENV_PORT -p $ENV_PORT:$ENV_PORT --expose 35729 -p 35729:35729"
-# DK_DEBUG="-e DEBUG=knex:*,socket.io:*,csci-e39:*"
-
-# supports both unix and windows
-# _docker() {
-# 	if hash docker 2>/dev/null; then
-# 		docker "$@"
-# 	else
-# 		docker.exe "$@"
-# 	fi
-# }
 
 function all() {
 	clean
@@ -65,10 +37,6 @@ function start() {
 	STUDENT_ID=$ENV_STUDENT_ID npm start
 }
 
-# function stop() {
-	# _docker stop `_docker ps -qa --filter="ancestor=$IMAGE"` || true
-# }
-
 function watch() {
 	build
 	STUDENT_ID=$ENV_STUDENT_ID npm run watch
@@ -95,7 +63,6 @@ case $CMD in
 		ASSIGNMENT=$1
 		activate $ASSIGNMENT;;
 	'start') start;;
-	'stop') stop;;
 	'watch') watch;;
 	'live') live;;
 	'migrate') migrate;;
