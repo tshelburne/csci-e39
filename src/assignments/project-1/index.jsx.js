@@ -8,16 +8,30 @@ import Gallery from '../../ui/components/gallery.jsx'
 class Uploads extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {lightboxIsOpen: false}
+    this.state = {
+      lightboxIsOpen: false,
+      currentImage: 0,
+    }
+  }
+  gotoNext() {
+    this.setState({
+      currentImage: this.state.currentImage + 1
+    });
+  }
+  gotoPrevious(){
+    this.setState({
+      currentImage: this.state.currentImage - 1
+    });
   }
   onClose(){
     this.setState({
       lightboxIsOpen:false
     });
   }
-  onPhotoClick(){
+  onPhotoClick(index){
     this.setState({
-      lightboxIsOpen:true
+      lightboxIsOpen:true,
+      currentImage: index
     });
   }
   render() {
@@ -26,7 +40,6 @@ class Uploads extends React.Component {
     const completedFiles = uploads.files.filter(({progress}) => !progress)
     const imageSources = completedFiles.map(file => ({ src: file.url }))
 
-  
     return <main>
   
       <section className="uploader-section">
@@ -51,6 +64,9 @@ class Uploads extends React.Component {
         lightboxIsOpen={this.state.lightboxIsOpen}
         onClose={this.onClose.bind(this)}
         imageSources={imageSources}
+        gotoNext={this.gotoNext.bind(this)}
+        gotoPrevious={this.gotoPrevious.bind(this)}
+        currentImage={this.state.currentImage}
       />
     </main>
   }
