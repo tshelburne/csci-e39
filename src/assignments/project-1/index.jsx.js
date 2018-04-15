@@ -8,7 +8,7 @@ import Gallery from '../../ui/components/gallery.jsx'
 class Uploads extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {lightboxIsOpen: true}
+    this.state = {lightboxIsOpen: false}
   }
   onClose(){
     this.setState({
@@ -24,6 +24,13 @@ class Uploads extends React.Component {
     const {uploads, actions} = this.props
     const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
     const completedFiles = uploads.files.filter(({progress}) => !progress)
+    function imageSources(files){
+      let imagesArray = []
+      for(let i = 0; i < files.length; i++) {
+        imagesArray.push({src: files[i].url})
+      }
+      return imagesArray
+    }
   
     return <main>
   
@@ -48,6 +55,7 @@ class Uploads extends React.Component {
       <Gallery 
         lightboxIsOpen={this.state.lightboxIsOpen}
         onClose={this.onClose.bind(this)}
+        imageSources={imageSources(completedFiles)}
       />
     </main>
   }

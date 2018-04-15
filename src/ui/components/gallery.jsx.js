@@ -16,10 +16,12 @@ export default class Gallery extends React.Component {
       currentImage: this.state.currentImage - 1
     });
   }
+
   render() {
+    console.log(this.props.imageSources)
     return (
       <Lightbox
-        images={[{ src: 'http://via.placeholder.com/450x450' }, { src: 'http://via.placeholder.com/250x450' }]}
+        images={this.props.imageSources}
         isOpen={this.props.lightboxIsOpen}
         onClickNext={this.gotoNext.bind(this)}
         onClickPrev={this.gotoPrevious.bind(this)}
