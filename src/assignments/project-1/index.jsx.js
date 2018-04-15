@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Uploader from '../../ui/components/uploader.jsx'
+// import Uploader from '../../ui/components/uploader.jsx'
+import UploaderA11y from './components/uploaderA11y.jsx'
 import PendingFiles from './components/pendingFiles.jsx'
 import CompletedFiles from './components/completedFiles.jsx'
 
@@ -11,7 +12,7 @@ const Uploads = ({uploads, actions}) => {
 	return <div>
 		<h1>Upload Images</h1>
 		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
+		<UploaderA11y upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
 		<PendingFiles pendingFiles={pendingFiles} />
