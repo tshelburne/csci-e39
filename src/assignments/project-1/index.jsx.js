@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 import ProgressBar from '../../ui/components/progressBar.jsx'
+import PhotoAlbum from '../../ui/components/photoAlbum.jsx'
 
 
 const Uploads = ({uploads, actions}) => {
@@ -23,17 +24,9 @@ const Uploads = ({uploads, actions}) => {
     
     <section className="photo-album">
       <h1>Your Photos</h1>
-      <ul className="photo-grid">
-        {completedFiles.map(file => {
-          const {id, name, url, error} = file
-
-          return <li key={id}>
-            {!error && <img src={url} />}
-            {!!error && <p className="failure">{error}</p>}
-            <label>{name}</label>
-          </li>
-        })}
-      </ul>
+      <PhotoAlbum 
+        completedFiles={completedFiles}
+      />
     </section>
 	</main>
 }
