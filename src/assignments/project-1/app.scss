@@ -1,0 +1,31 @@
+// Variables
+$brand-color: darkblue;
+$brand-section-color: white;
+$brand-text-color: #222;
+
+$react-accent: #61dafb;
+$react-background: #292c34;
+
+$breakpoint: 768px;
+$font-heading: 'Permanent Marker', sans-serif;
+$font-default: 'Oswald', sans-serif;
+
+
+.grid-container {
+	border: 2px dashed goldenrod;
+	display: grid;
+	grid-template-columns: 150px 1fr;
+	padding: 10px;
+	height: 100vh;
+	grid-gap: 30px;
+}
+
+.main {
+	background: darken($react-background, 7);
+	padding: 10px;
+}
+
+.sidebar {
+	background: lighten($react-background, 7);
+	padding: 10px;
+}

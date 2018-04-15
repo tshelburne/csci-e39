@@ -10,14 +10,29 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return (
-		<div>
-			<h1>Upload Images</h1>
-			{/* do not delete this uploader component */}
-			<Uploader upload={actions.upload} />
-			{/* do not delete this uploader component */}
-
-			<PendingFilesList title='In Progress' pendingFiles={pendingFiles} />
-			<CompletedFilesList title='Completed' completedFiles={completedFiles} />
+		<div class="container">
+	        <header className="mainHeader" role="banner">
+				<h1>Image Viewer - 1</h1>
+			</header>
+			<nav className="mainNavigation" role="navigation">
+				<ul>
+					<li>Upload</li>
+					<li>FAQ</li>
+				</ul>
+	        </nav>
+			<div className="grid-container">
+				<aside className="sidebar">
+					<h2>Upload Image</h2>
+					{/* do not delete this uploader component */}
+					<Uploader upload={actions.upload} />
+					{/* do not delete this uploader component */}
+					<PendingFilesList title='In Progress' pendingFiles={pendingFiles} />
+				</aside>
+				
+				<main className="main" role="main">
+					<CompletedFilesList title='Completed' completedFiles={completedFiles} />
+				</main>
+			</div>
 		</div>
 	)
 }
