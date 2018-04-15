@@ -24,13 +24,8 @@ class Uploads extends React.Component {
     const {uploads, actions} = this.props
     const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
     const completedFiles = uploads.files.filter(({progress}) => !progress)
-    function imageSources(files){
-      let imagesArray = []
-      for(let i = 0; i < files.length; i++) {
-        imagesArray.push({src: files[i].url})
-      }
-      return imagesArray
-    }
+    const imageSources = completedFiles.map(file => ({ src: file.url }))
+
   
     return <main>
   
@@ -55,7 +50,7 @@ class Uploads extends React.Component {
       <Gallery 
         lightboxIsOpen={this.state.lightboxIsOpen}
         onClose={this.onClose.bind(this)}
-        imageSources={imageSources(completedFiles)}
+        imageSources={imageSources}
       />
     </main>
   }
