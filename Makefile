@@ -48,7 +48,7 @@ start: build
 	@make run args='$(DK_PORTS)'
 
 stop:
-	docker stop $(shell docker ps -qa --filter="ancestor=$(IMAGE)") || true
+	docker stop $(shell docker ps -qa) || true
 
 watch: build
 	@make run args='$(DK_PORTS) $(DK_DEBUG)' command='npm run watch'
