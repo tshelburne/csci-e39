@@ -5,14 +5,27 @@ import completedFilesList from './CompletedFilesList.jsx'
 import CompletedFilesList from './CompletedFilesList.jsx';
 import PendingFilesList from './PendingFilesList.jsx';
 
-const Uploads = ({uploads, actions}) => {
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
+class Uploads extends React.Component {
+	state = {
+		sidebarActive: false,
+	}
 
-	return (
-		<div class="container">
+	toggleSidebar() {
+		this.setState( {sidebarActive: !this.state.sidebarActive} )
+		console.log(this.sidebarActive)
+	}
+
+	render() {
+		const {uploads, actions} = this.props
+		const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
+		const completedFiles = uploads.files.filter(({progress}) => !progress)
+		const buttonText = this.state.sidebarActive ? 'Toggle Sidebar Off' : 	'Toggle Sidebar On';
+		const {sidebarActive} = this.state
+		
+		return (
+		<div className="container">
 	        <header className="mainHeader" role="banner">
-				<h1>Image Viewer</h1>
+				<h1>Image Viewer 2</h1>
 			</header>
 			<nav className="mainNavigation" role="navigation">
 				<ul>
@@ -20,7 +33,9 @@ const Uploads = ({uploads, actions}) => {
 					<li>FAQ</li>
 				</ul>
 	        </nav>
+			<button onClick={this.toggleSidebar.bind(this)}>{buttonText}</button>
 			<div className="grid-container">
+			{sidebarActive && 
 				<aside className="sidebar">
 					<h2>Upload Image</h2>
 					{/* do not delete this uploader component */}
@@ -28,13 +43,14 @@ const Uploads = ({uploads, actions}) => {
 					{/* do not delete this uploader component */}
 					<PendingFilesList title='In Progress' pendingFiles={pendingFiles} />
 				</aside>
-				
+			}	
 				<main className="main" role="main">
 					<CompletedFilesList title='Completed' completedFiles={completedFiles} />
 				</main>
 			</div>
 		</div>
-	)
+		)
+	}
 }
 
 const statusPropType = PropTypes.shape({
