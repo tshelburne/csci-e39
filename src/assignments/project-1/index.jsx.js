@@ -6,24 +6,30 @@ const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <div>
-		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
-
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
+	return <main>
+		<header>This is header</header>
+		<article>This is article</article>
+		<section>
+			<div>
+				<h1>Upload Images</h1>
+				{/* do not delete this uploader component */}
+				<Uploader upload={actions.upload} />
+				{/* do not delete this uploader component */}
+			</div>
+			<div>
+				<h2>In Progress</h2>
+				<ul>
+				{pendingFiles.map(file => {
 				const {id, name, progress} = file
 
 				return <li key={id}>
 					<label>{name}</label>
 					<progress value={progress} max="100">{progress}%</progress>
 				</li>
-			})}
-		</ul>
-
+				})}
+				</ul>
+			</div>
+			<div>
 		<h2>Completed</h2>
 		<ul>
 			{completedFiles.map(file => {
@@ -36,7 +42,11 @@ const Uploads = ({uploads, actions}) => {
 				</li>
 			})}
 		</ul>
-	</div>
+		</div>
+		</section>
+		<aside>This is aside</aside>
+		<footer>This is footer</footer>
+	</main>
 }
 
 const statusPropType = PropTypes.shape({

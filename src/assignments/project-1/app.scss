@@ -1,3 +1,5 @@
+@import '../design-patterns/pattern-library';
+
 $primary-color: hsl(252, 19%, 63%);
 $accent-color: hsl(348, 83%, 47%);
 $secondary-color: hsl(120, 60%, 35%);
@@ -65,14 +67,14 @@ progress {
 }
 .uploader {
 	align-items: flex-start;
-  text-align: center;
-  box-sizing: border-box;
-  display: inline-block;
+  	text-align: center;
+  	box-sizing: border-box;
+ 	display: inline-block;
 	padding: $dynamic-size * 0.75;
 	border: 2px solid darken($accent-color, 15%);
 	color: darken($accent-color, 15%);
 	border-radius: 10px;
-	text-size: $dynamic-size;
+	font-size: $dynamic-size;
 	text-transform: uppercase;
 	box-shadow: 0 4px darken($accent-color, 15%);
 	&:active {
@@ -93,41 +95,16 @@ input[type="file"]{display:none;}
 @supports not (-ms-fill: background) {
 input[type="file"] {
 	align-items: flex-start;
-  text-align: center;
-  box-sizing: border-box;
-  display: inline-block;
+ 	text-align: center;
+ 	box-sizing: border-box;
+  	display: inline-block;
 	font-size: 16px;
 	position: absolute;
-clip-path: url(#clipping);
+	clip-path: url(#clipping);
 	margin-left: -100px;
 	margin-top:13px;
 	&:focus {
 		outline: none;
 	}
 }
-}
-// default styles on body
-
-body {
-	background: crimson;
-	padding: 30px;
-	background: linear-gradient(
-		to bottom,
-		rgba(150, 143, 179, 1) 0%,
-		crimson 100%
-	);
-	min-height: 100vh;
-}
-
-.example-container {
-	background: hsla(0, 0, 100%, 0.8);
-	margin-top: 7vh;
-	padding: 5vh 2vh;
-	box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
-	text-align: center;
-}
-
-.header {
-	margin-top: 0;
-	font-family: "Permanent Marker", sans-serif;
 }
