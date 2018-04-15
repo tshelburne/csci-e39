@@ -1,42 +1,44 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
+import ProgressBar from '../../ui/components/progressBar.jsx'
+
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <div>
-		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
+	return <main>
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
+    <section className="uploader-section">
+      <h1>Upload Images</h1>
+      <p>Upload some of your favorite photos and see them appear in a photo album below!</p>
+      {/* do not delete this uploader component */}
+      <Uploader upload={actions.upload} />
+      {/* do not delete this uploader component */}
+    </section>
 
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
+    <section>
+      <ProgressBar
+        pendingFiles={pendingFiles}
+      />
+    </section>
+    
+    <section>
+      <h2>Completed</h2>
+      <ul className="photo-grid">
+        {completedFiles.map(file => {
+          const {id, name, url, error} = file
 
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
-	</div>
+          return <li key={id}>
+            {!error && <img src={url} style={{maxWidth: `450px`}} />}
+            {!!error && <p className="failure">{error}</p>}
+            <label>{name}</label>
+          </li>
+        })}
+      </ul>
+    </section>
+	</main>
 }
 
 const statusPropType = PropTypes.shape({
