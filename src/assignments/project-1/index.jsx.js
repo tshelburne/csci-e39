@@ -38,7 +38,7 @@ const FileItem = ({file, eventHandler}) => {
 
 	const handleClick = (e) => {
 		e.preventDefault();
-		eventHandler(selName.value);
+	//	eventHandler(selName.value);
 		alert('Got click and name is: '+selName.value);
 		// render component here
 	}
@@ -61,51 +61,64 @@ const FileItem = ({file, eventHandler}) => {
 	)
 }
 
-const Uploads = ({uploads, actions}) => {
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
+class Uploads extends React.Component {
 
-	const eventHandler = (name) => {
+	constructor(props) {
+		super(props);
+	}
+/*
+	eventHandler = (name) => {
 		alert('I got a name: '+name);
 	}
+*/
+	render () {
+		const {uploads, actions} = this.props;
 
-	return <div className="wrapper">
-		<header className="box">
-			<h1>Upload Images</h1>
-		</header>
-		<main className="box">
-			{/* do not delete this uploader component */}
-			<Uploader upload={actions.upload} />
-			{/* do not delete this uploader component */}
+		const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
+		const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-			<FileList title="In Progress" files={pendingFiles} eventHandler={eventHandler}/>
-		</main>
+		return (
+			<div className="wrapper">
+				<header className="box">
+					<h1>Upload Images</h1>
+				</header>
+				<main className="box">
+					{/* do not delete this uploader component */}
+					<Uploader upload={actions.upload} />
+					{/* do not delete this uploader component */}
 
-		<aside className="box">
-			<FileList title="Completed" files={completedFiles} />
-		</aside>
-	</div>
-}
+					<FileList title="In Progress" files={pendingFiles} />
+				</main>
 
-const statusPropType = PropTypes.shape({
-	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
-	message: PropTypes.string.isRequired,
-})
+				<aside className="box">
+					<FileList title="Completed" files={completedFiles} />
+				</aside>
+			</div>)
+	}
 
-Uploads.propTypes = {
-	uploads: PropTypes.shape({
-		files: PropTypes.arrayOf(PropTypes.shape({
-			id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-			name: PropTypes.string.isRequired,
-			progress: PropTypes.number,
-			url: PropTypes.string,
-			error: PropTypes.string,
-		})).isRequired,
-		update: statusPropType.isRequired,
-		delete: statusPropType.isRequired,
-		share: statusPropType.isRequired,
-	}).isRequired,
-	actions: PropTypes.object.isRequired,
+/*
+	const statusPropType = PropTypes.shape({
+		status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
+		message: PropTypes.string.isRequired,
+	})
+
+	propTypes = {
+		uploads: PropTypes.shape({
+			files: PropTypes.arrayOf(PropTypes.shape({
+				id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+				name: PropTypes.string.isRequired,
+				progress: PropTypes.number,
+				url: PropTypes.string,
+				error: PropTypes.string,
+			})).isRequired,
+			update: statusPropType.isRequired,
+			delete: statusPropType.isRequired,
+			share: statusPropType.isRequired,
+		}).isRequired,
+		actions: PropTypes.object.isRequired,
+	}
+ */
+ 
 }
 
 export default Uploads
