@@ -43,7 +43,11 @@ const FileItem = ({file, eventHandler}) => {
 				{!error && <img src={url} alt={name} style={{maxWidth: `100%`}} />}
 				{!error && <figcaption>{name}</figcaption>}
 				{!!error && <p className="failure">{error}</p>}
-				{!error && <button onClick={handleClick}>Enlarge</button>}
+				{!error && 
+					<div className="button_wrapper">
+						<button onClick={handleClick}>View</button>
+					</div>
+				}
 			</figure>
 		</li>
 	)
@@ -56,13 +60,21 @@ const LargeFile = ({file, removeHandler}) => {
 		removeHandler();
 	}
 
-	return (
-		<figure>
-			{!error && <img src={url} alt={name} style={{maxWidth: `100%`}} />}
-			{!error && <figcaption>{name}</figcaption>}
-			{!error && <button onClick={handleClick}>Clear</button>}
-		</figure>
-	)
+	if (!error) {
+		return (
+			<div>
+				<h3>{name}</h3>
+				<figure>
+					<img src={url} alt={name} style={{maxWidth: `100%`}} />
+					<div className="button_wrapper">
+						<button onClick={handleClick}>Clear</button>
+					</div>
+				</figure>
+			</div>
+		)
+	} else {
+		return <div />
+	}
 }
 
 class Uploads extends React.Component {
@@ -97,12 +109,12 @@ class Uploads extends React.Component {
 			<div className="wrapper">
 				<header className="box">
 					<h1>Upload Images</h1>
-				</header>
-				<main className="box">
 					{/* do not delete this uploader component */}
 					<Uploader upload={actions.upload} />
 					{/* do not delete this uploader component */}
 					<FileList title="In Progress" files={pendingFiles} eventHandler={this.selectFile}/>
+				</header>
+				<main className="box">
 					{this.state.selFile && <LargeFile file={this.state.selFile} removeHandler={this.removeFile}/>}
 				</main>
 				<aside className="box">
