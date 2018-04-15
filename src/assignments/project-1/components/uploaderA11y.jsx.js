@@ -5,9 +5,11 @@ import Uploader from '../../../ui/components/uploader.jsx'
 class UploaderA11y extends React.Component {
 
 	render() {
-		return <label className="uploader">Upload Images
+		return <div className="uploader">
+		<label className="uploader">Upload Images
 			<Uploader upload={this.props.upload} />
 		</label>
+		</div>
 	}
 
 }
