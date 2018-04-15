@@ -15,6 +15,11 @@ class Uploads extends React.Component {
       lightboxIsOpen:false
     });
   }
+  onPhotoClick(){
+    this.setState({
+      lightboxIsOpen:true
+    });
+  }
   render() {
     const {uploads, actions} = this.props
     const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
@@ -37,6 +42,7 @@ class Uploads extends React.Component {
         <h1>Your Photos</h1>
         <PhotoAlbum 
           completedFiles={completedFiles}
+          onPhotoClick={this.onPhotoClick.bind(this)}
         />
       </section>
       <Gallery 

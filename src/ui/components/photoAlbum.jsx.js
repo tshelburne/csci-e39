@@ -6,7 +6,10 @@ class PhotoAlbum extends React.Component {
     return <ul className="photo-grid">
       {this.props.completedFiles.map(file => {
         const {id, name, url, error} = file
-        return <li key={id}>
+        return <li 
+          key={id}
+          onClick={this.props.onPhotoClick}
+          >
           {!error && <img src={url} />}
           {!!error && <p className="failure">{error}</p>}
           <label>{name}</label>
