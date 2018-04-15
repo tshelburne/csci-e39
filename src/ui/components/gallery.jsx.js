@@ -15,7 +15,6 @@ const Gallery = ({imageSources, lightboxIsOpen, gotoNext, gotoPrevious, currentI
 );
 
 Gallery.propTypes = {
-  pendingFiles: PropTypes.array.isRequired,
   imageSources: PropTypes.array.isRequired,
   lightboxIsOpen: PropTypes.bool.isRequired,
   gotoNext: PropTypes.func.isRequired,
