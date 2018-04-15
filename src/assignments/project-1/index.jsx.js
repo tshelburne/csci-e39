@@ -56,7 +56,7 @@ class Uploads extends React.Component {
       <section className="photo-album">
         <h1>Your Photos</h1>
         <PhotoAlbum 
-          completedFiles={completedFiles}
+          images={completedFiles}
           onPhotoClick={this.onPhotoClick.bind(this)}
         />
       </section>
