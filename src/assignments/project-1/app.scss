@@ -10,14 +10,20 @@ $breakpoint: 768px;
 $font-heading: 'Permanent Marker', sans-serif;
 $font-default: 'Oswald', sans-serif;
 
+body {
+	font-family: $font-default;
+	margin: 10vh 10vw;
+	color: $react-accent;
+	background: $react-background;
+}
 
 .grid-container {
 	border: 2px dashed goldenrod;
 	display: grid;
-	grid-template-columns: 150px 1fr;
+	grid-template-columns: 1fr 1fr;
 	padding: 10px;
 	height: 100vh;
-	grid-gap: 30px;
+    grid-gap: 30px;
 }
 
 .main {

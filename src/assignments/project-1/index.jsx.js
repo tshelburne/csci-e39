@@ -12,7 +12,7 @@ const Uploads = ({uploads, actions}) => {
 	return (
 		<div class="container">
 	        <header className="mainHeader" role="banner">
-				<h1>Image Viewer - 1</h1>
+				<h1>Image Viewer</h1>
 			</header>
 			<nav className="mainNavigation" role="navigation">
 				<ul>
