@@ -19,6 +19,7 @@ endef
 DK_MOUNT_DEBUG := $(call mount,build) $(call mount,public)
 DK_MOUNT := $(call mount,src) $(call mount,.id) $(call mount,dev.sqlite3) $(call mount,package.json) $(call mount,package-lock.json)
 DK_ENV := -e PORT=$(ENV_PORT) -e STUDENT_ID=$(ENV_STUDENT_ID) -e DATABASE_URL=$(DATABASE_URL)
+DK_INTERACTIVE := -t -i
 DK_PORTS := --expose $(ENV_PORT) -p $(ENV_PORT):$(ENV_PORT) --expose 35729 -p 35729:35729
 DK_DEBUG := -e DEBUG=knex:*,socket.io:*,csci-e39:*
 
@@ -45,16 +46,16 @@ activate: build
 	@make run command='sed -i -e "s/css\/.*\//css\/$(assignment)\//g" src/ui/index.pug'
 
 start: build
-	@make run args='$(DK_PORTS)'
+	@make run args='$(DK_INTERACTIVE) $(DK_PORTS)'
 
 stop:
 	docker stop $(shell docker ps -qa) || true
 
 watch: build
-	@make run args='$(DK_PORTS) $(DK_DEBUG)' command='npm run watch'
+	@make run args='$(DK_INTERACTIVE) $(DK_PORTS) $(DK_DEBUG)' command='npm run watch'
 
 live: build
-	@make run args='$(DK_PORTS) -e BACKEND=$(ENV_BACKEND)'
+	@make run args='$(DK_INTERACTIVE) $(DK_PORTS) -e BACKEND=$(ENV_BACKEND)'
 
 migration: build
 	@make run command='npm run migration -- $(name)'
