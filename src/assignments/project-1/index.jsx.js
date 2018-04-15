@@ -33,14 +33,8 @@ const UploadItem = ({file}) => {
 const FileItem = ({file, eventHandler}) => {
 	const {id, name, url, error} = file;
 
-	let selName, 
-		selUrl;
-
-	const handleClick = (e) => {
-		e.preventDefault();
-	//	eventHandler(selName.value);
-		alert('Got click and name is: '+selName.value);
-		// render component here
+	const handleClick = () => {
+		eventHandler(file);
 	}
 
 	return (
@@ -49,31 +43,53 @@ const FileItem = ({file, eventHandler}) => {
 				{!error && <img src={url} alt={name} style={{maxWidth: `100%`}} />}
 				{!error && <figcaption>{name}</figcaption>}
 				{!!error && <p className="failure">{error}</p>}
-				{!error && (
-					<form onSubmit={handleClick}>
-						<input type="hidden" ref={input => selName = input} value={name}/>
-						<input type="hidden" ref={input => selUrl = input} value={url}/>
-						<button>Enlarge</button>
-					</form>)
-				}
+				{!error && <button onClick={handleClick}>Enlarge</button>}
 			</figure>
 		</li>
 	)
 }
 
-class Uploads extends React.Component {
+const LargeFile = ({file, removeHandler}) => {
+	const {name, url, error} = file;
 
+	const handleClick = () => {
+		removeHandler();
+	}
+
+	return (
+			<figure>
+				{!error && <img src={url} alt={name} style={{maxWidth: `100%`}} />}
+				{!error && <figcaption>{name}</figcaption>}
+				{!error && <button onClick={handleClick}>Clear</button>}
+			</figure>
+	)
+}
+
+class Uploads extends React.Component {
 	constructor(props) {
 		super(props);
-	}
-/*
-	eventHandler = (name) => {
-		alert('I got a name: '+name);
-	}
-*/
-	render () {
-		const {uploads, actions} = this.props;
 
+		this.state = {
+			selFile: null
+		}
+		this.eventHandler = this.eventHandler.bind(this);
+		this.removeHandler = this.removeHandler.bind(this);
+	}
+
+	selectFile(file) {
+		this.setState({
+			selFile: file
+		})
+	}
+
+	removeFile() {
+		this.setState({
+			selFile: null
+		})
+	}
+
+	render() {
+		const {uploads, actions} = this.props;
 		const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 		const completedFiles = uploads.files.filter(({progress}) => !progress)
 
@@ -86,39 +102,35 @@ class Uploads extends React.Component {
 					{/* do not delete this uploader component */}
 					<Uploader upload={actions.upload} />
 					{/* do not delete this uploader component */}
-
-					<FileList title="In Progress" files={pendingFiles} />
+					<FileList title="In Progress" files={pendingFiles} eventHandler={this.selectFile}/>
+					{this.state.selFile && <LargeFile file={this.state.selFile} removeHandler={this.removeFile}/>}
 				</main>
-
 				<aside className="box">
-					<FileList title="Completed" files={completedFiles} />
+					<FileList title="Completed" files={completedFiles} eventHandler={this.selectFile}/>
 				</aside>
 			</div>)
 	}
+}
 
-/*
-	const statusPropType = PropTypes.shape({
-		status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
-		message: PropTypes.string.isRequired,
-	})
+const statusPropType = PropTypes.shape({
+	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
+	message: PropTypes.string.isRequired,
+})
 
-	propTypes = {
-		uploads: PropTypes.shape({
-			files: PropTypes.arrayOf(PropTypes.shape({
-				id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-				name: PropTypes.string.isRequired,
-				progress: PropTypes.number,
-				url: PropTypes.string,
-				error: PropTypes.string,
-			})).isRequired,
-			update: statusPropType.isRequired,
-			delete: statusPropType.isRequired,
-			share: statusPropType.isRequired,
-		}).isRequired,
-		actions: PropTypes.object.isRequired,
-	}
- */
- 
+Uploads.propTypes = {
+	uploads: PropTypes.shape({
+		files: PropTypes.arrayOf(PropTypes.shape({
+			id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+			name: PropTypes.string.isRequired,
+			progress: PropTypes.number,
+			url: PropTypes.string,
+			error: PropTypes.string,
+		})).isRequired,
+		update: statusPropType.isRequired,
+		delete: statusPropType.isRequired,
+		share: statusPropType.isRequired,
+	}).isRequired,
+	actions: PropTypes.object.isRequired,
 }
 
 export default Uploads
