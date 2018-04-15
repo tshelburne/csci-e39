@@ -37,6 +37,10 @@ progress[value] {
 	}
 }
 
+.progress-bar {
+  list-style: none;
+}
+
 .button {
 	background-color: $accent-color;
 	color: $text-light;
@@ -60,24 +64,23 @@ progress[value] {
 
 .photo-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 500px);
-  grid-gap: 40px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 1rem;
   list-style: none;
   padding: 0;
-  justify-content: center;
   li {
     background-color: $text-light;
-    border: 2px solid $border-color;
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    height: 500px;
-    width: 500px;
-      label {
-        margin-top: 10px;
-      }
+    border: .15rem solid #DAD6E1;
+    border-radius: .5rem;
+    display: grid;
+    grid-template-rows: 30rem auto;   
+    padding: 2rem;
+    grid-gap: 1rem;
+  }
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
   }
 }
 
@@ -90,8 +93,55 @@ progress[value] {
   font-size: 2em;
   padding: 2em;
     label {
-      padding: 2em;
+      padding: 1.5em;
     }
 }
 
+.photo-album {
+  font-size: 2em;
+  text-align: center;
+}
 
+//medium screens
+@media only screen and (max-width: 1800px) {
+  body {
+    padding: 0;
+  }
+  .photo-grid {
+    li {
+      grid-template-rows: 20rem auto;   
+      padding: 1rem;
+    }
+  }
+}
+
+//small-screens
+@media only screen and (max-width: 1025px) {
+  body {
+    padding: 0;
+  }
+  .photo-grid {
+    grid-template-columns: 1fr 1fr;
+    li {
+      grid-template-rows: 20rem auto;   
+      padding: 1rem;
+    }
+  }
+}
+
+//x-small screens
+@media only screen and (max-width: 600px) {
+  body {
+    padding: 0;
+  }
+  .photo-grid {
+    grid-template-columns: 1fr;
+    li {
+      grid-template-rows: 10rem auto;   
+      padding: 1rem;
+    }
+  }
+  .uploader-section, .photo-album {
+    font-size: 1em;
+  }
+}

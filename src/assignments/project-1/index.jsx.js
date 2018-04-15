@@ -16,22 +16,19 @@ const Uploads = ({uploads, actions}) => {
       {/* do not delete this uploader component */}
       <Uploader upload={actions.upload} />
       {/* do not delete this uploader component */}
-    </section>
-
-    <section>
       <ProgressBar
         pendingFiles={pendingFiles}
       />
     </section>
     
-    <section>
-      <h2>Completed</h2>
+    <section className="photo-album">
+      <h1>Your Photos</h1>
       <ul className="photo-grid">
         {completedFiles.map(file => {
           const {id, name, url, error} = file
 
           return <li key={id}>
-            {!error && <img src={url} style={{maxWidth: `450px`}} />}
+            {!error && <img src={url} />}
             {!!error && <p className="failure">{error}</p>}
             <label>{name}</label>
           </li>
