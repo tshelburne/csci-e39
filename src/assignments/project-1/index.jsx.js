@@ -15,7 +15,7 @@ const Uploads = ({uploads, actions}) => {
 		<UploaderA11y upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
-		<PendingFiles pendingFiles={pendingFiles} />
+		<PendingFiles pendingFiles={FAKEFILES} />
 
 		<CompletedFiles completedFiles={completedFiles} />
 	</div>
@@ -41,5 +41,28 @@ Uploads.propTypes = {
 	}).isRequired,
 	actions: PropTypes.object.isRequired,
 }
+
+const FAKEFILES = [
+	{
+		id: "1",
+		name: "photo1",
+		progress: "10",
+	},
+	{
+		id: "2",
+		name: "Photo with a long file name IMS_0123.jpg",
+		progress: "33",
+	},
+	{
+		id: "3",
+		name: "photo3",
+		progress: "69",
+	},
+	{
+		id: "4",
+		name: "photo4",
+		progress: "100",
+	},
+];
 
 export default Uploads

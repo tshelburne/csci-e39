@@ -1,15 +1,41 @@
 .pendingFiles {
-	li {
-		list-style: none;
+	background: green;
+	border: 2px solid brown;
+	border-radius: 5px;
+	position: absolute;
+	margin: 0 auto;
+	width: 98%;
+
+	h2 {
+		text-align: center;
 	}
+
+	ul {
+		display: flex;
+		flex-wrap: wrap;
+		margin: $margin-sm;
+		padding: 0;
+
+		li {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			list-style: none;
+			margin-right: $margin-sm;
+			margin-bottom: $margin-sm;
+		}
+	}
+
+
 
 	progress {
 		background-color: $button-color;
 		border: 1px solid $button-background;
-		border-top: transparent;
-		border-left: transparent;
+		display: inline-block;
 		height: $progress-height;
-		clip-path: polygon(100% 0, 100% 100%, 0 100%, 0 60%);
+		margin-right: $margin-sm;
+		transform: rotate(-90deg);
+		width: 2rem;
 	}
 
 	@supports (-webkit-appearance: none) {
@@ -32,4 +58,5 @@
 	progress::-ms-fill {
 		background-color: $progress-color;
 	}
+
 }
