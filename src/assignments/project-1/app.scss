@@ -2,7 +2,7 @@ $heading-font: 'Karla', sans-serif;
 $body-font: 'Montserrat', sans-serif;
 $accent-color: #00BA8C;
 $text-light: #fff;
-$border-curve: 5px;
+$border-curve: .5rem;
 $progress-background-color: #eee;
 $border-color: #DAD6E1;
 
@@ -19,7 +19,7 @@ h1, h2, h3, h4 {
 
 progress[value] {
   background-color: $progress-background-color;
-  border-radius: 2px;
+  border-radius: $border-curve;
   box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
 	height: 2rem;
 	width: 20rem;
@@ -71,11 +71,16 @@ progress[value] {
   li {
     background-color: $text-light;
     border: .15rem solid #DAD6E1;
-    border-radius: .5rem;
+    border-radius: $border-curve;
     display: grid;
     grid-template-rows: 30rem auto;   
     padding: 2rem;
     grid-gap: 1rem;
+    &:hover {
+      cursor: pointer;
+      background-color: $accent-color;
+      color: $text-light;
+    }
   }
   img {
     object-fit: cover;
@@ -92,8 +97,12 @@ progress[value] {
   flex-direction: column;
   font-size: 2em;
   padding: 2em;
+  border: 1rem solid $accent-color;
+  text-align: center;
     label {
-      padding: 1.5em;
+      padding: 1em;
+      margin-top: 1em;
+      margin-bottom: -1em;
     }
 }
 
