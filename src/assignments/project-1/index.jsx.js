@@ -9,9 +9,9 @@ const FileList = ({title, files, eventHandler}) => {
 			<ul>
 				{files.map(file => {
 					if (title.toLowerCase() == 'completed') {
-						return (<FileItem file={file} eventHandler={eventHandler}/>)
+						return (<FileItem key={file.id} file={file} eventHandler={eventHandler}/>)
 					} else {
-						return (<UploadItem file={file}/>)
+						return (<UploadItem key={file.id} file={file}/>)
 					}			
 				})}
 			</ul>
@@ -20,10 +20,10 @@ const FileList = ({title, files, eventHandler}) => {
 }
 
 const UploadItem = ({file}) => {
-	const {id, name, progress} = file;
+	const {name, progress} = file;
 
 	return (
-		<li key={id}>
+		<li>
 			<label>{name}</label>
 			<progress value={progress} max="100">{progress}%</progress>
 		</li>
@@ -38,7 +38,7 @@ const FileItem = ({file, eventHandler}) => {
 	}
 
 	return (
-		<li key={id}>
+		<li>
 			<figure>
 				{!error && <img src={url} alt={name} style={{maxWidth: `100%`}} />}
 				{!error && <figcaption>{name}</figcaption>}
@@ -57,11 +57,11 @@ const LargeFile = ({file, removeHandler}) => {
 	}
 
 	return (
-			<figure>
-				{!error && <img src={url} alt={name} style={{maxWidth: `100%`}} />}
-				{!error && <figcaption>{name}</figcaption>}
-				{!error && <button onClick={handleClick}>Clear</button>}
-			</figure>
+		<figure>
+			{!error && <img src={url} alt={name} style={{maxWidth: `100%`}} />}
+			{!error && <figcaption>{name}</figcaption>}
+			{!error && <button onClick={handleClick}>Clear</button>}
+		</figure>
 	)
 }
 
@@ -72,8 +72,8 @@ class Uploads extends React.Component {
 		this.state = {
 			selFile: null
 		}
-		this.eventHandler = this.eventHandler.bind(this);
-		this.removeHandler = this.removeHandler.bind(this);
+		this.selectFile = this.selectFile.bind(this);
+		this.removeFile = this.removeFile.bind(this);
 	}
 
 	selectFile(file) {
