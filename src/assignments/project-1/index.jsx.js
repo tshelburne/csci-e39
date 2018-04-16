@@ -2,31 +2,33 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 
-import Pending from './pending.jsx';
-import Completed from './completed.jsx';
+import ProgressBar from './progressbar.jsx';
+import Gallery from './gallery.jsx';
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	//created Pending and Completed components and passed props
+	//created ProgressBar and Gallery components and passed props
 	return (
-		<div>
-		    <div className="gallery-container">
-				<h1>Upload Images</h1>
-				{/* do not delete this uploader component */}
+		<div className="container">
+
+			<header>Banner</header>
+
+			<section>
 				<Uploader upload={actions.upload} />
 				{/* do not delete this uploader component */}
+			</section>
 
+			<section>
 				<h2>In Progress</h2>
-				<Pending pendingFiles={pendingFiles}/>
+				<ProgressBar pendingFiles={pendingFiles}/>
+			</section>
 
-				<h2>Completed</h2>
-				<div className="gallery-grid">
-				<Completed completedFiles={completedFiles}/>
-        		</div>
+			<main className="gallery-component">
+				<Gallery completedFiles={completedFiles}/>
+        	</main>
 
-			</div>
 		</div>
 	)
 }

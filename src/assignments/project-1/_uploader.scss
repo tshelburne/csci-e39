@@ -1,0 +1,61 @@
+.uploader { /* inputs don't accept before / after styling - style the label instead*/
+	font-size: $uploader-size;
+	text-transform: $uploader-case;
+	letter-spacing: $uploader-spacing;
+	line-height: $uploader-height;
+	min-width: $uploader-width;
+	background: $secondary-color;
+	color: $primary-color;
+	padding: $uploader-padding;
+	border: $primary-border;
+
+	-webkit-border-radius: $button-radius;
+	-moz-border-radius: $button-radius;
+	border-radius: $button-radius;
+
+	-webkit-transition: $button-transition;
+	transition: $button-transition;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	outline: none;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	touch-action: manipulation;
+
+	&:hover {
+		background-color: $primary-hover-color;
+		color: $secondary-color;
+		border: $primary-border;
+	}
+	&:active {
+		background-color: $primary-active-color;
+		color: $primary-color;
+		border: $secondary-border;
+		@include box-shadow;
+	}
+}
+
+.uploader-input {
+	width: 0;
+	height: 100%;
+	font-size: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	opacity: 0;
+	display: block; /* to avoid taking up space */
+	//background-color: red;
+	&:focus {
+		+label { /* tab index */
+			background-color: $primary-hover-color;  /* for keyboard access */
+			color: $secondary-color;
+			
+		}
+	}
+}

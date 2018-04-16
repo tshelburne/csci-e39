@@ -1,0 +1,59 @@
+/* Variables and mixins */
+
+// common variables
+
+$primary-font: "Poppins", Helvetica, Arial, sans-serif;
+$primary-color: hsla(0, 0%, 15%, 1); //lighten($primary-color, 10) = new lightness is 25%;
+$secondary-color: hsla(0, 0%, 95%, 1);
+$tertiary-color: hsla(110, 40%, 50%, 1);
+$black: #222;
+
+$primary-hover-color: hsla(0, 0%, 5%, 1);
+$primary-active-color: hsla(0, 0%, 95%, 1);
+$tertiary-hover-color: hsla(110, 30%, 50%, 1);
+
+$primary-border: 1px solid hsla(0, 0%, 0%, 1);
+$secondary-border: 1px solid hsla(0, 0%, 50%, 1);
+
+// uploader component variables
+$uploader-size: 1.2rem;
+$uploader-spacing: 0rem;
+$uploader-case: uppercase;
+$uploader-height: 1rem;
+$uploader-width: 8rem;
+$uploader-padding: 1rem 2rem;
+$uploader-radius: 0.25rem;
+$uploader-transition: all 0.3s;
+
+// progress bar component variables
+$progress-height: 2rem;
+$progress-width: 15rem;
+$progress-radius: 0.15rem;
+
+button component variables
+$button-size: 1.3rem;
+$button-spacing: 0.1rem;
+$button-case: uppercase;
+$button-height: 1rem;
+$button-width: 12rem;
+$button-padding: 1rem 2rem;
+$button-radius: 0.25rem;
+$button-transition: all 0.3s;
+
+$button-content-state-1: "⭕";
+$button-content-state-2: "🔴";
+$button-content-marign: 0.5rem;
+$button-vertical-align: middle;
+
+
+// mixins
+@mixin box-shadow {
+	-moz-box-shadow: inset 0 0 0.2rem $primary-color;
+	-webkit-box-shadow: inset 0 0 0.2rem $primary-color;
+	box-shadow: inset 0 0 0.2rem $primary-color;
+}
+@mixin progress-shadow {
+	-moz-box-shadow: inset 0 0.1rem 0.25rem hsla(0, 0, 0, 0.25);
+	-webkit-box-shadow: inset 0 0.1rem 0.25rem hsla(0, 0, 0, 0.25);
+	box-shadow: inset 0 0.1rem 0.25rem hsla(0, 0, 0, 0.25);
+}

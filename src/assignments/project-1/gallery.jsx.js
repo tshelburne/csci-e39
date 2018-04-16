@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Completed = props => {
+const Gallery = props => {
 	return (
 		<ul>
 			{props.completedFiles.map(file => {
@@ -10,7 +10,7 @@ const Completed = props => {
 				return (
 					<li key={id}>
 						<label>{name}</label>
-						{!error && <img src={url} style={{maxWidth: `200px`}} />}
+						{!error && <img src={url} />}
 						{!!error && <p className="failure">{error}</p>}
 					</li>
 				)
@@ -19,4 +19,4 @@ const Completed = props => {
 	)
 }
 
-export default Completed
+export default Gallery

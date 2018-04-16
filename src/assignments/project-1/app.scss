@@ -1,0 +1,29 @@
+@import 'src/assignments/design-patterns/normalize';
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+@import 'src/assignments/project-1/variables';
+@import 'src/assignments/project-1/header';
+@import 'src/assignments/project-1/uploader';
+@import 'src/assignments/project-1/progressbar';
+@import 'src/assignments/design-patterns/breakpoint';
+@import 'src/assignments/project-1/gallery';
+
+/* Default styles on body */
+
+*, *:before, *:after { box-sizing: border-box; }
+
+html {
+  font-size: 1rem;
+}
+
+body {
+  font-family: $primary-font;
+  position: relative;
+  font-size: 100%;
+  background: $secondary-color;
+  background: -webkit-linear-gradient(to right, #FFD194, #D1913C);
+  background: linear-gradient(to right, #FFD194, #D1913C);
+}
+
+.container {
+  padding: 1rem 0;
+}

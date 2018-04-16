@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Pending = props => {
+const ProgressBar = props => {
 	return (
 		<ul>
 			{props.pendingFiles.map(file => {
@@ -18,4 +18,4 @@ const Pending = props => {
 	)
 }
 
-export default Pending
+export default ProgressBar

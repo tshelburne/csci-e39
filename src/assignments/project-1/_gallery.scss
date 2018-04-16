@@ -1,0 +1,44 @@
+/* Styles for gallery component */
+
+@supports (display: grid) {
+
+  .gallery-component {
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: 1.5rem;
+      grid-row-gap: 1.5rem;
+      width: 100%;
+      max-width: 50vw;
+      margin: 0 auto;
+      text-align: center;
+      padding: 0rem;
+
+      background-color: hsla(0, 0%, 30%, 1);
+
+      @include bp( x-small ) {
+        grid-template-columns: repeat(1, 1fr);
+      }   
+      @include bp( small ) {
+        grid-template-columns: repeat(2, 1fr);
+      } 
+      @include bp( large ) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    ul li {
+      display: grid;
+      grid-template-rows: auto;
+      list-style: none;
+      img {
+        width: 100%;
+        border: 5px solid #fff;
+      }
+      label {
+        display: none;
+      }
+    }
+  }
+}
