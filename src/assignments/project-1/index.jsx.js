@@ -12,16 +12,21 @@ const Uploads = ({uploads, actions}) => {
 	//created Pending and Completed components and passed props
 	return (
 		<div>
-			<h1>Upload Images</h1>
-			{/* do not delete this uploader component */}
-			<Uploader upload={actions.upload} />
-			{/* do not delete this uploader component */}
+		    <div className="gallery-container">
+				<h1>Upload Images</h1>
+				{/* do not delete this uploader component */}
+				<Uploader upload={actions.upload} />
+				{/* do not delete this uploader component */}
 
-			<h2>In Progress</h2>
-			<Pending pendingFiles={pendingFiles}/>
+				<h2>In Progress</h2>
+				<Pending pendingFiles={pendingFiles}/>
 
-			<h2>Completed</h2>
-			<Completed completedFiles={completedFiles}/>
+				<h2>Completed</h2>
+				<div className="gallery-grid">
+				<Completed completedFiles={completedFiles}/>
+        		</div>
+
+			</div>
 		</div>
 	)
 }
