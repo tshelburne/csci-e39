@@ -33,7 +33,6 @@ class Uploads extends React.Component {
 					<li>FAQ</li>
 				</ul>
 	        </nav>
-			<button onClick={this.toggleSidebar.bind(this)}>{buttonText}</button>
 			<div className="grid-container">
 			{sidebarActive && 
 				<aside className="sidebar">
@@ -45,7 +44,8 @@ class Uploads extends React.Component {
 				</aside>
 			}	
 				<main className="main" role="main">
-					<CompletedFilesList title='Completed' completedFiles={completedFiles} />
+				<button className="nav-button" onClick={this.toggleSidebar.bind(this)}>{buttonText}</button>
+				<CompletedFilesList title='Completed' completedFiles={completedFiles} />
 				</main>
 			</div>
 		</div>
