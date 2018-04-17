@@ -1,28 +1,37 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Uploader from '../../ui/components/uploader.jsx'
 
-import ProgressBar from './progressbar.jsx';
-import Gallery from './gallery.jsx';
+import Carousel from './carousel.jsx'
+import Uploader from '../../ui/components/uploader.jsx'
+import ProgressBar from './progressbar.jsx'
+import Gallery from './gallery.jsx'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	//created ProgressBar and Gallery components and passed props
+
 	return (
 		<div className="container">
 
-			<header>Banner</header>
+			<header>
+			    <Carousel />
+			</header>
 
-			<section>
-				<Uploader upload={actions.upload} />
-				{/* do not delete this uploader component */}
-			</section>
+	      <section class="uploader-input">
+	        <form action="#">
+	            <label tabIndex="0" htmlFor="uploader" className="uploader">
+	            Upload Files
+	            <Uploader upload={actions.upload} />
+	          </label>
+	        </form>
+	      </section>
 
 			<section>
 				<h2>In Progress</h2>
-				<ProgressBar pendingFiles={pendingFiles}/>
+				<progress value="33" max="100">
+					<ProgressBar pendingFiles={pendingFiles}/>
+				</progress>
 			</section>
 
 			<main className="gallery-component">
@@ -32,6 +41,7 @@ const Uploads = ({uploads, actions}) => {
 		</div>
 	)
 }
+
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
