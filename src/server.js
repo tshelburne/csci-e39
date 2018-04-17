@@ -11,7 +11,7 @@ import ReactDOMServer from 'react-dom/server'
 import socketio from 'socket.io'
 import config from './config'
 import {Student, Message} from './db'
-import upload from './services/upload'
+import {upload, destroy} from './services/upload'
 import App from './ui/app.jsx'
 import {IMAGE_MIMES, KB} from './util/constants'
 
@@ -51,7 +51,11 @@ io.on(`connection`, async socket => {
 	const {student} = socket.ctx
 	if (!student) socket.disconnect()
 
-	const removeStudent = all => all.filter(({id}) => id !== student.id)
+	if (!g.sockets) g.sockets = new Map()
+	g.sockets.set(student.get(`name`), socket)
+	socket.on(`disconnect`, () => g.sockets.delete(student.get(`name`)))
+
+	const removeStudent = all => all.filter(({id}) => id !== student.get(`id`))
 	const addStudent = all => removeStudent(all).concat(student)
 
 	// ================ CLASS ================
@@ -91,30 +95,95 @@ io.on(`connection`, async socket => {
 	// =============== UPLOADS ===============
 
 	socket.on(`upload:chunk`, handleChunkUpload)
+	socket.on(`file:update`, updateFile)
+	socket.on(`file:delete`, deleteFile)
+	socket.on(`file:share`, shareFile)
+	socket.on(`file:create-album`, createAlbum)
+	socket.on(`file:add-to-album`, addFileToAlbum)
 
-	function handleChunkUpload(file, chunk) {
+	socket.on(`album:promote`, promoteAlbum)
+
+	// SEND INITIAL DATA
+
+	const files = await student
+		.related(`uploads`)
+		.orderBy(`-created_at`)
+		.fetch()
+	socket.emit(`files:all`, files.toJSON())
+
+	function handleChunkUpload(refId, file, chunk) {
 		const {student} = socket.ctx
 		try {
-			if (file.size > 500 * KB) return socket.emit(`upload:failure`, file, {message: `Max file size 500KB`})
-			if (!IMAGE_MIMES.includes(file.type)) return socket.emit(`upload:failure`, file, {message: `File must be an image`})
+			if (file.size > 500 * KB) return socket.emit(`upload:failure`, refId, file, {message: `Max file size 500KB`})
+			if (!IMAGE_MIMES.includes(file.type)) return socket.emit(`upload:failure`, refId, file, {message: `File must be an image`})
 
-			const uploaded = upload(file, chunk, finish)
-			return socket.emit(`upload:request-chunk`, file, uploaded)
+			const uploaded = upload(refId, file, chunk, finish)
+			return socket.emit(`upload:request-chunk`, refId, file, uploaded)
 		} catch(e) {
 			log(e)
-			return socket.emit(`upload:failure`, file, {message: `Unexpected failure - please try again`})
+			return socket.emit(`upload:failure`, refId, file, {message: `Unexpected failure - please try again`})
 		}
 
 		async function finish(url) {
 			try {
 				const {name, description} = file
-				await student.related(`uploads`).create({url, name, description})
-				return socket.emit(`upload:success`, file, url)
+				const uploaded = await student.related(`uploads`).create({url, name, description})
+				return socket.emit(`upload:success`, refId, uploaded, url)
 			} catch (e) {
 				log(e)
-				return socket.emit(`upload:failure`, file, {message: `Unexpected failure - please try again`})
+				return socket.emit(`upload:failure`, refId, file, {message: `Unexpected failure - please try again`})
 			}
 		}
+	}
+
+	async function updateFile(id, {name, description}) {
+		try {
+			const file = await student.related(`uploads`).query({where: {id}}).fetchOne()
+			if (!file) return socket.emit(`file:update:failure`, {message: `File not found`})
+			const updated = await file.save({name, description}, {patch: true})
+			socket.emit(`file:update:success`, updated)
+		} catch (e) {
+			log(e)
+			return socket.emit(`file:update:failure`, {message: `Unexpected failure - please try again`})
+		}
+	}
+
+	async function deleteFile(id) {
+		try {
+			const file = await student.related(`uploads`).query({where: {id}}).fetchOne()
+			if (!file) return socket.emit(`file:delete:failure`, {message: `File not found`})
+			await destroy(file.toJSON())
+			await file.destroy()
+			socket.emit(`file:delete:success`, file)
+		} catch (e) {
+			log(e)
+			return socket.emit(`file:delete:failure`, {message: `Unexpected failure - please try again`})
+		}
+	}
+
+	async function shareFile(id, name) {
+		try {
+			const file = await student.related(`uploads`).query({where: {id}}).fetchOne()
+			if (!file) return socket.emit(`file:share:failure`, {message: `File not found`})
+			if (!g.sockets.has(name)) return socket.emit(`file:share:failure`, {message: `User is not available`})
+			g.sockets.get(name).emit(`file:received`, file, student)
+			socket.emit(`file:share:success`, file, name)
+		} catch (e) {
+			log(e)
+			return socket.emit(`file:share:failure`, {message: `Unexpected failure - please try again`})
+		}
+	}
+
+	async function createAlbum(ids, name) {
+
+	}
+
+	async function addFileToAlbum(id, albumId) {
+
+	}
+
+	async function promoteAlbum(albumId) {
+
 	}
 
 	// ================= CHAT =================
@@ -126,6 +195,14 @@ io.on(`connection`, async socket => {
 	socket.on(`chat:typing:start`, handleStartTyping)
 	socket.on(`chat:typing:stop`, handleStopTyping)
 	socket.on(`chat:message`, handleMessage)
+
+	// SEND INITIAL DATA
+
+	const messages = await Message
+		.query(qb => qb.limit(30))
+		.orderBy(`-created_at`)
+		.fetchAll({withRelated: [`student`]})
+	socket.emit(`chat:messages`, messages.toJSON())
 
 	function handleStartTyping() {
 		g.chat.typing = addStudent(g.chat.typing)
@@ -150,14 +227,6 @@ io.on(`connection`, async socket => {
 			socket.emit(`chat:message:failure`, {message: `Unexpected failure - please try again`})
 		}
 	}
-
-	// SEND INITIAL DATA
-
-	const messages = await Message
-		.query(qb => qb.limit(30))
-		.orderBy(`-created_at`)
-		.fetchAll({withRelated: [`student`]})
-	socket.emit(`chat:messages`, messages.toJSON())
 
 })
 
