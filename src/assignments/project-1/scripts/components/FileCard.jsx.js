@@ -25,7 +25,7 @@ class FileCard extends React.Component {
 	{error 
     ? (
   <figure>  
-      <button className="dismiss" onClick={() => this.props.unmount()}>❌&nbsp;Dismiss</button>  
+      <button className="dismiss" onClick={() => this.props.unmount(this.props.card)}>❌&nbsp;Dismiss</button>  
       <figcaption title={error}>
       <span className="filename failure">{error}</span>
     </figcaption>

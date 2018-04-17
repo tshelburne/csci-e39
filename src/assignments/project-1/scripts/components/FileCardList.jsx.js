@@ -17,12 +17,12 @@ class FileCardList extends React.Component {
   
   render () {
     return (
-<ul className="FileCardList card-list component list--images">
-	{this.props.cards.map(card => this.state.hiddenCards.includes(card)
+<ul className="FileCardList card-list list--images">
+	{this.props.cards.map(card => this.state.hiddenCards.some(c => c.id === card.id)
       ? '' 
       : (
   <li key={card.id}>
-    <FileCard card={card} unmount={() => this.unmount(card)} />
+    <FileCard card={card} unmount={(card) => this.unmount(card)} />
   </li>
         )
   )}
