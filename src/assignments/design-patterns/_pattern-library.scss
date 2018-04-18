@@ -1,2 +1,18 @@
 @import 'normalize';
-@import 'layout';
+input[type="file"]{display:none;}
+@supports not (-ms-fill: background) {
+input[type="file"] {
+	align-items: flex-start;
+ 	text-align: center;
+ 	box-sizing: border-box;
+  	display: inline-block;
+	font-size: 16px;
+	position: absolute;
+	clip-path: url(#clipping);
+	margin-left: -100px;
+	margin-top:13px;
+	&:focus {
+		outline: none;
+	}
+}
+}

@@ -1,0 +1,13 @@
+ul, ol {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	display:grid;
+	align-items: center;
+	justify-items: center;
+	grid-template-columns: repeat(auto-fill, minmax(200px,1fr));
+}
+
+li {
+	list-style-type: none;
+}
