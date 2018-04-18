@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
 import Carousel from './carousel.jsx'
 import Uploader from '../../ui/components/uploader.jsx'
 import ProgressBar from './progressbar.jsx'
@@ -10,7 +9,6 @@ const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-
 	return (
 		<div className="container">
 
@@ -18,20 +16,18 @@ const Uploads = ({uploads, actions}) => {
 				<Carousel />
 			</header>
 
-			<aside>
-		      	<section class="uploader-input">
-		      		<p>Upload images into your gallery</p>
-			        <form action="#">
-			            <label tabIndex="0" htmlFor="uploader" className="uploader">
-			            Upload Files
-			            <Uploader upload={actions.upload}/>
-			          </label>
-			        </form>
-		     	</section>
-				<section>
-					<ProgressBar title="In Progress" pendingFiles={pendingFiles}/>
-				</section>
-			</aside>
+	      	<section className="test1">
+		        <form action="#">
+		            <label tabIndex="0" htmlFor="uploader" className="uploader">
+		            Upload Files
+		            <Uploader upload={actions.upload}/>
+		          </label>
+		        </form>
+	     	</section>
+			<section className="test2">
+				<h2>In Progress</h2>
+				<ProgressBar title="In Progress" pendingFiles={pendingFiles}/>
+			</section>
 
 			<main className="gallery-component" role="main">
 				<Gallery title="Completed" completedFiles={completedFiles}/>

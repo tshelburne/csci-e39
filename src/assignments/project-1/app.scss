@@ -2,8 +2,8 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css");
 @import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css");
+@import url("https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
 @import 'src/assignments/project-1/variables';
-@import 'src/assignments/project-1/header';
 @import 'src/assignments/project-1/carousel';
 @import 'src/assignments/project-1/uploader';
 @import 'src/assignments/project-1/progressbar';
@@ -38,9 +38,28 @@ body {
 @supports (display: grid) {
 	aside {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: 2fr 1fr;
 		grid-template-rows: auto;
+    grid-gap: 2px;
 		border: 2px solid pink;
 	}
 }
 
+
+
+.test1 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 2fr;
+  grid-gap: 2px;
+  border: 2px solid red;
+
+}
+
+.test2 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr;
+  grid-gap: 10px;
+  border: 2px solid yellow;
+}
