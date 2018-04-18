@@ -9,7 +9,7 @@ const ProgressBar = props => {
 
 				return (
 					<li key={id}>
-						<label>{name}</label>
+						<label className="label">{name}</label>
 						<progress value={progress} max="100">{progress}%</progress>
 					</li>
 					)

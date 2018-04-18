@@ -25,7 +25,7 @@ const Uploads = ({uploads, actions}) => {
 		        </form>
 	     	</section>
 			<section className="test2">
-				<h2>In Progress</h2>
+				<h2>Uploading</h2>
 				<ProgressBar title="In Progress" pendingFiles={pendingFiles}/>
 			</section>
 
