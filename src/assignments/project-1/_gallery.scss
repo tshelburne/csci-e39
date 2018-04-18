@@ -15,8 +15,6 @@
       text-align: center;
       padding: 0rem;
 
-      background-color: hsla(0, 0%, 30%, 1);
-
       @include bp( x-small ) {
         grid-template-columns: repeat(1, 1fr);
       }   
@@ -34,7 +32,7 @@
       list-style: none;
       img {
         width: 100%;
-        border: 5px solid #fff;
+        border: 0.4rem solid $white;
       }
       label {
         display: none;

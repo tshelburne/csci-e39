@@ -14,28 +14,27 @@ const Uploads = ({uploads, actions}) => {
 	return (
 		<div className="container">
 
-			<header>
-			    <Carousel />
+			<header role="banner">
+				<Carousel />
 			</header>
 
-	      <section class="uploader-input">
-	        <form action="#">
-	            <label tabIndex="0" htmlFor="uploader" className="uploader">
-	            Upload Files
-	            <Uploader upload={actions.upload} />
-	          </label>
-	        </form>
-	      </section>
+			<aside>
+		      	<section class="uploader-input">
+		      		<p>Upload images into your gallery</p>
+			        <form action="#">
+			            <label tabIndex="0" htmlFor="uploader" className="uploader">
+			            Upload Files
+			            <Uploader upload={actions.upload}/>
+			          </label>
+			        </form>
+		     	</section>
+				<section>
+					<ProgressBar title="In Progress" pendingFiles={pendingFiles}/>
+				</section>
+			</aside>
 
-			<section>
-				<h2>In Progress</h2>
-				<progress value="33" max="100">
-					<ProgressBar pendingFiles={pendingFiles}/>
-				</progress>
-			</section>
-
-			<main className="gallery-component">
-				<Gallery completedFiles={completedFiles}/>
+			<main className="gallery-component" role="main">
+				<Gallery title="Completed" completedFiles={completedFiles}/>
         	</main>
 
 		</div>

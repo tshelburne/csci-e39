@@ -10,7 +10,7 @@
 @import 'src/assignments/design-patterns/breakpoint';
 @import 'src/assignments/project-1/gallery';
 
-/* Default styles on body */
+/* Default styles for body */
 
 *, *:before, *:after { box-sizing: border-box; }
 
@@ -23,10 +23,24 @@ body {
   position: relative;
   font-size: 100%;
   background: $secondary-color;
-  background: -webkit-linear-gradient(to right, #FFD194, #D1913C);
-  background: linear-gradient(to right, #FFD194, #D1913C);
+  background: -webkit-linear-gradient(to right, $secondary-color, $quinary-color);
+  background: linear-gradient(to right, $secondary-color, $quinary-color);
 }
+
+// Fallback layout
+
+// Grid-based layout
 
 .container {
   padding: 1rem 0;
+	}
+
+@supports (display: grid) {
+	aside {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-template-rows: auto;
+		border: 2px solid pink;
+	}
 }
+

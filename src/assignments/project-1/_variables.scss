@@ -1,12 +1,14 @@
 /* Variables and mixins */
 
 // common variables
-
 $primary-font: "Poppins", Helvetica, Arial, sans-serif;
+$black: hsla(0, 0%, 0%, 1);
+$white: hsla(0, 0%, 100%, 1);
 $primary-color: hsla(0, 0%, 15%, 1); //lighten($primary-color, 10) = new lightness is 25%;
 $secondary-color: hsla(0, 0%, 95%, 1);
 $tertiary-color: hsla(110, 40%, 50%, 1);
-$black: #222;
+$quaternary-color: hsla(0, 0%, 5%, 1);
+$quinary-color: hsla(0, 0%, 50%, 1);
 
 $primary-hover-color: hsla(0, 0%, 5%, 1);
 $primary-active-color: hsla(0, 0%, 95%, 1);
