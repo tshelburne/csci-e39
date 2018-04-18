@@ -15,7 +15,7 @@ const Uploads = ({uploads, actions}) => {
 		<UploaderA11y upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
-		<PendingFiles pendingFiles={FAKEFILES} />
+		<PendingFiles pendingFiles={pendingFiles} />
 
 		<CompletedFiles completedFiles={completedFiles} />
 	</div>

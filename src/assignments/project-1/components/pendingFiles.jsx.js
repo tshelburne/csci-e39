@@ -27,15 +27,15 @@ class PendingFiles extends React.Component {
 		const {pendingFiles} = this.props;
 		const checkLength = pendingFiles.length;
 		if(checkLength === 0) {
-			return "pendingFiles sr-only"
+			return 'hide'
 		}
 		else {
-			return "pendingFiles"
+			return null
 		}
 	}
 
 	render() {
-		return <div className={this.reveal()}>
+		return <div className={['pendingFiles', this.reveal()].join(' ')}>
 		<h2>In Progress</h2>
 		<ul>
 			{this.props.pendingFiles.map(file => {
