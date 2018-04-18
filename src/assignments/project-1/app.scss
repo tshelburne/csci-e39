@@ -1,0 +1,82 @@
+@import url(https://fonts.googleapis.com/css?family=PT+Sans);
+
+@import url(https://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+
+$primary-color: rgba(40, 172, 226, 1);
+$box-shadow: 1px 1px 1px rgba(150,150,150,.6);
+
+button {
+	background-color: transparent;
+	border: 2px solid $primary-color;
+	border-radius: 1px;
+	font-weight: bold;
+	padding: .5rem 1rem;
+	text-transform: uppercase;
+	transition: all .2s ease-in-out;
+	cursor: pointer;
+	box-shadow: 1px 1px 1px rgba(150,150,150,.6);
+	
+	&:hover {
+		background-color: darken($primary-color, 5%);
+		box-shadow: none;
+		color: #fff;
+	}
+}
+
+//for chrome & safari
+progress[value]::-webkit-progress-bar {
+	border-radius: 1px;
+	background-color: #fff;
+	height: 20px;
+	box-shadow: $box-shadow;
+}
+
+progress[value]::-webkit-progress-value {
+	background-image: linear-gradient(to right top, $primary-color, darken($primary-color, 15%));
+	transition: all .2s linear;
+	box-shadow: $box-shadow;
+}
+
+//for firefox
+::-moz-progress-bar {
+  background: $primary-color;
+	background-image: linear-gradient(to right top, $primary-color, darken($primary-color, 15%));
+	transition: all .2s linear;
+	box-shadow: $box-shadow;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  -webkit-appearance: none;
+   appearance: none;
+	//for firefox
+	border: none;
+	height: 20px;
+	background-color: #fff;
+	//IE10
+	color: $primary-color;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.uploader {
+	cursor: pointer;
+	border: 2px solid $primary-color;
+	border-radius: 1px;
+	padding: .5rem 1rem;
+	display: block;
+	font-weight: bold;
+	margin: 0 auto;
+	margin-top: 1rem;
+	display: inline-block;
+	transition: all .2s ease-in-out;
+	text-transform: uppercase;
+	box-shadow: $box-shadow;
+	
+	&:hover {
+		background-color: $primary-color;
+		color: #fff;
+	}
+}

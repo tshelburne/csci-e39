@@ -1,12 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
+import AppBar from 'material-ui/AppBar'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <div>
+	return <MuiThemeProvider>
+		<div>
+		<AppBar />
 		<h1>Upload Images</h1>
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
@@ -36,7 +40,8 @@ const Uploads = ({uploads, actions}) => {
 				</li>
 			})}
 		</ul>
-	</div>
+		</div>
+	</MuiThemeProvider>
 }
 
 const statusPropType = PropTypes.shape({

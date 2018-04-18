@@ -7,7 +7,7 @@ const App = ({auth, ...props}) => {
 		case `init`: return <span>Authorizing</span>
 		case `failure`: return <span>{auth.message}</span>
 
-		default: return <Module {...props} />
+		default: return	<Module {...props} />
 	}
 }
 
