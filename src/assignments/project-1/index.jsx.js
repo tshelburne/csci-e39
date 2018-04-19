@@ -28,12 +28,13 @@ const Uploads = ({uploads, actions}) => {
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
 
-				return <li key={id}>
-				<figure>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					<figcaption>{name}</figcaption>
-					{!!error && <p className="failure">{error}</p>}
-				</figure>
+				return
+				<li key={id}>
+					<figure>
+						{!error && <img src={url} style={{maxWidth: `200px`}} />}
+						<figcaption>{name}</figcaption>
+						{!!error && <p className="failure">{error}</p>}
+					</figure>
 				</li>
 
 			})}
