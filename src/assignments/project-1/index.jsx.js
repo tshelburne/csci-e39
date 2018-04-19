@@ -26,43 +26,39 @@ class Uploads extends React.Component {
 		  </ul>
 		</nav>
 		{page === 'gallery' && <div className="gallery-page">
-			<p>Hi im a nice gallery</p>
+			<h2>My Gallery</h2>
+			<ul>
+				{completedFiles.map(file => {
+					const {id, name, url, error} = file
+
+					return <li key={id}>
+						<label>{name}</label>
+						{!error && <img src={url} style={{maxWidth: `200px`}} />}
+						{!!error && <p className="failure">{error}</p>}
+					</li>
+				})}
+			</ul>
+			<h1>Upload Images</h1>
+			{/* do not delete this uploader component */}
+			<Uploader upload={actions.upload} />
+
+			<h2>In Progress</h2>
+			<ul>
+				{pendingFiles.map(file => {
+					const {id, name, progress} = file
+
+					return <li key={id}>
+						<label>{name}</label>
+						<progress value={progress} max="100">{progress}%</progress>
+					</li>
+				})}
+			</ul>
 		</div>
 		}
 		{page === 'faqs' && <div className="faq-page">
 			<p>Hi im an FAQs page</p>
 		</div>
 		}
-
-		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
-
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
 	</div>/* end of outer div */
 	}/* end of render function */
 }
