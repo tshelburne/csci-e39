@@ -30,7 +30,7 @@ const Uploads = ({uploads, actions}) => {
 
 				return <li key={id}>
 				<figure>
-					<label>{name}</label>
+					<figcaption>{name}</figcaption>
 					{!error && <img src={url} style={{maxWidth: `200px`}} />}
 					{!!error && <p className="failure">{error}</p>}
 				</figure>
