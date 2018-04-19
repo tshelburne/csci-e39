@@ -16,7 +16,7 @@ $secondary-color: hsla(160, 100%, 30%, 1);
 .album {
 	background-color: #efefef;
 	margin: 0;
-	padding: 0;
+	padding: 10px;
 	list-style-type: none;
 	list-style-position: inside;
 	display: grid;
@@ -26,12 +26,17 @@ $secondary-color: hsla(160, 100%, 30%, 1);
 		padding: 0;
 		figure {
 			margin: 0;
+			padding: 10px;
+			border: 1px solid $secondary-color;
+			background-color: lighten( $secondary-color, 68% );
 			figcaption {
-				background-color: #ddd;
-				text-align: center;
+				font: normal normal normal .5em/1.2em sans-serif;
+				color: black;
+				margin: 1em 0;
 			}
 			img {
 				width: 100%;
+
 			}			
 		}
 
