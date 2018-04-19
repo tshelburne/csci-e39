@@ -1,0 +1,40 @@
+.in-progress {
+	background-color: red;
+	&:before{
+	    content:attr(aria-label);
+	    font-size:120%;
+	    font-weight:bold;
+	    background-color: pink;
+	}
+}
+.album {
+	background-color: #efefef;
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: repeat( 3, 1fr);
+}
+progress:not([value]) {
+	background-color: #efefef;
+}
+progress[value] {
+	appearance: none;
+	width: 250px;
+	height: 20px;
+	&::-webkit-progress-bar {
+		background-color: #eee;
+		border-radius: 2px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	}
+	&::-webkit-progress-value {
+  		background-image:
+			-webkit-linear-gradient(-45deg, 
+			                       transparent 33%, rgba(0, 0, 0, .1) 33%, 
+			                       rgba(0,0, 0, .1) 66%, transparent 66%),
+			-webkit-linear-gradient(top, 
+			                       rgba(255, 255, 255, .25), 
+			                       rgba(0, 0, 0, .25)),
+			-webkit-linear-gradient(left, #09c, #f44);
+			border-radius: 2px; 
+			background-size: 35px 20px, 100% 100%, 100% 100%;
+		}
+}
