@@ -33,8 +33,9 @@ const Uploads = ({uploads, actions}) => {
 					<label>{name}</label>
 					{!error && <img src={url} style={{maxWidth: `200px`}} />}
 					{!!error && <p className="failure">{error}</p>}
-				</li>
 				</figure>
+				</li>
+
 			})}
 		</ul>
 	</div>
