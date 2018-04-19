@@ -7,23 +7,27 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
-		<label>Upload Images</label>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
+		<section className="uploader-container">
+			<h1>Upload Images</h1>
+			<label>choose files</label>
+			{/* do not delete this uploader component */}
+			<Uploader upload={actions.upload} />
+			{/* do not delete this uploader component */}
 
-		<ul aria-label="In Progress" className="in-progress">
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
+			<ul aria-label="In Progress" className="in-progress">
+				{pendingFiles.map(file => {
+					const {id, name, progress} = file
 
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-		
+					return <li key={id}>
+						<label>{name}</label>
+						<progress value={progress} max="100">{progress}%</progress>
+					</li>
+				})}
+			</ul>
+		</section>
+
 		<h1>Gallery</h1>
+		<p>This is the </p>
 		<ul className="album">
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file

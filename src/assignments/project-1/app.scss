@@ -1,9 +1,23 @@
 @import 'normalize'；
 
 /* color */
-$prim-color: hsla(210, 100%, 40%, 1);
+$primary-color: hsla(20, 100%, 50%, 1);
 $secondary-color: hsla(160, 100%, 30%, 1);
 
+* {
+	font: normal normal normal 16px/1.2em sans-serif;
+}
+.uploader-container {
+	background-color: lighten( $primary-color, 47%);
+	text-align: center;
+	padding: 1em;
+	h1 {
+		font-weight: bold;
+		font-size: 3em;
+		text-transform: uppercase;
+		letter-spacing: .2em;
+	}
+}
 .in-progress {
 	background-color: red;
 	&:before{
