@@ -9,10 +9,10 @@ const Uploads = ({uploads, actions}) => {
 	return <div>
 		<section className="uploader-container">
 			<h1>Upload Images</h1>
-			<label>choose files</label>
 			{/* do not delete this uploader component */}
 			<Uploader upload={actions.upload} />
 			{/* do not delete this uploader component */}
+			<label htmlFor="file">choose files</label>
 
 			<ul aria-label="In Progress" className="in-progress">
 				{pendingFiles.map(file => {
