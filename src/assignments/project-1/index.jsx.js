@@ -6,7 +6,8 @@ const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <div>
+	return
+	<div>
 		<label>Upload Images</label>
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
@@ -22,15 +23,18 @@ const Uploads = ({uploads, actions}) => {
 				</li>
 			})}
 		</ul>
-		
+
 		<h1>Gallery</h1>
 		<ul className="album">
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
 
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
+				return
+				<li key={id}>
+					<figure>
+						{!error && <img src={url} style={{minWidth: `200px`}} />}
+						<figcaption>{name}</figcaption>
+					</figure>
 					{!!error && <p className="failure">{error}</p>}
 				</li>
 			})}
