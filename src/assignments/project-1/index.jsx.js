@@ -46,7 +46,7 @@ class Uploads extends React.Component {
 				<Uploader upload={this.props.actions.upload} />
 				</label>
 				<br></br>
-				<p className="caveat">Must be &lt;500MB and an image</p>
+				<p className="caveat">Must be &lt;500KB and an image</p>
 				<br></br>
 
 				{pendingFiles.map(file => {
