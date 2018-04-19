@@ -12,8 +12,7 @@ const Uploads = ({uploads, actions}) => {
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
-		<label>Upload Images</label>
-		<ul>
+		<ul aria-label="In Progress" className="in-progress">
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
 
@@ -23,9 +22,9 @@ const Uploads = ({uploads, actions}) => {
 				</li>
 			})}
 		</ul>
-
-		<h2>Completed</h2>
-		<ul>
+		
+		<h1>Gallery</h1>
+		<ul className="album">
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
 
