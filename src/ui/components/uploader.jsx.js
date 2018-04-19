@@ -16,7 +16,8 @@ class Uploader extends React.Component {
 	}
 
 	render() {
-		return <div className = "upload-container"><input className = "uploader" multiple type="file" onChange={this.handleFiles} /></div>
+		const {upload, ...inputProps} = this.props
+		return <div className = "upload-container"><input {...inputProps} className = "uploader" multiple type="file" onChange={this.handleFiles} /></div>
 	}
 
 }
