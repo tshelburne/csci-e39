@@ -1,0 +1,167 @@
+
+$react-accent: PeachPuff;
+$react-background: #292c34;
+
+$breakpoint: 768px;
+$font-heading: 'Permanent Marker', sans-serif;
+$font-default: 'Oswald', sans-serif;
+$color-upload-default: #6C757D;
+
+$default-transition-duration: .3s;
+$default-transition-timing: ease-in-out;
+
+body {
+	text-align: center;
+	color: white;
+	background: $react-background;
+}
+
+nav{
+	text-align: center;
+	padding-right: 60px;
+}
+
+.faq{
+	border: 2px dashed goldenrod;
+	margin: 100px;
+}
+
+.main-container {
+	border: 2px dashed goldenrod;
+	margin: 25px;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+	grid-gap: 10px;
+	margin: 0 auto;
+	padding: 20px;
+}
+
+.album-wrapper {
+	grid-column: span 2;
+}
+
+li {
+	list-style-type: none;
+	display: inline;
+}
+
+a{
+	padding: 5px;
+	color: $react-accent;
+}
+
+.upload-header {
+	font-family: $font-heading;
+	color: $react-accent;
+	font-size: 45px;
+}
+
+h2 {
+	color: $react-accent;
+	font-family: $font-heading;
+}
+
+.upload-container {
+	margin: 0 auto;
+	position: relative;
+}
+
+.uploader {
+ 	&::-webkit-file-upload-button {
+			display: block;
+			padding: 14px 24px;
+			background-color: $color-upload-default;
+			color: #ffffff;
+			width: 150px;
+			height: 50px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		&:hover {
+			background-color: darken($color-upload-default, 10%);
+			transition: $default-transition-duration $default-transition-timing;
+		}
+		&:focus{
+			outline: -webkit-focus-ring-color auto 5px;
+		}
+	}
+
+
+}
+
+progress {
+	-webkit-appearance: none;
+	height: 20px;
+	width: 300px;
+	&::-webkit-progress-bar{
+		background-color: #fbf7f5;
+		box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+		border-radius: 40px;
+		padding: 2px;
+	}
+	&::-webkit-progress-value {
+		border-radius: 15px;
+		background:
+		-webkit-linear-gradient(45deg, transparent, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%),
+		-webkit-linear-gradient(top, rgb(208, 218, 232), rgb(9, 36, 79)),
+		-webkit-linear-gradient(left, rgb(135, 146, 163), #becce2);
+	}
+	&::-moz-progress-bar {
+		background-color: blue;
+		height: 20px;
+		width: 300px;
+	}
+}
+
+.img-container {
+	display: inline-block;
+	margin: 5px;
+	border: 2px solid $react-accent;
+}
+
+img{
+	max-width: 100%;
+	height: auto;
+}
+
+label {
+	display: none;
+}
+
+
+.description{
+	grid-row: 1;
+	background-color: black;
+	padding: 10px;
+	border-radius: 10px;
+}
+
+.btn {
+	height: 50px;
+	color: white;
+	border-radius: 5px;
+	background-color: $color-upload-default;
+	padding: 10px;
+	margin: 5px;
+	border: none;
+  	font-weight: bold;
+	cursor: pointer;
+	transition: all $default-transition-duration $default-transition-timing;
+	&:hover, &:focus {
+	background-color: darken($color-upload-default, 10%);
+	}
+}
+
+input{
+	display: block;
+	margin: 0 auto;
+	width: 200px;
+	border-radius: 5px;
+}
+
+.msg-block{
+	height: 100px;
+}
