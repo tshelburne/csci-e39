@@ -16,15 +16,21 @@ $secondary-color: hsla(160, 100%, 30%, 1);
 	margin: 0;
 	padding: 0;
 	list-style-type: none;
+	list-style-position: inside;
 	display: grid;
+	grid-gap: 10px;
 	grid-template-columns: repeat( 3, 1fr);
-	figcaption {
-		background-color: #ddd;
-		text-align: center;
+	li {
+		padding: 0;
+		figcaption {
+			background-color: #ddd;
+			text-align: center;
+		}
+		img {
+			width: 100%;
+		}
 	}
-	img {
-		width: 100%;
-	}
+
 }
 progress:not([value]) {
 	background-color: #efefef;
