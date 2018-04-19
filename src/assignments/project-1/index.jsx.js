@@ -29,10 +29,12 @@ const Uploads = ({uploads, actions}) => {
 				const {id, name, url, error} = file
 
 				return <li key={id}>
+				<figure>
 					<label>{name}</label>
 					{!error && <img src={url} style={{maxWidth: `200px`}} />}
 					{!!error && <p className="failure">{error}</p>}
 				</li>
+				</figure>
 			})}
 		</ul>
 	</div>
