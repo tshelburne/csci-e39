@@ -2,11 +2,38 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 
-const Uploads = ({uploads, actions}) => {
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
+class Uploads extends React.Component {
+ 
+ 	constructor(props) {
+ 		super(props)
+ 		this.state = {
+ 			page: 'gallery',
+ 		}
+ 	}
+ 	//any functions here
+
+  	render() {
+ 		const {page} = this.state
+ 		const {uploads, actions} = this.props 
+		const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
+		const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
+		<nav>
+		  <ul>
+		    <li><a href="javascript:void(0)" onClick={() => this.setState({page: 'gallery'})}>Gallery</a></li>
+		    <li><a href="javascript:void(0)" onClick={() => this.setState({page: 'faqs'})}>FAQs</a></li>
+		  </ul>
+		</nav>
+		{page === 'gallery' && <div className="gallery-page">
+			<p>Hi im a nice gallery</p>
+		</div>
+		}
+		{page === 'faqs' && <div className="faq-page">
+			<p>Hi im an FAQs page</p>
+		</div>
+		}
+
 		<h1>Upload Images</h1>
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
@@ -36,7 +63,8 @@ const Uploads = ({uploads, actions}) => {
 				</li>
 			})}
 		</ul>
-	</div>
+	</div>/* end of outer div */
+	}/* end of render function */
 }
 
 const statusPropType = PropTypes.shape({
