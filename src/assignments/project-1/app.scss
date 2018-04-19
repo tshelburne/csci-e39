@@ -1,0 +1,283 @@
+//resources:
+//button - https://codemyui.com/simple-box-shadow-button-hover-animation/
+//progress-bar - https://css-tricks.com/html5-progress-element/
+
+//colors ----------------------------
+$base-color:rgba(12, 12, 12, 1);
+$header-text-color:rgba(200, 200, 200, 1);
+$accent-color-1:hsla(95, 47%, 59%, 1);
+$accent-color-2:hsla(25, 100%, 69%, 1);
+$accent-color-3:hsla(330, 80%, 68%, 1);
+$accent-color-4:hsla(277, 46%, 62%, 1);
+$accent-color-5:hsla(49, 72%, 62%, 1);
+//fonts ------------------------------
+$font-family-header:"Raleway", Arial, Helvetica, sans-serif;
+$font-family-body:"Roboto", sans-serif;
+//mixins -----------------------------
+@mixin box-shadow-containers ($color){
+	box-shadow: 0 0 0.3em $color;
+}
+
+
+
+//main styles ----------
+html { box-sizing: border-box; }
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+body {
+	background: $base-color;
+	padding: 2em;
+	color:$header-text-color;
+	font-family: $font-family-body;
+	font-size:1.1rem;
+	min-height: 100vh;
+}
+.header {
+	margin-top: 0;
+	font-family: $font-family-header;
+	font-size:1.5rem;
+}
+.example-container {
+	background: lighten($base-color, 5);
+	margin: 4vh 0;		
+	padding: 7vh 2vh;		
+	text-align: center;
+	border-radius: 2px;
+}
+
+//button----------------
+button {
+	background:$base-color;
+	color:$accent-color-1;	
+	border:1px solid $accent-color-1;
+	border-radius: 2px;
+	padding: 0.6em 1.2em;
+	cursor:pointer;
+	transition:all 0.3s ease;
+	&:active, &:hover, &:focus {
+		color: $header-text-color;
+    border-color: adjust-hue($accent-color-1, 45deg);    
+		box-shadow:0 0 0.8em adjust-hue($accent-color-1, 45deg);  	
+  }	
+}
+.button-container{	
+	@include box-shadow-containers($accent-color-1);
+}
+
+//progress bar -----------------
+progress[value]{
+	-webkit-appearance: none;
+  -moz-appearance: none;
+	appearance:none;
+	border:none;	
+	background-color:$base-color;
+	//for IE 10
+	color:$accent-color-2;
+	width:100%;
+	height:1.8em;	
+}
+progress[value]::-webkit-progress-bar{	
+	background-color:$base-color;	
+	box-shadow:0 0 0.4em hsla(25, 100%, 69%, 0.5);
+	border-radius: 2px;
+}
+progress[value]::-webkit-progress-value{	
+	background-color:$accent-color-2;
+	border-radius: 2px;
+}
+progress[value]::-moz-progress-bar{
+	background-color:$accent-color-2;
+	border-radius: 2px;
+}
+.bar-container{	
+	@include box-shadow-containers($accent-color-2);
+}
+
+//uploader ---------------------
+.uploader {	
+	background-color: $base-color;
+	color:$accent-color-4;	
+	border:1px solid $accent-color-4;
+	border-radius: 2px;	
+	padding: 0.6em 1.2em;
+	cursor: pointer;
+	transition:all 0.3s ease;
+	&:active, &:hover, &:focus {
+		color:$header-text-color;
+		border-color: adjust-hue($accent-color-4, 45deg);    
+		box-shadow:0 0 0.8em adjust-hue($accent-color-4, 45deg);
+	}	
+}
+.uploader-input {
+	opacity:0;
+	height:0;
+	display:block;	
+}
+.file-input-container{
+	@include box-shadow-containers($accent-color-4);
+}
+
+.image-container{	
+	@include box-shadow-containers($accent-color-3);
+}
+
+//image styling
+
+li {
+	list-style: none; 
+}
+.compl-img-name{
+	display: block;
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+
+//-----------------------------
+//grid layout
+
+body {
+	max-width:1200px;
+	margin:0 auto;
+}
+body > * { padding:1em;}
+
+/*IE fallback*/
+main {
+	padding:0;	
+}
+main > *{
+	padding:1em;
+}
+
+
+/*grid layout--------------------------*/
+@supports(display:grid){
+	body > *, main > *{
+		padding:0;
+	}
+	body{
+		margin:0;
+		max-width:none;
+		display:grid;
+		grid-row-gap: 3vh;
+		grid-column-gap: 2vw;
+		grid-template-areas: "header"
+							 "main"
+							 "footer";		
+		grid-template-columns: minmax(100px, 1fr);
+		grid-template-rows: minmax(80px, max-content) 2fr  minmax(80px, max-content);
+	}	
+	
+	header  {grid-area: header;}
+	main    {grid-area: main;}
+	footer  {grid-area: footer;}
+
+	.wrapper {
+			display:grid;						
+			grid-gap: 0.5em;
+			grid-template-columns: 1fr;						
+		}	
+
+	@media(min-width:768px){
+		body{
+			grid-template-areas: "header header "
+							 	 "main main"							 
+							 	 "footer  footer";
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: minmax(80px, max-content) 2fr minmax(80px, max-content);
+		}
+		.wrapper{
+			grid-template-columns: 1fr 1fr;			
+		}
+		
+		.image-container{
+			grid-column: 2/3;
+			grid-row: 1/4;
+		}	
+		.bar-container, .file-input-container{
+			grid-column: 1/2;
+		}
+		.file-input-container{
+			grid-row: 1/2;
+		}
+		.bar-container{
+			grid-row: 2/3;
+		}
+		.button-container{
+			grid-column: 1/2;
+			grid-row: 3/4;
+		}
+	}
+
+	@media(min-width:1200px){
+		body{
+			grid-template-areas: "header header header"
+							 	 "main main  main"							 
+							 	 "footer  footer footer";
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: minmax(80px, max-content) 2fr minmax(80px, max-content);
+		}
+		.wrapper{
+			grid-template-columns: repeat(3, 1fr);			
+		}
+		
+		.image-container{
+			grid-column: 2/4;
+			grid-row: 1/4;
+		}	
+		.bar-container, .file-input-container{
+			grid-column: 1/2;
+		}
+		.file-input-container{
+			grid-row: 1/2;
+		}
+		.bar-container{
+			grid-row: 2/3;
+		}
+		.button-container{
+			grid-column: 1/2;
+			grid-row: 3/4;
+		}
+		
+	}
+}
+
+
+//------navigation
+
+nav{
+	float:left;
+
+	li{
+		display: inline;
+		padding-right: 3em;
+		a{
+			display: inline-block;
+			text-decoration:none;
+			padding: 1em;
+			color:darken($accent-color-4, 5);
+			&:active, &:hover, &:focus {
+				color:$header-text-color;
+				border-color: adjust-hue($accent-color-4, 45deg);    
+				box-shadow:0 0 0.8em adjust-hue($accent-color-4, 45deg);
+			}
+		}
+	}
+}
+
+
+//---component
+
+.ComponentBorder-green {
+	@extend .example-container;
+  	box-shadow:0 0 0.8em adjust-hue($accent-color-1, 45deg);
+}
+
+
+
+
+
+
+
+

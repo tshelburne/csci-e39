@@ -7,6 +7,7 @@ class Uploader extends React.Component {
 	constructor() {
 		super(...arguments)
 		autobind(this)
+		
 	}
 
 	handleFiles({target: {files}}) {
@@ -15,8 +16,18 @@ class Uploader extends React.Component {
 		}
 	}
 
+	
 	render() {
-		return <input multiple type="file" onChange={this.handleFiles} />
+		return (
+		<div className="example-container file-input-container">
+			<h2 className="header">Upload Images</h2>
+			<form className="file-form">
+				<label tabIndex="0" htmlFor="uploader" className="uploader" onChange={this.handleFiles} >UPLOAD</label>
+				<input id="uploader"  onChange={this.handleFiles}  multiple type="file" />
+			</form> 
+		</div>
+	);	
+			
 	}
 
 }
