@@ -40,7 +40,7 @@ class Uploads extends React.Component {
 
 		{page === 'gallery' && <section id="gallery-page">
 			<h2>Welcome to my gallery</h2>
-			<p>This is a place to display favorite images. Please add yours!</p>	
+			<p>This is a place to display favorite images. Please add yours using the Upload link above!</p>	
 			<div id="gallery-images">
 
 				{completedFiles.map(file => {
@@ -59,18 +59,18 @@ class Uploads extends React.Component {
 
 		{page === 'upload' && <section id="uploads-page">
 			<h2>Upload Your Pics</h2>
-			<p>Once you have uploaded the image, go to the Gallery page to view.</p>
+			<p>The maximum file size is 500kb</p>
+			<p>Once you have uploaded your images, go to the Gallery page to view.</p>
 			{/* do not delete this uploader component */}
 			<Uploader upload={actions.upload} />
 
-			<h2>In Progress</h2>
 			<ul>
 				{pendingFiles.map(file => {
 					const {id, name, progress} = file
 
 					return <li key={id}>
 						<label>{name}</label>
-						<progress value={progress} max="100">{progress}%</progress>
+						<progress value={progress} max="100"></progress>
 					</li>
 				})}
 			</ul>

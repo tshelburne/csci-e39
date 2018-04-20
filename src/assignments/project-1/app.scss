@@ -136,9 +136,11 @@ dd {
 /*
  * Form Controls
  */
+.uploader-button-container {
+	padding: 1em 0;
+}
 
 button {
-	margin: 1em 0;
 	background: $primary-color;
 	color: $default-font-color;
 	font-family: $default-font-family;
@@ -223,12 +225,13 @@ progress[value] {
 .uploader {
 	@extend button;
 	@include fa-icon("\f093");
+	cursor: pointer;
 }
 
 /* the real button, hidden */
 .uploader-input {
   opacity: 0;
-	height: 0;
+	/*height: 0;*/
 	display: block;
 	&:focus{
 		+label {
