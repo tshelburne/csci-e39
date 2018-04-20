@@ -36,30 +36,30 @@ class Uploads extends React.Component {
 		  </ul>
 		</nav>
 
-		<section id="welcome">
+		<div className="elastic-spacer-top" >&nbsp;</div>
+
+		{page === 'gallery' && <section id="gallery-page">
 			<h2>Welcome to my gallery</h2>
-			<p>Here are some of my four-legged friends and their friends. Please add yours!</p>	
-		</section>
+			<p>This is a place to display favorite images. Please add yours!</p>	
+			<div id="gallery-images">
 
-		<div className="elastic-spacer-top" ></div>
-
-		{page === 'gallery' && <div id="gallery-page">
-			<ul>
 				{completedFiles.map(file => {
 					const {id, name, url, error} = file
 
-					return <li key={id}>
-						<label>{name}</label>
+					return <div>
+						
 						{!error && <img src={url} style={{maxWidth: `200px`}} />}
 						{!!error && <p className="failure">{error}</p>}
-					</li>				
+					</div>			
 				})}
-			</ul>
-		</div>
+
+			</div>
+		</section>
 		}
 
-		{page === 'upload' && <div id="uploads-page">
-			<h1>Upload Images</h1>
+		{page === 'upload' && <section id="uploads-page">
+			<h2>Upload Your Pics</h2>
+			<p>Once you have uploaded the image, go to the Gallery page to view.</p>
 			{/* do not delete this uploader component */}
 			<Uploader upload={actions.upload} />
 
@@ -74,10 +74,11 @@ class Uploads extends React.Component {
 					</li>
 				})}
 			</ul>
-		</div>
+		</section>
 		}
 
 		{page === 'faqs' && <section id="faq-page">
+			<h2>Frequently Asked Questions</h2>
 			<dl>
 				{faqlist.map(faq => {
 
@@ -88,16 +89,20 @@ class Uploads extends React.Component {
 		</section>
 		}
 
-		<div className="elastic-spacer-bottom"></div>
+		<div className="elastic-spacer-bottom">&nbsp;</div>
 
-		<footer>
-		 	<hr />
-		 	<p>By Luann Ebert for csci-e39. April 2018</p>
-		</footer>
+		<Footer author="Luann Ebert" date="April 2018"/>
+
 
 	</div>/* end of outer div required by react*/
 	}/* end of render function */
 }
+
+const Footer = ( {author, date} ) => 
+		<footer>
+		 	<hr />
+		 	<p>By {author} for csci-e39. {date}</p>
+		</footer>	
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
