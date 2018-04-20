@@ -120,14 +120,6 @@ $secondary-color: hsla(60, 100%, 30%, 1);
 		font-weight: 100;
 		color: darken( $secondary-color, 28% );
 		margin-bottom: 3em;
-		span {
-			display: inline-block;
-			color: white;
-			background-color: darken($primary-color,%30);
-			font-size: .5em;
-			padding: .3em .6em;
-			border-radius: 3px;
-		}
 	}
 }
 .album {
@@ -146,29 +138,13 @@ $secondary-color: hsla(60, 100%, 30%, 1);
 		figure {
 			margin: 0;
 			padding: 10px;
-			display: grid;
-			grid-template-columns: auto 1em;
-			grid-template-rows: auto 3em;
-			grid-template-areas:
-				"img img"
-				"name trash";
-			img {
-				width: 100%;
-				grid-area: img;
-			}
-			.trash {
-				content:"delete";
-				background-image: url(img/trash.png);
-				background-repeat: no-repeat;
-    			background-size: 1em auto;
-				grid-area: trash;
-
-			}
 			figcaption {
 				font: normal normal normal .5em/1.2em sans-serif;
 				color: black;
 				margin: 1em 0;
-				grid-area: name;
+			}
+			img {
+				width: 100%;
 
 			}			
 		}

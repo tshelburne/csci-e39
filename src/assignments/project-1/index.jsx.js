@@ -2,12 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 import {Button} from './components/Button.jsx'
-import {Number} from './components/Number.jsx'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
-	const BtnText = "Choose Images";
 
 	return <div className="uploader-container">
 		<section className="upload-files">
@@ -15,7 +13,7 @@ const Uploads = ({uploads, actions}) => {
 			{/* do not delete this uploader component */}
 			<Uploader upload={actions.upload} />
 			{/* do not delete this uploader component */}
-			<Button text={BtnText}/>
+			<Button text="Choose Files"/>
 
 			<ul aria-label="In Progress" className="in-progress">
 				{pendingFiles.map(file => {
@@ -26,19 +24,22 @@ const Uploads = ({uploads, actions}) => {
 						<label>{name}</label>
 					</li>
 				})}
+				{/*<li><progress value="50" max="100"></progress><label>test</label></li>*/}
+				{/*<li><progress value="50" max="100"></progress><label>test</label></li>*/}
+				{/*<li><progress value="50" max="100"></progress><label>test</label></li>*/}
+				{/*<li><progress value="50" max="100"></progress><label>test</label></li>*/}
 			</ul>
 		</section>
 		<section className="gallery">
 			<h1>Gallery</h1>
-			<p>To choose an image from your computer, click the <span>{BtnText}</span> button. Then, pick the image you want to upload, then select Open. </p>
+			<p>To choose an image from your computer, select the image icon. Then, select Or upload your own image to pick the image you want to upload. Select the file, then select Open. </p>
 			<ul className="album">
 				{completedFiles.map(file => {
 					const {id, name, url, error} = file
 
-					return <li key={id} onClick={() => this.parentNode.removeChild(this)}>
+					return <li key={id} onClick={() => alert('test')}>
 					<figure>
 						{!error && <img src={url} />}
-						<Number text={id} />
 						<figcaption>{name}</figcaption>
 						{!!error && <p className="failure">{error}</p>}
 					</figure>
