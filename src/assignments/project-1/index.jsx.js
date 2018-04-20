@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
+import {Button} from './components/Button.jsx'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
@@ -12,7 +13,7 @@ const Uploads = ({uploads, actions}) => {
 			{/* do not delete this uploader component */}
 			<Uploader upload={actions.upload} />
 			{/* do not delete this uploader component */}
-			<label className="btn" htmlFor="file">choose files</label>
+			<Button text="Choose Files"/>
 
 			<ul aria-label="In Progress" className="in-progress">
 				{pendingFiles.map(file => {
@@ -23,12 +24,10 @@ const Uploads = ({uploads, actions}) => {
 						<label>{name}</label>
 					</li>
 				})}
-				{/*
-					<li><progress value="50" max="100"></progress><label>test</label></li>
-					<li><progress value="50" max="100"></progress><label>test</label></li>
-					<li><progress value="50" max="100"></progress><label>test</label></li>
-					<li><progress value="50" max="100"></progress><label>test</label></li>
-				*/}
+				{/*<li><progress value="50" max="100"></progress><label>test</label></li>*/}
+				{/*<li><progress value="50" max="100"></progress><label>test</label></li>*/}
+				{/*<li><progress value="50" max="100"></progress><label>test</label></li>*/}
+				{/*<li><progress value="50" max="100"></progress><label>test</label></li>*/}
 			</ul>
 		</section>
 		<section className="gallery">
