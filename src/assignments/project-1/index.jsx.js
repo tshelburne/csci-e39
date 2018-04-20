@@ -1,41 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
+import CompletedFiles from './CompletedFiles.jsx'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
-		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
+		<header>
+			<center><h1>Comic Characters</h1></center>
+		</header>
+		<main>
+			<section id="uploader">
+				<h2>Upload Images</h2>
+					<form>
+						{/* do not delete this uploader component */}
+						<Uploader upload={actions.upload} />
+						{/* do not delete this uploader component */}
+					</form>
+			</section>
+			<section id="processing">
+				<h2>In Progress</h2>
+				<ul>
+					{pendingFiles.map(file => {
+						const {id, name, progress} = file
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
+						return <li key={id}>
+							<label>{name}</label>
+							<progress value={progress} max="100">{progress}%</progress>
+						</li>
+					})}
+				</ul>
+			</section>
+			<CompletedFiles files={completedFiles}/>
+		</main>
 	</div>
 }
 
