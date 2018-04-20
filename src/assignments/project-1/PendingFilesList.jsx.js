@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import PendingFile from './PendingFile.jsx'
 
 function PendingFilesList(props) {
     return (
@@ -6,11 +7,10 @@ function PendingFilesList(props) {
             <h2>{props.title}</h2>
             <ul>
                 {props.pendingFiles.map(file => {
-                    const {id, name, progress} = file
+                    const { id } = file
 
                     return <li key={id}>
-                        <label>{name}</label>
-                        <progress value={progress} max="100">{progress}%</progress>
+                        <PendingFile file={file} />
                     </li>
                 })}
             </ul>

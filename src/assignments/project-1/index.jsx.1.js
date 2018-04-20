@@ -7,62 +7,51 @@ import PendingFilesList from './PendingFilesList.jsx';
 
 class Uploads extends React.Component {
 	state = {
-		selectedImage: "",
-		uploaderActive: false,
-	}
-
-	onImageClick(ev) {
-		this.setState( {selectedImage: ev.target} )
-		console.log(ev.target)
+		sidebarActive: false,
 	}
 
 	toggleSidebar() {
-		this.setState( {uploaderActive: !this.state.uploaderActive} )
-		console.log(this.uploaderActive)
+		this.setState( {sidebarActive: !this.state.sidebarActive} )
+		console.log(this.sidebarActive)
 	}
 
 	render() {
 		const {uploads, actions} = this.props
 		const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 		const completedFiles = uploads.files.filter(({progress}) => !progress)
-		const buttonText = this.state.uploaderActive ? 'Toggle Navigation Off' : 	'Toggle Navigation On';
-		const {uploaderActive} = this.state
-		const url = this.state.selectedImage.url
+		const buttonText = this.state.sidebarActive ? 'Toggle Sidebar Off' : 	'Toggle Sidebar On';
+		const {sidebarActive} = this.state
 		
 		return (
-			<div className="gridContainer">
-				<header className="mainHeader grid" role="banner">
-					<h1>Main Header</h1>
-				</header>
-				<nav className="mainNavigation" role="navigation">
-					Navigation Here
-				</nav>
-				<main className="mainContent" role="main">
-					Big Image
-					{url &&
-						<img src={url} />
-					}
-				</main>
-				<aside className="foobar">
-					{ !uploaderActive && 
-						<button className="nav-button" onClick={this.toggleSidebar.bind(this)}>+ Upload Image</button>
-					}
-					{ !!uploaderActive && 
-						<div className="uploader">
+		<div className="container">
+	        <header className="mainHeader" role="banner">
+				<h1>Image Viewer 2</h1>
+			</header>
+			<nav className="mainNavigation" role="navigation">
+				<ul>
+					<li>Upload</li>
+					<li>FAQ</li>
+				</ul>
+	        </nav>
+			<button className="nav-button" onClick={this.toggleSidebar.bind(this)}>{buttonText}</button>
+			<main className="main" role="main">
+				<div className="grid-container">
+					{sidebarActive && 
+						<aside className="sidebar">
 							<h2>Upload Image</h2>
+							{/* do not delete this uploader component */}
 							<Uploader upload={actions.upload} />
+							{/* do not delete this uploader component */}
 							<PendingFilesList title='In Progress' pendingFiles={pendingFiles} />
-							<button className="nav-button" onClick={this.toggleSidebar.bind(this)}>Close</button>
-						</div>
-					}
-				</aside>
-				<aside className="sidebar" role="complementary">
-					<CompletedFilesList title='Thumbnails' completedFiles={completedFiles} onImageClick={this.onImageClick} />
-				</aside>
-				<footer className="mainFooter" role="contentinfo">
-					Footer Content
-				</footer>
-	        </div>
+						</aside>
+					}	
+					<div>
+					<p>Large Image Here</p>
+					</div>
+					<CompletedFilesList title='Completed' completedFiles={completedFiles} />
+				</div>
+			</main>
+		</div>
 		)
 	}
 }

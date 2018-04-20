@@ -17,40 +17,96 @@ body {
 	background: $react-background;
 }
 
-.grid-container {
-	border: 2px dashed goldenrod;
+h1, h2, h3, ul, aside, footer, section, picture, p {
+    margin: 0;
+}
+
+@media (min-width: 480px) {
+    .gridContainer {
+        display: grid;
+        grid-template-rows: auto;
+        grid-gap: 15px 20px;
+        grid-template-columns: 1fr 3fr;
+        grid-template-areas: "header header" "nav nav" "sidebar main" "footer footer";
+    }
+}
+
+.gridContainer {
 	display: grid;
-	grid-template-columns: 250px 1fr;
-	padding: 10px;
-	height: 100vh;
-    grid-gap: 30px;
+	grid-template-rows: auto;
+	grid-gap: 15px 20px;
+	grid-template-columns: 4fr 1fr;
+	grid-template-areas:
+		"header header"
+		"nav nav"
+		"main foobar"
+		"main sidebar"
+		"footer footer";
 }
 
-.grid-container>.main:nth-child(1) {
-	grid-column: span 2;
-
+.mainHeader {
+    //background-color: hsla(50, 100%, 50%, 1);
+    grid-area: header;
 }
 
-.main {
-	background: darken($react-background, 7);
-	padding: 10px;
+.mainNavigation {
+    //background-color: hsla(100, 100%, 50%, 1);
+    grid-area: nav;
+}
+
+.mainContent {
+    /* temp */
+    min-height: 10vh;
+    //background-color: hsla(150, 100%, 50%, 1);
+	grid-area: main;
+	border: 2px dashed goldenrod;
+}
+
+.uploader {
+	grid-area: uploader;
 }
 
 .sidebar {
-	background: lighten($react-background, 7);
-	padding: 10px;
+    //background-color: hsla(200, 100%, 50%, 1);
+	grid-area: sidebar;
+	border: 2px dashed goldenrod;
 }
 
-button {
-	border: none;
-	background: $react-accent;
-	font-family: $font-default;
-	padding: 20px;
-	border-radius: 0;
-	cursor: pointer;
-	transition: .4s ease;
-	
-	&:hover, &:active, &:focus {
-		background: adjust-hue($react-accent, 210);
-	}
+.foobar {
+	grid-area: foobar;
+	border: 2px dashed goldenrod;	
 }
+
+.mainFooter {
+    /* temp */
+    min-height: 10vh;
+    //background-color: hsla(250, 100%, 50%, 1);
+    grid-area: footer;
+}
+
+ol, ul {
+	list-style: none;
+	padding: 0;
+}
+
+a {
+    text-decoration: inherit;
+}
+
+.photograph {
+	border: 1px black solid;
+	width: 200px;
+	height: 200px;
+	padding: 10px;
+	margin: 25px;
+    background-color: white;
+    -webkit-box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
+}
+
+.photograph img {
+	max-width: 200px;
+	max-height: 200px;
+}
+
