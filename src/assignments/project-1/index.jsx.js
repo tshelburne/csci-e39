@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 import CompletedFiles from './CompletedFiles.jsx'
+import PendingFiles from './PendingFiles.jsx'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
@@ -20,19 +21,7 @@ const Uploads = ({uploads, actions}) => {
 						{/* do not delete this uploader component */}
 					</form>
 			</section>
-			<section id="processing">
-				<h2>In Progress</h2>
-				<ul>
-					{pendingFiles.map(file => {
-						const {id, name, progress} = file
-
-						return <li key={id}>
-							<label>{name}</label>
-							<progress value={progress} max="100">{progress}%</progress>
-						</li>
-					})}
-				</ul>
-			</section>
+			<PendingFiles files={pendingFiles}/>
 			<CompletedFiles files={completedFiles}/>
 		</main>
 	</div>
