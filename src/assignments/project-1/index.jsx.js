@@ -79,13 +79,13 @@ class Uploads extends React.Component {
 
 		{page === 'faqs' && <section id="faq-page">
 			<h2>Frequently Asked Questions</h2>
-			<dl>
+			<List>
 				{faqlist.map(faq => {
 
 					return <div><dt>{faq.question}</dt>
 					<dd>{faq.answer}</dd></div>
 				})}
-			</dl>
+			</List>
 		</section>
 		}
 
@@ -102,7 +102,12 @@ const Footer = ( {author, date} ) =>
 	<footer>
 		 <hr />
 		 <p>By {author} for csci-e39. {date}</p>
-	</footer>	
+	</footer>
+
+const List = ({children, ...props}) =>
+	<dl {...props} >
+	{React.Children.map(children, child => <div>{child}</div>)}
+	</dl>	
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
