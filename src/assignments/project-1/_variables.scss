@@ -15,22 +15,27 @@ $primary-active-color: hsla(0, 0%, 95%, 1);
 $tertiary-hover-color: hsla(110, 30%, 50%, 1);
 
 $primary-border: 1px solid hsla(0, 0%, 0%, 1);
-$secondary-border: 1px solid hsla(0, 0%, 50%, 1);
+$secondary-border: 1px solid hsla(0, 0%, 100%, 1);
+$tertiary-border: 1px solid hsla(0, 0%, 50%, 1);
 
 // uploader component variables
 $uploader-size: 1.2rem;
 $uploader-spacing: 0rem;
-$uploader-case: uppercase;
+$uploader-case: initial;
 $uploader-height: 1rem;
 $uploader-width: 8rem;
 $uploader-padding: 1rem 2rem;
 $uploader-radius: 0.25rem;
 $uploader-transition: all 0.3s;
 
-// progress bar component variables
+$uploader-text-align: center;
+
+// progressbar component variables
 $progress-height: 2rem;
 $progress-width: 15rem;
 $progress-radius: 0.15rem;
+
+$progress-text-align: center;
 
 // button component variables
 $button-size: 1.3rem;

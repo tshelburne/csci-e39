@@ -1,3 +1,46 @@
+/* Styles for progressbar component */
+
+
+
+@supports (display: grid) {
+	.progressbar-component {
+	  display: grid;
+	  grid-template-columns: 1fr 1fr 1fr;
+	  grid-template-rows: auto;
+	  text-align: $progress-text-align;
+	  border: 2px solid goldenrod;
+
+	  h2 {
+	    //visibility: hidden;
+	    padding: 2rem;
+
+	font-size: $uploader-size;
+	text-transform: $uploader-case;
+	letter-spacing: $uploader-spacing;
+	min-width: $uploader-width;
+	color: $primary-color;
+	padding: $uploader-padding;
+	border: 2px dotted pink;
+
+	  }
+
+	  ul {
+	  	padding-left: 0rem;
+	  }
+
+	  ul li {
+	    padding: 2rem;
+	    display: flex;
+	    justify-content: center;
+	    border: 2px dotted green;
+	  }
+	}
+
+	.label {
+	  display: none;
+	}
+}
+
 progress {
 	-webkit-appearance: none; /* resets the default appearance */
 	-moz-appearance: none;
@@ -8,7 +51,8 @@ progress {
 
 	&::-webkit-progress-bar {
 		background-color: $secondary-color;
-		border-radius: $progress-radius;
+		//border: $secondary-border;
+		//border-radius: $progress-radius;
 		@include progress-shadow;
 	}
 

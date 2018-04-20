@@ -1,4 +1,16 @@
-.uploader { /* inputs don't accept before / after styling - style the label instead*/
+/* Styles for uploader component */
+
+@supports (display: grid) {
+	.uploader-component {
+	  display: grid;
+	  grid-template-columns: 1fr;
+	  grid-template-rows: auto;
+	  text-align: $uploader-text-align;
+	  //border: 2px solid peachpuff;
+	}
+}
+
+.uploader { /* inputs don't accept before / after styling - style the label instead */
 	font-size: $uploader-size;
 	text-transform: $uploader-case;
 	letter-spacing: $uploader-spacing;
@@ -7,11 +19,10 @@
 	background: $secondary-color;
 	color: $primary-color;
 	padding: $uploader-padding;
-	border: $primary-border;
-
-	-webkit-border-radius: $button-radius;
-	-moz-border-radius: $button-radius;
-	border-radius: $button-radius;
+	border: $secondary-border;
+	//-webkit-border-radius: $button-radius;
+	//-moz-border-radius: $button-radius;
+	//border-radius: $button-radius;
 
 	-webkit-transition: $button-transition;
 	transition: $button-transition;
@@ -36,7 +47,7 @@
 	&:active {
 		background-color: $primary-active-color;
 		color: $primary-color;
-		border: $secondary-border;
+		border: $tertiary-border;
 		@include box-shadow;
 	}
 }

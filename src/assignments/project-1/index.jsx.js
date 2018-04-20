@@ -16,15 +16,16 @@ const Uploads = ({uploads, actions}) => {
 				<Carousel />
 			</header>
 
-	      	<section className="test1">
+	      	<section className="uploader-component">
 		        <form action="#">
-		            <label tabIndex="0" htmlFor="uploader" className="uploader">
-		            Upload Files
-		            <Uploader upload={actions.upload}/>
+		            <label tabIndex="0" for="uploader" className="uploader">
+		            	Upload images
+		            	<Uploader upload={actions.upload}/>
 		          </label>
 		        </form>
 	     	</section>
-			<section className="test2">
+
+			<section className="progressbar-component">
 				<h2>Uploading</h2>
 				<ProgressBar title="In Progress" pendingFiles={pendingFiles}/>
 			</section>
