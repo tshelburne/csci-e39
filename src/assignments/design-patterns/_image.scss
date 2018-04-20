@@ -1,4 +1,4 @@
-img {
+img.image-thumbnail {
 	max-width: 100%;
 	vertical-align: middle;
 	height: 200px;
@@ -12,7 +12,7 @@ li:hover {
 	label {
 		display: inline-block;
 	}
-	img {
+	img.image-thumbnail {
 		filter: none;
 		transition: 0.4s;
 	}

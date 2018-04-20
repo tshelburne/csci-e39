@@ -37,8 +37,8 @@ const Uploads = ({uploads, actions}) => {
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
 				
-				return<li key={id} className="image-thumbnail">
-					{!error && <img src={url} alt={name} />}
+				return<li key={id}>
+					{!error && <a href={url} data-lity><img src={url} alt={name} title={name} className="image-thumbnail"/></a>}
 					{!!error && <p className="failure">{error}</p>}
 					{/*<label>{name}</label>*/}
 				</li>
