@@ -3,12 +3,10 @@ import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 
 const CompletedFiles = ({files}) => {
-	const completedFiles = files.filter(({progress}) => !progress)
-
 	return <section id="completed">
     <h2>Completed</h2>
     <ul>
-      {completedFiles.map(file => {
+      {files.map(file => {
         const {id, name, url, error} = file
 
         return <li key={id}>
