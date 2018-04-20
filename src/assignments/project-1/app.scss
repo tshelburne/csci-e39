@@ -13,32 +13,13 @@ body {
   color: $primaryColor;
 }
 
-header {
-  background-color: $primaryColor;
-  color: $headlineColor;
-  height: 70px;
-  margin-bottom: 10px;
-
-  center {
-    h1 {
-      font-size: 3em;
-      font-weight: 900;
-      font-style: italic;
-      text-align: center;
-      text-transform: uppercase;
-      margin: 0;
-      letter-spacing: 2px;
-      padding: 0.15em;
-    }
-  }
-}
-
 main {
   display: grid;
   width: 100%;
-  grid-template-columns: auto auto auto;
-  grid-template-rows: 1;
-  grid-template-areas: 'uploader processing completed';
+  grid-template-areas: 'head head'
+                      'uploader completed'
+                      'processing completed';
+  grid-template-columns: auto auto;
 
   h1, h2, h3 {
     font-family: $headerFont;
@@ -47,6 +28,27 @@ main {
     font-weight: 900;
     text-transform: uppercase;
     text-align: center;
+  }
+
+  header#head {
+    grid-area: head;
+    background-color: $primaryColor;
+    color: $headlineColor;
+    height: 70px;
+    margin-bottom: 10px;
+
+    center {
+      h1 {
+        font-size: 3em;
+        font-weight: 900;
+        font-style: italic;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 0;
+        letter-spacing: 2px;
+        padding: 0.15em;
+      }
+    }
   }
 
   #uploader, #processing, #completed {

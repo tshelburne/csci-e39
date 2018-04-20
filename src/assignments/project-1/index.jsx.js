@@ -9,10 +9,10 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
-		<header>
-			<center><h1>Comic Characters</h1></center>
-		</header>
 		<main>
+			<header id="head">
+				<center><h1>Comic Characters</h1></center>
+			</header>
 			<section id="uploader">
 				<h2>Upload Images</h2>
 					<form>
