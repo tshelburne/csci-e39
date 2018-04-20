@@ -6,42 +6,49 @@ const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <div>
-		<section className="uploader-container">
+	return <div className="uploader-container">
+		<section className="upload-files">
 			<h1>Upload Images</h1>
 			{/* do not delete this uploader component */}
 			<Uploader upload={actions.upload} />
 			{/* do not delete this uploader component */}
-			<label htmlFor="file">choose files</label>
+			<label className="btn" htmlFor="file">choose files</label>
 
 			<ul aria-label="In Progress" className="in-progress">
 				{pendingFiles.map(file => {
 					const {id, name, progress} = file
 
 					return <li key={id}>
-						<label>{name}</label>
 						<progress value={progress} max="100">{progress}%</progress>
+						<label>{name}</label>
 					</li>
+				})}
+				{/*
+					<li><progress value="50" max="100"></progress><label>test</label></li>
+					<li><progress value="50" max="100"></progress><label>test</label></li>
+					<li><progress value="50" max="100"></progress><label>test</label></li>
+					<li><progress value="50" max="100"></progress><label>test</label></li>
+				*/}
+			</ul>
+		</section>
+		<section className="gallery">
+			<h1>Gallery</h1>
+			<p>To choose an image from your computer, select the image icon. Then, select Or upload your own image to pick the image you want to upload. Select the file, then select Open. </p>
+			<ul className="album">
+				{completedFiles.map(file => {
+					const {id, name, url, error} = file
+
+					return <li key={id} onClick={() => alert('test')}>
+					<figure>
+						{!error && <img src={url} />}
+						<figcaption>{name}</figcaption>
+						{!!error && <p className="failure">{error}</p>}
+					</figure>
+					</li>
+
 				})}
 			</ul>
 		</section>
-
-		<h1>Gallery</h1>
-		<p>This is the </p>
-		<ul className="album">
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-
-				return <li key={id}>
-				<figure>
-					{!error && <img src={url} />}
-					<figcaption>{name}</figcaption>
-					{!!error && <p className="failure">{error}</p>}
-				</figure>
-				</li>
-
-			})}
-		</ul>
 	</div>
 }
 
