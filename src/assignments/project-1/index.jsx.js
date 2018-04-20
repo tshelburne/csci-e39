@@ -99,10 +99,10 @@ class Uploads extends React.Component {
 }
 
 const Footer = ( {author, date} ) => 
-		<footer>
-		 	<hr />
-		 	<p>By {author} for csci-e39. {date}</p>
-		</footer>	
+	<footer>
+		 <hr />
+		 <p>By {author} for csci-e39. {date}</p>
+	</footer>	
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
