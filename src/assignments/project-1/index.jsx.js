@@ -68,18 +68,17 @@ class Uploads extends React.Component {
 							<h2 className="gallery-heading">LIST OF WORKS</h2>
 							<br></br>	
 						</div>
+
 						<section className = "gallery-section">
-						{completedFiles.map(file => {
-							const {id, name, url, error} = file
-							return <div className="photolist" key={id}>
-								<label>{name}</label>
-								{!error && <img src={url} style={{maxWidth: `200px`}} />}
-								{!!error && <p className="failure">{error}</p>}
-							</div>})
-						}</section>
+
+							{completedFiles.map((file, index) => {
+								return <PhotoItem file={file} uploadCount={index} key={file.id}/>
+							}
+							)}
+						</section>
 					</div>
 				}
-		</div>	
+		</div>
 	}
 }
 
@@ -104,20 +103,45 @@ Uploads.propTypes = {
 	actions: PropTypes.object.isRequired
 }
 
-class GalleryToggleHeart extends React.Component {
-  constructor (props) {
- 	super(props);
-  }
 
-  render () {
-    return (
-      <div>
-      <p>Toggle to view</p>
-        <button className="gallery-toggle-button"  onClick={() => this.props.onClick()} >
-        </button>
-      </div>
-    )
-  }
+class PhotoItem extends React.Component {
+	constructor (props) {
+		super(props);
+		this.itemNumber = { counter: 1};
+	}
+
+	render() {
+		console.log('This is file upload number: ' + this.props.uploadCount);
+		return (
+			<div className="photolist" key={this.props.file.id}>
+				<label>{this.props.file.name}</label>
+				{!this.props.file.error && <img src={this.props.file.url} style={{maxWidth: `200px`}} />}
+				{!!this.props.file.error && <p className="failure">{this.props.file.error}</p>}
+			</div>
+		)
+	}
+}
+
+class GalleryToggleHeart extends React.Component {
+	constructor (props) {
+	 	super(props);
+
+	 	this.handleClick = () => {
+	 		this.setState({
+	 			counter: this.state.counter + 1
+	 		});
+	 	}
+	 }
+
+ 	render () {
+	    return (
+	      <div>
+	      <p>Toggle to view</p>
+	        <button className="gallery-toggle-button"  onClick={() => this.props.onClick()} >
+	        </button>
+	      </div>
+	    );
+	}
 }
 
 export default Uploads
