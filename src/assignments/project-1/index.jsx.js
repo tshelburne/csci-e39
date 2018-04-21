@@ -1,42 +1,75 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
+import completedFilesList from './CompletedFilesList.jsx'
+import CompletedFilesList from './CompletedFilesList.jsx'
+import List from './List.jsx'
+import PendingFilesList from './PendingFilesList.jsx'
+import ImageItem from './ImageItem.jsx';
 
-const Uploads = ({uploads, actions}) => {
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
+class Uploads extends React.Component {
+	state = {
+		activeImage: 0,
+		uploaderActive: false,
+	}
 
-	return <div>
-		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
+	toggleSidebar() {
+		this.setState( {uploaderActive: !this.state.uploaderActive} )
+		//console.log(this.uploaderActive)
+	}
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
-	</div>
+	render() {
+		const {uploads, actions} = this.props
+		const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
+		const completedFiles = uploads.files.filter(({progress}) => !progress)
+		const buttonText = this.state.uploaderActive ? 'Toggle Navigation Off' : 	'Toggle Navigation On';
+		const {activeImage, uploaderActive} = this.state
+		
+		return (
+			<div className="gridContainer">
+				<header className="mainHeader grid" role="banner">
+					<h1>Main Header</h1>
+				</header>
+				<nav className="mainNavigation" role="navigation">
+					Navigation Here
+				</nav>
+				<main className="mainContent" role="main">
+					Big Image {activeImage}
+					{uploads.files[activeImage] &&
+						<img className="photograph" src={uploads.files[activeImage].url} />
+					}
+				</main>
+				<aside className="foobar">
+					{ !uploaderActive && 
+						<button className="nav-button" onClick={this.toggleSidebar.bind(this)}><img src="./if_plus_1282963.png"/></button>
+					}
+					{ !!uploaderActive && 
+						<div className="uploader">
+							<h2>Upload Image</h2>
+							<Uploader upload={actions.upload} />
+							<PendingFilesList title='In Progress' pendingFiles={pendingFiles} />
+							<button className="nav-button" onClick={this.toggleSidebar.bind(this)}>Close</button>
+						</div>
+					}
+				</aside>
+				<aside className="sidebar" role="complementary">
+					<List>
+					{completedFiles.map((file, index) =>
+						<ImageItem
+						   id
+						   file={file}
+						   title="FooBar"
+						   onClick = {() => this.setState({activeImage: index})}
+						/>
+					)}
+					</List>
+				</aside>
+				<footer className="mainFooter" role="contentinfo">
+					Footer Content
+				</footer>
+	        </div>
+		)
+	}
 }
 
 const statusPropType = PropTypes.shape({

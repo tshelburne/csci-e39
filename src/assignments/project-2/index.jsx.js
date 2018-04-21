@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
+import List from './List.jsx'
+import Member from './Member.jsx'
 
 class Chat extends React.Component {
 
@@ -53,11 +55,11 @@ class Chat extends React.Component {
 			<h1>Chatroom</h1>
 
 			<h2>Members</h2>
-			<ul>
-				{classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
+			<List>
+				{classroom.students.map((student, index) =>
+					<Member id={student.id} key={student.id} name={student.name}></Member>
 				)}
-			</ul>
+			</List>
 
 			<h2>Messages</h2>
 			<ul>
