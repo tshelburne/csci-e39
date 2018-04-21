@@ -108,7 +108,22 @@ class Uploads extends React.Component {
 		return (
 			<div className="wrapper">
 				<header className="box">
-					<h1>Upload Images</h1>
+					<h1>Glimpses of NOLA</h1>
+					<p>
+						For the past six years I have traveled down with friends to the annual New Orleans Jazz & Heritage Festival 
+						which is held over two weekends in late April and early May. The festival, referred to as JazzFest, is one of 
+						the largest music festivals in the world and is held at the Fair Grounds Race Course in the northern part of the 
+						city.
+					</p>
+					<p>
+						Coming to JazzFest and visiting New Orleans for a few days in mid-Spring has become something of a ritual 
+						and a way to enjoy warm weather ahead of when it finally arrives in New England. And also experience the legendary 
+						festiveness and excitement of the Big Easy.
+					</p>
+					<p>
+						The photos on display here provide a glimpse of the sites of the city. Laissez les bons temps rouler!
+					</p>
+					<h1 className="uploader_title">Upload More Images</h1>
 					{/* do not delete this uploader component */}
 					<Uploader upload={actions.upload} />
 					{/* do not delete this uploader component */}
