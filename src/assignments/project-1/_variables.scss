@@ -1,6 +1,6 @@
 /* Variables and mixins */
 
-// common variables
+// color variables
 $primary-font: "Poppins", Helvetica, Arial, sans-serif;
 $black: hsla(0, 0%, 0%, 1);
 $white: hsla(0, 0%, 100%, 1);
@@ -12,6 +12,8 @@ $quinary-color: hsla(0, 0%, 50%, 1);
 
 $primary-hover-color: hsla(0, 0%, 5%, 1);
 $primary-active-color: hsla(0, 0%, 95%, 1);
+$secondary-hover-color: hsla(0, 0%, 100%, 1);
+$secondary-active-color: hsla(0, 0%, 15%, 1);
 $tertiary-hover-color: hsla(110, 30%, 50%, 1);
 
 $primary-border: 1px solid hsla(0, 0%, 0%, 1);
@@ -23,34 +25,40 @@ $uploader-size: 1.2rem;
 $uploader-spacing: 0rem;
 $uploader-case: initial;
 $uploader-height: 1rem;
-$uploader-width: 8rem;
+$uploader-width: 11rem;
 $uploader-padding: 1rem 2rem;
+$uploader-margin: 0.4rem;
 $uploader-radius: 0.25rem;
 $uploader-transition: all 0.3s;
 
-$uploader-text-align: center;
+$uploader-component-mobile-text-align: center;
+$uploader-component-desktop-text-align: left;
+$uploader-component-padding-bottom: 0.5rem;
+$uploader-component-desktop-breakpoint: 3.5fr 1fr 1fr;
+$uploader-content-padding: 0rem;
+$uploader-content-padding-bottom: 1rem;
 
 // progressbar component variables
 $progress-height: 2rem;
 $progress-width: 15rem;
 $progress-radius: 0.15rem;
 
-$progress-text-align: center;
+$progress-component-text-align: center;
+$progress-component-height: 5rem;
+$progress-component-padding: 1.2rem;
 
 // button component variables
-$button-size: 1.3rem;
-$button-spacing: 0.1rem;
-$button-case: uppercase;
+$button-size: 1.2rem;
+$button-spacing: 0rem;
+$button-case: initial;
 $button-height: 1rem;
-$button-width: 12rem;
+$button-width: 11rem;
 $button-padding: 1rem 2rem;
+$button-margin: 0.4rem;
 $button-radius: 0.25rem;
 $button-transition: all 0.3s;
-
-$button-content-state-1: "⭕";
-$button-content-state-2: "🔴";
-$button-content-marign: 0.5rem;
-$button-vertical-align: middle;
+$button-border: none;
+$button-text-align: center;
 
 
 // mixins

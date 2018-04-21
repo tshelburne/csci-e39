@@ -2,12 +2,15 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Carousel from './carousel.jsx'
 import Uploader from '../../ui/components/uploader.jsx'
+import Button from './button.jsx'
 import ProgressBar from './progressbar.jsx'
 import Gallery from './gallery.jsx'
+
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
+
 
 	return (
 		<div className="container">
@@ -17,16 +20,19 @@ const Uploads = ({uploads, actions}) => {
 			</header>
 
 	      	<section className="uploader-component">
-		        <form action="#">
-		            <label tabIndex="0" for="uploader" className="uploader">
-		            	Upload images
-		            	<Uploader upload={actions.upload}/>
-		          </label>
-		        </form>
+		      	<p className="content">Use the following image uploader to create a gallery. You can also follow along online for latest travel stories.</p>
+			    <form action="#">
+			           	<label tabIndex="0" htmlFor="uploader" className="uploader">
+			            	Upload
+			            <Uploader upload={actions.upload}/>
+			        </label>
+			    </form>
+
+				<Button cssclass="button" content="Follow" openThisSite="window.open('http://google.com','_blank')" />
+
 	     	</section>
 
 			<section className="progressbar-component">
-				<h2>Uploading</h2>
 				<ProgressBar title="In Progress" pendingFiles={pendingFiles}/>
 			</section>
 
@@ -37,7 +43,6 @@ const Uploads = ({uploads, actions}) => {
 		</div>
 	)
 }
-
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,

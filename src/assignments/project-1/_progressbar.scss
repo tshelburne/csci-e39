@@ -1,38 +1,22 @@
 /* Styles for progressbar component */
 
-
-
 @supports (display: grid) {
+
 	.progressbar-component {
+		
 	  display: grid;
-	  grid-template-columns: 1fr 1fr 1fr;
+	  grid-template-columns: 1fr;
 	  grid-template-rows: auto;
-	  text-align: $progress-text-align;
-	  border: 2px solid goldenrod;
-
-	  h2 {
-	    //visibility: hidden;
-	    padding: 2rem;
-
-	font-size: $uploader-size;
-	text-transform: $uploader-case;
-	letter-spacing: $uploader-spacing;
-	min-width: $uploader-width;
-	color: $primary-color;
-	padding: $uploader-padding;
-	border: 2px dotted pink;
-
-	  }
+	  text-align: $progress-component-text-align;
 
 	  ul {
-	  	padding-left: 0rem;
+	  	height: $progress-component-height;
+	  	text-align: center;
 	  }
 
 	  ul li {
-	    padding: 2rem;
-	    display: flex;
-	    justify-content: center;
-	    border: 2px dotted green;
+	    padding: $progress-component-padding;
+	    list-style: none;
 	  }
 	}
 
@@ -42,10 +26,10 @@
 }
 
 progress {
-	-webkit-appearance: none; /* resets the default appearance */
+	-webkit-appearance: none; // resets the default appearance
 	-moz-appearance: none;
 	appearance: none;
-	border: none; /* gets rid of default border in Firefox. */
+	border: none; // gets rid of default border in Firefox.
 	width: $progress-width;
 	height: $progress-height;
 
@@ -53,7 +37,7 @@ progress {
 		background-color: $secondary-color;
 		//border: $secondary-border;
 		//border-radius: $progress-radius;
-		@include progress-shadow;
+		//@include progress-shadow;
 	}
 
 	&::-webkit-progress-value {

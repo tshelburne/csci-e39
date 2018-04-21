@@ -1,16 +1,29 @@
 /* Styles for uploader component */
 
 @supports (display: grid) {
+
+	.content {
+		padding-bottom: $uploader-content-padding-bottom;
+	}
+
 	.uploader-component {
 	  display: grid;
 	  grid-template-columns: 1fr;
 	  grid-template-rows: auto;
-	  text-align: $uploader-text-align;
-	  //border: 2px solid peachpuff;
-	}
+	  text-align: $uploader-component-mobile-text-align;
+	  padding-bottom: $uploader-component-padding-bottom;
+
+      @include bp( x-large ) {
+       	grid-template-columns: $uploader-component-desktop-breakpoint;
+       	.content {
+       		text-align: $uploader-component-desktop-text-align;
+			padding: $uploader-content-padding;
+			}
+      	}
+    } 
 }
 
-.uploader { /* inputs don't accept before / after styling - style the label instead */
+.uploader { // inputs don't accept before / after styling - style the label instead
 	font-size: $uploader-size;
 	text-transform: $uploader-case;
 	letter-spacing: $uploader-spacing;
@@ -19,7 +32,8 @@
 	background: $secondary-color;
 	color: $primary-color;
 	padding: $uploader-padding;
-	border: $secondary-border;
+	margin: $uploader-margin;
+	//border: $secondary-border;
 	//-webkit-border-radius: $button-radius;
 	//-moz-border-radius: $button-radius;
 	//border-radius: $button-radius;
@@ -40,14 +54,14 @@
 	touch-action: manipulation;
 
 	&:hover {
-		background-color: $primary-hover-color;
-		color: $secondary-color;
-		border: $primary-border;
+		background-color: $secondary-hover-color;
+		color: $primary-color;
+		//border: $primary-border;
 	}
 	&:active {
 		background-color: $primary-active-color;
 		color: $primary-color;
-		border: $tertiary-border;
+		//border: $tertiary-border;
 		@include box-shadow;
 	}
 }
@@ -60,11 +74,11 @@
 	top: 0;
 	left: 0;
 	opacity: 0;
-	display: block; /* to avoid taking up space */
+	display: block; // to avoid taking up space
 	//background-color: red;
 	&:focus {
-		+label { /* tab index */
-			background-color: $primary-hover-color;  /* for keyboard access */
+		+label { // tab index
+			background-color: $primary-hover-color;  // for keyboard access
 			color: $secondary-color;
 			
 		}
