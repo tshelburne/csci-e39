@@ -18,10 +18,18 @@ $secondary-color: hsla(60, 100%, 30%, 1);
 	text-align: center;
 	padding: 10px;
 	h1 {
-		font-weight: 100;
-		font-size: 1em;
+		font-weight: 800;
+		font-size: 1.1em;
 		text-transform: uppercase;
 		color: darken($primary-color, 20%);
+	}
+	p {
+		font-weight: 100;
+		font-size: .8em;
+		line-height: 1.4em;
+		color: darken( $secondary-color, 28% );
+		margin: 3em 0;
+		text-align: left;
 	}
 	input {
 		width: 0.1px;
@@ -111,10 +119,11 @@ $secondary-color: hsla(60, 100%, 30%, 1);
 	// background-color: lighten($secondary-color, 45%);
 	h1 {
 		font-weight: bold;
-		font-size: 2em;
+		font-size: 2.5em;
 		text-transform: uppercase;
 		letter-spacing: .1em;
 		margin-bottom: .5em;
+		text-align: center;
 	}
 	p {
 		font-weight: 100;
@@ -138,15 +147,31 @@ $secondary-color: hsla(60, 100%, 30%, 1);
 		figure {
 			margin: 0;
 			padding: 10px;
+			display: grid;
+			grid-template-columns: auto 1em;
+			grid-template-rows: auto 3em;
+			grid-template-areas:
+				"img img"
+				"name trash";
 			figcaption {
 				font: normal normal normal .5em/1.2em sans-serif;
 				color: black;
 				margin: 1em 0;
+				grid-area: name;
 			}
 			img {
 				width: 100%;
-
-			}			
+				grid-area: img;
+			}
+			.trash {
+				grid-area: transh;
+				width: 1em;
+				height: 1em;
+				background-image: url(img/trash.png);
+				background-repeat: no-repeat;
+    			background-size: 1em auto;
+				background-color: red;
+			}
 		}
 
 	}
