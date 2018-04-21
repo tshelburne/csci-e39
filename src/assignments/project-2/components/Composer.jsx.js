@@ -1,14 +1,16 @@
-import React from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 
-class Composer extends React.Component {
+import ReactEmojiSelector from 'react-emoji-selector'
+
+class Composer extends Component {
 
 	constructor() {
 		super(...arguments)
 		autobind(this)
 
-    this.state = {currentText: ``}
+    this.state = {currentText: ``, emojiPicker: false}
 	}
 
   onType(e) {
@@ -22,6 +24,11 @@ class Composer extends React.Component {
 		this.setState({currentText})
 	}
 
+  selectEmoji(emoji) {
+    const {currentText: prevText} = this.state
+    this.setState({currentText: prevText.concat(emoji.emoji)})
+  }
+
 	onSend(e) {
 		if (e.type === `keyup` && e.key !== `Enter`) return
 
@@ -33,11 +40,21 @@ class Composer extends React.Component {
 		this.setState({currentText: ``})
 	}
 
+  showHideEmoji() {
+    const emojiPicker = this.state.emojiPicker
+    this.setState({emojiPicker: !emojiPicker})
+  }
+
 	render() {
-    const {currentText} = this.state
+    const {currentText, emojiPicker} = this.state
 		const {chat, ...inputProps} = this.props
-		return <section><input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
+		return <section><input id="composer" value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
       <button disabled={currentText === ``} onClick={this.onSend}>Send</button>
+      <a onClick={this.showHideEmoji}>😁</a>
+      {emojiPicker && <ReactEmojiSelector
+                visibleAmount={10}
+                searchPlaceholder='Search emoji'
+                onSelect={(emoji) => this.selectEmoji(emoji)}/>}
     </section>
 	}
 
