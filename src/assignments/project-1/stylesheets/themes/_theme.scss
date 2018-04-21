@@ -2,10 +2,13 @@ $primary-color: rgba(150, 143, 179, 1);
 $primary-color: hsla(252, 19%, 63%, 1); // same as above
 $button-color: white;
 $button-background: hsl(0, 100%, 25%); // maroon
-$pendingFiles-border: darken($button-background, 15%);
+$completedFiles-value-background: desaturate(complement($button-background), 50%);
+$completedFiles-value-border: darken($completedFiles-value-background, 15%);
+$completedFiles-value-color: $button-color;
 $progress-color: $button-background;
-$progress-head-background: $button-background;
-$progress-head-color: $button-color;
+$pendingFiles-head-background: desaturate(complement($button-background), 50%);;
+$pendingFiles-head-color: $button-color;
+$pendingFiles-border: darken($pendingFiles-head-background, 15%);
 $img-name-color: $button-color;
-$img-name-background: $primary-color;
-$item-border: darken($button-background, 15%);
+$img-name-background: desaturate(complement($button-background), 50%);;
+$item-border: darken($img-name-background, 15%);
