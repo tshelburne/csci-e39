@@ -16,11 +16,19 @@ body {
 main {
   display: grid;
   width: 100%;
-  height: 90vh;
+  height: 95vh;
   grid-template-areas: 'head head'
                       'uploader completed'
                       'processing completed';
   grid-template-columns: auto auto;
+
+  @media only screen and (max-width : 800px) {
+    height: auto;
+    grid-template-areas: 'head head'
+                        'uploader uploader'
+                        'processing processing'
+                        'completed completed';
+  }
 
   h1, h2 {
     font-family: $headerFont;
@@ -40,19 +48,27 @@ main {
     grid-area: head;
     background-color: $primaryColor;
     color: $headlineColor;
-    height: 70px;
     margin-bottom: 10px;
+    text-align: center;
 
-    center {
-      h1 {
-        font-size: 3em;
-        font-weight: 900;
-        font-style: italic;
-        text-align: center;
-        text-transform: uppercase;
-        margin: 0;
-        letter-spacing: 2px;
-        padding: 0.15em;
+    h1 {
+      font-size: 3em;
+      font-weight: 900;
+      font-style: italic;
+      text-align: center;
+      text-transform: uppercase;
+      margin: 0;
+      letter-spacing: 2px;
+      padding: 0.15em;
+    }
+
+    p {
+      font-size: 0.8em;
+      margin: 0 auto;
+      width: 60%;
+
+      @media only screen and (max-width : 800px) {
+        width: 100%;
       }
     }
   }
@@ -76,9 +92,16 @@ main {
 
   section#uploader {
     grid-area: uploader;
+    text-align: center;
+
+    @media only screen and (max-width : 800px) {
+      h2 {
+        display: none;
+      }
+    }
 
     input[type=file]{
-      font-size: 1.2em;
+      font-size: 1em;
       padding: 2em;
       width: 80%;
     }
@@ -86,7 +109,7 @@ main {
     input[type=file]::-webkit-file-upload-button {
       border: $borderDefault;
       background: $primaryColor;
-      color: $backgroundColor;
+      color: white;
       font-family: $headerFont;
       text-transform: uppercase;
       font-weight: bold;

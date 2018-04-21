@@ -11,7 +11,9 @@ const Uploads = ({uploads, actions}) => {
 	return <div>
 		<main>
 			<header id="head">
-				<center><h1>Pictures of Dogs</h1></center>
+				<h1>Pictures of Dogs</h1>
+				<p>Welcome to Pictures of Dogs! Add "pug", "husky", "corgie", or "pitbull" to your image filenames.
+		    When you upload them here, they will automatically be sorted into the right dog album.</p>
 			</header>
 			<section id="uploader">
 				<h2>Upload Images</h2>
