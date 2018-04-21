@@ -11,7 +11,7 @@ const Uploads = ({uploads, actions}) => {
 	return <div>
 		<main>
 			<header id="head">
-				<center><h1>Comic Characters</h1></center>
+				<center><h1>Pictures of Dogs</h1></center>
 			</header>
 			<section id="uploader">
 				<h2>Upload Images</h2>
