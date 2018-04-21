@@ -55,7 +55,7 @@ class Chat extends React.Component {
 		return <main>
 		  <Header title="Chatroom" />
       
-      <aside>
+      <aside id="memberlist">
 			<h2>Members</h2>
 			<List>
 				{classroom.students.map((student, index) =>
@@ -64,7 +64,7 @@ class Chat extends React.Component {
 			</List>
 			</aside>
 			
-      <section>
+      <section id="messages">
 			<h2>Messages</h2>
 			<ul>
 				{chat.messages.map(({id, student, text, createdAt}) =>
@@ -76,7 +76,7 @@ class Chat extends React.Component {
 			</ul>
       </section>
       
-      <section>
+      <section id="typing">
 			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
 			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
 			<p>{this.getTypingMessage()}</p>
