@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+import PropTypes from '../support/prop-types'
 
 class Member extends Component {
 
@@ -16,10 +16,8 @@ class Member extends Component {
     }
 }
 
-const memberPropType = PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-})
+Member.propType = {
+    member: PropTypes.member.isRequired,
+}
 
 export default Member
-

@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import PropTypes from './support/prop-types'
 import autobind from 'class-autobind'
 import List from './components/List.jsx'
 import Member from './components/Member.jsx'
@@ -54,21 +54,16 @@ class Chat extends React.Component {
 
 }
 
-const studentPropType = PropTypes.shape({
-	id: PropTypes.number.isRequired,
-	name: PropTypes.string.isRequired,
-})
-
 Chat.propTypes = {
 	classroom: PropTypes.shape({
-		students: PropTypes.arrayOf(studentPropType).isRequired,
+		students: PropTypes.arrayOf(PropTypes.member).isRequired,
 	}).isRequired,
 	chat: PropTypes.shape({
-		typing: PropTypes.arrayOf(studentPropType).isRequired,
+		typing: PropTypes.arrayOf(PropTypes.member).isRequired,
 		messages: PropTypes.arrayOf(PropTypes.shape({
 			id: PropTypes.number.isRequired,
 			text: PropTypes.string.isRequired,
-			student: studentPropType,
+			member: PropTypes.member,
 			createdAt: PropTypes.instanceOf(Date).isRequired,
 		})).isRequired,
 		send: PropTypes.shape({
