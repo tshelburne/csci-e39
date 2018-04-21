@@ -16,18 +16,24 @@ body {
 main {
   display: grid;
   width: 100%;
+  height: 90vh;
   grid-template-areas: 'head head'
                       'uploader completed'
                       'processing completed';
   grid-template-columns: auto auto;
 
-  h1, h2, h3 {
+  h1, h2 {
     font-family: $headerFont;
     font-size: 1.5em;
     font-style: italic;
     font-weight: 900;
     text-transform: uppercase;
     text-align: center;
+  }
+
+  h3 {
+    font-size: 1em;
+    text-transform: uppercase;
   }
 
   header#head {
@@ -54,9 +60,18 @@ main {
   #uploader, #processing, #completed {
     background-color: $secondaryColor;
     border: $borderDefault;
-    padding: 0 20px;
     max-height: 100vh;
     overflow: auto;
+
+    ul {
+      padding: 1em 0;
+      margin: 1em 0;
+      border-bottom: 1px solid black;
+    }
+
+    figure {
+      margin: 0;
+    }
   }
 
   section#uploader {
@@ -85,6 +100,7 @@ main {
 
   section#completed {
     grid-area: completed;
+    text-align: center;
 
     ul {
       list-style: none;

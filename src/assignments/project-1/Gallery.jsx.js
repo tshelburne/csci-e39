@@ -5,13 +5,15 @@ import Uploader from '../../ui/components/uploader.jsx'
 const Gallery = ({breed}) => {
 	return <div>
     <h3>{breed.breedName}</h3>
+    <p>Welcome to Pictures of Dogs! Add "pug", "husky", "corgie", or "pitbull" to your image filenames.
+    When you upload them here, they will automatically be sorted into the right dog album.</p>
     <ul>
       {breed.files.map(file => {
         const {id, name, url, error} = file
 
         return <li key={id}>
           <label>{name}</label>
-          {!error && <img src={url} style={{maxWidth: `200px`}} />}
+          {!error && <img src={url} style={{maxWidth: `100%`}} />}
           {!!error && <p className="failure">{error}</p>}
         </li>
       })}
