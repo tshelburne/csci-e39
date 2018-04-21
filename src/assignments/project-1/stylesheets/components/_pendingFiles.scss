@@ -6,7 +6,6 @@
 	flex-direction: column;
 	align-items: center;
 	justify-content: flex-start;
-	// margin: 0 auto;
 	margin: $margin-sm;
 	opacity: 1;
 	position: absolute;
@@ -28,15 +27,12 @@
 	}
 
 	ul {
-		// display: flex;
-		// flex-wrap: wrap;
 		margin: $margin-sm;
 		padding: 0;
 
 		li {
 			display: flex;
 			align-items: center;
-			// justify-content: center;
 			list-style: none;
 			margin: 0 $margin-sm $margin-sm 0;
 			overflow-wrap: break-word;
