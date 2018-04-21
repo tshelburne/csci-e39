@@ -2,19 +2,22 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 import {Button} from './components/Button.jsx'
-
+import {GalleryName} from './components/GalleryName.jsx'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 	const BtnText="choose images"
+	const BtnTextMobile="+"
+	
+
 	return <div className="uploader-container">
 		<section className="upload-files">
 			<h1>Upload Images</h1>
 			{/* do not delete this uploader component */}
 			<Uploader upload={actions.upload} />
 			{/* do not delete this uploader component */}
-			<Button text={BtnText}/>
+			<Button text = { window.innerWidth > 768 ? BtnText : BtnTextMobile }/>
 			<p>To choose an image from your computer, select the "{BtnText}" button. Then, select your own image to pick the image you want to upload. Select the file, then select Open. </p>
 
 			<ul aria-label="In Progress" className="in-progress">
@@ -33,7 +36,7 @@ const Uploads = ({uploads, actions}) => {
 			</ul>
 		</section>
 		<section className="gallery">
-			<h1>Gallery</h1>
+			<GalleryName name="Sam" />
 			<p>To participate our 2018 campuse beauty shot contest, please upload your most stunning photos to this gallery! All your work will be reviewed by the professional photographers. Good luck!</p>
 			<ul className="album">
 				{completedFiles.map(file => {

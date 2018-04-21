@@ -41,8 +41,13 @@ $secondary-color: hsla(60, 100%, 30%, 1);
 		+ label.btn {
 			background-color: $primary-color;
 			color: white;
-			padding: 0.5em 1.5em;
-			border-radius: 5px;
+			display: inline-block;
+			font-size: 1em;
+			height: 2em;
+			width: 2em;
+			line-height: 2em;
+			text-align: center;
+			border-radius: 50%;
 			cursor: pointer;
 			box-shadow: 0 0 5px rgba(0,0,0,0.3);
 			transition: all .2s;
@@ -183,7 +188,20 @@ $secondary-color: hsla(60, 100%, 30%, 1);
 		grid-gap: 20px;
 	}
 	.upload-files {
-		height: 100vh;
+		input {
+			+ label.btn {
+			height: auto;
+			width: auto;
+			line-height: 1.2em;
+				padding: 0.5em 1.5em;
+				border-radius: 5px;
+			}
+		}
+	}
+	.gallery {
+		h1 {
+			text-align: left;
+		}
 	}
 	.in-progress {
 		grid-template-columns: 1fr;
