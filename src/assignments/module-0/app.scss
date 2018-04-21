@@ -25,9 +25,13 @@ nav{
 	text-align: center;
 
 	a{
-		font: 400 11px Montserrat, Arial;
-		text-transform: uppercase;
-		letter-spacing: .2px;
+		font: 400 18px/27px Cardo, Times;
+		color: $gray;
+		margin-right: 30px;
+		text-decoration: none;
+		&:last-child{
+			margin-right: 0px;
+		}
 	}
 }
 
@@ -63,17 +67,25 @@ aside{
 
 header{
 	text-align: center;
-	padding: 50px;
+	padding: 100px 50px;
 
 	h1{
-		margin-bottom: 0px;
+		font: 700 56px/64px Montserrat;
+		margin: 0px;
+		color: $white;
 	}
 
 	p{
 		max-width: 400px;
 		margin: 0 auto;
-		color: $gray;
+		color: $white;
 	}
+}
+
+
+.home{
+	background: linear-gradient(rgba(0,0,0,0.33), rgba(0,0,0,0.42)),url(http://leisyvidal.com/img/grid1.jpg) center no-repeat,#131418;
+	background-size: cover;
 }
 
 h1, .image-grid h2{
@@ -94,9 +106,44 @@ p{
 	background:$white;
 }
 
+.image-grid{
+	display: flex;
+	flex-wrap: nowrap;
+
+	ul{
+		display: flex;
+		flex-wrap: wrap;
+		padding-left: 0;
+		justify-content: space-between;
+		list-style: none;
+	}
+
+	li{
+		display: flex;
+		flex-direction: column;
+		flex-basis: 48%;
+		margin-bottom: 15px;
+
+		label{
+			order: 2;
+			font:italic 400 16px/24px Cardo, Times;
+			color: $gray;
+			&:before{
+				content: 'Filename: ';
+			}
+		}
+
+		img{
+			width: 100%;
+			border: 3px;
+		}
+	}
+}
+
 
 .uploads{
 	list-style: none;
+	padding-left: 0;
 }
 
 //uploader
@@ -145,25 +192,31 @@ progress[value], progress[value]::-webkit-progress-bar {
   background-color: $progress-bg;
 }
 
-//image-grid
-.image-grid{
-	ul{
-		list-style: none;
-		li{
-			// border: 5px solid $white;
-			// box-sizing: border-box;;
-			// box-shadow: 20px 20px 50px rgba(0,0,0,.05);
 
-			label{
-				&:before{
-					content: 'Filename: ';
-				}
-			}
-
-			img{
-				border: 3px;
-			}
-		}
+@media all and (max-width:800px){
+	header h1{
+		font: 700 40px/48px Montserrat;
+		margin-bottom: 10px;
+	}
+	.wrapper{
+		padding: 15px;
+	}
+	input{
+		max-width: 100%;
+	}
+	input[type='file']{
+		width: 100%;
+		max-width: 100%;
+		padding: 10px;
+	}
+	.two-thirds{
+		grid-column-start: 1;
+		grid-column-end:2;
+		margin-left: 0;
+		margin-top: 30px;
+	}
+	.image-grid li{
+		flex-basis: 100%;
 	}
 }
 

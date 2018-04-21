@@ -7,11 +7,14 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
-		<nav id="mainMenu"></nav>
+		<nav id="mainMenu">
+			<a href="http://localhost:3000">Home</a>
+			<a href="http://localhost:3000/faq.html">FAQs</a>
+		</nav>
 		<div id="heading"></div>
 		<div id="description"></div>
 
-		<header>
+		<header className="home">
 			<h1>The Desk Archives</h1>
 			<p>A directory of inspiration for interior designers to showcase their best office designs.</p>
 			{/*<p>A directory of inspiration for office spaces created by interior designers.</p>*/}
@@ -42,15 +45,15 @@ const Uploads = ({uploads, actions}) => {
 				</aside>
 
 				<section className="two-thirds">
+					<h2>The Latest Designs:</h2>
 					<div className="image-grid">
-						<h2>The Latest Designs:</h2>
 						<ul>
 							{completedFiles.map(file => {
 								const {id, name, url, error} = file
 
 								return <li key={id}>
 									<label>{name}</label>
-									{!error && <img src={url} style={{maxWidth: `200px`}} />}
+									{!error && <img src={url} alt={name}/>}
 									{!!error && <p className="failure">{error}</p>}
 								</li>
 							})}
