@@ -27,7 +27,7 @@ class PendingFiles extends React.Component {
 		const {pendingFiles} = this.props;
 		const checkLength = pendingFiles.length;
 		if(checkLength === 0) {
-			return 'hide'
+			return 'sr-only hide'
 		}
 		else {
 			return null
