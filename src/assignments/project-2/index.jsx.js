@@ -16,15 +16,24 @@ import FontIcon from 'material-ui/FontIcon';
 import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
 import ActionThumbUp from 'material-ui/svg-icons/action/thumb-up';
 import ActionThumbDown from 'material-ui/svg-icons/action/thumb-down';
+import ActionDone from 'material-ui/svg-icons/action/done';
 import CommunicationComment from 'material-ui/svg-icons/communication/comment';
 import ContentClear from 'material-ui/svg-icons/content/clear';
+import ContentMail from 'material-ui/svg-icons/content/mail';
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import RaisedButton from 'material-ui/RaisedButton';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+
+import List from 'material-ui/List/List';
+import ListItem from 'material-ui/List/ListItem';
+import Avatar from 'material-ui/Avatar';
+import FileFolder from 'material-ui/svg-icons/file/folder'
 
 import Dialog from 'material-ui/Dialog';
 
+import Checkbox from 'material-ui/Checkbox';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class Chat extends React.Component {
@@ -107,7 +116,7 @@ class Chat extends React.Component {
 	        onClick={this.handleDialogClose}
 	      />,
 	      <RaisedButton
-	        label="Save"
+	        label="Send Invites"
 	        primary={true}
 	        onClick={this.handleDialogClose}
 	      />,
@@ -115,15 +124,70 @@ class Chat extends React.Component {
 
 
 		return <div className="hg">
+
+		<FlatButton label="Invite" primary={true} style={{color: "#fff", marginTop: "5px"}} onClick={this.handleDialogOpen}/>
+
+		<Dialog
+          title="Add Contributors"
+          actions={dialogActions}
+          modal={false}
+          open={this.state.dialogOpen}
+          onRequestClose={this.handleClose}
+        >
+         <List>
+    <ListItem
+      disabled={true}
+      leftCheckbox={<Checkbox />}
+      rightAvatar={
+        <Avatar src="http://www.material-ui.com/images/adellecharles-128.jpg" />
+      }
+    >
+      First Last Name
+    </ListItem>
+    <ListItem
+      disabled={true}
+      leftCheckbox={<Checkbox />}
+      rightAvatar={
+        <Avatar src="http://www.material-ui.com/images/adhamdannaway-128.jpg" />
+      }
+    >
+      First Last Name
+    </ListItem>
+    <ListItem
+      disabled={true}
+      leftCheckbox={<Checkbox />}
+      rightAvatar={
+        <Avatar src="http://www.material-ui.com/images/allisongrayce-128.jpg" />
+      }
+    >
+      First Last Name
+    </ListItem>
+    <ListItem
+      disabled={true}
+      leftCheckbox={<Checkbox />}
+      rightAvatar={
+        <Avatar src="http://www.material-ui.com/images/chexee-128.jpg" />
+      }
+    >
+      First Last Name
+    </ListItem>
+  </List>
+        </Dialog>
+
 		 <header className="hg__header">
 			<AppBar 
 				title="PhotoPR" 
 				 iconElementLeft={<IconButton touch={true}><CommunicationComment /></IconButton>}
 				 onLeftIconButtonClick={this.handleDrawerToggle}
-				 iconElementRight={<div>{this.state.hasUpload && <div><FlatButton label="Complete Review" primary={true} style={{color: "#fff", marginTop: "5px"}} onClick={this.handleCompleteReview}/><FlatButton label="Share" primary={true} style={{color: "#fff", marginTop: "5px"}} /></div>}</div>}/>
+				 iconElementRight={<div>{this.state.hasUpload && <div>
+				 		<FlatButton 
+				 			label="Complete Review" 
+				 			primary={true} style={{color: "#fff", marginTop: "5px"}} 
+				 			onClick={this.handleCompleteReview}
+				 			icon={<IconButton touch={true}><ActionDone /></IconButton>}/>
+				 		</div>}</div>}/>
 		 </header>
   <main className="hg__main">
-     
 
       {this.state.hasUpload &&
  	<Card>
@@ -194,9 +258,11 @@ class Chat extends React.Component {
 									</Card>
 
 								)}
-
 							</Tab>
 							</Tabs>
+				<FloatingActionButton onClick={this.handleDialogOpen} style={{position: "absolute", right: "30px", bottom: "20px"}}>
+							      <ContentMail />
+							    </FloatingActionButton>
 
   </aside>
 }
