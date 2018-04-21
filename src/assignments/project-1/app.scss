@@ -1,0 +1,155 @@
+/*///////////////////////
+      COLORS
+//////////////////////*/
+
+$primary-color: #0ff1c3;
+$darker-color: darken($primary-color, 12);
+$font-color: #272727;
+$shadow-color: darken($darker-color, 5);
+$secondary-color: #b8b8b8;
+
+/*///////////////////////
+      GENERAL & LAYOUT
+//////////////////////*/
+
+body{
+  font-family: Palatino, Garamond, serif;
+  color: $darker-color;
+  font-size: 1.25rem;
+  text-shadow: 1px 1px 0px $shadow-color;
+  
+  background: #fffc00;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to bottom, #ffffff, #fffc00);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to bottom, #ffffff, #fffc00); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* gradient code revised from https://uigradients.com/#JuicyOrange */
+  
+  width: 100vw;
+}
+
+#app{
+ max-width: 1500px;
+ width: 80vw;
+ margin: 0 auto; 
+}
+
+.visually-hidden{
+  display: none;
+}
+
+/*///////////////////////
+      TYPOGRAPHY
+//////////////////////*/
+
+h1,h2,h3{
+  font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
+}
+
+/*///////////////////////
+      PROGRESS BAR
+//////////////////////*/
+
+progress:not[value] {
+  
+}
+
+progress[value], progress {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 50vw;
+}
+
+progress[value]::-webkit-progress-bar {
+	background-color: #eee;
+	border-radius: 2px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	border: none;
+	background-size: auto;
+}
+progress::-webkit-progress-value {
+	background: $primary-color;
+}
+progress[aria-valuenow]:before {
+	background: $primary-color;
+}
+progress::-moz-progress-bar {
+	background-color: #eee;
+	border-radius: 2px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+	border: none;
+	background-size: auto;
+}
+progress[role] {
+	display: none;
+	&:after {
+		background-image: none; /* removes default background from polyfill */
+	}
+}
+
+/*///////////////////////
+      UPLOADER
+//////////////////////*/
+
+.uploader-wrapper{
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.uploader-label {
+	overflow: hidden;
+  position: relative;
+	background: $primary-color;
+	padding: 15px 10px;
+	color: #fff;
+	border: 1px solid $darker-color;
+	font-size: 18px;
+	display: inline-block;
+	&:before {
+		content: " 💚";
+		padding: 0 5px;
+	}
+	&:after {
+		content: " 💚";
+		padding: 0 5px;
+	}
+}
+
+#uploader {
+	cursor: inherit;
+	display: block;
+	filter: alpha(opacity=0);
+	min-height: 100%;
+	min-width: 100%;
+	opacity: 0;
+	position: absolute;
+	right: 0;
+	text-align: right;
+	top: 0;
+}
+
+/*///////////////////////
+      GALLERY
+//////////////////////*/
+
+.gallery{
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0;
+  padding: 0;
+  li{
+    background: #fff;
+    box-shadow: 1px 1px 1px $shadow-color;
+    padding: 20px;
+    border: 1px solid $primary-color;
+    list-style: none;
+    label{
+      display: block;
+      color: $secondary-color;
+      font-size: 0.7rem;
+      text-shadow: none;
+    }
+    img{
+      display: block;
+    }
+  }
+}

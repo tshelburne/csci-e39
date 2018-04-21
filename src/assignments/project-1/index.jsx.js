@@ -1,16 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
+import introText from '../../ui/components/introtext.jsx'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
-		<h1>Upload Images</h1>
+		<h1>My Image Library</h1>
+		<introText />
 		{/* do not delete this uploader component */}
+		<div className="uploader-wrapper">
+		<label tabIndex="0" htmlFor="uploader" className="uploader-label">Upload image</label>
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
+		</div>
 
 		<h2>In Progress</h2>
 		<ul>
@@ -24,11 +29,11 @@ const Uploads = ({uploads, actions}) => {
 			})}
 		</ul>
 
-		<h2>Completed</h2>
-		<ul>
+		<h2>Image Gallery</h2>
+		<ul className="gallery">
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
-
+        //TODO: ask for an image description and pass in alt text.
 				return <li key={id}>
 					<label>{name}</label>
 					{!error && <img src={url} style={{maxWidth: `200px`}} />}
