@@ -1,26 +1,20 @@
 import React from 'react';
+import ImageItem from './ImageItem.jsx';
 
-function CompletedFilesList(props) {
+function CompletedFilesList({title, completedFiles, activeImage}) {
+
     return (
         <div>
-            <h2>{props.title}</h2>
+            <h2>{title}</h2>
             <ul>
-            {props.completedFiles.map(file => {
+            {completedFiles.map((file, index) => {
                 const {id, name, url, error} = file
 
-                return <li key={id}>
-                    {!error &&
-                        <div className="photograph">
-                            <img src={url} onClick={props.onImageClick} alt={name} title={name} />
-                        </div>
-                    }
-                    {!!error &&
-                        <div className="error">
-                            <label>ERROR: {name}</label><br />
-                            <p className="failure">{error}</p>
-                        </div>
-                    }
-                </li>
+                return (
+                    <li key={id}>
+                        <ImageItem file={file} onClick={() => activeImage=index} />
+                    </li>
+                )
             })}
             </ul>
         </div>

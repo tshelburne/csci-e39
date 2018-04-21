@@ -2,23 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 import completedFilesList from './CompletedFilesList.jsx'
-import CompletedFilesList from './CompletedFilesList.jsx';
-import PendingFilesList from './PendingFilesList.jsx';
+import CompletedFilesList from './CompletedFilesList.jsx'
+import List from './List.jsx'
+import PendingFilesList from './PendingFilesList.jsx'
+import ImageItem from './ImageItem.jsx';
 
 class Uploads extends React.Component {
 	state = {
-		selectedImage: "",
+		activeImage: 0,
 		uploaderActive: false,
-	}
-
-	onImageClick(ev) {
-		this.setState( {selectedImage: ev.target} )
-		console.log(ev.target)
 	}
 
 	toggleSidebar() {
 		this.setState( {uploaderActive: !this.state.uploaderActive} )
-		console.log(this.uploaderActive)
+		//console.log(this.uploaderActive)
 	}
 
 	render() {
@@ -26,8 +23,7 @@ class Uploads extends React.Component {
 		const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 		const completedFiles = uploads.files.filter(({progress}) => !progress)
 		const buttonText = this.state.uploaderActive ? 'Toggle Navigation Off' : 	'Toggle Navigation On';
-		const {uploaderActive} = this.state
-		const url = this.state.selectedImage.url
+		const {activeImage, uploaderActive} = this.state
 		
 		return (
 			<div className="gridContainer">
@@ -38,14 +34,14 @@ class Uploads extends React.Component {
 					Navigation Here
 				</nav>
 				<main className="mainContent" role="main">
-					Big Image
-					{url &&
-						<img src={url} />
+					Big Image {activeImage}
+					{uploads.files[activeImage] &&
+						<img className="photograph" src={uploads.files[activeImage].url} />
 					}
 				</main>
 				<aside className="foobar">
 					{ !uploaderActive && 
-						<button className="nav-button" onClick={this.toggleSidebar.bind(this)}>+ Upload Image</button>
+						<button className="nav-button" onClick={this.toggleSidebar.bind(this)}><img src="./if_plus_1282963.png"/></button>
 					}
 					{ !!uploaderActive && 
 						<div className="uploader">
@@ -57,7 +53,16 @@ class Uploads extends React.Component {
 					}
 				</aside>
 				<aside className="sidebar" role="complementary">
-					<CompletedFilesList title='Thumbnails' completedFiles={completedFiles} onImageClick={this.onImageClick} />
+					<List>
+					{completedFiles.map((file, index) =>
+						<ImageItem
+						   id
+						   file={file}
+						   title="FooBar"
+						   onClick = {() => this.setState({activeImage: index})}
+						/>
+					)}
+					</List>
 				</aside>
 				<footer className="mainFooter" role="contentinfo">
 					Footer Content

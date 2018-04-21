@@ -8,6 +8,7 @@ import PendingFilesList from './PendingFilesList.jsx';
 class Uploads extends React.Component {
 	state = {
 		sidebarActive: false,
+		activeItem: 0,
 	}
 
 	toggleSidebar() {
@@ -19,8 +20,9 @@ class Uploads extends React.Component {
 		const {uploads, actions} = this.props
 		const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 		const completedFiles = uploads.files.filter(({progress}) => !progress)
-		const buttonText = this.state.sidebarActive ? 'Toggle Sidebar Off' : 	'Toggle Sidebar On';
-		const {sidebarActive} = this.state
+		const buttonText = this.state.sidebarActive ? 'Toggle Sidebar Off' : 	'Toggle Sidebar On'
+		const {sidebarActive,activeItem} = this.state
+		const currentItem = uploads.files[activeItem].url
 		
 		return (
 		<div className="container">
@@ -46,7 +48,7 @@ class Uploads extends React.Component {
 						</aside>
 					}	
 					<div>
-					<p>Large Image Here</p>
+					<p>Large Image Here - {currentItem}</p>
 					</div>
 					<CompletedFilesList title='Completed' completedFiles={completedFiles} />
 				</div>
