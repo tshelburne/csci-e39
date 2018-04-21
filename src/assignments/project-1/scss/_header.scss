@@ -1,0 +1,11 @@
+header {
+    background-color: $header-background-color;
+    height: 6rem;
+    color: $primary-font-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        font-size: 3rem;
+    }
+}
