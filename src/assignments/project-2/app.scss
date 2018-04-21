@@ -67,3 +67,12 @@ section#send{
 		grid-column: 1 / -1;
 	}
 }
+
+section#theme-widget{
+  display: inline-block;
+  float: right;
+  width: 50%;
+  form{
+    display: inline-block;
+  }
+}

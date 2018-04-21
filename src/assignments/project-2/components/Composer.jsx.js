@@ -25,8 +25,11 @@ class Composer extends Component {
 	}
 
   selectEmoji(emoji) {
-    const {currentText: prevText} = this.state
-    this.setState({currentText: prevText.concat(emoji.emoji)})
+    const {currentText: prevText, emojiPicker: emojiPicker} = this.state
+    this.setState({
+      currentText: prevText.concat(emoji.emoji),
+      emojiPicker: !emojiPicker
+    })
   }
 
 	onSend(e) {
