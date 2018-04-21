@@ -32,20 +32,38 @@ main{
 header{
   grid-column: 1 / -1;
   border: 1px solid $defaultGreen;
-  
+
 }
 
 aside#memberlist{
   grid-column: span 1;
   border: 1px solid $defaultGreen;
+
+	ul{
+		list-style: none;
+		padding-left: 0;
+	}
 }
 
 section#messages{
   grid-column: 2 / -1;
   border: 1px solid $defaultGreen;
+	max-height: 300px;
+	overflow: scroll;
+
+	ul{
+		list-style: none;
+		padding-left: 0;
+	}
 }
 
-section#typing{
+section#send{
   grid-column: 1 / -1;
   border: 1px solid $defaultGreen;
+}
+
+@media all and (max-width:650px){
+	section#send, section#messages, aside#memberlist{
+		grid-column: 1 / -1;
+	}
 }
