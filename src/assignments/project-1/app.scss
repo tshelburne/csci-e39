@@ -1,0 +1,147 @@
+@import '../design-patterns/pattern-library';
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  margin-left: 5px;
+}
+
+p {
+  margin-top: 15px;
+  text-indent: 10px;
+}
+
+.container {
+  display: grid;
+  grid-template-areas: "header header header" "nav main side" "footer footer footer";
+  grid-template-columns: 225px 1fr 200px;
+  grid-template-rows: 100px 1fr 50px;
+  min-height: 100vh;
+}
+@media screen and (max-width: 600px) {
+  .container {
+    grid-template-areas: "header" "nav" "main" "side" "footer";
+    grid-template-columns: 100%;
+    grid-template-rows: 100px 50px 1fr 50px 30px;
+  }
+}
+
+header {
+  grid-area: header;
+  // background-color: #7293A0;
+}
+
+nav {
+  grid-area: nav;
+  // background-color: #084887;
+}
+
+footer {
+  grid-area: footer;
+  // background-color: #7785AC;
+}
+
+main {
+  grid-area: main;
+  // background-color: #D8DDEF;
+}
+
+aside {
+  grid-area: side;
+  // background-color: #A0A4B8;
+}
+// Taken from my CodePens //
+button {
+  background: #0c7c59;
+  background-image: -webkit-linear-gradient(top, #0c7c59, #48997e);
+  background-image: -moz-linear-gradient(top, #0c7c59, #48997e);
+  background-image: -ms-linear-gradient(top, #0c7c59, #48997e);
+  background-image: -o-linear-gradient(top, #0c7c59, #48997e);
+  background-image: linear-gradient(to bottom, #0c7c59, #48997e);
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+button:hover {
+  background: #4e9f85;
+  text-decoration: none;
+}
+
+input[type=file] {
+  color: white;
+  background: rgb(214,73,51);
+  padding: 8px;
+  display: block;
+  font-weight: 520;
+  font-size: 1.15em;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5%;
+}
+// .uploader-input {
+// 	width: 0.1px;
+// 	height: 0.1px;
+// 	opacity: 0;
+// 	overflow: hidden;
+// 	position: absolute;
+// 	z-index: -1;
+// }
+// Progress Bar
+progress {
+  width: 500px;
+  height: 20px;
+  margin: 50px auto;
+  display: block;
+  -webkit-appearance: none;
+  border: none;
+}
+
+progress::-webkit-progress-bar {
+  background: rgb(43,48,58);
+  border-radius: 50px;
+  padding: 2px;
+  box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.2);
+}
+
+progress::-webkit-progress-value {
+  border-radius: 50px;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2);
+  background: rgb(64,120,153);
+}
+// Image Gallery
+ul {
+  list-style-type: none;
+}
+
+li img {
+  float: left;
+  margin: 10px;
+  border: 5px solid #fff;
+  -webkit-transition: box-shadow 0.5s ease;
+  -moz-transition: box-shadow 0.5s ease;
+  -o-transition: box-shadow 0.5s ease;
+  -ms-transition: box-shadow 0.5s ease;
+  transition: box-shadow 0.5s ease;
+}
+
+li img:hover {
+  -webkit-box-shadow: 0 0 7px rgba(255,255,255,0.9);
+  box-shadow: 0 0 7px rgba(255,255,255,0.9);
+}
+
+li label {
+  display: none;
+}
