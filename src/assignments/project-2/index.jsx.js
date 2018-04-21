@@ -2,13 +2,63 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 
+import AppBar from 'material-ui/AppBar'
+import FlatButton from 'material-ui/FlatButton';
+
+import Drawer from 'material-ui/Drawer';
+import {Tabs, Tab} from 'material-ui/Tabs'
+
+
+import TextField from 'material-ui/TextField';
+import IconMenu from 'material-ui/IconMenu';
+import IconButton from 'material-ui/IconButton';
+import FontIcon from 'material-ui/FontIcon';
+import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
+import ActionThumbUp from 'material-ui/svg-icons/action/thumb-up';
+import ActionThumbDown from 'material-ui/svg-icons/action/thumb-down';
+import CommunicationComment from 'material-ui/svg-icons/communication/comment';
+import ContentClear from 'material-ui/svg-icons/content/clear';
+import MenuItem from 'material-ui/MenuItem';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import RaisedButton from 'material-ui/RaisedButton';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+
+import Dialog from 'material-ui/Dialog';
+
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+
 class Chat extends React.Component {
 
 	constructor() {
 		super(...arguments)
 		autobind(this)
-		this.state = {currentText: ``}
+		this.state = {currentText: ``, drawerOpen: false, dialogOpen: false, hasUpload: false}
 	}
+
+  	handleDrawerClose() {
+  		this.setState({drawerOpen: false});
+  	} 
+
+  	handleDialogOpen() {
+    	this.setState({dialogOpen: true});
+  	};
+
+  	handleUpload() {
+    	this.setState({hasUpload: true});
+  	};
+
+  	handleCompleteReview() {
+    	this.setState({hasUpload: false});
+  	};
+
+	handleDialogClose() {
+	    this.setState({dialogOpen: false});
+	};
+
+
+  	handleDrawerToggle(){
+  		this.setState({drawerOpen: !this.state.drawerOpen});
+  	}
 
 	onType(e) {
 		const {chat} = this.props.actions
@@ -25,7 +75,7 @@ class Chat extends React.Component {
 		if (e.type === `keyup` && e.key !== `Enter`) return
 
 		const {chat} = this.props.actions
-		const {currentText} = this.state
+		const {currentText, hasUpload} = this.state
 		if (!currentText.length) return
 
 		chat.send(currentText)
@@ -46,32 +96,110 @@ class Chat extends React.Component {
 	}
 
 	render() {
+
 		const {classroom, chat, actions} = this.props
-		const {currentText} = this.state
+		const {currentText, hasUpload} = this.state
 
-		return <div>
-			<h1>Chatroom</h1>
+		const dialogActions = [
+	      <FlatButton
+	        label="Cancel"
+	        primary={true}
+	        onClick={this.handleDialogClose}
+	      />,
+	      <RaisedButton
+	        label="Save"
+	        primary={true}
+	        onClick={this.handleDialogClose}
+	      />,
+	    ];
 
-			<h2>Members</h2>
-			<ul>
-				{classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
-				)}
-			</ul>
 
-			<h2>Messages</h2>
-			<ul>
-				{chat.messages.map(({id, student, text, createdAt}) =>
-					<li key={id}>
-						<label>{student.name} at {createdAt.toISOString()}</label>
-						<p>{text}</p>
-					</li>
-				)}
-			</ul>
+		return <div className="hg">
+		 <header className="hg__header">
+			<AppBar 
+				title="PhotoPR" 
+				 iconElementLeft={<IconButton touch={true}><CommunicationComment /></IconButton>}
+				 onLeftIconButtonClick={this.handleDrawerToggle}
+				 iconElementRight={<div>{this.state.hasUpload && <div><FlatButton label="Complete Review" primary={true} style={{color: "#fff", marginTop: "5px"}} onClick={this.handleCompleteReview}/><FlatButton label="Share" primary={true} style={{color: "#fff", marginTop: "5px"}} /></div>}</div>}/>
+		 </header>
+  <main className="hg__main">
+     
 
-			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-			<p>{this.getTypingMessage()}</p>
+      {this.state.hasUpload &&
+ 	<Card>
+	    <CardMedia
+	      overlay={<CardTitle title="Image Title" subtitle="Uploaded by First Last Name" /> }>
+	      <img src="https://images.unsplash.com/photo-1493838952631-2bce5dad8e54?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2c657455b24166fe47c308fc1d64866c&auto=format&fit=crop&w=1500&q=80" alt="" />
+	    </CardMedia>
+	    </Card>
+}
+
+{!this.state.hasUpload && 
+<div style={{textAlign: "center", marginTop: "35%", marginLeft: "350px"}}>
+		<FlatButton
+	        label="Upload Image"
+	        primary={true}
+	        onClick={this.handleUpload}/>
+	        </div>
+}
+  </main>
+  {this.state.hasUpload && 
+  <aside className="hg__right">
+<Tabs>
+<Tab label="Comments" style={{background: "#fff", color: "#000"}}>
+
+
+<Card style={{margin: "20px"}}>
+	<CardText>
+		<TextField
+	      hintText="Enter text to add a comment..."
+	      value={currentText}
+	      multiLine={true}
+	      onChange={this.onType}
+	      style={{width:"100%", marginTop: "0"}}
+	      rows={2}
+	      rowsMax={4}/>
+	</CardText>
+		<CardActions>
+			<RaisedButton
+		        label="Add Comment"
+		        primary={true}
+		        disabled={currentText === ``}
+		        onClick={this.onSend}/>
+		</CardActions>
+</Card>
+
+				<p>{this.getTypingMessage()}</p>
+
+							{chat.messages.map(({id, student, text, createdAt}) =>
+
+									<Card style={{margin: "20px"}} key={id}>
+									    <CardHeader
+									      title={text}
+									      subtitle={createdAt.toISOString()}/>
+									    <CardActions>
+									      <IconButton touch={true} iconStyle={{color: "#00aa8d"}}><ActionThumbUp /></IconButton>
+									       <IconButton touch={true} iconStyle={{color: "#bb1010"}}><ActionThumbDown/></IconButton>
+									    </CardActions>
+									  </Card>
+
+								).reverse()}
+							</Tab>
+							<Tab label="Contributors" style={{background: "#fff", color: "#000"}}>
+{classroom.students.map(({id, name}) =>
+									<Card style={{margin: "20px"}} key={id}>
+									    <CardHeader
+									      title={name}
+									      avatar="http://www.material-ui.com/images/jsa-128.jpg"/>
+									</Card>
+
+								)}
+
+							</Tab>
+							</Tabs>
+
+  </aside>
+}
 		</div>
 	}
 
