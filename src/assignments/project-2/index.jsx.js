@@ -16,6 +16,7 @@ import FontIcon from 'material-ui/FontIcon';
 import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
 import ActionThumbUp from 'material-ui/svg-icons/action/thumb-up';
 import ActionThumbDown from 'material-ui/svg-icons/action/thumb-down';
+import ActionDone from 'material-ui/svg-icons/action/done';
 import CommunicationComment from 'material-ui/svg-icons/communication/comment';
 import ContentClear from 'material-ui/svg-icons/content/clear';
 import ContentMail from 'material-ui/svg-icons/content/mail';
@@ -179,7 +180,11 @@ class Chat extends React.Component {
 				 iconElementLeft={<IconButton touch={true}><CommunicationComment /></IconButton>}
 				 onLeftIconButtonClick={this.handleDrawerToggle}
 				 iconElementRight={<div>{this.state.hasUpload && <div>
-				 		<FlatButton label="Complete Review" primary={true} style={{color: "#fff", marginTop: "5px"}} onClick={this.handleCompleteReview}/>
+				 		<FlatButton 
+				 			label="Complete Review" 
+				 			primary={true} style={{color: "#fff", marginTop: "5px"}} 
+				 			onClick={this.handleCompleteReview}
+				 			icon={<IconButton touch={true}><ActionDone /></IconButton>}/>
 				 		</div>}</div>}/>
 		 </header>
   <main className="hg__main">
