@@ -7,36 +7,60 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
-		<h1>Upload Images small edit for inital push</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
+		<nav id="mainMenu"></nav>
+		<div id="heading"></div>
+		<div id="description"></div>
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
+		<header>
+			<h1>The Desk Archives</h1>
+			<p>A directory of inspiration for interior designers to showcase their best office designs.</p>
+			{/*<p>A directory of inspiration for office spaces created by interior designers.</p>*/}
+		</header>
 
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
+		<div className="wrapper">
+			<div className="grid">
+				<aside>
+					<h1>The Desk Archives</h1>
+					<p>Welcome to the desk archives. Have an office design you want to share? Upload one here.</p>
+					{/*<p>Welcome to the desk archives. This is a directory of inspiration for interior designers to showcase their best office designs. Have an office design you want to share? Upload one here.</p>*/}
 
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
+					{/* do not delete this uploader component */}
+					<Uploader upload={actions.upload} />
+					{/* do not delete this uploader component */}
 
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
-	</div>
+					<h2>Uploads In Progress:</h2>
+					<ul className="uploads">
+						{pendingFiles.map(file => {
+							const {id, name, progress} = file
+
+							return <li key={id}>
+								<label>{name}</label>
+								<progress value={progress} max="100">{progress}%</progress>
+							</li>
+						})}
+					</ul>
+				</aside>
+
+				<section className="two-thirds">
+					<div className="image-grid">
+						<h2>The Latest Designs:</h2>
+						<ul>
+							{completedFiles.map(file => {
+								const {id, name, url, error} = file
+
+								return <li key={id}>
+									<label>{name}</label>
+									{!error && <img src={url} style={{maxWidth: `200px`}} />}
+									{!!error && <p className="failure">{error}</p>}
+								</li>
+							})}
+						</ul>
+					</div>
+				</section>
+
+			</div>{/*GRID END*/}
+		</div>{/*WRAP END*/}
+	</div>/*RETURN END*/
 }
 
 const statusPropType = PropTypes.shape({

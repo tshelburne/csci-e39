@@ -1,157 +1,175 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 
+//variables
+$primary-color:red;
+$gray-light:#EFEFEF;
+$gray-dark:#333;
 
-$primary-color: rgba(150, 143, 179, 1);
-
-//button colors
-$button-color: #FFFFFF;
-$button-bg: #2B69CE;
-$icon-bg: darken($button-bg, 7%);
-
-//hover colors
-$button-hover: #2dce2a;
-$icon-hover: darken($button-hover, 7%);
-
-//progress styles
-$progress-bg: #BBB;
-
-//padding
-$padding-TB:20px;
-$padding-LR:30px;
-
-// ⭕
-// 🔴
-
-//button styles
-button {
-	font-family:Poppins;
-	font-size:1.2em;
-	color:$button-color;
-	background: $button-bg;
-	border:0;
-	position:relative;
-	padding:$padding-TB 0px $padding-TB $padding-LR;
-	border-radius:3px;
-
-	&::after{
-		content:'\2192';
-		color:$button-color;
-		background:$icon-bg;
-		padding:(($padding-TB)-3) $padding-LR;
-		margin-left:$padding-LR;
-	}
-
-	&:hover{
-		cursor:pointer;
-		background: $button-hover;
-		transition:.2s ease;
-
-		&:after{
-			background: $icon-hover;
-			transition:.2s ease;
-		}
-	}
-
+body{
+	background:$gray-light;
+	color: $gray-dark;
+	font-family: Poppins, Arial;
+	margin: 0 auto;
 }
 
-//progressbar
-progress{
-
+#mainMenu{
+	padding:50px;
+	background:blue;
 }
 
-
-//progress bar
-progress, progress::-webkit-progress-value{
-	//color of progress bar
-	background-color: $button-bg;
-
-	//resets for browsers
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	appearance: none;
-
-	//reset borders
-	border:0;
-	border-radius:0;
-	width:100%;
-	max-width:500px;
-	height:20px;
-}
-
-//bg color of entire progress bar
-progress[value], progress[value]::-webkit-progress-bar {
-  background-color: $progress-bg;
-}
-
-
-//file uploader
-.file-form{
-	position:relative;
-	text-align:center;
-}
-
-.uploader {
-	font-family:Poppins;
-	font-size:1.2em;
-	color:$button-color;
-	background: $button-bg;
-	border:0;
-	border-radius:3px;
-	position:relative;
-	display:inline-block;
-	padding:$padding-TB 0px $padding-TB $padding-LR;
-	margin-top: 0px;
-
-	&::after{
-		content:'\002b';
-		color:$button-color;
-		background:$icon-bg;
-		padding:(($padding-TB)-3) $padding-LR;
-		margin-left:$padding-LR;
-	}
-
-	&:hover{
-		cursor:pointer;
-		background: $button-hover;
-		transition:.2s ease;
-
-		&:after{
-			background: $icon-hover;
-			transition:.2s ease;
-		}
-	}
-}
-
-.uploader-input {
-	position:absolute;
-	top:0;
-	left:0;
-	opacity:0;
-}
-
-
-
-// default styles on body
-body {
-	background: crimson;
-	padding: 30px;
-	background: linear-gradient(
-		to bottom,
-		rgba(150, 143, 179, 1) 0%,
-		crimson 100%
-	);
-	min-height: 100vh;
-}
-
-.example-container {
-	background: hsla(0, 0, 100%, 0.8);
-	margin-top: 7vh;
-	padding: 5vh 2vh;
-	box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
-	text-align: center;
-}
-
-.header {
-	margin-top: 0;
-	font-family: "Permanent Marker", sans-serif;
-}
+//OLD STYLES FROM ASSIGNMENT
+// //variables
+// $primary-color: rgba(150, 143, 179, 1);
+//
+// //button colors
+// $button-color: #FFFFFF;
+// $button-bg: #2B69CE;
+// $icon-bg: darken($button-bg, 7%);
+//
+// //hover colors
+// $button-hover: #2dce2a;
+// $icon-hover: darken($button-hover, 7%);
+//
+// //progress styles
+// $progress-bg: #BBB;
+//
+// //padding
+// $padding-TB:20px;
+// $padding-LR:30px;
+//
+// // ⭕
+// // 🔴
+//
+// //button styles
+// button {
+// 	font-family:Poppins;
+// 	font-size:1.2em;
+// 	color:$button-color;
+// 	background: $button-bg;
+// 	border:0;
+// 	position:relative;
+// 	padding:$padding-TB 0px $padding-TB $padding-LR;
+// 	border-radius:3px;
+//
+// 	&::after{
+// 		content:'\2192';
+// 		color:$button-color;
+// 		background:$icon-bg;
+// 		padding:(($padding-TB)-3) $padding-LR;
+// 		margin-left:$padding-LR;
+// 	}
+//
+// 	&:hover{
+// 		cursor:pointer;
+// 		background: $button-hover;
+// 		transition:.2s ease;
+//
+// 		&:after{
+// 			background: $icon-hover;
+// 			transition:.2s ease;
+// 		}
+// 	}
+//
+// }
+//
+// //progressbar
+// progress{
+//
+// }
+//
+//
+// //progress bar
+// progress, progress::-webkit-progress-value{
+// 	//color of progress bar
+// 	background-color: $button-bg;
+//
+// 	//resets for browsers
+// 	-webkit-appearance: none;
+// 	-moz-appearance: none;
+// 	appearance: none;
+//
+// 	//reset borders
+// 	border:0;
+// 	border-radius:0;
+// 	width:100%;
+// 	max-width:500px;
+// 	height:20px;
+// }
+//
+// //bg color of entire progress bar
+// progress[value], progress[value]::-webkit-progress-bar {
+//   background-color: $progress-bg;
+// }
+//
+//
+// //file uploader
+// .file-form{
+// 	position:relative;
+// 	text-align:center;
+// }
+//
+// .uploader {
+// 	font-family:Poppins;
+// 	font-size:1.2em;
+// 	color:$button-color;
+// 	background: $button-bg;
+// 	border:0;
+// 	border-radius:3px;
+// 	position:relative;
+// 	display:inline-block;
+// 	padding:$padding-TB 0px $padding-TB $padding-LR;
+// 	margin-top: 0px;
+//
+// 	&::after{
+// 		content:'\002b';
+// 		color:$button-color;
+// 		background:$icon-bg;
+// 		padding:(($padding-TB)-3) $padding-LR;
+// 		margin-left:$padding-LR;
+// 	}
+//
+// 	&:hover{
+// 		cursor:pointer;
+// 		background: $button-hover;
+// 		transition:.2s ease;
+//
+// 		&:after{
+// 			background: $icon-hover;
+// 			transition:.2s ease;
+// 		}
+// 	}
+// }
+//
+// .uploader-input {
+// 	position:absolute;
+// 	top:0;
+// 	left:0;
+// 	opacity:0;
+// }
+//
+//
+//
+// // default styles on body
+// body {
+// 	background: crimson;
+// 	padding: 30px;
+// 	background: linear-gradient(
+// 		to bottom,
+// 		rgba(150, 143, 179, 1) 0%,
+// 		crimson 100%
+// 	);
+// 	min-height: 100vh;
+// }
+//
+// .example-container {
+// 	background: hsla(0, 0, 100%, 0.8);
+// 	margin-top: 7vh;
+// 	padding: 5vh 2vh;
+// 	box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
+// 	text-align: center;
+// }
+//
+// .header {
+// 	margin-top: 0;
+// 	font-family: "Permanent Marker", sans-serif;
+// }
