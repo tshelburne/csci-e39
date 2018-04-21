@@ -1,37 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
-import List from './List.jsx'
-import Member from './Member.jsx'
+import List from './components/List.jsx'
+import Member from './components/Member.jsx'
+import Composer from './components/Composer.jsx'
 
 class Chat extends React.Component {
 
 	constructor() {
 		super(...arguments)
 		autobind(this)
-		this.state = {currentText: ``}
-	}
-
-	onType(e) {
-		const {chat} = this.props.actions
-		const {currentText: prevText} = this.state
-		const currentText = e.target.value
-
-		if (!currentText.length) chat.stopTyping()
-		if (currentText.length === 1 && !prevText.length) chat.startTyping()
-
-		this.setState({currentText})
-	}
-
-	onSend(e) {
-		if (e.type === `keyup` && e.key !== `Enter`) return
-
-		const {chat} = this.props.actions
-		const {currentText} = this.state
-		if (!currentText.length) return
-
-		chat.send(currentText)
-		this.setState({currentText: ``})
 	}
 
 	getTypingMessage() {
@@ -49,7 +27,6 @@ class Chat extends React.Component {
 
 	render() {
 		const {classroom, chat, actions} = this.props
-		const {currentText} = this.state
 
 		return <div>
 			<h1>Chatroom</h1>
@@ -71,9 +48,7 @@ class Chat extends React.Component {
 				)}
 			</ul>
 
-			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-			<p>{this.getTypingMessage()}</p>
+			<Composer chat={chat} actions={this.props.actions} members={classroom}/>
 		</div>
 	}
 
