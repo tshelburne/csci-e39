@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
+import Header from './ui/components/header.jsx'
 
 class Chat extends React.Component {
 
@@ -49,16 +50,19 @@ class Chat extends React.Component {
 		const {classroom, chat, actions} = this.props
 		const {currentText} = this.state
 
-		return <div>
-			<h1>Chatroom</h1>
-
+		return <main>
+		  <Header title="OH HAAAAAAY" />
+      
+      <aside>
 			<h2>Members</h2>
 			<ul>
 				{classroom.students.map(({id, name}) =>
 					<li key={id}><span>{name}</span></li>
 				)}
 			</ul>
-
+      </aside>
+      
+      <section>
 			<h2>Messages</h2>
 			<ul>
 				{chat.messages.map(({id, student, text, createdAt}) =>
@@ -68,11 +72,15 @@ class Chat extends React.Component {
 					</li>
 				)}
 			</ul>
-
+      </section>
+      
+      <section>
 			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
 			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
 			<p>{this.getTypingMessage()}</p>
-		</div>
+			</section>
+			
+		</main>
 	}
 
 }
@@ -83,8 +91,11 @@ const studentPropType = PropTypes.shape({
 })
 
 Chat.propTypes = {
-	classroom: PropTypes.shape({
+	classroom: PropTypes.shape({ //an object with the property students...this.props.classroom.students[1].name
+  	//shape defines what object will look like
 		students: PropTypes.arrayOf(studentPropType).isRequired,
+		//students is a property of classroom
+		//students is an array of studentPropType. access it with an array [1][2] etc. studentPropType is  shape that has id and name
 	}).isRequired,
 	chat: PropTypes.shape({
 		typing: PropTypes.arrayOf(studentPropType).isRequired,
