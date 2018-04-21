@@ -3,12 +3,15 @@ import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 import {Button} from './components/Button.jsx'
 import {GalleryName} from './components/GalleryName.jsx'
+import {ViewChange} from './components/View.jsx'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 	const BtnText="choose images"
 	const BtnTextMobile="+"
+
+
 	
 
 	return <div className="uploader-container">
@@ -38,7 +41,8 @@ const Uploads = ({uploads, actions}) => {
 		<section className="gallery">
 			<GalleryName name="Sam" />
 			<p>To participate our 2018 campuse beauty shot contest, please upload your most stunning photos to this gallery! All your work will be reviewed by the professional photographers. Good luck!</p>
-			<ul className="album">
+			<ViewChange text={"Change the grid view"} />
+			<ul className="album" id="album">
 				{completedFiles.map(file => {
 					const {id, name, url, error} = file
 
@@ -49,7 +53,6 @@ const Uploads = ({uploads, actions}) => {
 						{!!error && <p className="failure">{error}</p>}
 					</figure>
 					</li>
-
 				})}
 			</ul>
 		</section>
