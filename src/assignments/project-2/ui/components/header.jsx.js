@@ -10,8 +10,17 @@ class Header extends React.Component {
     const {title} = this.props
     return <header>
       <h1>{title}</h1>
+      <Greeting />
     </header>
   }
+
+
 }
+
+  function Greeting(props){
+    return(
+      <p>This is just text</p>
+    );
+  }
 
 export default Header;

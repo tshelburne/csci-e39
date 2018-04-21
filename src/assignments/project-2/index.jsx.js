@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 import Header from './ui/components/header.jsx'
+import List from './List.jsx'
+import Member from './Member.jsx'
 
 class Chat extends React.Component {
 
@@ -51,17 +53,17 @@ class Chat extends React.Component {
 		const {currentText} = this.state
 
 		return <main>
-		  <Header title="OH HAAAAAAY" />
+		  <Header title="Chatroom" />
       
       <aside>
 			<h2>Members</h2>
-			<ul>
-				{classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
+			<List>
+				{classroom.students.map((student, index) =>
+					<Member id={student.id} key={student.id} name={student.name}></Member>
 				)}
-			</ul>
-      </aside>
-      
+			</List>
+			</aside>
+			
       <section>
 			<h2>Messages</h2>
 			<ul>
