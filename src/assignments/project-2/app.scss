@@ -1,0 +1,51 @@
+////////////////////////
+/*  PLACEHOLDERS      */
+///////////////////////
+%grid-padding {
+  padding: 25px;
+}
+
+////////////////////////
+/*   DEFAULT THEME   */
+///////////////////////
+$defaultGreen:#01FF70;
+
+body{
+  background: #000;
+  color: $defaultGreen;
+  font-family: Courier, monospace;
+}
+
+
+////////////////////////
+/*       LAYOUT      */
+///////////////////////
+
+main{
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+  grid-gap: 1em;
+  > * {
+    @extend %grid-padding;
+  }
+}
+header{
+  grid-column: 1 / -1;
+  border: 1px solid $defaultGreen;
+  
+}
+
+aside#memberlist{
+  grid-column: span 1;
+  border: 1px solid $defaultGreen;
+}
+
+section#messages{
+  grid-column: 2 / -1;
+  border: 1px solid $defaultGreen;
+}
+
+section#typing{
+  grid-column: 1 / -1;
+  border: 1px solid $defaultGreen;
+}

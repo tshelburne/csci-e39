@@ -4,6 +4,7 @@ import autobind from 'class-autobind'
 import List from './components/List.jsx'
 import Member from './components/Member.jsx'
 import Composer from './components/Composer.jsx'
+import Header from './ui/components/header.jsx'
 
 class Chat extends React.Component {
 
@@ -28,35 +29,40 @@ class Chat extends React.Component {
 	render() {
 		const {classroom, chat, actions} = this.props
 
-		return <div>
-			<h1>Chatroom</h1>
-
-			<h2>Members</h2>
-			<List>
-				{classroom.students.map((student, index) =>
-					<Member id={student.id} key={student.id} name={student.name}></Member>
-				)}
-			</List>
-
-			<h2>Messages</h2>
-			<ul>
-				{chat.messages.map(({id, student, text, createdAt}) =>
-					<li key={id}>
-						<label>{student.name} at {createdAt.toISOString()}</label>
-						<p>{text}</p>
-					</li>
-				)}
-			</ul>
-
+		return <main>
+			<Header title="Chatroom" />
+ 			<aside id="memberlist">
+					<h2>Members</h2>
+					<List>
+						{classroom.students.map((student, index) =>
+							<Member id={student.id} key={student.id} name={student.name}></Member>
+						)}
+					</List>
+					</aside>
+					
+			<section id="messages">
+					<h2>Messages</h2>
+					<ul>
+						{chat.messages.map(({id, student, text, createdAt}) =>
+							<li key={id}>
+								<label>{student.name} at {createdAt.toISOString()}</label>
+								<p>{text}</p>
+							</li>
+						)}
+					</ul>
+			</section>
 			<Composer chat={chat} actions={this.props.actions} members={classroom}/>
-		</div>
+		</main>
 	}
 
 }
 
 Chat.propTypes = {
 	classroom: PropTypes.shape({
+	  	//shape defines what object will look like
 		students: PropTypes.arrayOf(PropTypes.member).isRequired,
+		//students is a property of classroom
+		//students is an array of studentPropType. access it with an array [1][2] etc. studentPropType is  shape that has id and name
 	}).isRequired,
 	chat: PropTypes.shape({
 		typing: PropTypes.arrayOf(PropTypes.member).isRequired,
