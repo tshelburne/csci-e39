@@ -1,34 +1,46 @@
 .pendingFiles {
-	background: green;
-	border: 2px solid brown;
-	border-radius: 5px;
-	margin: 0 auto;
+	background: white;
+	border: 2px solid $pendingFiles-border;
+	border-radius: $radii;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	// margin: 0 auto;
+	margin: $margin-sm;
 	opacity: 1;
 	position: absolute;
 	transition: .3s opacity ease-out;
-	width: 98%;
+	max-width: 90%;
 
 	&.hide {
 		opacity: 0;
 	}
 
 	h2 {
+		background-color: $progress-head-background;
+		color: $progress-head-color;
+		display: block;
+		margin: 0 0 $margin-sm 0;
+		padding: $padding-xs;
 		text-align: center;
+		width: 100%;
 	}
 
 	ul {
-		display: flex;
-		flex-wrap: wrap;
+		// display: flex;
+		// flex-wrap: wrap;
 		margin: $margin-sm;
 		padding: 0;
 
 		li {
 			display: flex;
 			align-items: center;
-			justify-content: center;
+			// justify-content: center;
 			list-style: none;
-			margin-right: $margin-sm;
-			margin-bottom: $margin-sm;
+			margin: 0 $margin-sm $margin-sm 0;
+			overflow-wrap: break-word;
+			word-wrap: break-word;
 		}
 	}
 

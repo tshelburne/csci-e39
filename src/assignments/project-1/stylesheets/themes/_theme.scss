@@ -2,7 +2,10 @@ $primary-color: rgba(150, 143, 179, 1);
 $primary-color: hsla(252, 19%, 63%, 1); // same as above
 $button-color: white;
 $button-background: hsl(0, 100%, 25%); // maroon
+$pendingFiles-border: darken($button-background, 15%);
 $progress-color: $button-background;
+$progress-head-background: $button-background;
+$progress-head-color: $button-color;
 $img-name-color: $button-color;
-$img-name-background: $button-background;
+$img-name-background: $primary-color;
 $item-border: darken($button-background, 15%);
