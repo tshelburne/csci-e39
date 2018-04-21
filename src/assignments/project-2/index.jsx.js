@@ -51,7 +51,9 @@ class Chat extends React.Component {
 						)}
 					</ul>
 			</section>
-			<Composer chat={chat} actions={this.props.actions} members={classroom}/>
+			<section id="typing">
+			  <Composer chat={chat} actions={this.props.actions} members={classroom}/>
+			</section>
 		</main>
 	}
 

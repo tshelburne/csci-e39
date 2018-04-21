@@ -10,10 +10,20 @@ class Header extends React.Component {
     const {title} = this.props
     return <header>
       <h1>{title}</h1>
-      <Themer />
-      <Themer />
-      <Themer />
-      <Themer />
+      <section id="theme-widget" role="themer">
+        <Themer 
+          label={"Background"} 
+          value={"#000000"} 
+        />
+        <Themer 
+          label={"Text"}
+          value={"#01FF70"}  
+        />
+        <Themer 
+          label={"Wallpaper"}
+          value={"#ff0000"} 
+        />
+      </section>
     </header>
   }
 
@@ -22,7 +32,10 @@ class Header extends React.Component {
 
   function Themer(props){
     return(
-      <input type="color" />
+      <form>
+      <label for="colorpicker">{props.label}</label>
+      <input id="colorpicker" type="color" value={props.value}/>
+      </form>
     );
   }
 
