@@ -1,7 +1,3 @@
-//resources:
-//button - https://codemyui.com/simple-box-shadow-button-hover-animation/
-//progress-bar - https://css-tricks.com/html5-progress-element/
-
 //colors ----------------------------
 $base-color:rgba(12, 12, 12, 1);
 $header-text-color:rgba(200, 200, 200, 1);
@@ -33,6 +29,14 @@ body {
 	font-size:1.1rem;
 	min-height: 100vh;
 }
+footer{
+	border-top: 1px solid $accent-color-1;
+	padding: 2em;
+	text-align:right;
+}
+header {
+	border-bottom: 1px solid $accent-color-3;
+}
 .header {
 	margin-top: 0;
 	font-family: $font-family-header;
@@ -48,6 +52,7 @@ body {
 
 //button----------------
 button {
+	font-size: 1.3rem;
 	background:$base-color;
 	color:$accent-color-1;	
 	border:1px solid $accent-color-1;
@@ -57,7 +62,7 @@ button {
 	transition:all 0.3s ease;
 	&:active, &:hover, &:focus {
 		color: $header-text-color;
-    border-color: adjust-hue($accent-color-1, 45deg);    
+    	border-color: adjust-hue($accent-color-1, 45deg);    
 		box-shadow:0 0 0.8em adjust-hue($accent-color-1, 45deg);  	
   }	
 }
@@ -133,14 +138,44 @@ li {
 	padding-bottom: 2em;
 }
 
+//np list styling
+.NP-list{
+	margin-bottom:1em;
+	background: lighten($base-color, 5);
+	@include box-shadow-containers($accent-color-2);
+	&:active, &:hover, &:focus {
+		border-color: adjust-hue($accent-color-2, 45deg);    
+		box-shadow:0 0 0.8em adjust-hue($accent-color-2, 45deg);
+	}
+		
+}
+.list ul {
+	padding:0;
+}
+
+a {
+	text-decoration: none;
+	color:$header-text-color;
+	&:active, &:hover, &:focus {
+		color:$accent-color-1;
+	}	
+}
+.form{
+	@include box-shadow-containers($accent-color-2);
+	background: lighten($base-color, 5);
+	padding: 1em;
+}
+.component{
+	margin-top:1.8rem;
+}
 //-----------------------------
 //grid layout
 
-body {
+.body {
 	max-width:1200px;
 	margin:0 auto;
 }
-body > * { padding:1em;}
+.body > * { padding:1em;}
 
 /*IE fallback*/
 main {
@@ -153,10 +188,10 @@ main > *{
 
 /*grid layout--------------------------*/
 @supports(display:grid){
-	body > *, main > *{
+	.body > *, main > *{
 		padding:0;
 	}
-	body{
+	.body{
 		margin:0;
 		max-width:none;
 		display:grid;
@@ -180,7 +215,7 @@ main > *{
 		}	
 
 	@media(min-width:768px){
-		body{
+		.body{
 			grid-template-areas: "header header "
 							 	 "main main"							 
 							 	 "footer  footer";
@@ -208,10 +243,18 @@ main > *{
 			grid-column: 1/2;
 			grid-row: 3/4;
 		}
+		.list{
+			grid-column: 1/2;
+			grid-row: 4/6;
+		}
+		.component{
+			grid-column: 2/3;
+			grid-row: 4/6;
+		}
 	}
 
 	@media(min-width:1200px){
-		body{
+		.body{
 			grid-template-areas: "header header header"
 							 	 "main main  main"							 
 							 	 "footer  footer footer";
@@ -238,6 +281,14 @@ main > *{
 		.button-container{
 			grid-column: 1/2;
 			grid-row: 3/4;
+		}
+		.list{
+			grid-column: 1/2;
+			grid-row: 4/6;
+		}
+		.component{
+			grid-column: 2/4;
+			grid-row: 4/6;
 		}
 		
 	}
