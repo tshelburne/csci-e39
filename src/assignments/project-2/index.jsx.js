@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
-import List from './List.jsx'
-import Member from './Member.jsx'
+import List from './components/List.jsx'
+import Member from './components/Member.jsx'
 import Composer from './components/Composer.jsx'
 
 class Chat extends React.Component {
