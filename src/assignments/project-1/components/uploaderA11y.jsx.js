@@ -9,6 +9,7 @@ class UploaderA11y extends React.Component {
 		<label className="uploader">Upload Images
 			<Uploader upload={this.props.upload} />
 		</label>
+	&nbsp; {/* Needed to prevent div having no height when label is absolutely positioned */}
 		</div>
 	}
 

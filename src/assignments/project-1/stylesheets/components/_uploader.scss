@@ -1,10 +1,13 @@
 // From https://coderwall.com/p/uer3ow/total-input-type-file-style-control-with-pure-css
+// article uses position: relative for the container element but unless it's removed from
+// the page flow, the child input is still clickable outside the "button" area. The article's 
+// example takes it out of the flow by floating it but doesn't mention that that's necessary.
 .uploader {
-	margin-bottom: $margin-sm;
+	margin-bottom: $margin-lg;
 
 	label{
 		overflow: hidden;
-		position: relative;
+		position: absolute;
 		margin-bottom: $margin-sm;
 
 		@extend %button;
