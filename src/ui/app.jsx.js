@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Gallery from '../assignments/project-1/index.jsx'
+import Gallery from '../assignments//index.jsx'
 
 const App = ({auth, ...props}) => {
 	switch (auth.status) {
