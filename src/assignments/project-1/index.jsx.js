@@ -1,42 +1,94 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
+import autobind from 'class-autobind'
 
-const Uploads = ({uploads, actions}) => {
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
+import Lightbox from 'react-image-lightbox';
 
-	return <div>
-		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
+import Photo from './components/photo.jsx'
+import InProgress from './components/inprogress.jsx'
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
+function getMapValue(obj, key) {
+   if (obj.hasOwnProperty(key))
+      return obj[key];
+   throw new Error("Invalid map key.");
+}
 
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
+class Uploads extends React.Component {
+	constructor() {
+		super(...arguments)
+		autobind(this)
+
+		this.state = {
+      photoIndex: 0,
+      isOpen: false,
+    };
+	}
+
+	render() {
+		const {uploads, actions} = this.props
+		const {photoIndex, isOpen} = this.state
+
+		const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
+		const completedFiles = uploads.files.filter(({progress}) => !progress)
+
+		return <div>
+			<h1>Upload Images</h1>
+			{/* do not delete this uploader component */}
+			<Uploader className="uploader" upload={actions.upload} />
+			{/* do not delete this uploader component */}
+
+			<h2>In Progress</h2>
+			<List>
+				{pendingFiles.map(file => {
+					const {id, name, progress} = file
+
+					return <InProgress key={id} name={name} progress={progress} />
+				})}
+			</List>
+
+			<h2>Completed</h2>
+			<h2></h2>
+			<List className="photo-album">
+				{completedFiles.map(file => {
+					const {id, name, url, error} = file
+
+					return <Photo key={id}
+						className="photo"
+						error={error}
+						name={name}
+						fileId={id}
+						url={url}
+						onClick={() => this.setState({ isOpen: true })} />
+				})}
+			</List>
+
+			{isOpen && (
+          <Lightbox
+            mainSrc={completedFiles[photoIndex].url}
+            nextSrc={completedFiles[(photoIndex + 1) % completedFiles.length].url}
+            prevSrc={completedFiles[(photoIndex + completedFiles.length - 1) % completedFiles.length].url}
+            onCloseRequest={() => this.setState({ isOpen: false })}
+            onMovePrevRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + completedFiles.length - 1) % completedFiles.length,
+              })
+            }
+            onMoveNextRequest={() =>
+              this.setState({
+                photoIndex: (photoIndex + 1) % completedFiles.length,
+              })
+            }
+          />
+        )}
+		</div>
+	}
+}
+
+const List = ({children, ...props}) => {
+	return <ul {...props}>
+		{React.Children.map(children, child => <li>{child}</li>)}
 		</ul>
-
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
-	</div>
 }
 
 const statusPropType = PropTypes.shape({
