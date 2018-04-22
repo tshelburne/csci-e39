@@ -15,16 +15,25 @@ import FontIcon from 'material-ui/FontIcon';
 import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
 import ActionThumbUp from 'material-ui/svg-icons/action/thumb-up';
 import ActionThumbDown from 'material-ui/svg-icons/action/thumb-down';
+import ActionDone from 'material-ui/svg-icons/action/done';
 import CommunicationComment from 'material-ui/svg-icons/communication/comment';
 import ContentClear from 'material-ui/svg-icons/content/clear';
+import ContentMail from 'material-ui/svg-icons/content/mail';
 import MenuItem from 'material-ui/MenuItem';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import RaisedButton from 'material-ui/RaisedButton';
-import { Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle } from 'material-ui/Toolbar';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+
+import List from 'material-ui/List/List';
+import ListItem from 'material-ui/List/ListItem';
+import Avatar from 'material-ui/Avatar';
+import FileFolder from 'material-ui/svg-icons/file/folder'
 
 import Dialog from 'material-ui/Dialog';
 
-import { Card, CardActions, CardHeader, CardMedia, CardTitle, CardText } from 'material-ui/Card';
+import Checkbox from 'material-ui/Checkbox';
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class Chat extends React.Component {
 	constructor() {
@@ -102,105 +111,144 @@ class Chat extends React.Component {
 		const { currentText, hasUpload } = this.state;
 
 		const dialogActions = [
-			<FlatButton label="Cancel" primary={true} onClick={this.handleDialogClose} />,
-			<RaisedButton label="Save" primary={true} onClick={this.handleDialogClose} />,
-		];
+	      <FlatButton
+	        label="Cancel"
+	        primary={true}
+	        onClick={this.handleDialogClose}
+	      />,
+	      <RaisedButton
+	        label="Send Invites"
+	        primary={true}
+	        onClick={this.handleDialogClose}
+	      />,
+	    ];
 
-		return (
-			<div className="hg">
-				<header className="hg__header">
-					<AppBar
-						title="PhotoPR"
-						iconElementLeft={
-							<IconButton touch={true}>
-								<CommunicationComment />
-							</IconButton>
-						}
-						onLeftIconButtonClick={this.handleDrawerToggle}
-						iconElementRight={
-							<div>
-								{this.state.hasUpload && (
-									<div>
-										<FlatButton
-											label="Complete Review"
-											primary={true}
-											style={{ color: '#fff', marginTop: '5px' }}
-											onClick={this.handleCompleteReview}
-										/>
-										<FlatButton
-											label="Share"
-											primary={true}
-											style={{ color: '#fff', marginTop: '5px' }}
-										/>
-									</div>
-								)}
-							</div>
-						}
-					/>
-				</header>
-				<main className="hg__main">
-					{this.state.hasUpload && (
-						<Card>
-							<CardMedia
-								overlay={<CardTitle title="Image Title" subtitle="Uploaded by First Last Name" />}
-							>
-								<img
-									src="https://images.unsplash.com/photo-1493838952631-2bce5dad8e54?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2c657455b24166fe47c308fc1d64866c&auto=format&fit=crop&w=1500&q=80"
-									alt=""
-								/>
-							</CardMedia>
-						</Card>
-					)}
 
-					{!this.state.hasUpload && (
-						<div style={{ textAlign: 'center', marginTop: '35%', marginLeft: '350px' }}>
-							<FlatButton label="Upload Image" primary={true} onClick={this.handleUpload} />
-						</div>
-					)}
-				</main>
-				{this.state.hasUpload && (
-					<aside className="hg__right">
-						<Tabs>
-							<Tab label="Comments" style={{ background: '#fff', color: '#000' }}>
-								<Card style={{ margin: '20px' }}>
-									<CardText>
-										<TextField
-											hintText="Enter text to add a comment..."
-											value={currentText}
-											multiLine={true}
-											onChange={this.onType}
-											style={{ width: '100%', marginTop: '0' }}
-											rows={2}
-											rowsMax={4}
-										/>
-									</CardText>
-									<CardActions>
-										<RaisedButton
-											label="Add Comment"
-											primary={true}
-											disabled={currentText === ``}
-											onClick={this.onSend}
-										/>
-									</CardActions>
-								</Card>
+		return <div className="hg">
 
-								<p>{this.getTypingMessage()}</p>
+		<FlatButton label="Invite" primary={true} style={{color: "#fff", marginTop: "5px"}} onClick={this.handleDialogOpen}/>
 
-								{chat.messages
-									.map(({ id, student, text, createdAt }) => (
-										<Card style={{ margin: '20px' }} key={id}>
-											<CardHeader title={text} subtitle={createdAt.toISOString()} />
-											<CardActions>
-												<IconButton touch={true} iconStyle={{ color: '#00aa8d' }}>
-													<ActionThumbUp />
-												</IconButton>
-												<IconButton touch={true} iconStyle={{ color: '#bb1010' }}>
-													<ActionThumbDown />
-												</IconButton>
-											</CardActions>
-										</Card>
-									))
-									.reverse()}
+		<Dialog
+          title="Add Contributors"
+          actions={dialogActions}
+          modal={false}
+          open={this.state.dialogOpen}
+          onRequestClose={this.handleClose}
+        >
+         <List>
+    <ListItem
+      disabled={true}
+      leftCheckbox={<Checkbox />}
+      rightAvatar={
+        <Avatar src="http://www.material-ui.com/images/adellecharles-128.jpg" />
+      }
+    >
+      First Last Name
+    </ListItem>
+    <ListItem
+      disabled={true}
+      leftCheckbox={<Checkbox />}
+      rightAvatar={
+        <Avatar src="http://www.material-ui.com/images/adhamdannaway-128.jpg" />
+      }
+    >
+      First Last Name
+    </ListItem>
+    <ListItem
+      disabled={true}
+      leftCheckbox={<Checkbox />}
+      rightAvatar={
+        <Avatar src="http://www.material-ui.com/images/allisongrayce-128.jpg" />
+      }
+    >
+      First Last Name
+    </ListItem>
+    <ListItem
+      disabled={true}
+      leftCheckbox={<Checkbox />}
+      rightAvatar={
+        <Avatar src="http://www.material-ui.com/images/chexee-128.jpg" />
+      }
+    >
+      First Last Name
+    </ListItem>
+  </List>
+        </Dialog>
+
+		 <header className="hg__header">
+			<AppBar 
+				title="PhotoPR" 
+				 iconElementLeft={<IconButton touch={true}><CommunicationComment /></IconButton>}
+				 onLeftIconButtonClick={this.handleDrawerToggle}
+				 iconElementRight={<div>{this.state.hasUpload && <div>
+				 		<FlatButton 
+				 			label="Complete Review" 
+				 			primary={true} style={{color: "#fff", marginTop: "5px"}} 
+				 			onClick={this.handleCompleteReview}
+				 			icon={<IconButton touch={true}><ActionDone /></IconButton>}/>
+				 		</div>}</div>}/>
+		 </header>
+  <main className="hg__main">
+
+      {this.state.hasUpload &&
+ 	<Card>
+	    <CardMedia
+	      overlay={<CardTitle title="Image Title" subtitle="Uploaded by First Last Name" /> }>
+	      <img src="https://images.unsplash.com/photo-1493838952631-2bce5dad8e54?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2c657455b24166fe47c308fc1d64866c&auto=format&fit=crop&w=1500&q=80" alt="" />
+	    </CardMedia>
+	    </Card>
+}
+
+{!this.state.hasUpload && 
+<div style={{textAlign: "center", marginTop: "35%", marginLeft: "350px"}}>
+		<FlatButton
+	        label="Upload Image"
+	        primary={true}
+	        onClick={this.handleUpload}/>
+	        </div>
+}
+  </main>
+  {this.state.hasUpload && 
+  <aside className="hg__right">
+<Tabs>
+<Tab label="Comments" style={{background: "#fff", color: "#000"}}>
+
+
+<Card style={{margin: "20px"}}>
+	<CardText>
+		<TextField
+	      hintText="Enter text to add a comment..."
+	      value={currentText}
+	      multiLine={true}
+	      onChange={this.onType}
+	      style={{width:"100%", marginTop: "0"}}
+	      rows={2}
+	      rowsMax={4}/>
+	</CardText>
+		<CardActions>
+			<RaisedButton
+		        label="Add Comment"
+		        primary={true}
+		        disabled={currentText === ``}
+		        onClick={this.onSend}/>
+		</CardActions>
+</Card>
+
+				<p>{this.getTypingMessage()}</p>
+
+							{chat.messages.map(({id, student, text, createdAt}) =>
+
+									<Card style={{margin: "20px"}} key={id}>
+									    <CardHeader
+									      title={text}
+									      subtitle={createdAt.toISOString()}/>
+									    <CardActions>
+									      <IconButton touch={true} iconStyle={{color: "#00aa8d"}}><ActionThumbUp /></IconButton>
+									       <IconButton touch={true} iconStyle={{color: "#bb1010"}}><ActionThumbDown/></IconButton>
+									    </CardActions>
+									  </Card>
+
+								).reverse()}
 							</Tab>
 							<Tab label="Contributors" style={{ background: '#fff', color: '#000' }}>
 								{classroom.students.map(({ id, name }) => (
@@ -210,13 +258,17 @@ class Chat extends React.Component {
 											avatar="http://www.material-ui.com/images/jsa-128.jpg"
 										/>
 									</Card>
-								))}
+
+								)}
 							</Tab>
-						</Tabs>
-					</aside>
-				)}
-			</div>
-		);
+							</Tabs>
+				<FloatingActionButton onClick={this.handleDialogOpen} style={{position: "absolute", right: "30px", bottom: "20px"}}>
+							      <ContentMail />
+							    </FloatingActionButton>
+
+  </aside>
+}
+		</div>
 	}
 }
 
