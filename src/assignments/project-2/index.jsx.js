@@ -5,8 +5,8 @@ import List from './components/List.jsx'
 import Member from './components/Member.jsx'
 import Message from './components/Message.jsx'
 import Composer from './components/Composer.jsx'
-import Header from './components/header.jsx'
-import Ad from './components/ad.jsx'
+import Header from './components/Header.jsx'
+import Ad from './components/Ad.jsx'
 import Color from 'color'
 
 
@@ -69,7 +69,7 @@ class Chat extends React.Component {
 		return <main style={{backgroundColor: bgColor, color: textColor}}>
 			<Header title="Chatroom" borderColor={borderColor} colors={colors} onChange={this.updateColors}  />
  			<aside id="memberlist" style={{borderColor: borderColor}}>
-					<h2>Members</h2>
+					<h2>Members {process.env.STUDENT_ID}</h2>
 					<List>
 						{classroom.students.map((student, index) =>
 							<Member id={student.id} key={student.id} name={student.name}></Member>
