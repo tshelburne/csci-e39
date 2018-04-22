@@ -9,5 +9,4 @@ const Ad = (props) => {
     </figure>
 }
 
-
 export default Ad;

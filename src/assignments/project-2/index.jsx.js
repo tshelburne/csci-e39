@@ -4,8 +4,8 @@ import autobind from 'class-autobind'
 import List from './components/List.jsx'
 import Member from './components/Member.jsx'
 import Composer from './components/Composer.jsx'
-import Header from './ui/components/header.jsx'
-import Ad from './ui/components/ad.jsx'
+import Header from './components/header.jsx'
+import Ad from './components/ad.jsx'
 import Color from 'color'
 
 
