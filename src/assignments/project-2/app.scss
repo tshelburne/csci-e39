@@ -1,8 +1,25 @@
 ////////////////////////
+/*     RESET         */
+///////////////////////
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+////////////////////////
 /*  PLACEHOLDERS      */
 ///////////////////////
 %grid-padding {
   padding: 25px;
+}
+
+%button-padding {
+  padding: 15px;
+}
+
+%message-padding {
+  padding: 15px 15px 25px 15px;
 }
 
 ////////////////////////
@@ -18,13 +35,14 @@ body{
 
 
 ////////////////////////
-/*       LAYOUT      */
+/*   LAYOUT & STYLE   */
 ///////////////////////
 
 main{
   display: grid;
   grid-template-columns: 1fr 5fr;
   grid-gap: 1em;
+  min-height: 100vh;
   > * {
     @extend %grid-padding;
   }
@@ -54,6 +72,22 @@ section#messages{
 	ul{
 		list-style: none;
 		padding-left: 0;
+		li{
+  		label{
+    		display: inline-block;
+    		width: 100%;
+  		}
+  		p{
+    		border-radius: 5px;
+    		background: $defaultGreen;
+    		color: #000;
+    		display: inline-block;
+    		@extend %message-padding;    		
+    		width: auto;
+    		-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 23px 75%, 50px 100%, 40px 75%, 0% 75%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 23px 75%, 50px 100%, 40px 75%, 0% 75%);
+  		}
+		}
 	}
 }
 
@@ -166,4 +200,34 @@ button{
 		width: 100%;
 		margin-top: 20px;
 	}
+}
+
+footer{
+  grid-column: 1 / -1;
+  border: 1px solid $defaultGreen;
+  text-align: center;
+  figure{
+    width: 33%;
+    display: inline-block;
+    margin: 10px;
+    @media all and (max-width:650px){
+    	width: 100%;
+    	display: block;
+    }
+    img{
+      width: 100%;
+      height: auto;
+      padding-bottom: 15px;
+    }
+  }
+  a.btn{
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid $defaultGreen;
+    background: transparent;
+    color: $defaultGreen;
+    width: auto;
+    margin: 0 auto;
+    @extend %button-padding;
+  }
 }

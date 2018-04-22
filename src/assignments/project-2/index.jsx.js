@@ -5,7 +5,7 @@ import List from './components/List.jsx'
 import Member from './components/Member.jsx'
 import Composer from './components/Composer.jsx'
 import Header from './ui/components/header.jsx'
-
+import Ad from './ui/components/ad.jsx'
 import Color from 'color'
 
 
@@ -62,11 +62,13 @@ class Chat extends React.Component {
 		const {colors} = this.state;
 		const {bgColor, textColor, wallColor} = colors
 		const borderColor = Color(textColor).lighten(0.42);
+		const randomGraphic = "http://lorempixel.com/300/200/";
+		const randomLink = "http://www.uroulette.com/visit/wvvvv";
 
 		return <main style={{backgroundColor: bgColor, color: textColor}}>
 			<Header title="Chatroom" borderColor={borderColor} colors={colors} onChange={this.updateColors}  />
  			<aside id="memberlist" style={{borderColor: borderColor}}>
-					<h2>{bgColor} Members</h2>
+					<h2>Members</h2>
 					<List>
 						{classroom.students.map((student, index) =>
 							<Member id={student.id} key={student.id} name={student.name}></Member>
@@ -80,7 +82,7 @@ class Chat extends React.Component {
 						{chat.messages.map(({id, student, text, createdAt}) =>
 							<li key={id}>
 								<label>{student.name} at {createdAt.toISOString()}</label>
-								<p>{text}</p>
+								<p style={{backgroundColor: textColor}}>{text}</p>
 							</li>
 						)}
 					</ul>
@@ -88,6 +90,11 @@ class Chat extends React.Component {
 			<section id="typing" style={{borderColor: borderColor}}>
 			  <Composer chat={chat} actions={this.props.actions} borderColor={borderColor} members={classroom}/>
 			</section>
+			<footer style={{borderColor: borderColor}}>
+			  <h3>Sponsored by our partners:</h3>
+			  <Ad graphic={randomGraphic} buttonLink={randomLink} borderColor={borderColor} textColor={textColor}/>
+			  <Ad graphic={randomGraphic} buttonLink={randomLink} borderColor={borderColor} textColor={textColor}/>
+			</footer>
 		</main>
 	}
 
