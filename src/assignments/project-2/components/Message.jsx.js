@@ -12,12 +12,11 @@ class Message extends Component {
     render() {
         const { id, member, text, createdAt, textColor } = this.props
         return (
-            <li key={id}>
-				<label>{member.name} at id={id} {createdAt.toISOString()}</label>
-				<p dangerouslySetInnerHTML={createMarkup(text)} style={{backgroundColor: textColor}}></p>
-			</li>
+            <div>
+      				<label>{member.name} at id={id} {createdAt.toISOString()}</label>
+			      	<p dangerouslySetInnerHTML={createMarkup(text)} style={{backgroundColor: textColor}}></p>
+			    </div>
         )
-
     }
 }
 

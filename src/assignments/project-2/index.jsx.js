@@ -79,12 +79,11 @@ class Chat extends React.Component {
 
 			<section id="messages" style={{backgroundColor: wallColor, borderColor: borderColor}}>
 					<h2>Messages</h2>
-					<ul>
+					<List>
 						{chat.messages.map(({id, student, text, createdAt, textColor}) =>
-							<Message id={id} text={text} createdAt={createdAt} textColor={textColor} member={student}></Message>
-
+							<Message id={id} text={text} key={id} createdAt={createdAt} textColor={textColor} member={student}></Message>
 						)}
-					</ul>
+					</List>
 			</section>
 			<section id="typing" style={{borderColor: borderColor}}>
 			  <Composer chat={chat} actions={this.props.actions} borderColor={borderColor} textColor={textColor} backgroundColor={bgColor} members={classroom}/>
