@@ -10,7 +10,7 @@ class Ad extends React.Component {
     const {graphic, buttonLink, borderColor, textColor} = this.props
 
     return <figure>
-      <img src={this.props.graphic} alt="Advertisement from sponsor"/>
+      <a href={this.props.buttonLink}><img src={this.props.graphic} alt="Advertisement from sponsor"/></a>
       <a href={this.props.buttonLink} className="btn" style={{borderColor: this.props.borderColor, color: this.props.textColor}}>Learn More</a>
     </figure>
   }

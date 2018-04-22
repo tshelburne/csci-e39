@@ -18,6 +18,10 @@ body{
   padding: 15px;
 }
 
+%message-padding {
+  padding: 15px 15px 25px 15px;
+}
+
 ////////////////////////
 /*   DEFAULT THEME   */
 ///////////////////////
@@ -31,7 +35,7 @@ body{
 
 
 ////////////////////////
-/*       LAYOUT      */
+/*   LAYOUT & STYLE   */
 ///////////////////////
 
 main{
@@ -68,6 +72,22 @@ section#messages{
 	ul{
 		list-style: none;
 		padding-left: 0;
+		li{
+  		label{
+    		display: inline-block;
+    		width: 100%;
+  		}
+  		p{
+    		border-radius: 5px;
+    		background: $defaultGreen;
+    		color: #000;
+    		display: inline-block;
+    		@extend %message-padding;    		
+    		width: auto;
+    		-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 23px 75%, 50px 100%, 40px 75%, 0% 75%);
+        clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 23px 75%, 50px 100%, 40px 75%, 0% 75%);
+  		}
+		}
 	}
 }
 
