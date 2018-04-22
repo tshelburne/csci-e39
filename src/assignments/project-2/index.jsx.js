@@ -2,8 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'class-autobind';
 
-import AppBar from 'material-ui/AppBar';
+import CommentList from '../../ui/components/commentList.jsx';
+import AdBlock from '../../ui/components/adBlock.jsx';
+
+import AppBar from 'material-ui/AppBar'
 import FlatButton from 'material-ui/FlatButton';
+
+
 
 import Drawer from 'material-ui/Drawer';
 import { Tabs, Tab } from 'material-ui/Tabs';
@@ -13,8 +18,7 @@ import IconMenu from 'material-ui/IconMenu';
 import IconButton from 'material-ui/IconButton';
 import FontIcon from 'material-ui/FontIcon';
 import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
-import ActionThumbUp from 'material-ui/svg-icons/action/thumb-up';
-import ActionThumbDown from 'material-ui/svg-icons/action/thumb-down';
+
 import ActionDone from 'material-ui/svg-icons/action/done';
 import CommunicationComment from 'material-ui/svg-icons/communication/comment';
 import ContentClear from 'material-ui/svg-icons/content/clear';
@@ -110,6 +114,9 @@ class Chat extends React.Component {
 		const { classroom, chat, actions } = this.props;
 		const { currentText, hasUpload } = this.state;
 
+		const ad1 = {src: "https://memegenerator.net/img/instances/36926483/y-u-no-use-hipchat.jpg"};
+		const ad2 = {src: "http://www.adweek.com/files/imagecache/node-detail/slack-1.jpeg"};
+
 		const dialogActions = [
 	      <FlatButton
 	        label="Cancel"
@@ -125,8 +132,6 @@ class Chat extends React.Component {
 
 
 		return <div className="hg">
-
-		<FlatButton label="Invite" primary={true} style={{color: "#fff", marginTop: "5px"}} onClick={this.handleDialogOpen}/>
 
 		<Dialog
           title="Add Contributors"
@@ -181,35 +186,37 @@ class Chat extends React.Component {
 				 iconElementLeft={<IconButton touch={true}><CommunicationComment /></IconButton>}
 				 onLeftIconButtonClick={this.handleDrawerToggle}
 				 iconElementRight={<div>{this.state.hasUpload && <div>
-				 		<FlatButton 
+				 		<RaisedButton 
 				 			label="Complete Review" 
-				 			primary={true} style={{color: "#fff", marginTop: "5px"}} 
-				 			onClick={this.handleCompleteReview}
-				 			icon={<IconButton touch={true}><ActionDone /></IconButton>}/>
+				 			secondary={true} style={{ marginTop: "5px"}}  labelStyle={{color: "rgb(255, 82, 82)"}}
+				 			onClick={this.handleCompleteReview}/>
 				 		</div>}</div>}/>
 		 </header>
   <main className="hg__main">
 
       {this.state.hasUpload &&
  	<Card>
-	    <CardMedia
-	      overlay={<CardTitle title="Image Title" subtitle="Uploaded by First Last Name" /> }>
-	      <img src="https://images.unsplash.com/photo-1493838952631-2bce5dad8e54?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2c657455b24166fe47c308fc1d64866c&auto=format&fit=crop&w=1500&q=80" alt="" />
+
+ 	<CardMedia
+	     overlay={<CardTitle title="Image Title" subtitle="Uploaded by First Last Name" /> }>
+	     <img src="https://images.unsplash.com/photo-1493838952631-2bce5dad8e54?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2c657455b24166fe47c308fc1d64866c&auto=format&fit=crop&w=1500&q=80"/>
 	    </CardMedia>
+
+	
 	    </Card>
 }
 
 {!this.state.hasUpload && 
-<div style={{textAlign: "center", marginTop: "35%", marginLeft: "350px"}}>
-		<FlatButton
+		<RaisedButton
+			style={{marginLeft: "350px"}}
 	        label="Upload Image"
 	        primary={true}
 	        onClick={this.handleUpload}/>
-	        </div>
 }
   </main>
   {this.state.hasUpload && 
   <aside className="hg__right">
+	<AdBlock ad={ad2}></AdBlock>
 <Tabs>
 <Tab label="Comments" style={{background: "#fff", color: "#000"}}>
 
@@ -226,28 +233,21 @@ class Chat extends React.Component {
 	      rowsMax={4}/>
 	</CardText>
 		<CardActions>
-			<RaisedButton
+			<FlatButton
 		        label="Add Comment"
 		        primary={true}
 		        disabled={currentText === ``}
 		        onClick={this.onSend}/>
 		</CardActions>
 </Card>
-				<p>{this.getTypingMessage()}</p>
 
+<div style={{margin: "20px"}}>
+<AdBlock ad={ad1}></AdBlock>
+</div>
+
+<CommentList chat={chat}></CommentList>
 							{chat.messages.map(({id, student, text, createdAt}) =>
 
-									<Card style={{margin: "20px"}} key={id}>
-									    <CardHeader
-									      title={text}
-									      subtitle={createdAt.toISOString()}/>
-									    <CardActions>
-									      <IconButton touch={true} iconStyle={{color: "#00aa8d"}}><ActionThumbUp /></IconButton>
-									       <IconButton touch={true} iconStyle={{color: "#bb1010"}}><ActionThumbDown/></IconButton>
-									    </CardActions>
-									  </Card>
-
-								).reverse()}
 							</Tab>
 							<Tab label="Contributors" style={{ background: '#fff', color: '#000' }}>
 								{classroom.students.map(({ id, name }) => (

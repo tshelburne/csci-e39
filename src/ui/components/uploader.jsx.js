@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'class-autobind';
 
+import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+
 class Uploader extends React.Component {
 	constructor() {
 		super(...arguments);
