@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 
 import CommentList from '../../ui/components/commentList.jsx';
+import AdBlock from '../../ui/components/adBlock.jsx';
 
 import AppBar from 'material-ui/AppBar'
 import FlatButton from 'material-ui/FlatButton';
@@ -112,6 +113,9 @@ class Chat extends React.Component {
 		const {classroom, chat, actions} = this.props
 		const {currentText, hasUpload} = this.state
 
+		const ad1 = {src: "https://memegenerator.net/img/instances/36926483/y-u-no-use-hipchat.jpg"};
+		const ad2 = {src: "http://www.adweek.com/files/imagecache/node-detail/slack-1.jpeg"};
+
 		const dialogActions = [
 	      <FlatButton
 	        label="Cancel"
@@ -181,11 +185,10 @@ class Chat extends React.Component {
 				 iconElementLeft={<IconButton touch={true}><CommunicationComment /></IconButton>}
 				 onLeftIconButtonClick={this.handleDrawerToggle}
 				 iconElementRight={<div>{this.state.hasUpload && <div>
-				 		<FlatButton 
+				 		<RaisedButton 
 				 			label="Complete Review" 
-				 			primary={true} style={{color: "#fff", marginTop: "5px"}} 
-				 			onClick={this.handleCompleteReview}
-				 			icon={<IconButton touch={true}><ActionDone /></IconButton>}/>
+				 			secondary={true} style={{ marginTop: "5px"}}  labelStyle={{color: "rgb(255, 82, 82)"}}
+				 			onClick={this.handleCompleteReview}/>
 				 		</div>}</div>}/>
 		 </header>
   <main className="hg__main">
@@ -203,7 +206,7 @@ class Chat extends React.Component {
 }
 
 {!this.state.hasUpload && 
-		<FlatButton
+		<RaisedButton
 			style={{marginLeft: "350px"}}
 	        label="Upload Image"
 	        primary={true}
@@ -212,12 +215,7 @@ class Chat extends React.Component {
   </main>
   {this.state.hasUpload && 
   <aside className="hg__right">
-<Card>
-	<CardMedia>
-	    <img src="http://www.adweek.com/files/imagecache/node-detail/slack-1.jpeg" />
-	 </CardMedia>
-</Card>
-
+	<AdBlock ad={ad2}></AdBlock>
 <Tabs>
 <Tab label="Comments" style={{background: "#fff", color: "#000"}}>
 
@@ -234,19 +232,16 @@ class Chat extends React.Component {
 	      rowsMax={4}/>
 	</CardText>
 		<CardActions>
-			<RaisedButton
+			<FlatButton
 		        label="Add Comment"
 		        primary={true}
 		        disabled={currentText === ``}
 		        onClick={this.onSend}/>
 		</CardActions>
 </Card>
-
-<Card style={{margin: "20px"}}>
-	<CardMedia>
-	    <img src="https://memegenerator.net/img/instances/36926483/y-u-no-use-hipchat.jpg" />
-	 </CardMedia>
-</Card>
+<div style={{margin: "20px"}}>
+<AdBlock ad={ad1}></AdBlock>
+</div>
 
 <CommentList chat={chat}></CommentList>
 
