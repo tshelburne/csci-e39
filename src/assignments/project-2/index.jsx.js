@@ -62,7 +62,7 @@ class Chat extends React.Component {
 		const {colors} = this.state;
 		const {bgColor, textColor, wallColor} = colors
 		const borderColor = Color(textColor).lighten(0.42);
-		const randomGraphic = "http://lorempixel.com/300/200/";
+		const randomGraphic = "https://picsum.photos/300/200/?image=";
 		const randomLink = "http://www.uroulette.com/visit/wvvvv";
 
 		return <main style={{backgroundColor: bgColor, color: textColor}}>
@@ -92,8 +92,8 @@ class Chat extends React.Component {
 			</section>
 			<footer style={{borderColor: borderColor}}>
 			  <h3>Sponsored by our partners:</h3>
-			  <Ad graphic={randomGraphic} buttonLink={randomLink} borderColor={borderColor} textColor={textColor}/>
-			  <Ad graphic={randomGraphic} buttonLink={randomLink} borderColor={borderColor} textColor={textColor}/>
+			  <Ad graphic={randomGraphic + Math.floor(Math.random() * 20) } buttonLink={randomLink} borderColor={borderColor} textColor={textColor}/>
+			  <Ad graphic={randomGraphic + Math.floor(Math.random() * 20) } buttonLink={randomLink} borderColor={borderColor} textColor={textColor}/>
 			</footer>
 		</main>
 	}
