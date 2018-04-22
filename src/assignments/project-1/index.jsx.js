@@ -15,21 +15,19 @@ const Uploads = ({uploads, actions}) => {
 	return (
 		<div className="container">
 
-			<header role="banner">
+			<header className="carousel-component" role="banner">
 				<Carousel />
 			</header>
 
 	      	<section className="uploader-component">
 		      	<p className="content">Use the following image uploader to create a gallery. You can also follow along online for latest travel stories.</p>
 			    <form action="#">
-			           	<label tabIndex="0" htmlFor="uploader" className="uploader">
+			           	<label tabIndex="0"  className="uploader">
 			            	Upload
 			            <Uploader upload={actions.upload}/>
 			        </label>
 			    </form>
-
-				<Button cssclass="button" content="Follow" openThisSite="window.open('http://google.com','_blank')" />
-
+				<Button cssclass="button-component" content="Follow" openThisSite={()=> {window.open('http://google.com','_blank')} } />
 	     	</section>
 
 			<section className="progressbar-component">

@@ -12,12 +12,8 @@ class Button extends React.Component {
     } = this.props;
     
     return (
-      <div className="button-container"><button className={cssclass} onClick={this.onButtonClick} {...others}>{content}</button></div>
+      <div className="button-container"><button className={cssclass} onClick={openThisSite} {...others}>{content}</button></div>
     )
-  }
-
-  onButtonClick() {
-        {openThisSite}
   }
 }
 

@@ -20,6 +20,9 @@ $primary-border: 1px solid hsla(0, 0%, 0%, 1);
 $secondary-border: 1px solid hsla(0, 0%, 100%, 1);
 $tertiary-border: 1px solid hsla(0, 0%, 50%, 1);
 
+//carousel component variables
+$carousel-mobile-padding: 2rem;
+
 // uploader component variables
 $uploader-size: 1.2rem;
 $uploader-spacing: 0rem;
@@ -60,6 +63,14 @@ $button-transition: all 0.3s;
 $button-border: none;
 $button-text-align: center;
 
+// gallery component variables
+$gallery-grid-column-gap: 1.5rem;
+$gallery-grid-row-gap: 1.5rem;
+$gallery-width: 100%;
+$gallery-max-width: 1200px; //or 50vw
+$gallery-mobile-padding: 1rem;
+$gallery-image-width: 100%;
+$gallery-image-border: 0.4rem solid $white;
 
 // mixins
 @mixin box-shadow {

@@ -1,6 +1,11 @@
 /* Styles for carousel */
-
 /* Forked from https://github.com/akiran/react-slick */
+
+.carousel-component {
+  @include bp( x-small ) {
+    padding: $carousel-mobile-padding;
+  }
+} 
 
 h3 {
   background: blue;
