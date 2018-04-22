@@ -50,12 +50,20 @@ main{
 header{
   grid-column: 1 / -1;
   border: 1px solid $defaultGreen;
-
+  h1{
+    display: inline-block;
+    margin: 0;
+  }
+  > * {
+    padding: 1em 0;
+  }
 }
 
 aside#memberlist{
   grid-column: span 1;
   border: 1px solid $defaultGreen;
+  overflow-y: scroll;
+  overflow-x: hidden;
 
 	ul{
 		list-style: none;
@@ -163,6 +171,9 @@ button{
 }
 
 //scrollbars
+/* Uncomment for green scrollbars
+/* TODO: how to dynamically change this?
+
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -176,6 +187,7 @@ button{
 ::-webkit-scrollbar-thumb:hover {
     background: #000;
 }
+*/
 
 
 ////////////////////////

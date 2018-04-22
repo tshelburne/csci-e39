@@ -3,6 +3,7 @@ import PropTypes from './support/prop-types'
 import autobind from 'class-autobind'
 import List from './components/List.jsx'
 import Member from './components/Member.jsx'
+import Message from './components/Message.jsx'
 import Composer from './components/Composer.jsx'
 import Header from './components/Header.jsx'
 import Ad from './components/Ad.jsx'
@@ -79,11 +80,9 @@ class Chat extends React.Component {
 			<section id="messages" style={{backgroundColor: wallColor, borderColor: borderColor}}>
 					<h2>Messages</h2>
 					<ul>
-						{chat.messages.map(({id, student, text, createdAt}) =>
-							<li key={id}>
-								<label>{student.name} at {createdAt.toISOString()}</label>
-								<p style={{backgroundColor: textColor}}>{text}</p>
-							</li>
+						{chat.messages.map(({id, student, text, createdAt, textColor}) =>
+							<Message id={id} text={text} createdAt={createdAt} textColor={textColor} member={student}></Message>
+
 						)}
 					</ul>
 			</section>
@@ -112,7 +111,7 @@ Chat.propTypes = {
 		messages: PropTypes.arrayOf(PropTypes.shape({
 			id: PropTypes.number.isRequired,
 			text: PropTypes.string.isRequired,
-			member: PropTypes.member,
+			student: PropTypes.member,
 			createdAt: PropTypes.instanceOf(Date).isRequired,
 		})).isRequired,
 		send: PropTypes.shape({
