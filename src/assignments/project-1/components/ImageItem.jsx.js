@@ -5,19 +5,18 @@ const ImageItem = ({file, onClick}) => {
     const { id, name, url, error } = file
 
     return (
-        <li key={id}>
+        <div>
             {!error &&
-                <a className="foo" href="javascript:void(0)" onClick={onClick}>
-                    <div className="image-item">
+                <div className="image-item">
+                    <a href="javascript:void(0)" onClick={onClick}>
                         <picture className="photograph">
                             <source
-                                media="max-width: 768"
                                 srcSet={url}
                             />
                         </picture>
                         <img className="photograph" src={url} alt={name} title={name} />
-                    </div>
                 </a>
+            </div>
             }
             {!!error &&
                 <div className="error">
@@ -25,7 +24,7 @@ const ImageItem = ({file, onClick}) => {
                     <p className="failure">{error}</p>
                 </div>
             }
-        </li>
+        </div>
     )
 }
 

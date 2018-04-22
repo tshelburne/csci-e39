@@ -35,12 +35,12 @@ h1, h2, h3, ul, aside, footer, section, picture, p {
 	display: grid;
 	grid-template-rows: auto;
 	grid-gap: 15px 20px;
-	grid-template-columns: 4fr 1fr;
+	grid-template-columns: 4fr 200px;
 	grid-template-areas:
 		"header header"
 		"nav nav"
-		"main foobar"
-		"main sidebar"
+		"main uploader"
+		"main thumbnails"
 		"footer footer";
 }
 
@@ -66,15 +66,8 @@ h1, h2, h3, ul, aside, footer, section, picture, p {
 	grid-area: uploader;
 }
 
-.sidebar {
-    //background-color: hsla(200, 100%, 50%, 1);
-	grid-area: sidebar;
-	border: 2px dashed goldenrod;
-}
-
-.foobar {
-	grid-area: foobar;
-	border: 2px dashed goldenrod;	
+.thumbnails {
+	grid-area: thumbnails;
 }
 
 .mainFooter {
@@ -93,12 +86,20 @@ a {
     text-decoration: inherit;
 }
 
+.uploader {
+	border: 1px black solid;
+	width: 200px;
+	height: 200px;
+    background-color: white;
+    -webkit-box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
+}
+
 .image-item {
 	border: 1px black solid;
 	width: 200px;
 	height: 200px;
-	padding: 10px;
-	margin: 25px;
     background-color: white;
     -webkit-box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
     -moz-box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
@@ -106,7 +107,15 @@ a {
 }
 
 .photograph {
-	max-width: 200px;
-	max-height: 200px;
+	display: block;
+	padding: 10px;
+	max-width: 150px;
+	max-height: 150px;
+	margin: auto auto;
+}
+
+.image-item .button-image {
+	width: 150px;
+	height: 150px;
 }
 

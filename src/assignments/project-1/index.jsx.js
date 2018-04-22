@@ -1,21 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
-import completedFilesList from './CompletedFilesList.jsx'
-import CompletedFilesList from './CompletedFilesList.jsx'
-import List from './List.jsx'
-import PendingFilesList from './PendingFilesList.jsx'
-import ImageItem from './ImageItem.jsx';
+import List from './components/List.jsx'
+import ImageItem from './components/ImageItem.jsx';
+import UploadButton from './components/UploadButton.jsx';
 
 class Uploads extends React.Component {
 	state = {
+		/* Keeps track of the current image */ 
 		activeImage: 0,
+		/* Keeps track of if the uploaded is visable or not */ 
 		uploaderActive: false,
 	}
 
-	toggleSidebar() {
+	toggleUploader() {
 		this.setState( {uploaderActive: !this.state.uploaderActive} )
-		//console.log(this.uploaderActive)
 	}
 
 	render() {
@@ -28,38 +27,27 @@ class Uploads extends React.Component {
 		return (
 			<div className="gridContainer">
 				<header className="mainHeader grid" role="banner">
-					<h1>Main Header</h1>
+					<h1>CSCI E-30 Project 1 Image Viewer</h1>
 				</header>
 				<nav className="mainNavigation" role="navigation">
-					Navigation Here
+					Navigation Here - TDB
 				</nav>
 				<main className="mainContent" role="main">
 					Big Image {activeImage}
 					{uploads.files[activeImage] &&
-						<img className="photograph" src={uploads.files[activeImage].url} />
+						<img className="large" src={uploads.files[activeImage].url} />
 					}
 				</main>
-				<aside className="foobar">
-					{ !uploaderActive && 
-						<button className="nav-button" onClick={this.toggleSidebar.bind(this)}><img src="./if_plus_1282963.png"/></button>
-					}
-					{ !!uploaderActive && 
-						<div className="uploader">
-							<h2>Upload Image</h2>
-							<Uploader upload={actions.upload} />
-							<PendingFilesList title='In Progress' pendingFiles={pendingFiles} />
-							<button className="nav-button" onClick={this.toggleSidebar.bind(this)}>Close</button>
-						</div>
-					}
-				</aside>
-				<aside className="sidebar" role="complementary">
+				<UploadButton pendingFiles={pendingFiles} active={uploaderActive} onClick={this.toggleUploader.bind(this)} actions={actions}/>
+				<aside className="thumbnails" role="complementary">
 					<List>
 					{completedFiles.map((file, index) =>
 						<ImageItem
-						   id
-						   file={file}
-						   title="FooBar"
-						   onClick = {() => this.setState({activeImage: index})}
+							key={file.id}
+ 						    id
+						    file={file}
+						    title="FooBar"
+						    onClick = {() => this.setState({activeImage: index})}
 						/>
 					)}
 					</List>
