@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import autobind from 'class-autobind'
+import React from 'react';
+import PropTypes from 'prop-types';
+import autobind from 'class-autobind';
 
 import CommentList from '../../ui/components/commentList.jsx';
 import AdBlock from '../../ui/components/adBlock.jsx';
@@ -11,8 +11,7 @@ import FlatButton from 'material-ui/FlatButton';
 
 
 import Drawer from 'material-ui/Drawer';
-import {Tabs, Tab} from 'material-ui/Tabs'
-
+import { Tabs, Tab } from 'material-ui/Tabs';
 
 import TextField from 'material-ui/TextField';
 import IconMenu from 'material-ui/IconMenu';
@@ -41,77 +40,79 @@ import Checkbox from 'material-ui/Checkbox';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class Chat extends React.Component {
-
 	constructor() {
-		super(...arguments)
-		autobind(this)
-		this.state = {currentText: ``, drawerOpen: false, dialogOpen: false, hasUpload: false}
+		super(...arguments);
+		autobind(this);
+		this.state = { currentText: ``, drawerOpen: false, dialogOpen: false, hasUpload: false };
 	}
 
-  	handleDrawerClose() {
-  		this.setState({drawerOpen: false});
-  	} 
+	handleDrawerClose() {
+		this.setState({ drawerOpen: false });
+	}
 
-  	handleDialogOpen() {
-    	this.setState({dialogOpen: true});
-  	};
+	handleDialogOpen() {
+		this.setState({ dialogOpen: true });
+	}
 
-  	handleUpload() {
-    	this.setState({hasUpload: true});
-  	};
+	handleUpload() {
+		this.setState({ hasUpload: true });
+	}
 
-  	handleCompleteReview() {
-    	this.setState({hasUpload: false});
-  	};
+	handleCompleteReview() {
+		this.setState({ hasUpload: false });
+	}
 
 	handleDialogClose() {
-	    this.setState({dialogOpen: false});
-	};
+		this.setState({ dialogOpen: false });
+	}
 
-
-  	handleDrawerToggle(){
-  		this.setState({drawerOpen: !this.state.drawerOpen});
-  	}
+	handleDrawerToggle() {
+		this.setState({ drawerOpen: !this.state.drawerOpen });
+	}
 
 	onType(e) {
-		const {chat} = this.props.actions
-		const {currentText: prevText} = this.state
-		const currentText = e.target.value
+		const { chat } = this.props.actions;
+		const { currentText: prevText } = this.state;
+		const currentText = e.target.value;
 
-		if (!currentText.length) chat.stopTyping()
-		if (currentText.length === 1 && !prevText.length) chat.startTyping()
+		if (!currentText.length) chat.stopTyping();
+		if (currentText.length === 1 && !prevText.length) chat.startTyping();
 
-		this.setState({currentText})
+		this.setState({ currentText });
 	}
 
 	onSend(e) {
-		if (e.type === `keyup` && e.key !== `Enter`) return
+		if (e.type === `keyup` && e.key !== `Enter`) return;
 
-		const {chat} = this.props.actions
-		const {currentText, hasUpload} = this.state
-		if (!currentText.length) return
+		const { chat } = this.props.actions;
+		const { currentText, hasUpload } = this.state;
+		if (!currentText.length) return;
 
-		chat.send(currentText)
-		this.setState({currentText: ``})
+		chat.send(currentText);
+		this.setState({ currentText: `` });
 	}
 
 	getTypingMessage() {
-		const {typing} = this.props.chat
+		const { typing } = this.props.chat;
 
 		switch (typing.length) {
-			case 0: return null
-			case 1: return `${typing[0].name} is typing...`
-			case 2: return `${typing[0].name} and ${typing[1].name} are typing...`
-			case 3: return `${typing[0].name}, ${typing[1].name}, and ${typing[2].name} are typing...`
+			case 0:
+				return null;
+			case 1:
+				return `${typing[0].name} is typing...`;
+			case 2:
+				return `${typing[0].name} and ${typing[1].name} are typing...`;
+			case 3:
+				return `${typing[0].name}, ${typing[1].name}, and ${typing[2].name} are typing...`;
 			// len > 3
-			default: return `${typing.length} members are typing...`
+			default:
+				return `${typing.length} members are typing...`;
 		}
 	}
 
 	render() {
-
-		const {classroom, chat, actions} = this.props
-		const {currentText, hasUpload} = this.state
+		const { classroom, chat, actions } = this.props;
+		const { currentText, hasUpload } = this.state;
 
 		const ad1 = {src: "https://memegenerator.net/img/instances/36926483/y-u-no-use-hipchat.jpg"};
 		const ad2 = {src: "http://www.adweek.com/files/imagecache/node-detail/slack-1.jpeg"};
@@ -239,19 +240,22 @@ class Chat extends React.Component {
 		        onClick={this.onSend}/>
 		</CardActions>
 </Card>
+
 <div style={{margin: "20px"}}>
 <AdBlock ad={ad1}></AdBlock>
 </div>
 
 <CommentList chat={chat}></CommentList>
+							{chat.messages.map(({id, student, text, createdAt}) =>
 
 							</Tab>
-							<Tab label="Contributors" style={{background: "#fff", color: "#000"}}>
-{classroom.students.map(({id, name}) =>
-									<Card style={{margin: "20px"}} key={id}>
-									    <CardHeader
-									      title={name}
-									      avatar="http://www.material-ui.com/images/jsa-128.jpg"/>
+							<Tab label="Contributors" style={{ background: '#fff', color: '#000' }}>
+								{classroom.students.map(({ id, name }) => (
+									<Card style={{ margin: '20px' }} key={id}>
+										<CardHeader
+											title={name}
+											avatar="http://www.material-ui.com/images/jsa-128.jpg"
+										/>
 									</Card>
 
 								)}
@@ -265,13 +269,12 @@ class Chat extends React.Component {
 }
 		</div>
 	}
-
 }
 
 const studentPropType = PropTypes.shape({
 	id: PropTypes.number.isRequired,
 	name: PropTypes.string.isRequired,
-})
+});
 
 Chat.propTypes = {
 	classroom: PropTypes.shape({
@@ -279,18 +282,20 @@ Chat.propTypes = {
 	}).isRequired,
 	chat: PropTypes.shape({
 		typing: PropTypes.arrayOf(studentPropType).isRequired,
-		messages: PropTypes.arrayOf(PropTypes.shape({
-			id: PropTypes.number.isRequired,
-			text: PropTypes.string.isRequired,
-			student: studentPropType,
-			createdAt: PropTypes.instanceOf(Date).isRequired,
-		})).isRequired,
+		messages: PropTypes.arrayOf(
+			PropTypes.shape({
+				id: PropTypes.number.isRequired,
+				text: PropTypes.string.isRequired,
+				student: studentPropType,
+				createdAt: PropTypes.instanceOf(Date).isRequired,
+			})
+		).isRequired,
 		send: PropTypes.shape({
 			status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
 			message: PropTypes.string.isRequired,
-		}).isRequired
+		}).isRequired,
 	}),
 	actions: PropTypes.object.isRequired,
-}
+};
 
-export default Chat
+export default Chat;
