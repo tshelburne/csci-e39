@@ -11,6 +11,14 @@ class Chat extends React.Component {
 	constructor() {
 		super(...arguments)
 		autobind(this)
+
+		this.state = {
+			colors: {
+				bgColor: "#000000",
+				textColor: "#01FF70",
+				wallColor: "#ff0000",
+			}
+		}
 	}
 
 	getTypingMessage() {
@@ -26,13 +34,34 @@ class Chat extends React.Component {
 		}
 	}
 
+	updateColors(param, t) {
+		const color = t.target.value;
+		const {colors} = this.state;
+		switch(param) {
+			case "bg":
+				colors.bgColor = color;
+				this.setState({colors});
+				break;
+			case "text":
+				colors.textColor = color;
+				this.setState({colors});
+				break;
+			case "wall":
+				colors.wallColor = color;
+				this.setState({colors});
+				break;
+		}
+	}
+
 	render() {
 		const {classroom, chat, actions} = this.props
+		const {colors} = this.state;
+		const {bgColor, textColor, wallColor} = colors
 
-		return <main>
-			<Header title="Chatroom" />
+		return <main style={{backgroundColor: bgColor, color: textColor}}>
+			<Header title="Chatroom" colors={colors} onChange={this.updateColors}  />
  			<aside id="memberlist">
-					<h2>Members</h2>
+					<h2>{bgColor} Members</h2>
 					<List>
 						{classroom.students.map((student, index) =>
 							<Member id={student.id} key={student.id} name={student.name}></Member>
@@ -40,7 +69,7 @@ class Chat extends React.Component {
 					</List>
 					</aside>
 
-			<section id="messages">
+			<section id="messages" style={{backgroundColor: wallColor}}>
 					<h2>Messages</h2>
 					<ul>
 						{chat.messages.map(({id, student, text, createdAt}) =>

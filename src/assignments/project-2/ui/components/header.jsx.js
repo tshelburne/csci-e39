@@ -7,21 +7,26 @@ class Header extends React.Component {
     autobind(this)
   }
   render(){
-    const {title} = this.props
+    const {title,onChange, colors} = this.props
+    const {bgColor, textColor, wallColor} = colors;
+
     return <header>
       <h1>{title}</h1>
       <section id="theme-widget" role="themer">
-        <Themer 
-          label={"Background"} 
-          value={"#000000"} 
+        <Themer
+          label={"Background"}
+          value={bgColor}
+          onChange={(t) => onChange("bg", t)}
         />
-        <Themer 
+        <Themer
           label={"Text"}
-          value={"#01FF70"}  
+          value={textColor}
+          onChange={(t) => onChange("text", t)}
         />
-        <Themer 
+        <Themer
           label={"Wallpaper"}
-          value={"#ff0000"} 
+          value={wallColor}
+          onChange={(t) => onChange("wall", t)}
         />
       </section>
     </header>
@@ -33,8 +38,8 @@ class Header extends React.Component {
   function Themer(props){
     return(
       <form>
-      <label for="colorpicker">{props.label}</label>
-      <input id="colorpicker" type="color" value={props.value}/>
+      <label htmlFor="colorpicker">{props.label}</label>
+      <input id="colorpicker" type="color" value={props.value} onChange={props.onChange}/>
       </form>
     );
   }
