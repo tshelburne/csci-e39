@@ -20,7 +20,7 @@ class Chat extends React.Component {
 			colors: {
 				bgColor: "#000000",
 				textColor: "#01FF70",
-				wallColor: "#ff0000",
+				wallColor: "#0000FF",
 			}
 		}
 	}
@@ -88,7 +88,7 @@ class Chat extends React.Component {
 					</ul>
 			</section>
 			<section id="typing" style={{borderColor: borderColor}}>
-			  <Composer chat={chat} actions={this.props.actions} borderColor={borderColor} members={classroom}/>
+			  <Composer chat={chat} actions={this.props.actions} borderColor={borderColor} textColor={textColor} backgroundColor={bgColor} members={classroom}/>
 			</section>
 			<footer style={{borderColor: borderColor}}>
 			  <h3>Sponsored by our partners:</h3>

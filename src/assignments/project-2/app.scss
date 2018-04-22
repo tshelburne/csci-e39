@@ -116,6 +116,11 @@ section#typing{
 	#send a{
 		margin-left: 5px;
 	}
+	button{
+  	border: 1px solid $defaultGreen;
+  	color: $defaultGreen;
+  	margin-left: 5px;
+	}
 }
 #composer{
 	padding: 3px;
