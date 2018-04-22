@@ -1,0 +1,44 @@
+/* Styles for gallery component */
+/* Forked from https://codepen.io/tvweinstock/pen/wegZEW */
+
+@supports (display: grid) {
+
+  .gallery-component {
+
+    ul {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-column-gap: $gallery-grid-column-gap;
+      grid-row-gap: $gallery-grid-row-gap;
+      width: $gallery-width;
+      max-width: $gallery-max-width; //50vw
+      margin: 0 auto;
+      text-align: center;
+      padding: 0rem;
+
+      @include bp( x-small ) {
+        grid-template-columns: repeat(1, 1fr);
+        padding: $gallery-mobile-padding;
+      }   
+      @include bp( small ) {
+        grid-template-columns: repeat(2, 1fr);
+      } 
+      @include bp( large ) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    ul li {
+      display: grid;
+      grid-template-rows: auto;
+      list-style: none;
+      img {
+        width: $gallery-image-width;
+        border: $gallery-image-border;
+      }
+      label {
+        display: none;
+      }
+    }
+  }
+}

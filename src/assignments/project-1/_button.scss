@@ -1,0 +1,48 @@
+/* Styles for button */
+
+.button-container {
+	text-align: $button-text-align;
+}
+.button-component {
+	font-size: $button-size;
+	text-transform: $button-case;
+	letter-spacing: $button-spacing;
+	line-height: $button-height;
+	min-width: $button-width;
+	background: $primary-color;
+	color: $secondary-color;
+	padding: $button-padding;
+	margin: $button-margin;
+	border: $button-border;
+
+	//-webkit-border-radius: $button-radius;
+	//-moz-border-radius: $button-radius;
+	//border-radius: $button-radius;
+
+	-webkit-transition: $button-transition;
+	transition: $button-transition;
+
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+
+	outline: none;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	touch-action: manipulation;
+
+	&:hover {
+		background-color: $primary-hover-color;
+		color: $secondary-color;
+		//border: $primary-border;
+	}
+	&:active {
+		background-color: $secondary-active-color;
+		color: $secondary-color;
+		//border: $tertiary-border;
+		@include box-shadow;
+	}
+}

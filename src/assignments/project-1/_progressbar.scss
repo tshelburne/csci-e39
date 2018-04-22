@@ -1,0 +1,65 @@
+/* Styles for progressbar component */
+
+@supports (display: grid) {
+
+	.progressbar-component {
+		
+	  display: grid;
+	  grid-template-columns: 1fr;
+	  grid-template-rows: auto;
+	  text-align: $progress-component-text-align;
+
+	  ul {
+	  	height: $progress-component-height;
+	  	text-align: center;
+	  }
+
+	  ul li {
+	    padding: $progress-component-padding;
+	    list-style: none;
+	  }
+	}
+
+	.label {
+	  display: none;
+	}
+}
+
+progress {
+	-webkit-appearance: none; // resets the default appearance
+	-moz-appearance: none;
+	appearance: none;
+	border: none; // gets rid of default border in Firefox.
+	width: $progress-width;
+	height: $progress-height;
+
+	&::-webkit-progress-bar {
+		background-color: $secondary-color;
+		//border: $secondary-border;
+		//border-radius: $progress-radius;
+		//@include progress-shadow;
+	}
+
+	&::-webkit-progress-value {
+		background-color: $tertiary-color;
+		&:hover {
+			background-color: $tertiary-hover-color;
+		}
+	}
+
+	&::-moz-progress-bar {
+		background-color: $tertiary-color;
+		@include progress-shadow;
+		&:hover {
+			background-color: $tertiary-hover-color;
+		}
+	}
+
+	&::-ms-fill {
+		background-color: $tertiary-color;
+		@include progress-shadow;
+		&:hover {
+			background-color: $tertiary-hover-color;
+		}
+	}
+}
