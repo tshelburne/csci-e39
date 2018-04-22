@@ -10,7 +10,8 @@ class Photo extends React.Component {
 	}
 
 	render() {
-		const {fileId, url, name, error, ...inputProps} = this.props
+		const {fileId, url, name, error, ...inputProps} = this.props;
+		
 		return <article {...inputProps}>
       {!error && <img {...inputProps} name={fileId} src={url} />}
       {!!error && <p {...inputProps} className="failure">{error}</p>}

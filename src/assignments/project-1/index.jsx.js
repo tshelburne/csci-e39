@@ -34,6 +34,8 @@ class Uploads extends React.Component {
 
 		return <div>
 			<h1>Upload Images</h1>
+      <p>Welcome to my image uploader. This uploader collects your images into
+      a cute little album with Lightbox abilities. Have fun exploring!</p>
 			{/* do not delete this uploader component */}
 			<Uploader className="uploader" upload={actions.upload} />
 			{/* do not delete this uploader component */}
@@ -48,7 +50,6 @@ class Uploads extends React.Component {
 			</List>
 
 			<h2>Completed</h2>
-			<h2></h2>
 			<List className="photo-album">
 				{completedFiles.map(file => {
 					const {id, name, url, error} = file
