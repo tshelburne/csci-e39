@@ -49,9 +49,9 @@ class Composer extends Component {
   }
 
 	render() {
-    const {currentText, emojiPicker} = this.state
+    const {currentText, emojiPicker, borderColor} = this.state
 		const {chat, ...inputProps} = this.props
-		return <section id ="send"><input id="composer" value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
+		return <section style={{borderColor: borderColor}}><input id="composer" value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
       <button disabled={currentText === ``} onClick={this.onSend}>Send</button>
       <a onClick={this.showHideEmoji}>😁</a>
       {emojiPicker && <ReactEmojiSelector

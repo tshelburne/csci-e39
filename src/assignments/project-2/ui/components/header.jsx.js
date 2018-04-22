@@ -7,10 +7,10 @@ class Header extends React.Component {
     autobind(this)
   }
   render(){
-    const {title,onChange, colors} = this.props
+    const {title,onChange,borderColor,colors} = this.props
     const {bgColor, textColor, wallColor} = colors;
 
-    return <header>
+    return <header style={{borderColor: borderColor}}>
       <h1>{title}</h1>
       <section id="theme-widget" role="themer">
         <Themer

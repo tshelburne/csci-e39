@@ -28,6 +28,7 @@
     "bookshelf": "^0.10.4",
     "class-autobind": "^0.1.4",
     "cloudinary": "^1.9.0",
+    "color": "^3.0.0",
     "debug": "^3.0.1",
     "kcors": "^2.2.1",
     "knex": "^0.13.0",

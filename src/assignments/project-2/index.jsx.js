@@ -6,6 +6,10 @@ import Member from './components/Member.jsx'
 import Composer from './components/Composer.jsx'
 import Header from './ui/components/header.jsx'
 
+import Color from 'color'
+
+
+
 class Chat extends React.Component {
 
 	constructor() {
@@ -57,10 +61,11 @@ class Chat extends React.Component {
 		const {classroom, chat, actions} = this.props
 		const {colors} = this.state;
 		const {bgColor, textColor, wallColor} = colors
+		const borderColor = Color(textColor).lighten(0.42);
 
 		return <main style={{backgroundColor: bgColor, color: textColor}}>
-			<Header title="Chatroom" colors={colors} onChange={this.updateColors}  />
- 			<aside id="memberlist">
+			<Header title="Chatroom" borderColor={borderColor} colors={colors} onChange={this.updateColors}  />
+ 			<aside id="memberlist" style={{borderColor: borderColor}}>
 					<h2>{bgColor} Members</h2>
 					<List>
 						{classroom.students.map((student, index) =>
@@ -69,7 +74,7 @@ class Chat extends React.Component {
 					</List>
 					</aside>
 
-			<section id="messages" style={{backgroundColor: wallColor}}>
+			<section id="messages" style={{backgroundColor: wallColor, borderColor: borderColor}}>
 					<h2>Messages</h2>
 					<ul>
 						{chat.messages.map(({id, student, text, createdAt}) =>
@@ -80,8 +85,8 @@ class Chat extends React.Component {
 						)}
 					</ul>
 			</section>
-			<section id="typing">
-			  <Composer chat={chat} actions={this.props.actions} members={classroom}/>
+			<section id="typing" style={{borderColor: borderColor}}>
+			  <Composer chat={chat} actions={this.props.actions} borderColor={borderColor} members={classroom}/>
 			</section>
 		</main>
 	}
