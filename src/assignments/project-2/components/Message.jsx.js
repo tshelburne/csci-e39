@@ -10,12 +10,11 @@ class Message extends Component {
     render() {
         const { id, member, text, createdAt, textColor } = this.props
         return (
-            <li key={id}>
+            <div>
 				<label>{member.name} at id={id} {createdAt.toISOString()}</label>
 				<p style={{backgroundColor: textColor}}>{text}</p>
-			</li>
+			</div>
         )
-
     }
 }
 
