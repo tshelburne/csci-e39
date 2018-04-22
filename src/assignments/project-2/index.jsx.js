@@ -233,7 +233,6 @@ class Chat extends React.Component {
 		        onClick={this.onSend}/>
 		</CardActions>
 </Card>
-
 				<p>{this.getTypingMessage()}</p>
 
 							{chat.messages.map(({id, student, text, createdAt}) =>
