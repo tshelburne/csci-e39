@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from '../support/prop-types'
 
+function createMarkup(text) { const t = text.toString(); return {__html: t}};
+
 class Message extends Component {
 
     state = {
@@ -12,7 +14,7 @@ class Message extends Component {
         return (
             <li key={id}>
 				<label>{member.name} at id={id} {createdAt.toISOString()}</label>
-				<p style={{backgroundColor: textColor}}>{text}</p>
+				<p dangerouslySetInnerHTML={createMarkup(text)} style={{backgroundColor: textColor}}></p>
 			</li>
         )
 
