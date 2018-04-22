@@ -7,28 +7,30 @@ import PendingFile from './PendingFile.jsx';
 const UploadButton = ({pendingFiles, active, onClick, actions}) => {
 
     return (
-        <div className="uploader">
-        { !active && 
-            <button className="image-item" onClick={onClick}>
-                <img className="button-image" src="http://chittagongit.com/images/add-image-icon-png/add-image-icon-png-12.jpg" />
-            </button>
-        }
-        { !!active && 
-            <div>
-                <h2>Upload Image</h2>
-                <Uploader upload={actions.upload} />
+        <div>
+            <h2>Upload Image</h2>
+            <div className="uploader">
+            { !active && 
+                <button className="image-item" onClick={onClick}>
+                    <img className="button-image" src="http://chittagongit.com/images/add-image-icon-png/add-image-icon-png-12.jpg" />
+                </button>
+            }
+            { !!active && 
+                <div>
+                    <Uploader upload={actions.upload} />
 
-                <List>
-                {pendingFiles.map((file, index) =>
-                    <PendingFile
-                        key={file.id}
-                        file={file}
-                    />
-                )}
-                </List>
-                <button className="nav-button" onClick={onClick}>Close</button>
-            </div>
-        }
+                    <List>
+                    {pendingFiles.map((file, index) =>
+                        <PendingFile
+                            key={file.id}
+                            file={file}
+                        />
+                    )}
+                    </List>
+                    <button className="nav-button" onClick={onClick}>Close</button>
+                </div>
+            }
+        </div>
     </div>
     )
 }

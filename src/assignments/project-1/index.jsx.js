@@ -33,13 +33,16 @@ class Uploads extends React.Component {
 					Navigation Here - TDB
 				</nav>
 				<main className="mainContent" role="main">
-					Big Image {activeImage}
 					{uploads.files[activeImage] &&
-						<img className="large" src={uploads.files[activeImage].url} />
+						<div>
+							<img className="large" src={uploads.files[activeImage].url} />
+							<p>Image: {uploads.files[activeImage].name}</p>
+						</div>
 					}
 				</main>
 				<UploadButton pendingFiles={pendingFiles} active={uploaderActive} onClick={this.toggleUploader.bind(this)} actions={actions}/>
 				<aside className="thumbnails" role="complementary">
+					<h2>Thumbnails</h2>
 					<List>
 					{completedFiles.map((file, index) =>
 						<ImageItem
