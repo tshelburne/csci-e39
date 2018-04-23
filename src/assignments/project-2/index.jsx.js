@@ -81,7 +81,7 @@ class Chat extends React.Component {
 					<h2>Messages</h2>
 					<List>
 						{chat.messages.map(({id, student, text, createdAt, textColor}) =>
-							<Message id={id} text={text} key={id} createdAt={createdAt} textColor={textColor} member={student}></Message>
+							<Message id={id} text={text} key={id} createdAt={createdAt} textColor={textColor} member={student} visibility={"visible"}></Message>
 						)}
 					</List>
 			</section>

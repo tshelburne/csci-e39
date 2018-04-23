@@ -150,12 +150,14 @@ section#typing{
 		min-width: 100%;
 		margin-bottom: 3px;
 		font: 16px Courier, monospace;
-		background: #000;
+		background: transparent;
 		box-sizing: border-box;
 	}
 }
 .react-emoji-selector-show-more button{
 	background: none;
+	border: none;
+	color: #000;
 }
 
 ////////////////////////
