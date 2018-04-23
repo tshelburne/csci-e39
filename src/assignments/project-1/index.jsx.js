@@ -1,22 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import autobind from 'class-autobind'
 import Uploader from '../../ui/components/uploader.jsx'
+import Heading from '../../ui/components/heading.jsx'
+import MenuItem from '../../ui/components/menuItem.jsx'
+import Foot from '../../ui/components/footer.jsx'
 
+const pageTitle = "The Desk Archives";
+const pageDesc = "A directory of inspiration for interior designers to showcase their best office designs.";
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
 		<nav id="mainMenu">
-			<a href="http://localhost:3000">Home</a>
+			<MenuItem url='http://localhost:3000/' link="Home" />
 			<a href="http://localhost:3000/faq.html">FAQs</a>
 		</nav>
-		<div id="heading"></div>
-		<div id="description"></div>
 
 		<header className="home">
-			<h1>The Desk Archives</h1>
-			<p>A directory of inspiration for interior designers to showcase their best office designs.</p>
+			<Heading pageTitle={pageTitle} pageDesc={pageDesc}/>
 			{/*<p>A directory of inspiration for office spaces created by interior designers.</p>*/}
 		</header>
 
@@ -44,7 +47,7 @@ const Uploads = ({uploads, actions}) => {
 					</ul>
 				</aside>
 
-				<section className="two-thirds">
+				<section className="images">
 					<h2>The Latest Designs:</h2>
 					<div className="image-grid">
 						<ul>
@@ -63,6 +66,8 @@ const Uploads = ({uploads, actions}) => {
 
 			</div>{/*GRID END*/}
 		</div>{/*WRAP END*/}
+
+		<Foot copyright='Design by Leisy Vidal' />
 	</div>/*RETURN END*/
 }
 

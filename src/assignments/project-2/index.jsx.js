@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
+import Header from '../project-1/components/heading.jsx'
 
 class Chat extends React.Component {
 
