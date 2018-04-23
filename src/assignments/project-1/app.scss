@@ -1,112 +1,144 @@
-// Variables
-$brand-color: darkblue;
-$brand-section-color: white;
-$brand-text-color: #222;
-
-$react-accent: #61dafb;
-$react-background: #292c34;
-
-$breakpoint: 768px;
-$font-heading: 'Permanent Marker', sans-serif;
-$font-default: 'Oswald', sans-serif;
-
 body {
-	font-family: $font-default;
-	margin: 10vh 10vw;
-	color: $react-accent;
-	background: $react-background;
+	font-family: sans-serif;
+	background-color: #efefef;
+	display: grid;
+	height: 100vh;
 }
 
-h1, h2, h3, ul, aside, footer, section, picture, p {
-    margin: 0;
-}
-
-@media (min-width: 480px) {
-    .gridContainer {
-        display: grid;
-        grid-template-rows: auto;
-        grid-gap: 15px 20px;
-        grid-template-columns: 1fr 3fr;
-        grid-template-areas: "header header" "nav nav" "sidebar main" "footer footer";
-    }
-}
-
-.gridContainer {
+.grid-container {
 	display: grid;
 	grid-template-rows: auto;
 	grid-gap: 15px 20px;
 	grid-template-columns: 4fr 1fr;
 	grid-template-areas:
 		"header header"
-		"nav nav"
-		"main foobar"
-		"main sidebar"
+		"uploader uploader"
+		"main thumbnails"
 		"footer footer";
 }
 
-.mainHeader {
-    //background-color: hsla(50, 100%, 50%, 1);
-    grid-area: header;
-}
-
-.mainNavigation {
-    //background-color: hsla(100, 100%, 50%, 1);
-    grid-area: nav;
-}
-
-.mainContent {
-    /* temp */
-    min-height: 10vh;
-    //background-color: hsla(150, 100%, 50%, 1);
+.main-content {
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 15px;
 	grid-area: main;
-	border: 2px dashed goldenrod;
 }
 
 .uploader {
 	grid-area: uploader;
 }
 
-.sidebar {
-    //background-color: hsla(200, 100%, 50%, 1);
-	grid-area: sidebar;
-	border: 2px dashed goldenrod;
+img {
+	width: 100%;
 }
 
-.foobar {
-	grid-area: foobar;
-	border: 2px dashed goldenrod;	
+.main-header {
+	background-color: #452d3a;
+	min-height: 100px;
+	height: 20vh;
+	align-items: center;
+	grid-area: header;
 }
 
-.mainFooter {
-    /* temp */
-    min-height: 10vh;
-    //background-color: hsla(250, 100%, 50%, 1);
-    grid-area: footer;
+.title {
+	font-family: 'Permanent Marker', cursive;
+	text-align: center;
+	color: #efefef;
+	font-size: 32px;
 }
 
-ol, ul {
-	list-style: none;
-	padding: 0;
+.inlineHeaderStyle {
+	color: #bf5362;
+	display: inline;
 }
 
-a {
-    text-decoration: inherit;
+.subheader {
+	text-align: center;
+	color: #efefef;
 }
 
-.image-item {
-	border: 1px black solid;
-	width: 200px;
-	height: 200px;
-	padding: 10px;
-	margin: 25px;
-    background-color: white;
-    -webkit-box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
-    -moz-box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
-	box-shadow: 10px 10px 5px 5px rgba(0,0,0,0.75);
+.footer {
+	background-color: #452d3a;
+	width: 100%;
+	padding: 20px;
+	color: white;
+	grid-area: footer;
 }
 
-.photograph {
-	max-width: 200px;
-	max-height: 200px;
+.aside-right {
+  font-size: 0.8em;
+  grid-area: thumbnails;
 }
 
+article {
+  margin: 15px;
+  width: 250px;
+  border: 1px DARKGRAY solid;
+  background: WHITESMOKE;
+}
+.article-title,
+.article-copy {
+  padding: 5px;
+}
+
+.article-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+article:first-child {
+  & img {
+    width: 250px;
+    height: 250px;
+    float: none;
+    margin: 0;
+  }
+}
+
+article > img {
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 5px;
+}
+
+.clearfix:after {
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+main p {
+  margin-bottom: 10px;
+}
+
+/* Un-reset ul, ol, and li
+ - taken from https://cssreset.com/scripts/vanilla-css-un-reset/
+li ul, li ol {
+	margin:0 1.5em;
+}
+ul, ol {
+	margin:0 1.5em 1.5em 1.5em;
+}
+ul {
+	list-style-type:disc;
+}
+
+ol {
+	list-style-type:decimal;
+}
+
+ol ol {
+	list-style: upper-alpha;
+}
+
+ol ol ol {
+	list-style: lower-roman;
+}
+
+ol ol ol ol {
+	list-style: lower-alpha;
+}
+*/
