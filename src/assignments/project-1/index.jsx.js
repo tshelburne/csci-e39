@@ -2,8 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 import List from './components/List.jsx'
-import ImageItem from './components/ImageItem.jsx';
-import UploadButton from './components/UploadButton.jsx';
+import ImageItem from './components/ImageItem.jsx'
+import UploadButton from './components/UploadButton.jsx'
+import PendingFile from './components/PendingFile.jsx'
+import CompletedFile from './components/CompletedFile.jsx'
 
 class Uploads extends React.Component {
 	state = {
@@ -48,13 +50,25 @@ class Uploads extends React.Component {
 				<div className="uploader">
 					<h2>Upload Image</h2>
 					<Uploader upload={actions.upload} />
+					<List>
+					{pendingFiles.map((file, index) =>
+						<PendingFile
+							key={file.id}
+							file={file}
+						/>
+					)}
+					</List>
 				</div>
 
-
-
 				<aside className="aside-right">
-
-					<List />
+					<List className="completed-files-list">
+					{completedFiles.map((file, index) =>
+						<CompletedFile
+							key={file.id}
+							file={file}
+						/>
+					)}
+					</List>
 
 					<article className="clearfix">
 					<img src="http://facetheforce.today/random/500?r=1" alt="Star Wars Character" />
