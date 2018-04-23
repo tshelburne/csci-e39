@@ -9,40 +9,23 @@ body {
 	display: grid;
 	grid-template-rows: auto;
 	grid-gap: 15px 20px;
-	grid-template-columns: 4fr 1fr;
+	grid-template-columns: 1fr 4fr;
 	grid-template-areas:
-		"header header"
+		"main-header main-header"
 		"uploader uploader"
-		"main thumbnails"
-		"footer footer";
+		"thumbnails photo"
+		"footer footer"
 }
 
-.main-content {
-	max-width: 1500px;
-	margin: 0 auto;
-	padding: 15px;
-	grid-area: main;
-}
-
-.uploader {
-	grid-area: uploader;
-}
-
-img {
-	width: 100%;
-}
-
-.completed-files-list {
-	list-style-type: none;
-	padding: 0px;
-}
+/*************************************************/
+// MAIN HEADER STYLES
 
 .main-header {
 	background-color: #452d3a;
 	min-height: 100px;
 	height: 20vh;
 	align-items: center;
-	grid-area: header;
+	grid-area: main-header;
 }
 
 .title {
@@ -62,6 +45,76 @@ img {
 	color: #efefef;
 }
 
+/*************************************************/
+// MAIN CONTENT AREA STYLES
+
+.large-photo {
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 15px;
+	grid-area: photo;
+}
+
+.uploader {
+	grid-area: uploader;
+}
+
+/*************************************************/
+// SIDEBAR STYLES
+
+.thumbnails {
+	grid-area: thumbnails;
+	list-style-type: none;
+	padding: 0px;
+	border: 2px dotted goldenrod;
+}
+
+/*************************************************/
+// PHOTO CARD STYLES
+
+.photo-card {
+	border: 2px black solid;
+	width: 150px;
+	height: 150px;
+	margin: 20px;
+	padding: 10px;
+	-webkit-box-shadow: 6px 6px 3px 3px rgba(0,0,0,0.75);
+	-moz-box-shadow: 6px 6px 3px 3px rgba(0,0,0,0.75);
+	box-shadow: 6px 6px 3px 3px rgba(0,0,0,0.75);
+	background-color: whitesmoke;
+
+	img {
+		border: 1px black solid;
+		display: block;
+		margin: auto auto;
+		max-width: 130px;
+		max-height: 130px;
+	}
+
+	:after {
+		content: ".";
+		visibility: hidden;
+		display: block;
+		height: 0;
+		clear: both;
+	}
+}
+
+.photo-card-title,
+.photo-card-copy {
+  padding: 5px;
+}
+
+.photo-card-title {
+  font-size: 1.0rem;
+	font-weight: normal;
+	color: black;
+}
+
+
+/*************************************************/
+// FOOTER STYLES
+
 .footer {
 	background-color: #452d3a;
 	width: 100%;
@@ -70,9 +123,45 @@ img {
 	grid-area: footer;
 }
 
-.aside-right {
-  font-size: 0.8em;
-  grid-area: thumbnails;
+/*
+.photo-card:first-child {
+  & img {
+    width: 250px;
+    height: 250px;
+    float: none;
+    margin: 0;
+  }
+}
+*/
+
+.photo-card a img {
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 5px;
+}
+
+
+
+/* Obsolete ?*/
+
+.clearfix:after {
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.image-item {
+	padding: 10px;
+	border: 2px solid black;
+}
+
+.image-item2 {
+	max-width: 100px;
+	max-height: 100px;
+	margin: auto auto;
 }
 
 article {
@@ -91,7 +180,7 @@ article {
   font-weight: bold;
 }
 
-article:first-child {
+.article:first-child {
   & img {
     width: 250px;
     height: 250px;
@@ -100,50 +189,3 @@ article:first-child {
   }
 }
 
-article > img {
-  width: 100px;
-  height: 100px;
-  float: left;
-  margin: 5px;
-}
-
-.clearfix:after {
-  content: ".";
-  visibility: hidden;
-  display: block;
-  height: 0;
-  clear: both;
-}
-
-main p {
-  margin-bottom: 10px;
-}
-
-/* Un-reset ul, ol, and li
- - taken from https://cssreset.com/scripts/vanilla-css-un-reset/
-li ul, li ol {
-	margin:0 1.5em;
-}
-ul, ol {
-	margin:0 1.5em 1.5em 1.5em;
-}
-ul {
-	list-style-type:disc;
-}
-
-ol {
-	list-style-type:decimal;
-}
-
-ol ol {
-	list-style: upper-alpha;
-}
-
-ol ol ol {
-	list-style: lower-roman;
-}
-
-ol ol ol ol {
-	list-style: lower-alpha;
-}
-*/

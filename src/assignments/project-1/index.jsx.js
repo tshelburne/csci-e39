@@ -2,10 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 import List from './components/List.jsx'
-import ImageItem from './components/ImageItem.jsx'
 import UploadButton from './components/UploadButton.jsx'
 import PendingFile from './components/PendingFile.jsx'
 import CompletedFile from './components/CompletedFile.jsx'
+import PhotoCard from './components/PhotoCard.jsx'
+import Thumbnails from './components/Thumbnails.jsx'
 
 class Uploads extends React.Component {
 	state = {
@@ -13,6 +14,8 @@ class Uploads extends React.Component {
 		activeImage: 0,
 		/* Keeps track of if the uploaded is visable or not */ 
 		uploaderActive: false,
+		/* Current page */
+		currentPage: "home",
 	}
 
 	toggleUploader() {
@@ -24,18 +27,36 @@ class Uploads extends React.Component {
 		const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 		const completedFiles = uploads.files.filter(({progress}) => !progress)
 		const buttonText = this.state.uploaderActive ? 'Toggle Navigation Off' : 	'Toggle Navigation On';
-		const {activeImage, uploaderActive} = this.state
+		const {activeImage, uploaderActive, currentPage} = this.state
 		
 		return (
 			<div className="grid-container">
 				<header className="main-header">
-				<h1 className="title">
-					Cure for<span className="inlineHeaderStyle">Div</span>itis
-				</h1>
-				<h2 className="subheader">An exercise with a little bit of Star Wars</h2>
+					<h1 className="title">
+						Harvard <span className="inlineHeaderStyle">CSCI-E39</span> React
+					</h1>
+					<h2 className="subheader">Project 1</h2>
 				</header>
 
-				<main className="main-content">
+				<div className="uploader">
+					<h2>Upload Image</h2>
+					<Uploader upload={actions.upload} />
+					<List>
+						{pendingFiles.map((file, index) =>
+							<PendingFile
+								key={file.id}
+								file={file}
+							/>
+						)}
+					</List>
+				</div>
+
+				<Thumbnails className="thumbnails" completedFiles={completedFiles} />
+
+				<main className="large-photo">
+					{ currentPage=="faq" &&
+						<p>FAQ HERE</p>
+					}
 					<p>
 					This is a paragraph! What a piece of junk. She'll make point five beyond the speed of light. She may not look like much, but she's got it where it counts, kid. I've added some special modifications myself. We're a little rushed, so if you'll hurry aboard
 					we'll get out of here. Hello, sir. Which way? All right, men. Load your weapons! Stop that ship! Blast 'em! Chewie, get us out of here! Oh, my. I'd forgotten how much I hate space travel. -
@@ -47,64 +68,11 @@ class Uploads extends React.Component {
 					</p>
 				</main>
 
-				<div className="uploader">
-					<h2>Upload Image</h2>
-					<Uploader upload={actions.upload} />
-					<List>
-					{pendingFiles.map((file, index) =>
-						<PendingFile
-							key={file.id}
-							file={file}
-						/>
-					)}
-					</List>
-				</div>
-
-				<aside className="aside-right">
-					<List className="completed-files-list">
-					{completedFiles.map((file, index) =>
-						<CompletedFile
-							key={file.id}
-							file={file}
-						/>
-					)}
-					</List>
-
-					<article className="clearfix">
-					<img src="http://facetheforce.today/random/500?r=1" alt="Star Wars Character" />
-					<h1 className="article-title">Star Wars Character</h1>
-					</article>
-			
-					<article className="clearfix">
-					<img src="http://facetheforce.today/random/500?r=2" alt="Star Wars Character" />
-					<h1 className="article-title">Star Wars Character</h1>
-					</article>
-					<article className="clearfix">
-					<img src="http://facetheforce.today/random/500?r=3" alt="Star Wars Character" />
-					<h1 className="article-title">Star Wars Character</h1>
-					</article>
-			
-					<article className="clearfix">
-					<img src="http://facetheforce.today/random/500?r=4" alt="Star Wars Character" />
-					<h1 className="article-title">Star Wars Character</h1>
-					</article>
-			
-					<article className="clearfix">
-					<img src="http://facetheforce.today/random/500?r=5" alt="Star Wars Character" />
-					<h1 className="article-title">Star Wars Character</h1>
-					</article>
-			
-					<article className="clearfix">
-					<img src="http://facetheforce.today/random/500?r=6" alt="Star Wars Character" />
-					<h1 className="article-title">Star Wars Character</h1>
-					</article>
-				</aside>
-		  
-			<footer className="footer">
-			  <p>This is the end of this page. Here's a related bunch of info: Some original trilogy Star Wars characters in no special order.</p>
-			</footer>
-		  
-		  </div>
+				<footer className="footer">
+					<p>This is the end of this page. Here's a related bunch of info: Some original trilogy Star Wars characters in no special order.</p>
+				</footer>
+	
+			</div>
 		)
 	}
 }
