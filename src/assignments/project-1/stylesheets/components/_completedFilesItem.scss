@@ -37,4 +37,9 @@
 		max-width: 99%;
 		margin: $margin-sm;
 	}
+
+	.failure {
+		border: 2px solid red;
+		padding: $padding-sm;
+	}
 }
