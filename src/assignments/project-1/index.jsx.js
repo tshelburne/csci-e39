@@ -19,6 +19,18 @@ const FileList = ({title, files, eventHandler}) => {
 	)
 }
 
+FileList.propTypes = {
+	title: PropTypes.string,
+	file: PropTypes.shape({
+		id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+		name: PropTypes.string.isRequired,
+		progress: PropTypes.number,
+		url: PropTypes.string,
+		error: PropTypes.string,
+	}),
+	eventHandler: PropTypes.func.isRequired,
+}
+
 const UploadItem = ({file}) => {
 	const {name, progress} = file;
 
@@ -28,6 +40,16 @@ const UploadItem = ({file}) => {
 			<progress value={progress} max="100">{progress}%</progress>
 		</li>
 	)
+}
+
+UploadItem.propTypes = {
+	file: PropTypes.shape({
+		id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+		name: PropTypes.string.isRequired,
+		progress: PropTypes.number,
+		url: PropTypes.string,
+		error: PropTypes.string,
+	}).isRequired
 }
 
 const FileItem = ({file, eventHandler}) => {
@@ -53,6 +75,17 @@ const FileItem = ({file, eventHandler}) => {
 	)
 }
 
+FileItem.propTypes = {
+	file: PropTypes.shape({
+		id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+		name: PropTypes.string.isRequired,
+		progress: PropTypes.number,
+		url: PropTypes.string,
+		error: PropTypes.string,
+	}).isRequired,
+	eventHandler: PropTypes.func.isRequired,
+}
+
 const LargeFile = ({file, removeHandler}) => {
 	const {name, url, error} = file;
 
@@ -75,6 +108,17 @@ const LargeFile = ({file, removeHandler}) => {
 	} else {
 		return <div />
 	}
+}
+
+LargeFile.propTypes = {
+	file: PropTypes.shape({
+		id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+		name: PropTypes.string.isRequired,
+		progress: PropTypes.number,
+		url: PropTypes.string,
+		error: PropTypes.string,
+	}).isRequired,
+	removeHandler: PropTypes.func.isRequired,
 }
 
 class Uploads extends React.Component {
