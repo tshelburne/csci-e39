@@ -1,5 +1,13 @@
 # Design Patterns in React (CSCI E-39)
 
+*Note: as of 4/15/18, Windows is using Node / npm directly rather than Docker. These
+docs will be relevant only for Mac users until we decide if Docker usage will be
+deprecated entirely.*
+
+*For the time being, Windows users should install Node 8.\* and npm 5.\*, and use the
+make.sh script. The commands are all virtually identical, except `make` becomes
+`bash make.sh`*
+
 ## Accounts and Tools
 
 1. [Github](https://github.com/) account

@@ -39,8 +39,9 @@
     "pg": "^7.2.0",
     "prop-types": "^15.5.10",
     "pug": "^2.0.0-rc.3",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-icons": "^2.2.7",
     "socket.io": "^2.0.3",
     "supports-color": "^4.4.0",
     "xstream": "^10.9.0"
