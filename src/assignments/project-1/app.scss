@@ -137,19 +137,23 @@ aside{
 		flex-direction: column;
 		flex-basis: 48%;
 		margin-bottom: 15px;
+		a{
+			display: flex;
+			flex-direction: column;
 
-		label{
-			order: 2;
-			font:italic 400 16px/24px Cardo, Times;
-			color: $gray;
-			&:before{
-				content: 'Filename: ';
+			label{
+				order: 2;
+				font:italic 400 16px/24px Cardo, Times;
+				color: $gray;
+				&:before{
+					content: 'Filename: ';
+				}
 			}
-		}
 
-		img{
-			width: 100%;
-			border: 3px;
+			img{
+				width: 100%;
+				border: 3px;
+			}
 		}
 	}
 }

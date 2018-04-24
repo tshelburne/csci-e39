@@ -58,9 +58,11 @@ const Uploads = ({uploads, actions}) => {
 								const {id, name, url, error} = file
 
 								return <li key={id}>
-									<label>{name}</label>
-									{!error && <img src={url} alt={name}/>}
-									{!!error && <p className="failure">{error}</p>}
+									<a data-fancybox="gallery" href={url}>
+										<label>{name}</label>
+										{!error && <img src={url} alt={name}/>}
+										{!!error && <p className="failure">{error}</p>}
+									</a>
 								</li>
 							})}
 						</ul>
