@@ -19,7 +19,7 @@ $icon-hover: darken($primary-hover, 7%);
 body{
 	background:$gray-light;
 	color: $gray-dark;
-	font-family: Poppins, Arial;
+	font-family: Cardo, Times;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	margin: 0 auto;
@@ -85,6 +85,10 @@ header{
 }
 .home{
 	background: linear-gradient(rgba(0,0,0,0.33), rgba(0,0,0,0.42)),url(http://leisyvidal.com/img/grid1.jpg) center no-repeat,#131418;
+	background-size: cover;
+}
+.faq{
+	background: linear-gradient(rgba(0,0,0,0.33), rgba(0,0,0,0.42)),url(http://leisyvidal.com/img/home1.jpg) center no-repeat,#131418;
 	background-size: cover;
 }
 
@@ -203,6 +207,7 @@ aside{
 		z-index: 1;
 		width: 100%;
 		box-sizing: border-box;
+		font: 400 18px Cardo;
 
 		&:hover{
 			background: $gray-dark;
