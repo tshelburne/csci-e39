@@ -2,9 +2,30 @@ doctype html
 html
 	head
 		link(rel="stylesheet" href="/css/project-1/app.css")
+		script(src='/js/jquery-3.3.1.min.js')
 
 	body
+		nav#mainMenu
+			a(href="http://localhost:3000/") Home
+			a(href="http://localhost:3000/faq") FAQs
+		header.home
+			h1 FAQs
+			p Have questions? We've got answers.
+
+		.wrapper
+			.grid
+				section.faqs
+					h2 What is the Desk Archives?
+					p The Desk Archives is a directory of inspiration for interior designers to showcase their best office designs. It's a general collective place for interior designers, architects, and design enthusiasts to share the best in office design. The site is updated regularly by the community, who provides the imagery.
+					h2 Who started the Desk Archives?
+					p The Desk Archives was started by Leisy Vidal in 2018.
+					h2 How can I upload an image to the desk archive?
+					p To upload an image to the Desk Archives, just go to the #[a(href="http://localhost:3000/") home page] of the site to upload your image(s).
+
+
+		footer
+			p Design by Leisy Vidal
+
 		#faq !{faq}
-		#app !{app}
 		script(src="/js/app.js")
 		script(src="//localhost:35729/livereload.js?snipver=1")
