@@ -16,5 +16,9 @@ body {
 	padding: $padding-xs;
 }
 
+.uploads-description {
+	max-width: 60ch;
+}
+
 @import 'stylesheets/base/all';
 @import 'stylesheets/components/all';

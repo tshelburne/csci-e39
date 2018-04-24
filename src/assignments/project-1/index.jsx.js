@@ -11,6 +11,9 @@ const Uploads = ({uploads, actions}) => {
 
 	return <div>
 		<h1>Upload Images</h1>
+		<p className="uploads-description">Click the Upload Images button or drag and drop one or more image files on it 
+		to upload your pictures to make an album. Each file is limited to 500 KB.
+		</p>
 		{/* do not delete this uploader component */}
 		<UploaderA11y upload={actions.upload} />
 		{/* do not delete this uploader component */}
