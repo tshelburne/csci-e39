@@ -146,6 +146,16 @@ aside{
 	}
 }
 
+.faqs{
+	grid-column-start: 1;
+  grid-column-end: 2;
+	background: $white;
+	padding: 50px;
+
+	p{
+		max-width: 300px;
+	}
+}
 
 //***COMPONENTS***//
 //LIST STYLES

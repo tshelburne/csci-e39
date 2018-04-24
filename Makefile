@@ -41,6 +41,7 @@ shell: build
 	@make run args='-it' command='sh'
 
 activate: build
+	@make run command='sed -i -e "s/assignments\/.*\//assignments\/$(assignment)\//g" src/ui/faq.jsx.js'
 	@make run command='sed -i -e "s/assignments\/.*\//assignments\/$(assignment)\//g" src/ui/app.jsx.js'
 	@make run command='sed -i -e "s/css\/.*\//css\/$(assignment)\//g" src/ui/index.pug'
 
