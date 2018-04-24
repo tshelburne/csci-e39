@@ -147,29 +147,49 @@ p{
 }
 
 //uploader
-input[type="file"]{
-	font-size:16px;
-	color:$white;
-	background: $primary;
-	border:0;
-	border-radius:3px;
-	position:relative;
-	display:inline-block;
-	padding:20px;
-	margin-top: 0px;
+.uploader{
+	position: relative;
+	min-height: 70px;
+	max-width: 200px;
+	text-align: center;
 
-	&:hover{
-		cursor:pointer;
-		background: $primary-hover;
-		transition:.2s ease;
+	label{
+		border: 1px solid $gray-dark;
+		padding: 15px;
+		display: inline-block;
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		box-sizing: border-box;
+
+		&:hover{
+			background: $gray-dark;
+			color: $white;
+			cursor: pointer;
+		}
 	}
-}
 
-.uploader-input {
-	position:absolute;
-	top:0;
-	left:0;
-	opacity:0;
+	input[type="file"]{
+		position: absolute;
+		top:0;
+		left: 0;
+		padding: 20px;
+		opacity: 0;
+		cursor: pointer;
+		z-index: 2;
+		width: 100%;
+		box-sizing: border-box;
+
+		&:hover + label{
+			background: $gray-dark;
+			color: $white;
+			cursor: pointer;
+			opacity: 1;
+		}
+	}
 }
 
 //progressbar

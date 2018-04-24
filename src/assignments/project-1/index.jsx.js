@@ -34,15 +34,18 @@ const Uploads = ({uploads, actions}) => {
 					<Uploader upload={actions.upload} />
 					{/* do not delete this uploader component */}
 
-					<h2>Uploads In Progress:</h2>
+
 					<ul className="uploads">
 						{pendingFiles.map(file => {
 							const {id, name, progress} = file
 
-							return <li key={id}>
-								<label>{name}</label>
-								<progress value={progress} max="100">{progress}%</progress>
-							</li>
+							return <div>
+								<h2>Upload In Progress:</h2>
+								<li key={id}>
+									<label>{name}</label>
+									<progress value={progress} max="100">{progress}%</progress>
+								</li>
+							</div>
 						})}
 					</ul>
 				</aside>
