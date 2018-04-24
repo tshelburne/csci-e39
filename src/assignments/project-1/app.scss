@@ -1,18 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Cardo:400,400i|Montserrat:700');
 
-//variables
-$gray-light:#EFEFEF;
+//***VARIABLES***//
+$primary: #2B69CE;
 $gray:#777;
+$gray-light:#EFEFEF;
 $gray-dark:#1A1A1A;
 $white:#FFFFFF;
-
-$primary: #2B69CE;
+//button colors
 $icon-bg: darken($primary, 7%);
 $progress-bg: #DDDDDD;
-//hover colors
+//button hover colors
 $primary-hover: #2dce2a;
 $icon-hover: darken($primary-hover, 7%);
 
+
+//***BODY***//
 body{
 	background:$gray-light;
 	color: $gray-dark;
@@ -21,9 +23,25 @@ body{
 	-moz-osx-font-smoothing: grayscale;
 	margin: 0 auto;
 }
+
+//***TYPOGRAPHY***//
+h1, .image-grid h2{
+	font:700 32px/40px Montserrat, Arial;
+	letter-spacing: -.5px;
+}
+
+h2{
+	font:700 18px/24px Montserrat, Arial;
+}
+
+p{
+	font:400 18px/27px Cardo, Times;
+}
+
+
+//***MENU***//
 nav{
 	text-align: center;
-
 	a{
 		font: 400 18px/27px Cardo, Times;
 		color: $gray;
@@ -34,7 +52,36 @@ nav{
 		}
 	}
 }
+#mainMenu{
+	padding:50px;
+	background:$white;
+}
 
+
+//***HEADER***//
+header{
+	text-align: center;
+	padding: 100px 50px;
+
+	h1{
+		font: 700 56px/64px Montserrat;
+		margin: 0px;
+		color: $white;
+	}
+
+	p{
+		max-width: 400px;
+		margin: 0 auto;
+		color: $white;
+	}
+}
+.home{
+	background: linear-gradient(rgba(0,0,0,0.33), rgba(0,0,0,0.42)),url(http://leisyvidal.com/img/grid1.jpg) center no-repeat,#131418;
+	background-size: cover;
+}
+
+
+//***LAYOUT***//
 .wrapper{
 	width: 100%;
 	max-width: 1300px;
@@ -63,47 +110,6 @@ aside{
 	margin-left: 50px;
 	background: $white;
 	padding: 50px;
-}
-
-header{
-	text-align: center;
-	padding: 100px 50px;
-
-	h1{
-		font: 700 56px/64px Montserrat;
-		margin: 0px;
-		color: $white;
-	}
-
-	p{
-		max-width: 400px;
-		margin: 0 auto;
-		color: $white;
-	}
-}
-
-
-.home{
-	background: linear-gradient(rgba(0,0,0,0.33), rgba(0,0,0,0.42)),url(http://leisyvidal.com/img/grid1.jpg) center no-repeat,#131418;
-	background-size: cover;
-}
-
-h1, .image-grid h2{
-	font:700 32px/40px Montserrat, Arial;
-	letter-spacing: -.5px;
-}
-
-h2{
-	font:700 18px/24px Montserrat, Arial;
-}
-
-p{
-	font:400 18px/27px Cardo, Times;
-}
-
-#mainMenu{
-	padding:50px;
-	background:$white;
 }
 
 .image-grid{
@@ -141,12 +147,14 @@ p{
 }
 
 
+//***COMPONENTS***//
+//LIST STYLES
 .uploads{
 	list-style: none;
 	padding-left: 0;
 }
 
-//uploader
+//UPLOADER
 .uploader{
 	position: relative;
 	min-height: 70px;
@@ -192,7 +200,7 @@ p{
 	}
 }
 
-//progressbar
+//PROGRESSBAR
 progress, progress::-webkit-progress-value{
 	//color of progress bar
 	background-color: $primary;
@@ -212,7 +220,7 @@ progress[value], progress[value]::-webkit-progress-bar {
   background-color: $progress-bg;
 }
 
-
+//***FOOTER***//
 footer{
 	background: $white;
 	padding: 25px;
@@ -220,6 +228,7 @@ footer{
 }
 
 
+//***MEDIA QUERIES***//
 @media all and (max-width:800px){
 	header h1{
 		font: 700 40px/48px Montserrat;
