@@ -46,7 +46,24 @@ class Uploads extends React.Component {
 			  		</ul>
 				</nav>
 
-				<main className="large-photo">
+				{ currentPage=="photo" &&
+					<aside className="aside-uploader">
+						<div className="uploader">
+						<h2>Upload Image</h2>
+						<Uploader upload={actions.upload} />
+						<List>
+							{pendingFiles.map((file, index) =>
+								<PendingFile
+									key={file.id}
+									file={file}
+								/>
+							)}
+						</List>
+					</div>
+					</aside>
+				}
+
+				<main className="main-content">
 					{ currentPage=="home" &&
 						<div>
 							<h1>CSCI E-39</h1>
@@ -58,25 +75,13 @@ class Uploads extends React.Component {
 					}
 					{ currentPage=="photo" &&
 						<div>
-							<h1>Large Photo Here</h1>
-							<div className="uploader">
-								<h2>Upload Image</h2>
-								<Uploader upload={actions.upload} />
-								<List>
-									{pendingFiles.map((file, index) =>
-										<PendingFile
-											key={file.id}
-											file={file}
-										/>
-									)}
-								</List>
-							</div>
 							<Thumbnails className="thumbnails" completedFiles={completedFiles} />
 						</div>
 					}
 					{ currentPage=="faq" &&
 						<div>
 							<h1>FAQ</h1>
+							
 							<p>
 							This is a paragraph! What a piece of junk. She'll make point five beyond the speed of light. She may not look like much, but she's got it where it counts, kid. I've added some special modifications myself. We're a little rushed, so if you'll hurry aboard
 							we'll get out of here. Hello, sir. Which way? All right, men. Load your weapons! Stop that ship! Blast 'em! Chewie, get us out of here! Oh, my. I'd forgotten how much I hate space travel. -

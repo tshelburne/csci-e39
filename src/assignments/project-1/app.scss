@@ -18,8 +18,8 @@ body {
 	grid-template-areas:
 		"main-header main-header"
 		"nav nav"
-		"uploader photo"
-		"thumbnails photo"
+		"uploader main"
+		"thumbnails main"
 		"footer footer"
 }
 
@@ -58,16 +58,22 @@ nav {
 /*************************************************/
 // MAIN CONTENT AREA STYLES
 
-.large-photo {
+.aside-uploader {
+	grid-area: uploader;
+}
+
+.main-content {
 	max-width: 1500px;
 	margin: 0 auto;
 	padding: 15px;
-	grid-area: photo;
+	grid-area: main;
 }
 
-.uploader {
-	grid-area: uploader;
+.grid-container>.main-content:nth-child(3) {
+	grid-column: span 2;
+
 }
+
 
 /*************************************************/
 // SIDEBAR STYLES
