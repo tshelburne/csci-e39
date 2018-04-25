@@ -1,0 +1,98 @@
+$primary-color: rgba(150, 143, 179, 1);
+$primary-accent: white;
+$progress-bar-height: 10px;
+$progress-bar-radius: 0.2 * $progress-bar-height;
+$progress-bar-background: whitesmoke;
+$progress-bar-value: royalblue;
+$progress-bar-width: 400px;
+$button-padding: 1%;
+$button-margin: 1%;
+$upload-size: 1.35em;
+
+.button {
+	border: none;
+	display: inline-block;
+	padding: $button-padding;
+	margin: $button-margin;
+	background-color: $primary-color;
+	color: $primary-accent;
+	transition: all 0.3s;
+	&:hover {
+		background-color: darken($primary-color, 15);
+		cursor: pointer;
+	}
+}
+
+.custom-progress {
+	width: $progress-bar-width;
+	background-color: $progress-bar-background;
+	border: 0;
+	height: $progress-bar-height;
+	border-radius: $progress-bar-radius;
+}
+.custom-progress::-webkit-progress-bar {
+	width: $progress-bar-width;
+	background-color: $progress-bar-background;
+	border: 0;
+	height: $progress-bar-height;
+	border-radius: $progress-bar-radius;
+}
+.custom-progress::-webkit-progress-value {
+	background-color: $progress-bar-value;
+	border: 0;
+	height: $progress-bar-height;
+	border-radius: $progress-bar-radius;
+}
+.custom-progress::-moz-progress-bar {
+	width: $progress-bar-width;
+	background-color: $progress-bar-value;
+	border: 0;
+	height: $progress-bar-height;
+	border-radius: $progress-bar-radius;
+}
+
+.uploader {
+	font-size: $upload-size;
+	font-weight: bold;
+	color: $primary-accent;
+	background-color: $primary-color;
+	display: inline-block;
+	padding: $button-padding;
+	margin: $button-margin;
+	&:hover {
+		background-color: darken($primary-color, 15);
+		cursor: pointer;
+	}
+}
+
+.uploader-input {
+	//hiding default input styling
+	z-index: -999;
+	width: 0.1px;
+	height: 0.1px;
+	overflow: hidden;
+	position: absolute;
+}
+
+.completed-list {
+	list-style: none;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+}
+
+.photo {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+}
+
+.photo-label {
+	margin: 20px;
+	align-self: center;
+	overflow: hidden;
+}
+.photo-src {
+	border: 5px solid $primary-color;
+	justify-content: center;
+	align-self: center;
+}

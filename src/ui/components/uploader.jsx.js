@@ -1,29 +1,41 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import autobind from 'class-autobind'
+import React from "react";
+import PropTypes from "prop-types";
+import autobind from "class-autobind";
 
 class Uploader extends React.Component {
-
 	constructor() {
-		super(...arguments)
-		autobind(this)
+		super(...arguments);
+		autobind(this);
 	}
 
-	handleFiles({target: {files}}) {
+	handleFiles({ target: { files } }) {
 		for (const file of files) {
-			this.props.upload(file)
+			this.props.upload(file);
 		}
 	}
 
 	render() {
-		const {upload, ...inputProps} = this.props
-		return <input {...inputProps} multiple type="file" onChange={this.handleFiles} />
+		const { upload, ...inputProps } = this.props;
+		return (
+			<div>
+				<label tabIndex="0" htmlFor="uploader" className="uploader">
+					Upload Files
+				</label>
+				<input
+					{...inputProps}
+					id="uploader"
+					multiple
+					type="file"
+					onChange={this.handleFiles}
+					className="uploader-input"
+				/>
+			</div>
+		);
 	}
-
 }
 
 Uploader.propTypes = {
-	upload: PropTypes.func.isRequired,
-}
+	upload: PropTypes.func.isRequired
+};
 
-export default Uploader
+export default Uploader;
