@@ -1,0 +1,241 @@
+/* styles for Project 1 */
+$primary-color: orchid;
+$default-background-color: crimson;
+$accent-color: black;
+$default-font-family: "rooney-sans", arial, helvetica, sans-serif;
+$default-font-weight: 500;
+$default-font-color: white;
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+	padding: 30px;
+	background: $default-background-color;
+	background: linear-gradient(
+		to bottom,
+		rgba(150, 143, 179, 1) 0%,
+		$default-background-color 100%
+	);
+	min-height: 100vh;
+	color: $default-font-color;
+	font-family: $default-font-family;
+
+}
+
+#outer-wrapper {
+	min-height: 90vh;
+	display: grid;
+	grid-template-columns: 50% 50%;
+	grid-template-rows: auto 1fr auto 3fr auto;	
+}
+
+h1 {
+	color: $accent-color; 
+	grid-row-start:1;
+	grid-column-start:1;
+}
+
+nav {
+	grid-row-start:1;
+	grid-column-start:2;
+	line-height: inherit;
+	ul {
+		list-style: none;
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		align-items: flex-start;
+		li {
+			padding: .5em .75em;
+			a, a:link, a:visited {
+				text-decoration:none;
+				color: darken($primary-color, 21%);
+			}
+			a:hover, a:focus, a:active, a.current {
+				color: white;
+			}
+		}
+	}
+}
+
+section {
+	grid-row-start:3;
+	grid-column-start:1;
+	grid-column-end:3;
+}
+
+.elastic-spacer-top {
+	grid-row-start:2;
+	grid-column-start:1;
+	grid-column-end:3;
+}
+
+#gallery-page {
+	grid-row-start:3;
+	grid-column-start:1;
+	grid-column-end:3;
+}
+
+#gallery-images {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+	grid-gap: 1em;
+	grid-auto-flow: row dense;
+
+	img {
+		display: block;
+		width: 100%;
+		border: 2px solid $primary-color;
+		&.wide {
+			grid-column: span 2;
+		}
+	}
+}
+
+.elastic-spacer-bottom {
+	grid-row-start:4;
+	grid-column-start:1;
+	grid-column-end:3;
+}
+
+footer {
+	grid-row-start:5;
+	grid-column-start:1;
+	grid-column-end:3;
+}
+
+/*
+ * For FAQs
+ */
+dl {
+	margin: 0;
+	padding: 0;
+}
+dt, dd {
+	text-indent: -1.4em;
+	padding-left: 1.4em;
+}
+dt {
+	color: $accent-color;
+	&::before {
+		content: "Q. "
+	}
+}
+dd {
+	margin: 0 0 1em 0;
+	&::before {
+		content: "A. "
+	}
+}
+
+/*
+ * Form Controls
+ */
+.uploader-button-container {
+	padding: 1em 0;
+}
+
+button {
+	background: $primary-color;
+	color: $default-font-color;
+	font-family: $default-font-family;
+	font-weight: $default-font-weight;
+	/*text-transform: uppercase;*/
+	font-size: 1.5rem;
+	padding: .7rem 2rem ;
+	border: none;
+	border-radius: .3rem;
+	&:before {
+		font-family: "Font Awesome 5 Free";
+		font-size: 1em;
+		font-weight: 400;
+		margin-right: .5em;
+		display: inline-block;
+		vertical-align: center;
+		font-style: normal;
+		font-variant: normal;
+		text-rendering: auto;
+		-webkit-font-smoothing: antialiased;
+	transition:  all 0.6s linear;
+	}
+	&:hover, &:active, &:focus { background-color: darken($primary-color, 21%); }
+	&:hover:before {   
+		transform: rotate(720deg) ;
+	}
+}
+/* unicode values found at: https://fontawesome.com/icons?d=gallery */
+@mixin fa-icon($fa-icon-unicode-value) {
+	&:before {
+		content: $fa-icon-unicode-value;
+	}
+}
+
+/*
+ * BASIC BUTTON
+ */
+.basic-button {
+	@extend button;
+	@include fa-icon("\f013");
+}
+
+/*
+ * PROGRESS BAR 
+ */
+progress {  // the container for Firefox
+    background-color: white;
+    border-radius: .3rem;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.5) inset;
+    margin: 2em 0 1em;
+}
+progress[value] {
+  appearance: none;
+  border: none;
+  width: 100%;
+  height: 2rem;
+  &::-webkit-progress-bar { // the container
+    background-color: white;
+    border-radius: .3rem;
+    box-shadow: 0 2px 3px rgba(0,0,0,0.5) inset;
+  }
+  &::-webkit-progress-value { 
+    position: relative;
+    transition: all 0.2s ease;
+    background-color: $primary-color;
+    border-top-left-radius: .3rem;
+		border-bottom-left-radius: .3rem;
+   }
+	&::-moz-progress-bar { 
+    background-color: $primary-color;
+  }
+	&::-ms-fill { // the container
+    background-color: $primary-color;
+		border: none;
+  }
+}
+
+/*
+ * FILE UPLOADER 
+ */
+/* the label, turned into a button */
+.uploader {
+	@extend button;
+	@include fa-icon("\f093");
+	cursor: pointer;
+}
+
+/* the real button, hidden */
+.uploader-input {
+  opacity: 0;
+	/*height: 0;*/
+	display: block;
+	&:focus{
+		+label {
+			 background-color: darken($primary-color, 21%);
+		}
+	}
+}
