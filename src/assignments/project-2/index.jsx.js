@@ -84,7 +84,6 @@ const studentPropType = PropTypes.shape({
 
 Chat.propTypes = {
 	classroom: PropTypes.shape({
-		self: studentPropType,
 		students: PropTypes.arrayOf(studentPropType).isRequired,
 	}).isRequired,
 	chat: PropTypes.shape({

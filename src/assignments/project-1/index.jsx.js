@@ -60,4 +60,33 @@ Uploads.propTypes = {
 	actions: PropTypes.object.isRequired,
 }
 
+
+
+const imgFiles = [
+	{
+		id: "1",
+		imgUrl: ,
+		imgAltAttribute: ,
+		completedFileCopy:
+	},
+	{
+		id: "2",
+		imgUrl: ,
+		imgAltAttribute: ,
+		completedFileCopy:
+	},
+	{
+		id: "3",
+		imgUrl: ,
+		imgAltAttribute: ,
+		completedFileCopy:
+	},
+	{
+		id: "4",
+		imgUrl: ,
+		imgAltAttribute: ,
+		completedFileCopy:
+	},
+];
+
 export default Uploads
