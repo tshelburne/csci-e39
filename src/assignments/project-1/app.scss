@@ -42,17 +42,70 @@ progress[value]::-moz-progress-bar {
 
 // Styling the File Uploader
 .uploader {
-	border: 2px solid transparent;
 	margin: 1.5em;
+	text-align: center;
 	padding: 0.3em;
-	background-color: rgb(96, 89, 139);
+	background-color: darkgreen;
 	font-family: cursive;
+	color: whitesmoke;
 }
 
 .uploader-input {
-	border: 2px solid double;
+	color: whitesmoke;
 	font-family: cursive;
-	padding: 0.5em;
-	background-color: lightgreen;
+	padding: 1em;
+	background-color: darkgreen;
+	width: 15%;
+	text-align: center;
 }
 
+// Styling the Button
+button {
+	display: inline-block;
+	padding: 0.938em 1.875em;
+	border: 0.094em solid #743ea5;
+	border-radius: 0.625em;
+	background-color: #9a68c7;
+	box-shadow: 0 0.375em 0.313em -0.313em rgba(0, 0, 0, 0.8),
+		inset 0 0.063em rgba(255, 255, 255, 0.4), inset 0 -0.188em rgba(0, 0, 0, 0.15);
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	text-shadow: 0 0.063em #000;
+	cursor: pointer;
+	font: bold 1.8rem sans-serif;
+}
+button:hover {
+	background-color: #8a58b7;
+	box-shadow: 0 0.125em rgba(255, 255, 255, 0.4),
+		inset 0 0.063em rgba(255, 255, 255, 0.4), inset 0 -0.188em #804fad;
+}
+button:active {
+	box-shadow: inset 0 0 1.094em #472566, inset 0 0.063em #390668,
+		inset 0 -0.188em #682ca0, 0 0.063em rgba(255, 255, 255, 0.4);
+}
+
+.photo {
+	border: 2px double green;
+	max-width: 200px;
+	min-height: 10em;
+}
+
+.custom-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-gap: 1em;
+	grid-auto-rows: minmax(100px, auto);
+}
+
+.list-item {
+	list-style: none;
+}
+.container {
+	background-color: wheat;
+	text-align: center;
+	margin: 0;
+	padding: 1%;
+	color: darkgreen;
+	list-style: none;
+}

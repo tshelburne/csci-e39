@@ -14,20 +14,19 @@ class Album extends React.Component {
        var filesList = this.props.uploadedFiles.map(file => {
             const {id, name, url, error} = file
 
-            return <li key={id}>
-                <label>{name}</label>
-                {!error && <img src={url} style={{maxWidth: `200px`}} />}
+            return <li className="list-item" key={id}>
+                {!error && <img className="photo" title={name} alt={name} src={url} />}
                 {!!error && <p className="failure">{error}</p>}
-            </li>
+            </li>;
         });
 
-		return <ul>{filesList}</ul>
+		return <ul className="custom-grid">{filesList}</ul>
 	}
 
 }
 
 Album.propTypes = {
-	uploadedFiles: PropTypes.func.isRequired,
+	uploadedFiles: PropTypes.array.isRequired,
 }
 
 export default Album
