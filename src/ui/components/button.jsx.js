@@ -1,5 +1,6 @@
 import React from 'react'
-import Weather from '../../ui/components/hello.jsx'
+import NPWrapper from '../../ui/components/np-list.jsx'
+import TemperatureInput from '../../ui/components/inputTemp.jsx'
 
 class Button extends React.Component {
 
@@ -15,14 +16,17 @@ class Button extends React.Component {
 	}
 
 	render() {
-		const buttonText = this.state.widgetActive ? 'Toggle Off' : 'Toggle On';
+		const buttonText = this.state.widgetActive ? 'Off' : 'On';
 		const {widgetActive} = this.state
 
 		return (
-		<div className="example-container button-container">
-			<h1 className="header">Button with decorative element</h1>
+		<div className="container button-container">
+			<h1 className="header">SideBar</h1>
 			<button onClick={this.toggleWidget.bind(this)}>{buttonText}</button>
-			{ widgetActive && <Weather /> }
+			{ widgetActive && <aside>
+								<NPWrapper />
+								<TemperatureInput />
+							</aside> }
 		</div>
 		
 		);

@@ -20,7 +20,7 @@ class Uploader extends React.Component {
 	render() {
 
 		return (
-		<div className="example-container file-input-container">
+		<div>
 			<h2 className="header">Upload Images</h2>
 			<form className="file-form">
 				<label tabIndex="0" htmlFor="uploader" className="uploader" onChange={this.handleFiles} >UPLOAD</label>

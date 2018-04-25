@@ -6,9 +6,11 @@ $accent-color-2:hsla(25, 100%, 69%, 1);
 $accent-color-3:hsla(330, 80%, 68%, 1);
 $accent-color-4:hsla(277, 46%, 62%, 1);
 $accent-color-5:hsla(49, 72%, 62%, 1);
+
 //fonts ------------------------------
 $font-family-header:"Raleway", Arial, Helvetica, sans-serif;
 $font-family-body:"Roboto", sans-serif;
+
 //mixins -----------------------------
 @mixin box-shadow-containers ($color){
 	box-shadow: 0 0 0.3em $color;
@@ -42,7 +44,7 @@ header {
 	font-family: $font-family-header;
 	font-size:1.5rem;
 }
-.example-container {
+.container {
 	background: lighten($base-color, 5);
 	margin: 4vh 0;		
 	padding: 7vh 2vh;		
@@ -50,7 +52,30 @@ header {
 	border-radius: 2px;
 }
 
-//button----------------
+//navigation--------------
+
+nav{
+	float:left;
+
+	li{
+		display: inline;
+		padding-right: 3em;
+		a{
+			display: inline-block;
+			text-decoration:none;
+			padding: 1em;
+			color:darken($accent-color-4, 5);
+			&:active, &:hover, &:focus {
+				color:$header-text-color;
+				border-color: adjust-hue($accent-color-4, 45deg);    
+				box-shadow:0 0 0.8em adjust-hue($accent-color-4, 45deg);
+			}
+		}
+	}
+}
+
+
+//button-------------------
 button {
 	font-size: 1.3rem;
 	background:$base-color;
@@ -70,7 +95,8 @@ button {
 	@include box-shadow-containers($accent-color-1);
 }
 
-//progress bar -----------------
+
+//progress bar-----------------
 progress[value]{
 	-webkit-appearance: none;
   -moz-appearance: none;
@@ -123,11 +149,11 @@ progress[value]::-moz-progress-bar{
 	@include box-shadow-containers($accent-color-4);
 }
 
+
+//image styling --------------------
 .image-container{	
 	@include box-shadow-containers($accent-color-3);
 }
-
-//image styling
 
 li {
 	list-style: none; 
@@ -138,7 +164,7 @@ li {
 	padding-bottom: 2em;
 }
 
-//np list styling
+//component list styling -----------------
 .NP-list{
 	margin-bottom:1em;
 	background: lighten($base-color, 5);
@@ -146,8 +172,7 @@ li {
 	&:active, &:hover, &:focus {
 		border-color: adjust-hue($accent-color-2, 45deg);    
 		box-shadow:0 0 0.8em adjust-hue($accent-color-2, 45deg);
-	}
-		
+	}		
 }
 .list ul {
 	padding:0;
@@ -165,11 +190,14 @@ a {
 	background: lighten($base-color, 5);
 	padding: 1em;
 }
-.component{
+.inputTemp{
 	margin-top:1.8rem;
 }
+
+
+
 //-----------------------------
-//grid layout
+//layout
 
 .body {
 	max-width:1200px;
@@ -178,17 +206,17 @@ a {
 .body > * { padding:1em;}
 
 /*IE fallback*/
-main {
+main, aside {
 	padding:0;	
 }
-main > *{
+main > * , aside > *{
 	padding:1em;
 }
 
 
 /*grid layout--------------------------*/
 @supports(display:grid){
-	.body > *, main > *{
+	.body > *, main > * , aside > *{
 		padding:0;
 	}
 	.body{
@@ -198,132 +226,98 @@ main > *{
 		grid-row-gap: 3vh;
 		grid-column-gap: 2vw;
 		grid-template-areas: "header"
-							 "main"
+							 "wrapper"
 							 "footer";		
 		grid-template-columns: minmax(100px, 1fr);
-		grid-template-rows: minmax(80px, max-content) 2fr  minmax(80px, max-content);
+		grid-template-rows: minmax(80px, max-content) 2fr  1 fr minmax(80px, max-content);
 	}	
 	
 	header  {grid-area: header;}
-	main    {grid-area: main;}
+	.wrapper{grid-area: wrapper;}
 	footer  {grid-area: footer;}
 
 	.wrapper {
 			display:grid;						
 			grid-gap: 0.5em;
 			grid-template-columns: 1fr;						
-		}	
+		}
+	.image-container ul {
+		display:grid;
+		grid-template-columns: 1fr;
+	}	
 
 	@media(min-width:768px){
 		.body{
 			grid-template-areas: "header header "
-							 	 "main main"							 
+							 	 "wrapper wrapper"							 
 							 	 "footer  footer";
 			grid-template-columns: repeat(2, 1fr);
 			grid-template-rows: minmax(80px, max-content) 2fr minmax(80px, max-content);
 		}
 		.wrapper{
-			grid-template-columns: 1fr 1fr;			
+			grid-template-areas: "aside"
+							 	  "main";								 
+			grid-template-columns: 1fr;			
 		}
-		
-		.image-container{
-			grid-column: 2/3;
-			grid-row: 1/4;
-		}	
-		.bar-container, .file-input-container{
-			grid-column: 1/2;
-		}
-		.file-input-container{
-			grid-row: 1/2;
-		}
-		.bar-container{
-			grid-row: 2/3;
-		}
-		.button-container{
-			grid-column: 1/2;
-			grid-row: 3/4;
-		}
-		.list{
-			grid-column: 1/2;
-			grid-row: 4/6;
-		}
-		.component{
-			grid-column: 2/3;
-			grid-row: 4/6;
+
+		aside  {grid-area: aside;}
+		main {grid-area: main;}	
+
+		.image-container ul {		
+			grid-template-columns: 1fr 1fr;
 		}
 	}
 
 	@media(min-width:1200px){
 		.body{
 			grid-template-areas: "header header header"
-							 	 "main main  main"							 
+							 	 "wrapper wrapper  wrapper"							 
 							 	 "footer  footer footer";
 			grid-template-columns: repeat(3, 1fr);
 			grid-template-rows: minmax(80px, max-content) 2fr minmax(80px, max-content);
 		}
 		.wrapper{
-			grid-template-columns: repeat(3, 1fr);			
+			grid-template-areas: "aside main main";				 	  
+			grid-template-columns: 1fr 2fr;			
 		}
-		
-		.image-container{
-			grid-column: 2/4;
-			grid-row: 1/4;
+		main {grid-area: main;}
+		aside  {grid-area: aside;}
+
+		.image-container ul {		
+			grid-template-columns: repeat(3, 1fr);
 		}	
-		.bar-container, .file-input-container{
-			grid-column: 1/2;
-		}
-		.file-input-container{
-			grid-row: 1/2;
-		}
-		.bar-container{
-			grid-row: 2/3;
-		}
-		.button-container{
-			grid-column: 1/2;
-			grid-row: 3/4;
-		}
-		.list{
-			grid-column: 1/2;
-			grid-row: 4/6;
-		}
-		.component{
-			grid-column: 2/4;
-			grid-row: 4/6;
-		}
-		
 	}
-}
 
+	// gallery page layout -------
+	.gallery-page main{
+			display:grid;
+			grid-template-columns: 1fr;
+		}
 
-//------navigation
+	@media(min-width:768px){
+		.gallery-page{
+			grid-template-areas: "main main";			
+		}
+		.gallery-page main{			
+			grid-template-columns: repeat(2, 1fr);
+		}		
+	}
 
-nav{
-	float:left;
-
-	li{
-		display: inline;
-		padding-right: 3em;
-		a{
-			display: inline-block;
-			text-decoration:none;
-			padding: 1em;
-			color:darken($accent-color-4, 5);
-			&:active, &:hover, &:focus {
-				color:$header-text-color;
-				border-color: adjust-hue($accent-color-4, 45deg);    
-				box-shadow:0 0 0.8em adjust-hue($accent-color-4, 45deg);
-			}
+	@media(min-width:1200px){
+		.gallery-page{
+			grid-template-areas: "main main main";			
+		}
+		.gallery-page main{			
+			grid-template-columns: repeat(3, 1fr);
 		}
 	}
 }
 
 
-//---component
 
-.ComponentBorder-green {
-	@extend .example-container;
-  	box-shadow:0 0 0.8em adjust-hue($accent-color-1, 45deg);
-}
+
+
+
 
 
 

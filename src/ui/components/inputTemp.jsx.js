@@ -50,10 +50,10 @@ class TemperatureInput extends React.Component {
     const scale = this.props.scale;
 
     return (
-       <div className="component">
+       <div className="inputTemp">
           <form className="form"> 
             <fieldset>
-              <legend>What is temperature today? (in fahrenheit)</legend>
+              <legend>What is the temperature today? (in fahrenheit)</legend>
               <input value={temperature}
                      onChange={this.handleChange} />
                 <Output temperature={parseFloat(temperature)} />

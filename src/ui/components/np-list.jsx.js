@@ -54,7 +54,7 @@ const OnePark = ({url, className, image,mobileImage, title, description}) => (
 const PARKS = [
      { 
        url: "https://www.nps.gov/yose/index.htm",
-       className: "NP-list example-container ",
+       className: "NP-list container ",
        image: "https://via.placeholder.com/200x200",
        mobileImg: "https://via.placeholder.com/150x150",
        title:"Yosemite",
@@ -63,7 +63,7 @@ const PARKS = [
      },
      { 
        url: "https://www.nps.gov/ever/index.htm",
-       className: "NP-list example-container ",
+       className: "NP-list container ",
        image: "https://via.placeholder.com/200x200",
        mobileImg: "https://via.placeholder.com/150x150",
        title:"Everglades",
