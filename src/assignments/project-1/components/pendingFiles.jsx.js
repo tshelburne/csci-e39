@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import LiveAnnounce from './liveAnnounce.jsx'
 
 // const PendingFiles = ({pendingFiles}) => {
 // 	return <div className="pendingFiles">
@@ -21,7 +22,7 @@ class PendingFiles extends React.Component {
 
 	constructor() {
 		super(...arguments);
-		this.state = {hidden: true};
+		this.state = {hidden: true, whatToSay: '', prevLength: -1};
 	}
 
 	reveal() {
@@ -29,13 +30,18 @@ class PendingFiles extends React.Component {
 		const checkLength = pendingFiles.length;
 		if(checkLength === 0) {
 			if (this.state.hidden === false) {
-				this.setState({hidden: true});
+				if (this.state.prevLength > checkLength) {
+					this.setState({hidden: true, whatToSay: 'Upload finished', prevLength: checkLength});
+				}
+				else {
+					this.setState({hidden: true});
+				}
 			}
 			return 'sr-only hide'
 		}
 		else {
 			if (this.state.hidden === true) {
-				this.setState({hidden: false});
+				this.setState({hidden: false, whatToSay: 'Uploading', prevLength: checkLength});
 			}
 			return null
 		}
@@ -54,12 +60,13 @@ class PendingFiles extends React.Component {
 				</li>
 			})}
 		</ul>
+		<LiveAnnounce whatToSay={this.state.whatToSay} />
 	</div>
 	}
 }
 
 PendingFiles.propTypes = {
-	pendingFiles: PropTypes.object.isRequired,
+	pendingFiles: PropTypes.arrayOf(PropTypes.object.isRequired),
 }
 
 export default PendingFiles
