@@ -7,6 +7,14 @@ import TextArea from './components/textarea.jsx'
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
+	
+	const handleImageAltChange = (event) => {
+    this.setState({value: event.target.value});
+  }
+  
+  const handleImageAltSubmit= (event) => {
+    event.preventDefault();
+  }
 
 	return <div>
 	  <Header text={"Share your photos with a community of cool file hoarders."}/>
@@ -38,9 +46,9 @@ const Uploads = ({uploads, actions}) => {
 				const {id, name, url, error} = file
 				return <li key={id} >
 					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `100%`}} />}
+					{!error && <img src={url} style={{maxWidth: `100%`}} alt={this.state.value ? this.state.value : "Please enter a description for this image in the text box below."}/>}
 					{!!error && <p className="failure">{error}</p>}
-					<TextArea placeholder={"Describe this image"} buttonText={"Update"}/>
+					<TextArea value={"Describe this image"} buttonText={"Update"} handleChange={handleImageAltChange.bind(this)}/>
 				</li>
 			})}
 		</ul>

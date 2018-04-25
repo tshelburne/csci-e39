@@ -7,13 +7,19 @@ class TextArea extends React.Component {
   constructor() {
 		super(...arguments)
 		autobind(this)
+		
+		//textarea update code sourced from https://reactjs.org/docs/forms.html
+		this.state = {
+      value: this.props.value
+    };
 	}
+
   
   render() {
-    const {placeholder, buttonText, ...inputProps} = this.props
+    const {value, buttonText, handleChange, ...inputProps} = this.props
     return <form id="update-alt">
-    <input type="textarea" placeholder={placeholder} rows="10"/>
-    <button>{buttonText}</button>
+    <input type="textarea" value={this.state.value} onChange={this.props.handleChange}/>
+    <button type="submit">{buttonText}</button>
     </form>
   }
   
