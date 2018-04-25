@@ -7,6 +7,23 @@ $darker-color: darken($primary-color, 12);
 $font-color: #272727;
 $shadow-color: darken($darker-color, 5);
 $secondary-color: #b8b8b8;
+$disabled-primary: #eee;
+$disabled-secondary: #888;
+$disabled-darker: darken($disabled-primary, 5);
+
+/*///////////////////////
+      TYPOGRAPHY
+//////////////////////*/
+
+h1,h2,h3{
+  font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
+  text-shadow: 1px 1px 0px $shadow-color;
+}
+
+p{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 
 /*///////////////////////
       GENERAL & LAYOUT
@@ -16,7 +33,6 @@ body{
   font-family: Palatino, Garamond, serif;
   color: $darker-color;
   font-size: 1.25rem;
-  text-shadow: 1px 1px 0px $shadow-color;
   
   background: #fffc00;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to bottom, #ffffff, #fffc00);  /* Chrome 10-25, Safari 5.1-6 */
@@ -24,24 +40,47 @@ body{
   /* gradient code revised from https://uigradients.com/#JuicyOrange */
   
   width: 100vw;
+  margin: 0;
 }
 
 #app{
  max-width: 1500px;
- width: 80vw;
- margin: 0 auto; 
+ max-width: 80vw;
+ margin: 0 auto;
+ min-height: 100vh; 
+ background: #fff;
+ padding: 0 50px;
+}
+
+header{
+  border-top: 5px solid $darker-color;
+  border-bottom: 2px solid $darker-color;
+  margin-bottom: 50px;
+  h1,p{
+    display: inline-block;
+    vertical-align: baseline;
+    padding-right: 20px;
+    margin: 0.4em 0;
+  }
+}
+
+#upload-image{
+  border: 3px dotted #b2b2b2;
+  color: #b2b2b2;
+  padding: 50px;
+  text-align: center;
+  background: #f7f7f7;
+  h3{
+    text-shadow: 1px 1px 0px darken(#b2b2b2, 5);
+  }
+  .uploader-wrapper{
+    position: relative;
+    margin: 25px auto 0 auto;
+  }
 }
 
 .visually-hidden{
   display: none;
-}
-
-/*///////////////////////
-      TYPOGRAPHY
-//////////////////////*/
-
-h1,h2,h3{
-  font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
 }
 
 /*///////////////////////
@@ -94,22 +133,43 @@ progress[role] {
   overflow: hidden;
   display: inline-block;
 }
+
 .uploader-label {
 	overflow: hidden;
   position: relative;
-	background: $primary-color;
 	padding: 15px 10px;
-	color: #fff;
-	border: 1px solid $darker-color;
 	font-size: 18px;
 	display: inline-block;
 	&:before {
-		content: " 💚";
 		padding: 0 5px;
 	}
 	&:after {
-		content: " 💚";
 		padding: 0 5px;
+	}
+	&:focus{
+    outline: auto 5px -webkit-focus-ring-color;
+	}
+  &.button-is-activated{
+    background: $primary-color;
+    border: 1px solid $darker-color;
+    color: #fff;
+    &:before{
+		  content: " 💚";      
+    }
+    &:after{
+		  content: " 💚";
+    }
+	}
+	&.button-is-deactivated{
+  	background: $disabled-primary;
+    border: 1px solid $disabled-darker;
+    color: $disabled-secondary;
+    &:before{
+		  content: " 🖤";      
+    }
+    &:after{
+		  content: " 🖤";
+    }
 	}
 }
 
@@ -117,11 +177,11 @@ progress[role] {
 	cursor: inherit;
 	display: block;
 	filter: alpha(opacity=0);
-	min-height: 100%;
+	min-height: 60px;
 	min-width: 100%;
 	opacity: 0;
 	position: absolute;
-	right: 0;
+	left: 0;
 	text-align: right;
 	top: 0;
 }
@@ -133,7 +193,7 @@ progress[role] {
 .gallery{
   display: grid;
   grid-gap: 1em;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   margin: 0;
   padding: 0;
   li{
@@ -150,6 +210,7 @@ progress[role] {
     }
     img{
       display: block;
+      padding: 15px 0;
     }
   }
 }
