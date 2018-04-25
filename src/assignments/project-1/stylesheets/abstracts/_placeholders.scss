@@ -1,0 +1,19 @@
+%button-hocus {
+	background-color: darken($button-background, 10);
+	outline-offset: 2px;
+}
+
+// from https://getbootstrap.com
+// and https://hugogiraudel.com/2016/10/13/css-hide-and-seek/
+.sr-only {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	-webkit-clip-path: inset(50%) !important;
+	clip-path: inset(50%) !important;
+	border: 0 !important;
+}

@@ -1,0 +1,23 @@
+%button {
+	background-color: $button-background;
+	border: 1px solid $primary-color;
+	border-radius: $radii;
+	box-shadow: 1px 1px, -1px -1px;
+	color: $button-color;
+	margin: 0;
+	padding: $padding-sm;
+	transition: box-shadow 0.2s ease;
+	width: auto;
+
+	&:focus,
+	&:hover {
+		@extend %button-hocus;
+	}
+
+	&:active {
+		border: 1px solid $primary-color;
+		// box-shadow: unset;
+		box-shadow: 1px 1px transparent, -1px -1px transparent;
+		color: initial;
+	}
+}

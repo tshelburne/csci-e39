@@ -1,0 +1,24 @@
+@import '../design-patterns/pattern-library';
+@import 'stylesheets/themes/all';
+@import 'stylesheets/abstracts/all';
+
+html {
+	box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+body {
+	padding: $padding-xs;
+}
+
+.uploads-description {
+	max-width: 60ch;
+}
+
+@import 'stylesheets/base/all';
+@import 'stylesheets/components/all';

@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Uploader from '../../ui/components/uploader.jsx'
+// import Uploader from '../../ui/components/uploader.jsx'
+import UploaderA11y from './components/uploaderA11y.jsx'
+import PendingFiles from './components/pendingFiles.jsx'
+import CompletedFiles from './components/completedFiles.jsx'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
@@ -8,34 +11,16 @@ const Uploads = ({uploads, actions}) => {
 
 	return <div>
 		<h1>Upload Images</h1>
+		<p className="uploads-description">Click the Upload Images button or drag and drop one or more image files on it 
+		to upload your pictures to make an album. Each file is limited to 500 KB.
+		</p>
 		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
+		<UploaderA11y upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
+		<PendingFiles pendingFiles={pendingFiles} />
 
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
+		<CompletedFiles completedFiles={completedFiles} />
 	</div>
 }
 
@@ -59,5 +44,28 @@ Uploads.propTypes = {
 	}).isRequired,
 	actions: PropTypes.object.isRequired,
 }
+
+const FAKEFILES = [
+	{
+		id: "1",
+		name: "photo1",
+		progress: "10",
+	},
+	{
+		id: "2",
+		name: "Photo with a long file name IMS_0123.jpg",
+		progress: "33",
+	},
+	{
+		id: "3",
+		name: "photo3",
+		progress: "69",
+	},
+	{
+		id: "4",
+		name: "photo4",
+		progress: "100",
+	},
+];
 
 export default Uploads

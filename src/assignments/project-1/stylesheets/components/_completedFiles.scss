@@ -1,0 +1,28 @@
+.completedFiles {
+	.cf-ul {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0px;
+
+		@include media-grid-break() {
+			display: grid;
+			grid-gap: $margin-sm;
+			grid-template-columns: repeat(auto-fill, minmax(320px, max-content));
+		}
+	}
+
+	.images-uploaded {
+		font-weight: bold;
+
+		.completedFiles-value {
+			background-color: $completedFiles-value-background;
+			border: 2px solid $completedFiles-value-border;
+			color: $completedFiles-value-color;
+			border-radius: $radii;
+			display: inline-block;
+			font-weight: normal;
+			min-width: 3ch;
+			text-align: right;
+		}
+	}
+}

@@ -1,0 +1,45 @@
+
+
+.completedFilesItem {
+	border: 2px solid $item-border;
+	border-radius: $radii;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	list-style: none;
+	margin-bottom: $margin-sm;
+	margin-right: $margin-sm;
+	max-width: $item-max;
+
+	@include media-grid-break() {
+		// parent grid-gap replaces purpose of margins
+		margin-bottom: 0;
+		margin-right: 0;
+	}
+
+	.cf-item-name {
+		background-color: $img-name-background;
+		color: $img-name-color;
+		display: block;
+		margin-bottom: $margin-sm;
+		overflow-wrap: break-word;
+		padding: $padding-xs;
+		text-align: center;
+		width: 100%;
+		word-wrap: break-word;
+	}
+
+	.cf-item-img {
+		border: 1px solid black;
+		justify-self: center;
+		max-height: 400px;
+		max-width: 99%;
+		margin: $margin-sm;
+	}
+
+	.failure {
+		border: 2px solid red;
+		padding: $padding-sm;
+	}
+}
