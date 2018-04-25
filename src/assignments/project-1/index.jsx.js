@@ -1,6 +1,10 @@
 import React from 'react'
+import Component from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
+import autobind from 'class-autobind'
+import AlbumCopy from './albumcopy.jsx'
+import AuthorNames from './authorname.jsx'
 
 const Uploads = ({uploads, actions}) => {
   const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
@@ -15,9 +19,13 @@ const Uploads = ({uploads, actions}) => {
       <main>
         {/* do not delete this uploader component */}
         <Uploader upload={actions.upload}/> {/* do not delete this uploader component */}
-        <p>
-          Mollit consectetur anim quis eiusmod voluptate officia fugiat amet labore voluptate fugiat mollit officia. Id occaecat labore consequat cupidatat occaecat proident cillum voluptate et velit et cupidatat nulla do commodo. Ea est cupidatat officia irure esse Lorem ullamco nostrud enim Lorem et consectetur tempor. Voluptate nisi nisi tempor officia anim irure officia cupidatat qui dolore ad voluptate Lorem occaecat. Eiusmod excepteur laborum est sint amet anim minim anim do. Dolore enim est ex elit consectetur non elit magna cillum veniam culpa reprehenderit aliqua exercitation. Eiusmod laborum exercitation incididunt in nulla ad mollit nulla amet cupidatat Lorem nostrud labore ullamco incididunt.
-        </p>
+
+        <AlbumCopy/>
+
+        <AuthorNames>
+          {'Ryan Seay'}
+        </AuthorNames>
+
         <h2>In Progress</h2>
         <ul>
           {pendingFiles.map(file => {
@@ -37,9 +45,17 @@ const Uploads = ({uploads, actions}) => {
 
             return <li key={id}>
               <label>{name}</label>
-              {!error && <img src={url} style={{
-                maxWidth: `200px`
-              }}/>}
+              {!error && <div className="perfundo">
+                <a className="perfundo__link" href={"#" + name}>
+                  <img src={url} style={{
+                    maxWidth: `200px`
+                  }}/></a>
+                <div id={name} className="perfundo__overlay fadeInLeft">
+                  <figure className="perfundo__content pefundo__figure">
+                    <a href="#perfundo-untarget"><img src={url}></img></a>
+                  </figure>
+                </div>
+              </div>}
               {!!error && <p className="failure">{error}</p>}
             </li>
           })}
