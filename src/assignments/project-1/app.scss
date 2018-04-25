@@ -1,0 +1,239 @@
+html {
+	min-height: 100vh;
+}
+
+body {
+	font-family: sans-serif;
+	background-color: #efefef;
+	display: grid;
+	height: 100vh;
+	max-height: 100vh;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-rows: auto;
+	grid-gap: 15px 20px;
+	grid-template-columns: 1fr 4fr;
+	grid-template-areas:
+		"main-header main-header"
+		"nav nav"
+		"uploader main"
+		"thumbnails main"
+		"footer footer"
+}
+
+/*************************************************/
+// MAIN HEADER STYLES
+
+.main-header {
+	background-color: #452d3a;
+	min-height: 100px;
+	height: 20vh;
+	align-items: center;
+	grid-area: main-header;
+}
+
+.title {
+	font-family: 'Permanent Marker', cursive;
+	text-align: center;
+	color: #efefef;
+	font-size: 32px;
+}
+
+.inlineHeaderStyle {
+	color: #bf5362;
+	display: inline;
+}
+
+.subheader {
+	text-align: center;
+	color: #efefef;
+}
+
+nav {
+	grid-area: nav;
+}
+
+/*************************************************/
+// MAIN CONTENT AREA STYLES
+
+.aside-uploader {
+	grid-area: uploader;
+}
+
+.main-content {
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 15px;
+	grid-area: main;
+}
+
+.grid-container>.main-content:nth-child(3) {
+	grid-column: span 2;
+
+}
+
+
+/*************************************************/
+// SIDEBAR STYLES
+
+.thumbnails {
+	grid-area: thumbnails;
+	list-style-type: none;
+	padding: 0px;
+	border: 2px dotted goldenrod;
+}
+
+/*************************************************/
+// PHOTO CARD STYLES
+
+.photo-card {
+	border: 2px black solid;
+	width: 150px;
+	height: 150px;
+	margin: 20px;
+	padding: 10px;
+	-webkit-box-shadow: 6px 6px 3px 3px rgba(0,0,0,0.75);
+	-moz-box-shadow: 6px 6px 3px 3px rgba(0,0,0,0.75);
+	box-shadow: 6px 6px 3px 3px rgba(0,0,0,0.75);
+	background-color: whitesmoke;
+
+	img {
+		border: 1px black solid;
+		display: block;
+		margin: auto auto;
+		max-width: 130px;
+		max-height: 130px;
+	}
+
+	:after {
+		content: ".";
+		visibility: hidden;
+		display: block;
+		height: 0;
+		clear: both;
+	}
+}
+
+.photo-card-title,
+.photo-card-copy {
+  padding: 5px;
+}
+
+.photo-card-title {
+  font-size: 1.0rem;
+	font-weight: normal;
+	color: black;
+}
+
+
+/*************************************************/
+// FOOTER STYLES
+
+.footer {
+	background-color: #452d3a;
+	width: 100%;
+	padding: 20px;
+	color: white;
+	grid-area: footer;
+}
+
+/*
+.photo-card:first-child {
+  & img {
+    width: 250px;
+    height: 250px;
+    float: none;
+    margin: 0;
+  }
+}
+*/
+
+.photo-card a img {
+  width: 100px;
+  height: 100px;
+  float: left;
+  margin: 5px;
+}
+
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+	background-color: #111;
+}
+
+
+
+
+
+
+
+/* Obsolete ?*/
+
+.clearfix:after {
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+.image-item {
+	padding: 10px;
+	border: 2px solid black;
+}
+
+.image-item2 {
+	max-width: 100px;
+	max-height: 100px;
+	margin: auto auto;
+}
+
+article {
+  margin: 15px;
+  width: 250px;
+  border: 1px DARKGRAY solid;
+  background: WHITESMOKE;
+}
+.article-title,
+.article-copy {
+  padding: 5px;
+}
+
+.article-title {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.article:first-child {
+  & img {
+    width: 250px;
+    height: 250px;
+    float: none;
+    margin: 0;
+  }
+}
+
+
+
+
