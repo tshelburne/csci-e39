@@ -8,7 +8,7 @@ $font-color: #272727;
 $shadow-color: darken($darker-color, 5);
 $secondary-color: #b8b8b8;
 $disabled-primary: #eee;
-$disabled-secondary: #888;
+$disabled-secondary: #b2b2b2;
 $disabled-darker: darken($disabled-primary, 5);
 
 /*///////////////////////
@@ -18,10 +18,25 @@ $disabled-darker: darken($disabled-primary, 5);
 h1,h2,h3{
   font-family: "Trebuchet MS", Helvetica, Arial, sans-serif;
   text-shadow: 1px 1px 0px $shadow-color;
+  margin: 0.4em 0;
 }
 
 p{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0.4em 0;
+}
+
+*{
+  line-height: 1.5em;
+}
+
+button{
+  padding: 5px 15px;
+  background: $primary-color;
+  border: $shadow-color;
+  color: white;
+  margin: 0.4em auto;
+  border-radius: 5px;
 }
 
 
@@ -45,22 +60,29 @@ body{
 
 #app{
  max-width: 1500px;
- max-width: 80vw;
+ max-width: 90vw;
  margin: 0 auto;
  min-height: 100vh; 
  background: #fff;
- padding: 0 50px;
+ padding: 0;
 }
 
 header{
   border-top: 5px solid $darker-color;
   border-bottom: 2px solid $darker-color;
   margin-bottom: 50px;
+  padding: 0 50px;
   h1,p{
     display: inline-block;
     vertical-align: baseline;
     padding-right: 20px;
-    margin: 0.4em 0;
+  }
+}
+
+section{
+  margin: 0 50px;
+  p{
+    color: $disabled-secondary;
   }
 }
 
@@ -194,13 +216,13 @@ progress[role] {
   display: grid;
   grid-gap: 1em;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  margin: 0;
+  margin: 25px auto;
   padding: 0;
   li{
     background: #fff;
-    box-shadow: 1px 1px 1px $shadow-color;
+    box-shadow: 1px 1px 1px $disabled-darker;
     padding: 20px;
-    border: 1px solid $primary-color;
+    border: 1px solid $secondary-color;
     list-style: none;
     label{
       display: block;
@@ -212,5 +234,21 @@ progress[role] {
       display: block;
       padding: 15px 0;
     }
+    input{
+      width: 100%;
+      padding: 10px 0;
+    }
   }
+}
+
+/*///////////////////////
+      FOOTER
+//////////////////////*/
+
+footer{
+  margin-top: 25px;
+  padding: 15px;
+  background: $darker-color;
+  color: white;
+  text-align: center;
 }

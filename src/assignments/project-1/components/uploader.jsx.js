@@ -12,6 +12,7 @@ class Uploader extends React.Component {
     this.handleCheck = this.handleCheck.bind(this);
 	}
   
+  // code from the react docs: https://reactjs.org/docs/handling-events.html
   handleCheck() {
     this.setState(prevState => ({
       isButtonActive: !prevState.isButtonActive,
