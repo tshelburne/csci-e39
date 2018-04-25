@@ -41,7 +41,7 @@ const Uploads = ({uploads, actions}) => {
 		<section className="gallery">
 			<GalleryName name="Sam" />
 			<p>To participate our 2018 campuse beauty shot contest, please upload your most stunning photos to this gallery! All your work will be reviewed by the professional photographers. Good luck!</p>
-			<ViewChange text={"Change the grid view"} />
+			<ViewChange />
 			<ul className="album" id="album">
 				{completedFiles.map(file => {
 					const {id, name, url, error} = file
