@@ -201,8 +201,8 @@ $secondary-color: hsla(60, 100%, 30%, 1);
 	list-style-position: inside;
 	display: grid;
 	grid-gap: 10px;
-	grid-template-columns: repeat( 1, 1fr);
-	grid-auto-rows: auto;
+	grid-template-columns: 1fr;
+	grid-auto-rows: 122px;
 	li {
 		padding: 0;
 		align-self: stretch;
@@ -211,20 +211,23 @@ $secondary-color: hsla(60, 100%, 30%, 1);
 		figure {
 			margin: 0;
 			padding: 10px;
-			display: grid;
-			grid-template-columns: 15% 80%;
-			grid-gap: 10px 5%;
-
+			display: inline-grid;
+			grid-template-columns: 100px auto;
+			grid-template-areas:
+				"img caption";
+			grid-column-gap: 20px;
+			img {
+				width: 100%;
+				grid-area: img;
+				align-self: center;
+			}
 			figcaption {
 				font: normal normal normal 1em/1.2em sans-serif;
 				color: black;
-				margin: 1em 0;
-			}
-			img {
-				width: 100%;
+				margin: 0;
+				grid-area: caption;
 				align-self: center;
 			}
-
 		}
 	}
 }
@@ -252,6 +255,9 @@ $secondary-color: hsla(60, 100%, 30%, 1);
 	.in-progress {
 		grid-template-columns: 1fr;
 	}
+	.album-inline {
+		grid-template-columns: 1fr;
+	}
 }
 @media (min-width: 991px) {
 	.uploader-container {
@@ -259,5 +265,8 @@ $secondary-color: hsla(60, 100%, 30%, 1);
 	}
 	.album {
 		grid-template-columns: repeat( 5, 1fr);
+	}
+	.album-inline {
+		grid-template-columns: 1fr;
 	}
 }

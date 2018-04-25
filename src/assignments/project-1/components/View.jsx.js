@@ -17,7 +17,7 @@ export class ViewChange extends React.Component {
 	render() {
 			return (
 				<button className="view" onClick={this.handleClick}>
-					{this.state.btnGrid ? 'grid' : 'line'}
+					{this.state.btnGrid ? 'LINE' : 'GRID'}
 				</button>
 			);
 		}

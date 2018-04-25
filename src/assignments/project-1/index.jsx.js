@@ -11,16 +11,13 @@ const Uploads = ({uploads, actions}) => {
 	const BtnText="choose images"
 	const BtnTextMobile="+"
 
-
-	
-
 	return <div className="uploader-container">
 		<section className="upload-files">
 			<h1>Upload Images</h1>
 			{/* do not delete this uploader component */}
 			<Uploader upload={actions.upload} />
 			{/* do not delete this uploader component */}
-			<Button text = { window.innerWidth > 768 ? BtnText : BtnTextMobile }/>
+			<Button txt = { window.innerWidth > 768 ? BtnText : BtnTextMobile }/>
 			<p>To choose an image from your computer, select the "{BtnText}" button. Then, select your own image to pick the image you want to upload. Select the file, then select Open. </p>
 
 			<ul aria-label="In Progress" className="in-progress">
