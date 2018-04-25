@@ -5,7 +5,6 @@ import Header from './header.jsx';
 import Completed from './completed.jsx';
 import Progress from './progress.jsx';
 import Copy from './copy.jsx';
-import Loader from './loader.jsx';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 const Uploads = ({ uploads, actions }) => {
