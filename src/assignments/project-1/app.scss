@@ -1,8 +1,13 @@
+html {
+	max-height: 100vh;
+}
+
 body {
 	font-family: sans-serif;
 	background-color: #efefef;
 	display: grid;
 	height: 100vh;
+	max-height: 100vh;
 }
 
 .grid-container {
@@ -12,7 +17,8 @@ body {
 	grid-template-columns: 1fr 4fr;
 	grid-template-areas:
 		"main-header main-header"
-		"uploader uploader"
+		"nav nav"
+		"uploader photo"
 		"thumbnails photo"
 		"footer footer"
 }
@@ -43,6 +49,10 @@ body {
 .subheader {
 	text-align: center;
 	color: #efefef;
+}
+
+nav {
+	grid-area: nav;
 }
 
 /*************************************************/
@@ -141,6 +151,35 @@ body {
   margin: 5px;
 }
 
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	color: white;
+	text-align: center;
+	padding: 14px 16px;
+	text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+	background-color: #111;
+}
+
+
+
+
+
 
 
 /* Obsolete ?*/
@@ -188,4 +227,7 @@ article {
     margin: 0;
   }
 }
+
+
+
 
