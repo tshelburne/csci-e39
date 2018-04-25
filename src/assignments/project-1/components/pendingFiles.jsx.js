@@ -48,19 +48,21 @@ class PendingFiles extends React.Component {
 	}
 
 	render() {
-		return <div className={['pendingFiles', this.reveal()].join(' ')} aria-hidden={this.state.hidden}>
-		<h2>In Progress</h2>
-		<ul>
-			{this.props.pendingFiles.map(file => {
-				const {id, name, progress} = file
-
-				return <li key={id}>
-					<progress value={progress} max="100">{progress}%</progress>
-					<span className="pending-filename">{name}</span>
-				</li>
-			})}
-		</ul>
+		return <div>
 		<LiveAnnounce whatToSay={this.state.whatToSay} />
+		<div className={['pendingFiles', this.reveal()].join(' ')} aria-hidden={this.state.hidden}>
+			<h2>In Progress</h2>
+			<ul>
+				{this.props.pendingFiles.map(file => {
+					const {id, name, progress} = file
+
+					return <li key={id}>
+						<progress value={progress} max="100">{progress}%</progress>
+						<span className="pending-filename">{name}</span>
+					</li>
+				})}
+			</ul>
+		</div>
 	</div>
 	}
 }
