@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import GridTile from 'material-ui/GridList'
 import GridList, { GridListTile } from 'material-ui/GridList';
+import GridListTileBar from 'material-ui/GridList'
 import IconButton from 'material-ui/IconButton'
 
 const styles = theme => ({
@@ -24,11 +25,14 @@ const styles = theme => ({
 const Carousel = ({images}) => {
 	return (
 		<div style={styles.root}>
-			<GridList cellHeight={160} className={styles.gridList} cols={3}>
+			<GridList cellHeight={400} className={styles.gridList} cols={3}>
 	        	{images[0].map(tile => (
-		          <GridListTile key={tile.id} cols={tile.cols || 1}>
-		            <img src={tile.url} alt={tile.name} />
-		          </GridListTile>
+              <GridListTile key={tile.id}>
+                <img src={tile.url} alt={tile.name} />
+                <GridListTileBar
+                  title={tile.name}
+                />
+              </GridListTile>
 		        ))}
 	      	</GridList>
 		  </div>

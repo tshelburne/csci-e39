@@ -56,15 +56,3 @@ Dashboard.propTypes = {
 }
 
 export default Dashboard
-
-/* <ul>
-				{completedFiles.map(file => {
-					const {id, name, url, error} = file
-
-					return <li key={id}>
-						<label>{name}</label>
-						{!error && <img src={url} style={{maxWidth: `200px`}} />}
-						{!!error && <p className="failure">{error}</p>}
-					</li>
-				})}
-			</ul> */

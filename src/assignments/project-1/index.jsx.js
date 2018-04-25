@@ -13,8 +13,12 @@ import red from 'material-ui/colors/red';
 // We try our best to provide a great default value.
 const theme = createMuiTheme({
   palette: {
-    primary: indigo,
-    secondary: pink,
+    primary: {
+    	main: '#28ace2'
+    },
+    secondary: {
+    	main: '#c8e6fa'
+    },
     error: red,
     // Used by `getContrastText()` to maximize the contrast between the background and
     // the text.
@@ -30,10 +34,10 @@ const Gallery = ({...props}) => {
 
 	return <MuiThemeProvider>
 			<div>
-				<AppBar>
+				<AppBar position="static">
 					<Toolbar>
 			          <Typography variant="title" color="inherit">
-			            Sean's Photos Cool Yeah
+			            Sean's Photos
 			          </Typography>
 			        </Toolbar> 
 				</AppBar>
