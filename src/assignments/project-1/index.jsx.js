@@ -1,41 +1,62 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Uploader from '../../ui/components/uploader.jsx'
+import Uploader from './components/uploader.jsx'
+import Header from './components/header.jsx'
+import TextArea from './components/textarea.jsx'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
+	
+  let altValue = "Please enter some helpful descriptive text for this image in the box below"
+  
+  //textarea state change code from https://reactjs.org/docs/forms.html  
+	const handleImageAltChange = (event) => {
+  	let altValue = event.target.value
+    this.setState({value: event.target.value});
+  }
 
 	return <div>
-		<h1>Upload Images</h1>
+	  <Header text={"Share your photos with a community of cool file hoarders."}/>
 		{/* do not delete this uploader component */}
+		<section id="upload-image">
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
-
-		<h2>In Progress</h2>
+		</section>
+    
+    <section id="upload-progress">
+		<h2>In Progress</h2>		
 		<ul>
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
 
-				return <li key={id}>
+				return <li key={id} >
 					<label>{name}</label>
 					<progress value={progress} max="100">{progress}%</progress>
 				</li>
 			})}
 		</ul>
-
-		<h2>Completed</h2>
-		<ul>
+		</section>
+		<section id="image-gallery">
+		<h2>Image Gallery</h2>
+		<p>{"Please help the community by writing robust descriptions for each of your photos."}</p>
+		<p>{"It helps our vision-impaired file hoarders do what they love!"}</p>
+		<ul className="gallery">
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
-
-				return <li key={id}>
+				return <li key={id} >
 					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
+					{!error && <img src={url} style={{maxWidth: `100%`}} alt={altValue} />}
 					{!!error && <p className="failure">{error}</p>}
+					<TextArea value={"Describe this image"} buttonText={"Update"} handleChange={handleImageAltChange.bind(this)}/>
 				</li>
 			})}
 		</ul>
+	</section>
+	<footer>
+	  <p>{"An experiment in React by Joanna Gammel"}</p>
+	  <p>{"Made at night and sometimes at work for CSCI E-39 with Natalya and Tim"}</p>
+	</footer>
 	</div>
 }
 
