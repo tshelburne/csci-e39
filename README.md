@@ -1,10 +1,5 @@
 
 
-#edited uploads.js to change url from empty string to the inputFile's filename
-#edited uploader to add in form for image title and description, then use input for images
-#made Screenshot component
-#Change uploader to only take single images
-# Change pending to show url instead of name
 
 # Design Patterns in React (CSCI E-39)
 
