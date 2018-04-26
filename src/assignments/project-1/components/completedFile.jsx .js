@@ -4,7 +4,7 @@ import autobind from 'class-autobind'
 
 //image and copy
 
-class completedFile extends React.Component {
+class CompletedFile extends React.Component {
     constructor() {
         super(...arguments);
         autobind(this);
@@ -19,7 +19,7 @@ class completedFile extends React.Component {
     	</div>
     }
 
-Ad.PropTypes = {
+CompletedFile.PropTypes = {
 	imgUrl: PropTypes.string.isRequired,
 	imgAltAttribute: PropTypes.string.isRequired,
 	completedFileCopy: PropTypes.string.isRequired
