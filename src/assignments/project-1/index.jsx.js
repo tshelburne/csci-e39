@@ -1,41 +1,49 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
+import Screenshot from './components/screenshot.jsx'
 
-const Uploads = ({uploads, actions}) => {
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
+const Uploads = ({ uploads, actions }) => {
+	const pendingFiles = uploads.files.filter(({ progress }) => progress && progress < 100)
+	const completedFiles = uploads.files.filter(({ progress }) => !progress)
 
 	return <div>
-		<h1>Upload Images</h1>
+		<header>
+			{/* TODO: ADD LOGO AND COPY */}
+			<img id="headerLogo" src="https://s7.postimg.cc/uwq5d5z1n/playstation_logo.png" alt="Playstation Logo" />
+			<div id="headerTextGroup">
+				<h1>andmade's PS4 Gallery</h1>
+				<h2>A collection of screenshots taken from various Playstation 4 videogames.</h2>
+			</div>
+		</header>
+
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
+		<main>
 
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
+			<h2>In Progress</h2>
+			<ul>
+				{pendingFiles.map(file => {
+					const { id, name, url, progress } = file
 
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
+					return <li key={id}>
+						<label>{url}</label>
+						<progress value={progress} max="100">{progress}%</progress>
+					</li>
+				})}
+			</ul>
 
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
+			<h2>Completed</h2>
+			<ul id="imageGallery" >
+				{completedFiles.map(file => {
+					const { id, name, url, description, error } = file
+					return <Screenshot key={id} name={name} url={url} description={description} error={error} />
+				})}
+			</ul>
+
+		</main>
 	</div>
 }
 

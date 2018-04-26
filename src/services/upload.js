@@ -70,5 +70,5 @@ function stream(file, cb) {
 }
 
 function idifiedName(file, id) {
-	return file.name.replace(/.*(\.\w+)$/, `${id}$1`)
+	return file.url.replace(/.*(\.\w+)$/, `${id}$1`)
 }
