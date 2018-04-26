@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Uploader from '../../ui/components/uploader.jsx';
-import Header from './header.jsx';
 import Completed from './completed.jsx';
 import Progress from './progress.jsx';
 import Copy from './copy.jsx';
@@ -13,7 +12,6 @@ const Uploads = ({ uploads, actions }) => {
 
 	return (
 		<div>
-			<Header tagline="Jay's Little Image Uploader" />
 			<Copy tagline="What is this?" />
 			<div className="upload-component">
 				<form action="#">
