@@ -1,0 +1,26 @@
+.uploader {
+	align-items: flex-start;
+  	text-align: center;
+  	box-sizing: border-box;
+ 	display: inline-block;
+	padding: $dynamic-size * 0.75;
+	border: 2px solid darken($accent-color, 15%);
+	color: darken($accent-color, 15%);
+	border-radius: 10px;
+	font-size: $dynamic-size;
+	text-transform: uppercase;
+	box-shadow: 0 4px darken($accent-color, 15%);
+	&:active {
+		box-shadow: 0 2px darken($accent-color, 15%);
+		transform: translateY(4px);
+	}
+	&:hover {
+		cursor: pointer;
+	}
+	&::after {
+		content: input;
+	}
+}
+.uploader-input { 
+	pointer-events: none;
+}

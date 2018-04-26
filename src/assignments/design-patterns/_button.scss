@@ -1,0 +1,20 @@
+button {
+    font-family: "Permanent Marker", cursive;
+	font-size: $dynamic-size;
+	color: white;
+	//ext-transform: uppercase;
+	border: none;
+	border-radius: 10px;
+	padding: $dynamic-size * 0.75;
+	background-color: $accent-color;
+	box-shadow: 0 4px darken($accent-color, 15%);
+	&:active {
+		background-color: darken($accent-color, 9%);
+		box-shadow: 0 2px darken($accent-color, 15%);
+		transform: translateY(4px);
+	}
+	&:hover {
+		cursor: pointer;
+		background-color: darken($accent-color, 2%);
+	}
+}
