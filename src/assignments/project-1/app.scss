@@ -65,10 +65,6 @@ progress[value] {
 	color: $primary-color;
 }
 
-input[type="file"] {
-    display: none;
-}
-
 .uploader {
 	cursor: pointer;
 	border: 2px solid $primary-color;
