@@ -36,7 +36,7 @@ const Gallery = ({...props}) => {
 			<div>
 				<AppBar position="static">
 					<Toolbar>
-			          <Typography variant="title" color="white">
+			          <Typography variant="title" color="">
 			            Sean's Photos
 			          </Typography>
 			        </Toolbar> 

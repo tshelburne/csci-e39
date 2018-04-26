@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import GridTile from 'material-ui/GridList'
-import GridList, { GridListTile } from 'material-ui/GridList';
-import GridListTileBar from 'material-ui/GridList'
+import GridList, { GridListTile, GridListTileBar } from 'material-ui/GridList';
 import IconButton from 'material-ui/IconButton'
 
 const styles = theme => ({
@@ -31,6 +30,7 @@ const Carousel = ({images}) => {
                 <img src={tile.url} alt={tile.name} />
                 <GridListTileBar
                   title={tile.name}
+                  subtitle={<span>Uploaded on: {convertTimeToDate(tile.createdAt)}</span>}
                 />
               </GridListTile>
 		        ))}
@@ -39,7 +39,15 @@ const Carousel = ({images}) => {
 		);
 }
 
+function convertTimeToDate(time) {
+  console.log(time);
+  var toConvert = new Date(time*1000);
 
+  var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var time = months[toConvert.getMonth()] + ' ' + toConvert.getDate() + ' ' + toConvert.getHours() + ':' + toConvert.getMinutes() + ':' + toConvert.getSeconds();
+
+  return time;
+}
 
 Carousel.propTypes = {
 	images: PropTypes.array,
