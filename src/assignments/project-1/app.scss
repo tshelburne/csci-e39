@@ -1,0 +1,244 @@
+@import '../design-patterns/pattern-library';
+@import url(https://fonts.googleapis.com/css?family=Rubik);
+
+/*Variables*/
+$brand-section-color: #3A5199;
+$brand-text-color: rgba(white, 0.7);
+$react-accent: #D5D6D2;
+$react-background: rgba(black, 0.85);
+$blink-color: #bf5449;
+$font-global: 'Rubik', serif;
+
+/*Body*/
+body {
+	background: $react-background;
+	font-family: $font-global;
+	color: $brand-text-color;
+	margin: 2rem;
+}
+
+/*End of global styles & libaries*/
+
+header {
+	margin-bottom: 3rem;
+}
+
+.uploads-container {
+	margin: auto;
+
+}
+
+.uploading-section {
+	display: block;
+	text-align: center;
+	padding-right: 33%;
+	padding-left: 33%;
+}
+
+.title {
+	font-size: 3.5em;
+	font-weight: lighter;
+	background: linear-gradient(to right, $react-accent 0%, $brand-section-color 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.description {
+	font-size: 0.90em;
+}
+
+.caveat {
+	font-size: 1em;
+	font-weight: bolder;
+	color: rgba($brand-section-color, 0.6);
+}
+
+h2 {
+	font-size: 1.2em;
+	font-weight: lighter;
+	background: $brand-section-color;
+	color: $brand-text-color;
+	padding-top: 0.05em;
+	padding-bottom: 0.05em;
+}
+
+.uploader-button {
+	display: inline-block;
+	font-size: 0.75em;
+    padding-right: 20%;
+    padding:1.5em 1.5em;  
+    border: 0.05em solid gray;
+    border-radius: 2em;
+    color: gray;
+    cursor:pointer;
+    
+    &:hover {
+    	/*outline:0 !important;*/
+    	opacity: 0.8;
+    	border: 0.05em solid rgba($react-accent, 0.8);
+    	background: $react-accent;
+    	box-shadow: 0 0.5px 5em rgba(black, 0.9);
+    }
+}
+
+.failure {
+    padding: 20px;
+    font-style: italic;
+    color: #f44336; /* Red */
+    margin-bottom: 15px;
+}
+
+.gallery-container {
+	padding-right: 33%;
+	padding-left: 33%;
+}
+
+.gallery-heading {
+	display: block;
+	text-align: center;
+}
+
+.gallery-section {
+	display:grid;  
+	grid-template-rows: auto;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	grid-gap:5px;
+	max-width:100%;
+}
+
+.photolist {
+	background-position:center center;
+	background-size:cover;
+	border:3px solid $brand-text-color;
+	object-fit:cover;
+	max-height:100%;
+	width:100%;
+}
+.photolist:nth-child(3) {
+	grid-column: auto / span 2;
+}
+
+.photolist:nth-child(5) {
+	grid-template-column: auto / span 2;
+}
+
+.photolist:nth-child(6) {
+	grid-column: auto / span 2;
+	grid-row: auto / span 2;
+}
+
+.photolist:nth-child(12) {
+	grid-column: auto /span 3; 
+	grid-row: auto / span 2; 
+}
+
+.photolist:nth-child(13) {
+	grid-column: auto / span 3;
+}
+
+.gallery-toggle {
+	padding-left: 10%;
+	font-style: italic;
+	font-size: 0.7em;
+	font-weight: lighter;
+}
+
+.gallery-toggle-button {
+	display: block;
+	margin: 0 0.5em 0.5em 0;
+	text-align: center;
+	background-image: -webkit-linear-gradient(top, #f4f1ee, #fff);
+	background-image: linear-gradient(top, #f4f1ee, #fff);
+	border-radius: 50%;
+	box-shadow: 0px 8px 10px 0px rgba(0, 0, 0, .3), inset 0px 4px 1px 1px white, inset 0px -3px 1px 1px rgba(204,198,197,.5);
+	float:left;
+	height: 70px;
+	position: relative;
+	width: 70px;			
+	-webkit-transition: all .1s linear;
+	transition: all .1s linear;
+
+	&:after {
+		color:#e9e6e4;
+		content: "";
+		display: block;
+		font-size: 30px;
+		height: 30px;
+		text-decoration: none;
+		text-shadow: 0px -1px 1px #bdb5b4, 1px 1px 1px white;
+		position: absolute;
+		width: 30px;
+		content: "❤";
+		left: 21px;
+		top: 21px;
+	}
+
+	&:hover{
+		background-image: -webkit-linear-gradient(top, #fff, #f4f1ee);
+		background-image: linear-gradient(top, #fff, #f4f1ee);
+		color:#0088cc;
+	}
+
+
+	&:hover:after{
+		color:$blink-color;
+		text-shadow:0px 0px 6px #f94e66;
+	}
+
+	&:active{
+		background-image: -webkit-linear-gradient(top, #efedec, #f7f4f4);
+		background-image: linear-gradient(top, #efedec, #f7f4f4);
+		box-shadow: 0 3px 5px 0 rgba(0,0,0,.4), inset 0px -3px 1px 1px rgba(204,198,197,.5);
+	}
+
+	&:active:after{
+		color:#dbd2d2;
+		text-shadow: 0px -1px 1px #bdb5b4, 0px 1px 1px white;
+	}
+}
+
+.pending-file {
+	color: $blink-color;
+	font-style: italic;
+	font-weight: lighter;
+}
+
+.blinking {
+	animation: blinker 0.18s linear infinite;
+  	color: $blink-color;
+}
+
+@keyframes blinker {
+	50% {
+		opacity: 0;
+	}
+}
+
+progress {
+	width: 100%;
+	position: relative;
+	animation: flip 1.2s infinite ease-in-out;
+    background: linear-gradient(45deg, transparent 33%, rgba(0, 0, 0, .1) 33%, rgba(0, 0, 0, .1) 66%, transparent 66%);
+    background-color: #ff7584;
+    background-size: 40px 20px;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress::-webkit-progress-value {
+  background-image:
+	   -webkit-linear-gradient(-45deg, 
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, #09c, #f44);
+
+    border-radius: 2px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
