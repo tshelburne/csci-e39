@@ -1,4 +1,3 @@
-@import "../../../node_modules/react-image-gallery/styles/scss/image-gallery.scss";
 $primary-color: rgba(150, 143, 179, 1);
 $primary-accent: white;
 $progress-bar-height: 10px;
@@ -79,6 +78,20 @@ $upload-size: 1.35em;
 		height: 0.1px;
 		overflow: hidden;
 		position: absolute;
+	}
+}
+.custom-button {
+	font-size: $upload-size;
+	font-weight: bold;
+	color: $primary-accent;
+	background-color: $primary-color;
+	display: inline-block;
+	padding: $button-padding;
+	margin: $button-margin;
+	align-self: center;
+	&:hover {
+		background-color: darken($primary-color, 15);
+		cursor: pointer;
 	}
 }
 
