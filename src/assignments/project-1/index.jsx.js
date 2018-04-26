@@ -8,12 +8,12 @@ const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 	
-	const handleImageAltChange = (event) => {
-    this.setState({value: event.target.value});
-  }
+  let altValue = "Please enter some helpful descriptive text for this image in the box below"
   
-  const handleImageAltSubmit= (event) => {
-    event.preventDefault();
+  //textarea state change code from https://reactjs.org/docs/forms.html  
+	const handleImageAltChange = (event) => {
+  	let altValue = event.target.value
+    this.setState({value: event.target.value});
   }
 
 	return <div>
@@ -46,7 +46,7 @@ const Uploads = ({uploads, actions}) => {
 				const {id, name, url, error} = file
 				return <li key={id} >
 					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `100%`}} alt={this.state.value ? this.state.value : "Please enter a description for this image in the text box below."}/>}
+					{!error && <img src={url} style={{maxWidth: `100%`}} alt={altValue} />}
 					{!!error && <p className="failure">{error}</p>}
 					<TextArea value={"Describe this image"} buttonText={"Update"} handleChange={handleImageAltChange.bind(this)}/>
 				</li>

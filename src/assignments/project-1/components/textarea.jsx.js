@@ -13,7 +13,6 @@ class TextArea extends React.Component {
       value: this.props.value
     };
 	}
-
   
   render() {
     const {value, buttonText, handleChange, ...inputProps} = this.props
