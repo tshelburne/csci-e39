@@ -5,6 +5,14 @@
 $primary-color: rgba(40, 172, 226, 1);
 $box-shadow: 1px 1px 1px rgba(150,150,150,.6);
 
+body {
+	margin: 0;
+}
+
+.main-content {
+	padding: 1em;
+}
+
 button {
 	background-color: transparent;
 	border: 2px solid $primary-color;

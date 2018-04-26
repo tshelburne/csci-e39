@@ -32,11 +32,11 @@ const theme = createMuiTheme({
 
 const Gallery = ({...props}) => {
 
-	return <MuiThemeProvider>
+	return <MuiThemeProvider theme={theme}>
 			<div>
 				<AppBar position="static">
 					<Toolbar>
-			          <Typography variant="title" color="inherit">
+			          <Typography variant="title" color="white">
 			            Sean's Photos
 			          </Typography>
 			        </Toolbar> 

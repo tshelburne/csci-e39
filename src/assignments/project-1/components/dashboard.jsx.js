@@ -8,7 +8,7 @@ const Dashboard = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <Grid container spacing={24}>
+	return <Grid container spacing={24} className="main-content">
 			<Grid item xs={3}>
 				<h1>Upload Images</h1>
 				{/* do not delete this uploader component */}
