@@ -65,27 +65,27 @@ Uploads.propTypes = {
 const imgFiles = [
 	{
 		id: "1",
-		imgUrl: ,
-		imgAltAttribute: ,
-		completedFileCopy:
+		imgUrl: 'http://fillmurray.com/g/200/300',
+		imgAltAttribute: 'Photo of Bill Murray',
+		completedFileCopy: 'Beautiful pic of Fill Murray'
 	},
 	{
-		id: "2",
-		imgUrl: ,
-		imgAltAttribute: ,
-		completedFileCopy:
+		id: "2",''
+		imgUrl: 'http://fillmurray.com/g/200/300',
+		imgAltAttribute: 'Photo of Bill Murray',
+		completedFileCopy: 'Beautiful pic of Fill Murray'
 	},
 	{
 		id: "3",
-		imgUrl: ,
-		imgAltAttribute: ,
-		completedFileCopy:
+		imgUrl: 'http://fillmurray.com/g/200/300',
+		imgAltAttribute: 'Photo of Bill Murray',
+		completedFileCopy: 'Beautiful pic of Fill Murray'
 	},
 	{
 		id: "4",
-		imgUrl: ,
-		imgAltAttribute: ,
-		completedFileCopy:
+		imgUrl: 'http://fillmurray.com/g/200/300',
+		imgAltAttribute: 'Photo of Bill Murray': ,
+		completedFileCopy: 'Beautiful pic of Fill Murray'
 	},
 ];
 
