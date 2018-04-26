@@ -1,0 +1,69 @@
+@import "./defs";
+@import "./errors";
+
+.FileCard {
+  flex: 1;
+  display: flex;
+  padding: 1em;
+  background: $secondary-color;
+  color: $secondary-text-color;      
+
+  figure {
+    flex: 1;
+    position: relative;
+    padding: 2rem 0;
+  }
+
+  figcaption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }     
+  
+  span, figcaption {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  img { max-width: 100%; }  
+
+  .title { 
+    display: block; 
+    
+    &:not(.input--title) {
+      width: calc(100% - 2em);      
+      font-family: $headline-font-family;
+      font-size: 2em;
+      line-height: 1.2;
+    }
+  }
+
+  .control--title {
+    position: absolute;
+    top: 0rem;
+    font: $primary-font;
+  }
+
+  .input--title {
+    padding: 0 .33em; 
+    border-radius: 3px;
+    border: solid thin $inverse-color;
+    
+    &::placeholder { font-style: italic; }
+  }
+  
+  .failure {
+    @include errors;
+    @include error-text-span;
+  }
+  
+  button {
+    position: absolute;
+    top: 1.2rem;
+    z-index: 1;
+  }
+}
+

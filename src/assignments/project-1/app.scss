@@ -1,0 +1,89 @@
+@import "./styles/defs";
+
+:root, body, html {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+}
+
+#app {
+  flex: 1;
+  display: flex;
+}
+
+.mountable.component {
+  flex: 1;
+  
+  background: $primary-color;
+  color: $primary-text-color;
+  font: $primary-font;
+  
+  > h1 {
+    margin: 0;
+    padding: 1cm 1cm 5mm 1cm;
+    background: $secondary-color;
+    color: $secondary-text-color;
+    font-size: 2.5rem;
+    font-family: $headline-font-family;    
+
+    & + .subHead {
+      padding-left: 1cm;
+      padding-bottom: 5mm;
+      background: $secondary-color;
+      color: $secondary-text-color;
+      font-size: 1.2rem;
+      font-style: italic;
+      font-family: $primary-font-family;  
+      letter-spacing: 1px;        
+    }
+  }
+  
+  section {
+    padding: 1cm;
+    display: flex;
+    flex-direction: column;
+    
+    section {
+      display: block;
+      
+      .last-child { flex: 1; }
+    }
+    
+    > h2 {
+      background: $highlight-color;
+      color: $inverse-color;    
+      font: $secondary-font-family;
+    }    
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.list--images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+
+  li {
+    position: relative;
+    display: flex; 
+  }    
+}
+
+@import "./styles/surfaced-controls";
+@import "./styles/progress";
+@import "./styles/filecard";
