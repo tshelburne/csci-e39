@@ -22,17 +22,17 @@ const Uploads = ({ uploads, actions }) => {
 					have mostly focused on compact disc (CD) and MP3 formats.
 					However, vinyl sales have been on the rise in recent years.
 					The audio cassette was a format used alongside vinyl from
-					the 1970s into the first decade of the 2000s. <br /> An
-					album may be recorded in a recording studio (fixed or
-					mobile), in a concert venue, at home, in the field, or a mix
-					of places. The time frame for completely recording an album
-					varies between a few hours and several years. This process
-					usually requires several takes with different parts recorded
-					separately, and then brought or "mixed" together. Recordings
-					that are done in one take without overdubbing are termed
-					"live", even when done in a studio. Studios are built to
-					absorb sound, eliminating reverberation, so as to assist in
-					mixing different takes; other locations, such as concert
+					the 1970s into the first decade of the 2000s. <br />
+					<br /> An album may be recorded in a recording studio (fixed
+					or mobile), in a concert venue, at home, in the field, or a
+					mix of places. The time frame for completely recording an
+					album varies between a few hours and several years. This
+					process usually requires several takes with different parts
+					recorded separately, and then brought or "mixed" together.
+					Recordings that are done in one take without overdubbing are
+					termed "live", even when done in a studio. Studios are built
+					to absorb sound, eliminating reverberation, so as to assist
+					in mixing different takes; other locations, such as concert
 					venues and some "live rooms", allow for reverberation, which
 					creates a "live" sound. The majority of studio recordings
 					contain an abundance of editing, sound effects, voice

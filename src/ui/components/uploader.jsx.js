@@ -22,6 +22,7 @@ class Uploader extends React.Component {
 					Upload Files
 				</label>
 				<input
+					alt="Upload photos for your album"
 					{...inputProps}
 					id="uploader"
 					multiple
