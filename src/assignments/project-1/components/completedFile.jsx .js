@@ -18,11 +18,11 @@ class CompletedFile extends React.Component {
     		</figure>
     	</div>
     }
-
-CompletedFile.PropTypes = {
-	imgUrl: PropTypes.string.isRequired,
-	imgAltAttribute: PropTypes.string.isRequired,
-	completedFileCopy: PropTypes.string.isRequired
 }
+    CompletedFile.PropTypes = {
+    	imgUrl: PropTypes.string.isRequired,
+    	imgAltAttribute: PropTypes.string.isRequired,
+    	completedFileCopy: PropTypes.string.isRequired
+    }
 
 export default completedFile
