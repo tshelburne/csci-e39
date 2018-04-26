@@ -2,17 +2,18 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const InProgress = ({ pendingFiles }) => {
-	console.log("pending files in inprogress are ", pendingFiles);
 	return (
-		<div>
-			{pendingFiles.length > 0 && <h2>In Progress</h2>}
-			<ul>
+		<div className="album-container">
+			{pendingFiles.length > 0 && (
+				<h2 className="centered-title">In Progress</h2>
+			)}
+			<ul className="in-progress-list">
 				{pendingFiles.map(file => {
 					const { id, name, progress } = file;
 
 					return (
-						<li key={id}>
-							<label>{name}</label>
+						<li className="uploading-in-progress" key={id}>
+							<label className="in-progress-label">{name}</label>
 							<progress
 								value={progress}
 								max="100"

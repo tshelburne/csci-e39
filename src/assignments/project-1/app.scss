@@ -51,27 +51,47 @@ $upload-size: 1.35em;
 	border-radius: $progress-bar-radius;
 }
 
-.uploader {
-	font-size: $upload-size;
-	font-weight: bold;
-	color: $primary-accent;
-	background-color: $primary-color;
-	display: inline-block;
-	padding: $button-padding;
-	margin: $button-margin;
-	&:hover {
-		background-color: darken($primary-color, 15);
-		cursor: pointer;
+.uploader-component {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	.uploader {
+		font-size: $upload-size;
+		font-weight: bold;
+		color: $primary-accent;
+		background-color: $primary-color;
+		display: inline-block;
+		padding: $button-padding;
+		margin: $button-margin;
+		align-self: center;
+		&:hover {
+			background-color: darken($primary-color, 15);
+			cursor: pointer;
+		}
+	}
+
+	.uploader-input {
+		//hiding default input styling
+		z-index: -999;
+		width: 0.1px;
+		height: 0.1px;
+		overflow: hidden;
+		position: absolute;
 	}
 }
 
-.uploader-input {
-	//hiding default input styling
-	z-index: -999;
-	width: 0.1px;
-	height: 0.1px;
-	overflow: hidden;
-	position: absolute;
+.in-progress-list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+}
+
+.in-progress-label {
+	margin: 20px;
+}
+.uploading-in-progress {
+	align-self: center;
 }
 
 .completed-list {
@@ -84,6 +104,7 @@ $upload-size: 1.35em;
 	list-style: none;
 	display: flex;
 	flex-direction: column;
+	overflow: hidden;
 }
 
 .photo-label {
@@ -95,4 +116,30 @@ $upload-size: 1.35em;
 	border: 5px solid $primary-color;
 	justify-content: center;
 	align-self: center;
+}
+
+.centered-title {
+	align-self: center;
+}
+.album-container {
+	display: flex;
+	flex-direction: column;
+}
+.uploader-container {
+	display: flex;
+	align-self: center;
+	flex-direction: column;
+}
+.app-container {
+	display: flex;
+	flex-direction: column;
+}
+
+.album-copy {
+	display: flex;
+	justify-content: center;
+	p {
+		text-align: justify;
+		align-self: center;
+	}
 }

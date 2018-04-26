@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 const Completed = ({ completedFiles }) => {
 	console.log("pending files in Completed are ", completedFiles);
 	return (
-		<div>
-			<h2>Completed</h2>
+		<div className="album-container">
+			<h2 className="centered-title">Completed</h2>
 			<ul className="completed-list">
 				{completedFiles.map(file => {
 					const { id, name, url, error } = file;
