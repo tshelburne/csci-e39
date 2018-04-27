@@ -1,0 +1,52 @@
+.movie-search {
+  .search-box {
+    margin: 2em;
+  }
+  button {
+    -webkit-appearance: button;
+    background-color: #124559;
+    border: none;
+    padding: 0.6em;
+    font: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    outline: inherit;
+    font-family: 'Roboto';
+    color: white;
+    width: 100%;
+  }
+
+  input {
+    padding: 0.6em;
+    border: 0;
+    background-color: #ced3dc;
+  }
+
+  .select-prompt {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 2em;
+    font-family: 'Roboto';
+  }
+}
+
+.movie-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+
+img {
+  max-width: 100%;
+}
+
+.movie-list >  .selected-movie {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+a:link, a:active, a:visited, a:active {
+  color: black;
+  font-weight: bold;
+  font-family: 'Roboto', sans-serif;
+}

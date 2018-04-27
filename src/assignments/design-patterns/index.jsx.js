@@ -1,6 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
+import FontAwesome from 'react-fontawesome'
+import { StarRating, HeartRating, ThumbRating } from './support/Rating.jsx'
+import LoadingIndicator from './support/LoadingIndicator.jsx'
+import MovieSearch from './support/MovieSearch.jsx'
+import Movie from './support/Movie.jsx'
 
 class PatternLibrary extends React.Component {
 
@@ -22,16 +27,30 @@ class PatternLibrary extends React.Component {
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
-				</Example>
-				
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
+				<Example title="Rating">
+					<StarRating value={3} max={5}/>
+					<HeartRating value={4} max={5}/>
+					<ThumbRating value={1} max={5}/>
 				</Example>
 
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
+				<Example title="Loading Indicator">
+					<LoadingIndicator color="blue" spinnerIcon="spinner" loading={true}/>
+				</Example>
+
+				<Example title="Movie">
+					<Movie
+						id='tt0094737'
+						title='Big'
+						poster='https://ia.media-imdb.com/images/M/MV5BNDk0OTM1Mzk3M15BMl5BanBnXkFtZTgwNDg2NjIyMDE@._V1_SX300.jpg'
+						year='1988'
+						plot='After wishing to be made big, a teenage boy wakes the next morning to find himself mysteriously in the body of an adult.'
+						imdbRating={7}
+						selected={true}
+					/>
+				</Example>
+
+				<Example title="Movie Search">
+					<MovieSearch />
 				</Example>
 			</div>
 		)

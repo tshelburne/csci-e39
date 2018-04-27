@@ -25,6 +25,7 @@
   "author": "Tim Shelburne",
   "license": "UNLICENSED",
   "dependencies": {
+    "axios": "^0.18.0",
     "bookshelf": "^0.10.4",
     "class-autobind": "^0.1.4",
     "cloudinary": "^1.9.0",
@@ -43,6 +44,7 @@
     "pug": "^2.0.0-rc.3",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-fontawesome": "^1.6.1",
     "socket.io": "^2.0.3",
     "supports-color": "^4.4.0",
     "xstream": "^10.9.0"
