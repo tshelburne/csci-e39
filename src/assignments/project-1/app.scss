@@ -1,0 +1,191 @@
+@import '../design-patterns/pattern-library';
+
+$color-smoke: #e4e4e4;
+$color-grass: #3dd28d;
+$color-snow: #FFFFFF;
+
+body {
+  min-height: 100vh;
+}
+
+header {
+  
+  grid-area: header;
+  text-align: center;
+  background-color: #e4e4e4;
+}
+
+main {
+  display: grid;
+  grid-template-columns:repeat(3, 1fr);
+  grid-auto-rows: minmax(50px, auto);
+  grid-template-areas:
+          "header header header"
+          "main-content main-content card-list"
+          "footer footer footer";
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+
+.main-content {
+  grid-area: main-content;
+  background-color: $color-smoke;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-areas:
+          "completed-file-list-component";
+}
+
+.completed-file-list-component {
+  display: grid;
+  grid-area: completed-file-list-component;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-areas:
+          "heading"
+          "completed-files";
+
+  & .heading {
+    grid-area: heading;
+    text-align: center;
+  }
+  & .completed-files {
+    list-style: none;
+    grid-area: completed-files;
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    grid-column-gap: 5px;
+    grid-row-gap: 5px;
+
+    & .completed-file {
+    }
+  }
+}
+
+.card-list {
+  
+  grid-area: card-list;
+  background-color: #e4e4e4;
+  & .first-section {
+    
+    grid-area: first-section;
+    // Nested Grid
+    display: grid;
+    grid-template-columns:repeat(1, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+    & .image {
+      
+    }
+  }
+  & .rest {
+    
+    grid-area: rest;
+    // Nested Grid
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    & .image {
+      
+    }
+    & .card-heading-text {
+      
+    }
+  }
+  & .list-heading {
+    grid-area: list-heading;
+  }
+  // Nested grid
+  & > article {
+    display: grid;
+    grid-row-gap: 5px;
+    grid-template-areas:
+            "list-heading"
+            "first-section"
+            "rest"
+  }
+}
+
+footer {
+  
+  grid-area: footer;
+  background-color: #e4e4e4;
+}
+
+/** File upload input styles */
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+
+  cursor: pointer;
+  transition: all 150ms linear;
+
+  &:hover, &:active {
+    transition: all 150ms linear;
+    opacity: .85;
+  }
+
+  &:focus {
+    outline: 1px dotted #959595;
+    outline-offset: -4px;
+  }
+}
+
+.btn {
+  display: flex;
+
+  margin: 10px;
+  padding: 12px 12px;
+
+  text-align: center;
+
+  color: $color-snow;
+  background: $color-grass;
+  border: 0 none;
+  border-radius: 4px;
+
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.3;
+
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 160px;
+
+  box-shadow: 2px 5px 10px $color-smoke;
+
+  &:hover, &:active {
+    transition: all 150ms linear;
+    opacity: .85;
+  }
+
+  &:focus {
+    outline: 1px dotted #959595;
+    outline-offset: -4px;
+  }
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+/** */
+
+/** Progress bar styles */
+progress {
+  border-radius: 10px;
+}
+
+progress[value]::-moz-progress-bar {
+  background-color: #eee;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+
+  background-image:
+          -webkit-linear-gradient(-45deg, transparent 33%, #3dd28d 33%, #3dd28d 66%, transparent 66%),
+          -webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
+          -webkit-linear-gradient(left, #e4e4e4, #3dd28d);
+  border-radius: 10px;
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+/** */

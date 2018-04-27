@@ -5,8 +5,8 @@ import autobind from 'class-autobind'
 class Uploader extends React.Component {
 
 	constructor() {
-		super(...arguments)
-		autobind(this)
+		super(...arguments);
+		autobind(this);
 	}
 
 	handleFiles({target: {files}}) {
@@ -16,14 +16,18 @@ class Uploader extends React.Component {
 	}
 
 	render() {
-		const {upload, ...inputProps} = this.props
-		return <input {...inputProps} multiple type="file" onChange={this.handleFiles} />
+		const {upload, ...inputProps} = this.props;
+
+		return <div className="upload-btn-wrapper">
+					<button className="btn">Upload a file</button>
+					<input {...inputProps} multiple type="file" onChange={this.handleFiles} />
+			   </div>
 	}
 
 }
 
 Uploader.propTypes = {
 	upload: PropTypes.func.isRequired,
-}
+};
 
 export default Uploader
