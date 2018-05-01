@@ -1,0 +1,16 @@
+@import '../design-patterns/pattern-library';
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Slab');
+
+$header-title-font: 'Cinzel', san serif;
+$body-font: 'Josefin Slab', serif;
+$header-color: #3b3a30;
+$accent-color: #c0ded9;
+$header-font-color: #b2c2bf;
+$accent-font-color: black;
+
+
+
+h1{
+	color: pink;
+}
