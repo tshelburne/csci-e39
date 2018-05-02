@@ -5,9 +5,11 @@ import ReactDOMServer from 'react-dom/server'
 import jsxToString from 'jsx-to-string'
 import beautify from 'js-beautify'
 
-const Example = ({title, children}, context) => (
+const Example = ({title, description, tags, children}, context) => (
 	<div className="example">
 		<h2 className="example--title">{title}</h2>
+		<p>{description}</p>
+		<h3 className="example--tags"><span>Tags:</span> {tags}</h3>
 
 		<div className="example--rendered">
 			<h3>Rendered output:</h3>
@@ -35,7 +37,7 @@ const Example = ({title, children}, context) => (
 			</button>
 		</div>
 
-		{context.activeCode !== `off` && 
+		{context.activeCode !== `off` &&
 			<div className="example--code">
 				<h3>Code sample:</h3>
 				<pre>
@@ -45,7 +47,7 @@ const Example = ({title, children}, context) => (
 								.html(ReactDOMServer.renderToStaticMarkup(<div>{children}</div>))
 								.replace(/^<div>.*\n([\S\s]*)<\/div>$/, `$1`)
 						}
-						
+
 						{context.activeCode === `react` &&
 							jsxToString(<div>{children}</div>)
 								.replace(/=\{true\}/g, ``)
