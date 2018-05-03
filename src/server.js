@@ -37,6 +37,12 @@ app.use(route.get(`/`, async ctx => {
 	})
 }))
 
+app.use(route.get(`/gallery`, async ctx => {
+	await ctx.render(`gallery`, {
+		app: renderApp({auth: {status: `init`, message: ``}}),
+	})
+}))
+
 /* -------------------------------- SERVER --------------------------------- */
 
 const server = http.createServer(app.callback())

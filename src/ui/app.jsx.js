@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Module from '../assignments/module-0/index.jsx'
+import Module from '../assignments/project-1/index.jsx'
 
 const App = ({auth, ...props}) => {
 	switch (auth.status) {
@@ -8,6 +8,7 @@ const App = ({auth, ...props}) => {
 		case `failure`: return <span>{auth.message}</span>
 
 		default: return <Module {...props} />
+
 	}
 }
 
