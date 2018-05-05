@@ -30,28 +30,22 @@ class PatternLibrary extends React.Component {
 		)
 	}
 
+	getModalFooter() {
+		return (
+			<button onClick="#">Save</button>
+		)
+	}
+
 	render() {
 		return (
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
-				</Example>
-				
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
-				</Example>
-
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
-				</Example>
-
 				<Example title="<MyModal />">
 					<MyModal title="Modal Title" body="Body Content" footer="Footer Content"/>
 				</Example>
 
-				<Example title="<FormInput />">
+				<Example title="Form Inputs">
 					<PhoneInput PhoneType="Home"/>
 					<AddressInput AddressLabel="Street Address"/>
 				</Example>				
@@ -59,14 +53,12 @@ class PatternLibrary extends React.Component {
 				<Example title="<MyForm />">
 					<MyForm>
 						<PhoneInput PhoneType="Home"/>
-						<PhoneInput PhoneType="Work"/>
-						<PhoneInput PhoneType="Cell"/>
+						<AddressInput AddressLabel="Street Address"/>
 					</MyForm>
 				</Example>
 
-
 				<Example title="Sample Modal">
-					<MyModal title="Manage Phone Numbers" body={this.getModalBody()} footer="Footer Content"/>
+					<MyModal title="Manage Phone Numbers" body={this.getModalBody()} footer={this.getModalFooter()}/>
 				</Example>
 
 			</div>
