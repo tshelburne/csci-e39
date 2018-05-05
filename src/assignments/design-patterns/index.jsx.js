@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
+import MyModal from './support/MyModal.jsx'
 
 class PatternLibrary extends React.Component {
 
@@ -33,6 +34,11 @@ class PatternLibrary extends React.Component {
 				<Example title="My Special <h4>">
 					<h4 className="just-testing">HELLO HEADING</h4>
 				</Example>
+
+				<Example title="My Special Modal">
+					<MyModal />
+				</Example>
+
 			</div>
 		)
 	}
