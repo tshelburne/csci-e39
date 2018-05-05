@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
-import MyModal from './support/MyModal.jsx'
+import MyModal from './components/MyModal.jsx'
+import {MyForm, FormInput} from './components/MyForm.jsx'
+
 
 class PatternLibrary extends React.Component {
 
@@ -16,6 +18,16 @@ class PatternLibrary extends React.Component {
 			activeCode: this.state.activeCode,
 			setActiveCode: activeCode => this.setState({activeCode}),
 		}
+	}
+
+	getModalBody() {
+		return (
+			<MyForm>
+				<FormInput FormLabel="Home Phone" placeholder="home phone" />
+				<FormInput FormLabel="Work Phone" placeholder="work phone" />
+				<FormInput FormLabel="Cell Phone" placeholder="cell phone" />
+			</MyForm>
+		)
 	}
 
 	render() {
@@ -35,8 +47,25 @@ class PatternLibrary extends React.Component {
 					<h4 className="just-testing">HELLO HEADING</h4>
 				</Example>
 
-				<Example title="My Special Modal">
-					<MyModal />
+				<Example title="<MyModal />">
+					<MyModal title="Modal Title" body="Body Content" footer="Footer Content"/>
+				</Example>
+
+				<Example title="<FormInput />">
+					<FormInput FormLabel="Home Phone" placeholder="phone number" />
+				</Example>			
+
+				<Example title="<MyForm />">
+					<MyForm>
+						<FormInput FormLabel="Home Phone" placeholder="home phone" />
+						<FormInput FormLabel="Work Phone" placeholder="work phone" />
+						<FormInput FormLabel="Cell Phone" placeholder="cell phone" />
+					</MyForm>
+				</Example>
+
+
+				<Example title="Sample Modal">
+					<MyModal title="Manage Phone Numbers" body={this.getModalBody()} footer="Footer Content"/>
 				</Example>
 
 			</div>
