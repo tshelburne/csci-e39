@@ -1,0 +1,54 @@
+$cf-item-border-color: $item-border-color;
+$cf-item-max-width: $item-max;
+$cf-margin: $margin-sm;
+$cf-name-background-color: $img-name-background;
+$cf-name-color: $img-name-color;
+$cf-padding: $cf-margin;
+$cf-padding-xs: $padding-xs;
+$cf-radii: $radii;
+
+.completedFilesItem {
+	@extend %border-box;
+
+	border: 2px solid $cf-item-border-color;
+	border-radius: $cf-radii;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+	list-style: none;
+	margin-bottom: $cf-margin;
+	margin-right: $cf-margin;
+	max-width: $cf-item-max-width;
+
+	@include media-grid-break() {
+		// parent grid-gap replaces purpose of margins
+		margin-bottom: 0;
+		margin-right: 0;
+	}
+
+	.cf-item-name {
+		background-color: $cf-name-background-color;
+		color: $cf-name-color;
+		display: block;
+		margin-bottom: $cf-margin;
+		overflow-wrap: break-word;
+		padding: $cf-padding-xs;
+		text-align: center;
+		width: 100%;
+		word-wrap: break-word;
+	}
+
+	.cf-item-img {
+		border: 1px solid black;
+		justify-self: center;
+		max-height: 400px;
+		max-width: 99%;
+		margin: $cf-margin;
+	}
+
+	.failure {
+		border: 2px solid red;
+		padding: $cf-padding;
+	}
+}
