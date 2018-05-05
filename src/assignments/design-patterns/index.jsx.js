@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
 import MyModal from './components/MyModal.jsx'
-import {MyForm, FormInput} from './components/MyForm.jsx'
+import {MyForm, PhoneInput, AddressInput} from './components/MyForm.jsx'
 
 
 class PatternLibrary extends React.Component {
@@ -23,9 +23,9 @@ class PatternLibrary extends React.Component {
 	getModalBody() {
 		return (
 			<MyForm>
-				<FormInput FormLabel="Home Phone" placeholder="home phone" />
-				<FormInput FormLabel="Work Phone" placeholder="work phone" />
-				<FormInput FormLabel="Cell Phone" placeholder="cell phone" />
+				<PhoneInput PhoneType="Home"/>
+				<PhoneInput PhoneType="Work"/>
+				<PhoneInput PhoneType="Cell"/>
 			</MyForm>
 		)
 	}
@@ -52,14 +52,15 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="<FormInput />">
-					<FormInput FormLabel="Home Phone" placeholder="phone number" />
-				</Example>			
+					<PhoneInput PhoneType="Home"/>
+					<AddressInput AddressLabel="Street Address"/>
+				</Example>				
 
 				<Example title="<MyForm />">
 					<MyForm>
-						<FormInput FormLabel="Home Phone" placeholder="home phone" />
-						<FormInput FormLabel="Work Phone" placeholder="work phone" />
-						<FormInput FormLabel="Cell Phone" placeholder="cell phone" />
+						<PhoneInput PhoneType="Home"/>
+						<PhoneInput PhoneType="Work"/>
+						<PhoneInput PhoneType="Cell"/>
 					</MyForm>
 				</Example>
 
