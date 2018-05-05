@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
+import CompletedFilesItem from './components/completedFilesItem.jsx.js'
 
 class PatternLibrary extends React.Component {
 
@@ -18,6 +19,14 @@ class PatternLibrary extends React.Component {
 	}
 
 	render() {
+		const CompletedFilesItemFile = {
+			id:"1", 
+			name:"example image", 
+			url: "https://avatars0.githubusercontent.com/u/6720549?s=200&v=4", 
+			error: "", 
+			updatedAt: "1525968000000",
+		}
+
 		return (
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
@@ -26,8 +35,8 @@ class PatternLibrary extends React.Component {
 					<div className="just-testing">HELLO DIV</div>
 				</Example>
 				
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
+				<Example title="CompletedFilesItem">
+					<CompletedFilesItem file={CompletedFilesItemFile} />
 				</Example>
 
 				<Example title="My Special <h4>">
