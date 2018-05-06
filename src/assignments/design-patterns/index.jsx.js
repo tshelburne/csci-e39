@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
-import CompletedFilesItem, {CompletedFilesItemExamples} from './components/completedFilesItem.jsx.js'
+import CompletedFilesItem, {CompletedFilesItemExamples} from './components/completedFilesItem.jsx'
+import Profile, {BioProfile, ProfilesExamples} from './components/profiles.jsx'
 
 class PatternLibrary extends React.Component {
 
@@ -33,6 +34,14 @@ class PatternLibrary extends React.Component {
 
 				<Example title="CompletedFilesItem Error">
 					<CompletedFilesItem file={CompletedFilesItemExamples.error} />
+				</Example>
+
+				<Example title="Profile">
+					<Profile profile={ProfilesExamples.one} />
+				</Example>
+
+				<Example title="Profile with Bio">
+					<BioProfile profile={ProfilesExamples.bio} />
 				</Example>
 			</div>
 		)
