@@ -21,14 +21,13 @@ class Button extends React.Component {
 		
 
 		return (
-		<div className="container button-container">
-			<h1 className="header">SideBar</h1>
-			<button onClick={this.toggleWidget.bind(this)}>{buttonText}</button>
-			{widgetActive && this.props.children}
-			
-		</div>
+			<div>
+				<h1>Nested component</h1>
+				<button className="default-button" onClick={this.toggleWidget.bind(this)}>{buttonText}</button>
+				{widgetActive && this.props.children}				
+			</div>
 		
-		);
+		)
 	}
 }
 

@@ -20,13 +20,13 @@ class Ad extends React.Component {
 
     return <div className="ad-container">
               <div>
-                <picture className="ad">
+                <picture>
                   <source media="(max-width: 767px)" srcSet={mobileImage} />
                   <source media="(min-width: 768px)" srcSet={image} />
                   <img src={image} alt={alt} />
                 </picture>
               </div>
-              <button  onClick={this.clickHandler}>{text}</button>
+              <button onClick={this.clickHandler}>{text}</button>
            </div>
   };
 }

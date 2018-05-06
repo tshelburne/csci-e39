@@ -51,7 +51,7 @@ class TemperatureInput extends React.Component {
 
     return (
        <div className="inputTemp">
-          <form className="form"> 
+          <form className="formTemp"> 
             <fieldset>
               <legend>What is the temperature today? (in fahrenheit)</legend>
               <input value={temperature}
@@ -60,7 +60,7 @@ class TemperatureInput extends React.Component {
             </fieldset>
           </form>
       </div>
-    );
+    )
   }
 }
 

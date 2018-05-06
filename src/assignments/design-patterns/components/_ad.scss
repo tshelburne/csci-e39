@@ -1,12 +1,13 @@
 //colors ----------------------------
-$accent-color-1:hsla(95, 47%, 59%, 1);
-$accent-color-1-complement:complement($accent-color-1);
+$base-color:rgba(12, 12, 12, 1);
+$header-text-color:rgba(200, 200, 200, 1);
+$accent-color-1: hsla(95, 47%, 59%, 1);
+$accent-color-1-complement: complement($accent-color-1);
 
 //fonts ------------------------------
 $font-family-body:"Roboto", sans-serif;
 
-
-.ad-container button {
+%button {
 	font-family:$font-family-body;
 	font-size: 1.3rem;
 	background:$base-color;
@@ -21,7 +22,11 @@ $font-family-body:"Roboto", sans-serif;
 		color: $header-text-color;
     	border-color: adjust-hue($accent-color-1-complement, 45deg);    
 		box-shadow:0 0 0.8em adjust-hue($accent-color-1-complement, 45deg);  	
-  }
+  	}
+}	
+
+.ad-container button {
+	@extend %button;
 }	
 
 .ad-container{
@@ -31,7 +36,11 @@ $font-family-body:"Roboto", sans-serif;
 }
 
 
-
+@media(max-width: 767px){
+	.ad-container button{
+		min-width:150px;
+	}
+}
 
 
 
