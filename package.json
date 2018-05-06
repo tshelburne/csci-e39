@@ -25,6 +25,7 @@
   "author": "Tim Shelburne",
   "license": "UNLICENSED",
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.43",
     "bookshelf": "^0.10.4",
     "class-autobind": "^0.1.4",
     "cloudinary": "^1.9.0",
@@ -38,6 +39,7 @@
     "koa-route": "^3.2.0",
     "koa-static": "^4.0.1",
     "koa-views": "^6.0.2",
+    "material-ui": "^1.0.0-beta.43",
     "pg": "^7.2.0",
     "prop-types": "^15.5.10",
     "pug": "^2.0.0-rc.3",

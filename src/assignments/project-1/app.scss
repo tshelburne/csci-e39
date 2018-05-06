@@ -1,0 +1,23 @@
+$font: 'Roboto', sans-serif;
+
+body {
+	font-family: $font;
+}
+
+h1, h2, h3, h4 {
+  font-family: $font;
+	color: black;
+}
+
+.uploader {
+	display: inline-block;
+}
+
+.progress-bar {
+	list-style: none;
+}
+
+.upload-container {
+  text-align: center;
+  padding: 10px;
+}
