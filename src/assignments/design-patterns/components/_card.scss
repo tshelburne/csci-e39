@@ -1,0 +1,45 @@
+//colors ----------------------------
+$base-color:rgba(12, 12, 12, 1);
+$header-text-color:rgba(200, 200, 200, 1);
+$accent-color-1:hsla(95, 47%, 59%, 1);
+$accent-color-2:hsla(25, 100%, 69%, 1);
+$accent-color-3:hsla(330, 80%, 68%, 1);
+$accent-color-4:hsla(277, 46%, 62%, 1);
+$accent-color-5:hsla(49, 72%, 62%, 1);
+
+//fonts ------------------------------
+$font-family-header:"Raleway", Arial, Helvetica, sans-serif;
+$font-family-body:"Roboto", sans-serif;
+
+//mixins -----------------------------
+@mixin box-shadow-containers ($color){
+	box-shadow: 0 0 0.3em $color;
+}
+
+// .card-container{
+// 	background: lighten($base-color, 5);
+// 	margin: 1em;		
+// 	padding: 1em;		
+// 	text-align: left;
+// 	border-radius: 2px;
+// }
+
+// .card-green-container{
+// 	background: lighten($base-color, 5);
+// 	margin: 1em;		
+// 	padding: 1em;		
+// 	text-align: left;
+// 	border-radius: 2px;
+	
+// 	@include box-shadow-containers($accent-color-3);
+// }
+
+// .card-pink-container{
+// 	@extend .card-container;
+// 	@include box-shadow-containers($accent-color-5);
+// }
+
+
+
+
+

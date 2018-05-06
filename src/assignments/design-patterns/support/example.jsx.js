@@ -6,7 +6,7 @@ import jsxToString from 'jsx-to-string'
 import beautify from 'js-beautify'
 
 const Example = ({title, children}, context) => (
-	<div className="example">
+	<section className="example">
 		<h2 className="example--title">{title}</h2>
 
 		<div className="example--rendered">
@@ -55,7 +55,7 @@ const Example = ({title, children}, context) => (
 				</pre>
 			</div>
 		}
-	</div>
+	</section>
 )
 
 Example.propTypes = {
