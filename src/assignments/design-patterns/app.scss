@@ -1,9 +1,22 @@
 @import 'pattern-library';
 
+$font-stack: 'IBM Plex Mono', monospace;
+$primary-color: #5d7a8a;
+$blue-accent: #a8c6c4;
+$pink-accent: #e5dbdc;
 $padding: 20px;
 $margin: 10px;
 
+body {
+	background: $blue-accent;
+}
+
+h2 {
+	color: $primary-color;
+}
+
 .style-guide {
+	font-family: $font-stack;
 	width: 90%;
 	max-width: 1024px;
 	margin: 0 auto;
@@ -13,6 +26,7 @@ $margin: 10px;
 	padding: $padding;
 	margin-bottom: $margin;
 	border: thin solid;
+	background: $pink-accent;
 
 	&:last-child {
 		margin-bottom: 0;
@@ -22,19 +36,22 @@ $margin: 10px;
 		padding: $padding;
 		margin-bottom: $margin;
 		border: thin dotted #ccc;
+		background: white;
 	}
 
 	.example--toggles {
 		margin-bottom: $margin;
+		font-family: $font-stack;
 
 		.active {
-			background: pink;
+			background: $primary-color;
+			color: white;
 		}
 	}
 
 	.example--code {
 		padding: $padding;
-		background: #eee;
 		border: thin dotted #ccc;
+		background: white;
 	}
 }
