@@ -8,8 +8,6 @@ $radius: 4px;
 }
 
 .comp {
-    outline: 10px solid $color-main;
-
   border: 10px solid $color-main;
   border-radius: $radius;
   box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
@@ -18,4 +16,3 @@ $radius: 4px;
   text-align: center;
   @include transition(background-color);
 }
-
