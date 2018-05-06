@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Example from './support/example.jsx'
+import Pattern from './support/pattern.jsx'
 
 import Ad from './components/ad.jsx'
 import {LinkCardOne, LinkCardTwo, Card} from './components/card.jsx'
@@ -31,7 +31,7 @@ class PatternLibrary extends React.Component {
 
 				<main>
 
-					<Example title="Component which takes props">
+					<Pattern title="Component which takes props">
 						<div>
 							<Ad siteUrl="https://www.lipsum.com/" 
 								image="https://via.placeholder.com/200x200" 
@@ -39,9 +39,9 @@ class PatternLibrary extends React.Component {
 								alt="ad image" 
 								text="Click"/>
 						</div>
-					</Example>					
+					</Pattern>					
 					
-					<Example title="Component with multiple versions">
+					<Pattern title="Component with multiple versions">
 						<div>
 							<LinkCardOne url="https://www.nps.gov/ever/index.htm">
 									   <h1>Everglades</h1>
@@ -55,9 +55,9 @@ class PatternLibrary extends React.Component {
 									   granite, the power of glaciers, the persistence of life, and the tranquility of the High Sierra.</p>
 							</LinkCardTwo>
 						</div>
-					</Example>
+					</Pattern>
 
-					<Example title="Combining components">
+					<Pattern title="Combining components">
 						<div>
 							<Card image="https://via.placeholder.com/200x200"
 								  alt=""
@@ -71,7 +71,7 @@ class PatternLibrary extends React.Component {
 								</Button>
 							</Card>	
 						</div>
-					</Example>
+					</Pattern>
 
 				</main>
 			</div>

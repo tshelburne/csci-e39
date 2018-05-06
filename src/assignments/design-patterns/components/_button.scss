@@ -24,10 +24,5 @@ $font-family-body:"Roboto", sans-serif;
 }
 
 .default-button{
-	@extend %button;
-	&:active, &:hover, &:focus {
-		color: $header-text-color;
-    	border-color: blue;    
-		box-shadow:0 0 0.8em adjust-hue($accent-color-1, 45deg);  	
-  }	
+	@extend %button;	
 }

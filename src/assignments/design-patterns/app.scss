@@ -35,7 +35,7 @@ h1,h2,h3,h4{
 	font-family:$font-family-header;
 }
 
-.example {
+.pattern {
 	padding: $padding;
 	margin-bottom: $margin;
 	@include box-shadow($accent-color-1);
@@ -44,13 +44,13 @@ h1,h2,h3,h4{
 		margin-bottom: 0;
 	}
 
-	.example--rendered {
+	.pattern--rendered {
 		padding: $padding;
 		margin-bottom: $margin;
 		border: thin dotted complement($accent-color-1);
 	}
 
-	.example--toggles {
+	.pattern--toggles {
 		margin-bottom: $margin;
 
 		.active {
@@ -59,7 +59,7 @@ h1,h2,h3,h4{
 		}
 	}
 
-	.example--code {
+	.pattern--code {
 		color:$base-color;
 		padding: $padding;
 		background: $header-text-color;
