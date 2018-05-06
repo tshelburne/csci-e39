@@ -3,6 +3,10 @@
 $padding: 20px;
 $margin: 10px;
 
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
@@ -28,29 +32,21 @@ $margin: 10px;
 		margin-bottom: $margin;
 
 		.active {
-			background: pink;
+			background: #64cc2c;
+		}
+
+		button {
+			margin-right: 5px;
+			border-radius: 2px;
+			outline: none;
+			cursor: pointer;
+			padding: 5px 10px;
 		}
 	}
 
 	.example--code {
 		padding: $padding;
-		background: #eee;
+		background: #f9ebcf;
 		border: thin dotted #ccc;
-	}
-}
-
-.modal-footer button {
-	color: #fff;
-	background: #00a0df;
-	overflow: hidden;
-	padding: 12px 12px;
-	text-align: center;
-	border: 0 none;
-	border-radius: 4px;
-	outline: none;
-	cursor: pointer;
-	
-	&:active {
-		background: lighten(#00a0df, 10%);
 	}
 }
