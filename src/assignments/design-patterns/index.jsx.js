@@ -28,12 +28,12 @@ class PatternLibrary extends React.Component {
 					<div className="just-testing">HELLO DIV</div>
 				</Example>
 				
-				<Example title="CompletedFilesItem">
-					<CompletedFilesItem file={CompletedFilesItemExamples.one} />
+				<Example title="PictureListItem">
+					<PictureListItem file={PictureListItemExamples.one} />
 				</Example>
 
 				<Example title="CompletedFilesItem Error">
-					<CompletedFilesItem file={CompletedFilesItemExamples.error} />
+					<PictureListItem file={PictureListItemExamples.error} />
 				</Example>
 
 				<Example title="Profile">

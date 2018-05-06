@@ -3,9 +3,9 @@ import React from 'react'
 const PictureListItem = ({file}) => {
 	const {id, name, url, error, updatedAt} = file;
 
-	return <li className="completedFilesItem">
-				<span className="cf-item-name" id={updatedAt}>{name}</span>
-				{!error && <img src={url} aria-labelledby={updatedAt} className="cf-item-img" />}
+	return <li className="pictureListItem">
+				<span className="pl-item-name" id={updatedAt}>{name}</span>
+				{!error && <img src={url} aria-labelledby={updatedAt} className="pl-item-img" />}
 				{!!error && <p className="failure">{error}</p>}
 			</li>
 }
