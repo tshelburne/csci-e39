@@ -2,6 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
 
+import { TextSizer } from './components/textsizer.jsx'
+import { BackgroundCard } from './components/backgroundcard.jsx'
+import { ForegroundCard } from './components/foregroundcard.jsx'
+
 class PatternLibrary extends React.Component {
 
 	constructor(...args) {
@@ -19,22 +23,35 @@ class PatternLibrary extends React.Component {
 
 	render() {
 		return (
+		<div id="gradient">
 			<div className="style-guide">
-				<h1>My Pattern Library!</h1>
+				<br></br>
+				<br></br>
+				<h1>The Pattern Library</h1>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
-				</Example>
-				
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
+				<Example title="The <TextSizer>">
+					<TextSizer/>
 				</Example>
 
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
+				<Example title="The <BackgroundCard>">
+					<BackgroundCard numCards={0} label="Change your background color here: " onChange={() => alert('You have changed the background color!')} />
 				</Example>
+
+				<Example title="The <ForegroundCard>">
+					<ForegroundCard label="Change your foreground card color here: " onChange={() => alert('You have changed the foreground card color!')} />
+				</Example>
+
+				<Example title="The <TextSizer & CardColor Combination>">
+					<BackgroundCard 
+						showButton={true}
+						numCards={3} 
+						label="Change your background color here: " 
+						onChange={() => alert('You have changed the background color!')} />
+				</Example>
+
 			</div>
-		)
+			</div>
+		) 
 	}
 }
 
