@@ -1,8 +1,36 @@
+$main-color: #0c3040;
 
 .modal-title  {
-	color: green;
+	padding: 11px 0px 11px 30px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.6px;
+    margin: 0;
+    line-height: 1.6;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal-dialog {
+	border: 1px solid $main-color;
+
+	.my-form {
+		border: none;
+	}
 }
 
 .modal-title-wrapper {
-	color: blue;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: #0c3040;
+    color: $main-color;
+}
+
+.modal-footer {
+    border-top: 0 none;
+    padding: 0 20px 20px;
+    padding: 15px;
+    text-align: right;
 }

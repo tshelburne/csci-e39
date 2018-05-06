@@ -32,7 +32,7 @@ class PatternLibrary extends React.Component {
 
 	getModalFooter() {
 		return (
-			<button onClick="#">Save</button>
+			<button>Save</button>
 		)
 	}
 
@@ -42,7 +42,7 @@ class PatternLibrary extends React.Component {
 				<h1>My Pattern Library!</h1>
 
 				<Example title="<MyModal />">
-					<MyModal title="Modal Title" body="Body Content" footer="Footer Content"/>
+					<MyModal title="Modal Title" body="" footer=""/>
 				</Example>
 
 				<Example title="Form Inputs">

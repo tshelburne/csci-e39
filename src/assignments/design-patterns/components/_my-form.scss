@@ -1,0 +1,50 @@
+$border-color: #979797;
+$main-color: #979797;
+
+
+.my-form {
+	border: 1px solid $border-color;
+    border-radius: 3px;
+    padding: 12px 12px;
+}
+
+.form-input-wrapper {
+	margin: 6px 5px;
+	display: inline-block;
+}
+
+.form-input {
+	display: block;
+	border: 1px solid $border-color;
+    border-radius: 3px;
+    height: 15px;
+    color: $main-color;
+    padding: 6px 12px;
+
+    &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  		color: $main-color;
+	}
+	&::-moz-placeholder { /* Firefox 19+ */
+	  color: $main-color;
+	}
+	&::-ms-input-placeholder { /* IE 10+ */
+	  color: $main-color;
+	}
+	&::-moz-placeholder { /* Firefox 18- */
+	  color: $main-color;
+	}
+}
+
+.form-input-label {
+    letter-spacing: 0.3px;
+  	font-weight: 500; 
+    color: $main-color;
+    font-size: 18px;
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 3px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+

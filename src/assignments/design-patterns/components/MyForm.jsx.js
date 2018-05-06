@@ -5,16 +5,16 @@ import PropTypes from 'prop-types'
 
 export const MyForm = ({children, ...props}) => {
 	return (
-		<ul>
+		<form className="my-form">
 	 		{React.Children.map(children, child => <div>{child}</div>)}
-		</ul>
+		</form>
 	)
 }
 
 const FormInput = ({FormLabel, placeholder}) => {
 	return (
-		<div>
-			<label>{FormLabel}</label><input type="text" placeholder={placeholder.toLowerCase()} />
+		<div className="form-input-wrapper">
+			<label className="form-input-label">{FormLabel}</label><input className="form-input" type="text" placeholder={placeholder.toLowerCase()} />
 		</div>
 	)
 }
