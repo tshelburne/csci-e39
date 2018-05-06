@@ -25,7 +25,7 @@ DK_DEBUG := -e DEBUG=knex:*,socket.io:*,csci-e39:*
 
 .DEFAULT_GOAL := list
 
-all: clean migrate start
+all: clean migrate watch
 
 clean: stop
 	rm -rf build node_modules public dev.sqlite3

@@ -69,7 +69,7 @@ function createState(socket) {
 	function upload(inputFile, {name, description} = {}) {
 		const refId = uuid()
 		const file = {
-			url: ``,
+			url: inputFile.name,
 			name: name || inputFile.name,
 			description: description || ``,
 			type: inputFile.type,

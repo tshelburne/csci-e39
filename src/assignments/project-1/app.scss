@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700,900');
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700,900');
+$primary-color: hsl(64, 100%, 38%);
+$complement-color: complement($primary-color); 
+$dark-primary: darken($primary-color,10);
+$dark-complement: darken($complement-color,34);
+$light-primary: lighten($primary-color,8);
+$light-complement: lighten($complement-color,34);
+$off-white: #fefefa;
+$main-font: 'Muli', sans-serif;
+
+body {
+    font-family: $main-font;
+    background-color: $off-white;
+    max-width: 1100px;
+    margin: 0 auto;
+    margin-top:20px;
+}
+
+header {
+    display:grid;
+    grid-template: 
+        "logo title title";
+    grid-gap:20px;
+    justify-items: center;
+    margin-left: 40px;
+}
+
+#headerLogo {
+    grid-area: logo;
+    padding:10px;
+    border-radius: 50%;
+    border: 1px solid $dark-primary;
+    max-width: 150px;
+}
+
+#headerTextGroup {
+    grid-area:title;
+}
+
+.uploadForm {
+    text-align:center;
+    max-width: 1100px;
+    margin: 10px auto;
+    margin-bottom: 50px;
+
+    label {
+        margin: 10px;
+        font-weight: bold;
+        font-size:1.1em;
+    }
+
+    input {
+        margin-right: 30px;
+    }
+}
+
+#imageGallery {
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 30px;
+    justify-items: center;
+
+}
+
+.imageItem {
+    list-style-type: none;
+    text-align:center;
+
+    img {
+        max-width: 300px;
+    }
+
+    label {
+        display:block;
+    }
+}
+button,
+.uploader {
+	background-color: $primary-color;
+	padding: 10px;
+	font-family: $main-font;
+	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+    color: #404040;
+    font-weight:bold;
+	border: 0;
+	&:hover,
+	&:active,
+	&:focus {
+		border: 0;
+		background-color: $light-primary;
+		transform: translateY(-2px);
+		box-shadow: 0 7px 14px rgba(50, 50, 93, 0.1), 0 3px 6px rgba(0, 0, 0, 0.08);
+    }
+}
+
+#uploader {
+    display:none;
+}
+
