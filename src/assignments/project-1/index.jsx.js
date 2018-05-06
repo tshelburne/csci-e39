@@ -1,63 +1,50 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import Uploader from '../../ui/components/uploader.jsx'
+import Dashboard from './components/dashboard.jsx'
+import AppBar from 'material-ui/AppBar'
+import Toolbar from 'material-ui/Toolbar'
+import Typography from 'material-ui/Typography'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { createMuiTheme } from 'material-ui/styles';
+import indigo from 'material-ui/colors/indigo';
+import pink from 'material-ui/colors/pink';
+import red from 'material-ui/colors/red';
 
-const Uploads = ({uploads, actions}) => {
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
+// All the following keys are optional.
+// We try our best to provide a great default value.
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+    	main: '#28ace2'
+    },
+    secondary: {
+    	main: '#c8e6fa'
+    },
+    error: red,
+    // Used by `getContrastText()` to maximize the contrast between the background and
+    // the text.
+    contrastThreshold: 3,
+    // Used to shift a color's luminance by approximately
+    // two indexes within its tonal palette.
+    // E.g., shift from Red 500 to Red 300 or Red 700.
+    tonalOffset: 0.2,
+  },
+});
 
-	return <div>
-		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
+const Gallery = ({...props}) => {
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
-	</div>
+	return <MuiThemeProvider theme={theme}>
+			<div>
+				<AppBar position="static">
+					<Toolbar>
+			          <Typography variant="title" color="">
+			            Sean's Photos
+			          </Typography>
+			        </Toolbar> 
+				</AppBar>
+				<Dashboard {...props} />
+			</div>
+		</MuiThemeProvider>
 }
 
-const statusPropType = PropTypes.shape({
-	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
-	message: PropTypes.string.isRequired,
-})
 
-Uploads.propTypes = {
-	uploads: PropTypes.shape({
-		files: PropTypes.arrayOf(PropTypes.shape({
-			id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-			name: PropTypes.string.isRequired,
-			progress: PropTypes.number,
-			url: PropTypes.string,
-			error: PropTypes.string,
-		})).isRequired,
-		update: statusPropType.isRequired,
-		delete: statusPropType.isRequired,
-		share: statusPropType.isRequired,
-	}).isRequired,
-	actions: PropTypes.object.isRequired,
-}
-
-export default Uploads
+export default Gallery
