@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
-import CompletedFilesItem, {CompletedFilesItemExamples} from './components/completedFilesItem.jsx'
+import PictureListItem, {PictureListItemExamples} from './components/pictureListItem.jsx'
 import Profile, {BioProfile, ProfilesExamples} from './components/profiles.jsx'
 
 class PatternLibrary extends React.Component {

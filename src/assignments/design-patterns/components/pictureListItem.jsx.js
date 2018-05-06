@@ -1,6 +1,6 @@
 import React from 'react'
 
-const CompletedFilesItem = ({file}) => {
+const PictureListItem = ({file}) => {
 	const {id, name, url, error, updatedAt} = file;
 
 	return <li className="completedFilesItem">
@@ -10,7 +10,7 @@ const CompletedFilesItem = ({file}) => {
 			</li>
 }
 
-export const CompletedFilesItemExamples = {
+export const PictureListItemExamples = {
 		"one": {
 			id:"1", 
 			name:"example image", 
@@ -28,4 +28,4 @@ export const CompletedFilesItemExamples = {
 		},
 };
 
-export default CompletedFilesItem
+export default PictureListItem
