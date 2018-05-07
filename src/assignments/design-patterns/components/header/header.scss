@@ -1,0 +1,26 @@
+header {
+    background-color: hsla(0, 0%, 100%, 1);
+    margin-bottom: 1.2rem;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h1>a {
+        text-decoration: none;
+    }
+    &.lightTheme {
+        h1 {
+            a {
+                color: hsla(0, 0%, 10%, 1);
+            }
+        }
+    }
+    &.darkTheme {
+        background-color: hsla(0, 0%, 5%, 1);
+        h1 {
+            a {
+                color: hsla(0, 0%, 100%, 1);
+            }
+        }
+    }
+}
