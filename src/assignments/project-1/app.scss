@@ -5,12 +5,13 @@
 @import 'scss/uploader';
 @import 'scss/_progress';
 @import 'scss/_completed';
+@import 'scss/_copy';
 :root {
-    font-size: $primary-font-size;
+	font-size: $primary-font-size;
 }
 
 body {
-    background-color: $primary-background-color;
-    color: $primary-font-color;
-    font-family: $primary-font, sans-serif;
+	background-color: $primary-background-color;
+	color: $primary-font-color;
+	font-family: $primary-font, sans-serif;
 }

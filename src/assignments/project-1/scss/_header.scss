@@ -1,11 +1,21 @@
 header {
-    background-color: $header-background-color;
-    height: 6rem;
-    color: $primary-font-color;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    h1 {
-        font-size: 3rem;
-    }
+	background-color: $header-background-color;
+	height: 6rem;
+	color: $primary-font-color;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	h1 {
+		font-size: 3rem;
+	}
+	nav {
+		ul {
+			display: flex;
+		}
+		li {
+			margin: 0 1.5rem;
+			font-size: 2rem;
+			list-style: none;
+		}
+	}
 }
