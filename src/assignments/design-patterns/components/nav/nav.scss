@@ -1,0 +1,47 @@
+nav {
+    padding: 0.6rem 1.2rem;
+    &.lightTheme {
+        background-color: hsla(0, 0%, 100%, 1);
+        a {
+            color: hsla(0, 0%, 5%, 1);
+        }
+    }
+    &.darkTheme {
+        background-color: hsla(0, 0%, 5%, 1);
+        color: hsla(0, 0%, 100%, 1);
+        a {
+            color: hsla(0, 0%, 100%, 1);
+        }
+    }
+    a {
+        text-decoration: none;
+        &:hover {
+            color: hsla(300, 100%, 50%, 1);
+        }
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+    li {
+        padding-right: 1.2rem;
+        list-style: none;
+        &:after {
+            margin-left: 1.2rem;
+            content: '|';
+        }
+        &:last-child {
+            padding-right: 0;
+            button {
+                margin: 0;
+            }
+        }
+        &:last-child:after {
+            margin-left: 0;
+            content: '';
+        }
+    }
+}

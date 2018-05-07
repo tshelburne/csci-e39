@@ -1,0 +1,53 @@
+.progress-component {
+	margin: 2rem 2rem 4.5rem;
+	border-bottom: 1px solid $quaternary-color;
+	h2 {
+		height: 4rem;
+		color: $secondary-header-color;
+		font-size: 2.6rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	ul {
+		display: grid;
+		grid-gap: 1.2rem;
+		grid-template-columns: 100%;
+		grid-template-rows: auto;
+	}
+	ul li {
+		width: 100%;
+	}
+}
+
+progress {
+	border: $primary-border;
+	width: $progress-width;
+	height: $progress-height;
+	-webkit-appearance: none;
+	box-shadow: 0 2px 5px rgba($primary-color, 0.25) inset;
+	&::-webkit-progress-bar {
+		background-color: $primary-background;
+		border-radius: $progress-radius;
+		box-shadow: 0 2px 5px rgba($primary-color, 0.25) inset;
+	}
+	&::-webkit-progress-value {
+		background-image: -webkit-linear-gradient(
+				-45deg,
+				transparent 33%,
+				rgba($primary-color, 0.1) 33%,
+				rgba($primary-color, 0.1) 66%,
+				transparent 66%
+			),
+			-webkit-linear-gradient(top, rgba($secondary-color, 0.25), rgba($primary-color, 0.25)),
+			-webkit-linear-gradient(left, $quaternary-color, $quinary-color);
+		border-radius: $progress-radius;
+		background-size: 70px 40px, 100% 100%, 100% 100%;
+	}
+	&::-moz-progress-bar {
+		@include progress-bar;
+	}
+	&::-ms-fill {
+		@include progress-bar;
+	}
+}

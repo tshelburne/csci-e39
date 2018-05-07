@@ -1,0 +1,39 @@
+.completed-component {
+	margin: 2rem;
+	h2 {
+		height: 4rem;
+		color: $secondary-header-color;
+		font-size: 2.6rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	ul {
+		display: grid;
+		grid-gap: 1.2rem;
+		grid-template-columns: repeat(auto-fit, minmax(36rem, 1fr));
+		grid-template-rows: auto;
+	}
+	ul li {
+		background-color: $image-background-color;
+		padding: 1rem;
+		box-shadow: $primary-box-shadow;
+		display: grid;
+		grid-template-rows: 1fr auto;
+		img {
+			width: 100%;
+			height: 28.6rem;
+			border: 0.1rem solid $inset-border;
+			border-right: 0;
+			border-bottom: 0;
+			object-fit: cover;
+			object-position: 50% 50%;
+		}
+		label {
+			padding: 2rem;
+			font-size: 1.8rem;
+			text-align: center;
+			grid-row: 2/3;
+		}
+	}
+}
