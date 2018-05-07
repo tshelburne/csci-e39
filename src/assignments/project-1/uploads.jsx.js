@@ -4,7 +4,6 @@ import Uploader from '../../ui/components/uploader.jsx';
 import Completed from './completed.jsx';
 import Progress from './progress.jsx';
 import Copy from './copy.jsx';
-import { BrowserRouter, Route } from 'react-router-dom';
 
 const Uploads = ({ uploads, actions }) => {
 	const pendingFiles = uploads.files.filter(({ progress }) => progress && progress < 100);
