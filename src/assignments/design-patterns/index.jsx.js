@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
+import {KittenCard, BearCard} from './components/card.jsx'
 
 class PatternLibrary extends React.Component {
 
@@ -22,12 +23,12 @@ class PatternLibrary extends React.Component {
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
+				<Example title="Kitten Card">
+					<KittenCard name="Little Paws" image="https://placekitten.com/200/200" text="This is a really great cat." />
 				</Example>
-				
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
+
+				<Example title="Bear Card">
+					<BearCard name="Big Claws" image="https://placebear.com/200/200" text="This bear is often sleepy." />
 				</Example>
 
 				<Example title="My Special <h4>">

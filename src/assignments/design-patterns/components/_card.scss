@@ -1,0 +1,24 @@
+@import '../support/vars';
+
+.card {
+  border-radius: 0px 30px 0px 30px;
+  padding: $padding;
+  width: 240px;
+
+  h2 {
+    color: darken($primary-color, 15%);
+    border-bottom: dotted $primary-color;
+  }
+
+  img {
+    border-radius: 200px;
+  }
+
+  &.kitten {
+    background: lighten($blue-accent, 15%);
+  }
+
+  &.bear {
+    background: lighten($pink-accent, 5%);
+  }
+}
