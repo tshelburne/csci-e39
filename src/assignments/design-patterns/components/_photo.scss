@@ -1,0 +1,19 @@
+.photo {
+  background-color: #fff;
+  border: .15rem solid #DAD6E1;
+  border-radius: 0.5rem;
+  display: grid;
+  grid-template-rows: 30rem auto;
+  padding: 2rem;
+  grid-gap: 1rem;
+  &:hover {
+    cursor: pointer;
+    background-color: #00BA8C;
+    color: #fff;
+  }
+  img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
