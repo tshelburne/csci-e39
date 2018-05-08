@@ -1,0 +1,50 @@
+//FONTS
+$font-family: 'Source Sans Pro';
+
+
+//COLORS
+$primary: #34ace0;
+$secondary: #33d9b2;
+$tertiary: #706fd3;
+
+$white: #FFFFFF;
+$dark: #000000;
+
+$gray-lightest: #F7F7F7;
+$gray-lighter: #EFEFEF;
+$gray-light: #999999;
+$gray: #777777;
+$gray-dark: #333;
+
+//ALERT COLORS
+$info: #4a69bd;
+$info-hover: lighten($info, 5%);
+$alert: goldenrod;
+$alert-hover: lighten($alert, 5%);;
+$success: #20bf6b;
+$success-hover: lighten($success, 5%);;
+$error: #eb2f06;
+$error-hover: lighten($error, 5%);;
+
+
+//PADDING
+$padding-xl: 80px;
+$padding-lg: 40px;
+$padding-med: 20px;
+$padding-sm: 10px;
+$margin: 20px;
+
+body{
+	margin: 0 auto;
+	font: 16px 'Source Sans Pro';
+	background: $white;
+}
+
+p{
+	font: 18px/24px 'Source Sans Pro';
+	color: $gray;
+}
+
+img{
+	max-width: 100%;
+}

@@ -1,0 +1,26 @@
+@import 'globals';
+
+.banner{
+	display: flex;
+	flex-basis: 100%;
+	flex-direction: column;
+	box-sizing: border-box;
+	padding: $padding-xl $padding-med;
+	justify-content: center;
+	align-items: center;
+	background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.55)),url(http://leisyvidal.com/img/home1.jpg) center no-repeat, #131418;
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: white;
+
+	h2{
+		font: 700 68px/1em 'Source Sans Pro';
+		margin: 0;
+		margin-bottom: 10px;
+	}
+	p{
+		margin: 0;
+		color: $white;
+	}
+
+}

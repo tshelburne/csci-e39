@@ -1,13 +1,18 @@
 import React from 'react'
+import {Button, GhostButton} from './button.jsx'
+import {Image} from './image.jsx'
 
-const Card = ({title, body, buttonText, buttonUrl}) =>
+const SingleCard = ({title, body, btnText, btnUrl, image, imageAlt}) =>
 	<div className='card'>
-		<h2>{title}</h2>
-		<p>{body}</p>
-		<a href="{buttonUrl}">{buttonText}</a>
+		<Image link={image} alt={imageAlt} />
+		<div className='card-text'>
+			<h2>{title}</h2>
+			<p>{body}</p>
+			<Button linkText={btnText} url={btnUrl} />
+		</div>
 	</div>
 
-export const SingleCard = ({title, body, buttonText, buttonUrl}) =>
-	<Card title={title} body={body} buttonText={buttonText} buttonUrl={buttonUrl}></Card>
+export const Card = ({title, body, btnText, btnUrl, image, imageAlt}) =>
+	<SingleCard title={title} body={body} btnText={btnText} btnUrl={btnUrl} image={image} imageAlt={imageAlt}></SingleCard>
 
-SingleCard.displayName = 'SingleCard'
+Card.displayName = 'Card'

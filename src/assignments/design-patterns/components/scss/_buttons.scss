@@ -1,0 +1,28 @@
+@import 'globals';
+
+.button{
+	background: $primary;
+	color: white;
+	text-align: center;
+	padding: 15px $padding-lg;
+	border:0;
+  margin-bottom: 10px;
+	text-decoration: none;
+	display: inline-block;
+
+	&:hover{
+		background: lighten($primary, 7%);
+	}
+}
+
+
+.ghost{
+	border: 2px solid $primary;
+	color: $primary;
+	background: none;
+
+	&:hover{
+		background: $primary;
+		color: $white;
+	}
+}

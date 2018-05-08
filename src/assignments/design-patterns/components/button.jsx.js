@@ -1,14 +1,14 @@
 import React from 'react'
 
-const Button = ({label, extraClass, onClick}) =>
-	<button className={'button ${extraClass}'} onClick={onClick}>{label}</button>
+const Btn = ({url, linkText, btnStyle}) =>
+	<a href={url} className={btnStyle}>{linkText}</a>
 
-export const SuccessButton = ({label, onClick, extraClass}) =>
-	<Button label={label} onClick={onClick} extraClass='success'></Button>
+export const Button = ({linkText, url, btnStyle}) =>
+	<Btn url={url} linkText={linkText} btnStyle='button'></Btn>
 
-SuccessButton.displayName = 'SuccessButton'
+Button.displayName = 'Button'
 
-export const CancelButton = ({label, onClick}) =>
-	<Button label={label} onClick={onClick} extraClass='cancel'></Button>
+export const GhostButton = ({linkText, url, btnStyle}) =>
+	<Btn url={url} linkText={linkText} btnStyle='button ghost'></Btn>
 
-CancelButton.displayName = 'CancelButton'
+GhostButton.displayName = 'GhostButton'

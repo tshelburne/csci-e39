@@ -1,22 +1,26 @@
 import React from 'react'
 
-const Message = ({title, message}) =>
-	<div className='message'>
-		<h2>{title}</h2>
+const Message = ({message, msgType}) =>
+	<div className={msgType}>
 		<p>{message}</p>
 	</div>
 
-	export const GeneralMessage = ({title, message}) =>
-		<Message messageTitle={title} message={message}></Message>
+	export const InfoMessage = ({message}) =>
+		<Message message={message} msgType='message info'></Message>
 
-	GeneralMessage.displayName = 'GeneralMessage'
+	InfoMessage.displayName = 'InfoMessage'
 
-export const ErrorMessage = ({title, message}) =>
-	<Message messageTitle={title} message={message}></Message>
+	export const AlertMessage = ({message}) =>
+		<Message message={message} msgType='message alert'></Message>
 
-ErrorMessage.displayName = 'ErrorMessage'
+	AlertMessage.displayName = 'AlertMessage'
 
-export const SuccessMessage = ({title, message}) =>
-	<Message messageTitle={title} message={message}></Message>
+	export const ErrorMessage = ({message}) =>
+		<Message message={message} msgType='message error'></Message>
 
-SuccessMessage.displayName = 'SuccessMessage'
+	ErrorMessage.displayName = 'ErrorMessage'
+
+	export const SuccessMessage = ({message}) =>
+		<Message message={message} msgType='message success'></Message>
+
+	SuccessMessage.displayName = 'SuccessMessage'

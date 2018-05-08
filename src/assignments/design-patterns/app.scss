@@ -1,7 +1,5 @@
+@import 'site';
 @import 'pattern-library';
-
-$padding: 20px;
-$margin: 10px;
 
 .style-guide {
 	width: 90%;
@@ -10,31 +8,61 @@ $margin: 10px;
 }
 
 .example {
-	padding: $padding;
+	background: $white;
+	max-width: 910px;
+	margin: 0 auto;
 	margin-bottom: $margin;
-	border: thin solid;
+	padding: $padding-lg;
+	border: 1px solid $gray-lighter;
+
+	.example--title{
+		font-size: 36px;
+		margin: 0;
+	}
+
+	.example--subtitle{
+		margin: 50px 0px 10px 0px;
+	}
+
+	.button + .button{
+		margin: 25px;
+	}
 
 	&:last-child {
 		margin-bottom: 0;
 	}
 
+	.example--tags{
+		font: 700 13px 'Source Sans Pro';
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    margin: 0;
+		color: $gray;
+	}
+
 	.example--rendered {
-		padding: $padding;
-		margin-bottom: $margin;
-		border: thin dotted #ccc;
+		margin-bottom: calc($margin / 2);
 	}
 
 	.example--toggles {
-		margin-bottom: $margin;
+		display: flex;
+    align-items: stretch;
+
+		button{
+			border: 0;
+			background: none;
+			border: 1px solid $gray-light;
+		}
 
 		.active {
-			background: pink;
+			border-bottom: 5px solid $gray-dark;
 		}
 	}
 
 	.example--code {
-		padding: $padding;
-		background: #eee;
-		border: thin dotted #ccc;
+		padding: $padding-sm;
+		background: #F9F9F9;
+		border: 1px solid #F5F5F5;
+		overflow: scroll;
 	}
 }

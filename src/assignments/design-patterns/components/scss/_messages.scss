@@ -1,0 +1,45 @@
+@import 'globals';
+
+.message{
+	color: $white;
+	background: $primary;
+	padding: $padding-med;
+	display: block;
+	margin-bottom: $padding-med;
+
+	p{
+		margin: 10px;
+		color: $white;
+		font-size: 18px;
+	}
+
+	&.info{
+		background: $info;
+		&:hover{
+			background: $info-hover;
+		}
+	}
+	&.alert{
+		background: $alert;
+		&:hover{
+			background: $alert-hover;
+		}
+	}
+	&.success{
+		background: $success;
+		&:hover{
+			background: $success-hover;
+		}
+	}
+	&.error{
+		background: $error;
+		&:hover{
+			background: $error-hover;
+		}
+	}
+
+	&:hover{
+		cursor: pointer;
+	}
+
+}

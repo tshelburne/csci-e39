@@ -9,13 +9,16 @@ const Example = ({title, description, tags, children}, context) => (
 	<div className="example">
 		<h2 className="example--title">{title}</h2>
 		<p>{description}</p>
-		<h3 className="example--tags"><span>Tags:</span> {tags}</h3>
 
 		<div className="example--rendered">
-			<h3>Rendered output:</h3>
+			<h3 className="example--subtitle">Components In Use:</h3>
 			{children}
 		</div>
 
+		<h3 className="example--subtitle">Component Tags:</h3>
+		<h3 className="example--tags">{tags}</h3>
+
+		<h3 className="example--subtitle">Code Examples:</h3>
 		<div className="example--toggles">
 			<button
 				onClick={() => context.setActiveCode(`html`)}
@@ -39,7 +42,6 @@ const Example = ({title, description, tags, children}, context) => (
 
 		{context.activeCode !== `off` &&
 			<div className="example--code">
-				<h3>Code sample:</h3>
 				<pre>
 					<code>
 						{context.activeCode === `html` &&
