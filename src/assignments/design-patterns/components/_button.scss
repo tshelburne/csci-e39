@@ -1,0 +1,15 @@
+.button {
+	background-color: #00BA8C;
+	color: #fff;
+	padding: 1rem;
+	border-radius: .5rem;
+	border: none;
+	box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);	
+	&:hover {
+		background-color: lighten(#00BA8C, 5%);
+		cursor: pointer;
+  }
+  &.large-button {
+    width: 100%;
+  }
+}

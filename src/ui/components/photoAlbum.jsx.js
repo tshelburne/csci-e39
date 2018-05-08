@@ -1,19 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Photo from '../../assignments/design-patterns/components/photo.jsx'
 
 const PhotoAlbum = ({images, onPhotoClick}) => (
   <ul className="photo-grid">
-    {images.map((file, index) => {
-      const {id, name, url, error} = file
-      return <li 
-        key={id}
+    {images.map((file, index) => 
+      <Photo 
+        key={index}
         onClick={() => onPhotoClick(index)}
-        >
-        {!error && <img src={url} />}
-        {!!error && <p className="failure">{error}</p>}
-        <label>{name}</label>
-      </li>
-    })}
+        file={file}
+      />
+    )}
   </ul>
 )
 
