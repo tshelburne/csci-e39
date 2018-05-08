@@ -1,0 +1,14 @@
+.input {
+    font-family: "Permanent Marker", cursive;
+	font-size: $dynamic-size;
+	color: $accent-color;
+	//ext-transform: uppercase;
+	border: solid 1px darken($accent-color, 9%);
+	border-radius: 10px;
+	padding: $dynamic-size * 0.75;
+	background-color: transparent;
+    box-shadow: 0 4px darken($accent-color, 15%);
+    display: inherit;
+    margin-bottom: 20px;
+    width: 235px;
+}
