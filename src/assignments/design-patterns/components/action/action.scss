@@ -1,0 +1,24 @@
+.callToAction {
+	background-color: transparent;
+	margin: 0 1rem;
+	padding: 1rem 2rem;
+	border: 0.2rem solid hsla(0, 0%, 100%, 1);
+	color: hsla(0, 0%, 100%, 1);
+	font-size: 2.2rem;
+	box-shadow: 0 4px 3px -3px hsla(0, 0%, 0%, 0.75);
+	&.subtle {
+		background-color: hsla(120, 100%, 30%, 1);
+	}
+	&.refined {
+		background-color: hsla(190, 100%, 30%, 1);
+	}
+	&.artless {
+		background-color: hsla(360, 100%, 30%, 1);
+	}
+	&:hover {
+		cursor: pointer;
+	}
+	&:active {
+		background-color: hsla(0, 0%, 0%, 1);
+	}
+}

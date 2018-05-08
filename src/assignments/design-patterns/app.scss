@@ -1,40 +1,77 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Merriweather+Sans');
 @import 'pattern-library';
-
 $padding: 20px;
 $margin: 10px;
+@mixin font-size($sizeValue: 1.6) {
+    font-size: ($sizeValue * 10) + px;
+    font-size: $sizeValue + rem;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: hsla(200, 75%, 95%, 1);
+    color: hsla(200, 75%, 10%, 1);
+    font-family: 'Merriweather', serif;
+    font-size: 1.6rem;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+h1 {
+    @include font-size(2.6);
+}
+
+h2 {
+    font-size: 2.3rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.8rem;
+}
 
 .style-guide {
-	width: 90%;
-	max-width: 1024px;
-	margin: 0 auto;
+    width: 90%;
+    max-width: 1024px;
+    margin: 0 auto;
 }
 
 .example {
-	padding: $padding;
-	margin-bottom: $margin;
-	border: thin solid;
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-
-	.example--rendered {
-		padding: $padding;
-		margin-bottom: $margin;
-		border: thin dotted #ccc;
-	}
-
-	.example--toggles {
-		margin-bottom: $margin;
-
-		.active {
-			background: pink;
-		}
-	}
-
-	.example--code {
-		padding: $padding;
-		background: #eee;
-		border: thin dotted #ccc;
-	}
+    padding: $padding;
+    margin-bottom: $margin;
+    border: thin solid;
+    &:last-child {
+        margin-bottom: 0;
+    }
+    .example--rendered {
+        padding: $padding;
+        margin-bottom: $margin;
+        border: thin dotted #ccc;
+    }
+    .example--toggles {
+        margin-bottom: $margin;
+        .active {
+            background: pink;
+        }
+    }
+    .example--code {
+        padding: $padding;
+        background: #eee;
+        border: thin dotted #ccc;
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    }
 }

@@ -1,0 +1,54 @@
+// named color palette
+$white: hsla(0, 100%, 100%, 1);
+$alto: hsla(0, 0%, 85%, 0.5);
+$twilight-blue: hsla(192, 100%, 98%, 1);
+$swamp: hsla(193, 100%, 8%, 1);
+$mine-shaft: hsla(0, 0%, 13%, 1);
+$primary-color: rgb(0, 0, 0);
+$secondary-color: rgb(255, 255, 255);
+$tertiary-color: rgb(246, 246, 246);
+$quaternary-color: rgb(186, 218, 85);
+$quinary-color: rgb(74, 144, 226);
+$primary-background-color: $alto;
+$primary-font: Roboto;
+$primary-font-color: $swamp;
+$primary-font-size: 10px;
+$primary-box-shadow: 0 4px 6px -6px $mine-shaft;
+$inset-border: hsla(0, 0%, 13%, 0.3);
+$header-background-color: $white;
+$primary-header-color: $swamp;
+$secondary-header-color: $mine-shaft;
+$image-background-color: $white;
+$primary-background: rgba($tertiary-color, 1);
+$primary-hover-background: rgba($quaternary-color, 1);
+$primary-active-background: rgba($quinary-color, 1);
+$primary-hover-border: darken(rgba($quaternary-color, 1), 23.5);
+$primary-active-border: darken(rgba($quinary-color, 1), 23.5);
+$basic-border: 1px solid;
+$primary-border: $basic-border darken(rgba($tertiary-color, 1), 23.5);
+// button component variables
+$button-padding: 3px 0;
+$button-pseudo-padding: 6px 10px;
+$button-before-border: $basic-border darken(rgba($tertiary-color, 1), 12);
+$button-after-border: $basic-border rgba($secondary-color, 1);
+$button-before-hover-border: $basic-border darken(rgba($quaternary-color, 1), 12);
+$button-after-hover-border: $basic-border lighten(rgba($quaternary-color, 1), 12);
+$button-before-active-border: $basic-border darken(rgba($quinary-color, 1), 12);
+$button-after-active-border: $basic-border lighten(rgba($quinary-color, 1), 12);
+$button-height: 50px;
+$button-radius: 6px;
+$button-text-width: 190px;
+$button-emoji: 24px;
+$button-text-shadow: 1px 1px 3px rgba($primary-color, 0.5);
+// progress bar component variables
+$progress-width: 100%;
+$progress-height: 40px;
+$progress-radius: 2px;
+// uploader component variables
+$uploader-padding: 0.3em 1em 0.3em 0;
+// mixins
+@mixin progress-bar {
+    background-image: linear-gradient( -45deg, transparent 33%, rgba($primary-color, 0.1) 33%, rgba($primary-color, 0.1) 66%, transparent 66%), linear-gradient(to top, rgba($secondary-color, 0.25), rgba($primary-color, 0.25)), linear-gradient(to left, $quaternary-color, $quinary-color);
+    background-size: 70px 40px, 100% 100%, 100% 100%;
+    border-radius: $progress-radius;
+}
