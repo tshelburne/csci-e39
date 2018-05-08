@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
 
 import {BasicButton, UploadButton} from './components/button.jsx.js'
+import {Card} from './components/card.jsx.js'
 
 class PatternLibrary extends React.Component {
 
@@ -24,16 +25,16 @@ class PatternLibrary extends React.Component {
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
 				
-				<Example title="My <BasicButton /> " >
+				<Example title="<BasicButton /> " >
 					<BasicButton label="basic button" onClick={() => alert("Click me to initiate activity")}/>
 				</Example>
 
-				<Example title="My <UploadButton />" >
+				<Example title="<UploadButton />" >
 					<UploadButton label="upload button" onClick={() => alert("Click me to upload a file")}/>
 				</Example>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
+				<Example title="<Card />">
+					<Card  altText="Sample" title="Card Sample Title" descriptiveText="Stretch out with your feelings. You see, you can do it. I call it luck. In my experience, there's no such thing as luck. Look, going good against remotes is one thing. Going good against the living? That's something else. Looks like we're coming up on Alderaan. You know, I did feel something. I could almost see the remote. That's good. You have taken your first step into a larger world." linkDestination="#" /> 
 				</Example>
 				
 				<Example title="My Special <span>">
