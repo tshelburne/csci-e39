@@ -1,12 +1,13 @@
 import React from 'react'
-import CompletedFile from './completedFile.jsx'
+import CompletedFiles from './completedFiles.jsx'
 
 
-const CompletedFiles = ({completedFiles}) => {
-	return <div className="completedFiles">
-				<ul className="cf-ul">
-					{completedFile.map( (file) => 
-						<CompletedFile key={file.id} file={file} />
+const CompletedFilesList = ({completedFilesList}) => {
+	return <div className="completedFilesContainer">
+			<h2>Completed</h2>
+				<ul className="completedFilesUL">
+					{completedFilesList.map( (file) => 
+						<CompletedFiles key={file.id} file={file} />
 					)}
 				</ul>
 		</div>
