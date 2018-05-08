@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
 
+import {BasicButton, UploadButton} from './components/button.jsx.js'
+
 class PatternLibrary extends React.Component {
 
 	constructor(...args) {
@@ -21,6 +23,14 @@ class PatternLibrary extends React.Component {
 		return (
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
+				
+				<Example title="My <BasicButton /> " >
+					<BasicButton label="basic button" onClick={() => alert("Click me to initiate activity")}/>
+				</Example>
+
+				<Example title="My <UploadButton />" >
+					<UploadButton label="upload button" onClick={() => alert("Click me to upload a file")}/>
+				</Example>
 
 				<Example title="My Special <div>">
 					<div className="just-testing">HELLO DIV</div>
