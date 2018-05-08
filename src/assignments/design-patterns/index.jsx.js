@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
+import Button from './support/button.jsx'
 
 class PatternLibrary extends React.Component {
 
@@ -25,14 +26,8 @@ class PatternLibrary extends React.Component {
 				<Example title="My Special <div>">
 					<div className="just-testing">HELLO DIV</div>
 				</Example>
-				
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
-				</Example>
 
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
-				</Example>
+				<Button></Button>
 			</div>
 		)
 	}

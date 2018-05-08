@@ -2,24 +2,27 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
 export default class Toggle extends Component {
-
-	static defaultProps = {
-	    model: {
-	      id: 0
-	    },
-	    color: 'white'
-	}
-
-
 	render() {
 	    const {
 	      model,
 	      color
 	    } = this.props
 	    return ( 
-	      <Button 
-	        onClick={this.handleClick}>
-	      </Button>
+	      <div className="toggle">
+	      	<div className="toggle-option">
+	      		<input type="radio" />
+	      	</div>
+	      </div>
 	    )
 	}
+}
+
+Toggle.propTypes = {
+    color: string,
+    options: PropTypes.object
+}
+
+Toggle.defaultProps = {
+    color: 'white',
+    amount: 2
 }
