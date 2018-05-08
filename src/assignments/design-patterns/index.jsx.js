@@ -34,7 +34,7 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="<Card />">
-					<Card  altText="Sample" title="Card Sample Title" descriptiveText="Stretch out with your feelings. You see, you can do it. I call it luck. In my experience, there's no such thing as luck. Look, going good against remotes is one thing. Going good against the living? That's something else. Looks like we're coming up on Alderaan. You know, I did feel something. I could almost see the remote. That's good. You have taken your first step into a larger world." linkDestination="#" /> 
+					<Card  altText="Sample" title="Card Sample Title" descriptiveText="Stretch out with your feelings. You see, you can do it. I call it luck. In my experience, there's no such thing as luck. Look, going good against remotes is one thing. Going good against the living? That's something else. Looks like we're coming up on Alderaan. You know, I did feel something. I could almost see the remote. That's good. You have taken your first step into a larger world." linkDestination="https://reactjs.org" /> 
 				</Example>
 				
 				<Example title="My Special <span>">

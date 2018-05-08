@@ -28,9 +28,11 @@
     width: 67%;
     padding-left: 2%;
 
-    h3 { color: darken($primary-color, 15%)}
+    .cardTitle { color: darken($primary-color, 15%)}
 
     p { color: black;}
+
+    a, a:link, a:visited { color: $primary-color; text-decoration: none; }
+    a:hover, a:active { color: darken($primary-color, 70%); border-bottom: 1px solid $primary-color; }
   } 
 }
-
