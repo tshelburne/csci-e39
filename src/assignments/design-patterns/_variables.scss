@@ -1,0 +1,29 @@
+$primary-color: hsl(252, 19%, 63%);
+$accent-color: hsl(348, 83%, 47%);
+$secondary-color: hsl(120, 60%, 35%);
+$blue-color: hsl(232, 41%, 56%);
+
+
+$brand-color: darkblue;
+$brand-section-color: white;
+$brand-text-color: #222;
+
+$react-accent: #61dafb;
+$react-background: #292c34;
+
+$breakpoint: 768px;
+$font-heading: 'Permanent Marker', sans-serif;
+$font-default: 'Oswald', sans-serif;
+
+
+
+
+$progress-repeat: repeating-linear-gradient(
+	135deg,
+	transparent,
+	transparent 5px,
+	5px,
+	$accent-color 15px
+);
+
+$dynamic-size: 1em;

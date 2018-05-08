@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
+import {PrimaryButton, DefaultButton} from './support/components/button.jsx'
+import Progress from './support/components/progressbar.jsx'
+import Card from './support/components/card.jsx'
+import Changer from './support/components/changer.jsx'
 
 class PatternLibrary extends React.Component {
 
@@ -21,17 +25,20 @@ class PatternLibrary extends React.Component {
 		return (
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
-
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
+				<Example title="Primary <button>">
+					<PrimaryButton label="this is a primary button" onClick={() => alert('SUCCESS!')} />
 				</Example>
-				
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
+				<Example title="Default button <button>">
+					<DefaultButton label="this is a default button" onClick={() => alert('SUCCESS!')} />
 				</Example>
-
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
+				<Example title="Progressbar <progress>">
+					<Progress value="35" extraClass="simple"/>
+				</Example>
+				<Example title="Card <card>">
+					<Card imageLink="source.unsplash.com" imageSize="300x400" imageCategory="food" className="thumbnail" altText="sample image"/>
+				</Example>
+				<Example title="Three things play together (type in to change image category ex:food, people, nature, crazy)">
+					<Changer/>
 				</Example>
 			</div>
 		)

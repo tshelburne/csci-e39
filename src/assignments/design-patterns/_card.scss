@@ -1,0 +1,11 @@
+.thumbnail {
+	max-width: 100%;
+	vertical-align: middle;
+    width: 250px;
+    height: 250px;
+	object-fit: cover;
+    transition: 0.4s;
+    border: 5px $accent-color solid;
+    background-color: $accent-color;
+    border-radius: 10px;
+    }
