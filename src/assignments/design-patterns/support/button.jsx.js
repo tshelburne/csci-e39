@@ -1,7 +1,23 @@
 import React, { Component } from 'react'
-import { string, object } from 'prop-types'
+import PropTypes from 'prop-types'
 
 export default class Button extends Component {
+	constructor(...args) {
+		super(...args)
+		this.state = {
+			active: false
+		}
+
+		this.handleClick = this.handleClick.bind(this);
+	}
+
+	handleClick() {
+
+		console.log(this.state);
+		this.setState(prevState => ({
+		  active: !prevState.active
+		}))
+	}
 
 	render() {
 	    const {
@@ -10,15 +26,15 @@ export default class Button extends Component {
 	    } = this.props
 	    return ( 
 	      <button 
+	      	className={this.props.color + " tr-button " + (this.state.active ? 'active' : 'not-active')}
 	        onClick={this.handleClick}>
-	        Test
 	      </button>
 	    )
 	}
 }
 
 Button.propTypes = {
-    color: string
+    color: PropTypes.oneOf(['white', 'yellow', 'orange', 'red']),
 }
 
 Button.defaultProps = {

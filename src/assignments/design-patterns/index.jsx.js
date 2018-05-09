@@ -27,7 +27,10 @@ class PatternLibrary extends React.Component {
 					<div className="just-testing">HELLO DIV</div>
 				</Example>
 
-				<Button></Button>
+				<Button color="red"></Button>
+				<Button color="orange"></Button>
+				<Button color="yellow"></Button>
+				<Button color="white"></Button>
 			</div>
 		)
 	}
