@@ -1,0 +1,47 @@
+@import '../support/vars';
+
+form.toggle {
+  width: 120px;
+  height: 35px;
+  background: #333;
+  margin: 20px auto;
+  position: relative;
+  border-radius: 50px;
+  &:after {
+    content: 'SHOW';
+    color: $blue-accent;
+    position: absolute;
+    right: 15px;
+    top: 9px;
+    font-family: $font-stack;
+    z-index: 0;
+  }
+  &:before {
+    content: 'HIDE';
+    color: $pink-accent;
+    position: absolute;
+    left: 15px;
+    top: 9px;
+    font-family: $font-stack;
+    z-index: 0;
+  }
+  label {
+    display: block;
+    width: 52px;
+    height: 29px;
+    cursor: pointer;
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    z-index: 1;
+    background: $blue-accent;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+  }
+  input {
+    visibility: hidden;
+    &:checked + label {
+      transform: translateX(62px);
+    }
+  }
+}
