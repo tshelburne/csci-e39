@@ -21,16 +21,16 @@ const Example = ({title, description, tags, children}, context) => (
 		<h3 className="example--subtitle">Code Examples:</h3>
 		<div className="example--toggles">
 			<button
-				onClick={() => context.setActiveCode(`html`)}
-				className={context.activeCode === `html` ? `active` : ``}
-			>
-				HTML
-			</button>
-			<button
 				onClick={() => context.setActiveCode(`react`)}
 				className={context.activeCode === `react` ? `active` : ``}
 			>
 				React
+			</button>
+			<button
+				onClick={() => context.setActiveCode(`html`)}
+				className={context.activeCode === `html` ? `active` : ``}
+			>
+				HTML
 			</button>
 			<button
 				onClick={() => context.setActiveCode(`off`)}

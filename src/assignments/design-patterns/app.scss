@@ -49,19 +49,26 @@
     align-items: stretch;
 
 		button{
+			font: 700 13px 'Source Sans Pro';
+	 		letter-spacing: .2em;
+	 		text-transform: uppercase;
 			border: 0;
-			background: none;
-			border: 1px solid $gray-light;
+			background: #999;
+			color:$white;
+			margin-right: 5px;
+			padding: 10px 20px;
 		}
 
 		.active {
-			border-bottom: 5px solid $gray-dark;
+			color: $gray-dark;
+			background: $gray-lighter;
+			border-top: 5px solid $gray-dark;
 		}
 	}
 
 	.example--code {
 		padding: $padding-sm;
-		background: #F9F9F9;
+		background: $gray-lighter;
 		border: 1px solid #F5F5F5;
 		overflow: scroll;
 	}

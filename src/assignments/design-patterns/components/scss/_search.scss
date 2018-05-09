@@ -1,0 +1,21 @@
+.search{
+	input[type='text']{
+		border: 1px solid $gray-light;
+		padding: 10px;
+		font: 400 16px 'Source Sans Pro';
+	}
+	button{
+		font: 700 13px 'Source Sans Pro';
+		letter-spacing: .2em;
+		text-transform: uppercase;
+		border: 0;
+		background: $primary;
+		color: $white;
+		padding: 12px 15px;
+		margin-left: 5px;
+
+		&:hover{
+			background: $secondary;
+		}
+	}
+}

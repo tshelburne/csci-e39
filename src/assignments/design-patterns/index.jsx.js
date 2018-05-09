@@ -1,11 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
+import {InfoMessage, AlertMessage, ErrorMessage, SuccessMessage} from './components/messages.jsx'
 import {Button, GhostButton} from './components/button.jsx'
 import {Image} from './components/image.jsx'
 import {Card} from './components/card.jsx'
-import {InfoMessage, AlertMessage, ErrorMessage, SuccessMessage} from './components/messages.jsx'
 import {Banner} from './components/banner.jsx'
+import {Search} from './components/search.jsx'
+import {TagDefault, TagFeatured, TagNew} from './components/tags.jsx'
 
 class PatternLibrary extends React.Component {
 
@@ -37,7 +39,7 @@ class PatternLibrary extends React.Component {
 					<ErrorMessage message="This is an error message." />
 				</Example>
 
-				<Example title="Buttons" description="Two button types are generated: a default button with props for the link text and redirecting url of the button, plus a ghost button that has the same functionality, with has the transparent background and stroke treatment of a ghost button." tags="<Button>, <GhostButton>">
+				<Example title="Buttons" description="Two button types are generated: a default button with props for the link text and redirecting url of the button, plus a ghost button with the transparent background and stroke treatment of a ghost button." tags="<Button>, <GhostButton>">
 					<Button linkText="Default Button" url='http://google.com' />
 					<GhostButton linkText="Ghost Button" url='http://google.com' />
 				</Example>
@@ -56,6 +58,16 @@ class PatternLibrary extends React.Component {
 
 				<Example title="Banner" description="A full width banner section with a heading, paragraph, and call to action. You can edit the title, body text and background image." tags="<Banner>">
 					<Banner title="Banner Title" body="This is a paragraph inside of a banner." />
+				</Example>
+
+				<Example title="Search Bar" description="A single search bar with a search button." tags="<Search>">
+					<Search placeholder='search the site...' btnText='Search' />
+				</Example>
+
+				<Example title="Tags" description="This component can be used to tag blog posts, cards, messages, and more as default, featured, and new." tags="<TagDefault>, <TagFeatured>, <TagNew>">
+					<TagDefault tag='Default Tag'/>
+					<TagFeatured tag='Featured Tag'/>
+					<TagNew tag='New Tag'/>
 				</Example>
 			</div>
 		)
