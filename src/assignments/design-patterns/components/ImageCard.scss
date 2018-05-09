@@ -5,9 +5,11 @@ figure {
     max-width: 100%;
   }
 
-  figcaption p {
-    font-size: 2em;
-    font-weight: 900;
-    margin: $margin;
+  figcaption {
+    overflow: hidden;
+    p {
+      font-weight: 900;
+      margin: $margin;
+    }
   }
 }
