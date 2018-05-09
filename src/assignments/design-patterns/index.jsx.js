@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Example from './support/example.jsx'
+import Pattern from './support/pattern.jsx'
+
+import {PrimaryButton, SecondaryButton} from './support/button.jsx'
 
 class PatternLibrary extends React.Component {
 
@@ -20,19 +22,20 @@ class PatternLibrary extends React.Component {
 	render() {
 		return (
 			<div className="style-guide">
-				<h1>My Pattern Library!</h1>
+				<h1>Living Style Guide</h1>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
-				</Example>
+				<Pattern title="<Button /> component with multiple versions">
+					<PrimaryButton label="Primary Button" onClick={() => alert('Primary Button')} />
+					<SecondaryButton label="Secondary Button" onClick={() => alert('Secondary Button')} />
+				</Pattern>
 				
-				<Example title="My Special <span>">
+				<Pattern title="My Special <span>">
 					<span className="just-testing">HELLO SPAN</span>
-				</Example>
+				</Pattern>
 
-				<Example title="My Special <h4>">
+				<Pattern title="My Special <h4>">
 					<h4 className="just-testing">HELLO HEADING</h4>
-				</Example>
+				</Pattern>
 			</div>
 		)
 	}

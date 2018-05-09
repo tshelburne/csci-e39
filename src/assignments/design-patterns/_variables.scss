@@ -1,0 +1,59 @@
+/* Variables and mixins */
+
+// color variables
+$primary-font: "Poppins", Helvetica, Arial, sans-serif;
+$black: hsla(0, 0%, 0%, 1);
+$white: hsla(0, 0%, 100%, 1);
+$primary-color: hsla(0, 0%, 15%, 1); //lighten($primary-color, 10) = new lightness is 25%;
+$secondary-color: hsla(0, 0%, 95%, 1);
+$tertiary-color: hsla(110, 40%, 50%, 1);
+$quaternary-color: hsla(0, 0%, 5%, 1);
+$quinary-color: hsla(0, 0%, 50%, 1);
+
+$primary-hover-color: hsla(0, 0%, 5%, 1);
+$primary-active-color: hsla(0, 0%, 95%, 1);
+$secondary-hover-color: hsla(0, 0%, 100%, 1);
+$secondary-active-color: hsla(0, 0%, 15%, 1);
+$tertiary-hover-color: hsla(110, 30%, 50%, 1);
+
+$primary-border: 1px solid hsla(0, 0%, 0%, 1);
+$secondary-border: 1px solid hsla(0, 0%, 100%, 1);
+$tertiary-border: 1px solid hsla(0, 0%, 50%, 1);
+
+// primary button component variables
+$button-size: 1.2rem;
+$button-spacing: 0rem;
+$button-case: initial;
+$button-height: 1rem;
+$button-width: 11rem;
+$button-padding: 1rem 2rem;
+$button-margin: 0.4rem;
+$button-radius: 0.25rem;
+$button-transition: all 0.3s;
+$button-border: none;
+$button-text-align: center;
+
+// secondary button component variables
+$uploader-size: 1.2rem;
+$uploader-spacing: 0rem;
+$uploader-case: initial;
+$uploader-height: 1rem;
+$uploader-width: 11rem;
+$uploader-padding: 1rem 2rem;
+$uploader-margin: 0.4rem;
+$uploader-radius: 0.25rem;
+$uploader-transition: all 0.3s;
+$uploader-border: none;
+$uploader-text-align: center;
+
+// mixins
+@mixin box-shadow {
+	-moz-box-shadow: inset 0 0 0.2rem $primary-color;
+	-webkit-box-shadow: inset 0 0 0.2rem $primary-color;
+	box-shadow: inset 0 0 0.2rem $primary-color;
+}
+@mixin progress-shadow {
+	-moz-box-shadow: inset 0 0.1rem 0.25rem hsla(0, 0, 0, 0.25);
+	-webkit-box-shadow: inset 0 0.1rem 0.25rem hsla(0, 0, 0, 0.25);
+	box-shadow: inset 0 0.1rem 0.25rem hsla(0, 0, 0, 0.25);
+}
