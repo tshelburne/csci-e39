@@ -14,17 +14,18 @@ class Toggle extends React.Component {
 
    render() {
      return (
-       <form>
-         <label htmlFor="bear-toggle">
+       <div>
+         <p>If you are scared of bears, use the toggle to hide bears from the list.</p>
+         <form className="toggle">
            <input
-             id="bear-toggle"
-             type="checkbox"
-             checked={this.props.hideBear}
-             onClick={this.handleBearToggle}
-           />
-           I'm scared of bears please don't show them to me.
-         </label>
-       </form>
+               id="bear-toggle"
+               type="checkbox"
+               checked={this.props.hideBear}
+               onClick={this.handleBearToggle}
+             />
+           <label htmlFor="bear-toggle"></label>
+         </form>
+       </div>
      );
    }
  }

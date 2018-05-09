@@ -3,7 +3,7 @@
 .card {
   border-radius: 0px 30px 0px 30px;
   padding: $padding;
-  width: 240px;
+  width: $card-width;
   background: #fafafa;
 
   h2 {
