@@ -23,9 +23,9 @@ class PatternLibrary extends React.Component {
 	getModalBody() {
 		return (
 			<MyForm>
-				<PhoneInput PhoneType="Home"/>
-				<PhoneInput PhoneType="Work"/>
-				<PhoneInput PhoneType="Cell"/>
+				<PhoneInput phoneType="Home"/>
+				<PhoneInput phoneType="Work"/>
+				<PhoneInput phoneType="Cell"/>
 			</MyForm>
 		)
 	}
@@ -41,15 +41,15 @@ class PatternLibrary extends React.Component {
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
 
-				<Example title="Form Inputs">
-					<PhoneInput PhoneType="Home"/>
-					<AddressInput AddressLabel="Street Address"/>
+				<Example title="<FormInput />">
+					<PhoneInput phoneType="Home"/>
+					<AddressInput addressLabel="Street Address"/>
 				</Example>				
 
 				<Example title="<MyForm />">
 					<MyForm>
-						<PhoneInput PhoneType="Home"/>
-						<AddressInput AddressLabel="Street Address"/>
+						<PhoneInput phoneType="Cell"/>
+						<AddressInput addressLabel="Street Address"/>
 					</MyForm>
 				</Example>
 

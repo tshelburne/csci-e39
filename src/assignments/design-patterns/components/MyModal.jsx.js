@@ -1,11 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 class MyModal extends React.Component {
 	constructor(props) {
 		super(props)
-
-		// this.state = {activeCode: `react`}
 	}
 
 	render() {

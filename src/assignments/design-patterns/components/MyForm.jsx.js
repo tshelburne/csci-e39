@@ -1,7 +1,4 @@
-
 import React from 'react'
-import PropTypes from 'prop-types'
-
 
 export const MyForm = ({children, ...props}) => {
 	return (
@@ -11,22 +8,22 @@ export const MyForm = ({children, ...props}) => {
 	)
 }
 
-const FormInput = ({FormLabel, placeholder}) => {
+const FormInput = ({formLabel, placeholder}) => {
 	return (
 		<div className="form-input-wrapper">
-			<label className="form-input-label">{FormLabel}</label><input className="form-input" type="text" placeholder={placeholder.toLowerCase()} />
+			<label className="form-input-label">{formLabel}</label><input className="form-input" type="text" placeholder={placeholder.toLowerCase()} />
 		</div>
 	)
 }
 
-export const AddressInput = ({AddressLabel}) => {
+export const AddressInput = ({addressLabel}) => {
 	return (
-		<FormInput FormLabel={AddressLabel} placeholder={AddressLabel}/>
+		<FormInput formLabel={addressLabel} placeholder={addressLabel}/>
 	)
 }
 
-export const PhoneInput = ({PhoneType}) => {
+export const PhoneInput = ({phoneType}) => {
 	return (
-		<FormInput FormLabel={`${PhoneType} Phone`} placeholder={`${PhoneType} phone`}/>
+		<FormInput formLabel={`${phoneType} Phone`} placeholder={`${phoneType} phone`}/>
 	)
 }
