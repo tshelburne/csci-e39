@@ -20,6 +20,7 @@ class PatternLibrary extends React.Component {
 	}
 
 	render() {
+
 		return (
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
@@ -33,13 +34,13 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="Filterable Gallery">
-					<FilterableAnimalGallery animals={[
-						{name: "Little Paws", image: "https://placekitten.com/200/200", text: "This is a really great cat.", species: "kitten"},
-						{name: "Big Claws", image: "https://placebear.com/200/200", text: "This bear is often sleepy.", species: "bear"},
-						{name: "Fuzzy", image: "https://placebear.com/200/200", text: "What a majestic creature.", species: "bear"},
-						{name: "Mr. Fun", image: "https://placebear.com/200/200", text: "Nothing much to say about this one, pretty boring.", species: "bear"},
-						{name: "Fluffy", image: "https://placekitten.com/200/200", text: "Hobbies include fishing and painting watercolors.", species: "kitten"},
-					]} />
+					<FilterableAnimalGallery animals = {[
+								{name: "Little Paws", image: "https://placekitten.com/200/200", text: "This is a really great cat.", species: "kitten"},
+								{name: "Big Claws", image: "https://placebear.com/200/200", text: "This bear is often sleepy.", species: "bear"},
+								{name: "Fuzzy", image: "https://placebear.com/200/200", text: "What a majestic creature.", species: "bear"},
+								{name: "Mr. Fun", image: "https://placebear.com/200/200", text: "Nothing much to say about this one, pretty boring.", species: "bear"},
+								{name: "Fluffy", image: "https://placekitten.com/200/200", text: "Hobbies include fishing and painting watercolors.", species: "kitten"},
+							]} />
 				</Example>
 			</div>
 		)

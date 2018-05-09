@@ -1,5 +1,6 @@
 import React from 'react'
 import {Card} from './card.jsx'
+import PropTypes from 'prop-types'
 
 class AnimalGallery extends React.Component {
   render() {
@@ -27,6 +28,11 @@ class AnimalGallery extends React.Component {
       </ul>
     )
   }
+}
+
+AnimalGallery.propTypes = {
+  animals: PropTypes.array.isRequired,
+  hideBear: PropTypes.bool,
 }
 
 export default AnimalGallery

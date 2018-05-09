@@ -1,6 +1,7 @@
 import React from 'react'
 import Toggle from './toggle.jsx'
 import AnimalGallery from './animal-gallery.jsx'
+import PropTypes from 'prop-types'
 
 class FilterableAnimalGallery extends React.Component {
   constructor(props) {
@@ -32,6 +33,10 @@ class FilterableAnimalGallery extends React.Component {
       </div>
     );
   }
+}
+
+FilterableAnimalGallery.propTypes = {
+  animals: PropTypes.array.isRequired,
 }
 
 export default FilterableAnimalGallery

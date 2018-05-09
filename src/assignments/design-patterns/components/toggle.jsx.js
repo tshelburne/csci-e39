@@ -30,4 +30,9 @@ class Toggle extends React.Component {
    }
  }
 
+Toggle.propTypes = {
+   onBearToggleChange: PropTypes.func,
+   hideBear: PropTypes.bool,
+}
+
 export default Toggle
