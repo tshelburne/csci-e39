@@ -1,43 +1,41 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
+import CompletedFilesList from "./components/completedFilesList.jsx";
+import PendingFilesList from "./components/pendingFilesList.jsx";
+import Faq from "./components/faq.jsx";
+import PhotoAlbum from "./components/photoAlbum.jsx";
 
 const Uploads = ({uploads, actions}) => {
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
+	const pendingFilesList = uploads.files.filter(({progress}) => progress && progress < 100)
+	const completedFilesList = uploads.files.filter(({progress}) => !progress)
 
-	return <div>
-		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
+	return <div className="pageWrapper">
+			<div  className="header">
+				<h1>Upload Images</h1>
+			</div>
+			<div className="photoAlbumContainer">	
+				<PhotoAlbum album={PHOTOALBUM} />
+			</div>
+			<p>Meet Kobe! What feels like my first born son! This album provides you a glimpse of the life of Kobe.</p>
+			{/* do not delete this uploader component */}
+			<label className="uploader">Upload Image
+				<Uploader  upload={actions.upload} />
+			</label>
+			{/* do not delete this uploader component */}
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
+			<PendingFilesList pendingFilesList={pendingFilesList} />
 
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
+			<CompletedFilesList completedFilesList={completedFilesList} />
+			<br />
+			<Faq />
+			<div className="footer">
+				<p>Footer</p>
+			</div>
 	</div>
 }
+
+
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
@@ -59,5 +57,32 @@ Uploads.propTypes = {
 	}).isRequired,
 	actions: PropTypes.object.isRequired,
 }
+
+const PHOTOALBUM = [
+	{
+		id: "1",
+		imageUrl: "http://fillmurray.com/g/200/300",
+    	imageAltText: "photo1",
+    	copy:"photo1",
+	},
+	{
+		id: "2",
+		imageUrl: "http://fillmurray.com/g/200/300",
+    	imageAltText: "photo2",
+    	copy:"photo2",
+	},
+	{
+		id: "3",
+		imageUrl: "http://fillmurray.com/g/200/300",
+    	imageAltText: "photo3",
+    	copy:"photo3",
+	},
+	{
+		id: "4",
+		imageUrl: "http://fillmurray.com/g/200/300",
+    	imageAltText: "photo4",
+    	copy:"photo4",
+	},
+];
 
 export default Uploads
