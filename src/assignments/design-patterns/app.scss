@@ -1,7 +1,56 @@
+@import 'normalize';
+@import "./defs";
+@import "./component";
+
 @import 'pattern-library';
 
-$padding: 20px;
-$margin: 10px;
+:root, body, html {
+	margin: 0;
+	padding: 0;
+	font: $primary-font;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+}
+
+#app {
+	flex: 1;
+	display: flex;
+}
+
+.component {
+	background: $primary-color;
+	color: $primary-text-color;
+	font: $primary-font;
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	li {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+figure, figcaption {
+	margin: 0;
+	padding: 0;
+}
+
+.flex {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.hidden { display: none }
+
 
 .style-guide {
 	width: 90%;
@@ -38,3 +87,5 @@ $margin: 10px;
 		border: thin dotted #ccc;
 	}
 }
+
+.memory-pair-bounds { width: 480px; height: 480px }

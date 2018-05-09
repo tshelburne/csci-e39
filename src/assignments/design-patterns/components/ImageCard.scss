@@ -1,0 +1,15 @@
+@import '../defs';
+
+figure {
+  img {
+    max-width: 100%;
+  }
+
+  figcaption {
+    overflow: hidden;
+    p {
+      font-weight: 900;
+      margin: $margin;
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@import "../defs";
+
+/*
+animation with help from:
+  https://3dtransforms.desandro.com/card-flip
+ */
+
+.MemoryPair.component {
+  flex: 1;
+  align-self: stretch;
+  background: rgba(0,0,0,0);
+  perspective: 1000px;
+  margin: 0;
+  padding: 0;
+
+  &::before { // idea comes from: https://css-tricks.com/aspect-ratios-grid-items/
+    content: "";
+    display: inline-block;
+    width: 1px;
+    height: 0;
+  }
+
+  * {
+    -moz-user-select: none;
+    user-select: none
+  }
+
+  .memory-pair--control {
+    flex: 1;
+    align-self: stretch;
+    cursor: pointer;
+    &:not(.hidden) {
+      display: flex;
+    }
+  }
+
+  .card-transition {
+    background: $primary-color;
+    flex: 1;
+    align-self: stretch;
+    position: relative;
+    transition: transform 1s;
+    transform-style: preserve-3d;
+  }
+
+  .card {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+  }
+
+  .back-face, .face-up {
+    transform: rotateY(180deg)
+  }
+}

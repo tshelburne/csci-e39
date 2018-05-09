@@ -1,0 +1,26 @@
+@import "./defs";
+
+.component {
+  color: $primary-text-color;
+  font: $primary-font;
+  padding: $padding;
+}
+
+div.component {
+  background: $primary-color;
+}
+
+span.component {
+  font: $secondary-font;
+}
+
+h1,h2,h3,h4 {
+  &.component {
+    font-weight: 900;
+    margin: $margin;
+  }
+}
+h1.component { font-size: 3em; }
+h2.component { font-size: 2em; }
+h3.component { font-size: 1.5em; }
+h4.component { font-size: 1.25em; }
