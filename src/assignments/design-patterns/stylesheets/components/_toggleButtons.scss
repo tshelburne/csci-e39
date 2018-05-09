@@ -16,31 +16,30 @@
 		padding: $padding-xs;
 
 		> span {
-			padding: 3px $padding-xs 2px;
-		}
-
-		:first-child {
-			background-color: $button-background;
 			border-radius: $radii;
-			color: $button-color;
-			margin-right: $margin-sm;
-		}
-		:last-child {
-			background-color: $button-color;
-			color: $button-background;
+			padding: 3px $padding-xs 2px;
+
+			&:first-child {
+				background-color: $button-background;
+				color: $button-color;
+				margin-right: $margin-sm;
+			}
+			&:last-child {
+				background-color: $button-color;
+				color: $button-background;
+			}
 		}
 	}
 
 	// second is active
 	&.toggle2nd {
-		& > button {
-			:first-child {
+		& > button > span {
+			&:first-child {
 				background-color: $button-color;
 				color: $button-background;
 			}
-			:last-child {
+			&:last-child {
 				background-color: $button-background;
-				border-radius: $radii;
 				color: $button-color;
 			}
 		}
