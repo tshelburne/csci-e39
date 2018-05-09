@@ -57,7 +57,7 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="Banner" description="A full width banner section with a heading, paragraph, and call to action. You can edit the title, body text and background image." tags="<Banner>">
-					<Banner title="Banner Title" body="This is a paragraph inside of a banner." />
+					<Banner title="Banner Title" body="This is a paragraph inside of a banner." backgroundImg='http://www.leisyvidal.com/img/home1.jpg'/>
 				</Example>
 
 				<Example title="Search Bar" description="A single search bar with a search button." tags="<Search>">

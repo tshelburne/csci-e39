@@ -1,13 +1,12 @@
 import React from 'react'
 
-const UIBanner = ({title, body, buttonText, buttonUrl, background}) =>
-	<section className='banner'>
+const UIBanner = ({title, body, backgroundImg}) =>
+	<section className='banner' style={{background: "linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.55)), url(" + backgroundImg + ") center no-repeat, #131418", backgroundSize: 'cover'}}>
 		<h2>{title}</h2>
 		<p>{body}</p>
-		<a href="{buttonUrl}">{buttonText}</a>
 	</section>
 
-export const Banner = ({title, body, buttonText, buttonUrl, backgroundImage}) =>
-	<UIBanner title={title} body={body} buttonText={buttonText} buttonUrl={buttonUrl} style={{background: backgroundImage}}></UIBanner>
+export const Banner = ({title, body, backgroundImg}) =>
+	<UIBanner title={title} body={body} backgroundImg={backgroundImg}></UIBanner>
 
 Banner.displayName = 'Banner'
