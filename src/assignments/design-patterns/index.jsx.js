@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Pattern from './support/pattern.jsx'
 
 import {PrimaryButton, SecondaryButton} from './support/button.jsx'
+import Image from './support/Image.jsx'
 
 class PatternLibrary extends React.Component {
 
@@ -24,13 +25,13 @@ class PatternLibrary extends React.Component {
 			<div className="style-guide">
 				<h1>Living Style Guide</h1>
 
-				<Pattern title="<Button /> component with multiple versions">
+				<Pattern title="<Button /> component with versions">
 					<PrimaryButton label="Primary Button" onClick={() => alert('Primary Button')} />
 					<SecondaryButton label="Secondary Button" onClick={() => alert('Secondary Button')} />
 				</Pattern>
 				
-				<Pattern title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
+				<Pattern title="<Image /> component with properties">
+		        	<Image onClick={()=> {window.open('https://cdn.pbrd.co/images/HhcxXlT.jpg','_blank')} } file= {{id: 1, name: 'Mt.jpg', url: 'https://cdn.pbrd.co/images/Hh2cnaR.jpg', error: false,}}/>
 				</Pattern>
 
 				<Pattern title="My Special <h4>">
