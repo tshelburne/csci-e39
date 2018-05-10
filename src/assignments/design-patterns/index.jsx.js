@@ -11,7 +11,7 @@ class PatternLibrary extends React.Component {
 		super(...args)
 
 		this.state = {activeCode: `react`,
-			buttonState: true
+			buttonState: false
 		}
 	}
 

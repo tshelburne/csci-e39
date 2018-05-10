@@ -1,7 +1,18 @@
+$tgl-btn-background-color: $button-color;
+$tgl-btn-border-color: $button-background;
+$tgl-btn-border-radius: $radii;
+$tgl-btn-padding: $padding-xs;
+$tgl-btn-label-padding: $padding-sm;
+$tgl-btn-span-radius: $radii;
+$tgl-btn-span-padding: $padding-xs;
+$tgl-btn-span-background-color: $button-background;
+$tgl-btn-span-color: $button-color;
+$tgl-btn-span-margin: $margin-sm;
+
 .toggleButton {
 	.toggleButtonLabel {
 		font-weight: bold;
-		padding-right: $padding-sm;
+		padding-right: $tgl-btn-label-padding;
 
 		&::after {
 			content: ':';
@@ -9,24 +20,24 @@
 	}
 
 	& > button {
-		background-color: $button-color;
-		border: 2px solid $button-background;
-		border-radius: $radii;
+		background-color: $tgl-btn-background-color;
+		border: 2px solid $tgl-btn-border-color;
+		border-radius: $tgl-btn-border-radius;
 		font-weight: bold;
-		padding: $padding-xs;
+		padding: $tgl-btn-padding;
 
 		> span {
-			border-radius: $radii;
-			padding: 3px $padding-xs 2px;
+			border-radius: $tgl-btn-span-radius;
+			padding: 3px $tgl-btn-span-padding 2px;
 
 			&:first-child {
-				background-color: $button-background;
-				color: $button-color;
-				margin-right: $margin-sm;
+				background-color: $tgl-btn-span-background-color;
+				color: $tgl-btn-span-color;
+				margin-right: $tgl-btn-span-margin;
 			}
 			&:last-child {
-				background-color: $button-color;
-				color: $button-background;
+				background-color: $tgl-btn-span-color;
+				color: $tgl-btn-span-background-color;
 			}
 		}
 	}
@@ -35,12 +46,12 @@
 	&.toggle2nd {
 		& > button > span {
 			&:first-child {
-				background-color: $button-color;
-				color: $button-background;
+				background-color: $tgl-btn-span-color;
+				color: $tgl-btn-span-background-color;
 			}
 			&:last-child {
-				background-color: $button-background;
-				color: $button-color;
+				background-color: $tgl-btn-span-background-color;
+				color: $tgl-btn-span-color;
 			}
 		}
 	}
