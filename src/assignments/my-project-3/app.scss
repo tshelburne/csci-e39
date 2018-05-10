@@ -1,0 +1,11 @@
+@import '../design-patterns/pattern-library';
+
+img {
+	max-height: 200px;
+	border: 2px solid orange;
+}
+
+ul, ol {
+	display: flex;
+	list-style-type: none;
+}
