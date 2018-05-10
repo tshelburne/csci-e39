@@ -10,6 +10,8 @@ $tgl-btn-span-color: $button-color;
 $tgl-btn-span-margin: $margin-sm;
 
 .toggleButton {
+	@extend %border-box;
+
 	.toggleButtonLabel {
 		font-weight: bold;
 		padding-right: $tgl-btn-label-padding;

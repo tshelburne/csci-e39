@@ -1,6 +1,8 @@
 $bioProfileList-gap: $margin-sm;
 
 .bioProfileList {
+	@extend %border-box;
+
 	.bioProfileList-ul {
 		display: flex;
 		flex-wrap: wrap;
