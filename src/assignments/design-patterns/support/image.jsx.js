@@ -5,7 +5,7 @@ const Image = ({openThisSite, file}) => {
 
   return (
   	<ul>
-	  	<li className="image" onClick={onClick}>
+	  	<li className="photo" onClick={openThisSite}>
 		  	<label>{name}</label>
 		    {!error && <img src={url} />}
 		    {!!error && <p className="failure">{error}</p>}

@@ -31,7 +31,7 @@ class PatternLibrary extends React.Component {
 				</Pattern>
 				
 				<Pattern title="<Image /> component with properties">
-		        	<Image onClick={()=> {window.open('https://cdn.pbrd.co/images/HhcxXlT.jpg','_blank')} } file= {{id: 1, name: 'Mt.jpg', url: 'https://cdn.pbrd.co/images/Hh2cnaR.jpg', error: false,}}/>
+		        	<Image openThisSite={()=> {window.open('https://cdn.pbrd.co/images/HhcxXlT.jpg','_blank')} } file= {{id: 1, name: 'Mt-Kosciuszko.jpg', url: 'https://cdn.pbrd.co/images/Hh2cnaR.jpg', error: false,}}/>
 				</Pattern>
 
 				<Pattern title="My Special <h4>">
@@ -48,3 +48,4 @@ PatternLibrary.childContextTypes = {
 }
 
 export default PatternLibrary
+
