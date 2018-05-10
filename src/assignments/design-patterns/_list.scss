@@ -1,0 +1,46 @@
+$hksred: rgb(189, 6, 40);
+.default-list {
+    list-style-type: none;
+    li {
+        position: relative;
+        div {
+            padding: 20px;
+            padding-top: 0;
+            &:before {
+                content: "";
+                position: absolute;
+                width: 14px;
+                height: 14px;
+                border-radius: 50%;
+                left: -7px;
+                top: 1px;
+                border: 2px solid $hksred;
+                background-color: $hksred;
+            }
+        }
+        &:before {
+            content: "";
+            position: absolute;
+            background: $hksred;
+            width: 3px;
+            top: -3px;
+            bottom: -3px;
+        }
+        &:first-child:before {
+            top: 14px;
+        }
+        &:last-child:before {
+            height: 0px;
+        }
+    }
+    &.ordered {
+        counter-reset: list-counter;
+        div::before {
+            counter-increment: list-counter;
+            content: counter(list-counter);
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+        }
+    }
+}

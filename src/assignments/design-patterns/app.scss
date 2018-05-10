@@ -1,40 +1,56 @@
 @import 'pattern-library';
-
+@import 'list';
+@import url('https://fonts.googleapis.com/css?family=Domine:400,700');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
 $padding: 20px;
 $margin: 10px;
+$bodyfont: "Domine",
+sans-serif;
+$hksred: rgb(189,
+6,
+40);
+body {
+	font-family: $bodyfont;
+}
 
-.style-guide {
+.style-guide main {
 	width: 90%;
 	max-width: 1024px;
 	margin: 0 auto;
+}
+
+.project-title {
+	width: 100%;
+	font-family: $bodyfont;
+	background-color: $hksred;
+	color: white;
+	padding: $padding;
+	padding-left: 50px;
+	margin-top: 0;
 }
 
 .example {
 	padding: $padding;
 	margin-bottom: $margin;
 	border: thin solid;
-
 	&:last-child {
 		margin-bottom: 0;
 	}
-
 	.example--rendered {
 		padding: $padding;
 		margin-bottom: $margin;
 		border: thin dotted #ccc;
 	}
-
 	.example--toggles {
 		margin-bottom: $margin;
-
 		.active {
 			background: pink;
 		}
 	}
-
 	.example--code {
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
+		overflow-y: auto;
 	}
 }
