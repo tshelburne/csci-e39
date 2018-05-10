@@ -1,0 +1,18 @@
+$colorFrame: green;
+.image {
+	margin: 0;
+	width: 100%;
+	border: 2px solid $colorFrame;
+	border-radius: 5px;
+	img {
+		width: 100%;
+		box-sizing: border-box;
+		padding: 10px;
+	}
+	figcaption {
+		background-color: $colorFrame;
+		color: white;
+		font: 10px/1.3em sans-serif;
+		padding: 10px;
+	}
+}

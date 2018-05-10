@@ -1,0 +1,27 @@
+$colorBtn: green;
+$colorBtnHover: white;
+$fontSmall: 1em;
+$fontMiddle: 1.2em;
+$fontLarge: 1.5em;
+.button {
+	font: 10px/1em sans-serif;
+	padding: .5em 1.5em;
+	margin-left: 10px;
+	background-color: white;
+	border-radius: 5px;
+	color: $colorBtn;
+	border: 2px solid $colorBtn;
+	&:hover {
+		color: white;
+		background-color: $colorBtn;
+	}
+	&.small {
+		font-size: $fontSmall;
+	}
+	&.middle {
+		font-size: $fontMiddle;
+	}
+	&.large {
+		font-size: $fontLarge;
+	}
+}

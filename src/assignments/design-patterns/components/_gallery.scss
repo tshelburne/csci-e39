@@ -1,0 +1,36 @@
+$galleryPadding: 30px;
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: $galleryPadding;
+	box-sizing: border-box;
+	padding-top: $galleryPadding;
+	list-style-type: none;
+	padding: $galleryPadding;
+	position: relative;
+	background-color: #efefef;
+	top: 3em;
+	margin: 0 0 3em 0;
+	li {
+		margin: 0;
+		padding: 0;
+	}
+	&:before{
+		position: absolute;
+		top: -3em;
+		left: 0;
+		padding: 1em;
+		width: 100%;
+	    content:attr(aria-label);
+	    font: bold 1em/1em sans-serif;
+	    white-space: nowrap; 
+    	overflow: hidden;
+		text-overflow:ellipsis;
+		background-color: black;
+		color: white;
+		box-sizing: border-box;
+	}
+}
+.line {
+	grid-template-columns: repeat(4, 1fr);
+}
