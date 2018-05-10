@@ -47,40 +47,32 @@ class Chat extends React.Component {
 
 	render() {
 		const {classroom, chat, actions} = this.props
-		const {colors} = this.state;
-		const {bgColor, textColor, wallColor} = colors
-		const borderColor = Color(textColor).lighten(0.42);
-		const randomGraphic = "https://picsum.photos/300/200/?image=";
-		const randomLink = "http://www.uroulette.com/visit/wvvvv";
+		const {currentText} = this.state
 
-		return <main style={{backgroundColor: bgColor, color: textColor}}>
-			<Header title="Chatroom" borderColor={borderColor} colors={colors} onChange={this.updateColors}  />
- 			<aside id="memberlist" style={{borderColor: borderColor}}>
-					<h2>Members</h2>
-					<List>
-						{classroom.students.map((student, index) =>
-							<Member id={student.id} key={student.id} name={student.name}></Member>
-						)}
-					</List>
-					</aside>
+		return <div>
+			<h1>Chatroom</h1>
 
-			<section id="messages" style={{backgroundColor: wallColor, borderColor: borderColor}}>
-					<h2>Messages</h2>
-					<List>
-						{chat.messages.map(({id, student, text, createdAt, textColor}) =>
-							<Message id={id} text={text} key={id} createdAt={createdAt} textColor={textColor} member={student} visibility={"visible"}></Message>
-						)}
-					</List>
-			</section>
-			<section id="typing" style={{borderColor: borderColor}}>
-			  <Composer chat={chat} actions={this.props.actions} borderColor={borderColor} textColor={textColor} backgroundColor={bgColor} members={classroom}/>
-			</section>
-			<footer style={{borderColor: borderColor}}>
-			  <h3>Sponsored by our partners:</h3>
-			  <Ad graphic={randomGraphic + Math.floor(Math.random() * 20) } buttonLink={randomLink} borderColor={borderColor} textColor={textColor}/>
-			  <Ad graphic={randomGraphic + Math.floor(Math.random() * 20) } buttonLink={randomLink} borderColor={borderColor} textColor={textColor}/>
-			</footer>
-		</main>
+			<h2>Members</h2>
+			<ul>
+				{classroom.students.map(({id, name}) =>
+					<li key={id}><span>{name}</span></li>
+				)}
+			</ul>
+
+			<h2>Messages</h2>
+			<ul>
+				{chat.messages.map(({id, student, text, createdAt}) =>
+					<li key={id}>
+						<label>{student.name} at {createdAt.toISOString()}</label>
+						<p>{text}</p>
+					</li>
+				)}
+			</ul>
+
+			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
+			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
+			<p>{this.getTypingMessage()}</p>
+		</div>
 	}
 
 }

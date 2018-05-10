@@ -1,134 +1,42 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
-import List from './components/List.jsx'
-import UploadButton from './components/UploadButton.jsx'
-import PendingFile from './components/PendingFile.jsx'
-import CompletedFile from './components/CompletedFile.jsx'
-import PhotoCard from './components/PhotoCard.jsx'
-import Thumbnails from './components/Thumbnails.jsx'
 
-class Uploads extends React.Component {
-	state = {
-		/* Keeps track of the current image */ 
-		activeImage: 0,
-		/* Keeps track of if the uploaded is visable or not */ 
-		uploaderActive: false,
-		/* Current page */
-		currentPage: "home",
-	}
+const Uploads = ({uploads, actions}) => {
+	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
+	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	toggleUploader() {
-		this.setState( {uploaderActive: !this.state.uploaderActive} )
-	}
+	return <div>
+		<h1>Upload Images</h1>
+		{/* do not delete this uploader component */}
+		<Uploader upload={actions.upload} />
+		{/* do not delete this uploader component */}
 
-	render() {
-		const {uploads, actions} = this.props
-		const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-		const completedFiles = uploads.files.filter(({progress}) => !progress)
-		const buttonText = this.state.uploaderActive ? 'Toggle Navigation Off' : 	'Toggle Navigation On';
-		const {activeImage, uploaderActive, currentPage} = this.state
-		
-		return (
-			<div className="grid-container">
-				<header className="main-header">
-					<h1 className="title">
-						Harvard <span className="inlineHeaderStyle">CSCI-E39</span> React
-					</h1>
-					<h2 className="subheader">Project 1</h2>
-				</header>
+		<h2>In Progress</h2>
+		<ul>
+			{pendingFiles.map(file => {
+				const {id, name, progress} = file
 
-				<nav className="mainNavigation" role="navigation">
-					<ul>
-						<li><a href='javascript:void(0)' onClick={ () => this.setState( {currentPage: 'home'})}>HOME</a></li>
-						<li><a href='javascript:void(0)' onClick={ () => this.setState( {currentPage: 'photo'})}>PHOTO</a></li>
-						<li><a href='javascript:void(0)' onClick={ () => this.setState( {currentPage: 'faq'})}>FAQ</a></li>
-			  		</ul>
-				</nav>
+				return <li key={id}>
+					<label>{name}</label>
+					<progress value={progress} max="100">{progress}%</progress>
+				</li>
+			})}
+		</ul>
 
-				{ currentPage=="photo" &&
-					<aside className="aside-uploader">
-						<div className="uploader">
-						<h2>Upload Image</h2>
-						<Uploader upload={actions.upload} />
-						<List>
-							{pendingFiles.map((file, index) =>
-								<PendingFile
-									key={file.id}
-									file={file}
-								/>
-							)}
-						</List>
-					</div>
-					</aside>
-				}
+		<h2>Completed</h2>
+		<ul>
+			{completedFiles.map(file => {
+				const {id, name, url, error} = file
 
-				<main className="main-content">
-					{ currentPage=="home" &&
-						<div>
-							<h1>CSCI E-39</h1>
-							<h2>Modular Design Patterns with React</h2>
-							<h3>Michael Regert</h3>
-							<br />
-							<a href='javascript:void(0)' onClick={ () => this.setState( {currentPage: 'photo'})}>Go to the Photo Viewer</a>
-						</div>
-					}
-					{ currentPage=="photo" &&
-						<div>
-							<Thumbnails className="thumbnails" completedFiles={completedFiles} />
-						</div>
-					}
-					{ currentPage=="faq" &&
-						<div>
-							<h1>FAQ</h1>
-							
-							<p>
-							This is a paragraph! What a piece of junk. She'll make point five beyond the speed of light. She may not look like much, but she's got it where it counts, kid. I've added some special modifications myself. We're a little rushed, so if you'll hurry aboard
-							we'll get out of here. Hello, sir. Which way? All right, men. Load your weapons! Stop that ship! Blast 'em! Chewie, get us out of here! Oh, my. I'd forgotten how much I hate space travel. -
-							</p>
-							<p>
-							This is another paragraph. Are you all right? What's wrong? I felt a great disturbance in the Force...as if millions of voices suddenly cried out in terror and were suddenly silenced. I fear something terrible has happened. You'd better get on with your
-							exercises. Well, you can forget your troubles with those Imperial slugs. I told you I'd outrun 'em. Don't everyone thank me at once. Anyway, we should be at Alderaan about oh-two-hundred hours. Now be careful, Artoo. He made a fair move. Screaming
-							about it won't help you. Let him have it. It's not wise to upset a Wookiee. But sir, nobody worries about upsetting a droid. That's 'cause droids don't pull people's arms out of their socket when they lose. -
-							</p>
-							<p>
-							This is a paragraph! What a piece of junk. She'll make point five beyond the speed of light. She may not look like much, but she's got it where it counts, kid. I've added some special modifications myself. We're a little rushed, so if you'll hurry aboard
-							we'll get out of here. Hello, sir. Which way? All right, men. Load your weapons! Stop that ship! Blast 'em! Chewie, get us out of here! Oh, my. I'd forgotten how much I hate space travel. -
-							</p>
-							<p>
-							This is another paragraph. Are you all right? What's wrong? I felt a great disturbance in the Force...as if millions of voices suddenly cried out in terror and were suddenly silenced. I fear something terrible has happened. You'd better get on with your
-							exercises. Well, you can forget your troubles with those Imperial slugs. I told you I'd outrun 'em. Don't everyone thank me at once. Anyway, we should be at Alderaan about oh-two-hundred hours. Now be careful, Artoo. He made a fair move. Screaming
-							about it won't help you. Let him have it. It's not wise to upset a Wookiee. But sir, nobody worries about upsetting a droid. That's 'cause droids don't pull people's arms out of their socket when they lose. -
-							</p>
-							<p>
-							This is a paragraph! What a piece of junk. She'll make point five beyond the speed of light. She may not look like much, but she's got it where it counts, kid. I've added some special modifications myself. We're a little rushed, so if you'll hurry aboard
-							we'll get out of here. Hello, sir. Which way? All right, men. Load your weapons! Stop that ship! Blast 'em! Chewie, get us out of here! Oh, my. I'd forgotten how much I hate space travel. -
-							</p>
-							<p>
-							This is another paragraph. Are you all right? What's wrong? I felt a great disturbance in the Force...as if millions of voices suddenly cried out in terror and were suddenly silenced. I fear something terrible has happened. You'd better get on with your
-							exercises. Well, you can forget your troubles with those Imperial slugs. I told you I'd outrun 'em. Don't everyone thank me at once. Anyway, we should be at Alderaan about oh-two-hundred hours. Now be careful, Artoo. He made a fair move. Screaming
-							about it won't help you. Let him have it. It's not wise to upset a Wookiee. But sir, nobody worries about upsetting a droid. That's 'cause droids don't pull people's arms out of their socket when they lose. -
-							</p>
-							<p>
-							This is a paragraph! What a piece of junk. She'll make point five beyond the speed of light. She may not look like much, but she's got it where it counts, kid. I've added some special modifications myself. We're a little rushed, so if you'll hurry aboard
-							we'll get out of here. Hello, sir. Which way? All right, men. Load your weapons! Stop that ship! Blast 'em! Chewie, get us out of here! Oh, my. I'd forgotten how much I hate space travel. -
-							</p>
-							<p>
-							This is another paragraph. Are you all right? What's wrong? I felt a great disturbance in the Force...as if millions of voices suddenly cried out in terror and were suddenly silenced. I fear something terrible has happened. You'd better get on with your
-							exercises. Well, you can forget your troubles with those Imperial slugs. I told you I'd outrun 'em. Don't everyone thank me at once. Anyway, we should be at Alderaan about oh-two-hundred hours. Now be careful, Artoo. He made a fair move. Screaming
-							about it won't help you. Let him have it. It's not wise to upset a Wookiee. But sir, nobody worries about upsetting a droid. That's 'cause droids don't pull people's arms out of their socket when they lose. -
-							</p>
-						</div>
-					}
-				</main>
-
-				<footer className="footer">
-					<p>This is the end of this page. Here's a related bunch of info: Some original trilogy Star Wars characters in no special order.</p>
-				</footer>
-	
-			</div>
-		)
-	}
+				return <li key={id}>
+					<label>{name}</label>
+					{!error && <img src={url} style={{maxWidth: `200px`}} />}
+					{!!error && <p className="failure">{error}</p>}
+				</li>
+			})}
+		</ul>
+	</div>
 }
 
 const statusPropType = PropTypes.shape({

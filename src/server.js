@@ -96,6 +96,7 @@ io.on(`connection`, async socket => {
 	// =============== UPLOADS ===============
 
 	socket.on(`upload:chunk`, handleChunkUpload)
+
 	socket.on(`file:update`, updateFile)
 	socket.on(`file:delete`, deleteFile)
 	socket.on(`file:share`, shareFile)
