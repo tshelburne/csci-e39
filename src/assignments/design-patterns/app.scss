@@ -9,7 +9,7 @@ $margin: 10px;
 	margin: 0 auto;
 }
 
-.example {
+.pattern {
 	padding: $padding;
 	margin-bottom: $margin;
 	border: thin solid;
@@ -18,13 +18,13 @@ $margin: 10px;
 		margin-bottom: 0;
 	}
 
-	.example--rendered {
+	.pattern--rendered {
 		padding: $padding;
 		margin-bottom: $margin;
 		border: thin dotted #ccc;
 	}
 
-	.example--toggles {
+	.pattern--toggles {
 		margin-bottom: $margin;
 
 		.active {
@@ -32,9 +32,25 @@ $margin: 10px;
 		}
 	}
 
-	.example--code {
+	.pattern--code {
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
 	}
+}
+
+/* Default styles for body */
+
+*, *:before, *:after { box-sizing: border-box; }
+
+html {
+  font-size: 1rem;
+}
+
+body {
+  font-family: $primary-font;
+  font-size: 100%;
+  background: $secondary-color;
+  background: -webkit-linear-gradient(to right, $secondary-color, $quinary-color);
+  background: linear-gradient(to right, $secondary-color, $quinary-color);
 }

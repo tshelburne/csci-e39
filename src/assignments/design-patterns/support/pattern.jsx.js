@@ -5,16 +5,16 @@ import ReactDOMServer from 'react-dom/server'
 import jsxToString from 'jsx-to-string'
 import beautify from 'js-beautify'
 
-const Example = ({title, children}, context) => (
-	<div className="example">
-		<h2 className="example--title">{title}</h2>
+const Pattern = ({title, children}, context) => (
+	<div className="pattern">
+		<h2 className="pattern--title">{title}</h2>
 
-		<div className="example--rendered">
+		<div className="pattern--rendered">
 			<h3>Rendered output:</h3>
 			{children}
 		</div>
 
-		<div className="example--toggles">
+		<div className="pattern--toggles">
 			<button
 				onClick={() => context.setActiveCode(`html`)}
 				className={context.activeCode === `html` ? `active` : ``}
@@ -36,7 +36,7 @@ const Example = ({title, children}, context) => (
 		</div>
 
 		{context.activeCode !== `off` && 
-			<div className="example--code">
+			<div className="pattern--code">
 				<h3>Code sample:</h3>
 				<pre>
 					<code>
@@ -58,13 +58,13 @@ const Example = ({title, children}, context) => (
 	</div>
 )
 
-Example.propTypes = {
+Pattern.propTypes = {
 	title: PropTypes.string,
 }
 
-Example.contextTypes = {
+Pattern.contextTypes = {
 	activeCode: PropTypes.string,
 	setActiveCode: PropTypes.func,
 }
 
-export default Example
+export default Pattern

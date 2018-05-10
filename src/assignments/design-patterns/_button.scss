@@ -1,0 +1,76 @@
+/* Styles for Button component */
+
+.button {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	outline: none;
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	touch-action: manipulation;
+	&:hover {
+		cursor: pointer;
+	}
+}
+
+.primary {
+	font-size: $button-size;
+	text-transform: $button-case;
+	letter-spacing: $button-spacing;
+	line-height: $button-height;
+	min-width: $button-width;
+	background: $primary-color;
+	color: $secondary-color;
+	padding: $button-padding;
+	margin: $button-margin;
+	border: $button-border;
+	//-webkit-border-radius: $button-radius;
+	//-moz-border-radius: $button-radius;
+	//border-radius: $button-radius;
+
+	-webkit-transition: $button-transition;
+	transition: $button-transition;
+
+
+	&:hover {
+		background-color: $primary-hover-color;
+		color: $secondary-color;
+		//border: $primary-border;
+	}
+	&:active {
+		background-color: $secondary-active-color;
+		color: $secondary-color;
+		//border: $tertiary-border;
+		@include box-shadow;
+	}
+}
+
+.secondary {
+	font-size: $uploader-size;
+	text-transform: $uploader-case;
+	letter-spacing: $uploader-spacing;
+	line-height: $uploader-height;
+	min-width: $uploader-width;
+	background: $secondary-color;
+	color: $primary-color;
+	padding: $uploader-padding;
+	margin: $uploader-margin;
+	//border: $secondary-border;
+	//-webkit-border-radius: $button-radius;
+	//-moz-border-radius: $button-radius;
+	//border-radius: $button-radius;
+
+	&:hover {
+		background-color: $secondary-hover-color;
+		color: $primary-color;
+		//border: $primary-border;
+	}
+	&:active {
+		background-color: $primary-active-color;
+		color: $primary-color;
+		//border: $tertiary-border;
+		@include box-shadow;
+	}
+}

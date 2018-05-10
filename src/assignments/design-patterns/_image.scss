@@ -1,0 +1,16 @@
+/* Styles for Image component */
+
+.image {
+    list-style: none;
+    &:hover {
+      cursor: pointer;
+    }
+    img {
+      width: $gallery-image-width;
+      height: $gallery-image-height;
+      border: $gallery-image-border;
+    }
+    label {
+      display: none;
+    }
+}
