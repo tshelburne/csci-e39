@@ -30,24 +30,15 @@ class PatternLibrary extends React.Component {
 				{id: "002", name: "Image 2", description: "Description of image 2", url: "https://picsum.photos/300/200/?image="},
 				{id: "003", name: "Image 3", description: "Description of image 3", url: "https://picsum.photos/300/200/?image="},
 				{id: "004", name: "Image 4", description: "Description of image 4", url: "https://picsum.photos/300/200/?image="},
+				{id: "005", name: "Image 6", description: "Description of image 5", url: "https://picsum.photos/300/200/?image="},
+				{id: "006", name: "Image 6", description: "Description of image 6", url: "https://picsum.photos/300/200/?image="},
 			]
 
 		return (
 			<div className="style-guide">
-				<h1>My Pattern Library!</h1>
+				<h1>Michael Regert's Pattern Library</h1>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
-				</Example>
-				
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
-				</Example>
-
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
-				</Example>
-
+				<h2 className="section-subheading">Components from Project 2</h2>
 				<Example title="Message <Message>">
 					<Message id="id" text="message text here" key="key" textColor="#FF0000" member="Id12345" visibility="true"></Message>
 				</Example>
@@ -56,10 +47,14 @@ class PatternLibrary extends React.Component {
 					<Ad graphic={randomGraphic + Math.floor(Math.random() * 20) } buttonLink={randomLink} borderColor='#000000' textColor='#FF0000'/>
 				</Example>
 
-				<Example title="Thumbnails <Thumbnails>">
-					<Thumbnails images={images}/>
+				<h2 className="section-subheading">Composite React Components</h2>
+				<Example title="Thumbnails with CSS Grid <Thumbnails>">
+					<Thumbnails images={images} useGridView="true"/>
 				</Example>
 
+				<Example title="Thumbnails with List <Thumbnails>">
+					<Thumbnails images={images} useGridView="false"/>
+				</Example>
 			</div>
 		)
 	}

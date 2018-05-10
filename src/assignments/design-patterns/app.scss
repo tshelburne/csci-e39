@@ -2,11 +2,27 @@
 
 $padding: 20px;
 $margin: 10px;
+$primary-color: #987890;
+$text-color: #323232;
 
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
 	margin: 0 auto;
+	background-color: $primary-color;
+	color: $text-color;
+
+	h1 {
+		padding: 20px 20px 0 20px;
+		font-weight: bold;
+		color: black;
+	}
+
+	.section-subheading {
+		padding-left: 20px;
+		font-weight: bold;
+		color: black;
+	}
 }
 
 .example {
@@ -36,5 +52,49 @@ $margin: 10px;
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
+	}
+
+	.grid-container {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+
+	.list-container {
+		list-style-type: none;
+		padding: 0px;
+		margin: 10px;
+	}
+
+	$photo-card-border: black;
+	$photo-card-shadow: #222222;
+	$photo-card-background: white;
+	$photo-border: gray;
+
+	.photo-card {
+		width: 220px;
+		height: 220px;
+		border: 2px solid $photo-card-border;
+		padding: 10px;
+		margin: 40px;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		align-items: center;
+		justify-content: center;
+		box-shadow: 8px 8px 6px $photo-card-shadow;
+		background-color: $photo-card-background;
+
+		img {
+			max-width: 200px;
+			max-height: 200px;
+			border: 1px solid $photo-border;
+		}
+
+		p {
+			font-style: italic;
+			font-size: 1.2rem;
+		}
 	}
 }
