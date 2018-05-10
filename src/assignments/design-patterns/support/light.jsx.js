@@ -15,13 +15,16 @@ export default class Light extends Component {
 	      	color
 	    } = this.props
 
-	    return 
+	    return <div className="light">
+	    	<div className="light-bulb"></div>
+	    	{ name }
+	    </div>
 	}
 }
 
 Light.propTypes = {
 	name: PropTypes.string,
-    color: PropTypes.oneOf(['white', 'black', 'grey']),
+    color: PropTypes.oneOf(['red', 'black', 'grey']),
 }
 
 Light.defaultProps = {
