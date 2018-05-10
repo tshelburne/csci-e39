@@ -1,0 +1,10 @@
+.view {
+	position: relative;
+	a.button {
+		position: absolute;
+		z-index: 1000;
+		right: .5em;
+		top: .4em;
+		padding: .5em 1em;
+	}
+}
