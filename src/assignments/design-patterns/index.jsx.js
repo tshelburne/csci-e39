@@ -5,6 +5,7 @@ import Example from './support/example.jsx'
 import ToggleButton from './support/toggleButton.jsx'
 import Button from './support/button.jsx'
 import Toggle from './support/toggle.jsx'
+import Light from './support/light.jsx'
 
 class PatternLibrary extends React.Component {
 
@@ -28,16 +29,26 @@ class PatternLibrary extends React.Component {
 		}
 	}
 
-	getSound(option) {
-		this.setState({selectedSound: option})
-	}
-
 	sayHello() {
 		console.log("Hello!");
 	}
 
-	playSound(sound) {
-		console.log(sound);
+	getSound(option) {
+		this.setState({selectedSound: option})
+	}
+
+	playSound() {
+		if(this.state.selectedSound === 'rimshot') {
+			var url = require('./sounds/rimshot.wav')
+		} else if(this.state.selectedSound === 'bassdrum') {
+			var url = require('./sounds/bassdrum.wav')
+		} else if(this.state.selectedSound === 'handclap') {
+			var url = require('./sounds/handclap.wav')
+		}
+
+		var audio = new Audio(url)
+
+		audio.play()
 	}
 
 
@@ -69,7 +80,13 @@ class PatternLibrary extends React.Component {
 				<section>
 					<Toggle options={ soundToggles } selectedOption="rimshot" getOption={ this.getSound }></Toggle>
 
-					<Button label="Play Sounds" action={() => this.playSound(this.state.selectedSound)}></Button>
+					<div>
+						<Light name="Rim Shot" active={(this.state.selectedSound === 'rimshot' ? true : false)}></Light>
+						<Light name="Bass Drum" active={(this.state.selectedSound === 'bassdrum' ? true : false)}></Light>
+						<Light name="Hand Clap" active={(this.state.selectedSound === 'handclap' ? true : false)}></Light>
+					</div>
+
+					<Button label="Play Sounds" action={() => this.playSound()}></Button>
 				</section>
 			</div>
 		)
