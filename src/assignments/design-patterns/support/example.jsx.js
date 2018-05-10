@@ -17,19 +17,19 @@ const Example = ({title, children}, context) => (
 		<div className="example--toggles">
 			<button
 				onClick={() => context.setActiveCode(`html`)}
-				className={context.activeCode === `html` ? `active` : ``}
+				className={'smallbutton '+(context.activeCode === `html` ? `active` : ``)}
 			>
 				HTML
 			</button>
 			<button
 				onClick={() => context.setActiveCode(`react`)}
-				className={context.activeCode === `react` ? `active` : ``}
+				className={'smallbutton '+(context.activeCode === `react` ? `active` : ``)}
 			>
-				React
+				<i>React</i>
 			</button>
 			<button
 				onClick={() => context.setActiveCode(`off`)}
-				className={context.activeCode === `off` ? `active` : ``}
+				className={'smallbutton '+(context.activeCode === `off` ? `active` : ``)}
 			>
 				Off
 			</button>

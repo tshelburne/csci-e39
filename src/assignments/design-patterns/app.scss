@@ -1,12 +1,158 @@
+// https://codepen.io/anon/pen/XqEbJa
+
 @import 'pattern-library';
 
 $padding: 20px;
 $margin: 10px;
 
+$creaback: #6534ff;
+$creahighlight: #62bcfa;
+$creaaccent: #fccdd3;
+$creaneutral: #bbc4ef;
+$creablack: #111111;
+$creawhite: #ffffff;
+
+.spot-grad::before,
+.spot-grad::after,
+.adjust {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+@supports (filter: grayscale(1)) {
+  .spot-grad img {
+    filter: grayscale(1) contrast(.7) brightness(1.3);
+  }
+}
+
+/* main color */
+@supports (mix-blend-mode: exclusion) {
+  .spot-grad::before {
+    z-index: 1;
+    background: rgb(126, 8, 150);
+    mix-blend-mode: exclusion;
+  }
+/* alternate 'red' version   */
+  body.red .spot-grad::before {
+    background: rgb(0, 81, 102);
+  }
+}
+
+/* bring in the secondary tones */
+@supports (mix-blend-mode: difference) {
+  .spot-grad::after {
+    z-index: 2;
+    background: rgb(13, 53, 255);
+    mix-blend-mode: difference;
+  }
+/* alternate 'red' version  */
+  body.red .spot-grad::after {
+  background: rgb(53, 107, 215);
+  }
+}
+
+/* tones down the Frankenstein effect */
+@supports (mix-blend-mode: overlay) {
+  .adjust {
+    z-index: 3;
+    background: hsl(248, 17%, 66%);
+    mix-blend-mode: overlay;
+  }
+/* alternate 'red' version   */
+  body.red .adjust {
+    background: hsl(322, 28%, 53%);
+  }
+}
+
+.spot-grad {
+  position: relative;
+  min-height: 10rem;
+  max-height: 15rem;
+  margin: 0;
+  display: flex;
+  flex-basis: 100%;
+  flex-grow: 1;
+}
+
+.spot-grad img {
+  object-fit: cover;
+  max-width: 100%;
+}
+
+/* reverts the image to original on hover */
+
+.spot-grad:hover::before,
+.spot-grad:hover::after,
+.spot-grad:hover .adjust {
+  opacity: 0;
+}
+
+.spot-grad:hover img {
+  filter: none;
+}
+
+body {
+	background-color: $creaback;
+	color: $creaneutral;
+	font-family: motiva-sans, sans-serif;
+	font-style: normal;
+	font-weight: 200;
+}
+
+h1,h2 {
+	color: $creawhite;
+}
+
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
 	margin: 0 auto;
+}
+
+.gallery {
+	max-width: 768px;
+	display: grid;
+	grid-template-columns: repeat(2,1fr);
+	grid-auto-rows: auto;
+}
+
+.galleryimage {
+	&:first-child {
+		grid-column: span 2;
+	}
+}
+
+.button {
+		height: 45px;
+		width: 100px;
+		transition: background-color 0.3s ease;
+}
+
+.buttoninactive {
+		background-color: $creawhite;
+		&:hover {
+			cursor: pointer;
+			background-color: $creaaccent;
+		}
+}
+
+.buttonactive {
+		background-color: $creahighlight;
+		&:hover {
+			cursor: pointer;
+			background-color: lighten($creahighlight,10%);
+		}
+}
+
+.smallbutton {
+		height: 25px;
+		width: 60px;
+		background-color: $creawhite;
 }
 
 .example {
@@ -21,20 +167,52 @@ $margin: 10px;
 	.example--rendered {
 		padding: $padding;
 		margin-bottom: $margin;
-		border: thin dotted #ccc;
+		border: thin dotted $creahighlight;
 	}
 
 	.example--toggles {
 		margin-bottom: $margin;
 
 		.active {
-			background: pink;
+			background: $creaaccent;
 		}
 	}
 
 	.example--code {
 		padding: $padding;
-		background: #eee;
-		border: thin dotted #ccc;
+		background: $creawhite;
+		color: $creablack;
+		border: thin dotted $creahighlight;
 	}
+}
+
+.sg-label {
+    font-size: 90%;
+    line-height: 1;
+}
+
+.sg-swatch {
+    display: block;
+    height: 4em;
+    margin-bottom: 0.3em;
+    border-radius: 5px;
+}
+
+.colorpalette {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(100px,1fr));
+	grid-auto-rows: auto;
+	grid-gap: 1rem;
+}
+
+.sg-colors {
+    padding: 0.3em;
+    margin: 0 0.5em 0.5em 0;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+		background: $creawhite;
+		color: $creablack;
+		display:grid;
+		grid-template-columns: 1fr;
+		grid-auto-rows: auto;
 }
