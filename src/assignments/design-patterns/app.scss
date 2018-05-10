@@ -111,3 +111,45 @@ $margin: 10px;
 		color: darken(#DFD831, 10%);
 	}
 }
+
+.toggle {
+	display: flex;
+	margin: 3em auto;
+
+	.toggle-option {
+		padding: 10px;
+		background-color: #000;
+		position: relative;
+
+		span::before {
+			background-color: #000;
+			content: '';
+			display: block;
+			height: 30px;
+			width: 30px;
+		    position: absolute;
+		    top: -46px;
+		    left: -11px;
+		    border-radius: 5px;
+		}
+
+		input:checked + span::before {
+			background-color: #777;
+		}
+
+		input + span {
+			background-color: #fff;
+			position: absolute;
+			top: 50px;
+			left: 13px;
+		}
+
+		&:first-child {
+			border-radius: 3px 0 0 3px;
+		}
+
+		&:last-child {
+			border-radius: 0 3px 3px 0;
+		}
+	}
+}
