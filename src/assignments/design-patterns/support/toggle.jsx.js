@@ -7,20 +7,28 @@ export default class Toggle extends Component {
 		this.state = {
 			selectedOption: this.props.selectedOption
 		}
+
+		this.updateSelected = this.updateSelected.bind(this);
+	}
+
+	updateSelected(option) {
+		this.setState({selectedOption: option})
+
+		this.props.getOption(option);
 	}
 
 	render() {
 	    const {
 	    	name,
-	      options,
-	      color
+	      	options,
+	      	color
 	    } = this.props
 
 	    return  <div className="toggle">
 		    	{ options.map((option, i) => {
 				      return <label className="toggle-option">
-					      		<input name={name} type="radio" defaultChecked={ this.state.selectedOption === option } />
-					      		<span>{option}</span>
+					      		<input name={name} type="radio" onClick={() => this.updateSelected(option) } defaultChecked={ this.state.selectedOption === option } />
+					      		<span className={ this.props.color }>{option}</span>
 					      	</label>
 			  		})
 			  	}
@@ -33,7 +41,8 @@ Toggle.propTypes = {
 	name: PropTypes.string,
     color: PropTypes.oneOf(['white', 'black', 'grey']),
     options: PropTypes.array,
-    selectedOption: PropTypes.string
+    selectedOption: PropTypes.string,
+    getOption: PropTypes.func
 }
 
 Toggle.defaultProps = {
