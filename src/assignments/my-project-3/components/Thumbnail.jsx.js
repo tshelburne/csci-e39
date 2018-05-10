@@ -15,11 +15,6 @@ export default Thumbnail
 
 /* CSS BELOW
 
-picture {
-	max-height: 200px;
-	border: 2px solid black;
-}
-
 img {
 	max-height: 200px;
 	border: 2px solid orange;
