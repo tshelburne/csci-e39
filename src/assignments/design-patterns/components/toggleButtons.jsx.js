@@ -36,6 +36,7 @@ const ToggleButton = (props) => {
 		<button type="button"
 			aria-labelledby={props.labelId} 
 			aria-pressed={props.ariaPressed}
+			data-buttonState={props.dataButtonState}
 			onClick={props.onClick}>
 			{props.children}
 		</button>
@@ -47,6 +48,7 @@ export const OnOffButton = (props) => {
 	return <ToggleButton 
 			addClasses={props.addClasses}
 			ariaPressed={props.ariaPressed}
+			dataButtonState={props.dataButtonState}
 			labelHide={props.labelHide}
 			labelId={props.labelId} 
 			labelText={props.labelText} 

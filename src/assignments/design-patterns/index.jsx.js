@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
 import PictureListItem, {PictureListItemExamples} from './components/pictureListItem.jsx'
 import Profile, {BioProfile, ProfilesExamples} from './components/profiles.jsx'
-import {OnOffButton} from './components/toggleButtons.jsx'
+import ToggleButton, {OnOffButton} from './components/toggleButtons.jsx'
 import BioProfileList from './components/bioProfileList.jsx'
 
 
@@ -13,7 +13,8 @@ class PatternLibrary extends React.Component {
 		super(...args)
 
 		this.state = {activeCode: `react`,
-			buttonState: false
+			buttonState: false, 
+			bioButtonState: true,
 		}
 	}
 
@@ -24,9 +25,18 @@ class PatternLibrary extends React.Component {
 		}
 	}
 
-	setButtonState() {
-		this.setState({buttonState: !this.state.buttonState});
-		console.log("click");
+	// name of state is stored in DOM data-buttonState attribute
+	setButtonState(event) {
+		let change = {}
+
+		if (event.target.getAttribute('aria-pressed') == "true") {
+			change[event.target.getAttribute('data-buttonState')] = false
+		}
+		else {
+			change[event.target.getAttribute('data-buttonState')] = true
+		}
+
+		this.setState(change)
 	}
 
 	render() {
@@ -37,6 +47,7 @@ class PatternLibrary extends React.Component {
 				<Example title="On/Off Toggle Button">
 					<OnOffButton 
 							ariaPressed={this.state.buttonState}
+							dataButtonState="buttonState"
 							labelId="buttonStateExample" 
 							labelText="Button State"
 							onClick={this.setButtonState.bind(this)} 
@@ -63,7 +74,16 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="Bio Profile List">
-					<BioProfileList bioProfileList={ProfilesExamples} />
+					<ToggleButton 
+							ariaPressed={this.state.bioButtonState}
+							dataButtonState="bioButtonState"
+							labelText="Profile Bios"
+							onClick={this.setButtonState.bind(this)} 
+							toggleOff="2">
+						<span>Show</span>
+						<span>Hide</span>
+					</ToggleButton>
+					<BioProfileList bioProfileList={ProfilesExamples} showHideBio={this.state.bioButtonState} />
 				</Example>
 			</div>
 		)
