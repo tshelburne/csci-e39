@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from './support/prop-types'
+import PropTypes from '../support/prop-types'
 
 function createMarkup(text) { const t = text.toString(); return {__html: t}};
 

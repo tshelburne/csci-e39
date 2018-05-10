@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
-import Message from './Message.jsx'
-import Ad from './Ad.jsx'
-import Thumbnails from './Thumbnails.jsx'
+import Message from './components/Message.jsx'
+import Ad from './components/Ad.jsx'
+import Thumbnails from './components/Thumbnails.jsx'
 
 class PatternLibrary extends React.Component {
 
