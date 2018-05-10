@@ -1,4 +1,15 @@
 /* basic settings */
 $primary-color: orchid;
-$default-font-family: "rooney-sans", arial, helvetica, sans-serif;
-$default-font-weight: 500;
+$default-font-family: "raleway", arial, helvetica, sans-serif;
+$default-font-weight: 400;
+
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+  }
