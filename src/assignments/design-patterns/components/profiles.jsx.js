@@ -2,10 +2,12 @@ import React from 'react'
 import ReactDOMServer from 'react-dom/server';
 
 const Profile = (props) => {
+	let addChildClasses = (props.addChildClasses ? props.addChildClasses : '');
 	let profileChildren = null
 
+
 	if(props.children) {
-		profileChildren = <div className="profile-children" dangerouslySetInnerHTML={ {__html: props.children} } />
+		profileChildren = <div className={`profile-children ${addChildClasses}`} dangerouslySetInnerHTML={ {__html: props.children} } />
 	}
 
 	return <div className="profile">
@@ -15,9 +17,13 @@ const Profile = (props) => {
 		</div>
 }
 
-export const BioProfile = ({profile}) => {
-
-	return <Profile profile={profile}>{profile.bio}</Profile>
+export const BioProfile = ({profile, showHideBio}) => {
+	if (showHideBio) {
+		return <Profile profile={profile}>{profile.bio}</Profile>
+	}
+	else {
+		return <Profile profile={profile} addChildClasses="hideBio">{profile.bio}</Profile>
+	}
 }
 
 export const ProfilesExamples = [
