@@ -1,35 +1,29 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import PropTypes from './support/prop-types'
 import autobind from 'class-autobind'
+import List from './components/List.jsx'
+import Member from './components/Member.jsx'
+import Message from './components/Message.jsx'
+import Composer from './components/Composer.jsx'
+import Header from './components/header.jsx'
+import Ad from './components/ad.jsx'
+import Color from 'color'
+
+
 
 class Chat extends React.Component {
 
 	constructor() {
 		super(...arguments)
 		autobind(this)
-		this.state = {currentText: ``}
-	}
 
-	onType(e) {
-		const {chat} = this.props.actions
-		const {currentText: prevText} = this.state
-		const currentText = e.target.value
-
-		if (!currentText.length) chat.stopTyping()
-		if (currentText.length === 1 && !prevText.length) chat.startTyping()
-
-		this.setState({currentText})
-	}
-
-	onSend(e) {
-		if (e.type === `keyup` && e.key !== `Enter`) return
-
-		const {chat} = this.props.actions
-		const {currentText} = this.state
-		if (!currentText.length) return
-
-		chat.send(currentText)
-		this.setState({currentText: ``})
+		this.state = {
+			colors: {
+				bgColor: "#000000",
+				textColor: "#01FF70",
+				wallColor: "#0000FF",
+			}
+		}
 	}
 
 	getTypingMessage() {
@@ -45,53 +39,78 @@ class Chat extends React.Component {
 		}
 	}
 
+	updateColors(param, t) {
+		const color = t.target.value;
+		const {colors} = this.state;
+		switch(param) {
+			case "bg":
+				colors.bgColor = color;
+				this.setState({colors});
+				break;
+			case "text":
+				colors.textColor = color;
+				this.setState({colors});
+				break;
+			case "wall":
+				colors.wallColor = color;
+				this.setState({colors});
+				break;
+		}
+	}
+
 	render() {
 		const {classroom, chat, actions} = this.props
-		const {currentText} = this.state
+		const {colors} = this.state;
+		const {bgColor, textColor, wallColor} = colors
+		const borderColor = Color(textColor).lighten(0.42);
+		const randomGraphic = "https://picsum.photos/300/200/?image=";
+		const randomLink = "http://www.uroulette.com/visit/wvvvv";
 
-		return <div>
-			<h1>Chatroom</h1>
+		return <main style={{backgroundColor: bgColor, color: textColor}}>
+			<Header title="Chatroom" borderColor={borderColor} colors={colors} onChange={this.updateColors}  />
+ 			<aside id="memberlist" style={{borderColor: borderColor}}>
+					<h2>Members</h2>
+					<List>
+						{classroom.students.map((student, index) =>
+							<Member id={student.id} key={student.id} name={student.name}></Member>
+						)}
+					</List>
+					</aside>
 
-			<h2>Members</h2>
-			<ul>
-				{classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
-				)}
-			</ul>
-
-			<h2>Messages</h2>
-			<ul>
-				{chat.messages.map(({id, student, text, createdAt}) =>
-					<li key={id}>
-						<label>{student.name} at {createdAt.toISOString()}</label>
-						<p>{text}</p>
-					</li>
-				)}
-			</ul>
-
-			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-			<p>{this.getTypingMessage()}</p>
-		</div>
+			<section id="messages" style={{backgroundColor: wallColor, borderColor: borderColor}}>
+					<h2>Messages</h2>
+					<List>
+						{chat.messages.map(({id, student, text, createdAt, textColor}) =>
+							<Message id={id} text={text} key={id} createdAt={createdAt} textColor={textColor} member={student} visibility={"visible"}></Message>
+						)}
+					</List>
+			</section>
+			<section id="typing" style={{borderColor: borderColor}}>
+			  <Composer chat={chat} actions={this.props.actions} borderColor={borderColor} textColor={textColor} backgroundColor={bgColor} members={classroom}/>
+			</section>
+			<footer style={{borderColor: borderColor}}>
+			  <h3>Sponsored by our partners:</h3>
+			  <Ad graphic={randomGraphic + Math.floor(Math.random() * 20) } buttonLink={randomLink} borderColor={borderColor} textColor={textColor}/>
+			  <Ad graphic={randomGraphic + Math.floor(Math.random() * 20) } buttonLink={randomLink} borderColor={borderColor} textColor={textColor}/>
+			</footer>
+		</main>
 	}
 
 }
 
-const studentPropType = PropTypes.shape({
-	id: PropTypes.number.isRequired,
-	name: PropTypes.string.isRequired,
-})
-
 Chat.propTypes = {
 	classroom: PropTypes.shape({
-		students: PropTypes.arrayOf(studentPropType).isRequired,
+	  	//shape defines what object will look like
+		students: PropTypes.arrayOf(PropTypes.member).isRequired,
+		//students is a property of classroom
+		//students is an array of studentPropType. access it with an array [1][2] etc. studentPropType is  shape that has id and name
 	}).isRequired,
 	chat: PropTypes.shape({
-		typing: PropTypes.arrayOf(studentPropType).isRequired,
+		typing: PropTypes.arrayOf(PropTypes.member).isRequired,
 		messages: PropTypes.arrayOf(PropTypes.shape({
 			id: PropTypes.number.isRequired,
 			text: PropTypes.string.isRequired,
-			student: studentPropType,
+			student: PropTypes.member,
 			createdAt: PropTypes.instanceOf(Date).isRequired,
 		})).isRequired,
 		send: PropTypes.shape({
