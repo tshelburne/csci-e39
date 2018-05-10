@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import autobind from 'class-autobind'
 import Example from './support/example.jsx'
+import ToggleButton from './support/toggleButton.jsx'
 import Button from './support/button.jsx'
 import Toggle from './support/toggle.jsx'
 
@@ -8,8 +10,15 @@ class PatternLibrary extends React.Component {
 
 	constructor(...args) {
 		super(...args)
+		autobind(this)
 
-		this.state = {activeCode: `react`}
+		this.playSound = this.playSound.bind(this);
+		this.sayHello = this.sayHello.bind(this);
+
+		this.state = {
+			activeCode: `react`,
+			selectedSound: 'rimshot'
+		}
 	}
 
 	getChildContext() {
@@ -19,29 +28,49 @@ class PatternLibrary extends React.Component {
 		}
 	}
 
+	getSound(option) {
+		this.setState({selectedSound: option})
+	}
+
 	sayHello() {
 		console.log("Hello!");
 	}
 
+	playSound(sound) {
+		console.log(sound);
+	}
+
+
 	render() {
 		const toggleOptions = ["A", "AB", "B"]
+		const soundToggles = ["rimshot", "bassdrum", "handclap"]
 
 		return (
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
+				<Example title="ToggleButton">
+					<ToggleButton color="red"></ToggleButton>
+					<ToggleButton color="orange"></ToggleButton>
+					<ToggleButton color="yellow"></ToggleButton>
+					<ToggleButton color="white"></ToggleButton>
 				</Example>
 
-				<Button color="red"></Button>
-				<Button color="orange" action={this.sayHello}></Button>
-				<Button color="yellow"></Button>
-				<Button color="white"></Button>
+				<Example title="Toggle">
+					<Toggle name="white" color="white"></Toggle>
+					<Toggle name="grey" color="grey" options={ toggleOptions } selectedOption="AB"></Toggle>
+					<Toggle name="black" color="black"></Toggle>
+				</Example>
 
-				<Toggle name="white" color="white"></Toggle>
-				<Toggle name="grey" color="grey" options={ toggleOptions } selectedOption="AB"></Toggle>
-				<Toggle name="black" color="black"></Toggle>
+				<Example title="Button">
+					<Button label="Alright" action={this.sayHello}></Button>
+				</Example>
+
+				<section>
+					<Toggle options={ soundToggles } selectedOption="rimshot" getOption={ this.getSound }></Toggle>
+
+					<Button label="Play Sounds" action={() => this.playSound(this.state.selectedSound)}></Button>
+				</section>
 			</div>
 		)
 	}
