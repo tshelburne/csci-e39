@@ -1,46 +1,34 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-export default class Button extends Component {
+export default class ToggleButton extends Component {
 	constructor(...args) {
 		super(...args)
-		this.state = {
-			active: false
-		}
-
-		this.handleClick = this.handleClick.bind(this);
-	}
-
-	handleClick() {
-
-		console.log(this.state);
-		this.setState(prevState => ({
-		  active: !prevState.active
-		}))
 	}
 
 	render() {
 	    const {
-	      model,
-	      color
+	      action,
+	      color,
+	      label
 	    } = this.props
 	    return ( 
 	      <button 
-	      	className={this.props.color + " tr-button " + (this.state.active ? 'active' : 'not-active')}
-	        onClick={this.handleClick}>
+	      	className={this.props.color + " tr-button"}
+	        onClick={this.props.action}>
+	        { label }
 	      </button>
 	    )
 	}
 }
 
-Button.propTypes = {
+ToggleButton.propTypes = {
     color: PropTypes.oneOf(['white', 'yellow', 'orange', 'red']),
+    action: PropTypes.func,
+    label: PropTypes.string
 }
 
-Button.defaultProps = {
-    color: 'white'
-}
-
-Button.handleClick = (e) => {
-    e.preventDefault()
+ToggleButton.defaultProps = {
+    color: 'white',
+    label: 'Cancel'
 }
