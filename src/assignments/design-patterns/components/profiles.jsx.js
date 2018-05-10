@@ -5,7 +5,7 @@ const Profile = (props) => {
 	let profileChildren = null
 
 	if(props.children) {
-		profileChildren = <div dangerouslySetInnerHTML={ {__html: props.children} } />
+		profileChildren = <div className="profile-children" dangerouslySetInnerHTML={ {__html: props.children} } />
 	}
 
 	return <div className="profile">

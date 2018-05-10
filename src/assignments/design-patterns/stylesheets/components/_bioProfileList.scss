@@ -1,4 +1,5 @@
 $bioProfileList-gap: $margin-sm;
+$bioProfileListitem-padding: $padding-sm;
 
 .bioProfileList {
 	@extend %border-box;
@@ -7,15 +8,10 @@ $bioProfileList-gap: $margin-sm;
 		display: flex;
 		flex-wrap: wrap;
 		padding: 0px;
-
-		@include media-grid-break() {
-			display: grid;
-			grid-gap: $bioProfileList-gap;
-			grid-template-columns: repeat(auto-fill, minmax(320px, max-content));
-		}
 	}
 
 	.bioProfileListitem {
 		list-style: none;
+		padding-bottom: $bioProfileListitem-padding;
 	}
 }

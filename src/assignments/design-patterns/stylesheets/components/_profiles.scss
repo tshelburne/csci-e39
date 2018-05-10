@@ -1,6 +1,42 @@
 
+$profile-gap: $margin-sm;
 
 .profile {
 	@extend %border-box;
 
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+
+	@include media-grid-break() {
+		display: grid;
+		grid-gap: $profile-gap;
+		// grid-template-columns: auto;
+		grid-template-areas:
+			"image children children"
+			"name children children";
+	}
+
+	& > img {
+		border: 1px solid black;
+		grid-area: image;
+		// grid-column: 1/2;
+		// grid-row: 1/2;
+		justify-self: center;
+		max-width: 100%;
+	}
+
+	.profile-name {
+		grid-area: name;
+		// grid-column: 1/2;
+		justify-self: center;
+	}
+
+	.profile-children {
+		align-self: self-start;
+		grid-area: children;
+		// grid-column: 2/3;
+		// grid-row: 1/2;
+	}
 }
