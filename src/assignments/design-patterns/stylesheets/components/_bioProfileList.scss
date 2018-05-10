@@ -1,0 +1,19 @@
+$bioProfileList-gap: $margin-sm;
+
+.bioProfileList {
+	.bioProfileList-ul {
+		display: flex;
+		flex-wrap: wrap;
+		padding: 0px;
+
+		@include media-grid-break() {
+			display: grid;
+			grid-gap: $bioProfileList-gap;
+			grid-template-columns: repeat(auto-fill, minmax(320px, max-content));
+		}
+	}
+
+	.bioProfileListitem {
+		list-style: none;
+	}
+}
