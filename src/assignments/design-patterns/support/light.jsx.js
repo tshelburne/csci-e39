@@ -5,8 +5,13 @@ export default class Light extends Component {
 	constructor(...args) {
 		super(...args)
 		this.state = {
-			active: false
+			active: this.props.active
 		}
+	}
+
+	componentWillReceiveProps(props) {
+		console.log(props.active)
+		this.setState({active: props.active})
 	}
 
 	render() {
@@ -16,18 +21,20 @@ export default class Light extends Component {
 	    } = this.props
 
 	    return <div className="light">
-	    	<div className="light-bulb"></div>
-	    	{ name }
+	    	<div className={"light-bulb " + (this.state.active ? 'active' : 'not-active')} ></div>
+	    	<span>{ name }</span>
 	    </div>
 	}
 }
 
 Light.propTypes = {
 	name: PropTypes.string,
-    color: PropTypes.oneOf(['red', 'black', 'grey']),
+    color: PropTypes.oneOf(['red', 'green']),
+    active: PropTypes.bool
 }
 
 Light.defaultProps = {
 	name: 'radios',
-    color: 'white',
+    color: 'red',
+    active: false
 }
