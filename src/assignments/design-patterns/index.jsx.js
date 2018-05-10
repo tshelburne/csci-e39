@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
 import List from './components/list.jsx'
-import Event from './components/event.jsx'
+import { Event, EventMini } from './components/event.jsx'
+import ImageBlurb from './components/imageblurb.jsx'
 
 
 class PatternLibrary extends React.Component {
@@ -31,29 +32,31 @@ class PatternLibrary extends React.Component {
 						<List ordered={true}><span>hi</span><span>double hi</span><span>the last hi</span></List>
 					</Example>
 
-					<Example title="Event">
-						<div className="event-example">
-							<Event
-								title="Community Engagement Through Filmmaking Screening"
-								date="Wednesday, May 9"
-								startTime="12:00PM"
-								endTime="1:00PM"
-								location="L-324 Fainsod Room"
-								description="A screening of a series of short films created by members of the broader Harvard community"
-							/>
-						</div>
+					<Example title="Event" blurb="This could be anything">
+						<Event
+							title="Community Engagement Through Filmmaking Screening"
+							date="Wednesday, May 9"
+							startTime="12:00PM"
+							endTime="1:00PM"
+							location="L-324 Fainsod Room"
+							description="A screening of a series of short films created by members of the broader Harvard community"
+						/>
+
+						<EventMini
+							title="Community Engagement Through Filmmaking Screening"
+							date="Wednesday, May 9"
+							startTime="12:00PM"
+							endTime="1:00PM"
+							location="L-324 Fainsod Room"
+							description="A screening of a series of short films created by members of the broader Harvard community"
+						/>
 					</Example>
 
-					<Example title="My Special <div>">
-						<div className="just-testing">HELLO DIV</div>
-					</Example>
-
-					<Example title="My Special <span>">
-						<span className="just-testing">HELLO SPAN</span>
-					</Example>
-
-					<Example title="My Special <h4>">
-						<h4 className="just-testing">HELLO HEADING</h4>
+					<Example title="Image Blurb">
+						<ImageBlurb
+							src="https://s9.postimg.cc/s3yld46e7/placeimg_640_480_tech.jpg"
+							title="Your image blurb title"
+							blurb="Some lead text to draw the user in." />
 					</Example>
 				</main>
 			</div>
