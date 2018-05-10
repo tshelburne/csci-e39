@@ -4,6 +4,7 @@ import Example from './support/example.jsx'
 import Message from './components/Message.jsx'
 import Ad from './components/Ad.jsx'
 import Thumbnails from './components/Thumbnails.jsx'
+import PhotoCard from './components/PhotoCard.jsx';
 
 class PatternLibrary extends React.Component {
 
@@ -48,6 +49,10 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<h2 className="section-subheading">Composite React Components</h2>
+				<Example title="PhotoCard <PhotoCard>">
+					<PhotoCard key={images[0].id} image={images[0]} />
+				</Example>
+
 				<Example title="Thumbnails with CSS Grid <Thumbnails>">
 					<Thumbnails images={images} useGridView="true"/>
 				</Example>
@@ -55,6 +60,7 @@ class PatternLibrary extends React.Component {
 				<Example title="Thumbnails with List <Thumbnails>">
 					<Thumbnails images={images} useGridView="false"/>
 				</Example>
+
 			</div>
 		)
 	}
