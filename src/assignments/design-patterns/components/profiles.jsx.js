@@ -20,17 +20,18 @@ export const BioProfile = ({profile}) => {
 	return <Profile profile={profile}>{profile.bio}</Profile>
 }
 
-export const ProfilesExamples = {
-		"one": {
+export const ProfilesExamples = [
+		{
+			id: "one",
 			name:"Natalya Shelbourne", 
 			pic: "https://avatars0.githubusercontent.com/u/6720549?s=200&v=4", 
 		},
-
-		"bio": {
+		{
+			id: "bio",
 			name:"Natalya Shelbourne", 
 			pic: "https://avatars0.githubusercontent.com/u/6720549?s=200&v=4", 
 			bio: "Front end developer, designer, illustrator, fine artist, teacher, speaker. <a href=\"http://www.artist-developer.com\">www.artist-developer.com</a>",
 		},
-};
+];
 
 export default Profile

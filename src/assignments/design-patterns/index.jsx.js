@@ -4,6 +4,8 @@ import Example from './support/example.jsx'
 import PictureListItem, {PictureListItemExamples} from './components/pictureListItem.jsx'
 import Profile, {BioProfile, ProfilesExamples} from './components/profiles.jsx'
 import {OnOffButton} from './components/toggleButtons.jsx'
+import BioProfileList from './components/bioProfileList.jsx'
+
 
 class PatternLibrary extends React.Component {
 
@@ -53,13 +55,16 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="Profile">
-					<Profile profile={ProfilesExamples.one} />
+					<Profile profile={ProfilesExamples[0]} />
 				</Example>
 
 				<Example title="Profile with Bio">
-					<BioProfile profile={ProfilesExamples.bio} />
+					<BioProfile profile={ProfilesExamples[1]} />
 				</Example>
 
+				<Example title="Bio Profile List">
+					<BioProfileList bioProfileList={ProfilesExamples} />
+				</Example>
 			</div>
 		)
 	}
