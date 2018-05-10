@@ -38,3 +38,19 @@ $margin: 10px;
 		border: thin dotted #ccc;
 	}
 }
+
+/* Default styles for body */
+
+*, *:before, *:after { box-sizing: border-box; }
+
+html {
+  font-size: 1rem;
+}
+
+body {
+  font-family: $primary-font;
+  font-size: 100%;
+  background: $secondary-color;
+  background: -webkit-linear-gradient(to right, $secondary-color, $quinary-color);
+  background: linear-gradient(to right, $secondary-color, $quinary-color);
+}

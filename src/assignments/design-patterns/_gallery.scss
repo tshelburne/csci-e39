@@ -1,0 +1,28 @@
+/* Styles for Gallery component */
+
+@supports (display: grid) {
+
+	.gallery {
+	  display: grid;
+	  grid-gap: $gallery-grid-gap;
+	  margin: 0 auto;
+	  text-align: center;
+	  padding: 0rem;
+	}
+
+	.grid-col-3 {
+	  grid-template-columns: repeat(3, 1fr);
+
+	  @include bp( x-small ) {
+        grid-template-columns: repeat(1, 1fr);
+        padding: $gallery-mobile-padding;
+      }   
+      @include bp( small ) {
+        grid-template-columns: repeat(2, 1fr);
+      } 
+      @include bp( large ) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+	}
+
+}

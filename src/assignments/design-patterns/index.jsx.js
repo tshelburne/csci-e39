@@ -4,6 +4,7 @@ import Pattern from './support/pattern.jsx'
 
 import {PrimaryButton, SecondaryButton} from './support/button.jsx'
 import Image from './support/Image.jsx'
+import Gallery from './support/Gallery.jsx'
 
 class PatternLibrary extends React.Component {
 
@@ -34,9 +35,15 @@ class PatternLibrary extends React.Component {
 		        	<Image openThisSite={()=> {window.open('https://cdn.pbrd.co/images/HhcxXlT.jpg','_blank')} } file= {{id: 1, name: 'Mt-Kosciuszko.jpg', url: 'https://cdn.pbrd.co/images/Hh2cnaR.jpg', error: false,}}/>
 				</Pattern>
 
-				<Pattern title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
+				<Pattern title="<Gallery /> component with images">
+					<Gallery colNo= {3} images= {[
+						{ id: 1, name: 'Mt-Kosciuszko-1.jpg', url: 'https://cdn.pbrd.co/images/Hh2cnaR.jpg', error: false, },
+              			{ id: 2, name: 'Mt-Kosciuszko-2.jpg', url: 'https://cdn.pbrd.co/images/Hh2cnaR.jpg', error: false, },
+              			{ id: 3, name: 'Mt-Kosciuszko-3.jpg', url: 'https://cdn.pbrd.co/images/Hh2cnaR.jpg', error: false, },
+            				]}
+            		/>
 				</Pattern>
+
 			</div>
 		)
 	}
@@ -48,4 +55,3 @@ PatternLibrary.childContextTypes = {
 }
 
 export default PatternLibrary
-

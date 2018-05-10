@@ -1,16 +1,15 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Image = ({openThisSite, file}) => {
   const {id, name, url, error} = file
 
   return (
-  	<ul>
-	  	<li className="photo" onClick={openThisSite}>
+	  	<li className="image" onClick={openThisSite}>
 		  	<label>{name}</label>
 		    {!error && <img src={url} />}
 		    {!!error && <p className="failure">{error}</p>}
 	  	</li>
-	</ul>
   )
 }
 

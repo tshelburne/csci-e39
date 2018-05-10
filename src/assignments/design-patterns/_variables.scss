@@ -46,15 +46,14 @@ $uploader-transition: all 0.3s;
 $uploader-border: none;
 $uploader-text-align: center;
 
-// gallery component variables
-$gallery-grid-column-gap: 1.5rem;
-$gallery-grid-row-gap: 1.5rem;
-$gallery-width: 100%;
-$gallery-max-width: 1200px; //or 50vw
-$gallery-mobile-padding: 1rem;
-$gallery-image-width: 75%;
-$gallery-image-height: 75%;
+// image component variables
+$gallery-image-width: 100%;
+$gallery-image-height: 100%;
 $gallery-image-border: 0.4rem solid $white;
+
+// gallery component variables
+$gallery-grid-gap: 1.5rem;
+$gallery-mobile-padding: 1rem;
 
 // mixins
 @mixin box-shadow {
