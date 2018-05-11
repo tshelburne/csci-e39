@@ -1,7 +1,21 @@
 @import 'normalize';
+@import 'variables';
+@import './components/SVG/svg';
+@import './components/Button/button';
+@import './components/Card/card';
+@import './components/Picture/picture';
 
-//variables
-$primary-color: mediumpurple;
-$secondary-color: pink;
-$dark-neutral: darkgray;
-$light-neutral: lavender;
+
+//typography
+h1,h2,h3{
+  font-weight: 400;
+}
+
+code{
+  font-family: "Courier New", "Courier", monospace;
+}
+
+//buttons
+button{
+  -webkit-appearance: none;
+}
