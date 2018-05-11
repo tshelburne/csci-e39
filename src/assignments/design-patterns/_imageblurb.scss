@@ -1,0 +1,31 @@
+$bodyfont: "Domine",
+serif;
+$headingfont: "Montserrat",
+sans-serif;
+$hksred: rgb(189, 6, 40);
+$hksblue: #2199e8;
+$transparentblue:rgba(33, 153, 232, 0.6);
+$hksgreen: #687f10;
+.image-blurb {
+    position: relative;
+    max-width: 400px;
+    overflow: hidden;
+    .image-blurb-image {
+        width: 100%;
+        bottom: 0;
+    }
+    .image-blurb-text {
+        width: 100%;
+        position: absolute;
+        bottom: 3px;
+        background-color: $transparentblue;
+        color: #fff;
+        font-family: $bodyfont;
+        padding-left: 10px;
+    }
+    .image-blurb-title {
+        font-family: $headingfont;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}

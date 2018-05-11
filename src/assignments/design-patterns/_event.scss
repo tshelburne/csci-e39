@@ -1,0 +1,49 @@
+$bodyfont: "Domine",
+serif;
+$headingfont: "Montserrat",
+sans-serif;
+$hksred: rgb(189, 6, 40);
+$hksblue: #2199e8;
+.event {
+    .event-date {
+        border-top: 1px solid rgba(0, 0, 0, 0.3);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        font-family: $headingfont;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 10px;
+        padding-left: 0;
+    }
+    .event-title {
+        color: $hksblue;
+        font-family: $headingfont;
+        font-weight: 400;
+        margin-bottom: 5px;
+    }
+    .event-time,
+    .event-location {
+        margin: 0 auto 5px 30px;
+        color: rgba(0, 0, 0, 0.7);
+        font-weight: bold;
+    }
+    .event-description {
+        margin-left: 30px;
+        font-style: italic;
+    }
+    &.mini {
+        .event-date {
+            border: none;
+            font-size: 14px;
+            padding: 0;
+            margin-top: 0;
+        }
+        .event-title {
+            font-size: 16px;
+        }
+        .event-time,
+        .event-location,
+        .event-description {
+            display: none;
+        }
+    }
+}
