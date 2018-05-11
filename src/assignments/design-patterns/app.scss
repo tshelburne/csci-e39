@@ -1,12 +1,26 @@
 @import 'pattern-library';
 
+$primary-font: 'PT Sans Narrow', sans-serif;
 $padding: 20px;
 $margin: 10px;
+$border-radius: 3px;
+
+$primary: #904798;
+$secondary: #a2b7ca;
+
+$purewhite: #fff;
+$error: #eb3331;
+$warning: #f8a046;
+$info: #0f7da0;
+$success: #00a560;
+
+$transition: all 0.5s ease;
 
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
 	margin: 0 auto;
+	font-family: $primary-font;
 }
 
 .example {
@@ -37,4 +51,101 @@ $margin: 10px;
 		background: #eee;
 		border: thin dotted #ccc;
 	}
+}
+
+.alert {
+	color: $purewhite;
+	margin-bottom: $margin;
+	font-size: 14px;
+	padding: $padding;
+	font-weight: 500;
+	transition: $transition;
+	border-radius: $border-radius;
+
+	span {
+		opacity: .8;
+		font-size: 80%;
+		font-weight: 400;
+	}
+}
+
+.action-bar {
+	margin-top: $margin;
+
+	&.right {
+		float:right;
+		text-align:right;
+	}
+	&.left {
+		text-align:left;
+	}
+
+}
+
+.button {
+	padding: $padding/2 $padding;
+	font-weight: 500;
+	text-transform: uppercase;
+	margin: 0 $margin/5 0 $margin/5;
+	color: $purewhite;
+	transition: $transition;
+	text-decoration: none;
+	border-radius: $border-radius;
+
+	i {
+		padding-right: $padding/2;
+	}
+
+	&.transparent {
+		background: rgba(255,255,255,.4);
+		color: #fff;
+	}
+	&.primary {
+		background: $primary;
+	}
+	&.secondary {
+		background: $secondary;
+	}
+	&.link {
+		color: $secondary;
+	}
+	&.disabled {
+		color: $secondary;
+		background: lighten($secondary, 20);
+		font-style: italic;
+		cursor: not-allowed;
+	}
+
+	&:hover {
+
+		&.primary {
+			background: darken($primary, 20);
+		}
+		&.secondary {
+			background: darken($secondary, 20);
+		}
+		&.link {
+			color: darken($primary, 20);
+		}
+		&.transparent {
+			background: rgba(255,255,255,.2);
+		}
+	}
+}
+
+.error {
+	background: $error;
+	border-bottom: 3px solid darken($error, 20);
+}
+.warning {
+	background: $warning;
+	border-bottom: 3px solid darken($warning, 20);
+}
+.info {
+	background: $info;
+	border-bottom: 3px solid darken($info, 20);
+}
+.success {
+	background: $success;
+	border-bottom: 3px solid darken($success, 20);
 }

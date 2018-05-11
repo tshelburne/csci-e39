@@ -2,89 +2,40 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader.jsx'
 
-import Nav from '../../assignments/project-1/navigation.jsx'
-import Progress from '../../assignments/project-1/progress.jsx'
-
-import AppBar from 'material-ui/AppBar'
-import Snackbar from 'material-ui/Snackbar';
-
-import ActionFavorite from 'material-ui/svg-icons/action/favorite';
-import ActionFavoriteBorder from 'material-ui/svg-icons/action/favorite-border';
-
-import IconButton from 'material-ui/IconButton';
-
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-
-import {GridList, GridTile} from 'material-ui/GridList';
-
-
 const Uploads = ({uploads, actions}) => {
-
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
-	const currentRoute = "all";
 
-	const styles = {
-	  root: {
-	    display: 'flex',
-	    flexWrap: 'wrap',
-	    justifyContent: 'space-around',
-	  }
-	};
+	return <div>
+		<h1>Upload Images</h1>
+		{/* do not delete this uploader component */}
+		<Uploader upload={actions.upload} />
+		{/* do not delete this uploader component */}
 
-	return <div className="hg">
+		<h2>In Progress</h2>
+		<ul>
+			{pendingFiles.map(file => {
+				const {id, name, progress} = file
 
-		<Nav currentRoute={currentRoute}></Nav>
+				return <li key={id}>
+					<label>{name}</label>
+					<progress value={progress} max="100">{progress}%</progress>
+				</li>
+			})}
+		</ul>
 
-		 <header className="hg__header">
-			<AppBar 
-				title="FotoAsh" 
-				iconElementRight={<Uploader upload={actions.upload} />}/>
-		</header>
+		<h2>Completed</h2>
+		<ul>
+			{completedFiles.map(file => {
+				const {id, name, url, error} = file
 
-		<main className="hg__main">
-
-			<Progress pendingFiles={pendingFiles} style={{marginBottom: '10px'}}/>
-
-			
-			 {!completedFiles.length ?
-			    <Card>
-			    	<CardHeader title="Welcome to your foto library"/>
-					<CardText>To get started, upload some fotos and then share them with your friends.</CardText>
-				</Card>
-				:
-				<div style={styles.root}>
-			    	<GridList
-				      cols={3}
-				      cellHeight={200}
-				      padding={10}>
-						{completedFiles.map(file => {
-
-							const {id, name, url, error} = file
-
-							if (!error){
-							return <GridTile key={id}       
-							          title={!!error ? error : name}
-							          subtitle={url}
-							          actionIcon={<IconButton><ActionFavoriteBorder color="white" /></IconButton>}>
-
-							          <img src={url} />
-
-							       </GridTile>
-							}
-							else {
-							return	<Snackbar key={id}   
-							          open={true}
-							          message={error}
-							          autoHideDuration={4000}/>
-							}
-						})}
-			    	</GridList>
-		    	</div>
-		    }
-		  	
-
-		</main>
+				return <li key={id}>
+					<label>{name}</label>
+					{!error && <img src={url} style={{maxWidth: `200px`}} />}
+					{!!error && <p className="failure">{error}</p>}
+				</li>
+			})}
+		</ul>
 	</div>
 }
 
