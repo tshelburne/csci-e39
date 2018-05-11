@@ -1,0 +1,60 @@
+//colors ----------------------------
+$base-color: rgba(12, 12, 12, 1);
+$header-text-color: rgba(200, 200, 200, 1);
+$accent-color-1: hsla(95, 47%, 59%, 1); //green
+$accent-color-1-complement: complement($accent-color-1);
+
+//fonts ------------------------------
+$font-family-header:"Raleway", Arial, Helvetica, sans-serif;
+$font-family-body:"Roboto", sans-serif;
+
+//mixins -----------------------------
+@mixin box-shadow($color){
+	box-shadow: 0 0 0.3em $color;
+}
+
+.card-container{
+	font-family: $font-family-body;
+	background: lighten($base-color, 5);
+	color: $header-text-color;
+	margin: 1em;		
+	padding: 2em;		
+	text-align: left;
+	border-radius: 2px;
+	h1,h2,h3,h4{
+		font-family: $font-family-header;
+	}
+}
+
+.link-card > a{
+	text-decoration: none;
+}
+
+.card-green-link-container{
+	@extend .card-container;
+	@include box-shadow($accent-color-1);
+	h1{
+		color: $accent-color-1;
+	}	
+}
+
+.card-pink-link-container{
+	@extend .card-container;
+	@include box-shadow($accent-color-1-complement);
+	h1{
+		color: $accent-color-1-complement;
+	}
+}
+
+.card{
+	@extend .card-container;
+	@include box-shadow($accent-color-1-complement);
+	h1{
+		color: $accent-color-1;
+	}
+}
+
+
+
+
+

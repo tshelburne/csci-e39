@@ -1,40 +1,85 @@
 @import 'pattern-library';
 
+//colors ----------------------------
+$base-color:rgba(12, 12, 12, 1);
+$header-text-color:rgba(200, 200, 200, 1);
+$accent-color-1:hsla(95, 47%, 59%, 1);
+
+//fonts ------------------------------
+$font-family-header:"Raleway", Arial, Helvetica, sans-serif;
+$font-family-body:"Roboto", sans-serif;
+
+//mixins -----------------------------
+@mixin box-shadow ($color){
+	box-shadow: 0 0 0.3em $color;
+}
+
 $padding: 20px;
 $margin: 10px;
 
-.style-guide {
+body{
+	background:$base-color;
+}
+
+.style-guide-wrapper {
 	width: 90%;
 	max-width: 1024px;
 	margin: 0 auto;
+	background:$base-color;
+	color:$header-text-color;
+}
+p{
+	font-family:$font-family-body;
+}
+h1,h2,h3,h4{
+	font-family:$font-family-header;
 }
 
-.example {
+.pattern {
 	padding: $padding;
 	margin-bottom: $margin;
-	border: thin solid;
+	@include box-shadow($accent-color-1);
 
 	&:last-child {
 		margin-bottom: 0;
 	}
 
-	.example--rendered {
+	.pattern--rendered {
 		padding: $padding;
 		margin-bottom: $margin;
-		border: thin dotted #ccc;
+		border: thin dotted complement($accent-color-1);
 	}
 
-	.example--toggles {
+	.pattern--toggles {
 		margin-bottom: $margin;
 
 		.active {
-			background: pink;
+			background: $accent-color-1;
+			color:$base-color;
 		}
 	}
 
-	.example--code {
+	.pattern--code {
+		color:$base-color;
 		padding: $padding;
-		background: #eee;
-		border: thin dotted #ccc;
+		background: $header-text-color;
+		border: thin dotted complement($accent-color-1);
 	}
+}
+
+
+button {
+	font-size: 1.3rem;
+	background:$base-color;
+	color:$accent-color-1;	
+	border:1px solid $accent-color-1;
+	border-radius: 2px;
+	padding: 0.6em 1.2em;
+	cursor:pointer;
+	transition:all 0.3s ease;
+	&:active, &:hover, &:focus {
+		color: $header-text-color;
+    	border-color: adjust-hue($accent-color-1, 45deg);    
+		box-shadow:0 0 0.8em adjust-hue($accent-color-1, 45deg);  	
+  }	
 }
