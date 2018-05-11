@@ -1,5 +1,7 @@
 
 $profile-gap: $margin-sm;
+$profile-name-background-color: $img-name-background;
+$profile-name-color: $img-name-color;
 
 .profile {
 	@extend %border-box;
@@ -9,38 +11,45 @@ $profile-gap: $margin-sm;
 	align-items: center;
 	justify-content: flex-start;
 
-	@include media-grid-break() {
-		display: grid;
-		grid-gap: $profile-gap;
-		// grid-template-columns: auto;
-		grid-template-areas:
-			"image children children"
-			"name children children";
-	}
-
-	& > img {
+	> img {
 		border: 1px solid black;
 		grid-area: image;
-		// grid-column: 1/2;
-		// grid-row: 1/2;
 		justify-self: center;
-		max-width: 100%;
+		max-width: 250px;
 	}
 
 	.profile-name {
+		background-color: $profile-name-background-color;
+		color: $profile-name-color;
 		grid-area: name;
-		// grid-column: 1/2;
 		justify-self: center;
+		text-align: center;
+		width: 100%;
 	}
 
 	.profile-children {
 		align-self: self-start;
 		grid-area: children;
-		// grid-column: 2/3;
-		// grid-row: 1/2;
 	}
 
 	.hideBio {
 		visibility: hidden;
+	}
+
+	@include media-grid-break() {
+		display: grid;
+		grid-column-gap: $profile-gap;
+		grid-template-areas:
+			"image children children"
+			"name children children";
+
+		& > img {
+			border-bottom: transparent;
+		}
+
+		.profile-name {
+			border: 1px solid black;
+			border-top: transparent;
+		}
 	}
 }

@@ -70,7 +70,7 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="Profile with Bio">
-					<BioProfile profile={ProfilesExamples[1]} />
+					<BioProfile profile={ProfilesExamples[1]} showHideBio="true" />
 				</Example>
 
 				<Example title="Bio Profile List">
