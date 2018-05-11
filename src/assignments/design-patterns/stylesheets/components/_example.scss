@@ -1,0 +1,83 @@
+$ex-padding: 20px;
+$ex-margin: 10px;
+$ex-rendered-border-color: $img-name-background;
+$ex-title-background-color: $ex-rendered-border-color;
+$ex-title-color: $img-name-color;
+$ex-tgl-btn-background-color: $button-background;
+$ex-tgl-btn-color: $button-color;
+
+
+.example {
+	@extend %border-box;
+
+	margin-bottom: $ex-margin;
+
+	@media screen and (min-width: $break-sm) {
+		border: thin solid;
+	}
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	.example--title {
+		background-color: $ex-title-background-color;
+		color: $ex-title-color;
+		margin: 0;
+		width: 100%;
+	}
+
+	.example--rendered {
+		margin-bottom: $ex-margin;
+		border: thin dotted $ex-rendered-border-color;
+		border-top: none;
+
+		& > h3  {
+			margin-top: 0;
+		}
+	}
+
+	.example--toggles {
+		margin-bottom: $ex-margin;
+
+		& > button {
+			@extend %button;
+			border-radius: 0;
+
+			&:first-child {
+				border-radius: $radii 0 0 $radii;
+			}
+			&:last-child {
+				border-radius: 0 $radii $radii 0;
+			}
+
+			&:active, &.active {
+				background-color: $ex-tgl-btn-background-color;
+				color: $ex-tgl-btn-color;
+			}
+		}
+	}
+
+	.example--code {
+		background: #eee;
+		border: thin dotted #ccc;
+
+		& > h3 {
+			margin-top: 0;
+		}
+
+		& > pre {
+			overflow-x: scroll;
+		}
+
+		@media screen and (min-width: $break-sm) {
+			padding: 0 $ex-padding;
+
+			& > pre {
+				overflow-x: inherit;
+				white-space: pre-wrap;
+			}
+		}
+
+	}
+}
