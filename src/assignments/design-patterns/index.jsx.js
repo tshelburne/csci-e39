@@ -71,7 +71,6 @@ class PatternLibrary extends React.Component {
 						<Button title="cancel" icon="fas fa-times" type="link" link="google.com"></Button>
 					</ActionBar>
 				</Example>
-
 			</div>
 		)
 	}
