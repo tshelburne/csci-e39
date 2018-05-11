@@ -21,7 +21,7 @@ export default class Light extends Component {
 	    } = this.props
 
 	    return <div className="light">
-	    	<div className={"light-bulb " + (this.state.active ? 'active' : 'not-active')} ></div>
+	    	<div className={ this.props.color + " light-bulb " + (this.state.active ? 'active' : 'not-active')} ></div>
 	    	<span>{ name }</span>
 	    </div>
 	}

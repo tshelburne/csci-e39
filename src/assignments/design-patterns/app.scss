@@ -187,6 +187,35 @@ button:focus {
 			border-radius: 0 3px 3px 0;
 		}
 	}
+
+	&.vertical {
+		flex-direction: column;
+		width: 34px;
+		margin: 0;
+
+		.toggle-option {
+
+			span::before {
+			    top: -10px;
+    			left: -44px;
+			}
+
+			input + span {
+				background-color: #fff;
+				position: absolute;
+				top: 14px;
+    			left: 46px;
+			}
+
+			&:first-child {
+				border-radius: 3px 3px 0 0;
+			}
+
+			&:last-child {
+				border-radius: 0 0 3px 3px;
+			}
+		}
+	}
 }
 
 .light {
@@ -197,6 +226,7 @@ button:focus {
 	margin: 15px;
 	position: relative;
 	width: 15px;
+	margin-bottom: 50px;
 
 	.light-bulb {
 		background-color: #FB0D1B;
@@ -208,6 +238,10 @@ button:focus {
 		top: 1px;
 		left: 1px;
 		transition: opacity .2s ease-in;
+
+		&.green {
+			background-color: #29FB38;
+		}
 	}
 
 	.light-bulb.active {
@@ -217,5 +251,21 @@ button:focus {
 	span {
 		position: absolute;
 		top: 30px;
+		left: -6px;
+	}
+}
+
+.synth {
+	padding: 2em;
+	border: 1px solid #333;
+	margin: 5em auto;
+	overflow: hidden;
+
+	.synth-controls {
+		float: left;
+	}
+
+	.tr-button {
+		float: right;
 	}
 }

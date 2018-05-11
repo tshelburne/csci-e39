@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-export default class Toggle extends Component {
+class Toggle extends Component {
 	constructor(...args) {
 		super(...args)
 		this.state = {
@@ -36,6 +36,26 @@ export default class Toggle extends Component {
 	}
 }
 
+class VerticalToggle extends Toggle {
+	render() {
+	    const {
+	    	name,
+	      	options,
+	      	color
+	    } = this.props
+
+	    return  <div className="toggle vertical">
+		    	{ options.map((option, i) => {
+				      return <label className="toggle-option">
+					      		<input name={name} type="radio" onClick={() => this.updateSelected(option) } defaultChecked={ this.state.selectedOption === option } />
+					      		<span className={ this.props.color }>{option}</span>
+					      	</label>
+			  		})
+			  	}
+	  		</div>
+	}
+}
+
 
 Toggle.propTypes = {
 	name: PropTypes.string,
@@ -50,4 +70,9 @@ Toggle.defaultProps = {
     color: 'white',
    	options: ['A', 'B'],
    	selectedOption: 'A'
+}
+
+module.exports = {
+    Toggle: Toggle,
+    VerticalToggle: VerticalToggle
 }

@@ -4,7 +4,7 @@ import autobind from 'class-autobind'
 import Example from './support/example.jsx'
 import ToggleButton from './support/toggleButton.jsx'
 import Button from './support/button.jsx'
-import Toggle from './support/toggle.jsx'
+import { Toggle, VerticalToggle } from './support/toggle.jsx'
 import Light from './support/light.jsx'
 
 class PatternLibrary extends React.Component {
@@ -30,7 +30,7 @@ class PatternLibrary extends React.Component {
 	}
 
 	sayHello() {
-		console.log("Hello!");
+		alert("Hello!");
 	}
 
 	getSound(option) {
@@ -71,22 +71,33 @@ class PatternLibrary extends React.Component {
 					<Toggle name="white" color="white"></Toggle>
 					<Toggle name="grey" color="grey" options={ toggleOptions } selectedOption="AB"></Toggle>
 					<Toggle name="black" color="black"></Toggle>
+					<VerticalToggle name="vertical" color="grey"></VerticalToggle>
 				</Example>
 
 				<Example title="Button">
 					<Button label="Alright" action={this.sayHello}></Button>
 				</Example>
 
-				<section>
-					<Toggle options={ soundToggles } selectedOption="rimshot" getOption={ this.getSound }></Toggle>
+				<Example title="Light">
+					<Light name="Red Light"></Light>
+					<Light name="Green Light" color="green"></Light>
+					<Light name="Red Light" active={true}></Light>
+					<Light name="Green Light" color="green" active={true}></Light>
+				</Example>
 
-					<div>
-						<Light name="Rim Shot" active={(this.state.selectedSound === 'rimshot' ? true : false)}></Light>
-						<Light name="Bass Drum" active={(this.state.selectedSound === 'bassdrum' ? true : false)}></Light>
-						<Light name="Hand Clap" active={(this.state.selectedSound === 'handclap' ? true : false)}></Light>
+				<section className="synth">
+
+					<div className="synth-controls">
+						<VerticalToggle options={ soundToggles } selectedOption="rimshot" getOption={ this.getSound }></VerticalToggle>
+
+						<div>
+							<Light name="Rim Shot" active={(this.state.selectedSound === 'rimshot' ? true : false)}></Light>
+							<Light name="Bass Drum" active={(this.state.selectedSound === 'bassdrum' ? true : false)}></Light>
+							<Light name="Hand Clap" active={(this.state.selectedSound === 'handclap' ? true : false)}></Light>
+						</div>
 					</div>
 
-					<Button label="Play Sounds" action={() => this.playSound()}></Button>
+					<Button label="Play Sound" action={() => this.playSound()}></Button>
 				</section>
 			</div>
 		)

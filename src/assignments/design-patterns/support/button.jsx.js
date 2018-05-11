@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-export default class ToggleButton extends Component {
+export default class Button extends Component {
 	constructor(...args) {
 		super(...args)
 	}
@@ -22,13 +22,13 @@ export default class ToggleButton extends Component {
 	}
 }
 
-ToggleButton.propTypes = {
+Button.propTypes = {
     color: PropTypes.oneOf(['white', 'yellow', 'orange', 'red']),
     action: PropTypes.func,
     label: PropTypes.string
 }
 
-ToggleButton.defaultProps = {
+Button.defaultProps = {
     color: 'white',
     label: 'Cancel'
 }
