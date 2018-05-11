@@ -1,0 +1,7 @@
+@mixin media-grid-break() {
+	@media screen and (min-width: $break-sm) {
+		@supports(display: grid) {
+			@content;
+		}
+	}
+}

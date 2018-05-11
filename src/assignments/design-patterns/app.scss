@@ -1,40 +1,24 @@
 @import 'pattern-library';
-
-$padding: 20px;
-$margin: 10px;
+@import 'stylesheets/themes/theme';
+@import 'stylesheets/abstracts/all';
+@import 'stylesheets/base/all';
+@import 'stylesheets/components/example';
+@import 'stylesheets/components/pictureListItem';
+@import 'stylesheets/components/toggleButtons';
+@import 'stylesheets/components/profiles';
+@import 'stylesheets/components/bioProfileList';
 
 .style-guide {
-	width: 90%;
+	@extend %border-box;
+
 	max-width: 1024px;
 	margin: 0 auto;
-}
 
-.example {
-	padding: $padding;
-	margin-bottom: $margin;
-	border: thin solid;
-
-	&:last-child {
-		margin-bottom: 0;
+	@media screen and (min-width: $break-sm) {
+		width: 90%;
 	}
 
-	.example--rendered {
-		padding: $padding;
-		margin-bottom: $margin;
-		border: thin dotted #ccc;
-	}
-
-	.example--toggles {
-		margin-bottom: $margin;
-
-		.active {
-			background: pink;
-		}
-	}
-
-	.example--code {
-		padding: $padding;
-		background: #eee;
-		border: thin dotted #ccc;
+	& > h1 {
+		text-align: center;
 	}
 }

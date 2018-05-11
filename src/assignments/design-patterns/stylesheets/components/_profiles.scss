@@ -1,0 +1,57 @@
+
+$profile-gap: $margin-sm;
+$profile-name-background-color: $img-name-background;
+$profile-name-color: $img-name-color;
+$profile-pic-width: 200px;
+
+.profile {
+	@extend %border-box;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: flex-start;
+
+	> img {
+		border: 1px solid black;
+		grid-area: image;
+		justify-self: center;
+		width: $profile-pic-width;
+	}
+
+	.profile-name {
+		background-color: $profile-name-background-color;
+		color: $profile-name-color;
+		grid-area: name;
+		justify-self: center;
+		text-align: center;
+		width: $profile-pic-width;
+	}
+
+	.profile-children {
+		align-self: self-start;
+		grid-area: children;
+		visibility: visible;
+	}
+
+	.hideBio {
+		visibility: hidden;
+	}
+
+	@include media-grid-break() {
+		display: grid;
+		grid-column-gap: $profile-gap;
+		grid-template-areas:
+			"image children children"
+			"name children children";
+
+		& > img {
+			border-bottom: transparent;
+		}
+
+		.profile-name {
+			border: 1px solid black;
+			border-top: transparent;
+		}
+	}
+}

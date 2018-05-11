@@ -1,0 +1,53 @@
+%border-box {
+	box-sizing: border-box;
+
+	& *,
+	& *:before,
+	& *:after {
+		box-sizing: inherit;
+	}
+}
+
+%button-hocus {
+	background-color: darken($button-color, 10);
+	color: $button-background;
+	outline-offset: 2px;
+}
+
+%button {
+	background-color: $button-color;
+	border: 1px solid $primary-color;
+	border-radius: $radii;
+	box-shadow: 1px 1px, -1px -1px;
+	color: $button-background;
+	margin: 0;
+	padding: $padding-sm;
+	transition: box-shadow 0.2s ease;
+	width: auto;
+
+	&:focus,
+	&:hover {
+		@extend %button-hocus;
+	}
+
+	&:active {
+		border: 1px solid $primary-color;
+		box-shadow: 1px 1px transparent, -1px -1px transparent;
+		color: initial;
+	}
+}
+
+// from https://getbootstrap.com
+// and https://hugogiraudel.com/2016/10/13/css-hide-and-seek/
+.sr-only {
+	position: absolute !important;
+	width: 1px !important;
+	height: 1px !important;
+	padding: 0 !important;
+	overflow: hidden !important;
+	clip: rect(0, 0, 0, 0) !important;
+	white-space: nowrap !important;
+	-webkit-clip-path: inset(50%) !important;
+	clip-path: inset(50%) !important;
+	border: 0 !important;
+}
