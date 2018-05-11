@@ -3,6 +3,15 @@
 $padding: 20px;
 $margin: 10px;
 
+//Colors
+$dark-red: #560104;
+$bright-red: #FB0D1B;
+
+body {
+	background-color: #363830;
+	color: #fff;
+}
+
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
@@ -33,6 +42,7 @@ $margin: 10px;
 	}
 
 	.example--code {
+		color: #000;
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
@@ -88,7 +98,7 @@ button:focus {
 	}
 
 	&::after {
-		background-color: #560104;
+		background-color: $dark-red;
 		top: 10px;
 		height: 14px;
 		left: 50%;
@@ -174,9 +184,11 @@ button:focus {
 
 		input + span {
 			background-color: #fff;
+			color: #000;
 			position: absolute;
-			top: 50px;
-			left: 13px;
+			top: 49px;
+			left: 12px;
+			padding: 2px;
 		}
 
 		&:first-child {
@@ -203,8 +215,8 @@ button:focus {
 			input + span {
 				background-color: #fff;
 				position: absolute;
-				top: 14px;
-    			left: 46px;
+				top: 13px;
+    			left: 45px;
 			}
 
 			&:first-child {
@@ -219,7 +231,7 @@ button:focus {
 }
 
 .light {
-	background-color: #560104;
+	background-color: $dark-red;
 	border-radius: 100%;
 	display: inline-block;
 	height: 15px;
@@ -229,7 +241,7 @@ button:focus {
 	margin-bottom: 50px;
 
 	.light-bulb {
-		background-color: #FB0D1B;
+		background-color: $bright-red;
 		border-radius: 100%;
 		width: 13px;
 		height: 13px;
@@ -257,7 +269,7 @@ button:focus {
 
 .synth {
 	padding: 2em;
-	border: 1px solid #333;
+	border: 1px solid #000;
 	margin: 5em auto;
 	overflow: hidden;
 
