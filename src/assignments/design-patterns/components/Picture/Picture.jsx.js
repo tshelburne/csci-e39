@@ -9,12 +9,12 @@ class Picture extends React.Component {
   
   
   render() {
-    const {url, caption, width, ...inputProps} = this.props
+    const {url, caption, width, captionAlign, ...inputProps} = this.props
 
      return(
         <figure style={{width: `${width}`}}>
 					<img src={url} />
-					<figcaption>{caption}</figcaption>
+					<figcaption style={{textAlign: `${captionAlign}`}}>{caption}</figcaption>
 				</figure>
       )
   }

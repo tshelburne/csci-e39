@@ -9,10 +9,10 @@ class Button extends React.Component {
   
   
   render() {
-    const {type, children, ...inputProps} = this.props
+    const {type, children, onClick, ...inputProps} = this.props
 
      return(
-        <button className={`button ${type}`}>{children}</button>
+        <button className={`button ${type}`} onClick={onClick}>{children}</button>
       )
   }
 }

@@ -1,6 +1,6 @@
 .button{
   -webkit-appearance: none;
-  margin: 1em 0 0 1em;
+  margin: 1em 1em 0 0;
   cursor: pointer;
   &.button--primary{
     background: $primary-color;
@@ -35,5 +35,8 @@
       cursor: not-allowed;
       color: #828282;
     }
+  }
+  &:hover{
+    opacity: 0.8;
   }
 }
