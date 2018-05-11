@@ -3,6 +3,16 @@
 $padding: 20px;
 $margin: 10px;
 
+body{
+  background: $light-neutral;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: $dark-neutral;
+}
+
+pre{
+  white-space: normal;
+}
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
@@ -13,22 +23,23 @@ $margin: 10px;
 	padding: $padding;
 	margin-bottom: $margin;
 	border: thin solid;
+	background: #fff;
 
 	&:last-child {
 		margin-bottom: 0;
 	}
 
 	.example--rendered {
-		padding: $padding;
 		margin-bottom: $margin;
-		border: thin dotted #ccc;
 	}
 
 	.example--toggles {
-		margin-bottom: $margin;
-
+    button{
+      padding: 0.5em 1em;
+    }
 		.active {
-			background: pink;
+			background: #eee;
+			border: 1px solid #eee;
 		}
 	}
 
@@ -36,5 +47,6 @@ $margin: 10px;
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
+		color: black;
 	}
 }
