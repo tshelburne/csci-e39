@@ -38,6 +38,12 @@ export const ProfilesExamples = [
 			pic: "https://avatars0.githubusercontent.com/u/6720549?s=200&v=4", 
 			bio: "Front end developer, designer, illustrator, fine artist, teacher, speaker. <a href=\"http://www.artist-developer.com\">www.artist-developer.com</a>",
 		},
+		{
+			id: "chrisgaines",
+			name:"Chris Gaines", 
+			pic: "https://a3-images.myspacecdn.com/images03/33/2075aff2d9064cdaab09c71d5c184f54/300x300.jpg", 
+			bio: "Heaven knows <br />I\'m head over heels and it shows <br />I\'ve played every field i suppose <br />But there\'s something about you <br />When you\'re around <br />Baby I have found <br />I get lost in you<p><a href=\"https://myspace.com/chrisgainesofficial\">Chris Gaines</a>",
+		},
 ];
 
 export default Profile
