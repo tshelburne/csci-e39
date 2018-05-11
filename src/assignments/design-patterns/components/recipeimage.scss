@@ -1,0 +1,19 @@
+.card {
+	.image {
+		background-size: cover;
+		background-position: center center;
+		width: 100%;
+		height: 80%;
+		background: linear-gradient(hsla(0, 100%, 100%, 0) 50%, hsla(0, 0%, 99%, 0) 50%, hsla(0, 0%, 96%, 1) 90%), url("https://www.fillmurray.com/g/650/400");
+	}
+}
+
+.card {
+	.image-2 {
+		background-size: cover;
+		background-position: center center;
+		width: 100%;
+		height: 80%;
+		background: linear-gradient(hsla(0, 100%, 100%, 0) 50%, hsla(0, 0%, 99%, 0) 50%, hsla(0, 0%, 96%, 1) 90%), url("https://picsum.photos/650/400");
+	}
+}

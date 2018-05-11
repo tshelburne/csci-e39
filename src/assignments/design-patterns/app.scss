@@ -1,7 +1,29 @@
 @import 'pattern-library';
-
 $padding: 20px;
 $margin: 10px;
+
+.example,
+.style-guide {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #303036;
+}
+
+.style-guide blockquote {
+	font-size: small;
+	margin-top: -10px;
+
+	a {
+		text-decoration: none;
+		font-weight: bold;
+
+		a:active,
+		a:hover,
+		a:link,
+		a:visited {
+			color: #7A82AB;
+		}
+	}
+}
 
 .style-guide {
 	width: 90%;
@@ -28,7 +50,7 @@ $margin: 10px;
 		margin-bottom: $margin;
 
 		.active {
-			background: pink;
+			background: #F6AE2D;
 		}
 	}
 

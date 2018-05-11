@@ -1,0 +1,53 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700);
+
+$color-primary: hsl(180, 25.2%, 49.8%);
+$card-background: hsl(0, 0%, 96.1%);
+
+.card {
+	overflow: hidden;
+	font-family: "Open Sans", sans-serif;
+	color: $color-primary;
+	width: 480px;
+	height: 300px;
+	display: border-box;
+	background: $card-background;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	box-shadow: 0 30px 30px -20px rgba(0,0,0,0.2);
+}
+
+.card {
+	.setting {
+		font-size: 0.75em;
+		color: hsl(0, 0%, 96.5%);
+		position: absolute;
+		right: 15px;
+		top: 15px;
+	}
+}
+
+.card .description {
+	padding: 0 3%;
+}
+
+.card .description h4,
+.description h5 {
+	margin: 0;
+	padding: 0;
+}
+
+.card .description > div {
+	display: inline-block;
+	width: 26%;
+	margin: 0 3%;
+}
+
+
+.card .description h4 {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
