@@ -2,6 +2,7 @@
 $profile-gap: $margin-sm;
 $profile-name-background-color: $img-name-background;
 $profile-name-color: $img-name-color;
+$profile-pic-width: 200px;
 
 .profile {
 	@extend %border-box;
@@ -15,7 +16,7 @@ $profile-name-color: $img-name-color;
 		border: 1px solid black;
 		grid-area: image;
 		justify-self: center;
-		max-width: 250px;
+		width: $profile-pic-width;
 	}
 
 	.profile-name {
@@ -24,12 +25,13 @@ $profile-name-color: $img-name-color;
 		grid-area: name;
 		justify-self: center;
 		text-align: center;
-		width: 100%;
+		width: $profile-pic-width;
 	}
 
 	.profile-children {
 		align-self: self-start;
 		grid-area: children;
+		visibility: visible;
 	}
 
 	.hideBio {
