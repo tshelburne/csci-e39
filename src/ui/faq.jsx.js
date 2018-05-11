@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Module from '../assignments/design-patterns/index.jsx'
+import Module from '../assignments/project-1/faq.jsx'
 
-const App = ({auth, ...props}) => {
+const Faq = ({auth, ...props}) => {
 	switch (auth.status) {
 		case `init`: return <span>Authorizing</span>
 		case `failure`: return <span>{auth.message}</span>
@@ -11,4 +11,4 @@ const App = ({auth, ...props}) => {
 	}
 }
 
-export default App
+export default Faq

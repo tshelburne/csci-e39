@@ -13,6 +13,7 @@ import config from './config'
 import {Student, Message} from './db'
 import {upload, destroy} from './services/upload'
 import App from './ui/app.jsx'
+import Faq from './ui/faq.jsx'
 import {IMAGE_MIMES, KB} from './util/constants'
 
 const log = debug(`csci-e39:server`)
@@ -34,6 +35,12 @@ app.use(views(`${__dirname}/ui`, {extension: `pug`}))
 app.use(route.get(`/`, async ctx => {
 	await ctx.render(`index`, {
 		app: renderApp({auth: {status: `init`, message: ``}}),
+	})
+}))
+
+app.use(route.get(`/faq`, async ctx => {
+	await ctx.render(`faq`, {
+		app: renderFaq({auth: {status: `init`, message: ``}}),
 	})
 }))
 
@@ -238,6 +245,10 @@ server.listen(config.port, () => log(`✅  - listening at localhost:${config.por
 
 function renderApp(props) {
 	return ReactDOMServer.renderToString(<App {...props} />)
+}
+
+function renderFaq(props) {
+	return ReactDOMServer.renderToString(<Faq {...props} />)
 }
 
 async function authenticate(socket, next) {

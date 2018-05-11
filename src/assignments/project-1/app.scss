@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css?family=Cardo:400,400i|Montserrat:700');
+
+//***VARIABLES***//
+$primary: #2B69CE;
+$secondary: #317E8B;
+$gray:#777;
+$gray-light:#EFEFEF;
+$gray-dark:#1A1A1A;
+$white:#FFFFFF;
+//button colors
+$icon-bg: darken($primary, 7%);
+$progress-bg: #DDDDDD;
+//button hover colors
+$primary-hover: #2dce2a;
+$icon-hover: darken($primary-hover, 7%);
+
+
+//***BODY***//
+body{
+	background:$gray-light;
+	color: $gray-dark;
+	font-family: Cardo, Times;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0 auto;
+}
+
+//***TYPOGRAPHY***//
+h1, .image-grid h2{
+	font:700 32px/40px Montserrat, Arial;
+	letter-spacing: -.5px;
+}
+
+h2{
+	font:700 18px/24px Montserrat, Arial;
+}
+
+p{
+	font:400 18px/27px Cardo, Times;
+}
+a{
+	text-decoration: none;
+	color: $primary;
+	&:hover{
+		color: $secondary;
+	}
+}
+
+
+//***MENU***//
+nav{
+	text-align: center;
+	a{
+		font: 400 18px/27px Cardo, Times;
+		color: $gray;
+		margin-right: 30px;
+		text-decoration: none;
+		&:last-child{
+			margin-right: 0px;
+		}
+	}
+}
+#mainMenu{
+	padding:50px;
+	background:$white;
+}
+
+
+//***HEADER***//
+header{
+	text-align: center;
+	padding: 100px 50px;
+
+	h1{
+		font: 700 56px/64px Montserrat;
+		margin: 0px;
+		color: $white;
+	}
+
+	p{
+		max-width: 400px;
+		margin: 0 auto;
+		color: $white;
+	}
+}
+.home{
+	background: linear-gradient(rgba(0,0,0,0.33), rgba(0,0,0,0.42)),url(http://leisyvidal.com/img/grid1.jpg) center no-repeat,#131418;
+	background-size: cover;
+}
+.faq{
+	background: linear-gradient(rgba(0,0,0,0.33), rgba(0,0,0,0.42)),url(http://leisyvidal.com/img/home1.jpg) center no-repeat,#131418;
+	background-size: cover;
+}
+
+
+//***LAYOUT***//
+.wrapper{
+	width: 100%;
+	max-width: 1300px;
+	padding: 30px;
+	box-sizing: border-box;
+	margin: 30px auto;
+}
+
+.grid{
+	display: grid;
+}
+
+aside{
+	grid-column-start: 1;
+  grid-column-end: 2;
+	background: $white;
+	padding: 50px;
+
+	p{
+		max-width: 300px;
+	}
+}
+.images{
+	grid-column-start: 2;
+  grid-column-end: 6;
+	margin-left: 50px;
+	background: $white;
+	padding: 50px;
+}
+
+.image-grid{
+	display: flex;
+	flex-wrap: nowrap;
+
+	ul{
+		display: flex;
+		flex-wrap: wrap;
+		padding-left: 0;
+		justify-content: space-between;
+		list-style: none;
+	}
+
+	li{
+		display: flex;
+		flex-direction: column;
+		flex-basis: 48%;
+		margin-bottom: 15px;
+		a{
+			display: flex;
+			flex-direction: column;
+
+			label{
+				order: 2;
+				font:italic 400 16px/24px Cardo, Times;
+				color: $gray;
+				&:before{
+					content: 'Filename: ';
+				}
+			}
+
+			img{
+				width: 100%;
+				border: 3px;
+			}
+		}
+	}
+}
+
+.faqs{
+	grid-column-start: 1;
+  grid-column-end: 2;
+	background: $white;
+	padding:75px;
+	h2{
+		font: 700 32px/40px Montserrat, Arial;
+		margin-bottom: 10px;
+		margin-top: 50px;
+		&:first-of-type{
+			margin-top: 0px;
+		}
+	}
+
+	p{
+		max-width: 850px;
+		margin: 0;
+	}
+}
+
+//***COMPONENTS***//
+//LIST STYLES
+.uploads{
+	list-style: none;
+	padding-left: 0;
+}
+
+//UPLOADER
+.uploader{
+	position: relative;
+	min-height: 70px;
+	max-width: 200px;
+	text-align: center;
+
+	label{
+		border: 1px solid $gray-dark;
+		padding: 15px;
+		display: inline-block;
+		cursor: pointer;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		width: 100%;
+		box-sizing: border-box;
+		font: 400 18px Cardo;
+
+		&:hover{
+			background: $gray-dark;
+			color: $white;
+			cursor: pointer;
+		}
+	}
+
+	input[type="file"]{
+		position: absolute;
+		top:0;
+		left: 0;
+		padding: 20px;
+		opacity: 0;
+		cursor: pointer;
+		z-index: 2;
+		width: 100%;
+		box-sizing: border-box;
+
+		&:hover + label{
+			background: $gray-dark;
+			color: $white;
+			cursor: pointer;
+			opacity: 1;
+		}
+	}
+}
+
+//PROGRESSBAR
+progress, progress::-webkit-progress-value{
+	//color of progress bar
+	background-color: $primary;
+	//resets for browsers
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	//reset borders
+	border:0;
+	border-radius:0;
+	width:100%;
+	max-width:500px;
+	height:20px;
+}
+//bg color of entire progress bar
+progress[value], progress[value]::-webkit-progress-bar {
+  background-color: $progress-bg;
+}
+
+//***FOOTER***//
+footer{
+	background: $white;
+	padding: 25px;
+	text-align: center;
+}
+
+
+//***MEDIA QUERIES***//
+@media all and (max-width:800px){
+	header h1{
+		font: 700 40px/48px Montserrat;
+		margin-bottom: 10px;
+	}
+	.wrapper{
+		padding: 15px;
+	}
+	input{
+		max-width: 100%;
+	}
+	input[type='file']{
+		width: 100%;
+		max-width: 100%;
+		padding: 10px;
+	}
+	.images{
+		grid-column-start: 1;
+		grid-column-end:2;
+		margin-left: 0;
+		margin-top: 30px;
+	}
+	.image-grid li{
+		flex-basis: 100%;
+	}
+}

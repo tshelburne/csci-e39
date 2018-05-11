@@ -1,0 +1,18 @@
+@import './components/scss/globals';
+
+header{
+	text-align: center;
+	padding: $padding-xl $padding-med;
+
+	h1{
+		font: 700 68px 'Source Sans Pro';
+		margin: 0;
+	}
+	h2{
+		font: 700 11px 'Source Sans Pro';
+		letter-spacing: .2em;
+		text-transform: uppercase;
+		margin: 0;
+		color: $gray-light;
+	}
+}

@@ -6,8 +6,8 @@ import Heading from '../../ui/components/heading.jsx'
 import MenuItem from '../../ui/components/menuItem.jsx'
 import Foot from '../../ui/components/footer.jsx'
 
-const pageTitle = "The Desk Archives";
-const pageDesc = "A directory of inspiration for interior designers to showcase their best office designs.";
+const pageTitle = "FAQs";
+const pageDesc = "Have questions? We've got answers.";
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
@@ -20,55 +20,13 @@ const Uploads = ({uploads, actions}) => {
 
 		<header className="home">
 			<Heading pageTitle={pageTitle} pageDesc={pageDesc}/>
-			{/*<p>A directory of inspiration for office spaces created by interior designers.</p>*/}
 		</header>
 
 		<div className="wrapper">
 			<div className="grid">
-				<aside>
-					<h1>The Desk Archives</h1>
-					<p>Welcome to the desk archives. Have an office design you want to share? Upload one here.</p>
-					{/*<p>Welcome to the desk archives. This is a directory of inspiration for interior designers to showcase their best office designs. Have an office design you want to share? Upload one here.</p>*/}
-
-					{/* do not delete this uploader component */}
-					<Uploader upload={actions.upload} />
-					{/* do not delete this uploader component */}
-
-
-					<ul className="uploads">
-						{pendingFiles.map(file => {
-							const {id, name, progress} = file
-
-							return <div>
-								<h2>Upload In Progress:</h2>
-								<li key={id}>
-									<label>{name}</label>
-									<progress value={progress} max="100">{progress}%</progress>
-								</li>
-							</div>
-						})}
-					</ul>
-				</aside>
-
-				<section className="images">
-					<h2>The Latest Designs:</h2>
-					<div className="image-grid">
-						<ul>
-							{completedFiles.map(file => {
-								const {id, name, url, error} = file
-
-								return <li key={id}>
-									<a data-fancybox="gallery" href={url}>
-										<label>{name}</label>
-										{!error && <img src={url} alt={name}/>}
-										{!!error && <p className="failure">{error}</p>}
-									</a>
-								</li>
-							})}
-						</ul>
-					</div>
+				<section className="faqs">
+					<h2>FAQs</h2>
 				</section>
-
 			</div>{/*GRID END*/}
 		</div>{/*WRAP END*/}
 

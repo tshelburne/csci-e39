@@ -1,0 +1,32 @@
+@import 'globals';
+
+.card-container{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.card{
+	background: $white;
+	flex-basis: 31%;
+	margin: 1%;
+	box-sizing: border-box;
+	box-shadow: 0px 0px 30px rgba(0,0,0,.1);
+
+	img{
+		width: 100%;
+	}
+
+	.card-text{
+		padding: 25px;
+		h2{
+			margin: 0;
+		}
+	}
+}
+
+@media all and (max-width:880px){
+	.card{
+		flex-basis: 98%;
+	}
+}

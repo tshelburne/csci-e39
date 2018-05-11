@@ -5,27 +5,32 @@ import ReactDOMServer from 'react-dom/server'
 import jsxToString from 'jsx-to-string'
 import beautify from 'js-beautify'
 
-const Example = ({title, children}, context) => (
+const Example = ({title, description, tags, children}, context) => (
 	<div className="example">
 		<h2 className="example--title">{title}</h2>
+		<p>{description}</p>
 
 		<div className="example--rendered">
-			<h3>Rendered output:</h3>
+			<h3 className="example--subtitle">Components In Use:</h3>
 			{children}
 		</div>
 
+		<h3 className="example--subtitle">Component Tags:</h3>
+		<h3 className="example--tags">{tags}</h3>
+
+		<h3 className="example--subtitle">Code Examples:</h3>
 		<div className="example--toggles">
-			<button
-				onClick={() => context.setActiveCode(`html`)}
-				className={context.activeCode === `html` ? `active` : ``}
-			>
-				HTML
-			</button>
 			<button
 				onClick={() => context.setActiveCode(`react`)}
 				className={context.activeCode === `react` ? `active` : ``}
 			>
 				React
+			</button>
+			<button
+				onClick={() => context.setActiveCode(`html`)}
+				className={context.activeCode === `html` ? `active` : ``}
+			>
+				HTML
 			</button>
 			<button
 				onClick={() => context.setActiveCode(`off`)}
@@ -35,9 +40,8 @@ const Example = ({title, children}, context) => (
 			</button>
 		</div>
 
-		{context.activeCode !== `off` && 
+		{context.activeCode !== `off` &&
 			<div className="example--code">
-				<h3>Code sample:</h3>
 				<pre>
 					<code>
 						{context.activeCode === `html` &&
@@ -45,7 +49,7 @@ const Example = ({title, children}, context) => (
 								.html(ReactDOMServer.renderToStaticMarkup(<div>{children}</div>))
 								.replace(/^<div>.*\n([\S\s]*)<\/div>$/, `$1`)
 						}
-						
+
 						{context.activeCode === `react` &&
 							jsxToString(<div>{children}</div>)
 								.replace(/=\{true\}/g, ``)
