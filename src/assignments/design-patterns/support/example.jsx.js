@@ -35,7 +35,7 @@ const Example = ({title, children}, context) => (
 			</button>
 		</div>
 
-		{context.activeCode !== `off` && 
+		{context.activeCode !== `off` &&
 			<div className="example--code">
 				<h3>Code sample:</h3>
 				<pre>
@@ -45,7 +45,7 @@ const Example = ({title, children}, context) => (
 								.html(ReactDOMServer.renderToStaticMarkup(<div>{children}</div>))
 								.replace(/^<div>.*\n([\S\s]*)<\/div>$/, `$1`)
 						}
-						
+
 						{context.activeCode === `react` &&
 							jsxToString(<div>{children}</div>)
 								.replace(/=\{true\}/g, ``)
