@@ -1,14 +1,20 @@
-@import 'pattern-library';
+@import "pattern-library";
 
 $padding: 20px;
 $margin: 10px;
-
+$button-padding: 1%;
+$button-margin: 1%;
+$primary-color: rgba(150, 143, 179, 1);
+$primary-accent: white;
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
 	margin: 0 auto;
 }
 
+.style-guide-heading {
+	text-align: center;
+}
 .example {
 	padding: $padding;
 	margin-bottom: $margin;
@@ -17,11 +23,15 @@ $margin: 10px;
 	&:last-child {
 		margin-bottom: 0;
 	}
+	.example--title {
+		text-align: center;
+	}
 
 	.example--rendered {
 		padding: $padding;
 		margin-bottom: $margin;
 		border: thin dotted #ccc;
+		background-color: #eeeeee;
 	}
 
 	.example--toggles {
@@ -36,5 +46,42 @@ $margin: 10px;
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
+		background-color: black;
+		color: #20c20e;
+	}
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	max-width: 600px;
+	max-height: 400px;
+	padding: 10px;
+	background-color: white;
+	margin: 20px;
+	box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+		0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+		0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+	.card-title {
+		width: 100%;
+		margin-top: 5px;
+		margin-bottom: 5px;
+		text-align: center;
+	}
+}
+
+.custom-button {
+	border: none;
+	display: inline-block;
+	padding: $button-padding;
+	margin: $button-margin;
+	background-color: $primary-color;
+	color: $primary-accent;
+	transition: all 0.3s;
+	width: 150px;
+	height: 60px;
+	&:hover {
+		background-color: darken($primary-color, 15);
+		cursor: pointer;
 	}
 }
