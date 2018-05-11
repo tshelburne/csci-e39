@@ -1,0 +1,20 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+.button {
+	font-family: "Montserrat";
+	margin: 0.5em;
+	outline-color: black;
+	outline-width: 5px;
+
+	&.bigger {
+		background: green;
+	}
+
+	&.smaller {
+		background: yellow;
+	}
+
+	&.reset {
+		background: red;
+	}
+}

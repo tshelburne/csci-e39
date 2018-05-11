@@ -1,18 +1,60 @@
 @import 'pattern-library';
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
 
 $padding: 20px;
 $margin: 10px;
+$title-color: #f8fbfc;
+$text-color: #a7c4dd;
+$border-color: #f8fbfc;
+
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  letter-spacing: -4px;
+  font-size: 5em;
+  color: #fff;
+}
+
+#gradient {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(270deg, #003366, #b27000, #06617d, #067370);
+  background-size: 800% 800%;
+  -webkit-animation: colors 30s ease infinite;
+  -moz-animation: colors 30s ease infinite;
+  animation: colors 30s ease infinite;
+}
+
+@-webkit-keyframes colors {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@-moz-keyframes colors {
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
+@keyframes colors { 
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
+}
 
 .style-guide {
 	width: 90%;
-	max-width: 1024px;
+	max-width: 700px;
 	margin: 0 auto;
+	font-family: "Montserrat";
+	color: $text-color;
 }
 
 .example {
+	font-family: "Montserrat";
 	padding: $padding;
 	margin-bottom: $margin;
-	border: thin solid;
+	border: solid 0.3em;
+	border-color: $border-color;
 
 	&:last-child {
 		margin-bottom: 0;

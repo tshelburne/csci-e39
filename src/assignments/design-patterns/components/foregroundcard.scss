@@ -1,0 +1,18 @@
+$color-main: c;
+$padding: 20px;
+$margin: 1em;
+$radius: 4px;
+
+@mixin transition($prop: all, $duration: 0.4s, $timing: ease-in-out) {
+  transition: $prop $duration $timing;
+}
+
+.comp {
+  border: 10px solid $color-main;
+  border-radius: $radius;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.5);
+  padding: $padding;
+  margin: $margin;
+  text-align: center;
+  @include transition(background-color);
+}
