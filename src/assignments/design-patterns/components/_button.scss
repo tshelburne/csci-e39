@@ -1,0 +1,12 @@
+.button {
+    margin: 1%;
+    padding: 2%;
+    color: white;
+
+    &.success {
+        background-color: darkgreen;
+    }
+    &.cancel {
+        background-color: red;
+    }
+}
