@@ -20,7 +20,8 @@ export default {
 	],
 	module: {
 		loaders: [
-			{ test: /\.js$/, exclude: /node_modules/, loader: `babel-loader` }
+			{ test: /\.js$/, exclude: /node_modules/, loader: `babel-loader` },
+			{ test: /\.wav$/, loader: 'url-loader'}
 		]
 	}
 }
