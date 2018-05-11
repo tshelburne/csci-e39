@@ -9,10 +9,10 @@ class Button extends React.Component {
   
   
   render() {
-    const {className, ...inputProps} = this.props
+    const {type, children, ...inputProps} = this.props
 
      return(
-        <button className={`button ${className}`}>Primary Button</button>
+        <button className={`button ${type}`}>{children}</button>
       )
   }
 }

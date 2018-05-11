@@ -34,10 +34,12 @@ pre{
 	}
 
 	.example--toggles {
-		margin-bottom: $margin;
-
+    button{
+      padding: 0.5em 1em;
+    }
 		.active {
-			background: pink;
+			background: #eee;
+			border: 1px solid #eee;
 		}
 	}
 

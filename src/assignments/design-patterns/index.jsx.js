@@ -58,14 +58,24 @@ class PatternLibrary extends React.Component {
 				*/}
 
 				<Example title="Button Set">
-				<Button className="button button--primary">
-				  Primary Button
-				</Button>
-					<button className="button button--secondary">Secondary Button</button>
-					<button className="button button--primary--subtle">Subtle Primary Button</button>
-					<button className="button button--secondary--subtle">Subtle Secondary Button</button>
-					<button className="button button--primary button--disabled">Disabled Primary Button</button>
-					<button className="button button--secondary button--disabled">Disabled Secondary Button</button>
+  				<Button type="button--primary">
+  				  Primary Button
+  				</Button>
+  				<Button type="button--primary button--primary--subtle">
+  					Subtle Primary Button
+  				</Button>
+  				<Button type="button--primary button--primary--disabled">
+  				  Disabled Primary Button
+  				</Button>  				
+  				<Button type="button--secondary">
+  					 Secondary Button
+          </Button>  				
+  				<Button type="button--secondary button--secondary--subtle">
+  				  Subtle Secondary Button
+  				</Button>
+  				<Button type="button--secondary button--secondary--disabled">
+  				  Disabled Secondary Button
+  				</Button>
 				</Example>
 				
 				<Example title="Card">

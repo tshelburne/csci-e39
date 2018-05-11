@@ -1,0 +1,39 @@
+.button{
+  -webkit-appearance: none;
+  margin: 1em 0 0 1em;
+  cursor: pointer;
+  &.button--primary{
+    background: $primary-color;
+    border-radius: 5px;
+    padding: 0.75em 1.25em;
+    border: none;
+    color: white;
+    &--subtle{
+      background: transparent;
+      border: 2px solid $primary-color;
+      color: $primary-color;
+    }
+    &--disabled{
+      background: desaturate($primary-color, 60%);
+      color: #2b2b2b;
+      cursor: not-allowed;
+    }
+  }
+  &.button--secondary{
+    background: $secondary-color;
+    padding: 0.5em 1em;
+    font-size: 0.85em;
+    border-radius: 0px;
+    border: none;
+    &--subtle{
+      background: transparent;
+      border: 2px solid $secondary-color;
+      color: darken($secondary-color, 11);
+    }
+    &--disabled{
+      background: desaturate($secondary-color, 60%);
+      cursor: not-allowed;
+      color: #828282;
+    }
+  }
+}
