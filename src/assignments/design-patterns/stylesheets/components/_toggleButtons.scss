@@ -31,6 +31,8 @@ $tgl-btn-span-margin: $margin-sm;
 		> span {
 			border-radius: $tgl-btn-span-radius;
 			padding: 3px $tgl-btn-span-padding 2px;
+			// without this, the parent button won't receive cursor clicks in Safari or Chrome
+			pointer-events: none;
 
 			&:first-child {
 				background-color: $tgl-btn-span-background-color;
