@@ -5,7 +5,7 @@ const List = ({ ordered, children }) => {
     return (
         <ListTag className={ordered ? 'default-list ordered' : 'default-list'}>
             {/* https://reactjs.org/docs/react-api.html#reactchildren */}
-            {React.Children.map(children, child => <li><div>{child}</div></li>)}
+            {React.Children.map(children, child => <li><div className="list-item-wrapper">{child}</div></li>)}
         </ListTag>
     )
 }

@@ -1,0 +1,28 @@
+$headingfont: "Montserrat",
+sans-serif;
+$hksred: rgb(189, 6, 40);
+$hksblue: #2199e8;
+$hksgreen: #687f10;
+.modal-toggler {
+    color: $hksblue;
+}
+
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    z-index: 99;
+    width: 70%;
+    position: relative;
+    top: 25vh;
+    margin: 0 auto;
+    border-radius: 5px;
+}

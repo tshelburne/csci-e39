@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import autobind from 'class-autobind';
+import autobind from 'class-autobind'
 
 export class Event extends React.Component {
 
@@ -16,26 +16,28 @@ export class Event extends React.Component {
         const eventflag = flag || ''
         return (
             <article className={"event " + eventflag}>
+                <p className="event-date">{date}</p>
                 <header className="event-header">
                     <h1 className="event-title">{title}</h1>
-                    <div className="event-meta-details">
-                        <p className="event-date">{date}, {startTime}-{endTime}</p>
-                        <p className="event-location">{location}</p>
-                    </div>
+
+                    <p className="event-time">{startTime}-{endTime}</p>
+                    <p className="event-location">{location}</p>
+
                 </header>
                 <p className="event-description">{description}</p>
-            </article>)
+            </article>
+        )
     }
 }
 
-export const EventMini = ({ title, date, startTime, endTime, location, description }) =>
+export const EventMini = ({ title, date }) =>
     <Event
         flag="mini"
         title={title} date={date}
-        startTime={startTime}
-        endTime={endTime}
-        location={location}
-        description={description}
+        startTime=""
+        endTime=""
+        location=""
+        description=""
     />
 
 EventMini.displayName = 'EventMini'

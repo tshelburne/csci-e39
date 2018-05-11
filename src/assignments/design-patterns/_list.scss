@@ -3,7 +3,7 @@ $hksred: rgb(189, 6, 40);
     list-style-type: none;
     li {
         position: relative;
-        div {
+        .list-item-wrapper {
             padding: 20px;
             padding-top: 0;
             &:before {
