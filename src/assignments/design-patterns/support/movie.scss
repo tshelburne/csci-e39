@@ -1,0 +1,28 @@
+.movie, .selected-movie {
+  text-align: center;
+}
+
+.movie {
+  background-color: #598392;
+  position: relative;
+  min-height: 350px;
+
+  button {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    font-size: 1.1em;
+  }
+}
+
+.selected-movie {
+  background-color: #124559;
+  padding: 2.5em;
+  color: white;
+  text-align: center;
+
+  h4 {
+    font-size: 2em;
+    color: white;
+  }
+}

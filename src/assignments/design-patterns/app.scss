@@ -3,6 +3,23 @@
 $padding: 20px;
 $margin: 10px;
 
+$primary-font-family: 'Lora', serif;
+$header-font-family: 'Roboto', sans-serif;
+
+body {
+  font-family: $primary-font-family;
+	background-color: #ced3dc;
+	margin: 2em;
+}
+
+h1, h2, h3, h4 {
+  font-family: $header-font-family;
+}
+
+pre {
+  white-space: pre-wrap;
+}
+
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
@@ -10,9 +27,9 @@ $margin: 10px;
 }
 
 .example {
+	background-color: white;
 	padding: $padding;
 	margin-bottom: $margin;
-	border: thin solid;
 
 	&:last-child {
 		margin-bottom: 0;
