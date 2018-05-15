@@ -1,0 +1,21 @@
+$blue: #3F51B5;
+
+.button {
+  font-size: 14px;
+  display: inline-block;
+  margin: 5px 5px;
+  height: 30px;
+  min-width: 40px;
+  line-height: 16px;
+  vertical-align: middle;
+  border-radius: 2px;
+  color: $blue;
+
+  &.hello {
+    background-color: linear-gradient(blue, white);
+  }
+
+  &.goodbye {
+    background-color: linear-gradient(white, blue);
+  }
+}

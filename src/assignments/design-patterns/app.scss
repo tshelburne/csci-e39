@@ -1,12 +1,16 @@
 @import 'pattern-library';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 $padding: 20px;
 $margin: 10px;
+$font: 'Roboto medium', sans-serif;
+
 
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
 	margin: 0 auto;
+	font-family: $font;
 }
 
 .example {
