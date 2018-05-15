@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
+import {MainCard, OtherCard} from './components/card.jsx'
+import ProgressBar from './components/progress-bar.jsx'
 
 class PatternLibrary extends React.Component {
 
@@ -22,8 +24,16 @@ class PatternLibrary extends React.Component {
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
+				<Example title="My Progress bars">
+					<ProgressBar heading="Normal" type="normal"/>
+
+					<ProgressBar heading="Success" type="success"/>
+				</Example>
+
+				<Example title="My card components">
+					<MainCard/>
+
+					<OtherCard/>
 				</Example>
 				
 				<Example title="My Special <span>">

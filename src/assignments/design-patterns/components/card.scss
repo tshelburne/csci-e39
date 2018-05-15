@@ -1,0 +1,20 @@
+.main-card, .other-card {
+  color: white;
+  margin: 15px auto;
+}
+
+.main-card {
+  background-color: black;
+}
+
+.other-card {
+  background-color: grey;
+}
+
+.other-card img {
+  float: left;
+}
+
+.card-heading-text{
+  padding: 5px;
+}
