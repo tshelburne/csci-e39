@@ -1,0 +1,58 @@
+$input-focus: #3f51b5;
+$foreground: #d50000;
+
+
+$material-labelOffset: 25px;
+$material-textInputPaddingTopBottom: 10px;
+
+.material-form-field{
+  color: $input-focus;
+  display: block;
+  font-size: 14px;
+  position: relative;
+  padding: 25px 0 10px 0;
+
+  &::after{
+    color: $foreground;
+    content: "\00A0";
+    display: block;
+    font-size: 12px;
+    padding-top: 5px;
+  }
+
+  .material-form-field-label{
+    cursor: text;
+    display: block;
+    left: 0px;
+    position: absolute;
+    pointer-events:none;
+    top: 35px;
+    transition:0.2s ease all;
+  }
+
+  input{
+    border: none;
+    border-bottom:1px solid black;
+    color: $input-focus;
+    display: block;
+    font-size: 14px;
+    outline: none;
+    padding: 10px 0 10px 0;
+    width: 100%;
+
+    &:valid, &:focus{
+      & ~ .material-form-field-label{
+        top: 10px;
+        font-size:12px;
+      }
+    }
+    
+    &:focus{
+      outline: none;
+      color: $input-focus;
+      padding-bottom: 8px;
+      border-bottom-width: 3px;
+      border-bottom-color: $input-focus;
+    }
+  }
+}
