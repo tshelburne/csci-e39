@@ -27,7 +27,7 @@
   "dependencies": {
     "bookshelf": "^0.14.1",
     "class-autobind": "^0.1.4",
-    "cloudinary": "^1.9.0",
+    "cloudinary": "^1.13.2",
     "debug": "^3.0.1",
     "js-beautify": "^1.8.9",
     "jsx-to-string": "^1.4.0",
@@ -44,20 +44,35 @@
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "socket.io": "^2.2.0",
-    "supports-color": "^4.4.0",
+    "supports-color": "^5.5.0",
     "xstream": "^11.7.0"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-loader": "^7.1.2",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-plugin-transform-react-jsx": "^6.24.1",
-    "babel-preset-env": "^1.6.0",
-    "concurrently": "^3.5.0",
-    "livereload": "^0.6.2",
-    "node-sass": "^4.7.2",
-    "nodemon": "^1.11.0",
+    "@babel/core": "^7.2.0",
+    "@babel/node": "^7.2.0",
+    "@babel/preset-env": "^7.2.0",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "concurrently": "^4.1.0",
+    "livereload": "^0.7.0",
+    "node-sass": "^4.11.0",
+    "nodemon": "^1.18.8",
     "sqlite3": "^4.0.4",
-    "webpack": "^3.5.5"
+    "webpack": "^4.27.1",
+    "webpack-cli": "^3.1.2"
+  },
+  "babel": {
+    "presets": [
+      [
+        "@babel/preset-env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "@babel/preset-react"
+    ]
   }
 }
