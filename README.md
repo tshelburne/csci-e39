@@ -1,28 +1,17 @@
 # Design Patterns in React (CSCI E-39)
 
-*Note: as of 4/15/18, Windows is using Node / npm directly rather than Docker. These
-docs will be relevant only for Mac users until we decide if Docker usage will be
-deprecated entirely.*
-
-*For the time being, Windows users should install Node 8.\* and npm 5.\*, and use the
-make.sh script. The commands are all virtually identical, except `make` becomes
-`bash make.sh`*
-
 ## Accounts and Tools
 
 1. [Github](https://github.com/) account
-1. [Dockerhub](https://hub.docker.com) account
-1. Install [Docker for Windows](https://www.docker.com/docker-windows) | [Docker for Mac](https://www.docker.com/docker-mac)
-    - for Windows, also install [git-bash](https://git-for-windows.github.io/)
+1. [NPM / Node (v10.*)](https://www.npmjs.com/get-npm)
 
 ## Installation
 
-1. Start Docker
 1. Open Terminal / git-bash and run
     1. `mkdir -p ~/Projects && cd ~/Projects`
     1. `git clone git@github.com:tshelburne/csci-e39.git && cd csci-e39`
     1. `echo your-id-goes-here > .id`, replacing "your-id-goes-here" with your student ID
-    1. `make build migrate`
+    1. `npm run build && npm run migrate`
 
 ## Repo documentation
 

@@ -14,8 +14,8 @@ export default {
 	},
 	plugins: [
 		new DefinePlugin({
-			__STUDENT_ID__: superStringify(config.studentId),
-			__BACKEND__: superStringify(config.backend),
+			__STUDENT_ID__: JSON.stringify(config.studentId),
+			__BACKEND__: JSON.stringify(config.backend),
 		}),
 	],
 	module: {
