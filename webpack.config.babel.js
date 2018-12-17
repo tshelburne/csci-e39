@@ -6,8 +6,11 @@ import HtmlWebpackPlugin from 'html-webpack-plugin'
 import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import config from './src/config'
 
-export default async (env) => {
+export default async (env, argv) => {
+	const production = argv.mode === `production`
+
 	const studentId = await p(fs.readFile)(`${__dirname}/.id`, `utf8`)
+	const backend = production ? `csci-e39.herokuapp.com` : `localhost:${config.port}`
 
 	return {
 		devtool: `eval-cheap-module-source-map`,
@@ -21,7 +24,7 @@ export default async (env) => {
 		plugins: [
 			new DefinePlugin({
 				__STUDENT_ID__: JSON.stringify(studentId),
-				__BACKEND__: JSON.stringify((env && env.BACKEND) || `localhost:${config.port}`),
+				__BACKEND__: JSON.stringify(backend),
 			}),
 			new HtmlWebpackPlugin({template: `src/index.html`}),
 			new MiniCssExtractPlugin({
@@ -39,7 +42,7 @@ export default async (env) => {
 				{
 					test: /\.scss$/,
 					use: [
-						(env && env.production) ? `style-loader` : MiniCssExtractPlugin.loader,
+						production ? `style-loader` : MiniCssExtractPlugin.loader,
 						`css-loader`,
 						`sass-loader`,
 					],
