@@ -1,26 +1,60 @@
+import fs from 'fs'
+import {promisify as p} from 'util'
+
 import {DefinePlugin} from 'webpack'
+import HtmlWebpackPlugin from 'html-webpack-plugin'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import config from './src/config'
 
-const superStringify = str => `'${str}'`
+export default async (env) => {
+	const studentId = await p(fs.readFile)(`${__dirname}/.id`, `utf8`)
 
-export default {
-	devtool: `eval-cheap-module-source-map`,
-	entry: `./src/client.js`,
-	output: {
-		path: `${__dirname}/public/js`,
-		filename: `app.js`,
-		libraryTarget: `var`,
-		library: `MyApp`
-	},
-	plugins: [
-		new DefinePlugin({
-			__STUDENT_ID__: JSON.stringify(config.studentId),
-			__BACKEND__: JSON.stringify(config.backend),
-		}),
-	],
-	module: {
-		rules: [
-			{ test: /\.js$/, exclude: /node_modules/, loader: `babel-loader` }
-		]
+	return {
+		devtool: `eval-cheap-module-source-map`,
+		entry: `./src/client.js`,
+		output: {
+			path: `${__dirname}/public`,
+			filename: `app.js`,
+			libraryTarget: `var`,
+			library: `MyApp`
+		},
+		plugins: [
+			new DefinePlugin({
+				__STUDENT_ID__: JSON.stringify(studentId),
+				__BACKEND__: JSON.stringify((env && env.BACKEND) || `localhost:${config.port}`),
+			}),
+			new HtmlWebpackPlugin({template: `src/index.html`}),
+			new MiniCssExtractPlugin({
+				filename: `[name].css`,
+				chunkFilename: `[id].css`
+			})
+		],
+		module: {
+			rules: [
+				{ test: /\.js$/, exclude: /node_modules/, loader: `babel-loader` },
+				{
+					test: /\.css$/,
+					use: [`style-loader`, `css-loader`],
+				},
+				{
+					test: /\.scss$/,
+					use: [
+						(env && env.production) ? `style-loader` : MiniCssExtractPlugin.loader,
+						`css-loader`,
+						`sass-loader`,
+					],
+				},
+				{
+					test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+					use: [{
+						loader: `file-loader`,
+						options: {
+							name: `[name].[ext]`,
+							outputPath: `fonts/`,
+						},
+					}],
+				},
+			],
+		}
 	}
 }
