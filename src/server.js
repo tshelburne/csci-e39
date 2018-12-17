@@ -3,16 +3,10 @@ import debug from 'debug'
 import Koa from 'koa'
 import cors from 'kcors'
 import logger from 'koa-logger'
-import route from 'koa-route'
-import serve from 'koa-static'
-import views from 'koa-views'
-import React from 'react'
-import ReactDOMServer from 'react-dom/server'
 import socketio from 'socket.io'
 import config from './config'
 import {Student, Message} from './db'
 import {upload, destroy} from './services/upload'
-import App from './ui/app.jsx'
 import {IMAGE_MIMES, KB} from './util/constants'
 
 const log = debug(`csci-e39:server`)
@@ -25,17 +19,7 @@ const app = new Koa()
 
 if (config.env !== `test`) app.use(logger())
 
-app.use(cors())
-
-app.use(serve(`public`))
-
-app.use(views(`${__dirname}/ui`, {extension: `pug`}))
-
-app.use(route.get(`/`, async ctx => {
-	await ctx.render(`index`, {
-		app: renderApp({auth: {status: `init`, message: ``}}),
-	})
-}))
+app.use(cors(`*`))
 
 /* -------------------------------- SERVER --------------------------------- */
 
@@ -235,10 +219,6 @@ io.on(`connection`, async socket => {
 server.listen(config.port, () => log(`✅  - listening at localhost:${config.port}`))
 
 /* -------------------------------- HELPERS -------------------------------- */
-
-function renderApp(props) {
-	return ReactDOMServer.renderToString(<App {...props} />)
-}
 
 async function authenticate(socket, next) {
 	const fail = message => next(new AuthError(message))
