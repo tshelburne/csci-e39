@@ -19,24 +19,22 @@ See the [Docs](./docs) directory.
 
 ## Automated tasks
 
-To see all tasks, run `make`
+To see all tasks, see the package.json file, under "scripts".
 
 ### Application
 
-1. `make start` starts the app and connects to a local environment
-1. `make live` starts the app and connects to the live environment
-1. `make stop` stops any running version of the app (`start`, `watch`, `live`, etc.)
+1. `npm start` starts the app and connects to a local environment
+1. `npm run start:prod` starts the app and connects to the live environment
 
 ### Development
 
-1. `make clean` resets the directory to a fresh installation
-1. `make watch` starts the app, connects to a local environment, and recompiles when source code changes
-1. `make activate assignment=[assignment name]` updates the app to enable the specific assignment directory
+1. `npm run clean` resets the directory to a fresh installation
+1. Open the src/ui/app.jsx.js file and update the path to the correct assignment module
 
 ### DevOps
 
-1. `make migration name=[migration name]` creates a new database migration file
-1. `make migrate` updates the local database schema
-1. `make publish` publishes the current container to Dockerhub
-1. `make deploy` deploys the current container to Heroku
-1. `make migrate-prod` updates the live Heroku database schema
+1. `npm run migration -- [migration name]` creates a new database migration file
+1. `npm run db.migrate` updates the local database schema
+1. `npm run web:publish` publishes the current container to Dockerhub
+1. `npm run web:deploy` deploys the current container to Heroku
+1. `npm run web:migrate` updates the live Heroku database schema
