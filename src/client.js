@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import io from 'socket.io-client'
 import createState, {connect} from './state'
-import App from './ui/app.jsx'
+import App from './ui/app'
 
 const socket = io(__BACKEND__, {query: {studentId: __STUDENT_ID__}})
 const {state_, actions} = createState(socket)

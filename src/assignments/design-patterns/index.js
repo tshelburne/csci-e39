@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Example from './support/example.jsx'
+import Example from './support/example'
 
 import './app.scss'
 
