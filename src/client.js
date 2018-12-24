@@ -9,6 +9,8 @@ import {scan, split} from './lib/xstream'
 import App from './ui/app'
 
 function main({socket, ...sources}) {
+	const [registration_, register_] = createStatus(`register`)
+
 	// USER ACTIONS
 
 	const actions = {
@@ -20,9 +22,7 @@ function main({socket, ...sources}) {
 		},
 	}
 
-	const emit_ = xs.merge(
-			sources.react.event(`register`).mapTo(emit(`register`)),
-		)
+	const emit_ = xs.merge(register_)
 
 	// APP STATE
 
@@ -32,9 +32,10 @@ function main({socket, ...sources}) {
 
 	const [authFailure_, nonAuthFailure_] = socket.on(`error`).compose(split(([type]) => type === `auth:failure`))
 
-	const error_ = nonAuthFailure_
+	const errors_ = nonAuthFailure_
 		.map(([type, data]) => ({type, data, timestamp: new Date()}))
 		.compose(scan((list, e) => [...list, e], []))
+		.startWith([])
 
 	const auth_ = xs.merge(
 			socket.on(`auth:success`).mapTo({status: `success`, message: ``}),
@@ -47,22 +48,16 @@ function main({socket, ...sources}) {
 		.map(([self, students]) => ({self, students}))
 		.startWith({self: null, students: []})
 
-	const registration_ = xs
-		.merge(
-			sources.react.event(`register`).mapTo({status: `pending`, message: ``}),
-			socket.on(`register:success`).map(([{message}]) => ({status: `success`, message})),
-			socket.on(`register:failure`).map(([{message}]) => ({status: `failure`, message})),
-		)
-		.startWith({status: `init`, message: ``})
+	const chat_ = xs.empty()
+		.startWith({typing: [], messages: [], send: null})
 
-	const chat_ = xs.of(null)
-
-	const upload_ = xs.of(null)
+	const upload_ = xs.empty()
+		.startWith({files: {}, update: null, delete: null, share: null})
 
 	const props_ = xs
-		.combine(connected_, auth_, registration_)
-		.map(([connected, auth, registration]) =>
-			({connected, auth, registration})
+		.combine(connected_, auth_, classroom_, registration_, errors_)
+		.map(([connected, auth, classroom, registration, errors]) =>
+			({connected, auth, classroom, registration, errors})
 		)
 
 	// SINKS
@@ -74,6 +69,19 @@ function main({socket, ...sources}) {
 			socket.on(`register:failure`).map(v => ({name: `debug`, message: v})),
 			props_.map(props => ({name: `state`, message: props, color: `#4286f4`})),
 		)
+	}
+
+	function createStatus(name) {
+		const state_ = xs.merge(
+				sources.react.event(name).mapTo({status: `pending`, message: ``}),
+				socket.on(`${name}:success`).map(([{message}]) => ({status: `success`, message})),
+				socket.on(`${name}:failure`).map(([{message}]) => ({status: `failure`, message})),
+			)
+			.startWith({status: `init`, message: ``})
+
+		const emit_ = sources.react.event(name).map((...args) => emit(name, ...args))
+
+		return [state_, emit_]
 	}
 }
 
