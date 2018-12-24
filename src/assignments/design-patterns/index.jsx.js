@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example.jsx'
 
+import './app.scss'
+
 class PatternLibrary extends React.Component {
 
 	constructor(...args) {
@@ -25,7 +27,7 @@ class PatternLibrary extends React.Component {
 				<Example title="My Special <div>">
 					<div className="just-testing">HELLO DIV</div>
 				</Example>
-				
+
 				<Example title="My Special <span>">
 					<span className="just-testing">HELLO SPAN</span>
 				</Example>

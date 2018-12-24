@@ -15,8 +15,14 @@
     "db": "run-s db.migrate db.seed",
     "start.client": "webpack-dev-server",
     "start.server": "DEBUG=csci-e39:* babel-node src/server.js",
-    "start:live": "npm run start.client -- --mode=production",
-    "start": "run-p start.* -- --mode=development"
+    "start:stage": "run-p web:run start.client -- --mode=development",
+    "start:prod": "npm run start.client -- --mode=production",
+    "start": "run-p start.* -- --mode=development",
+    "web:container": "docker build -t tshelburne/csci-e39:master .",
+    "web:run": "docker run -t -i --expose 3000 -p 3000:3000 --expose 35729 -p 35729:35729 tshelburne/csci-e39:master",
+    "web:publish": "docker push tshelburne/csci-e39:master",
+    "web:deploy": "heroku container:push web",
+    "web:migrate": "heroku run npm run db.migrate"
   },
   "author": "Tim Shelburne",
   "license": "UNLICENSED",
