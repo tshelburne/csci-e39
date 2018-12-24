@@ -1,5 +1,6 @@
 import xs from 'xstream'
 import io from 'socket.io-client'
+import {first} from '../xstream'
 
 function makeSocketDriver(...cfg) {
 	const socket = io(...cfg)
@@ -12,15 +13,19 @@ function makeSocketDriver(...cfg) {
 		})
 
 		return {
-			on: name =>
-				xs.create({
-					start(listener) {
-						socket.on(name, (...args) => {
-							listener.next(args)
-						})
-					},
-					stop() {},
-				}),
+			on,
+			simple: name => on(name).compose(first),
+		}
+
+		function on(name) {
+			return xs.create({
+				start(listener) {
+					socket.on(name, (...args) => {
+						listener.next(args)
+					})
+				},
+				stop() {},
+			})
 		}
 	}
 }

@@ -1,5 +1,7 @@
 import xs from 'xstream'
 
+export const first = ins => ins.map(([item]) => item)
+
 export const scan = (...args) => ins => ins.fold(...args).drop(1)
 
 export const split = (fn) => ins => {
