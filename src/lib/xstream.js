@@ -1,4 +1,13 @@
+import xs from 'xstream'
+
 export const scan = (...args) => ins => ins.fold(...args).drop(1)
+
+export const split = (fn) => ins => {
+	const match_ = ins.filter(fn)
+	const miss_ = ins.filter(v => !fn(v))
+
+	return [match_, miss_]
+}
 
 export const toObj = (...props) => ins => {
 	const builderFromProp = prop => val =>

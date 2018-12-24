@@ -231,7 +231,7 @@ async function authenticate(socket, next) {
 		socket.ctx.student = await Student.where(`unique_id`, studentId).fetch()
 		if (!socket.ctx.student) return fail(`Student ID does not exist`)
 
-		socket.emit(`auth.success`)
+		socket.emit(`auth:success`)
 		return next()
 	} catch (e) {
 		log(e)
