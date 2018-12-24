@@ -1,28 +1,17 @@
 # Design Patterns in React (CSCI E-39)
 
-*Note: as of 4/15/18, Windows is using Node / npm directly rather than Docker. These
-docs will be relevant only for Mac users until we decide if Docker usage will be
-deprecated entirely.*
-
-*For the time being, Windows users should install Node 8.\* and npm 5.\*, and use the
-make.sh script. The commands are all virtually identical, except `make` becomes
-`bash make.sh`*
-
 ## Accounts and Tools
 
 1. [Github](https://github.com/) account
-1. [Dockerhub](https://hub.docker.com) account
-1. Install [Docker for Windows](https://www.docker.com/docker-windows) | [Docker for Mac](https://www.docker.com/docker-mac)
-    - for Windows, also install [git-bash](https://git-for-windows.github.io/)
+1. [NPM / Node (v10.*)](https://www.npmjs.com/get-npm)
 
 ## Installation
 
-1. Start Docker
 1. Open Terminal / git-bash and run
     1. `mkdir -p ~/Projects && cd ~/Projects`
     1. `git clone git@github.com:tshelburne/csci-e39.git && cd csci-e39`
     1. `echo your-id-goes-here > .id`, replacing "your-id-goes-here" with your student ID
-    1. `make build migrate`
+    1. `npm run build && npm run migrate`
 
 ## Repo documentation
 
@@ -30,24 +19,22 @@ See the [Docs](./docs) directory.
 
 ## Automated tasks
 
-To see all tasks, run `make`
+To see all tasks, see the package.json file, under "scripts".
 
 ### Application
 
-1. `make start` starts the app and connects to a local environment
-1. `make live` starts the app and connects to the live environment
-1. `make stop` stops any running version of the app (`start`, `watch`, `live`, etc.)
+1. `npm start` starts the app and connects to a local environment
+1. `npm run start:prod` starts the app and connects to the live environment
 
 ### Development
 
-1. `make clean` resets the directory to a fresh installation
-1. `make watch` starts the app, connects to a local environment, and recompiles when source code changes
-1. `make activate assignment=[assignment name]` updates the app to enable the specific assignment directory
+1. `npm run clean` resets the directory to a fresh installation
+1. Open the src/ui/app.jsx.js file and update the path to the correct assignment module
 
 ### DevOps
 
-1. `make migration name=[migration name]` creates a new database migration file
-1. `make migrate` updates the local database schema
-1. `make publish` publishes the current container to Dockerhub
-1. `make deploy` deploys the current container to Heroku
-1. `make migrate-prod` updates the live Heroku database schema
+1. `npm run migration -- [migration name]` creates a new database migration file
+1. `npm run db.migrate` updates the local database schema
+1. `npm run web:publish` publishes the current container to Dockerhub
+1. `npm run web:deploy` deploys the current container to Heroku
+1. `npm run web:migrate` updates the live Heroku database schema

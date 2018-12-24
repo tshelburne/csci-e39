@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './app.scss'
+
 const Module0 = ({registration: {status, message}, actions}) =>
 	<div className="module0-container">
 		<section className="submission-section">

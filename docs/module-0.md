@@ -12,7 +12,7 @@ and [Installation](../README.md) steps from the README.
 
 To complete this module, you only need to do the following:
 
-1. `make live`
+1. `npm run start:prod`
 1. Open "localhost:3000" in the browser
 1. Follow the instructions in the page
 
