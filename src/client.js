@@ -12,12 +12,16 @@ import App from './ui/app'
 
 function main({socket, ...sources}) {
 	const [registration_, emitRegister_] = createStatus(`register`)
-	const [sendStatus_, emitSend_] = createStatus(`chat:message`, (text) => ({id: uuid(), text}))
+	const [fileUpdate_, emitFileUpdate_] = createStatus(`file:update`, (file, {name, description}) => [file.id, {name, description}])
+	const [fileDelete_, emitFileDelete_] = createStatus(`file:delete`, (file) => [file.id])
+	const [fileShare_, emitFileShare_] = createStatus(`file:share`, (file, name) => [file.id, name])
+	const [sendStatus_, emitSend_] = createStatus(`chat:message`, (text) => [{id: uuid(), text}])
 
 	// USER ACTIONS
 
 	const actions = {
 		register: sources.react.handler(`register`),
+		upload: sources.react.handler(`upload`),
 		chat: {
 			startTyping: sources.react.handler(`chat:typing:start`),
 			stopTyping: sources.react.handler(`chat:typing:stop`),
@@ -27,6 +31,9 @@ function main({socket, ...sources}) {
 
 	const emit_ = xs.merge(
 		emitRegister_,
+		emitFileUpdate_,
+		emitFileDelete_,
+		emitFileShare_,
 		emitSend_,
 		sources.react.event(`chat:typing:start`).mapTo(emit(`chat:typing:start`)),
 		sources.react.event(`chat:typing:stop`).mapTo(emit(`chat:typing:stop`)),
@@ -68,7 +75,16 @@ function main({socket, ...sources}) {
 		.map(([send, messages, typing]) => ({typing, messages, send}))
 		.startWith({typing: [], messages: [], send: null})
 
-	const upload_ = xs.empty()
+	const upload_ = xs
+		.combine(
+			socket.simple(`files:all`),
+			socket.on(`upload:success`).map(([uploadRef, file, url]) => {}),
+			socket.on(`upload:failure`).map(([uploadRef, file, {message}]) => {}),
+			socket.simple(`file:update:success`),
+			socket.simple(`file:delete:success`),
+			socket.on(`file:received`).map(([file, sharer]) => {}),
+		)
+		.map(([]))
 		.startWith({files: {}, update: null, delete: null, share: null})
 
 	const props_ = xs
@@ -88,7 +104,7 @@ function main({socket, ...sources}) {
 		)
 	}
 
-	function createStatus(name, fn = _ => _) {
+	function createStatus(name, mapArgs = _ => _) {
 		const state_ = xs.merge(
 				sources.react.event(name).mapTo({status: `pending`, message: ``}),
 				socket.simple(`${name}:success`).map(({message}) => ({status: `success`, message})),
@@ -96,7 +112,7 @@ function main({socket, ...sources}) {
 			)
 			.startWith({status: `init`, message: ``})
 
-		const emit_ = sources.react.event(name).map((...args) => emit(name, fn(...args)))
+		const emit_ = sources.react.event(name).map((...args) => emit(name, ...mapArgs(...args)))
 
 		return [state_, emit_]
 	}
