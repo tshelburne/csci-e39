@@ -9,7 +9,7 @@ import config from './src/config'
 export default async (env, argv) => {
 	const production = argv.mode === `production`
 
-	const studentId = await p(fs.readFile)(`${__dirname}/.id`, `utf8`)
+	const studentId = await p(fs.readFile)(`${__dirname}/.id`, `utf8`).then(v => v.trim())
 	const backend = production ? `csci-e39.herokuapp.com` : `localhost:${config.port}`
 
 	return {
