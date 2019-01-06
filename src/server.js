@@ -2,6 +2,7 @@ import http from 'http'
 import debug from 'debug'
 import Koa from 'koa'
 import cors from 'kcors'
+import serve from 'koa-static'
 import logger from 'koa-logger'
 import socketio from 'socket.io'
 import config from './config'
@@ -20,6 +21,8 @@ const app = new Koa()
 if (config.env !== `test`) app.use(logger())
 
 app.use(cors(`*`))
+
+app.use(serve(`public`))
 
 /* -------------------------------- SERVER --------------------------------- */
 
