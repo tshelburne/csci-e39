@@ -9,7 +9,7 @@
 
 1. Open Terminal / git-bash and run
     1. `mkdir -p ~/Projects && cd ~/Projects`
-    1. `git clone git@github.com:tshelburne/csci-e39.git && cd csci-e39`
+    1. `git clone git@github.com:your_github_username_here/csci-e39.git && cd csci-e39`, replacing "your_github_username_here" with your Github username
     1. `echo your-id-goes-here > .id`, replacing "your-id-goes-here" with your student ID
     1. `npm install`
     1. `npm run build && npm run db`
