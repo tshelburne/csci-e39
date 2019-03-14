@@ -10,7 +10,7 @@
 1. Open Terminal / git-bash and run
     1. `mkdir -p ~/Projects && cd ~/Projects`
     1. `git clone git@github.com:your_github_username_here/csci-e39.git && cd csci-e39`, replacing "your_github_username_here" with your Github username
-    1. `echo your-id-goes-here > .id`, replacing "your-id-goes-here" with your student ID
+    1. `echo your-id-goes-here > .id`, replacing "your-id-goes-here" with your student ID (to find your student ID, log in to [HES Online Services](https://www.extension.harvard.edu/login), click "Student Information and Status", select a term and hit continue, then find it under the heading "Harvard ID" on the right side of the page)
     1. `npm install`
     1. `npm run build && npm run db`
 
