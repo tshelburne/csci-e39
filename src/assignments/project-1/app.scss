@@ -2,7 +2,7 @@ $primary-color: SlateGrey;
 
 $hover-color: Salmon;
 $button-color: lighten($hover-color, 11);
-$default-font: "Delius", sans-serif;
+$default-font: "Muli", sans-serif;
 
 $progress-bar-width: 250px;
 $progress-bar-height: 20px;
@@ -12,6 +12,15 @@ $progress-bar-shadow: 0 1px 4px $primary-color inset;
 
 * { 
 	box-sizing: border-box;
+}
+
+body {
+	font-family: $default-font;
+	letter-spacing: 2px;
+}
+
+h1 {
+	color: $button-color;
 }
 
 .button {

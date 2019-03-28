@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
+import Greeting from './greeting'
 
 import './app.scss'
 
@@ -9,7 +10,9 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
-		<h1>Upload Images</h1>
+		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Muli" />
+
+		<Greeting name="Marissa" />
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
