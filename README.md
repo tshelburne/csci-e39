@@ -9,8 +9,8 @@
 
 1. Open Terminal / git-bash and run
     1. `mkdir -p ~/Projects && cd ~/Projects`
-    1. `git clone git@github.com:tshelburne/csci-e39.git && cd csci-e39`
-    1. `echo your-id-goes-here > .id`, replacing "your-id-goes-here" with your student ID
+    1. `git clone git@github.com:your_github_username_here/csci-e39.git && cd csci-e39`, replacing "your_github_username_here" with your Github username
+    1. `echo your-id-goes-here > .id`, replacing "your-id-goes-here" with your student ID (to find your student ID, log in to [HES Online Services](https://www.extension.harvard.edu/login), click "Student Information and Status", select a term and hit continue, then find it under the heading "Harvard ID" on the right side of the page)
     1. `npm install`
     1. `npm run build && npm run db`
 
@@ -30,7 +30,16 @@ To see all tasks, see the package.json file, under "scripts".
 ### Development
 
 1. `npm run clean` resets the directory to a fresh installation
-1. Open the src/ui/app.jsx.js file and update the path to the correct assignment module
+
+### Working on Project 1
+1. Open the src/ui/app.js file and update the path to the correct assignment module, which in this case is project-1
+
+    For example, to enable Project 1, change `import Module from '../assignments/module-0'` to
+    `import Module from '../assignments/project-1'`
+
+1. `npm start` starts the app and connects to a local environment - if you connect to the prod environment using the other instructions above, it won't work and you'll be uploading your stuff into the cloud for all to see. Connect to the local environment and use `npm start` with Project 1 exclusively.
+1. Work on your project, make regular and meaningful commits.
+1. When your project is complete, submit a pull request.
 
 ### DevOps
 
