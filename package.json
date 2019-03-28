@@ -14,7 +14,7 @@
     "db.seed": "npm run knex seed:run",
     "db": "run-s db.migrate db.seed",
     "start.client": "webpack-dev-server",
-    "start.server": "set DEBUG=csci-e39:* babel-node src/server.js",
+    "start.server": "cross-env DEBUG=csci-e39:* babel-node src/server.js",
     "start:stage": "run-p web:run start.client -- --mode=development",
     "start:prod": "npm run start.client -- --mode=production",
     "start": "run-p start.* -- --mode=development",
