@@ -1,0 +1,167 @@
+$primary-color: rgba(150, 143, 179, 1);
+$button-width: 150px;
+$button-border-radius: 5px;
+$button-background: crimson;
+$button-font-color: #ffffff;
+$button-box-shadow-darken: 10%;
+$button-background-hover-darken: 10%;
+$button-box-shadow-hover-darken: 20%;
+$button-box-shadow: 1px 1px 1px 1px darken($button-background, $button-box-shadow-darken);
+$progress-width: 300px;
+$progress-background: rgba(150, 143, 179, 1);
+$progress-bar-color: #ffffff;
+$progress-bar-border-radius: 12px;
+$progress-bar-box-shadow: inset 0 -2px 4px rgba(0,0,0,0.4), 0 2px 5px 0px rgba(0,0,0,0.3);
+$progress-bar-background-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 0px rgba(255,255,255,0.2);
+
+$file-input-button-color: rgba(150, 143, 179, 1);
+$file-input-border-radius: 8px;
+$file-input-height: 60px;
+$file-input-width: 300px;
+
+// Style your components here
+button {
+  width: $button-width;
+  border-color: $button-background;
+  border-radius: $button-border-radius;
+  background: $button-background;
+  color: $button-font-color;
+  box-shadow: $button-box-shadow;
+  
+  &:hover {
+    background: darken($button-background, $button-background-hover-darken);
+    box-shadow: $button-box-shadow;
+  }
+}
+
+progress {
+  display: block;
+  width: $progress-width;
+  margin: 2em auto;
+  padding: 4px;
+  border: none;
+  background: $progress-background;
+  border-radius: 14px;
+  box-shadow: $progress-bar-background-box-shadow;
+}
+progress::-moz-progress-bar {
+  border-radius: $progress-bar-border-radius;
+  background: $progress-bar-color;
+  box-shadow: $progress-bar-box-shadow;
+}
+
+/* webkit */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  progress {
+    height: 25px;
+  }
+}
+progress::-webkit-progress-bar {
+    background: transparent;
+}  
+progress::-webkit-progress-value {  
+  border-radius: $progress-bar-border-radius;
+  background: #FFF;
+  box-shadow: $progress-bar-box-shadow; 
+}
+
+progress::-ms-fill {
+  border-radius: $progress-bar-border-radius;
+  background-color: $progress-bar-color;
+  box-shadow: $progress-bar-box-shadow;
+}
+
+// File Input Styling
+.file-form {
+  height: $file-input-height;
+  position: relative;
+  margin: 0 auto;
+  width: $file-input-width;
+  
+   &:after {
+    content: "Select File...";
+    font-size: 18px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+    padding: 10px 15px;
+    display: block;
+    width: calc(100% - 40px);
+    pointer-events: none;
+    z-index: 20;
+    height: $file-input-height - 20px;
+    line-height: $file-input-height - 20px;
+    color: #999;
+    border-radius: 5px 10px 10px 5px;
+    font-weight: 300;
+    text-align: left;
+  }
+  
+  &:before {
+    content: 'Upload';
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: inline-block;
+    height: 60px;
+    background: $file-input-button-color;
+    color: #fff;
+    font-weight: 700;
+    z-index: 25;
+    font-size: 16px;
+    line-height: $file-input-height;
+    padding: 0 15px;
+    pointer-events: none;
+    border-radius: 0 5px 5px 0;
+  }
+  
+  &:hover {
+    &:before {
+      background: darken($file-input-button-color, 10%);
+    }
+  }
+}
+
+input {
+    //opacity: 0;
+    width: 300px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+    height: $file-input-height - 20px;
+    margin: 0;
+    padding: 0;
+    display: block;
+    cursor: pointer;
+}
+
+
+// Ignore the styles below unless you want to change them for fun
+
+body {
+  background: crimson;
+  padding: 30px;
+  background: linear-gradient(
+    to bottom,
+    rgba(150, 143, 179, 1) 0%,
+    crimson 100%
+  );
+  min-height: 100vh;
+}
+
+.example-container {
+  background: hsla(0, 0, 100%, 0.8);
+  margin-top: 7vh;
+  padding: 5vh 2vh;
+  box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
+  text-align: center;
+}
+
+.header {
+  margin-top: 0;
+  font-family: "Permanent Marker", sans-serif;
+}
