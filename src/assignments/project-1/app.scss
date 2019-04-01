@@ -1,4 +1,6 @@
 $primary-color: rgba(150, 143, 179, 1);
+$default-font-family: "Roboto", san-serif;
+
 $button-width: 150px;
 $button-border-radius: 5px;
 $button-background: crimson;
@@ -33,7 +35,7 @@ $card-image-border-radius: 5px;
 // Style your components here
 
 h1, h2 {
-  font-family: "Permanent Marker", sans-serif;
+  font-family: $default-font-family;
   text-align: center;
 }
 
@@ -93,6 +95,7 @@ progress::-ms-fill {
   height: $file-input-height;
   position: relative;
   margin: 0 auto;
+  font-family: "Roboto", san-serif;
   width: $file-input-width;
   
    &:after {
@@ -185,6 +188,7 @@ body {
 .card-title {
   display: block;
   text-align: center;
+  font-family: $default-font-family;
   font-size: 24px;
   margin: auto auto;
   overflow: hidden;
@@ -234,5 +238,4 @@ body {
 
 .header {
   margin-top: 0;
-  font-family: "Permanent Marker", sans-serif;
 }
