@@ -158,6 +158,18 @@ body {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-gap: 0.5em;
+}
+
+.card {
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  background: white;
+}
+
+.card-img {
+  width: 100%;
 }
 
 .example-container {

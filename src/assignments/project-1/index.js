@@ -19,7 +19,7 @@ const Uploads = ({uploads, actions}) => {
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
 
-				return <li key={id}>
+				return <li className = "card" key={id}>
 					<label>{name}</label>
 					<progress value={progress} max="100">{progress}%</progress>
 				</li>
@@ -31,9 +31,9 @@ const Uploads = ({uploads, actions}) => {
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
 
-				return <li key={id}>
+				return <li className = "card" key={id}>
 					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
+					{!error && <img className = "card-img" src={url} />}
 					{!!error && <p className="failure">{error}</p>}
 				</li>
 			})}
