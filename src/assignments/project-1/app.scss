@@ -182,11 +182,37 @@ body {
 .card-title {
   display: block;
   text-align: center;
-  font-size: 1vw;
+  font-size: 24px;
   margin: auto auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
   background: $card-title-background-color;
   border-radius: $card-title-border-radius;
   padding: $card-title-padding;
+}
+
+@media screen and (max-width: 599px) {
+  .card-title {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .card-title {
+    font-size: calc(12px + 0.9vw);
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .card-title {
+    font-size: 1.5vw;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .card-title {
+    font-size: 1.2vw;
+  }
 }
 
 .card-img {
