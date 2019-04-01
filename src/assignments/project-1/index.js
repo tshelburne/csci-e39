@@ -20,7 +20,7 @@ const Uploads = ({uploads, actions}) => {
 				const {id, name, progress} = file
 
 				return <li className = "card" key={id}>
-					<label>{name}</label>
+					<label className = "card-title">{name}</label>
 					<progress value={progress} max="100">{progress}%</progress>
 				</li>
 			})}
@@ -32,7 +32,7 @@ const Uploads = ({uploads, actions}) => {
 				const {id, name, url, error} = file
 
 				return <li className = "card" key={id}>
-					<label>{name}</label>
+					<label className = "card-title">{name}</label>
 					{!error && <img className = "card-img" src={url} />}
 					{!!error && <p className="failure">{error}</p>}
 				</li>

@@ -19,6 +19,17 @@ $file-input-border-radius: 8px;
 $file-input-height: 60px;
 $file-input-width: 300px;
 
+
+$card-border-radius: 5px;
+$card-padding: 10px;
+
+$card-title-border-radius: 3px;
+$card-title-padding: 3px;
+$card-title-background-color: $file-input-button-color;
+
+$card-image-margin-top: 15px;
+$card-image-border-radius: 5px;
+
 // Style your components here
 
 h1, h2 {
@@ -157,19 +168,31 @@ body {
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap: 0.5em;
 }
 
 .card {
   display: block;
-  padding: 10px;
-  border-radius: 5px;
+  padding: $card-padding;
+  border-radius: $card-border-radius;
   background: white;
+}
+
+.card-title {
+  display: block;
+  text-align: center;
+  font-size: 1vw;
+  margin: auto auto;
+  background: $card-title-background-color;
+  border-radius: $card-title-border-radius;
+  padding: $card-title-padding;
 }
 
 .card-img {
   width: 100%;
+  margin-top: $card-image-margin-top;
+  border-radius: $card-image-border-radius;
 }
 
 .example-container {
