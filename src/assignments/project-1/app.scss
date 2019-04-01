@@ -144,9 +144,6 @@ input {
     cursor: pointer;
 }
 
-
-// Ignore the styles below unless you want to change them for fun
-
 body {
   background: crimson;
   padding: 30px;
@@ -156,6 +153,11 @@ body {
     lighten(crimson, 20%) 100%
   );
   min-height: 100vh;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 }
 
 .example-container {
