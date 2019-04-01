@@ -25,8 +25,12 @@ $file-input-width: 300px;
 $card-border-radius: 5px;
 $card-padding: 10px;
 
+$card-failure-background-color: crimson;
+$card-failure-font-color: #ffffff;
+
 $card-title-border-radius: 3px;
 $card-title-padding: 3px;
+$card-title-font-size: 24px;
 $card-title-background-color: $file-input-button-color;
 
 $card-image-margin-top: 15px;
@@ -185,11 +189,20 @@ body {
   background: white;
 }
 
+.failure {
+  display: block;
+  padding: $card-padding;
+  border-radius: $card-border-radius;
+  background: $card-failure-background-color;
+  color: $card-failure-font-color;
+  font-family: $default-font-family;
+}
+
 .card-title {
   display: block;
   text-align: center;
   font-family: $default-font-family;
-  font-size: 24px;
+  font-size: $card-title-font-size;
   margin: auto auto;
   overflow: hidden;
   text-overflow: ellipsis;
