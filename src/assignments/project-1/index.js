@@ -13,11 +13,13 @@ const Uploads = ({uploads, actions}) => {
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Muli" />
 
 		<Greeting name="Marissa" />
+			<h2>This is children</h2>
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
 		<h2>In Progress</h2>
+		<progress value="20" max="100"></progress> {/* put it here for now, remove vars progress*/}
 		<ul>
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
