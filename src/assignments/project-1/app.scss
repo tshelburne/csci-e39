@@ -1,0 +1,135 @@
+$primary-color: MidnightBlue;
+$accent-color: LightSteelBlue;
+$light-text-color: Snow;
+
+// progress bar styling
+$pb-filled-color: $primary-color;
+$pb-empty-color: $accent-color;
+$pb-indeterminate-color: gray;
+$pb-width: 300px;
+$pb-height: 20px;
+$pb-border-radius: calc(#{$pb-height} / 2);
+$pb-border: 2px solid gray;
+$pb-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+
+// STYLES
+
+
+// BUTTON
+
+button {
+	background: $accent-color;
+	color: $primary-color;
+	border: 2px solid $primary-color;
+	border-radius: 10px;
+	min-height: 30px;
+	font-weight: bold;
+
+}
+
+// FILE UPLOAD
+
+.file-form label {
+	color: $primary-color;
+	font-size: 1.2em;
+	display: block;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.file-form input[type=file] {
+	border: 2px solid $primary-color;
+	background-color: $accent-color;
+	color: $primary-color;
+	font-weight: bold;
+	border-radius: 5px;
+	overflow: hidden;
+width: 400px;
+}
+
+
+// PROGRESS BAR
+progress {
+	-webkit-appearance: none;
+	appearance: none;
+	background-color: $pb-empty-color;
+	// IE implements filled value of the progress bar as the color attribute rather than the background-color.
+	color: $pb-filled-color;
+	border: $pb-border;
+	width: $pb-width;
+	height: $pb-height;
+	border-radius: $pb-border-radius;
+	box-shadow: $pb-box-shadow;
+	overflow: hidden; // prevent square borders from showing over container's rounded borders
+}
+
+// filled-in portion of progress bar in mozilla
+::-moz-progress-bar {
+  background-color: $pb-filled-color;
+}
+
+
+// webkit (chrome, safari, opera 16+)
+// entire bar of a <progress> element, normally only visible as the unfilled portion of the bar, since by default it's rendered below the ::-webkit-progress-value pseudo-element. It is a child of the ::-webkit-progress-inner-element pseudo-element and the parent of the ::-webkit-progress-value pseudo-element.
+progress::-webkit-progress-bar {
+	background-color: $pb-empty-color;
+	border-radius: $pb-border-radius;
+	box-shadow: $pb-box-shadow;
+}
+
+// filled-in portion of progress bar in mozilla.
+progress::-webkit-progress-value {
+	background-color: $pb-filled-color;
+}
+
+// Internet Explorer 10, Internet Explorer 11, and Microsoft Edge
+progress::ms-fill {
+	background-color: $pb-filled-color;
+	animation-name: none;
+}
+
+// outermost container of the <progress> element, parent of the ::-webkit-progress-bar pseudo-element.
+progress::webkit-progress-inner-element {
+	border: 2px solid black;
+}
+
+// progress bar when value can't be determined
+
+//in general
+progress:indeterminate  {
+	background-color: $pb-indeterminate-color;
+	color: $pb-indeterminate-color; // not sure this one's necessary - maybe for IE?
+}
+
+progress:indeterminate::-moz-progress-bar {
+	background-color: $pb-indeterminate-color;
+}
+progress:indeterminate::-webkit-progress-bar {
+  background-color: $pb-indeterminate-color;
+}
+
+
+
+body {
+	background: crimson;
+	padding: 30px;
+	background: linear-gradient(
+		to bottom,
+		rgba(150, 143, 179, 1) 0%,
+		crimson 100%
+	);
+	min-height: 100vh;
+}
+
+.example-container {
+	background: hsla(0, 0, 100%, 0.8);
+	margin-top: 7vh;
+	padding: 5vh 2vh;
+	box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
+	text-align: center;
+}
+
+.header {
+	margin-top: 0;
+	font-family: "Permanent Marker", sans-serif;
+}

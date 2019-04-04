@@ -15,6 +15,8 @@ const Uploads = ({uploads, actions}) => {
 		{/* do not delete this uploader component */}
 
 		<h2>In Progress</h2>
+		just a sample to test UI:
+		<progress value="40" max="100"></progress>
 		<ul>
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
