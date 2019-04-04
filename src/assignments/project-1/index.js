@@ -20,7 +20,6 @@ const Uploads = ({uploads, actions}) => {
 		<ul>
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
-
 				return <li key={id}>
 					<label>{name}</label>
 					<progress value={progress} max="100">{progress}%</progress>
@@ -28,20 +27,35 @@ const Uploads = ({uploads, actions}) => {
 			})}
 		</ul>
 
-		<h2>Completed</h2>
+		<h2>Failed</h2>
 		<ul>
-			{completedFiles.map(file => {
+			{completedFiles.filter(file => file.error).map(file => {
 				const {id, name, url, error} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
+				return <li>
+					<h4>{name}</h4>
+					<span>{error}</span>
 				</li>
+			})}
+		</ul>
+		<h2>Completed</h2>
+		<ul class="gallery">
+			{completedFiles.filter(file => !file.error).map(file => {
+				const {id, name, url, error} = file
+				console.log(file)
+				return <Card { ...file } />
 			})}
 		</ul>
 	</div>
 }
+
+const Card = ({ id, name, url, error}) => (
+	<li key={id} className="card">
+		{!error && <img src={url} style={{maxWidth: `200px`}} />}
+		<h2>{name}</h2>
+		{!!error && <p className="failure">{error}</p>}
+		{!!error && <img src="https://imgplaceholder.com/200x100?text=Upload+Failed&font-size=25&font-family=Wreak_Havoc" style={{maxWidth: `200px`}} />}
+	</li>
+)
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,

@@ -1,3 +1,5 @@
+// VARIABLES
+
 $primary-color: MidnightBlue;
 $accent-color: LightSteelBlue;
 $light-text-color: Snow;
@@ -121,15 +123,26 @@ body {
 	min-height: 100vh;
 }
 
-.example-container {
+// .header {
+// 	margin-top: 0;
+// 	font-family: "Permanent Marker", sans-serif;
+// }
+
+.gallery {
+	list-style-type: none;
+}
+
+.card {
 	background: hsla(0, 0, 100%, 0.8);
 	margin-top: 7vh;
 	padding: 5vh 2vh;
 	box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
 	text-align: center;
+	display: grid;
 }
 
-.header {
-	margin-top: 0;
-	font-family: "Permanent Marker", sans-serif;
+.card label {
+	color: $primary-color;
+	display: block;
+	margin-bottom: 10px;
 }
