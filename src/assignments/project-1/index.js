@@ -10,8 +10,9 @@ const Uploads = ({uploads, actions}) => {
 
 	return <div>
 		<h1>Upload Images</h1>
+		<label tabindex="0" for="uploader" class="uploader">Upload Photos</label>
 		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
+		<Uploader id="uploader" className="uploader-input" upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
 		<h2>In Progress</h2>
@@ -32,9 +33,9 @@ const Uploads = ({uploads, actions}) => {
 				const {id, name, url, error} = file
 
 				return <li key={id}>
-					<label>{name}</label>
 					{!error && <img src={url} style={{maxWidth: `200px`}} />}
 					{!!error && <p className="failure">{error}</p>}
+					<label>{name}</label>
 				</li>
 			})}
 		</ul>

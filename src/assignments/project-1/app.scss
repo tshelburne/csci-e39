@@ -1,0 +1,86 @@
+@import url(https://fonts.googleapis.com/css?family=Oswald|Permanent+Marker);
+@import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);
+
+$secondary-color: #e24e4b;
+$primary-color: crimson;
+$body-font: 'Oswald', sans-serif;
+$white: #fefefe;
+$black: #1d1616;
+
+
+.button {
+	color: $white;
+	font-family: $body-font;
+	padding: .5em 1.5em;
+	border-radius: 5px;
+	border: none;
+	text-transform: capitalize;
+    background: linear-gradient($primary-color, darken($primary-color, 10%));
+    
+    &:hover {
+        background: linear-gradient(to top, $primary-color, darken($primary-color, 10%));
+
+    }
+}
+
+//Uploader styles
+.uploader-input {
+ 	width: 0;
+	opacity: 0;
+}
+
+//create a button
+.uploader {
+    @extend .button;
+	&:before {
+		content: '\f093';
+		font-family: 'Font Awesome 5 Free';
+		font-weight: 900;
+		padding-right: .5em;
+	}
+}
+
+//Progress styles
+//extends don't work when they apply to both the moz and webkit pseudo selectors, use mixins 
+@mixin progress-bar-value {
+	border-radius: 10px;
+	background-color: $primary-color; 	//fallback background color
+	background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
+}
+
+@mixin progress-bar-container {
+	border-radius: 10px;
+	background-color: darken($white, 16%);
+	box-shadow: 0 2px  darken($white, 50%) inset;
+}
+
+progress {
+	//reset styles
+		appearance: none;
+		border: none;
+	
+	//dimenssions
+		width: 300px;
+		height: 20px;
+	
+	//container styles for firefox
+	@include progress-bar-container;
+	
+	//fallback for IE progress value background color
+	color: $primary-color;
+}
+
+//webkit progress bar container styles
+progress::-webkit-progress-bar {
+		@include progress-bar-container;
+}
+
+//webkit progress bar value styles
+progress[value]::-webkit-progress-value {
+		@include progress-bar-value;
+}
+
+//moz progressbar value styles
+progress::-moz-progress-bar {
+	@include progress-bar-value;
+}
