@@ -1,13 +1,17 @@
+/* FONTS */
 @import url(https://fonts.googleapis.com/css?family=Oswald:300,400);
 @import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);
+$body-font: 'Oswald', sans-serif;
 
+/*COLORS*/
 $secondary-color: #e24e4b;
 $primary-color: crimson;
 $primary-desaturated: desaturate($primary-color, 50%);
-$body-font: 'Oswald', sans-serif;
 $white: #fefefe;
 $black: #1d1616;
 
+/* MEASUREMENTS */
+$gap: 20px;
 
 html {
     box-sizing: border-box;
@@ -18,7 +22,6 @@ html {
     box-sizing: inherit;
 }
 
-
 body {
     font-family: $body-font;
     color: $black;
@@ -28,18 +31,19 @@ body {
     margin: auto;
 }
 
-h1 {
-    font-weight: 400;
-}
-
 .wrapper {
     width: 95%;
     margin: 5vh auto 0 auto;
 }
 
+/* HEADINGS */
+h1 {
+    font-weight: 400;
+}
 
+/* BUTTONS */
 .tabs {
-    padding: 20px 0;
+    padding: $gap 0;
     margin: 0;
     text-align: center;
     border-top: 1px solid lighten($black, 70%);
@@ -48,28 +52,27 @@ h1 {
         display: inline-block;
         list-style: none;
         margin-right: 1.5rem;
+
        button{
-        font-size: calc(1rem * 1.333);
+        font-size: 1rem * 1.333;
         border: none;
         background: none;
         color: $primary-desaturated;
         font-family: $body-font;
         text-transform: uppercase; 
         
-        &:hover:not(.active){
-            color: $secondary-color;
-        }
+            &:hover:not(.active){
+                color: $secondary-color;
+            }
 
-        &.active  {
-            border-bottom: 2px solid $primary-color;
-            color: $primary-color;
-        }
+            &.active  {
+                border-bottom: 2px solid $primary-color;
+                color: $primary-color;
+            }
        } 
     }
-
 }
 
-//Uploader styles
 .uploader-input {
  	width: 0;
 	opacity: 0;
@@ -77,8 +80,8 @@ h1 {
 
 //create a button
 .uploader {
-    display: block;
-    font-size: 1rem;
+    display: inline-block;
+    margin: $gap/2 0;
     color: $primary-desaturated;
     text-transform: capitalize; 
 
@@ -87,11 +90,10 @@ h1 {
     }
 }
 
-//Progress styles
-//extends don't work when they apply to both the moz and webkit pseudo selectors, use mixins 
+/*PROGRESS BAR*/
 @mixin progress-bar-value {
 	border-radius: 10px;
-	background-color: $primary-color; 	//fallback background color
+	background-color: $primary-color;
     background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
 }
 
@@ -102,12 +104,12 @@ h1 {
 
 progress {
 	//reset styles
-		appearance: none;
-		border: none;
+	appearance: none;
+	border: none;
 	
 	//dimenssions
-		width: 300px;
-		height: 10px;
+	width: 300px;
+	height: 10px;
 	
 	//container styles for firefox
 	@include progress-bar-container;
@@ -118,12 +120,12 @@ progress {
 
 //webkit progress bar container styles
 progress::-webkit-progress-bar {
-		@include progress-bar-container;
+	@include progress-bar-container;
 }
 
 //webkit progress bar value styles
 progress[value]::-webkit-progress-value {
-		@include progress-bar-value;
+	@include progress-bar-value;
 }
 
 //moz progressbar value styles
@@ -131,7 +133,7 @@ progress::-moz-progress-bar {
 	@include progress-bar-value;
 }
 
-//image styles
+/* IMAGES */
 .in-progress-imgs,
 .completed-imgs {
     padding: 0;
@@ -148,21 +150,20 @@ progress::-moz-progress-bar {
     }
 }
 
-//completed 
 .completed-imgs {
+    text-align: center;
+
     img {
         max-width: 310px;
-    }
-    text-align: center;
+    }    
 }
 
-
+/* BREAKPOINTS */
 @media (min-width: 48em) {
     .completed-imgs {
         width: 100%;
         display: grid;
-        grid-gap: 20px;
+        grid-gap: $gap;
         grid-template-columns: repeat(3, 1fr);
     }
-    
 }

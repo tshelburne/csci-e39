@@ -17,7 +17,6 @@ const Uploads = ({ uploads, actions }) => {
 			</header>
 
 			<main>
-				
 					<label for="uploader" class="uploader"><i class="fas fa-camera-retro" aria-hidden="true"></i> Add Photos</label>
 					{/* do not delete this uploader component */}
 					<Uploader id="uploader" className="uploader-input" upload={actions.upload} />
@@ -43,7 +42,7 @@ const Uploads = ({ uploads, actions }) => {
 					</nav>
 					
 
-				<div className="album-container">
+				<div>
 					<ul className="completed-imgs">
 						{completedFiles.map(file => {
 							const { id, name, url, error } = file
@@ -58,9 +57,6 @@ const Uploads = ({ uploads, actions }) => {
 						}
 					</ul>
 				</div>
-
-
-
 			</main>
 		</div>
 	</React.Fragment>
