@@ -9,10 +9,26 @@ const Uploads = ({ uploads, actions }) => {
 	const completedFiles = uploads.files.filter(({ progress }) => !progress)
 
 	return <React.Fragment>
-		<header>
-			<h1>Thinking of California</h1>
-		</header>
+
 		<main className="wrapper">
+			<div className="album-container">
+			<header>
+			<h1>California Days</h1>
+			</header>
+				<ul className="completed-imgs">
+					{completedFiles.map(file => {
+						const { id, name, url, error } = file
+						const labelName = name.substr(0, name.lastIndexOf('.')) || name; //remove file extension
+
+						return <li key={id}>
+							{!error && <img id={id} src={url} alt={labelName} />}
+							{!!error && <p className="failure">{error}</p>}
+							<label>{labelName}</label>
+						</li>
+					})}
+				</ul>
+			</div>
+
 			<div class="sidebar">
 			<h2>Photo Uplaoder</h2>
 				<label for="uploader" class="uploader">Add Photos</label>
@@ -31,23 +47,12 @@ const Uploads = ({ uploads, actions }) => {
 						</li>
 					})}
 				</ul>
+
+				<h2>Have Questions?</h2>
+				<a href="https://google.com" className="button">Checkout My FAQs</a>
 			</div>
 
-			<div className="album-container">
-				<h2>Photo Album</h2>
-				<ul className="completed-imgs">
-					{completedFiles.map(file => {
-						const { id, name, url, error } = file
-						const labelName = name.substr(0, name.lastIndexOf('.')) || name; //remove file extension
 
-						return <li key={id}>
-							{!error && <img id={id} src={url} style={{ maxWidth: `200px` }} alt={labelName} />}
-							{!!error && <p className="failure">{error}</p>}
-							<label>{labelName}</label>
-						</li>
-					})}
-				</ul>
-			</div>
 		</main>
 	</React.Fragment>
 }

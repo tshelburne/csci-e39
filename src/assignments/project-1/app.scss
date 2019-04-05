@@ -13,43 +13,27 @@ body {
     margin: auto;
 }
 
-header {
-    text-align: center;
-    margin-top: 5vh;
-}
-
 .wrapper {
     width: 98%;
-    margin: auto;
-}
-
-@media (min-width: 48em) {
-    .wrapper {
-        display: grid;
-        grid-template-areas: "album sidebar";
-        grid-template-columns: 3fr 300px;
-    }
-
-    .sidebar {
-        grid-area: sidebar;
-    }
-    
-    .album-container {
-        grid-area: album;
-    }
+    margin: 5vh auto 0 auto;
 }
 
 
+.sidebar,
+.album-container {
+    text-align: center;
+}
 
 
 .button {
+    font-size: 1rem;
 	color: $white;
 	font-family: $body-font;
 	padding: .5em 1.5em;
 	border-radius: 5px;
 	border: none;
 	text-transform: capitalize;
-    background: linear-gradient($secondary-color, darken($secondary-color, 10%));
+    background:  linear-gradient($primary-color, darken($primary-color, 10%));
     
     &:hover {
         background: linear-gradient(to top, $primary-color, darken($primary-color, 10%));
@@ -66,7 +50,6 @@ header {
 //create a button
 .uploader {
     @extend .button;
-    background: linear-gradient($primary-color, darken($primary-color, 10%));
 	&:before {
 		content: '\f093';
 		font-family: 'Font Awesome 5 Free';
@@ -120,13 +103,56 @@ progress::-moz-progress-bar {
 	@include progress-bar-value;
 }
 
-
 //image styles
 .in-progress-imgs,
 .completed-imgs {
+    padding: 0;
+    margin: 0;
+
     li {
         list-style: none;
+    }
+
+    label {
+        display: block;
+        padding: 1rem;
     }
 }
 
 //completed 
+.completed-imgs {
+    img {
+        max-width: 300px;
+    }
+}
+
+
+@media (min-width: 48em) {
+    .wrapper {
+        display: grid;
+        grid-template-areas: "album sidebar";
+        grid-template-columns: 3fr 250px;
+        grid-gap: 20px;
+    }
+
+    .sidebar {
+        grid-area: sidebar;
+    }
+    
+    .album-container {
+        grid-area: album;
+    }
+
+    .sidebar,
+    .album-container {
+        text-align: left;
+    }
+
+    .completed-imgs {
+        width: 100%;
+        display: grid;
+        grid-gap: 20px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+}
