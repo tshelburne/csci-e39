@@ -34,7 +34,7 @@ const PendingUploads = (props) => {
 		<label for="uploader" class="uploader"><i class="fas fa-camera-retro" aria-hidden="true"></i> Add Photos</label>
 		<Uploader id="uploader" className="uploader-input" upload={props.actions.upload} />
 
-		{pendingFilesTotal > 0 && <h3>Photos In Progress</h3>}
+		{pendingFilesTotal > 0 && <h2>Photos In Progress</h2>}
 
 		<ul className="in-progress-imgs">
 			{pendingFiles.map(file => {
@@ -61,6 +61,26 @@ const Uploads = (props) => {
 		</React.Fragment>);
 }
 
+ const Faq = () => {
+	return (
+		<React.Fragment>
+			<h2>Frequently Asked Questions</h2>
+			<dl className="faq-list">
+				<dt>Who are you?</dt>
+				<dd>Hi! I'm Zoraida.</dd>
+				<dt>Are you from California?</dt>
+				<dd>Nope. I live in Boston. Grew up in Puerto Rico.</dd>
+				<dt>When did you take these pictures?</dt>
+				<dd>On September 2018, during a California vacation. :)</dd>
+				<dt>Do you have more pictures?</dt>
+				<dd>Oh yes, I took a ton of pictures from this trip, and I also just love photography.</dd>
+				<dt>What camera did you use for these?</dt>
+				<dd>Canon Rebel T6i DSLR</dd>
+			</dl>
+
+		</React.Fragment>);
+ }
+
 class AlbumApp extends React.Component {
 	constructor(props) {
 		super(props);
@@ -82,11 +102,12 @@ class AlbumApp extends React.Component {
 					<main>
 						<nav>
 							<ul className="tabs">
-								<li><button className="active"><i class="fas fa-th" aria-hidden="true"></i> Album</button></li>
-								<li><button><i class="fas fa-question" aria-hidden="true"></i> FAQ</button></li>
+								<li><button><i class="fas fa-th" aria-hidden="true"></i> Album</button></li>
+								<li><button className="active"><i class="fas fa-question" aria-hidden="true"></i> FAQ</button></li>
 							</ul>
 						</nav>
-						<Uploads pendingFiles={pendingFiles} completedFiles={completedFiles} actions={this.props.actions} />
+						{/* <Uploads pendingFiles={pendingFiles} completedFiles={completedFiles} actions={this.props.actions} /> */}
+						<Faq />
 					</main>
 				</div>
 			</React.Fragment>
