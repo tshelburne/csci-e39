@@ -4,10 +4,11 @@ import Uploader from '../../ui/components/uploader'
 
 import './app.scss'
 
+
 const Uploads = ({ uploads, actions }) => {
 	const pendingFiles = uploads.files.filter(({ progress }) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({ progress }) => !progress)
-
+	const pendingFilesTotal = pendingFiles.length;
 	return <React.Fragment>
 
 		<main className="wrapper">
@@ -15,6 +16,7 @@ const Uploads = ({ uploads, actions }) => {
 			<header>
 			<h1>California Days</h1>
 			</header>
+			
 				<ul className="completed-imgs">
 					{completedFiles.map(file => {
 						const { id, name, url, error } = file
@@ -24,8 +26,12 @@ const Uploads = ({ uploads, actions }) => {
 							{!error && <img id={id} src={url} alt={labelName} />}
 							{!!error && <p className="failure">{error}</p>}
 							<label>{labelName}</label>
+							{/* YOU WILL NEED TO CREATE A CLASS COMPONENT DIFFERENT THAN UPLOAD WITH slideIMG}
+							{/* <button className="button" onClick={()=> this.setState({slideImg: file})}>See Detail</button> */} 
+						
 						</li>
-					})}
+					})
+					}
 				</ul>
 			</div>
 
@@ -36,9 +42,8 @@ const Uploads = ({ uploads, actions }) => {
 				<Uploader id="uploader" className="uploader-input" upload={actions.upload} />
 				{/* do not delete this uploader component */}
 				
-				<h3>Photos In Progress</h3>
+				{pendingFilesTotal > 0 && <h3>Photos In Progress</h3>} 
 				<ul className="in-progress-imgs">
-				{console.log(uploads.files.progress)}
 					{pendingFiles.map(file => {
 						const { id, name, progress } = file
 						return <li key={id}>
@@ -49,7 +54,7 @@ const Uploads = ({ uploads, actions }) => {
 				</ul>
 
 				<h2>Have Questions?</h2>
-				<a href="https://google.com" className="button">Checkout My FAQs</a>
+				<a href="/#/faq.html" className="button">Checkout My FAQs</a>
 			</div>
 
 
