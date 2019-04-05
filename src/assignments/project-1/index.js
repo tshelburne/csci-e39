@@ -4,62 +4,94 @@ import Uploader from '../../ui/components/uploader'
 
 import './app.scss'
 
+const CompletedUploads = (props) => {
+	const completedFiles = props.completedFiles;
 
-const Uploads = ({ uploads, actions }) => {
-	const pendingFiles = uploads.files.filter(({ progress }) => progress && progress < 100)
+	return (
+	<React.Fragment>
+		<ul className="completed-imgs">
+			{completedFiles.map(file => {
+				const { id, name, url, error } = file
+				const labelName = name.substr(0, name.lastIndexOf('.')) || name; //remove file extension
+
+				return <li key={id}>
+					{!error && <img id={id} src={url} alt={labelName} />}
+					{!!error && <p className="failure">{error}</p>}
+					<label>{labelName}</label>
+				</li>
+			})
+			}
+		</ul>
+	</React.Fragment>)
+}
+
+const PendingUploads = (props) => {
+	const pendingFiles = props.pendingFiles
+	const pendingFilesTotal = props.pendingFiles.length;
+
+	return (
+	<React.Fragment>
+		<label for="uploader" class="uploader"><i class="fas fa-camera-retro" aria-hidden="true"></i> Add Photos</label>
+		<Uploader id="uploader" className="uploader-input" upload={props.actions.upload} />
+
+		{pendingFilesTotal > 0 && <h3>Photos In Progress</h3>}
+
+		<ul className="in-progress-imgs">
+			{pendingFiles.map(file => {
+				const { id, name, progress } = file
+				return <li key={id}>
+					<label>{name}</label>
+					<progress value={progress} max="100">{progress}%</progress>
+				</li>
+			})}
+		</ul>
+	</React.Fragment>)
+}
+
+const Uploads = (props) => {
+	const pendingFiles = props.pendingFiles;
 	const pendingFilesTotal = pendingFiles.length;
-	const completedFiles = uploads.files.filter(({ progress }) => !progress)
+	const completedFiles = props.completedFiles;
+	const actions = props.actions;
 
-	return <React.Fragment>
-		<div className="wrapper">
-			<header>
-				<h1>California Days</h1>
-			</header>
+	return (
+		<React.Fragment>
+			<PendingUploads pendingFiles={pendingFiles} completedFiles={completedFiles} actions={actions} />
+			<CompletedUploads completedFiles={completedFiles} />
+		</React.Fragment>);
+}
 
-			<main>
-					<label for="uploader" class="uploader"><i class="fas fa-camera-retro" aria-hidden="true"></i> Add Photos</label>
-					{/* do not delete this uploader component */}
-					<Uploader id="uploader" className="uploader-input" upload={actions.upload} />
-					{/* do not delete this uploader component */}
+class AlbumApp extends React.Component {
+	constructor(props) {
+		super(props);
 
+		this.state = {
+		};
+	}
 
-					{pendingFilesTotal > 0 && <h3>Photos In Progress</h3>}
-					<ul className="in-progress-imgs">
-						{pendingFiles.map(file => {
-							const { id, name, progress } = file
-							return <li key={id}>
-								<label>{name}</label>
-								<progress value={progress} max="100">{progress}%</progress>
-							</li>
-						})}
-					</ul>
-						
-					<nav>
-					<ul className="tabs">
-						<li><button className="active"><i class="fas fa-th" aria-hidden="true"></i> Album</button></li>
-						<li><button><i class="fas fa-question" aria-hidden="true"></i> FAQ</button></li>
-					</ul>
-					</nav>
-					
+	render() {
+		const pendingFiles = this.props.uploads.files.filter(({ progress }) => progress && progress < 100)
+		const completedFiles = this.props.uploads.files.filter(({ progress }) => !progress)
 
-				<div>
-					<ul className="completed-imgs">
-						{completedFiles.map(file => {
-							const { id, name, url, error } = file
-							const labelName = name.substr(0, name.lastIndexOf('.')) || name; //remove file extension
-
-							return <li key={id}>
-								{!error && <img id={id} src={url} alt={labelName} />}
-								{!!error && <p className="failure">{error}</p>}
-								<label>{labelName}</label>
-							</li>
-						})
-						}
-					</ul>
+		return (
+			<React.Fragment>
+				<div className="wrapper">
+					<header>
+						<h1>California Days</h1>
+					</header>
+					<main>
+						<nav>
+							<ul className="tabs">
+								<li><button className="active"><i class="fas fa-th" aria-hidden="true"></i> Album</button></li>
+								<li><button><i class="fas fa-question" aria-hidden="true"></i> FAQ</button></li>
+							</ul>
+						</nav>
+						<Uploads pendingFiles={pendingFiles} completedFiles={completedFiles} actions={this.props.actions} />
+					</main>
 				</div>
-			</main>
-		</div>
-	</React.Fragment>
+			</React.Fragment>
+		)
+	}
 }
 
 const statusPropType = PropTypes.shape({
@@ -67,7 +99,9 @@ const statusPropType = PropTypes.shape({
 	message: PropTypes.string.isRequired,
 })
 
-Uploads.propTypes = {
+
+
+AlbumApp.propTypes = {
 	uploads: PropTypes.shape({
 		files: PropTypes.arrayOf(PropTypes.shape({
 			id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
@@ -83,4 +117,4 @@ Uploads.propTypes = {
 	actions: PropTypes.object.isRequired,
 }
 
-export default Uploads
+export default AlbumApp;
