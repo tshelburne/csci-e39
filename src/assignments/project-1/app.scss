@@ -1,44 +1,72 @@
-@import url(https://fonts.googleapis.com/css?family=Oswald|Permanent+Marker);
+@import url(https://fonts.googleapis.com/css?family=Oswald:300,400);
 @import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);
 
 $secondary-color: #e24e4b;
 $primary-color: crimson;
+$primary-desaturated: desaturate($primary-color, 50%);
 $body-font: 'Oswald', sans-serif;
 $white: #fefefe;
 $black: #1d1616;
 
+
+html {
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+
 body {
+    font-family: $body-font;
+    color: $black;
+    font-weight: 300;
     max-width: 1200px;
     min-width: 320px;
     margin: auto;
 }
 
+h1 {
+    font-weight: 400;
+}
+
 .wrapper {
-    width: 98%;
+    width: 95%;
     margin: 5vh auto 0 auto;
 }
 
 
-.sidebar,
-.album-container {
+.tabs {
+    padding: 20px 0;
+    margin: 0;
     text-align: center;
-}
+    border-top: 1px solid lighten($black, 70%);
 
+    li { 
+        display: inline-block;
+        list-style: none;
+        margin-right: 1.5rem;
+       button{
+        font-size: calc(1rem * 1.333);
+        border: none;
+        background: none;
+        color: $primary-desaturated;
+        font-family: $body-font;
+        text-transform: uppercase; 
+        
+        &:hover:not(.active){
+            color: $secondary-color;
+        }
 
-.button {
-    font-size: 1rem;
-	color: $white;
-	font-family: $body-font;
-	padding: .5em 1.5em;
-	border-radius: 5px;
-	border: none;
-	text-transform: capitalize;
-    background:  linear-gradient($primary-color, darken($primary-color, 10%));
-    
-    &:hover {
-        background: linear-gradient(to top, $primary-color, darken($primary-color, 10%));
-
+        &.active  {
+            border-bottom: 2px solid $primary-color;
+            color: $primary-color;
+        }
+       } 
     }
+
 }
 
 //Uploader styles
@@ -49,13 +77,14 @@ body {
 
 //create a button
 .uploader {
-    @extend .button;
-	&:before {
-		content: '\f093';
-		font-family: 'Font Awesome 5 Free';
-		font-weight: 900;
-		padding-right: .5em;
-	}
+    display: block;
+    font-size: 1rem;
+    color: $primary-desaturated;
+    text-transform: capitalize; 
+
+    &:hover {
+        color: $primary-color;
+    }
 }
 
 //Progress styles
@@ -63,13 +92,12 @@ body {
 @mixin progress-bar-value {
 	border-radius: 10px;
 	background-color: $primary-color; 	//fallback background color
-	background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
+    background: linear-gradient(to right, $primary-color 0%, $secondary-color 100%);
 }
 
 @mixin progress-bar-container {
 	border-radius: 10px;
-	background-color: darken($white, 16%);
-	box-shadow: 0 2px  darken($white, 50%) inset;
+	background-color: darken($white, 20%);
 }
 
 progress {
@@ -79,7 +107,7 @@ progress {
 	
 	//dimenssions
 		width: 300px;
-		height: 20px;
+		height: 10px;
 	
 	//container styles for firefox
 	@include progress-bar-container;
@@ -116,43 +144,25 @@ progress::-moz-progress-bar {
     label {
         display: block;
         padding: 1rem;
+        text-transform: capitalize;
     }
 }
 
 //completed 
 .completed-imgs {
     img {
-        max-width: 300px;
+        max-width: 310px;
     }
+    text-align: center;
 }
 
 
 @media (min-width: 48em) {
-    .wrapper {
-        display: grid;
-        grid-template-areas: "album sidebar";
-        grid-template-columns: 3fr 250px;
-        grid-gap: 20px;
-    }
-
-    .sidebar {
-        grid-area: sidebar;
-    }
-    
-    .album-container {
-        grid-area: album;
-    }
-
-    .sidebar,
-    .album-container {
-        text-align: left;
-    }
-
     .completed-imgs {
         width: 100%;
         display: grid;
         grid-gap: 20px;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
     }
     
 }
