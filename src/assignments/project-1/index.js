@@ -4,41 +4,79 @@ import Uploader from '../../ui/components/uploader'
 
 import './app.scss'
 
+const Layout = ({children}) => (
+	<div className="">
+		{oneByType(children, Layout.Header)}
+		{oneByType(children, Layout.Content)}
+		{oneByType(children, Layout.Sidebar)}
+		{oneByType(children, Layout.Footer)}
+	</div>
+)
+
+Layout.Header = ({title, children}) => (
+	<header className="">
+		<h1 className="">{title}</h1>
+		{children}
+	</header>
+)
+
+Layout.Content = ({title, children}) => (
+	<main className="">
+		{title && <h1 className="">{title}</h1>}
+		{children}
+	</main>
+)
+
+Layout.Sidebar = ({children}) => (
+	<aside className="">
+		{children}
+	</aside>
+)
+
+Layout.Footer = ({children}) => (
+	<footer className="">
+		{children}
+	</footer>
+)
+
+function oneByType(children, type) {
+	return React.Children.toArray(children).find((child) => child.type === type)
+}
+
+// COMPONENTS
+
+const Img = ({ className, small, large, alt }) => (
+	<picture className={className}>
+		<img src={large} alt={alt} />
+	</picture>
+);
+
+const ItemCard = ({ image, title, alt }) => (
+
+	<div className="">
+
+	</div>
+);
+
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <div>
-		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
+	return (
+		<Layout>
+			<Layout.Header title="Upload Images" />
+			<Layout.Content title="Completed">
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
-	</div>
+			</Layout.Content>
+			<Layout.Sidebar>
+				<h1 className="">In Progress</h1>
+			
+			</Layout.Sidebar>
+			<Layout.Footer>
+				<p>Francis Phiri - Project 1</p>
+			</Layout.Footer>
+		</Layout>
+	);
 }
 
 const statusPropType = PropTypes.shape({
