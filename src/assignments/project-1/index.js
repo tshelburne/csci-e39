@@ -1,15 +1,22 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
-import {PendingFiles, CompletedFiles} from './files.js'
+import {PendingFiles, CompletedFiles} from '../../ui/components/files.js'
 
 import './app.scss'
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
+	console.log(actions)
 
 	return <div>
+		{(completedFiles.length > 0) &&
+			<React.Fragment>
+				<h1>Album</h1>
+				<CompletedFiles files={completedFiles} update={actions.files.updateFile} />
+			</React.Fragment>
+		}
 		<h1>Upload Images</h1>
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
@@ -21,9 +28,6 @@ const Uploads = ({uploads, actions}) => {
 				<PendingFiles files={pendingFiles} />
 			</React.Fragment>
 		}
-
-		<h2>Completed</h2>
-		<CompletedFiles files={completedFiles} />
 	</div>
 }
 
