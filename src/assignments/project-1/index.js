@@ -48,16 +48,21 @@ function oneByType(children, type) {
 
 // COMPONENTS
 
-const Img = ({ src, alt, title }) => (
-	<picture>
-		<img src={src} alt={alt} />
-		<label>{title}</label>
-	</picture>
+const Img = ({ id, title, src, description }) => (
+	<figure className="polaroid">
+		<img src={src}  alt={description ? description : title}/>
+		{description && <figcaption className="polaroid-caption">{description}</figcaption>}
+		{!description && <div className="description-form">
+				<input placeholder="Add Description" value={description}/>
+				<button className="button">Submit</button>
+			</div>
+		}
+	</figure>
 );
 
-const ItemCard = ({ title, src, alt }) => (
-	<div className="polaroid">
-		<Img title={title} src={src} alt={alt}/>
+const ItemCard = ({ id, title, src, description }) => (
+	<div>
+		<Img id={id} title={title} src={src} description={description}/>
 	</div>
 );
 
@@ -71,21 +76,28 @@ const Uploads = ({uploads, actions}) => {
 			<Layout.Content title="Completed">
 				
 				{completedFiles.map(file => {
-					const {id, name, url, error} = file
+					const {id, name,description, url, error} = file
 
 					return <div key={id}>
-						{!error && <ItemCard src={url} title={name} alt={name}/>}
+						{!error &&
+							<ItemCard
+								id={id}
+								title={name}
+								src={url}
+								description={description}
+							/>
+						}
 						{!!error && <p className="failure">{error}</p>}
 					</div>
 				})}
 			
 			</Layout.Content>
+			
 			<Layout.Sidebar title="In Progress">
 				<label tabindex="0" for="uploader" className="uploader">Upload Files </label>
 				{/* do not delete this uploader component */}
 				<Uploader upload={actions.upload} id="uploader" className="uploader-input"/>
 				{/* do not delete this uploader component */}
-				
 				<ul className="item-list">
 					{pendingFiles.map(file => {
 						const {id, name, progress} = file
