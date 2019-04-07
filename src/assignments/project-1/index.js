@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
+import Updater from '../../ui/components/updater'
 
 import './app.scss'
 
@@ -48,21 +49,18 @@ function oneByType(children, type) {
 
 // COMPONENTS
 
-const Img = ({ id, title, src, description }) => (
+const Img = ({children, title, src, description }) => (
 	<figure className="polaroid">
 		<img src={src}  alt={description ? description : title}/>
 		{description && <figcaption className="polaroid-caption">{description}</figcaption>}
-		{!description && <div className="description-form">
-				<input placeholder="Add Description" value={description}/>
-				<button className="button">Submit</button>
-			</div>
-		}
+		{children}
 	</figure>
 );
 
-const ItemCard = ({ id, title, src, description }) => (
+const ItemCard = ({children, title, src, description }) => (
 	<div>
-		<Img id={id} title={title} src={src} description={description}/>
+		<Img title={title} src={src} description={description}/>
+		{children}
 	</div>
 );
 
@@ -81,11 +79,12 @@ const Uploads = ({uploads, actions}) => {
 					return <div key={id}>
 						{!error &&
 							<ItemCard
-								id={id}
 								title={name}
 								src={url}
 								description={description}
-							/>
+							>
+							{!description && <Updater file={file} updateFile={actions.files.updateFile}/>}
+							</ItemCard>
 						}
 						{!!error && <p className="failure">{error}</p>}
 					</div>
@@ -98,13 +97,14 @@ const Uploads = ({uploads, actions}) => {
 				{/* do not delete this uploader component */}
 				<Uploader upload={actions.upload} id="uploader" className="uploader-input"/>
 				{/* do not delete this uploader component */}
+							
 				<ul className="item-list">
 					{pendingFiles.map(file => {
 						const {id, name, progress} = file
 
 						return <li key={id}>
-							<progress value={progress} max="100">{progress}%</progress>
 							<label>{name}</label>
+							<progress value={progress} max="100">{progress}%</progress>
 						</li>
 					})}
 				</ul>
@@ -126,6 +126,7 @@ Uploads.propTypes = {
 		files: PropTypes.arrayOf(PropTypes.shape({
 			id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 			name: PropTypes.string.isRequired,
+			description: PropTypes.string,
 			progress: PropTypes.number,
 			url: PropTypes.string,
 			error: PropTypes.string,
