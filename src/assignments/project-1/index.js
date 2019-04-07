@@ -49,7 +49,7 @@ function oneByType(children, type) {
 // COMPONENTS
 
 const Img = ({ src, alt, title }) => (
-	<picture className="">
+	<picture>
 		<img src={src} alt={alt} />
 		<label>{title}</label>
 	</picture>
@@ -81,16 +81,18 @@ const Uploads = ({uploads, actions}) => {
 			
 			</Layout.Content>
 			<Layout.Sidebar title="In Progress">
+				<label tabindex="0" for="uploader" className="uploader">Upload Files </label>
 				{/* do not delete this uploader component */}
-				<Uploader upload={actions.upload} />
+				<Uploader upload={actions.upload} id="uploader" className="uploader-input"/>
 				{/* do not delete this uploader component */}
+				
 				<ul className="item-list">
 					{pendingFiles.map(file => {
 						const {id, name, progress} = file
 
 						return <li key={id}>
-							<label>{name}</label>
 							<progress value={progress} max="100">{progress}%</progress>
+							<label>{name}</label>
 						</li>
 					})}
 				</ul>

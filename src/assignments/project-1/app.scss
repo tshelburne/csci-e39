@@ -1,14 +1,15 @@
-$primary-color: #222;
+$primary-color: #337ab7;
+$color: #fff;
 $primary-accent: royalblue;
-$font-family: 'Delius', sans-serif;
-$font-heading: 'Permanent Marker', sans-serif;
-$font-default: 'Oswald', sans-serif;
+$font-family: 'Permanent Marker', sans-serif;
+$border-radius: 8px;
+$font-weight: 200;
 
 $breakpoint: 768px;
 
 body {
 	background-color: $primary-color;
-	font-family: $font-family;
+    font-family: $font-family;
 }
 
 h1, h2 {
@@ -35,7 +36,6 @@ footer {
 .main-heading {
 	font-size: 3rem;
 	text-align: center;
-	font-family: $font-heading;
 	margin: 0;
 	padding: 30px 0px;
 }
@@ -48,7 +48,7 @@ footer {
 
 
 .heading {
-	font-family: $font-heading;
+	font-family: $font-family;
 }
 
 .polaroid {
@@ -115,4 +115,25 @@ footer {
         }
 
     }
+}
+
+
+.uploader-input {
+    color: $color;
+	background-color: $primary-color;
+    border-radius: $border-radius;
+	font-family: $font-family;
+    font-weight: $font-weight;
+    
+}
+
+progress[value]  {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  color: $primary-accent; 
+  width: 90%;
+  height: 10px;
+  margin: 10px;
 }
