@@ -26,4 +26,6 @@ Uploader.propTypes = {
 	upload: PropTypes.func.isRequired,
 }
 
+
+
 export default Uploader

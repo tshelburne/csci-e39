@@ -1,0 +1,174 @@
+// Grid container specifications
+$sidebar-width: 200px;
+$main-width: 1fr;
+
+// fonts
+$text-color: grey;
+$font-size: 25px;
+
+$font-heading: 'Permanent Marker', sans-serif;
+$font-heading-size: 400%;
+
+$font-default: 'Oswald', sans-serif;
+
+$border-radius: 4px;
+$shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
+
+$primary-color: purple;
+
+// progress bar
+$bar-height: 30px;
+$bar-color: black;
+
+.main-container {
+  width: 80%;
+  margin: auto;
+  padding: 5px;
+  font-family: $font-default;
+  min-width: 480px;
+  overflow: auto;
+  background: yellow;
+  border-radius: $border-radius;
+}
+
+.upload-box
+{
+  margin: auto;
+  text-align: center;
+  padding: 5px;
+  font-family: $font-default;
+  overflow: auto;
+  background: red;
+  border-radius: $border-radius;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: $sidebar-width $main-width;
+}
+
+.grid-main {
+    background: green;
+    border-radius: $border-radius;
+}
+
+.grid-sidebar {
+  text-align: center;
+  margin: auto;
+  margin-right: 5px;
+  background: grey;
+  border-radius: $border-radius;
+  padding: 5px;
+}
+
+.picture-card {
+  padding: 2px;
+  margin-bottom: 5px;
+  background: blue;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+}
+
+footer {
+  background: orange;
+  text-align: center;
+  margin: auto;
+  border-radius: $border-radius;
+    padding: 5px;
+}
+
+input {
+	font-family: $font-default;
+	color: white;
+
+  background-color: $primary-color;
+
+	border: none;
+	border-radius: $border-radius;
+
+	box-shadow: $shadow;
+
+	padding: 2px;
+
+	transition: background-color 0.3s;
+
+  &::-webkit-file-upload-button {
+     font-family: $font-default;
+     background: lighten($primary-color, 20%);
+     border: 0;
+     padding: 20px 10px;
+     color: white;
+     border-radius: $border-radius;
+     transition: background-color 0.3s;
+   }
+
+  &::-webkit-file-upload-button:hover
+  {
+    background-color: lighten($primary-color, 10%);
+  }
+
+	&:hover,
+	&:focus {
+		background-color: lighten($primary-color, 10%);
+	}
+}
+
+.progress-bar {
+	height: $bar-height;
+	width: 50%;
+  margin: 5px;
+	// reset to default appearance
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	&::-webkit-progress-bar {
+  background-color: $primary-color;
+	border: none;
+	border-radius: $border-radius;
+	box-shadow: $shadow;
+}
+
+&::-moz-progress-bar {
+	  background-color: $primary-color;
+	   border: none;
+	    border-radius: $border-radius;
+	     box-shadow: $shadow;
+	}
+	&::-webkit-progress-value {
+  background-image:
+	  -webkit-linear-gradient(-45deg, darken($primary-color, 30%), $bar-color);
+    border-radius: $border-radius 0px 0px $border-radius;
+
+}
+		&::-moz-progress-value {
+  background-image:
+	  -moz-linear-gradient(-45deg, darken($primary-color, 30%), $bar-color);
+    border-radius: $border-radius 0px 0px $border-radius;
+
+}
+	&:after {
+		font-family: $font-default;
+	   font-size: $font-size;
+	//	color: $text-color;
+		float: left;
+		content: attr(value) "%";
+		margin-top: -35px;
+		margin-left: 50%;
+	}
+}
+
+
+h1 {
+  font-family: $font-heading;
+  font-size: $font-heading-size;
+  text-align: center;
+  line-height: .7;
+}
+
+img.thumbnail {
+  max-width: 100%;
+  display: block;
+  margin: auto;
+  border-radius: $border-radius;
+}
