@@ -5,7 +5,7 @@ import Uploader from '../../ui/components/uploader'
 import './app.scss'
 
 const Layout = ({children}) => (
-	<div className="">
+	<div className="layout-grid">
 		{oneByType(children, Layout.Header)}
 		{oneByType(children, Layout.Content)}
 		{oneByType(children, Layout.Sidebar)}
@@ -14,27 +14,30 @@ const Layout = ({children}) => (
 )
 
 Layout.Header = ({title, children}) => (
-	<header className="">
-		<h1 className="">{title}</h1>
+	<header className="layout--header">
+		<h1 className="main-heading">{title}</h1>
 		{children}
 	</header>
 )
 
 Layout.Content = ({title, children}) => (
-	<main className="">
-		{title && <h1 className="">{title}</h1>}
-		{children}
+	<main className="layout--main">
+		{title && <h2 className="heading">{title}</h2>}
+		<div className="main-content">
+			{children}
+		</div>
 	</main>
 )
 
-Layout.Sidebar = ({children}) => (
-	<aside className="">
+Layout.Sidebar = ({title, children}) => (
+	<aside className="layout--sidebar">
+		{title && <h2 className="heading">{title}</h2>}
 		{children}
 	</aside>
 )
 
 Layout.Footer = ({children}) => (
-	<footer className="">
+	<footer className="layout--footer">
 		{children}
 	</footer>
 )
@@ -45,16 +48,16 @@ function oneByType(children, type) {
 
 // COMPONENTS
 
-const Img = ({ className, small, large, alt }) => (
-	<picture className={className}>
-		<img src={large} alt={alt} />
+const Img = ({ src, alt, title }) => (
+	<picture className="">
+		<img src={src} alt={alt} />
+		<label>{title}</label>
 	</picture>
 );
 
-const ItemCard = ({ image, title, alt }) => (
-
-	<div className="">
-
+const ItemCard = ({ title, src, alt }) => (
+	<div className="polaroid">
+		<Img title={title} src={src} alt={alt}/>
 	</div>
 );
 
@@ -66,11 +69,31 @@ const Uploads = ({uploads, actions}) => {
 		<Layout>
 			<Layout.Header title="Upload Images" />
 			<Layout.Content title="Completed">
+				
+				{completedFiles.map(file => {
+					const {id, name, url, error} = file
 
-			</Layout.Content>
-			<Layout.Sidebar>
-				<h1 className="">In Progress</h1>
+					return <div key={id}>
+						{!error && <ItemCard src={url} title={name} alt="alt name"/>}
+						{!!error && <p className="failure">{error}</p>}
+					</div>
+				})}
 			
+			</Layout.Content>
+			<Layout.Sidebar title="In Progress">
+				{/* do not delete this uploader component */}
+				<Uploader upload={actions.upload} />
+				{/* do not delete this uploader component */}
+				<ul className="item-list">
+					{pendingFiles.map(file => {
+						const {id, name, progress} = file
+
+						return <li key={id}>
+							<label>{name}</label>
+							<progress value={progress} max="100">{progress}%</progress>
+						</li>
+					})}
+				</ul>
 			</Layout.Sidebar>
 			<Layout.Footer>
 				<p>Francis Phiri - Project 1</p>
