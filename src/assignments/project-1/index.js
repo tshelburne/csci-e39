@@ -74,7 +74,7 @@ const Uploads = ({uploads, actions}) => {
 					const {id, name, url, error} = file
 
 					return <div key={id}>
-						{!error && <ItemCard src={url} title={name} alt="alt name"/>}
+						{!error && <ItemCard src={url} title={name} alt={name}/>}
 						{!!error && <p className="failure">{error}</p>}
 					</div>
 				})}
