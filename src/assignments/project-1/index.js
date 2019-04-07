@@ -119,6 +119,7 @@ class AlbumApp extends React.Component {
 				<div className="wrapper">
 					<header>
 						<h1>California Days</h1>
+						<p>A small collection of pictures from a brief adventure in California.</p>
 					</header>
 
 					<nav>

@@ -40,15 +40,19 @@ body {
 }
 
 /* HEADINGS */
+header {
+    text-align: center;
+}
+
 h1 {
     font-family: $heading-font;
     font-weight: 600;
-    text-align: center;
 }
 h2 {
     font-family: $heading-font;
     font-weight: 600;
 }
+
 
 
 /* BUTTONS */
