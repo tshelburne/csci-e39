@@ -13,6 +13,17 @@ function Footer(props) {
 				</footer>;
 }
 
+function Photo(props) {
+
+  return 		<li className="photo-and-label" key={props.id}>
+						<figure>
+							<figcaption className="filename">{props.name}</figcaption>
+							{!props.error && <img src={props.url} style={{maxWidth: `200px`}} className="photo" />}
+							{!!props.error && <p className="failure">{error}</p>}
+						</figure>						
+					</li>;
+}
+
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
@@ -54,18 +65,12 @@ const Uploads = ({uploads, actions}) => {
 				{completedFiles.map(file => {
 					const {id, name, url, error} = file
 	
-					return <li className="photo-and-label" key={id}>
-						<figure>
-							<figcaption className="filename">{name}</figcaption>
-							{!error && <img src={url} style={{maxWidth: `200px`}} className="photo" />}
-							{!!error && <p className="failure">{error}</p>}
-						</figure>						
-					</li>
+					return <Photo id={id} name={name} url={url} error={error}/>
 				})}
 			</ul>
 		</section>
 		
-		<Footer  footerText="Goodbye and see you next birthday!"/>;
+		<Footer  footerText="Goodbye and see you next birthday!"/>
 		
 	</div>
 }
