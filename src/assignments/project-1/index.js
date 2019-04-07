@@ -6,10 +6,10 @@ import './app.scss'
 
 /* COMPONENTS */
 
-function Footer() {
+function Footer(props) {
 
   return 		<footer className="footer">
-					<h2>This is the footer</h2>
+					<h2>{props.footerText}</h2>
 				</footer>;
 }
 
@@ -65,8 +65,7 @@ const Uploads = ({uploads, actions}) => {
 			</ul>
 		</section>
 		
-
-		<Footer />;
+		<Footer  footerText="Goodbye and see you next birthday!"/>;
 		
 	</div>
 }
