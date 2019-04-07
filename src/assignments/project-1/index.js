@@ -9,10 +9,25 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
+
+		<div className="example-container">
+			<h1 className="header">Button</h1>
+			<button className="button">Add more</button>
+		</div>
+
+
 		<h1>Upload Images</h1>
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
+
+
+		<h1 className="header">File inputs</h1>
+		<form action="#" className="file-form">
+			<input type="file" id="uploader" className="uploader uploader-input" data-multiple-caption="{count} files selected" multiple >
+			<label tabindex="0" for="uploader" className="uploader"><span></span><strong>Upload Files</strong></label>
+		</form>
+
 
 		<h2>In Progress</h2>
 		<ul>
@@ -25,6 +40,15 @@ const Uploads = ({uploads, actions}) => {
 				</li>
 			})}
 		</ul>
+
+
+
+		<h1 className="header">Progress bars</h1>
+		<progress value="33" max="100">
+		</progress>
+
+
+
 
 		<h2>Completed</h2>
 		<ul>
@@ -61,5 +85,12 @@ Uploads.propTypes = {
 	}).isRequired,
 	actions: PropTypes.object.isRequired,
 }
+
+	<h1 className="headerName">File inputs</h1>
+		<form action="#" className="file-form">
+			<input type="file" id="uploader" className="uploader uploader-input" data-multiple-caption="{count} files selected" multiple >
+			<label tabindex="0" for="uploader" className="uploader"><span></span><strong>Upload Files</strong></label>
+		</form>
+
 
 export default Uploads
