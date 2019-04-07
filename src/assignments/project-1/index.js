@@ -111,7 +111,7 @@ class AlbumApp extends React.Component {
 		const completedFiles = this.props.uploads.files.filter(({ progress }) => !progress)
 		const tabsList = [
 			{ name: "album", iconName: "fas fa-th" },
-			{ name: "faq", inconName: "fas fa-question" }
+			{ name: "faq", iconName: "fas fa-question" }
 		]
 
 		return (
