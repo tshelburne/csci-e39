@@ -11,7 +11,8 @@ const Uploads = ({uploads, actions}) => {
 	return <div>
 		<h1>Upload Images</h1>
 		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
+
+		<Uploader upload={actions.upload} label="Choose Files to Upload!" />
 		{/* do not delete this uploader component */}
 
 		<h2>In Progress</h2>

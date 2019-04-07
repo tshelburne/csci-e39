@@ -105,3 +105,38 @@ body {
   }
 
 
+
+
+
+// Button Styling Help
+
+//https://stackoverflow.com/questions/21842274/cross-browser-custom-styling-for-file-upload-button
+// hide the existing button.  The user will click on the "label:
+
+label.uploader-btn input[type="file"] {
+  position:absolute;
+  top: -1000px;
+  color: cyan;
+}
+
+
+.uploader-btn {
+  margin: auto;
+  padding: 0.85em 1em;
+  padding-top: .7em;
+  padding-right: 1em;
+  padding-bottom: .7em;
+  padding-left: 1em;
+  border: 1px solid black;
+  border-radius: $corner-radius;
+  // slow the hover effect
+  transition: background-color 0.25s ease-out, color 0.25s ease-out;
+  background-color: $component-color;
+  color: #fefefe;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.uploader-btn:hover {
+  background: $component-color-lighten;
+}
+
