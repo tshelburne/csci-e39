@@ -8,19 +8,14 @@ import './app.scss'
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
-	console.log(actions)
 
 	return <div>
 		{(completedFiles.length > 0) &&
 			<React.Fragment>
-				<h1>Album</h1>
+				<h1>Photo Gallery</h1>
 				<CompletedFiles files={completedFiles} update={actions.files.updateFile} />
 			</React.Fragment>
 		}
-		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
 
 		{(pendingFiles.length > 0) &&
 			<React.Fragment>
@@ -28,6 +23,11 @@ const Uploads = ({uploads, actions}) => {
 				<PendingFiles files={pendingFiles} />
 			</React.Fragment>
 		}
+
+		<h1>Upload To Gallery</h1>
+		{/* do not delete this uploader component */}
+		<Uploader upload={actions.upload} />
+		{/* do not delete this uploader component */}
 	</div>
 }
 

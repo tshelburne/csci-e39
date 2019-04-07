@@ -1,5 +1,5 @@
 import React from 'react'
-import Modal from './modal'
+import UpdateModal from './modal'
 import autobind from 'class-autobind'
 
 export const PendingFiles = ({files}) => {
@@ -60,8 +60,11 @@ export class CompletedFiles extends React.Component {
                     const {id, name, description, url, error} = file
 
                     return <li key={id}>
-                        <img src={url} style={{maxWidth: `200px`}} alt={file.description} />
-                        <label>{name}</label>
+                        <div className="image-group">
+                            <p className="image-group--title">{file.name}</p>
+                            <img src={url} style={{maxWidth: `200px`}} alt={file.description} />
+                            <p className="image-group--description">{file.description}</p>
+                        </div>
                         <button className="button--update" onClick={() => this.handleUpdate(file)}>
                             Update
                         </button>
@@ -77,7 +80,7 @@ export class CompletedFiles extends React.Component {
                 })}
             </ul>
             {this.state.modal &&
-                <Modal
+                <UpdateModal
                     file={this.state.updating}
                     submit={this.finishUpdate}
                     cancel={this.cancelUpdate}
