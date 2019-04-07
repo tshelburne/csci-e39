@@ -44,7 +44,7 @@ const Faq = () => {
 			<h2>Frequently Asked Questions</h2>
 			<dl className="faq-list">
 				<dt>Who are you?</dt>
-				<dd>Hi! I'm Zoraida.</dd>
+				<dd>Hi! My name is Zoraida.</dd>
 				<dt>Are you from California?</dt>
 				<dd>Nope. I live in Boston. Grew up in Puerto Rico.</dd>
 				<dt>When did you take these pictures?</dt>
