@@ -8,21 +8,21 @@ const CompletedUploads = (props) => {
 	const completedFiles = props.completedFiles;
 
 	return (
-	<React.Fragment>
-		<ul className="completed-imgs">
-			{completedFiles.map(file => {
-				const { id, name, url, error } = file
-				const labelName = name.substr(0, name.lastIndexOf('.')) || name; //remove file extension
+		<React.Fragment>
+			<ul className="completed-imgs">
+				{completedFiles.map(file => {
+					const { id, name, url, error } = file
+					const labelName = name.substr(0, name.lastIndexOf('.')) || name; //remove file extension
 
-				return <li key={id}>
-					{!error && <img id={id} src={url} alt={labelName} />}
-					{!!error && <p className="failure">{error}</p>}
-					<label>{labelName}</label>
-				</li>
-			})
-			}
-		</ul>
-	</React.Fragment>)
+					return <li key={id}>
+						{!error && <img src={url} alt={labelName} />}
+						{!!error && <p className="failure">{error}</p>}
+						<label>{labelName}</label>
+					</li>
+				})
+				}
+			</ul>
+		</React.Fragment>)
 }
 
 const PendingUploads = (props) => {
@@ -30,22 +30,22 @@ const PendingUploads = (props) => {
 	const pendingFilesTotal = props.pendingFiles.length;
 
 	return (
-	<React.Fragment>
-		<label for="uploader" class="uploader"><i class="fas fa-camera-retro" aria-hidden="true"></i> Add Photos</label>
-		<Uploader id="uploader" className="uploader-input" upload={props.actions.upload} />
+		<React.Fragment>
+			<label for="uploader" class="uploader"><i className="fas fa-camera-retro" aria-hidden="true"></i> Add Photos</label>
+			<Uploader id="uploader" className="uploader-input" upload={props.actions.upload} />
 
-		{pendingFilesTotal > 0 && <h2>Photos In Progress</h2>}
+			{pendingFilesTotal > 0 && <h2>Photos In Progress</h2>}
 
-		<ul className="in-progress-imgs">
-			{pendingFiles.map(file => {
-				const { id, name, progress } = file
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-	</React.Fragment>)
+			<ul className="in-progress-imgs">
+				{pendingFiles.map(file => {
+					const { id, name, progress } = file
+					return <li key={id}>
+						<label>{name}</label>
+						<progress value={progress} max="100">{progress}%</progress>
+					</li>
+				})}
+			</ul>
+		</React.Fragment>)
 }
 
 const Uploads = (props) => {
@@ -61,7 +61,7 @@ const Uploads = (props) => {
 		</React.Fragment>);
 }
 
- const Faq = () => {
+const Faq = () => {
 	return (
 		<React.Fragment>
 			<h2>Frequently Asked Questions</h2>
@@ -79,19 +79,64 @@ const Uploads = (props) => {
 			</dl>
 
 		</React.Fragment>);
- }
+}
+
+class Tabs extends React.Component {
+
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			activeTab: this.props.defaultTab
+		};
+	}
+
+	handleClick(pageName) {
+		this.setState({ activeTab: pageName })
+		this.props.handleTabClick(pageName)
+	}
+
+	render() {
+		const tabs = this.props.tabsList;
+		return (
+			<ul className="tabs">
+				{tabs.map((tab, key) => {
+					const { fontAwsomeIcon, name } = tab;
+					return (
+						<li key={key}>
+							<button
+								onClick={() => this.handleClick(name)}
+								className={this.state.activeTab === name ? "active" : ""} >
+								<i className={fontAwsomeIcon} aria-hidden="true"></i> {name}
+							</button>
+						</li>)
+				})
+				}
+			</ul>
+		)
+	}
+}
 
 class AlbumApp extends React.Component {
 	constructor(props) {
 		super(props);
 
 		this.state = {
+			currentPage: "album"
 		};
+	}
+
+	setPage(page) {
+		this.setState({ currentPage: page })
 	}
 
 	render() {
 		const pendingFiles = this.props.uploads.files.filter(({ progress }) => progress && progress < 100)
 		const completedFiles = this.props.uploads.files.filter(({ progress }) => !progress)
+		const tabsList = [
+			{ name: "album", fontAwsomeIcon: "fas fa-th" },
+			{ name: "faq", fontAwsomeIcon: "fas fa-question" }
+		]
 
 		return (
 			<React.Fragment>
@@ -99,15 +144,14 @@ class AlbumApp extends React.Component {
 					<header>
 						<h1>California Days</h1>
 					</header>
+
+					<nav>
+						<Tabs defaultTab="album" handleTabClick={this.setPage.bind(this)} tabsList={tabsList} />
+					</nav>
 					<main>
-						<nav>
-							<ul className="tabs">
-								<li><button><i class="fas fa-th" aria-hidden="true"></i> Album</button></li>
-								<li><button className="active"><i class="fas fa-question" aria-hidden="true"></i> FAQ</button></li>
-							</ul>
-						</nav>
-						{/* <Uploads pendingFiles={pendingFiles} completedFiles={completedFiles} actions={this.props.actions} /> */}
-						<Faq />
+						{this.state.currentPage === "album" &&
+							<Uploads pendingFiles={pendingFiles} completedFiles={completedFiles} actions={this.props.actions} />}
+						{this.state.currentPage === "faq" && <Faq />}
 					</main>
 				</div>
 			</React.Fragment>
