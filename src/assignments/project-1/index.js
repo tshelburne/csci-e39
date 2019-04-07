@@ -27,17 +27,19 @@ const Uploads = ({uploads, actions}) => {
 		</ul>
 
 		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
 
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
+			<ul class="image-grid">
+				{completedFiles.map(file => {
+					const {id, name, url, error} = file
+
+					return <li key={id} class="image-card">
+						{!error && <img src={url} style={{maxWidth: `200px`}} />}
+						{!!error && <p className="failure">{error}</p>}
+						<label>{name}</label>
+
+					</li>
+				})}
+			</ul>
 	</div>
 }
 

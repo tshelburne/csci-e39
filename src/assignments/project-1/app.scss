@@ -1,0 +1,107 @@
+
+
+$primary-color: rgba(150, 143, 179, 1);
+$component-color: rgb(20, 24, 244);
+$component-color-darken: darken($component-color, 20);
+$component-color-lighten: lighten($component-color, 20);
+$corner-radius :5px;
+
+
+// Style your components here
+
+
+// Ignore the styles below unless you want to change them for fun
+
+body {
+  background: crimson;
+  padding: 30px;
+  background: linear-gradient(
+                  to bottom,
+                  rgba(150, 143, 179, 1) 50%,
+                  $primary-color 50%
+  );
+  min-height: 100vh;
+  font-family: "Permanent Marker", sans-serif;
+
+}
+
+
+.image-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1rem;
+
+}
+
+
+.image-card {
+  margin: 10px auto;
+  background-color: hsl(0, 1, 90%);
+  box-shadow: 1px 2px 3px 1px hsla(0, 0, 10%, .5);
+  padding: 20px 20px 40px 20px;
+  max-width: 200px;
+
+  label{
+    margin: auto;
+    font-size: .8em;
+  }
+
+  img {
+    width: 100%;
+
+  }
+}
+
+
+
+  .example-container {
+    background:  hsla(0, 0, 100%, 0.8);
+    margin-top: 7vh;
+    padding: 5vh 2vh;
+    box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
+    text-align: center;
+  }
+
+  .header {
+    margin-top: 0;
+    font-family: "Permanent Marker", sans-serif;
+  }
+
+
+
+  .button{
+    font: inherit;
+    margin:auto;
+    padding: 0.85em 1em;
+    padding-top: .7em;
+    padding-right: 1em;
+    padding-bottom: .7em;
+    padding-left: 1em;
+    border: 1px solid black;
+    // slow the hover effect
+    transition: background-color 0.25s ease-out, color 0.25s ease-out;
+    border-radius: $corner-radius;
+    background-color: $component-color;
+    color: #fefefe;
+    // remember when buttons where 3d.
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  }
+
+  .button:hover {
+    background: $component-color-lighten;
+  }
+
+
+  progress {
+    padding: 5px;
+    border-radius: $corner-radius;
+    border: 1px solid black;
+    margin :0px;
+    color: $component-color;
+    height: 20px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.3);
+
+  }
+
+
