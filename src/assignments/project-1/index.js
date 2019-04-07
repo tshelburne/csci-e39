@@ -6,7 +6,6 @@ import './app.scss'
 
 const Uploads = ({ pendingFiles, completedFiles, actions }) => {
 	const pendingFilesTotal = pendingFiles.length;
-
 	return (
 		<React.Fragment>
 			<label for="uploader" class="uploader"><i className="fas fa-camera-retro" aria-hidden="true"></i> Add Photos</label>
