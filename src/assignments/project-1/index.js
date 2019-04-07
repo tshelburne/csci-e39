@@ -15,7 +15,7 @@ const Uploads = ({uploads, actions}) => {
 		<Uploader upload={actions.upload} label="Choose Files to Upload!" />
 		{/* do not delete this uploader component */}
 
-		<h2>In Progress</h2>
+		<Header2 name="In Progress" />
 		<ul>
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
@@ -27,7 +27,7 @@ const Uploads = ({uploads, actions}) => {
 			})}
 		</ul>
 
-		<h2>Completed</h2>
+		<Header2 name="Completed" />
 
 			<ul class="image-grid">
 				{completedFiles.map(file => {
@@ -42,7 +42,13 @@ const Uploads = ({uploads, actions}) => {
 				})}
 			</ul>
 	</div>
-}
+};
+
+const Header2 = ({name}) => {
+   return 	<h2>{name}</h2>
+};
+
+
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
