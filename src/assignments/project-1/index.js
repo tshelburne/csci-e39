@@ -4,11 +4,25 @@ import Uploader from '../../ui/components/uploader'
 
 import './app.scss'
 
-const CompletedUploads = (props) => {
-	const completedFiles = props.completedFiles;
+const Uploads = ({ pendingFiles, completedFiles, actions }) => {
+	const pendingFilesTotal = pendingFiles.length;
 
 	return (
 		<React.Fragment>
+			<label for="uploader" class="uploader"><i className="fas fa-camera-retro" aria-hidden="true"></i> Add Photos</label>
+			<Uploader id="uploader" className="uploader-input" upload={actions.upload} />
+
+			{pendingFilesTotal > 0 && <h2>Photos In Progress</h2>}
+			<ul className="in-progress-imgs">
+				{pendingFiles.map(file => {
+					const { id, name, progress } = file
+					return <li key={id}>
+						<label>{name}</label>
+						<progress value={progress} max="100">{progress}%</progress>
+					</li>
+				})}
+			</ul>
+			
 			<ul className="completed-imgs">
 				{completedFiles.map(file => {
 					const { id, name, url, error } = file
@@ -22,42 +36,6 @@ const CompletedUploads = (props) => {
 				})
 				}
 			</ul>
-		</React.Fragment>)
-}
-
-const PendingUploads = (props) => {
-	const pendingFiles = props.pendingFiles
-	const pendingFilesTotal = props.pendingFiles.length;
-
-	return (
-		<React.Fragment>
-			<label for="uploader" class="uploader"><i className="fas fa-camera-retro" aria-hidden="true"></i> Add Photos</label>
-			<Uploader id="uploader" className="uploader-input" upload={props.actions.upload} />
-
-			{pendingFilesTotal > 0 && <h2>Photos In Progress</h2>}
-
-			<ul className="in-progress-imgs">
-				{pendingFiles.map(file => {
-					const { id, name, progress } = file
-					return <li key={id}>
-						<label>{name}</label>
-						<progress value={progress} max="100">{progress}%</progress>
-					</li>
-				})}
-			</ul>
-		</React.Fragment>)
-}
-
-const Uploads = (props) => {
-	const pendingFiles = props.pendingFiles;
-	const pendingFilesTotal = pendingFiles.length;
-	const completedFiles = props.completedFiles;
-	const actions = props.actions;
-
-	return (
-		<React.Fragment>
-			<PendingUploads pendingFiles={pendingFiles} completedFiles={completedFiles} actions={actions} />
-			<CompletedUploads completedFiles={completedFiles} />
 		</React.Fragment>);
 }
 
@@ -77,7 +55,6 @@ const Faq = () => {
 				<dt>What camera did you use for these?</dt>
 				<dd>Canon Rebel T6i DSLR</dd>
 			</dl>
-
 		</React.Fragment>);
 }
 
@@ -101,13 +78,13 @@ class Tabs extends React.Component {
 		return (
 			<ul className="tabs">
 				{tabs.map((tab, key) => {
-					const { fontAwsomeIcon, name } = tab;
+					const { name, iconName } = tab;
 					return (
 						<li key={key}>
 							<button
 								onClick={() => this.handleClick(name)}
 								className={this.state.activeTab === name ? "active" : ""} >
-								<i className={fontAwsomeIcon} aria-hidden="true"></i> {name}
+								<i className={iconName} aria-hidden="true"></i> {name}
 							</button>
 						</li>)
 				})
@@ -134,8 +111,8 @@ class AlbumApp extends React.Component {
 		const pendingFiles = this.props.uploads.files.filter(({ progress }) => progress && progress < 100)
 		const completedFiles = this.props.uploads.files.filter(({ progress }) => !progress)
 		const tabsList = [
-			{ name: "album", fontAwsomeIcon: "fas fa-th" },
-			{ name: "faq", fontAwsomeIcon: "fas fa-question" }
+			{ name: "album", iconName: "fas fa-th" },
+			{ name: "faq", inconName: "fas fa-question" }
 		]
 
 		return (
