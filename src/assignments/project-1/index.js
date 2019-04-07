@@ -4,6 +4,14 @@ import Uploader from '../../ui/components/uploader'
 
 import './app.scss'
 
+/* COMPONENTS */
+
+function Footer() {
+
+  return 		<footer className="footer">
+					<h2>This is the footer</h2>
+				</footer>;
+}
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
@@ -12,15 +20,18 @@ const Uploads = ({uploads, actions}) => {
 	return <div className="example-container">
 	  <header className="hero">
 		<h1>Birthday Album</h1>
-			<p> Welcome to my birthday party album.  This is me with my wife, Natasha and our two
+			<p> Welcome to my birthday party album.  This is me with my wife, Natasha, and our two
 			    children, Zayden and Violet.  We went to <a href="https://www.nickandtonis.com/">Nick and Toni's </a>
 				restaurant in East Hampton.
 				Dinner was good enough but the Tartufo desert was to die for--best we have ever eaten.
-				Next time, we will skip dinner and just eat tartufo.
+				Next time, we will skip dinner and just eat tartufo!
 			</p>
-		<h1>Upload Images</h1>
+		
 		{/* do not delete this uploader component */}
-		<Uploader className="uploader-input" upload={actions.upload} />
+		<button className="uploader-container">
+			Upload a Photo to the Album
+			<Uploader className="uploader-input" upload={actions.upload} />
+		</button>
 		{/* do not delete this uploader component */}
 
 		<h2>In Progress</h2>
@@ -53,9 +64,10 @@ const Uploads = ({uploads, actions}) => {
 				})}
 			</ul>
 		</section>
-		<footer className="footer">
-			<h2 className="header">This is the footer</h2>
-		</footer>
+		
+
+		<Footer />;
+		
 	</div>
 }
 
