@@ -10,13 +10,19 @@ const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress <= 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <div class="container">
+	return <div class="wrapper">
+	  <header class="box header"> Header </header>
+		<aside class="box sidebar">
 	  {/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
-
+		</aside>
+    <article class="box content">
+		<progress value="20" max="100">20%</progress>
 		<ProgressBar inProgress={pendingFiles}/>
 
     <PhotoGallery completedFiles={completedFiles}/>
+		</article>
+		<footer class="box footer"> Footer </footer>
 	</div>
 }
 

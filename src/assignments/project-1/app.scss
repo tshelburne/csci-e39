@@ -5,7 +5,10 @@
 
 
 $breakpoint: 768px;
-$primary-color: #222;
+$primary-color: thistle;
+$uploader-color: #61dafb;
+$font-family: calibri;
+
 
 *{
   box-sizing: border-box;
@@ -15,22 +18,68 @@ $primary-color: #222;
   box-sizing: inherit;
 }
 
-.container {
-	margin:auto;
-	background: white;
-	padding: 20px 30px;
-	margin-top: 50px;
-	//border-radius: 30px 0 /30px 60px;
-	box-shadow: 0px 1px 2px 1px darken($primary-color, 7);
+
+// .header {
+// 	margin:auto;
+// 	background: white;
+// 	padding: 20px 30px;
+// 	margin-top: 50px;
+// 	//border-radius: 30px 0 /30px 60px;
+// 	box-shadow: 0px 1px 2px 1px darken($primary-color, 7);
+// }
+
+// main page layout
+.sidebar {
+   grid-area: sidebar;
+ }
+
+.content {
+   grid-area: content;
+ }
+
+ .header {
+   grid-area: header;
+ }
+
+ .footer {
+   grid-area: footer;
+ }
+
+.wrapper{
+  display: inline-grid;
+  max-width: 940px;
+  margin: 20px;
+  background-color: #fff;
+  grid-gap: 5px;
+  border: 1px solid;
+  grid-template-columns: 0.5fr 1fr 1fr;
+  grid-template-areas: "header header header"
+                       "sidebar content content"
+                       "footer footer footer";
 }
 
+.box {
+  padding: 10px;
+  font-size: 150%;
+}
 
+  .header,
+  .sidebar,
+  .footer {
+    background-color: lighten(#8a7f80, 20%);
+    //border: 1px solid;
+
+  }
+
+
+// grid for photo album
 .grid-container{
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-column-gap: 10px;
-  padding: 5px;
+  padding: 2px;
   grid-auto-flow: dense;
+  overflow: hidden;
 }
 
 .grid-item-caption {
@@ -45,16 +94,13 @@ $primary-color: #222;
 
   img {
 		width: 100%;
+      &:hover, &:active, &:focus{
+      transform: scale(2);
+    }
 	}
-
 }
 
-// img{
-//   display: block;
-//   box-shadow: 1px, 0px, 0px, rgba(0, 0,0,0.6);
-//   max-width: 200px;
-// }
-
+// uploader list styling
 ul, ol {
 	list-style-type: none;
 	margin: 0;
@@ -69,42 +115,82 @@ li{ // grid items
 
 }
 
-// .image-list{
-//   li:not(:last-of-type) {
-//   margin-bottom: 15px;
-// }
-//   li:first-of-type {
-//
-//   // .item-card-image {
-//   //   display: block;
-//   //   max-width: none;
-//   //   width: 100%;
-//   // }
-// }
-// }
-
+// upload button
 input[type="file"] {
    display: none;
 	 position: relative;
 }
 
 .uploader {
-	 border: none ;
-   //display: inline-block;
-  padding: 10px;
-  background-color: darken(hsl(0,1, 90%), 7);
-  //#D8BFD8;
-  //float: left;
+  padding: 5px;
+	margin: 0;
+ 	background: $primary-color;
+	font-family: $font-family;
+  font-size: 1rem;
+	color: black;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+  border-radius: 10px;
+
+  &:hover, &:active, &:focus {
+    background: darken($primary-color, 40%);
+  }
+  margin-top: 10px;
+  float: left;
 }
 
 .uploader-container {
-//	background: hsla(0, 0, 100%, 0.8);
-//	margin-top: 7vh;
  	text-align: center;
   padding-bottom: 40px;
 }
 
-// .uploader-header {
-// 	margin-top: 0;
-// 	font-family: "Permanent Marker", sans-serif;
-// }
+//progress bar styles
+@mixin progressBarStyles {
+	border: none;
+	margin: 0;
+	width: 200px;
+	height: 20px;
+	background:	#D8BFD8;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+  float: center;
+}
+
+//https://stackoverflow.com/questions/18368202/how-to-set-color-for-css3-html5-progress-element
+progress {
+	@include progressBarStyles;
+}
+
+progress::-webkit-progress-bar {
+	@include progressBarStyles;
+}
+
+progress::-moz-progress-bar {
+	@include progressBarStyles;
+	background: blue;
+}
+
+progress::-webkit-progress-value { background: blue; }
+
+// modal styles
+.modal {
+  display: none;
+  position: fixed;
+  padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  //transform: translate(-50%, -50%);
+  background: white;
+  box-shadow: 0 0 60px 10px rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
