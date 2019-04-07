@@ -27,28 +27,37 @@ const Uploads = ({uploads, actions}) => {
 			})}
 		</ul>
 
+
 		<Header2 name="Completed" />
 
-			<ul class="image-grid">
-				{completedFiles.map(file => {
-					const {id, name, url, error} = file
+		<Album imgData={completedFiles} albumName="Current Collection"/>
 
-					return <li key={id} class="image-card">
-						{!error && <img src={url} style={{maxWidth: `200px`}} />}
-						{!!error && <p className="failure">{error}</p>}
-						<label>{name}</label>
-
-					</li>
-				})}
-			</ul>
 	</div>
 };
+
+
+// Components
 
 const Header2 = ({name}) => {
    return 	<h2>{name}</h2>
 };
 
+const Album = ({imgData}) =>{
+	return (
+		<ul className="image-grid">
+		{imgData.map(file => {
+			const {id, name, url, error} = file
 
+			return <li key={id} className="image-card">
+				{!error && <img src={url} style={{maxWidth: `200px`}}/>}
+				{!!error && <p className="failure">{error}</p>}
+				<label>{name}</label>
+
+			</li>
+		})}
+	</ul>)
+
+};
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
