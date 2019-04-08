@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
+import SectionHeader from './sectionheader'
 
 import './app.scss'
 
@@ -11,12 +12,12 @@ const Uploads = ({uploads, actions}) => {
 	return <div>
 		{/* Link in Desired Font Families */}
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto"/>
-		<h1>Upload Images</h1>
+		<SectionHeader tag="h1" sectiontext="Upload Images"/>
 		{/* do not delete this uploader component */}
 		<Uploader className="file-form" upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
-		<h2>In Progress</h2>
+		<SectionHeader tag="h2" sectiontext="In Progress"/>
 		<ul className = "grid-container">
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
@@ -28,7 +29,7 @@ const Uploads = ({uploads, actions}) => {
 			})}
 		</ul>
 
-		<h2>Completed</h2>
+		<SectionHeader tag="h2" sectiontext="Completed"/>
 		<ul className = "grid-container">
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
