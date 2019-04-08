@@ -9,14 +9,208 @@ body {
 
 /*End of global styles & libaries*/
 
+.example-container {
+	background: hsla(0, 0, 100%, 0.8);
+	margin-top: 7vh;
+	padding: 5vh 2vh;
+	box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
+	text-align: center;
+}
+
+$primary-color: rgba(150, 143, 179, 1);
+// Style your components here
+
+$default-font: 'Roboto', sans-serif;
+$primary-color: rgba(150, 143, 179, 1);
+$darken-primary: darken($primary-color, 20%);
+$light-background: #f1e5e6;
+
+/* BUTTON */
+
+button {
+    font-family: $default-font;
+    background: darken($primary-color, 20%);
+    font-size: 18px;
+    height: 40px;
+    padding: 0 20px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: $light-background;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease 0s;
+    border: 1px solid darken($primary-color, 30%);
+}  
+
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+button:hover { 
+    background-color: darken($primary-color, 30%);
+}
+
+/************************************************************************/
+
+/* PROGRESS BAR */
+
+/* 1) TURN OFF DEFAULT STYLING FOR PROGRESS BAR http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/*/
+
+progress,          /* All HTML5 progress enabled browsers */
+progress[role]     /* polyfill */
+{
+
+  /* Turns off styling - not usually needed, but good to know. */
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+
+  /* gets rid of default border in Firefox and Opera. */ 
+ border: none;
+
+  /* Needs to be in here for Safari polyfill so background images work as expected. */
+  background-size: auto;
+  
+  /* Dimensions */
+  width: 400px;
+  height: 40px;
+}
+
+/* Polyfill */
+progress[role]:after {
+  background-image: none; /* removes default background from polyfill */
+}
+
+/* Ensure fallback text doesn't appear in polyfill */
+progress[role] strong {
+  display: none;
+}
+
+/* 2) THE PROGRESS BAR BACKGROUND */
+
+progress,                          /* Firefox  */ 
+progress[role][aria-valuenow] {    /* Polyfill */
+   background: $light-background !important; /* !important is needed by the polyfill */
+}
+
+/* Chrome */
+progress::-webkit-progress-bar {
+    background: $light-background;
+    border-color: darken($primary-color, 30%);
+    display: inline-block;
+}
+
+/* 3) THE PROGRESS BAR VALUE
+/* IE10 */
+progress {
+    color: darken($primary-color, 30%);
+    border: solid 1px darken($primary-color, 30%);
+    display: inline-block;
+}
+
+/* Firefox */
+progress::-moz-progress-bar { 
+  background: darken($primary-color, 30%); 
+  /* gets rid of default border in Firefox and Opera. */
+  border: solid 1px black;
+  display: inline-block;
+}
+
+/* Chrome */
+progress::-webkit-progress-value {
+    background: darken($primary-color, 30%);
+}
+
+/* Polyfill */
+progress[aria-valuenow]:before  {
+    background: darken($primary-color, 30%);
+}
+
+/************************************************************************/
+/* UPLOADER */
+.uploader-input label {
+	height: 90px;
+}
+
+.uploader-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.uploader-input + label span {
+    text-transform: none;
+}
+
+.uploader-input + label {
+    font-family: $default-font;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    max-width: 80%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 0.625rem 1.25rem;
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease 0s;
+}
+
+.uploader-input + label {
+    color: darken($primary-color, 30%);
+}
+
+.uploader-input + label {
+    border: 1px solid darken($primary-color, 20%);
+    background-color: #f1e5e6;
+    padding: 0;
+}
+
+.uploader-input:focus + label,
+.uploader-input.has-focus + label,
+.uploader-input + label:hover {
+    border-color: darken($primary-color, 30%);
+}
 
 
+.uploader-input + label span,
+.uploader-input + label strong {
+    padding: 0.625rem 1.25rem;
+    /* 10px 20px */
+}
+
+.uploader-input + label span {
+    width: 200px;
+    min-height: 1em;
+    display: inline-block;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: top;
+}
 
 
+.uploader-input + label strong {
+    color: #f1e5e6;
+    background-color: darken($primary-color, 20%);
+    display: inline-block;
+}
 
+.uploader-input:focus + label strong,
+.uploader-input.has-focus + label strong,
+.uploader-input + label:hover strong {
+    background-color: darken($primary-color, 30%);
+}
 
-
-
+@media screen and (max-width: 50em) {
+  .uploader-input + label strong {
+    display: block;
+  }
+}
 
 /* Polaroid Challenge */
-

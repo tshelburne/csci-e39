@@ -16,37 +16,35 @@ const Uploads = ({uploads, actions}) => {
 		</div>
 
 
-		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
+		<div className="example-container">
+			<h1>Upload Images</h1>
+			{/* do not delete this uploader component */}
+			<Uploader upload={actions.upload} />
+			{/* do not delete this uploader component */}
 
+			<h1 className="header">File inputs</h1>
+			<form action="#" className="file-form">
+				<input type="file" id="uploader" className="uploader uploader-input" data-multiple-caption="{count} files selected" multiple />
+				<label tabindex="0" for="uploader" className="uploader"><span></span><strong>Upload Files</strong></label>
+			</form>
+		</div>
 
-		<h1 className="header">File inputs</h1>
-		<form action="#" className="file-form">
-			<input type="file" id="uploader" className="uploader uploader-input" data-multiple-caption="{count} files selected" multiple >
-			<label tabindex="0" for="uploader" className="uploader"><span></span><strong>Upload Files</strong></label>
-		</form>
+		<div className="example-container">
+			<h2>In Progress</h2>
+			<ul>
+				{pendingFiles.map(file => {
+					const {id, name, progress} = file
 
+					return <li key={id}>
+						<label>{name}</label>
+						<progress value={progress} max="100">{progress}%</progress>
+					</li>
+				})}
+			</ul>
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-
-
-
-		<h1 className="header">Progress bars</h1>
-		<progress value="33" max="100">
-		</progress>
-
+			<progress value="33" max="100">
+			</progress>
+		</div>
 
 
 
@@ -86,11 +84,6 @@ Uploads.propTypes = {
 	actions: PropTypes.object.isRequired,
 }
 
-	<h1 className="headerName">File inputs</h1>
-		<form action="#" className="file-form">
-			<input type="file" id="uploader" className="uploader uploader-input" data-multiple-caption="{count} files selected" multiple >
-			<label tabindex="0" for="uploader" className="uploader"><span></span><strong>Upload Files</strong></label>
-		</form>
 
 
 export default Uploads
