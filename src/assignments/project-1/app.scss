@@ -1,17 +1,74 @@
 
-$secondary-color: rgba(150, 143, 179, 1);
-$primary-color: slateGray;
-$primary-accent: crimson;
-$button-color: #008CBA;
+
+$secondary-color: #C0B3A0;
+$primary-color: #3F3250;
+$primary-accent: #22252C;
+$button-color: #E14658;
+
 $font-list: Calibri, Arial, sans-serif;
 
 
+/*FOOTNOTE CREDIT CITATION:
+ * CSS Reset adapted from Richard Clark http://html5doctor.com/html-5-reset-stylesheet/
+ */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+    margin:0;
+    padding:0;
+    border:0;
+    outline:0;
+    vertical-align:baseline;
+    background:transparent;
+    box-sizing: border-box;
+}
+
+body, html {height: 100%;}
+
+.example-container {
+	display: grid;
+
+	grid-template-columns: 1fr 3fr 1fr;
+	grid-template-rows: repeat(4, auto);
+	grid-template-areas:
+		"hero hero hero"
+        ". uploader ."
+		". images ."
+		"footer footer footer";
+
+    grid-row-gap: 10px;
+}
+
+.hero {
+	background-color: $secondary-color;
+	grid-area: hero;
+	text-align: center;
+    font-family: $font-list;
+    padding: 20px;
+}
+
+.uploader-section {
+	background-color: $primary-color;
+	grid-area: uploader;
+	text-align: center;
+    font-family: $font-list;
+    padding: 20px;
+}
 
 /* FOOTNOTE CREDIT CITATION:
  * The uploader-container class was originally copied from this jsfiddle by Barney Carroll http://jsfiddle.net/U017529/Lrok625h/4/
  * I adapted the styling and simplified the code but kept the method of replacing the OOTB button with a label button.
  */
-
 
 .uploader-container [type=file] {
     filter: alpha(opacity=0);
@@ -49,21 +106,6 @@ ul {
 }
 
 
-body, html {height: 100%;}
-
-.example-container {
-	display: grid;
-
-	grid-template-columns: 1fr 3fr 1fr;
-	grid-template-rows: 325px auto 200px;
-	grid-template-areas:
-		"hero hero hero"
-		". images ."
-		"footer footer footer";
-
-    grid-row-gap: 20px;
-}
-
 .photo-grid
 {
 	display: grid;
@@ -72,12 +114,6 @@ body, html {height: 100%;}
     grid-column-gap: 10px
 }
 
-.hero {
-	background-color: $secondary-color;
-	grid-area: hero;
-	text-align: center;
-  font-family: $font-list;
-}
 
 .photo-and-label {
     float: left;
@@ -92,8 +128,7 @@ body, html {height: 100%;}
 
 .photo {
 	background-color: $secondary-color;
-	padding: 5px;
-    margin:  0px;
+    padding: 5px;
 }
 
 .photo:hover {
@@ -113,4 +148,5 @@ body, html {height: 100%;}
 	padding-bottom: 10px;
 	padding-top: 10px;
     font-family: $font-list;
+    padding: 20px;
 }
