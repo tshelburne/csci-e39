@@ -9,12 +9,12 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
-		<h1>Upload Images</h1>
+		<h1 className="header">Upload Images</h1>
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
-		<h2>In Progress</h2>
+		<h2 className="header">In Progress</h2>
 		<ul>
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
@@ -26,7 +26,7 @@ const Uploads = ({uploads, actions}) => {
 			})}
 		</ul>
 
-		<h2>Completed</h2>
+		<h2 className="header">Completed</h2>
 		<ul>
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
