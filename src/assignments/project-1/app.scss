@@ -87,17 +87,23 @@ body, html {height: 100%;}
     background-color: $button-color;
     font-size: 2em;
     border-radius: 15px;
-    padding: 15px;
+    padding: 10px;
     font-family: $font-list;
     font-weight: bold;
     border: none;
     
-    &:active {
-      background-color: gray;
+    &:hover {
       border-radius: 0px;
       color: black;
       text-transform: uppercase;
     }
+
+    &:active {
+      border-radius: 0px;
+      color: white;
+      text-transform: uppercase;
+    }
+
 }
 
 

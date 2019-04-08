@@ -7,6 +7,21 @@ import './app.scss'
 /* COMPONENTS */
 
 
+function Header(props) {
+
+  return 		<header className="hero">
+					<h2>{props.headerText}</h2>
+										
+					<p> Welcome to my birthday party album.  This is me with my wife, Natasha, and our two
+						children, Zayden and Violet.  We went to <a href="https://www.nickandtonis.com/">Nick and Toni's </a>
+						restaurant in East Hampton.
+						Dinner was good enough but the tartufo desert was to die for--best we have ever eaten.
+						Next time, we will skip dinner and just eat tartufo!
+					</p>
+
+				</header>;
+}
+
 function Photo(props) {
 
   return 		<li className="photo-and-label" key={props.id}>
@@ -32,20 +47,12 @@ const Uploads = ({uploads, actions}) => {
 
 	return <div className="example-container">
 	    
-		<header className="hero">
-			<h1>Birthday Album</h1>
-				<p> Welcome to my birthday party album.  This is me with my wife, Natasha, and our two
-					children, Zayden and Violet.  We went to <a href="https://www.nickandtonis.com/">Nick and Toni's </a>
-					restaurant in East Hampton.
-					Dinner was good enough but the Tartufo desert was to die for--best we have ever eaten.
-					Next time, we will skip dinner and just eat tartufo!
-				</p>
-		</header>
+		<Header headerText="Birthday Album" />
 	  	
 		<section className="uploader-section">
 			{/* do not delete this uploader component */}
 			<button className="uploader-container">
-				Upload a Photo to the Album
+				Upload a Photo
 				<Uploader className="uploader-input" upload={actions.upload} />
 			</button>
 			{/* do not delete this uploader component */}
