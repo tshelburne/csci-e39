@@ -151,8 +151,37 @@ body {
 	max-width: 300px;
 }
 
+.failedCard {
+	background-color: hsl(0,1, 90%);
+	box-shadow: 1px 2px 3px 1px hsla(0,0,10%, .5);
+	width: 100%;
+	list-style-type: none;
+	padding: 10px;
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+}
+
+.failedCard h4 {
+	color: $primary-color;
+	margin: 0px 0px 5px 0px;
+}
+
+.failedCard p {
+	margin-bottom: 0px;
+}
+
+.failedCard .content {
+	margin-left: 10px;
+}
+
 .card h2 {
 	color: $primary-color;
 	display: block;
 	font-size: 1rem;
+}
+
+.failure {
+	color: red;
+	margin: 0px;
 }

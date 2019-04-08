@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
+import failedIcon from './failed.svg'
 
 import './app.scss'
 
@@ -31,17 +32,13 @@ const Uploads = ({uploads, actions}) => {
 		<ul>
 			{completedFiles.filter(file => file.error).map(file => {
 				const {id, name, url, error} = file
-				return <li>
-					<h4>{name}</h4>
-					<span>{error}</span>
-				</li>
+				return <FailureCard { ...file } />
 			})}
 		</ul>
 		<h2>Completed</h2>
 		<ul class="gallery">
 			{completedFiles.filter(file => !file.error).map(file => {
 				const {id, name, url, error} = file
-				console.log(file)
 				return <Card { ...file } />
 			})}
 		</ul>
@@ -52,8 +49,16 @@ const Card = ({ id, name, url, error}) => (
 	<li key={id} className="card">
 		{!error && <img src={url} style={{maxWidth: `200px`}} />}
 		<h2>{name}</h2>
-		{!!error && <p className="failure">{error}</p>}
-		{!!error && <img src="https://imgplaceholder.com/200x100?text=Upload+Failed&font-size=25&font-family=Wreak_Havoc" style={{maxWidth: `200px`}} />}
+	</li>
+)
+
+const FailureCard = ({ id, name, url, error}) => (
+	<li key={id} className="failedCard">
+		<img src={failedIcon} style={{width: `50px`, height: `50px`}} />
+		<div class="content">
+			<h4>{name}</h4>
+			{!!error && <p className="failure">{error}</p>}
+		</div>
 	</li>
 )
 
