@@ -1,6 +1,5 @@
-$primary-color: rgba(150, 143, 179, 1);
+$primary-color: rgb(52, 100, 202);
 
-// Style your components here
 $transition: width 2s ease ;
 $shadow3:inset 0 -2px 4px rgba(0,0,0,0.4), 0 2px 5px 0px rgba(0,0,0,0.3); 
 $shadow: inset 0px 1px 1px darken($primary-color, 44%), 0px 1px 0px rgba(255,255,255,0.2);
@@ -8,6 +7,69 @@ $shadow-glow:  inset 0 1px 1px rgba(0,0,0,0.4) ,   0 2px 5px 0px darken($primary
 $shadow2: inset 0 -2px 4px rgba(0,0,0,0.4), 0 2px 5px 0px darken($primary-color, 44%) ;
 $button-radius:14px;
 $text-shadow: 0 0 3px white;
+
+* {box-sizing: border-box;}
+
+    .wrapper {
+        max-width: 1024px;
+        margin: 0 auto;
+        font: 1.2em Helvetica, arial, sans-serif;
+    }
+
+    .wrapper > * {
+        background: hsla(0, 0, 100%, 0.8);
+        margin-top: 7vh;
+        padding: 5vh 2vh;
+        box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4); 
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+.main-head {
+  grid-area: header;
+}
+.content {
+  grid-area: content;
+}
+.main-nav {
+  grid-area: nav;
+} 
+.main-footer {
+  grid-area: footer;
+}
+.wrapper {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-areas: 
+    "header"
+    "nav"
+    "content" 
+    "footer";
+}
+@media (min-width: 600px) {
+ 
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+@media (min-width: 650px) {
+  .wrapper {
+    grid-template-columns: 1fr 3fr ;
+    grid-template-areas: 
+      "header header   "
+      "nav    content " 
+      "footer footer   "
+   }
+   nav ul {
+     flex-direction: column;
+   }
+}
+
+
 progress { 
  display: block; /* default: inline-block */
   width: 45%; //width
@@ -53,24 +115,7 @@ progress::-webkit-progress-value {
 	}
 }  
 
-button{
-	 width: 100px;
-  margin: 2em auto;
-  padding: 4px;
-  border: 0 none;
-  background: #fff;
-  border-radius: 14px;
-	box-shadow:$shadow2;
-	 animation: pulse 2s infinite;
-		&:hover {
-			background: darken($primary-color,5%);
-			 color: #fff;
-			transition: 0.3s;  
-			box-shadow:$shadow3;
-			text-shadow:$text-shadow;
-			  animation: none;
-	}
-}  
+ 
  
 @keyframes pulse-progress {
   0% {
@@ -107,13 +152,14 @@ button{
 {  
     display: inline-block;
     padding: 6px 12px;
-    cursor: pointer;
+    cursor: pointer; 
 }
-  
+
  
 //Button
 input[type="file"]::before {
-  content: 'Choose a File';
+    
+  content: 'Choose Files';
   display: inline-block;
   
 	margin-top: 5px;
@@ -140,17 +186,17 @@ input[type="file"]:hover::before  {
 // Ignore the styles below unless you want to change them for fun
 
 body {
-	background: crimson;
+	background: rgb(83, 83, 83);
 	padding: 30px;
 	background: linear-gradient(
 		to bottom,
-		rgba(150, 143, 179, 1) 0%,
-		crimson 100%
+		rgb(92, 104, 95) 0%,
+		rgb(129, 129, 129) 100%
 	);
 	min-height: 100vh;
 }
 
-.example-container {
+.container {
 	background: hsla(0, 0, 100%, 0.8);
 	margin-top: 7vh;
 	padding: 5vh 2vh;
@@ -161,4 +207,22 @@ body {
 .header {
 	margin-top: 0;
 	font-family: "Permanent Marker", sans-serif;
+}
+.photo{
+    width: calc((100%/5) - 16px);
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
+    overflow: visible;
+    white-space: nowrap;
+    display: inline-block;
+    position: relative;
+    background-color: white;
+    width: 0;
+    margin: 8px;
+    border-radius: 2px;
+    font-weight: 300;
+    cursor: default;
+    vertical-align: top;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
 }
