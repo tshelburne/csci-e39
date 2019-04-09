@@ -173,6 +173,15 @@ body {
   min-height: 100vh;
 }
 
+.form-input {
+  display: block;
+  width: 80%;
+  position: relative;
+  margin: 0 auto;
+  font-family: $default-font-family;
+  background: $file-input-button-color;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
