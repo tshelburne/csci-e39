@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
+import Album from '../../ui/components/album'
 
 import './app.scss'
 
@@ -42,22 +43,6 @@ const Header2 = ({name}) => {
    return 	<h2>{name}</h2>
 };
 
-const Album = ({imgData}) =>{
-	return (
-		<ul className="image-grid">
-		{imgData.map(file => {
-			const {id, name, url, error} = file
-
-			return <li key={id} className="image-card">
-				{!error && <img src={url} style={{maxWidth: `200px`}}/>}
-				{!!error && <p className="failure">{error}</p>}
-				<label>{name}</label>
-
-			</li>
-		})}
-	</ul>)
-
-};
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
