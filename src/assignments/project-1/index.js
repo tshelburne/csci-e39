@@ -1,28 +1,46 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
-
 import './app.scss'
 
-
+// Main greeting
 const Greeting = (props) => {
-	return <h1>{props.greeting} {props.name}</h1>
-	}
+	return <div>
+					<h1>{props.greeting}, {props.name}</h1>
+				</div>
+}
 
-	const Footer = (props) => {
-		return <a href={props.gitHubRepo}>{props.footerText}</a>
-		}
+// Footer
+const Footer = (props) => {
+	return <a href={props.gitHubRepo}>{props.footerText}</a>
+}
 
+// Side picture
+const PictureCard = (props) => {
+	return <div className="picture-card" key={props.key}>
+					<label>{props.name}</label>
+					<img className="thumbnail" src={props.url}/>
+					<p>{props.error}</p>
+				</div>
+}
 
-
+// Main picture
+const MainCard = (props) => {
+	return <div className="main-card" key={props.key}>
+					<img className="thumbnail" src={props.url}/>
+					<p>File name: {props.name}</p>
+					<p>{props.error}</p>
+					<p>URL: {props.url}</p>
+					<p>Description: {props.description}</p>
+					<p>Updated at: {props.updatedAt}</p>
+				</div>
+}
 
 const Uploads = ({uploads, actions}) => {
+
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress )
-	const selectedFiles = uploads.files.filter(({progress}) => !progress && userselect)
-
-console.log(completedFiles)
-console.log({selectedFiles})
+	const latestFiles = uploads.files.filter(({id}) => id > completedFiles.length - 3)
 
 return <div className='main-container'>
 				<Greeting greeting="hello" name="Matt" />
@@ -30,40 +48,42 @@ return <div className='main-container'>
 					<div className="upload-box">
 							<h2>Upload Images</h2>
 							<Uploader className="upload-button" upload={actions.upload} />
-							<progress className="progress-bar" value={pendingFiles.progress} max="100"></progress>
+							{pendingFiles.map(file => {
+								const {id, name, progress} = file
+								return <h2>Upload Progress</h2>
+								return <div key={id}>
+									<label>{name}</label>
+									<progress className="progress-bar" value={progress} max="100"></progress>
+								</div>
+							})}
 					</div>
+
 				<div className="grid-container">
 					<div className="grid-sidebar">
-
-						{pendingFiles.map(file => {
-							const {id, name, progress} = file
-							return <h2>Upload Progress</h2>
-							return <div key={id}>
-								<label>{name}</label>
-								<progress value={progress} max="100">{progress}%</progress>
-							</div>
-						})}
-
-					<h2>Completed Uploads ({completedFiles.length})</h2>
+						<h3>Completed Uploads ({completedFiles.length})</h3>
 						{completedFiles.map(file => {
 							const {id, name, url, error} = file
-							return <div className="picture-card" key={id}>
-								<label>File name: {name}</label>
-								{!error && <img className="thumbnail" src={url}/>}
-								{!!error && <p className="failure">{error}</p>}
-							</div>
-						})}
+							return <div>
+	 										<PictureCard key={file.id} name={file.name} error={file.error} url={file.url} />
+									 	</div>
+							})}
 					</div>
 
-					<main className="grid-main">
-					</main>
-
-
-
+					<div className="grid-main">
+						<h2>Latest Uploads</h2>
+						{latestFiles.map(file => {
+							const {id, name, url, error, description, updatedAt} = file
+							return <div>
+											<MainCard key={file.id} name={file.name} error={file.error} url={file.url} description={file.description} updatedAt={file.updatedAt} />
+										</div>
+						})}
+					</div>
 				</div>
+
 				<footer>
 					<Footer gitHubRepo="https://github.com/dmbartles/csci-e39" footerText="Click here for Github Repo" />
 				</footer>
+
 			</div>
 	}
 
@@ -81,7 +101,6 @@ return <div className='main-container'>
 				progress: PropTypes.number,
 				url: PropTypes.string,
 				error: PropTypes.string,
-				userselect: PropTypes.number
 			})).isRequired,
 			update: statusPropType.isRequired,
 			delete: statusPropType.isRequired,
