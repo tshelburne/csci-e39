@@ -1,0 +1,70 @@
+$primary-color: rgba(150, 143, 179, 1);
+$etienne-color: darken(salmon, 10);
+$etienne-radius: 6px;
+
+ul {
+    li {
+        display: grid;
+        grid-template: 1fr / 1fr 1fr;
+        justify-items: center;
+        border: 1px $etienne-color solid;
+
+        img {
+            max-height: 200px;
+            max-width: 200px;
+        }
+    }
+}
+
+.button {
+	color: white;
+	border: none;
+	background-color: $etienne-color;
+	border-radius: $etienne-radius;
+	-webkit-border-radius: $etienne-radius; 
+    -moz-border-radius: $etienne-radius; 
+}
+
+progress {
+	color: $etienne-color;
+	border-radius: $etienne-radius;
+	border: 0;
+
+	&::-moz-progress-bar {
+		background: $etienne-color;
+		border-radius: $etienne-radius;
+		border: 0;
+	}
+	
+	&::-webkit-progress-bar {
+		color: $etienne-color;
+		border-radius: $etienne-radius;
+		border: 0;
+	}
+	
+	&::-webkit-progress-value {
+		background: $etienne-color;
+		border-radius: $etienne-radius;
+		border: 0;
+	}
+}
+
+.file-form {
+	.uploader {
+		color: white;
+		border: none;
+		box-sizing: border-box;
+		padding: 5px;
+		background-color: $etienne-color;
+		border-radius: $etienne-radius;
+		-webkit-border-radius: $etienne-radius; 
+  	    -moz-border-radius: $etienne-radius;
+	}
+
+	.uploader-input {
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+	}
+}
