@@ -1,5 +1,15 @@
 # Design Patterns in React (CSCI E-39)
 
+## Assignment Submission Details
+
+Here's my submission:
+1. My application allows the user to upload pictures
+1. All uploaded pictures are uploaded into the side background
+1. The most recent 3 uploads are displayed on the main box
+1. The greeting, footer, main cards and side cards are React components
+1. The layout is CSS Grid
+1. The included feature the display of the most recent uploaded pictures
+
 ## Accounts and Tools
 
 1. [Github](https://github.com/) account
