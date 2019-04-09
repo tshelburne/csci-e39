@@ -4,9 +4,12 @@ import Uploader from '../../ui/components/uploader'
 
 import './app.scss'
 
+
+
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
+
 
 	return <div>
 
@@ -19,14 +22,13 @@ const Uploads = ({uploads, actions}) => {
 		<div className="example-container">
 			<h1>Upload Images</h1>
 			{/* do not delete this uploader component */}
-			<Uploader upload={actions.upload} />
+			<Uploader upload={actions.upload} className="file-form" />
 			{/* do not delete this uploader component */}
 
-			<h1 className="header">File inputs</h1>
-			<form action="#" className="file-form">
 				<input type="file" id="uploader" className="uploader uploader-input" data-multiple-caption="{count} files selected" multiple />
 				<label tabindex="0" for="uploader" className="uploader"><span></span><strong>Upload Files</strong></label>
-			</form>
+		
+
 		</div>
 
 		<div className="example-container">
@@ -46,20 +48,29 @@ const Uploads = ({uploads, actions}) => {
 			</progress>
 		</div>
 
+		<section className="container">
+			<h2>Completed</h2>
+			<p>Gallery of images description</p>
+			<ul className="gallery-grid item-list">
 
+						{completedFiles.map(file => {
+							const {id, name, url, error} = file
+								return <li className="item-card" key={id}>
+								     <a href="#">
 
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
+										<div >
+											<picture className="item-card-image">
+											{!error && <img src={url} style={{maxWidth: `100%`}} />}
+											{!!error && <p className="failure">{error}</p>}
+											</picture>
+										<label className="item-card-title">{name}</label>										
+										</div>
+									</a>
+								</li>
+						})}
+			</ul>
+		</section>
 
-				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
 	</div>
 }
 
