@@ -15,8 +15,21 @@ const Uploads = ({uploads, actions}) => {
 		<Greeting name="Marissa" />
 			<h2>This is children</h2>
 		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
+		<div className="upload-btn-wrapper">
+			<Uploader upload={actions.upload} />
+		</div>
+		
 		{/* do not delete this uploader component */}
+
+		<h1 class="header">Button</h1>
+		<button class="button details">Add more</button>
+
+
+		<h1 class="header">File inputs</h1>
+		<div class="upload-btn-wrapper">
+			<button class="button">Upload a file</button>
+			<input type="file" id="uploader" class="uploader-input" multiple />
+		</div>
 
 		<h2>In Progress</h2>
 		<progress value="20" max="100"></progress> {/* put it here for now, remove vars progress*/}
