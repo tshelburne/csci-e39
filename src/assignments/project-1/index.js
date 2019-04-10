@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
 import ProgressBar from '../../ui/components/progressbar'
 import PhotoGallery from '../../ui/components/photoGallery'
+import Album from '../../ui/components/album'
 
 import './app.scss'
 
@@ -12,19 +13,20 @@ const Uploads = ({uploads, actions}) => {
 
 	return <div class="wrapper">
 	  <header class="box header"> Header </header>
-		<aside class="box sidebar">
+		<nav class="box nav">
 	  {/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
-		</aside>
+  	<Album/>
+		</nav>
     <article class="box content">
-		<progress value="20" max="100">20%</progress>
-		<ProgressBar inProgress={pendingFiles}/>
-
-    <PhotoGallery completedFiles={completedFiles}/>
+			<ProgressBar inProgress={pendingFiles}/>
+			<PhotoGallery completedFiles={completedFiles}/>
 		</article>
 		<footer class="box footer"> Footer </footer>
 	</div>
 }
+
+
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,

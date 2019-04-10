@@ -164,6 +164,7 @@ io.on(`connection`, async socket => {
 	}
 
 	async function createAlbum(ids, name) {
+		log('Name of Album' + name)
 
 	}
 

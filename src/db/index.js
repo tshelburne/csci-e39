@@ -45,4 +45,22 @@ export class Upload extends Base {
 		return this.belongsTo(Student, `creator_id`)
 	}
 
+	albums(){
+		return this.belongsToMany(Albums);
+	}
+
+}
+
+export class Albums extends Base {
+
+	get tableName() { return `albums` }
+
+	student() {
+		return this.belongsTo(Student, `creator_id`)
+	}
+
+   uploads(){
+		 return this.belongsToMany(Upload)
+	 }
+
 }
