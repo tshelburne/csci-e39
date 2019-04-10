@@ -29,9 +29,8 @@ function Photo(props) {
 	
   var imgStyle={
 	maxWidth: props.size + "px",
+	cursor: props.cursor
   };
-  
-	console.log(imgStyle);
   
   return 	(
 				<li className="photo-and-label" key={props.id}>
@@ -53,6 +52,33 @@ function Footer(props) {
 			);
 }
 
+
+
+class Zoomer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.state = {isZoomed: false};
+  }
+
+  handleClick() {
+	console.log("handling click");
+    this.setState(state => ({
+      isZoomed: !state.isZoomed
+    }));
+  }
+
+  render() {
+    const pixels = this.state.isZoomed ? "300" : "200";
+	const cursor = this.state.isZoomed ? "zoom-out" : "zoom-in";
+	console.log("pixels: " + pixels);
+    return (
+		<button onClick={this.handleClick}>
+			<Photo  id={this.props.id} name={this.props.name} url={this.props.url} error={this.props.error} size={pixels} cursor={cursor}/>
+		</button>	
+    );
+  }
+}
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
@@ -85,12 +111,13 @@ const Uploads = ({uploads, actions}) => {
 			
 	    </section>
 	   
-		<section className="photos"> 
+		<section className="photos">
+			
 			<ul className="photo-grid">
 				{completedFiles.map(file => {
 					const {id, name, url, error} = file
 	
-					return <Photo id={id} name={name} url={url} error={error} size="200"/>
+					return <Zoomer id={id} name={name} url={url} error={error} />
 				})}
 			</ul>
 		</section>

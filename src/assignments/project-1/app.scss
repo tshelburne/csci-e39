@@ -143,11 +143,11 @@ ul {
     grid-column-gap: 10px
 }
 
-
 .photo-and-label {
     float: left;
     align-content: center;
     text-align: center;
+    
 }
 
 .filename {
@@ -162,7 +162,6 @@ ul {
 
 .photo:hover {
     background-color: $primary-accent;
-    cursor: pointer;
 }
 
 .photos {
