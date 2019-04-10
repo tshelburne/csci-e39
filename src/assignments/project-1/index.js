@@ -50,6 +50,7 @@ Uploads.propTypes = {
 		files: PropTypes.arrayOf(PropTypes.shape({
 			id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
 			name: PropTypes.string.isRequired,
+			description: PropTypes.string,
 			progress: PropTypes.number,
 			url: PropTypes.string,
 			error: PropTypes.string,
