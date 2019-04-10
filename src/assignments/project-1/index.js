@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
 import Album from '../../ui/components/album'
+import Header2 from '../../ui/components/header2'
 
 import './app.scss'
 
@@ -16,7 +17,7 @@ const Uploads = ({uploads, actions}) => {
 		<Uploader upload={actions.upload} label="Choose Files to Upload!" />
 		{/* do not delete this uploader component */}
 
-		<Header2 name="In Progress" />
+		<Header2 headingText="In Progress" />
 		<ul>
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
@@ -29,9 +30,7 @@ const Uploads = ({uploads, actions}) => {
 		</ul>
 
 
-		<Header2 name="Completed" />
-
-		<Album imgData={completedFiles} albumName="Current Collection"/>
+		<Album imgData={completedFiles} albumName="Completed Files"/>
 
 	</div>
 };
@@ -39,9 +38,6 @@ const Uploads = ({uploads, actions}) => {
 
 // Components
 
-const Header2 = ({name}) => {
-   return 	<h2>{name}</h2>
-};
 
 
 const statusPropType = PropTypes.shape({
