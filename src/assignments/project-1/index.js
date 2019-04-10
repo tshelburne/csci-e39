@@ -9,30 +9,44 @@ const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <div>
+	return <div class="container">
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Muli" />
 
 		<Greeting name="Marissa" />
-			<h2>This is children</h2>
-		{/* do not delete this uploader component */}
-		<div className="upload-btn-wrapper">
-			<Uploader upload={actions.upload} />
+			<h2>Upload as many photos as you like!</h2>
+		<div class="polaroid-grid">
+			{completedFiles.map(file => {
+				const {id, name, url, error} = file
+
+				return <figure key={id} class="polaroid">
+					{!error && <img src={url} alt={name}/>}
+					{!!error && <p className="failure">{error}</p>}
+					<figcaption class="polaroid-caption">{name}</figcaption>
+				</figure>
+			})}
 		</div>
 		
-		{/* do not delete this uploader component */}
+		<h1 class="header">Album Actions</h1>
+		<div class="actions">
+			{/* do not delete this uploader component */}
+			<Uploader upload={actions.upload} class="button"/>
+			{/* do not delete this uploader component */}
 
-		<h1 class="header">Button</h1>
-		<button class="button details">Add more</button>
+			<h2>In Progress</h2>
+			<ul>
+				{pendingFiles.map(file => {
+					const {id, name, progress} = file
 
-
-		<h1 class="header">File inputs</h1>
-		<div class="upload-btn-wrapper">
-			<button class="button">Upload a file</button>
-			<input type="file" id="uploader" class="uploader-input" multiple />
+					return <li key={id}>
+						<label>{name}</label>
+						<progress value={progress} max="100">{progress}%</progress>
+					</li>
+				})}
+			</ul>
 		</div>
 
-		<h2>In Progress</h2>
-		<progress value="20" max="100"></progress> {/* put it here for now, remove vars progress*/}
+		{/*<h2>In Progress</h2>
+		<progress value="20" max="100"></progress> {/* put it here for now, remove vars progress
 		<ul>
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
@@ -42,7 +56,7 @@ const Uploads = ({uploads, actions}) => {
 					<progress value={progress} max="100">{progress}%</progress>
 				</li>
 			})}
-		</ul>
+		</ul>*/}	
 
 		<h2>Completed</h2>
 		<ul>
@@ -51,7 +65,6 @@ const Uploads = ({uploads, actions}) => {
 
 				return <li key={id}>
 					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
 					{!!error && <p className="failure">{error}</p>}
 				</li>
 			})}
