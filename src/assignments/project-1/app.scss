@@ -60,10 +60,11 @@ body, html {height: 100%;}
 
 .control-section {
 	background-color: $primary-color;
+    color: white;
 	grid-area: uploader;
 	text-align: center;
     font-family: $font-list;
-    padding: 20px;
+    padding: 20px;    
 }
 
 /* FOOTNOTE CREDIT CITATION:
@@ -80,6 +81,7 @@ body, html {height: 100%;}
     right: 0;
     top: 0;
     cursor: pointer;
+    
 }
 
 .uploader-container  {
@@ -92,6 +94,7 @@ body, html {height: 100%;}
     font-family: $font-list;
     font-weight: bold;
     border: none;
+    margin: 10px;
     
     &:hover {
       border-radius: 0px;
@@ -143,16 +146,23 @@ ul {
     grid-column-gap: 10px
 }
 
+button {
+    padding: 0;
+    margin: 0;
+    outline:none;
+    background-color: $primary-color;
+}
+
 .photo-and-label {
-    float: left;
+    color: white;
     align-content: center;
     text-align: center;
-    
 }
 
 .filename {
     display:block;
     font-family: $font-list;
+    margin: 5px;
 }
 
 .photo {

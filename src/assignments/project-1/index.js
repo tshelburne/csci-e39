@@ -28,14 +28,16 @@ function Header(props) {
 function Photo(props) {
 	
   var imgStyle={
-	maxWidth: props.size + "px",
-	cursor: props.cursor
+	maxWidth: props.size == "zoom-in" ? 150 + "px" : 250 + "px",
+	cursor: props.size
   };
+  
+  console.log(imgStyle.width);
   
   return 	(
 				<li className="photo-and-label" key={props.id}>
 					<figure>
-						<figcaption className="filename">{props.name}</figcaption>
+						{props.size == "zoom-in" && <figcaption className="filename">{props.name}</figcaption>}
 						{!props.error && <img src={props.url} style={imgStyle} className="photo" />}
 						{!!props.error && <p className="failure">{props.error}</p>}
 					</figure>						
@@ -62,19 +64,17 @@ class Zoomer extends React.Component {
   }
 
   handleClick() {
-	console.log("handling click");
     this.setState(state => ({
       isZoomed: !state.isZoomed
     }));
   }
 
   render() {
-    const pixels = this.state.isZoomed ? "300" : "200";
-	const cursor = this.state.isZoomed ? "zoom-out" : "zoom-in";
-	console.log("pixels: " + pixels);
+    const size = this.state.isZoomed ? "zoom-out" : "zoom-in";
+	
     return (
 		<button onClick={this.handleClick}>
-			<Photo  id={this.props.id} name={this.props.name} url={this.props.url} error={this.props.error} size={pixels} cursor={cursor}/>
+			<Photo  id={this.props.id} name={this.props.name} url={this.props.url} error={this.props.error} size={size} />
 		</button>	
     );
   }
@@ -83,7 +83,7 @@ class Zoomer extends React.Component {
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
-
+	
 	return <div className="example-container">
 	    
 		<Header headerText="Birthday Album" />
@@ -106,8 +106,8 @@ const Uploads = ({uploads, actions}) => {
 					</li>
 				})}
 			</ul>
-	
-			<h2> {completedFiles.length} Files in Album</h2>
+			
+			<p> {completedFiles.length} Files in Album</p>
 			
 	    </section>
 	   
