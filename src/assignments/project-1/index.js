@@ -26,12 +26,18 @@ function Header(props) {
 }
 
 function Photo(props) {
-
+	
+  var imgStyle={
+	maxWidth: props.size + "px",
+  };
+  
+	console.log(imgStyle);
+  
   return 	(
 				<li className="photo-and-label" key={props.id}>
 					<figure>
 						<figcaption className="filename">{props.name}</figcaption>
-						{!props.error && <img src={props.url} style={{maxWidth: `200px`}} className="photo" />}
+						{!props.error && <img src={props.url} style={imgStyle} className="photo" />}
 						{!!props.error && <p className="failure">{props.error}</p>}
 					</figure>						
 				</li>
@@ -57,14 +63,12 @@ const Uploads = ({uploads, actions}) => {
 		<Header headerText="Birthday Album" />
 	  	
 		<section className="control-section">
-			{/* do not delete this uploader component */}
+			
 			<button className="uploader-container">
 				Upload a Photo
 				<Uploader className="uploader-input" upload={actions.upload} />
 			</button>
-			{/* do not delete this uploader component */}
 	
-			
 			<ul>
 				{pendingFiles.map(file => {
 					const {id, name, progress} = file
@@ -78,7 +82,7 @@ const Uploads = ({uploads, actions}) => {
 			</ul>
 	
 			<h2> {completedFiles.length} Files in Album</h2>
-	
+			
 	    </section>
 	   
 		<section className="photos"> 
@@ -86,7 +90,7 @@ const Uploads = ({uploads, actions}) => {
 				{completedFiles.map(file => {
 					const {id, name, url, error} = file
 	
-					return <Photo id={id} name={name} url={url} error={error}/>
+					return <Photo id={id} name={name} url={url} error={error} size="200"/>
 				})}
 			</ul>
 		</section>
