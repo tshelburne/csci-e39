@@ -32,7 +32,7 @@ function Photo(props) {
 					<figure>
 						<figcaption className="filename">{props.name}</figcaption>
 						{!props.error && <img src={props.url} style={{maxWidth: `200px`}} className="photo" />}
-						{!!props.error && <p className="failure">{error}</p>}
+						{!!props.error && <p className="failure">{props.error}</p>}
 					</figure>						
 				</li>
 			);
@@ -72,7 +72,7 @@ const Uploads = ({uploads, actions}) => {
 					return <h2> Uploading {pendingFiles.length}) Files </h2>
 					return <li key={id}>
 						<label>{name}</label>
-						<progress value={progress} value = "33" max="100">{progress}%</progress>
+						<progress value={progress} max="100">{progress}%</progress>
 					</li>
 				})}
 			</ul>
