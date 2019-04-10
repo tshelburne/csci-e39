@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
+import Card from '../../ui/components/card'
 import failedIcon from './failed.svg'
 
 import './app.scss'
@@ -45,12 +46,12 @@ const Uploads = ({uploads, actions}) => {
 	</div>
 }
 
-const Card = ({ id, name, url, error}) => (
-	<li key={id} className="card">
-		{!error && <img src={url} style={{maxWidth: `200px`}} />}
-		<h2>{name}</h2>
-	</li>
-)
+// const Card = ({ id, name, url, error}) => (
+// 	<li key={id} className="card">
+// 		{!error && <img src={url} style={{maxWidth: `200px`}} />}
+// 		<h2>{name}</h2>
+// 	</li>
+// )
 
 const FailureCard = ({ id, name, url, error}) => (
 	<li key={id} className="failedCard">
