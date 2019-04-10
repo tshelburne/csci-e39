@@ -1,5 +1,6 @@
 
-
+/* Color Schemes*/
+//Bold Beauty (Default color scheme)
 $secondary-color: #C0B3A0;
 $primary-color: #3F3250;
 $primary-accent: #22252C;
@@ -57,7 +58,7 @@ body, html {height: 100%;}
     padding: 20px;
 }
 
-.uploader-section {
+.control-section {
 	background-color: $primary-color;
 	grid-area: uploader;
 	text-align: center;
@@ -103,9 +104,32 @@ body, html {height: 100%;}
       color: white;
       text-transform: uppercase;
     }
-
 }
 
+progress {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  border-radius: 2px;
+  width: 300px;
+  height: 40px;    
+}
+
+//webkit for Chrome, Safari and Opera
+progress[value]::-webkit-progress-bar {  
+   background-color: white;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+    background: $button-color;
+}
+
+//Firefox
+progress[value]::-moz-progress-bar {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;    
+}
 
 ul {
     list-style-type: none;
@@ -145,6 +169,7 @@ ul {
 .photos {
 	grid-area: images;
 	background-color: $primary-color;
+    padding: 10px;
 }
 
 .footer {
