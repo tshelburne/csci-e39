@@ -9,6 +9,8 @@ import './app.scss'
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
+	const failedFiles = completedFiles.filter(file => file.error)
+	const successfulFiles = completedFiles.filter(file => !file.error)
 
 	return <div>
 		<h1>Upload Images</h1>
@@ -16,33 +18,45 @@ const Uploads = ({uploads, actions}) => {
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
-		<h2>In Progress</h2>
-		just a sample to test UI:
+		<p>just a sample to test UI:</p>
 		<progress value="40" max="100"></progress>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
 
-		<h2>Failed</h2>
-		<ul>
-			{completedFiles.filter(file => file.error).map(file => {
-				const {id, name, url, error} = file
-				return <FailureCard { ...file } />
-			})}
-		</ul>
-		<h2>Completed</h2>
-		<ul class="gallery">
-			{completedFiles.filter(file => !file.error).map(file => {
-				const {id, name, url, error} = file
-				return <Card { ...file } />
-			})}
-		</ul>
+		{pendingFiles.length > 0 && <div>
+				<h2>In Progress</h2>
+				<ul>
+					{pendingFiles.map(file => {
+						const {id, name, progress} = file
+						return <li key={id}>
+							<label>{name}</label>
+							<progress value={progress} max="100">{progress}%</progress>
+						</li>
+					})}
+				</ul>
+			</div>
+		}
+
+		{failedFiles.length > 0 && 	<div>
+				<h2>Failed</h2>
+				<ul>
+					{failedFiles.map(file => {
+						const {id, name, url, error} = file
+						return <FailureCard { ...file } />
+					})}
+				</ul>
+			</div>
+		}
+
+		{successfulFiles.length > 0 && 	<div>
+			<h2>Completed</h2>
+			<ul class="gallery">
+				{successfulFiles.map(file => {
+					const {id, name, url, error} = file
+					return <Card { ...file } />
+				})}
+			</ul>
+		</div>
+	}
+
 	</div>
 }
 
