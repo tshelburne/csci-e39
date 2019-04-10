@@ -20,7 +20,7 @@ class Album extends React.Component {
                     <ul className="image-grid">
                         {imgData.map(file => {
                             const {id, name, url, description, error} = file
-                            console.log(file);
+
                             return <li key={id} className="image-card">
                                 {!error && <img src={url} style={{maxWidth: `200px`}}/>}
                                 {!!error && <p className="failure">{error}</p>}

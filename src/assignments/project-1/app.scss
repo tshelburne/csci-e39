@@ -30,7 +30,7 @@ body {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  grid-gap: 1rem;
+  grid-gap: 5px;
 
 }
 
@@ -143,3 +143,19 @@ label.uploader-btn input[type="file"] {
   background: $component-color-lighten;
 }
 
+
+// Idea for form as grid .https://www.sitepoint.com/css-grid-web-form-layout/
+.formgrid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-gap: 5px 5px;
+  grid-auto-flow: dense;
+  align-items: center;
+
+  input, output, textarea, select, button {
+    grid-column: 2 / 4;
+    width: auto;
+    margin: 0;
+  }
+
+}
