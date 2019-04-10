@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
-import Card from '../../ui/components/card'
-import failedIcon from './failed.svg'
+import Card from './components/card'
+import FailureCard from './components/failure-card'
 
 import './app.scss'
 
@@ -45,23 +45,6 @@ const Uploads = ({uploads, actions}) => {
 		</ul>
 	</div>
 }
-
-// const Card = ({ id, name, url, error}) => (
-// 	<li key={id} className="card">
-// 		{!error && <img src={url} style={{maxWidth: `200px`}} />}
-// 		<h2>{name}</h2>
-// 	</li>
-// )
-
-const FailureCard = ({ id, name, url, error}) => (
-	<li key={id} className="failedCard">
-		<img src={failedIcon} style={{width: `50px`, height: `50px`}} />
-		<div class="content">
-			<h4>{name}</h4>
-			{!!error && <p className="failure">{error}</p>}
-		</div>
-	</li>
-)
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
