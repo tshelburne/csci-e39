@@ -10,15 +10,38 @@ class Uploader extends React.Component {
 	}
 
 	handleFiles({target: {files}}) {
+
+		var name = document.getElementById("image-name").value;
+		var description = document.getElementById("image-description").value;
+
 		for (const file of files) {
-			this.props.upload(file)
+			console.log("name_value" +name +" -->>"+ description );
+			this.props.upload(file, name, description)
 		}
 	}
+	handleSubmit(e)  {
+		e.preventDefault();
+		console.log('submitting form. We need to validate it!');
+	}
+
 
 	render() {
 		const {upload, label, ...inputProps} = this.props
-		return 		<label class="uploader-btn">	<input class="uploader-btn" {...inputProps} multiple type="file" onChange={this.handleFiles}/> <span> {label} </span>	</label>
+		return(<div class="form">
+			<p> Enter name and description, then select file to upload. Limit 150kb.</p>
+			<label> Name:
+				<input type="text" name="image-name" id="image-name"/>
+			</label>
+			<br/>
+			<label> Description:
+			<input type="text" name="image-description" id="image-description" />
+			</label>
+			<br/>
+			<label class="uploader-btn">
+				<input class="uploader-btn" {...inputProps} multiple type="file" onChange={this.handleFiles}/> <span> {label} </span>	</label>
 
+
+		</div>)
 	}
 
 }

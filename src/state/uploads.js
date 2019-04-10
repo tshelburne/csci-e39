@@ -66,7 +66,7 @@ function createState(socket) {
 		stop() {},
 	})
 
-	function upload(inputFile, {name, description} = {}) {
+	function upload(inputFile, name, description) {
 		const refId = uuid()
 		const file = {
 			url: ``,
@@ -75,7 +75,8 @@ function createState(socket) {
 			type: inputFile.type,
 			size: inputFile.size,
 		}
-
+		console.log("upload---------------");
+		console.log(file);
 		action_.shamefullySendNext(start(refId, file))
 
 		const reader = new FileReader()
