@@ -15,7 +15,11 @@ $text-shadow: 0 0 3px white;
         margin: 0 auto;
         font: 1.2em Helvetica, arial, sans-serif;
     }
-
+    ul, ol {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
     .wrapper > * {
         background: hsla(0, 0, 100%, 0.8);
         margin-top: 7vh;
@@ -115,7 +119,24 @@ progress::-webkit-progress-value {
 	}
 }  
 
- 
+button{
+	 width: 100px;
+  margin: 2em auto;
+  padding: 4px;
+  border: 0 none;
+  background: #fff;
+  border-radius: 14px;
+	box-shadow:$shadow2;
+	 animation: pulse 2s infinite;
+		&:hover {
+			background: darken($primary-color,5%);
+			 color: #fff;
+			transition: 0.3s;  
+			box-shadow:$shadow3;
+			text-shadow:$text-shadow;
+			  animation: none;
+	}
+}  
  
 @keyframes pulse-progress {
   0% {
@@ -148,8 +169,10 @@ progress::-webkit-progress-value {
 #uploader::-webkit-file-upload-button {
   visibility: hidden; 	
 }
+ 
 .uploader
 {  
+     
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer; 
@@ -182,9 +205,7 @@ input[type="file"]:hover::before  {
 			text-shadow:$text-shadow;
 		animation: none;
 } 
- 
-// Ignore the styles below unless you want to change them for fun
-
+  
 body {
 	background: rgb(83, 83, 83);
 	padding: 30px;
