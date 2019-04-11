@@ -21,6 +21,9 @@ $file-input-border-radius: 8px;
 $file-input-height: 60px;
 $file-input-width: 300px;
 
+$paragraph-text-color: darken($file-input-button-color, 40%);
+$header-text-color: darken($file-input-button-color, 60%);
+$header-font-size: 28px;
 
 $card-border-radius: 5px;
 $card-padding: 10px;
@@ -171,6 +174,22 @@ body {
     lighten(crimson, 20%) 100%
   );
   min-height: 100vh;
+}
+
+// Style information for class passed into AlbumDescription component
+// This is passed in a data object
+.content_header {
+  font-family: $default-font-family;
+  color: $header-text-color;
+  text-align: center;
+  font-size: $header-font-size;
+}
+
+// Style information for class passed into AlbumDescription component
+// This is passed in a data object
+.paragraph_text {
+  font-family: $default-font-family;
+  color: $paragraph-text-color;
 }
 
 .form-input {
