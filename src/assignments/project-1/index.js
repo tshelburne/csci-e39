@@ -24,12 +24,14 @@ const Uploads = ({uploads, actions}) => {
 
 		<h2>In Progress</h2>
 		<ul>
+			<progress className ="progress" value="33" max="100">33%</progress>
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
 
+
 				return <li key={id}>
 					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
+					<progress className ="progress" value={progress} max="100">{progress}%</progress>
 				</li>
 			})}
 		</ul>

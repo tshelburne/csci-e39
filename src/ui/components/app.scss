@@ -1,0 +1,23 @@
+.uploader {
+	background-color:MediumVioletRed;
+	color:white;
+	border: none;
+	padding: 15px 15px;
+	border-radius: 5px;
+	font-size: 14px;
+	font-family: $primary-font, sans-serif;
+	transition-duration: 0.4s;
+  cursor: pointer;
+}
+.uploader:hover {
+	background-color: darken($primary-color, 20);
+	color: white;
+}
+
+.uploader:focus {
+	outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+.uploader:active {
+	outline:none;
+}

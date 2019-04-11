@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
+import './app.scss'
 
 class Uploader extends React.Component {
 
@@ -17,7 +18,7 @@ class Uploader extends React.Component {
 
 	render() {
 		const {upload, ...inputProps} = this.props
-		return <input {...inputProps} multiple type="file" onChange={this.handleFiles} />
+		return <input className="uploader"{...inputProps} multiple type="file"  onChange={this.handleFiles} />
 	}
 
 }
