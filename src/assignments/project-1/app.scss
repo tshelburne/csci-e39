@@ -2,8 +2,9 @@ $primary-color: SlateGrey;
 $primary-accent: mistyrose;
 $hover-color: Salmon;
 $button-color: lighten($hover-color, 11);
+$head-foot-background: rgba(200, 54, 54, 0.5); /*transparent pink background with 50% opacity*/
 $default-font: "Muli", sans-serif;
-
+$border-radius: 10px;
 $progress-bar-width: 250px;
 $progress-bar-height: 20px;
 $progress-bar-background: PapayaWhip;
@@ -39,11 +40,11 @@ h1 {
 }
 
 .container {
-	background: white;
 	padding: 20px 30px 60px; // top | right | {bottom=top} | {left=right}
-	margin-top: 50px;
+	margin-top: 10px;
 	border-radius: 30px 0 /30px 60px;
 	box-shadow: 0px 1px 2px 1px darken($primary-color, 7);
+	margin-right: 8px;
 }
 
 .polaroid-grid {
@@ -92,10 +93,10 @@ h1 {
 
 progress {
 	color: $button-color; /* for IE progress bar color */
-    font-size: 12px;
-    width: $progress-bar-width;
+	font-size: 12px;
+  width: $progress-bar-width;
 	height: $progress-bar-height;
-    background: $progress-bar-background;
+  background: $progress-bar-background;
 	box-shadow: $progress-bar-shadow;
 	border-radius: $progress-bar-radius;
 }
@@ -131,4 +132,17 @@ progress::-webkit-progress-value {
   opacity: 0;
 	height: 100%;
   width: 100%;
+}
+
+footer {
+	background-color: $head-foot-background;
+	padding: 20px;
+	li {
+		display: inline-block;
+		margin-right: 15px;
+	}
+	a {
+		color: white;
+		text-decoration: none;
+	}
 }

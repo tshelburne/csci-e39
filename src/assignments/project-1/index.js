@@ -9,7 +9,8 @@ const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <div class="container">
+	return <body>
+	<div class="container">
 		<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Muli" />
 
 		<Greeting name="Marissa" />
@@ -69,7 +70,27 @@ const Uploads = ({uploads, actions}) => {
 				</li>
 			})}
 		</ul>
+
+		
+
 	</div>
+	<footer class="container">
+	<ul>
+		<li>
+			<a href="/contact-us">CONTACT</a>
+		</li>
+		<li>
+			<a href="/faq">FAQ</a>
+		</li>
+		<li>
+			<a href="/journal">ADVERTISE</a>
+		</li>
+		<li>
+			<a href="/terms-of-use">TERMS OF USE</a>
+		</li>
+	</ul>	
+</footer>
+</body>
 }
 
 const statusPropType = PropTypes.shape({
