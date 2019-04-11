@@ -2,12 +2,14 @@ $primary-color: rgba(150, 143, 179, 1);
 $etienne-color: darken(salmon, 10);
 $etienne-radius: 6px;
 
-ul {
+.completed-uploads {
+  display: grid;
+  grid-template: 1fr / 1fr 2fr 1fr;
+
     li {
-        display: grid;
-        grid-template: 1fr / 1fr 1fr;
-        justify-items: center;
         border: 1px $etienne-color solid;
+        list-style: none;
+        justify-items: center;
 
         img {
             max-height: 200px;

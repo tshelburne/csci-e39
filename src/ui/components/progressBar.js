@@ -11,8 +11,8 @@ class ProgressBar extends React.Component {
 
     return(
       <React.Fragment>
-        <label>{name}</label>
         <progress value={progress} max="100">{progress}%</progress>
+        <label>{name}</label>
       </React.Fragment>
     )
   }

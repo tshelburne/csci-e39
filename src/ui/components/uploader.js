@@ -11,7 +11,7 @@ class Uploader extends React.Component {
 
 	handleFiles({target: {files}}) {
 		for (const file of files) {
-			this.props.upload(file)
+			this.props.upload(file);
 		}
 	}
 

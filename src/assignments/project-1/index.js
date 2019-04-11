@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Uploader from '../../ui/components/uploader';
 import ProgressBar from '../../ui/components/ProgressBar';
+import UploadedItem from '../../ui/components/UploadedItem';
 
 import './app.scss';
 
@@ -11,9 +12,7 @@ const Uploads = ({uploads, actions}) => {
 
 	return <React.Fragment>
 		<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
-		{/* do not delete this uploader component */}
 
 		<h2>In Progress</h2>
 		<ul>
@@ -27,14 +26,12 @@ const Uploads = ({uploads, actions}) => {
 		</ul>
 
 		<h2>Completed</h2>
-		<ul>
+		<ul className="completed-uploads">
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
 
 				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img alt={name} src={url} />}
-					{!!error && <p className="failure">{error}</p>}
+					<UploadedItem name={name} url={url} error={error} />
 				</li>
 			})}
 		</ul>
