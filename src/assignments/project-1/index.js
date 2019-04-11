@@ -51,7 +51,7 @@ const Uploads = ({uploads, actions}) => {
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
-	message: PropTypes.string.isRequired,
+	message: PropTypes.string,
 })
 
 Uploads.propTypes = {

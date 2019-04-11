@@ -7,11 +7,18 @@ class Updater extends React.Component {
 	constructor() {
 		super(...arguments)
 		autobind(this)
+		this.state = {value: ''};
 	}
 
+	handleChange(event) {
+    	this.setState({value: event.target.value});
+  	}
+
 	onSubmit(event) {
-		{/* Using the updateFile method... temporarily hardcoding description as 'no idea' */}
-			this.props.updateFile(this.props.file, this.props.file.name, "no idea")
+		{/* Using the updateFile method to update description */}
+		this.props.updateFile(this.props.file, {
+        	name: this.props.file.name,
+        	description: this.state.value})
 	}
 
 	render() {
