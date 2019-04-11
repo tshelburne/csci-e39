@@ -1,26 +1,49 @@
 $primary-color: rgba(150, 143, 179, 1);
 $etienne-color: darken(salmon, 10);
 $etienne-radius: 6px;
+$etienne-image-size: 200px;
 
 .completed-uploads {
   display: grid;
   grid-template: 1fr / 1fr 2fr 1fr;
+  justify-items: center;
 
     li {
         border: 1px $etienne-color solid;
         list-style: none;
-        justify-items: center;
 
         img {
-            max-height: 200px;
-            max-width: 200px;
+            max-height: $etienne-image-size;
+            max-width: $etienne-image-size;
+            display: block;
         }
     }
+}
+
+.container {
+  display: grid;
+  grid-template: 1fr / 1fr 1fr;
+
+  header {
+    grid-column: 1 / 3;
+    grid-row: 1;
+  }
+
+  aside {
+    grid-column: 1 / 2;
+    grid-row: 2;
+  }
+
+  main {
+    grid-column: 2 / 3;
+    grid-row: 2;
+  }
 }
 
 .button {
 	color: white;
 	border: none;
+  display: block;
 	background-color: $etienne-color;
 	border-radius: $etienne-radius;
 	-webkit-border-radius: $etienne-radius;

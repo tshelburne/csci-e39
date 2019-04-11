@@ -11,30 +11,37 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <React.Fragment>
-		<h1>Upload Images</h1>
-		<Uploader upload={actions.upload} />
+		<header>
+			<h1>Upload Images</h1>
+			<Uploader upload={actions.upload} />
+		</header>
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
+		<aside>
+			<h2>In Progress</h2>
+			<ul>
+				{pendingFiles.map(file => {
+					const {id, name, progress} = file
 
-				return <li key={id}>
-					<ProgressBar name={name} progress={progress} />
-				</li>
-			})}
-		</ul>
+					return <li key={id}>
+						<ProgressBar name={name} progress={progress} />
+					</li>
+				})}
+			</ul>
+		</aside>
 
-		<h2>Completed</h2>
-		<ul className="completed-uploads">
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
+		<main>
+			<h2>Completed</h2>
+			<ul className="completed-uploads">
+				{completedFiles.map(file => {
+					const {id, name, url, error} = file
 
-				return <li key={id}>
-					<UploadedItem name={name} url={url} error={error} />
-				</li>
-			})}
-		</ul>
+					return <li key={id}>
+						<UploadedItem id={id} name={name} url={url} error={error} />
+					</li>
+				})}
+			</ul>
+		</main>
+
 	</React.Fragment>
 }
 
