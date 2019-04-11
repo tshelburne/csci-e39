@@ -21,8 +21,8 @@ ul {
 	border: none;
 	background-color: $etienne-color;
 	border-radius: $etienne-radius;
-	-webkit-border-radius: $etienne-radius; 
-    -moz-border-radius: $etienne-radius; 
+	-webkit-border-radius: $etienne-radius;
+    -moz-border-radius: $etienne-radius;
 }
 
 progress {
@@ -35,13 +35,13 @@ progress {
 		border-radius: $etienne-radius;
 		border: 0;
 	}
-	
+
 	&::-webkit-progress-bar {
 		color: $etienne-color;
 		border-radius: $etienne-radius;
 		border: 0;
 	}
-	
+
 	&::-webkit-progress-value {
 		background: $etienne-color;
 		border-radius: $etienne-radius;
@@ -49,22 +49,20 @@ progress {
 	}
 }
 
-.file-form {
-	.uploader {
-		color: white;
-		border: none;
-		box-sizing: border-box;
-		padding: 5px;
-		background-color: $etienne-color;
-		border-radius: $etienne-radius;
-		-webkit-border-radius: $etienne-radius; 
-  	    -moz-border-radius: $etienne-radius;
-	}
+.uploader {
+	color: white;
+	border: none;
+	box-sizing: border-box;
+	padding: 5px;
+	background-color: $etienne-color;
+	border-radius: $etienne-radius;
+	-webkit-border-radius: $etienne-radius;
+	-moz-border-radius: $etienne-radius;
+}
 
-	.uploader-input {
-		opacity: 0;
-		position: absolute;
-		top: 0;
-		left: 0;
-	}
+.uploader-input {
+	opacity: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
