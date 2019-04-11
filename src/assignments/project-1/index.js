@@ -1,14 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Uploader from '../../ui/components/uploader'
+import React from 'react';
+import PropTypes from 'prop-types';
+import Uploader from '../../ui/components/uploader';
+import ProgressBar from '../../ui/components/ProgressBar';
 
-import './app.scss'
+import './app.scss';
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <div>
+	return <React.Fragment>
 		<h1>Upload Images</h1>
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
@@ -20,8 +21,7 @@ const Uploads = ({uploads, actions}) => {
 				const {id, name, progress} = file
 
 				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
+					<ProgressBar name={name} progress={progress} />
 				</li>
 			})}
 		</ul>
@@ -33,12 +33,12 @@ const Uploads = ({uploads, actions}) => {
 
 				return <li key={id}>
 					<label>{name}</label>
-					{!error && <img src={url} />}
+					{!error && <img alt={name} src={url} />}
 					{!!error && <p className="failure">{error}</p>}
 				</li>
 			})}
 		</ul>
-	</div>
+	</React.Fragment>
 }
 
 const statusPropType = PropTypes.shape({
