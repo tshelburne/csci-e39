@@ -1,20 +1,46 @@
+
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
+import Greeting from './greeting' 
+
+
+/* import Photogrid from './photgrid */
 
 import './app.scss'
+
+
+/*
+ 
+return React.createElement('div', {id: 'photogrid'},</>
+
+*/
+
+
+		/* return<div>
+		<button onClick={this.clicked}>#Muscles<button>
+		onPress={() => console.log('Pressed!')}
+		<div/>;
+	}*/
+
+
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
-		<h1>Upload Images</h1>
+	<Greeting name="Jordan" />
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
-		<h2>In Progress</h2>
+		
+
+
+		<h2>#Muscles</h2>
+
 		<ul>
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
@@ -26,7 +52,13 @@ const Uploads = ({uploads, actions}) => {
 			})}
 		</ul>
 
-		<h2>Completed</h2>
+
+
+		<h2>Display: Flex</h2>
+		
+
+
+
 		<ul>
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
@@ -40,6 +72,10 @@ const Uploads = ({uploads, actions}) => {
 		</ul>
 	</div>
 }
+ 
+
+
+
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
@@ -62,4 +98,23 @@ Uploads.propTypes = {
 	actions: PropTypes.object.isRequired,
 }
 
+class Clock extends React.Component {
+  render() {
+    return (
+      <div>
+        <h2>It is {this.props.date.toLocaleTimeString()}.</h2>
+      </div>
+    );
+
+  }
+}
+
+
+
 export default Uploads
+
+
+
+
+
+
