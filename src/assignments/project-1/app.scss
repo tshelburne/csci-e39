@@ -37,9 +37,13 @@ $card-title-font-size: 24px;
 $card-title-background-color: $file-input-button-color;
 
 $card-image-margin-top: 15px;
+$card-image-margin-bottom: 15px;
 $card-image-border-radius: 5px;
 
-// Style your components here
+
+$update_text_border_radius: 5px;
+$update_submit_border_radius: 5px;
+$update-submit-button-color: $file-input-button-color;
 
 h1, h2 {
   font-family: $default-font-family;
@@ -102,7 +106,7 @@ progress::-ms-fill {
   height: $file-input-height;
   position: relative;
   margin: 0 auto;
-  font-family: "Roboto", san-serif;
+  font-family: $default-font-family;
   width: $file-input-width;
   
    &:after {
@@ -266,7 +270,35 @@ body {
 .card-img {
   width: 100%;
   margin-top: $card-image-margin-top;
+  margin-bottom: $card-image-margin-bottom;
   border-radius: $card-image-border-radius;
+}
+
+.update_label {
+  display: block;
+  font-family: $default-font-family;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.update_text {
+  display: block;
+  position: relative;
+  width: 80%;
+  padding-bottom: 15px;
+  margin: 5px auto 5px auto;
+  border-radius: $update_text_border_radius;
+  font-family: $default-font-family;
+}
+.update_submit {
+  display: block;
+  position: relative;
+  background: $update-submit-button-color;
+  font-family: $default-font-family;
+  width: 80%;
+  margin: 0 auto;
+  border: none;
+  border-radius: $update_submit_border_radius;
 }
 
 .example-container {
