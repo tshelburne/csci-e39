@@ -2,21 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
 import ProgressBar from './components/progressbar'
+import Card from './components/card'
 import './app.scss'
-
-//Card component
-const Card = ({id, name, url, error}) =>
-	<li class="img-card" key={id}>
-		<label>{name}</label>
-		<img src={url} />
-	</li>
-
-// //ProgressBar component
-// const ProgressBar = ({name, percentage}) =>
-// 	<div>
-// 		<label>{name}</label>
-// 		<progress value={percentage} max="100">{percentage}%</progress>
-// 	</div>
 
 
 const Uploads = ({uploads, actions}) => {
@@ -24,6 +11,8 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div>
+		<header>
+		<a href="./canvas.html">Create an image</a></header>
 		<h1>Upload Images</h1>
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
