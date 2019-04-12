@@ -3,6 +3,10 @@ $etienne-color: darken(salmon, 10);
 $etienne-radius: 6px;
 $etienne-image-size: 200px;
 
+.hidden {
+	display: none;
+}
+
 .completed-uploads {
   display: grid;
   grid-template: 1fr / 1fr 2fr 1fr;
@@ -13,8 +17,7 @@ $etienne-image-size: 200px;
         list-style: none;
 
         img {
-            max-height: $etienne-image-size;
-            max-width: $etienne-image-size;
+            max-width: 100%;
             display: block;
         }
     }

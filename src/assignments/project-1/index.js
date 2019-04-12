@@ -1,48 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Uploader from '../../ui/components/uploader';
-import ProgressBar from '../../ui/components/ProgressBar';
-import UploadedItem from '../../ui/components/UploadedItem';
+import ProgressBar from '../../ui/components/progressBar';
+import Album from '../../ui/components/album';
 
 import './app.scss';
 
-const Uploads = ({uploads, actions}) => {
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
+class Uploads extends React.Component {
+	constructor(props) {
+		super(props);
+		this.showAlbum = this.showAlbum.bind(this);
 
-	return <React.Fragment>
-		<header>
-			<h1>Upload Images</h1>
-			<Uploader upload={actions.upload} />
-		</header>
+		this.state = {
+			isShowingAlbum: false
+		}
+	}
 
-		<aside>
-			<h2>In Progress</h2>
-			<ul>
-				{pendingFiles.map(file => {
-					const {id, name, progress} = file
+	showAlbum() {
+		this.setState( prevState => {
+			const { isShowingAlbum } = prevState;
+			console.log(isShowingAlbum);
+			return { isShowingAlbum: !isShowingAlbum };
+		});
+	}
 
-					return <li key={id}>
-						<ProgressBar name={name} progress={progress} />
-					</li>
-				})}
-			</ul>
-		</aside>
+	render() {
+		const { uploads, actions, isShowingAlbum } = this.props;
+		const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100);
+		const completedFiles = uploads.files.filter(({progress}) => !progress);
 
-		<main>
-			<h2>Completed</h2>
-			<ul className="completed-uploads">
-				{completedFiles.map(file => {
-					const {id, name, url, error} = file
+		return <React.Fragment>
+			<header>
+				<h1>Upload Images</h1>
+				<Uploader upload={actions.upload} />
+			</header>
 
-					return <li key={id}>
-						<UploadedItem id={id} name={name} url={url} error={error} />
-					</li>
-				})}
-			</ul>
-		</main>
+			<aside>
+				<h2>In Progress</h2>
+				<ul>
+					{pendingFiles.map(file => {
+						const {id, name, progress} = file
 
-	</React.Fragment>
+						return <li key={id}>
+							<ProgressBar name={name} progress={progress} />
+						</li>
+					})}
+				</ul>
+			</aside>
+
+			<main>
+				<p>A term originally coined by Richard Dawkins in 1976, meme was coined to explain the spread of information within a culture. With the advent of the world wide web, the spread of cultural information has evolved alongside the communication medium and has even become a powerful tool in marketing, for example viral marketing or guerilla marketing. Nowadays, an image macro can have a text overlay that is shared from a social media site which then travels to other sites and continues traveling from site to site; from app to app. The dessimination of information, factual or not, has had an impact on our culture. Youth activists can spread information of corporations mistreating tribes of indigenous peoples, illegal pollution of conservation lands, cleanup efforts like #trashtag, or even affect elections. Memes have definitely come a long way from Rick Rolling and Caturdays.</p>
+				<button className="button" onClick={this.showAlbum}>{this.state.isShowingAlbum ? "Get these Me-Mes out of my face" : "Show Me Me-Me Culture" }</button>
+				<span className={this.state.isShowingAlbum ? '' : 'hidden'}><Album completedFiles={completedFiles} /></span>
+			</main>
+		</React.Fragment>
+	}
 }
 
 const statusPropType = PropTypes.shape({
@@ -64,6 +76,7 @@ Uploads.propTypes = {
 		share: statusPropType.isRequired,
 	}).isRequired,
 	actions: PropTypes.object.isRequired,
+	isShowingAlbum: PropTypes.bool.isRequired
 }
 
 export default Uploads
