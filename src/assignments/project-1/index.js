@@ -4,6 +4,51 @@ import Uploader from '../../ui/components/uploader'
 
 import './app.scss'
 
+
+
+class ClickableImage extends React.Component {
+
+  constructor(props) {
+    super(props);   
+    this.state = { zoomed: false }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    console.log('handling click');
+    this.setState(state => ({
+      zoomed: !state.zoomed
+    }));
+  }
+
+  render() {
+    console.log('this.props', this.props);
+    console.log('this.state', this.state);
+    return (
+      <img 
+        src={this.props.url} 
+        alt={this.props.name} 
+        style={{maxWidth: this.state.zoomed ? '500px' : this.props.maxWidth }} 
+        onClick={this.handleClick}
+      />
+    );
+  }
+}
+
+
+
+
+const GalleryImage = ({ name, error, url, maxWidth = '200px'}) => (
+  <>
+    <label>{name}</label>
+    {!error && <ClickableImage name={name} url={url} maxWidth={maxWidth} />}
+    {!!error && <p className="failure">{error}</p>}
+  </>
+);
+
+
+
+
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
@@ -30,11 +75,8 @@ const Uploads = ({uploads, actions}) => {
 		<ul>
 			{completedFiles.map(file => {
 				const {id, name, url, error} = file
-
 				return <li key={id}>
-					<label>{name}</label>
-					{!error && <img src={url} style={{maxWidth: `200px`}} />}
-					{!!error && <p className="failure">{error}</p>}
+          <GalleryImage name={name} url={url} error={error}/>
 				</li>
 			})}
 		</ul>
