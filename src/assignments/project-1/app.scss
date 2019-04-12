@@ -33,13 +33,17 @@ h1 {
    padding: 10px;
 }
 
-.actions {
+.actions-container {
 	display: flex;
 	justify-content: space-evenly;
 	align-items: center;
 }
 
-.container {
+.actions-group {
+	flex-direction: column;
+}
+
+.album-container {
 	padding: 20px 30px 60px; // top | right | {bottom=top} | {left=right}
 	margin-top: 10px;
 	border-radius: 30px 0 /30px 60px;
@@ -64,13 +68,13 @@ h1 {
 	padding: 20px 20px 40px 20px;
 	max-width: 400px;
 	text-align: center;
-	margin: 0 0 20px;
+	margin: 0 auto;
 
 	img {
 		width: 100%; // allows them to resize with screen stretch/shrink
 		height: auto;
 		display: block; // gets rid of extra line height
-		max-height: 300px;
+		max-width: 225px;
 	}
 }
 
