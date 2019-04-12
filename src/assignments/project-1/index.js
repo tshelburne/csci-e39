@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
 import Album from './components/album'
-import Header2 from './components/header2'
+import AlbumUpload from './components/album_upload'
 
 import './layout/layout.scss'
 import './app.scss'
@@ -14,9 +14,9 @@ const Uploads = ({uploads, actions}) => {
 
 	return <div className="grid-container">
 
-		<aside className="sidebar">Sometimes renders!
+		<aside className="sidebar">
 
-			<h1>Upload Images</h1>
+			<h2>Upload Images</h2>
 
 			{/* do not delete this uploader component */}
 
@@ -25,16 +25,13 @@ const Uploads = ({uploads, actions}) => {
 
 		</aside>
 
-		<main className="main">Main
+		<main className="main">
 
+			<h2>Albums</h2>
 
-
-
-			<Header2 headingText="In Progress"/>
-
-			<Album imgData={pendingFiles} albumName="In Progress Files"/>
-
+			<AlbumUpload imgData={pendingFiles} albumName="In Progress Files"/>
 			<Album imgData={completedFiles} albumName="Completed Files"/>
+
 		</main>
 	</div>
 

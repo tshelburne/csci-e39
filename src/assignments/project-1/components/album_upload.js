@@ -5,7 +5,7 @@ import Header2 from "./header2";
 
 
 
-class Album extends React.Component {
+class AlbumUpload extends React.Component {
 
     constructor() {
         super(...arguments)
@@ -23,14 +23,11 @@ class Album extends React.Component {
                     <ul className="image-grid">
 
                         {imgData.map(file => {
-                            const {id, name, url, description, error} = file
+                            const {id, name, progress} = file
 
-                            return <li key={id} className="image-card">
-                                {!error && <img src={url} style={{maxWidth: `200px`}}/>}
-                                {!!error && <p className="failure">{error}</p>}
+                            return <li key={id}>
                                 <label>{name}</label>
-                                <p class="image-description">{description}</p>
-
+                                <progress value={progress} max="100">{progress}%</progress>
                             </li>
                         })}
 
@@ -41,4 +38,4 @@ class Album extends React.Component {
 
 
 
-export default Album
+export default AlbumUpload

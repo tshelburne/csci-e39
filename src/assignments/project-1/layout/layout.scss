@@ -1,11 +1,10 @@
 $react-background: #292c34;
 
 .grid-container {
-  border: 2px dashed goldenrod;
+  border: 2px solid blue;
   padding: 10px;
-  height: 100vh;
-}
 
+}
 
 
 @media only screen and (min-width: 720px) {
@@ -30,3 +29,5 @@ $react-background: #292c34;
   flex-direction: column;
 
 }
+
+
