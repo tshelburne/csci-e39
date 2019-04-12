@@ -4,6 +4,7 @@ import Uploader from '../../ui/components/uploader'
 import Greeting from './greeting'
 import PolaroidGrid from './polaroidgrid.js'
 import Footer from './footer.js'
+import Completed from './completed.js'
 
 import './app.scss'
 
@@ -42,17 +43,7 @@ const Uploads = ({uploads, actions}) => {
 				</div>
 				
 				<div class="group-actions">
-					<h2>Completed</h2>
-					<ul>
-						{completedFiles.map(file => {
-							const {id, name, url, error} = file
-
-							return <li key={id}>
-								<label>{name}</label>
-								{!!error && <p className="failure">{error}</p>}
-							</li>
-						})}
-					</ul>
+					<Completed completedFiles={completedFiles}/>
 				</div>
 				
 			</div>
