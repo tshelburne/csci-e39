@@ -13,55 +13,56 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div className="grid-container">
-			{sidebarActive && <aside className="sidebar">Sometimes renders!
 
-			</aside>}
-			<main className="main">Main
+		<aside className="sidebar">Sometimes renders!
+
+			<h1>Upload Images</h1>
+
+			{/* do not delete this uploader component */}
+
+			<Uploader upload={actions.upload} label="Choose Files to Upload!"/>
+			{/* do not delete this uploader component */}
+
+		</aside>
+
+		<main className="main">Main
 
 
 
 
-				<h1>Upload Images</h1>
-		{/* do not delete this uploader component */}
+			<Header2 headingText="In Progress"/>
 
-		<Uploader upload={actions.upload} label="Choose Files to Upload!" />
-		{/* do not delete this uploader component */}
+			<Album imgData={pendingFiles} albumName="In Progress Files"/>
 
-		<Header2 headingText="In Progress" />
-
-				<Album imgData={pendingFiles} albumName="In Progress Files"/>
-
-				<Album imgData={completedFiles} albumName="Completed Files"/>
-			</main>
-		</div>
-
+			<Album imgData={completedFiles} albumName="Completed Files"/>
+		</main>
+	</div>
 
 
 // Components
 
 
+	const statusPropType = PropTypes.shape({
+		status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
+		message: PropTypes.string.isRequired,
+	})
 
-const statusPropType = PropTypes.shape({
-	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
-	message: PropTypes.string.isRequired,
-})
+	Uploads.propTypes = {
+		uploads: PropTypes.shape({
+			files: PropTypes.arrayOf(PropTypes.shape({
+				id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+				name: PropTypes.string.isRequired,
+				description: PropTypes.string,
+				progress: PropTypes.number,
+				url: PropTypes.string,
+				error: PropTypes.string,
+			})).isRequired,
+			update: statusPropType.isRequired,
+			delete: statusPropType.isRequired,
+			share: statusPropType.isRequired,
+		}).isRequired,
+		actions: PropTypes.object.isRequired,
+	}
 
-Uploads.propTypes = {
-	uploads: PropTypes.shape({
-		files: PropTypes.arrayOf(PropTypes.shape({
-			id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-			name: PropTypes.string.isRequired,
-			description: PropTypes.string,
-			progress: PropTypes.number,
-			url: PropTypes.string,
-			error: PropTypes.string,
-		})).isRequired,
-		update: statusPropType.isRequired,
-		delete: statusPropType.isRequired,
-		share: statusPropType.isRequired,
-	}).isRequired,
-	actions: PropTypes.object.isRequired,
 }
-
-
 export default Uploads
