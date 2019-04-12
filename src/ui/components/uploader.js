@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
-import './app.scss'
 
 class Uploader extends React.Component {
 

@@ -4,7 +4,10 @@ import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
 import Button from './button'
 import Polaroid from './polaroid'
+import Img from './img'
+import Nav from './nav'
 import {ITEM1, ITEM2, ITEM3, ITEM4, ITEM5} from './data/items'
+import {LOGO} from './data/items'
 
 import './app.scss'
 
@@ -15,16 +18,24 @@ const Uploads = ({uploads, actions}) => {
 	const itemsArray = [ITEM1, ITEM2, ITEM3, ITEM4, ITEM5]
 
 	return <div>
-		<Button label ="Primary" importance ="primary"/>
-		<h1>Upload Images</h1>
+		<Nav link1="About Space Camera" link2="Image Gallery" link3="FAQ"/>
 		
+		<header className="box header">
+			<Img className={LOGO.className} src={LOGO.src} alt={LOGO.alt} />
+			<h1>Welcome to Space Camera</h1>
+		</header>
+
+		<div className = "container">
+		<h2>Upload Images</h2>
 		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
+		<Uploader className = "uploader" upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
 		<h2>In Progress</h2>
+		{/* repeat progress to see styling*/}
+		<progress className ="progress" value="33" max="100">33%</progress>
 		<ul>
-			<progress className ="progress" value="33" max="100">33%</progress>
+			
 			{pendingFiles.map(file => {
 				const {id, name, progress} = file
 
@@ -54,7 +65,7 @@ const Uploads = ({uploads, actions}) => {
 					<Polaroid image={item.image} style={item.style} order={item.order} caption={item.caption} onClick={() => this.setState({mainItem: item})}/>			
 				)}
 		</div>
-		
+		</div>
 	</div>
 }
 
