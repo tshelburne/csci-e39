@@ -22,11 +22,11 @@ class Updater extends React.Component {
 	}
 
 	render() {
-		const {updateFile, file, ...inputProps} = this.props
+		const {updateFile, file, formvalue, ...inputProps} = this.props
 		return <form onSubmit={this.onSubmit}>
 			{/* Still need to work on separately stlying text field and submit button */}
 			<label className="update_label">Image Description</label>
-			<input className="update_text" type="text" onChange={this.handleChange} />
+			<input className="update_text" type="text" placeholder={formvalue} onChange={this.handleChange} />
 			<input className="update_submit" type="submit" value="Submit"/>
 			</form>
 	}

@@ -312,3 +312,36 @@ body {
 .header {
   margin-top: 0;
 }
+
+::-webkit-input-placeholder {
+  display: block;
+   text-align: center;
+   vertical-align: middle;
+   height: 40px;
+   line-height: 40px;
+
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   display: block;
+   text-align: center;
+   vertical-align: middle;
+   height: 30px;
+   line-height: 30px;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   display: block;
+   text-align: center;
+   vertical-align: middle;
+   height: 30px;
+   line-height: 30px;
+}
+
+:-ms-input-placeholder {  
+   display: block;
+   text-align: center;
+   vertical-align: middle;
+   height: 30px;
+   line-height: 30px;
+}
