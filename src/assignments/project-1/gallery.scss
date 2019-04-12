@@ -1,0 +1,22 @@
+$primary-color: rgba(150, 143, 179, 1);
+$button-color: rgb(89, 150, 211);
+$button-font: "Verdana", sans-serif;
+$button-width: 7em;
+$button-font-color: #fff;
+$font-weight: 600;
+
+
+.imagegallery-container {
+  display:grid;
+  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: $primary-color;
+
+  color: $button-font-color;
+  cursor: pointer;
+
+  &:hover {
+    background: darken(rgb(89, 150, 211), 10%);
+  }
+
+}

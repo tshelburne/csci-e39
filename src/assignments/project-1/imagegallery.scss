@@ -1,0 +1,21 @@
+$primary-color: rgba(150, 143, 179, 1);
+$button-color: rgb(89, 150, 211);
+$button-font: "Verdana", sans-serif;
+$button-width: 7em;
+$button-font-color: #fff;
+$font-weight: 600;
+
+
+.imagegallery-container {
+  display:grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: $primary-color;
+  grid-row-gap: 100px;
+  grid-column-gap: 20px;
+
+  color: $button-font-color;
+  padding: 10px;
+
+  list-style-type:none;
+}
