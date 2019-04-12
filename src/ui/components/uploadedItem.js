@@ -4,12 +4,6 @@ import PropTypes from 'prop-types';
 class UploadedItem extends React.Component {
   constructor(props) {
     super(props);
-    this.handleDelete = this.handleDelete.bind(this);
-  }
-
-  handleDelete(props) {
-    const { id } = this.props;
-    console.log(this.props);
   }
 
   render() {
@@ -20,7 +14,6 @@ class UploadedItem extends React.Component {
         {!error && <img alt={name} src={url} />}
         <label>{name}</label>
         {!!error && <p className="failure">{error}</p>}
-        <button className="button" onClick={this.handleDelete}>Delete</button>
       </React.Fragment>
     )
   }
