@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Pacifico');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Righteous');
 
-$primary: #EC407A;
+$primary: #2044d4;
 $light-secondary: #efefef;;
 $dark-secondary: #90A4AE;
 
-$heading-font: 'Pacifico', cursive;
+$heading-font: 'Righteous', cursive;
 $text-font: 'Open Sans', sans-serif;
 
 
@@ -18,7 +18,7 @@ body {
 }
 
 h1, h2, h3, h4 {
-	font-family: $heading-font
+	font-family: $heading-font;
 }
 
 ul, ol, p {
@@ -30,7 +30,7 @@ button {
 	background-color: white;
 	color: $primary;
 	height: 2em;
-	width: 6em;
+	width: 10em;
 	border: 4px solid $primary;
 	border-radius: 4px;
 	box-shadow: (0 0 1rem $dark-secondary);
@@ -103,9 +103,41 @@ a {
 }
 
 a:hover, a:focus {
-	font-weight: bold;
-	color: black;
+
+	color: $primary;
 }
 a:visited {
 	color: black;
 }
+
+.top-set {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: flex-start;
+	margin-bottom: 2em;
+}
+.wrapper {
+	margin: .5em;
+}
+
+.about {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-end;
+	width: 520px;
+}
+.details {
+	text-align: right;
+}
+h1 {
+	font-size: 1.5em;
+	margin: 0;
+}
+ h2 {
+	font-size: 1.2em;
+ }
+ .functions {
+	 width: 40%;
+ }
