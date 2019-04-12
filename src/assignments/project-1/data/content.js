@@ -14,8 +14,7 @@ export const faq = {
 		one: "Question: How is this even possible? Answer: Its possible.",
 		two: "Question: Are these pictures real? Answer: Yes, but probably not",
 		three:`Question: Can I purchase these photos? Answer: Yes, please give me your money
-	 and I will give you a printout of the imagery.`
+		and I will give you a printout of the imagery.`
 	}
 }
 
-	

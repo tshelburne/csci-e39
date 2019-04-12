@@ -12,7 +12,7 @@ $progressvalue-color:#17BAB3;
 @import 'gallery';
 
 * {
-  box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 body {
@@ -22,17 +22,17 @@ body {
 
 @media only screen and (min-width: 700px) {
 	.layout-two-container{
-	background: navy;
-	background: linear-gradient(to bottom, #181844 0%, #968fb3 100%);
-	min-height: 100vh;
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
+		background: navy;
+		background: linear-gradient(to bottom, #181844 0%, #968fb3 100%);
+		min-height: 100vh;
+		display: grid;
+		grid-gap: 10px;
+		grid-template-columns: 1fr;
+		grid-template-rows: 1fr;
 		grid-template-areas:
-    	"nav"
+		"nav"
 		"header"
-    	"meat"
+		"meat"
 		"footer";
 	}
 }
@@ -41,42 +41,42 @@ body {
 }
 .header {
 	grid-area: header;
-    display: grid;
-    grid-template-columns: 200px 1fr;
+	display: grid;
+	grid-template-columns: 200px 1fr;
 
-    h1{
-    	font-size: 60px;
-    }
+	h1{
+		font-size: 60px;
+	}
 }
 .content{
 	grid-area:meat;
 }
 @media only screen and (min-width: 800px) {
 	.first {
-	display: grid;
-    grid-template-columns: repeat(2, 1fr);
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
 	}
 }
 @media only screen and (max-width: 800px) {
 	.first {
-	display: grid;
-    grid-template-rows: repeat(2, 1fr);
+		display: grid;
+		grid-template-rows: repeat(2, 1fr);
 	}
 }
 
 .space-icon {
-  	width: 100%;
+	width: 100%;
 	padding:5px;
 	margin-left:50px;
 	margin-top:10px;
 }
 
 h1, h2 {
-  text-align: center;
+	text-align: center;
 }
 
 h1 {
-  padding: 10px;
+	padding: 10px;
 	font-family: $primary-font;
 	color:LightSteelBlue;
 }
@@ -92,30 +92,30 @@ h1 {
 
 
 ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	background-color: #333;
 
 
 	li {
-	  float: left;
+		float: left;
 	}
 
 	li a {
-	  display: block;
-	  color: white;
-	  text-align: center;
-	  padding: 15px 30px;
-	  text-decoration: none;
+		display: block;
+		color: white;
+		text-align: center;
+		padding: 15px 30px;
+		text-decoration: none;
 	}
 	li a:active {
-	background-color:#3a385a;
-}
+		background-color:#3a385a;
+	}
 
 	li a:hover {
-  background-color: #111;
+		background-color: #111;
 	}
 }
 
@@ -129,7 +129,7 @@ ul {
 	font-size: 14px;
 	font-family: $primary-font, sans-serif;
 	transition-duration: 0.4s;
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .blurb {
@@ -143,7 +143,7 @@ ul {
 	padding: 20px;
 	margin:20px;
 	width:95%;
-	}
+}
 .read {
 	width:95%;
 }
