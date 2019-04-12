@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
-import {PendingFiles, CompletedFiles} from '../../ui/components/files.js'
+import {PendingFiles, CompletedFiles} from './files.js'
 
 import './app.scss'
 
@@ -25,8 +25,9 @@ const Uploads = ({uploads, actions}) => {
 		}
 
 		<h1>Upload To Gallery</h1>
+		<label for="uploader" className="uploader">Upload Images</label>
 		{/* do not delete this uploader component */}
-		<Uploader upload={actions.upload} />
+		<Uploader id="uploader" className="uploader-input" upload={actions.upload} />
 		{/* do not delete this uploader component */}
 	</div>
 }
