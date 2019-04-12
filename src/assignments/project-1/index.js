@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
 import SectionHeader from './sectionheader'
 import Updater from './updater'
+import Album from './album'
 import AlbumDescription from './albumdescription'
 
 import './app.scss'
@@ -35,17 +36,7 @@ const Uploads = ({uploads, actions}) => {
 		</ul>
 
 		<SectionHeader tag="h2" sectiontext="Completed"/>
-		<ul className = "grid-container">
-			{completedFiles.map(file => {
-				const {id, name, url, description, error} = file
-				return <li className = "card" key={id}>
-					<label className = "card-title">{name}</label>
-					{!error && <img className = "card-img" src={url} alt={description} />}
-					{!error && <Updater className="form-input" formvalue={description} file={file} updateFile={actions.files.updateFile}/>}
-					{!!error && <p className="failure">{error}</p>}
-				</li>
-			})}
-		</ul>
+		<Album photos={completedFiles} updateFile={actions.files.updateFile}/>
 	</div>
 }
 
