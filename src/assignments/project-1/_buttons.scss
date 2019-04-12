@@ -1,0 +1,26 @@
+button {
+	background-color: white;
+	border: none;
+	padding: 15px 15px;
+	border-radius: 5px;
+	font-size: 14px;
+	font-family: $primary-font, sans-serif;
+	transition-duration: 0.4s;
+  cursor: pointer;
+	margin: 10px;
+	outline:none;
+	
+}
+button:hover {
+	background-color: darken($primary-color, 20);
+	color: white;
+}
+
+.primary {
+	background-color: MediumVioletRed;
+	color: white;
+}
+.tertiary {
+	background-color:lightslategrey;
+	color: white;
+}

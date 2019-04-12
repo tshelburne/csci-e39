@@ -23,13 +23,9 @@ class Uploads extends React.Component {
 		};
 	}
 
-	toggleShow() {
-		// return this.setState(state => ({isShow: !state.isShow}));
-		console.log("hello");
-	}
 	render() {
 	const{uploads, actions}= this.props;
-	console.log(this.state);
+	
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 	const itemsArray = [ITEM1, ITEM2, ITEM3, ITEM4, ITEM5]
