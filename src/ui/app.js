@@ -1,6 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
+import React from 'react';
+import PropTypes from 'prop-types';
 import Module from '../assignments/project-1'
 
 const App = ({auth, ...props}) => {
@@ -12,4 +11,4 @@ const App = ({auth, ...props}) => {
 	}
 }
 
-export default App
+export default App;
