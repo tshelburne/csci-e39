@@ -1,0 +1,140 @@
+$lighten-by: 15;
+$darken-by: 15;
+// decided on the flat look, so top and bottom colors of gradient are the same. Easy to change back.
+$primary-top: #aaa;
+$primary-mid: lighten($primary-top, $lighten-by);
+$primary-bottom: #aaa;
+$hover-top: darken($primary-top, $darken-by);
+$hover-mid: darken($primary-mid, $darken-by);
+$hover-bottom: darken($primary-bottom, $darken-by);
+$active-top: darken($hover-top, $darken-by);
+$active-mid: darken($hover-mid, $darken-by);
+$active-bottom: darken($hover-bottom, $darken-by);
+
+$gradient-top: lighten($primary-top, $lighten-by);
+$gradient-bottom: lighten($primary-bottom, $lighten-by);
+$box-shadow: darken($gradient-bottom, 20);
+$light-text: whiteSmoke;
+$progress-bar-background-color: whiteSmoke;
+$border: 2px solid darken($gradient-top, 40);
+$border-radius: 0.25rem;
+$padding: 0.5em;
+$box-shadow: 1px 1px 4px darken($gradient-top, 20);
+$box-shadow-highlight: 1.5px 1.5px 5px darken($gradient-top, 40);
+
+@mixin box-shadow ($properties) {
+    -webkit-box-shadow: $properties;
+    -moz-box-shadow: $properties;
+    box-shadow: $properties;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Verdana, Geneva, sans-serif;
+}
+
+.uploader {
+    // style the label like a button
+    background: linear-gradient($primary-top, $primary-mid, $primary-bottom);
+    border: $border;
+    border-radius: $border-radius;
+    padding: $padding;
+    @include box-shadow($box-shadow);
+    display: inline-block;
+    cursor: pointer;
+
+    &:hover {
+        background: linear-gradient($hover-top, $hover-mid, $hover-bottom);
+        box-shadow: $box-shadow-highlight;
+    }
+
+    &:active {
+        background: linear-gradient($active-top, $active-mid, $active-bottom);
+        box-shadow: $box-shadow;
+        text-decoration: underline;
+        color: $light-text;
+    }
+
+    // focus doesn't fire on Firefox
+    &:focus {
+        background: linear-gradient(darken($primary-top, $darken-by), darken($primary-bottom, $darken-by));
+        box-shadow: $box-shadow;
+        text-decoration: underline;
+        color: $light-text;
+        outline: 1px dotted #000;
+        outline: -webkit-focus-ring-color auto 5px;
+    }
+}
+
+.uploader-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+
+    &:focus+uploader {
+        border: 6px solid green;
+    }
+}
+
+// PROGRESS BAR
+// https://css-tricks.com/html5-progress-element/
+progress[value] {
+    // haven't noticed what these do - only tested with modern Chrome and FF
+    appearance: none;
+    border: $border;
+    // size of progress bar
+    width: 12.5em;
+    height: 1.25em;
+    max-width: 80%;
+
+    // for FF
+    background-color: $progress-bar-background-color;
+    border-radius: $border-radius;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+
+    // for IE10, set background color with color:
+    color: $progress-bar-background-color;
+}
+
+progress[value]::-webkit-progress-bar {
+    background-color: $progress-bar-background-color;
+    border-radius: $border-radius;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+progress[value]::-webkit-progress-value {
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+    border-radius: $border-radius;
+    //border: $border;
+    background-image: -webkit-linear-gradient(135deg,
+        transparent,
+        transparent 33%,
+        rgba(0, 0, 0, 0.1) 33%,
+        rgba(0, 0, 0, 0.1) 67%,
+        transparent 67%),
+        -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2)),
+        -webkit-linear-gradient(left, $gradient-top, $gradient-bottom);
+}
+
+progress[value]::-moz-progress-bar {
+    // gradient background with stripes
+    background-image: -moz-linear-gradient(135deg,
+        transparent,
+        transparent 33%,
+        rgba(0, 0, 0, 0.1) 33%,
+        rgba(0, 0, 0, 0.1) 66%,
+        transparent 66%),
+        -moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+        -moz-linear-gradient(left, $gradient-top, $gradient-bottom);
+    // size of the stripes for FF only?
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+    border-radius: $border-radius $border-radius/2 $border-radius/2 $border-radius;
+}
