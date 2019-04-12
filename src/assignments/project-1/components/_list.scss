@@ -1,0 +1,39 @@
+// LIST
+
+.silly-list {
+
+  li {
+    list-style-type: none;
+  }
+
+  li:nth-child(1) {
+    color: $primary-accent;
+  }
+  li:nth-child(-n + 7):nth-last-child(n + 2) {
+    padding: 13px;
+  }
+
+  li:nth-child(even) {
+    background-color: $primary-color;
+  }
+
+  li:nth-child(5) {
+    color: orange;
+  }
+
+  li:nth-child(6):hover {
+    + li {
+      background-color: adjust-hue($primary-accent, -200%);
+      transition: background-color 0.3s;
+    }
+  }
+
+  // ref: https://css-tricks.com/quantity-queries-for-css/;
+  li:nth-last-child(n + 8),
+  li:nth-last-child(n + 8) ~ li {
+    color: white;
+    padding: 10px;
+    background-color: $primary-accent;
+    border: 1px solid white;
+  }
+}

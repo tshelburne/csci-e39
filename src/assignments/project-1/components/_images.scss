@@ -1,0 +1,44 @@
+// IMAGES & RESPONSIVE LAYOUT
+
+.polaroid-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 30px;
+}
+
+.polaroid-grid {
+  padding: 10px auto;
+}
+
+.polaroid {
+  margin: 10px auto;
+  background-color: hsl(0,1, 90%);
+  box-shadow: 1px 2px 3px 1px hsla(0,0,10%, .5);
+  padding: 20px 20px 40px 20px;
+  max-width: 260px;
+  cursor: pointer;
+  border-radius: $primary-border-radius;
+  
+  &:hover img {
+    filter: blur(2px);
+  }
+  
+  img {
+    width: 100%;
+    padding: 15px;
+    border-radius: $primary-border-radius;
+  }
+
+  label {
+    padding: 5px;
+  }
+
+  &:after {
+    content: "Paris Album";
+    padding: 5px;
+    border-style: inset;
+    border-width: 2px;
+    background-color: grey;
+    border-radius: calc(#{$primary-border-radius} * 0.5);
+  }
+}

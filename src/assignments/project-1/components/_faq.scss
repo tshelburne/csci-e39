@@ -1,0 +1,25 @@
+.faq-container {
+  background-color: white;
+  margin: auto;
+  padding: 25px;
+  width: 80%;
+}
+
+.faq-question {
+  font-size: 1.2rem;
+  font-weight: 900;
+
+}
+
+.faq-answer {
+  font-style: oblique;
+}
+
+.faq-link-list {
+  list-style-type: none;
+  text-align: left;
+  a {
+    text-decoration: none;
+    color: red;
+  }
+}

@@ -1,0 +1,39 @@
+// UPLOADER
+
+// ref: https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+
+/*
+.uploader-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.uploader-input + label * {
+  pointer-events: none;
+}
+*/
+
+.uploader-input {
+  cursor: pointer;
+  background-color: $progress-bar-stripecolor-2;
+  border-radius: $primary-border-radius;
+  border: $progress-bar-border inset rgba(0, 0, 0, 0.8);
+  color: white;
+  font-family: sans-serif; // updated: 27 Mar 2019
+  font-size: 1.1rem;
+  font-weight: bold; // updated: 27 Mar 2019
+  padding: 1rem 2rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  -webkit-transition-duration: 0.4s;
+  &:focus,
+  &:hover {
+    color: rgba(0, 0, 0, 0.8);
+    background-color: $progress-bar-stripecolor-1;
+  }
+}
