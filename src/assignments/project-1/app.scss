@@ -9,6 +9,17 @@ body {
 
 /*End of global styles & libaries*/
 
+/************************************************************************/
+/* PROPS STYLES */
+
+.header {
+	background: thistle;
+}
+
+.specialHeader {
+	background: red;
+}
+
 .example-container {
 	background: hsla(0, 0, 100%, 0.8);
 	margin-top: 7vh;
@@ -128,11 +139,11 @@ progress[aria-valuenow]:before  {
 
 /************************************************************************/
 /* UPLOADER */
-.uploader-input label {
+.file-form label {
 	height: 90px;
 }
 
-.uploader-input {
+.file-form {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -141,11 +152,11 @@ progress[aria-valuenow]:before  {
   z-index: -1;
 }
 
-.uploader-input + label span {
+.file-form + label span {
     text-transform: none;
 }
 
-.uploader-input + label {
+.file-form + label {
     font-family: $default-font;
     font-size: 18px;
     text-transform: uppercase;
@@ -161,30 +172,30 @@ progress[aria-valuenow]:before  {
     transition: all 0.3s ease 0s;
 }
 
-.uploader-input + label {
+.file-form + label {
     color: darken($primary-color, 30%);
 }
 
-.uploader-input + label {
+.file-form + label {
     border: 1px solid darken($primary-color, 20%);
     background-color: #f1e5e6;
     padding: 0;
 }
 
-.uploader-input:focus + label,
-.uploader-input.has-focus + label,
-.uploader-input + label:hover {
+.file-form:focus + label,
+.file-form.has-focus + label,
+.file-form + label:hover {
     border-color: darken($primary-color, 30%);
 }
 
 
-.uploader-input + label span,
-.uploader-input + label strong {
+.file-form + label span,
+.file-form + label strong {
     padding: 0.625rem 1.25rem;
     /* 10px 20px */
 }
 
-.uploader-input + label span {
+.file-form + label span {
     width: 200px;
     min-height: 1em;
     display: inline-block;
@@ -195,20 +206,20 @@ progress[aria-valuenow]:before  {
 }
 
 
-.uploader-input + label strong {
+.file-form + label strong {
     color: #f1e5e6;
     background-color: darken($primary-color, 20%);
     display: inline-block;
 }
 
-.uploader-input:focus + label strong,
-.uploader-input.has-focus + label strong,
-.uploader-input + label:hover strong {
+.file-form:focus + label strong,
+.file-form.has-focus + label strong,
+.file-form + label:hover strong {
     background-color: darken($primary-color, 30%);
 }
 
 @media screen and (max-width: 50em) {
-  .uploader-input + label strong {
+  .file-form + label strong {
     display: block;
   }
 }
@@ -239,9 +250,7 @@ ul, ol {
 	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 
-img {
-	width: 100% !important;
-}
+
 
 .item-list {
 	list-style-type: none;
@@ -249,7 +258,7 @@ img {
 }
 
 .item-card {
-	margin: 10px auto;
+	margin: 0 auto;
 	background-color: hsl(0,1, 90%);
 	box-shadow: 1px 2px 3px 1px hsla(0,0,10%, .5);
 	padding: 20px 20px 40px 20px;
@@ -257,12 +266,12 @@ img {
 	display: flow-root;
 
 }
+
+.item-card-image {
+	
 	img {
 		width: 100%;
 	}
-.item-card-image {
-	
-
 }
 
 .item-card-title {
