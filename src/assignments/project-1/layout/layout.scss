@@ -1,0 +1,32 @@
+$react-background: #292c34;
+
+.grid-container {
+  border: 2px dashed goldenrod;
+  padding: 10px;
+  height: 100vh;
+}
+
+
+
+@media only screen and (min-width: 720px) {
+  .grid-container {
+    display: flex;
+  }
+}
+
+
+.main {
+  flex:3;
+  background: lighten($react-background, 77);
+  padding: 10px;
+  mid-width :400px;
+  flex-direction: column;
+
+}
+
+.sidebar {
+  flex:1;
+  padding: 10px;
+  flex-direction: column;
+
+}
