@@ -1,8 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
-import Album from '../../ui/components/album'
-import Header2 from '../../ui/components/header2'
+import Album from './components/album'
+import Header2 from './components/header2'
 
 import './app.scss'
 

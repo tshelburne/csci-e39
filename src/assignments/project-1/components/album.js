@@ -15,8 +15,11 @@ class Album extends React.Component {
     render() {
         const {imgData, albumName, ...inputProps} = this.props
             return (
+
                 <div class="album-grid">
-                    <h2>{albumName}</h2>
+
+                    <Header2 headingText={albumName}/>
+
                     <ul className="image-grid">
                         {imgData.map(file => {
                             const {id, name, url, description, error} = file
