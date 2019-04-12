@@ -5,8 +5,8 @@ $component-color: rgb(20, 24, 244);
 $component-color-darken: darken($component-color, 20);
 $component-color-lighten: lighten($component-color, 20);
 $corner-radius :5px;
-
-
+$font-default: 'Oswald', sans-serif;
+$font-heading: 'Oswald', sans-serif;
 // Style your components here
 
 
@@ -18,7 +18,7 @@ body {
   background:     linear-gradient(110deg, #becccf, #b1b1ab);
 
   min-height: 100vh;
-  font-family: "Permanent Marker", sans-serif;
+  font-family: $font-default;
 
 }
 

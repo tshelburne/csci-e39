@@ -11,7 +11,7 @@ class Header2 extends React.Component {
     render() {
         const {headingText, ...inputProps} = this.props
             return (
-                <h2>{headingText}</h2>
+                <h3>{headingText}</h3>
             )
     }
 }

@@ -12,29 +12,36 @@ const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <div className="grid-container">
+	return <main className="main_page">
 
-		<aside className="sidebar">
+		<header className="main-heading"> Online Image Album csci-e39 </header>
 
-			<h2>Upload Images</h2>
+		<div className="grid-container">
 
-			{/* do not delete this uploader component */}
+			<aside className="sidebar">
 
-			<Uploader upload={actions.upload} label="Choose Files to Upload!"/>
-			{/* do not delete this uploader component */}
+				<h2>Upload Images</h2>
 
-		</aside>
+				{/* do not delete this uploader component */}
+				<Uploader upload={actions.upload} label="Choose Files to Upload!"/>
+				{/* do not delete this uploader component */}
 
-		<main className="main">
+			</aside>
 
-			<h2>Albums</h2>
+			<main className="main">
 
-			<AlbumUpload imgData={pendingFiles} albumName="In Progress Files"/>
-			<Album imgData={completedFiles} albumName="Completed Files"/>
+				<h2>Albums</h2>
 
-		</main>
-	</div>
+				<p> This a where you can view the upload status and view recently uploaded images</p>
+				<p> Click to embiggen image.</p>
 
+				<p> Currently the album contain nature photos taken at great meadows national wildlife sactuary in Concord Ma. The sactuary contains a lot of wildlife including many species of migratory birds. </p>
+						<AlbumUpload imgData={pendingFiles} albumName="In Progress Files"/>
+				<Album imgData={completedFiles} albumName="Completed Files"/>
+
+			</main>
+		</div>
+	</main>
 
 // Components
 
