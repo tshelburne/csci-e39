@@ -4,36 +4,37 @@ import Uploader from '../../ui/components/uploader'
 import Album from './components/album'
 import Header2 from './components/header2'
 
+import './layout/layout.scss'
 import './app.scss'
+
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <div>
-		<h1>Upload Images</h1>
+	return <div className="grid-container">
+			{sidebarActive && <aside className="sidebar">Sometimes renders!
+
+			</aside>}
+			<main className="main">Main
+
+
+
+
+				<h1>Upload Images</h1>
 		{/* do not delete this uploader component */}
 
 		<Uploader upload={actions.upload} label="Choose Files to Upload!" />
 		{/* do not delete this uploader component */}
 
 		<Header2 headingText="In Progress" />
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
 
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
+				<Album imgData={pendingFiles} albumName="In Progress Files"/>
 
+				<Album imgData={completedFiles} albumName="Completed Files"/>
+			</main>
+		</div>
 
-		<Album imgData={completedFiles} albumName="Completed Files"/>
-
-	</div>
-};
 
 
 // Components
@@ -61,5 +62,6 @@ Uploads.propTypes = {
 	}).isRequired,
 	actions: PropTypes.object.isRequired,
 }
+
 
 export default Uploads
