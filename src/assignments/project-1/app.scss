@@ -17,7 +17,7 @@ body {
 }
 
 @media only screen and (min-width: 700px) {
-	.grid{
+	.layout-two-container{
 	background: navy;
 	background: linear-gradient(to bottom, #181844 0%, #968fb3 100%);
 	min-height: 100vh;
@@ -76,34 +76,10 @@ h1 {
 	font-family: $primary-font;
 	color:LightSteelBlue;
 }
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
 
-li {
-  
-}
 
-li a {
-  
-  color: white;
-  text-align: center;
-  padding: 15px 30px;
-  text-decoration: none;
-}
 
-.active {
-	background-color:#3a385a;
-}
 
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: #111;
-}
 
 
 .progress {
@@ -333,23 +309,28 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #333;
-}
 
-li {
-  float: left;
-}
 
-li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 15px 30px;
-  text-decoration: none;
-}
+	li {
+	  float: left;
+	}
 
-.active {
+	li a {
+	  display: block;
+	  color: white;
+	  text-align: center;
+	  padding: 15px 30px;
+	  text-decoration: none;
+	}
+	li a:active {
 	background-color:#3a385a;
 }
+
+	li a:hover {
+  background-color: #111;
+	}
+}
+
 
 .uploader {
 	background-color:MediumVioletRed;
@@ -377,4 +358,8 @@ li a {
 	}
 .read {
 	width:95%;
+}
+
+.faq {
+	text-align: left;
 }

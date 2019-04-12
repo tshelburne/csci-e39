@@ -7,19 +7,37 @@ import Polaroid from './polaroid'
 import Img from './img'
 import Nav from './nav'
 import Writeup from './paragraph'
+import Faq from './faq'
 import {ITEM1, ITEM2, ITEM3, ITEM4, ITEM5} from './data/items'
-import {LOGO} from './data/items'
+import {LOGO} from './data/logo'
+import {details, faq} from './data/content'
 
 import './app.scss'
 
 
-const Uploads = ({uploads, actions}) => {
+class Uploads extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			isShow:true,
+		};
+	}
+
+	toggleShow() {
+		// return this.setState(state => ({isShow: !state.isShow}));
+		console.log("hello");
+	}
+	render() {
+	const{uploads, actions}= this.props;
+	console.log(this.state);
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 	const itemsArray = [ITEM1, ITEM2, ITEM3, ITEM4, ITEM5]
 
-	return <div className="grid">
-		<Nav className="nav" link1="About Space Camera" link2="Image Gallery" link3="FAQ"/>
+	return <div className="layout-two-container">
+		<Nav className="nav" link1="About Space Camera" link2="Image Gallery" link3="FAQ" onClick3={()=> {
+				this.setState(state => ({isShow: !state.isShow}))}
+			}/>
 		
 		<header className="box header">	
 			<Img className={LOGO.className} src={LOGO.src} alt={LOGO.alt} />
@@ -66,7 +84,8 @@ const Uploads = ({uploads, actions}) => {
 					</ul>
 				</div>
 				<article className="read">
-					<Writeup name="Imagery Details" className="blurb" content ="This is some really cool imagery collected by our patented Space Camera. Check out all the cool pics! And add your own with your own virtual Space Camera that you have already downloaded (hopefully!)"/>
+					{this.state.isShow ? <Writeup name={details.name}className={details.className} content= {details.content}/>: <Faq name={faq.name} className={faq.className} content1= {faq.content.one} content2= {faq.content.two} content3= {faq.content.three}/>}
+					
 				</article>
 			</div>
 			<div className="polaroid-grid second container">
@@ -76,6 +95,7 @@ const Uploads = ({uploads, actions}) => {
 			</div>
 		</div>
 	</div>
+	}
 }
 
 const statusPropType = PropTypes.shape({
