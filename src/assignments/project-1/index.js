@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
+import Banner from './banner'
 
 import './app.scss'
 
@@ -10,9 +11,12 @@ const Uploads = ({uploads, actions}) => {
 
 	return (
 		<React.Fragment>
-			<label className="uploader">Click Here To Upload More Photos
+			
+			<Banner className="banner" first={USER.name.firstName} last={USER.name.lastName} uname={USER.name.userName}/>
+			
+			<label className="uploader">{USER.name.username}: Click here to upload more photos.
 			{/* do not delete this uploader component */}
-			<Uploader className="uploader-input" upload={actions.upload} />
+			<Uploader className="uploader-file-input" upload={actions.upload} />
 			{/* do not delete this uploader component */}
 			</label>
 
@@ -43,6 +47,18 @@ const Uploads = ({uploads, actions}) => {
 		</React.Fragment>
 	)
 }
+
+const USER = {
+	name: {
+		firstName: 'Dave',
+		lastName: 'Morgan',
+		userName: 'dmorg'
+	},
+	about: ["opportunisitc photographer", "terminal cynic", "occasional cyclist", "inveterate nomad", "unrepentant geek", "lifetime learner", "long time rock-climber"]	
+};
+
+
+
 
 const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,

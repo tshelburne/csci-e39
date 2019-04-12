@@ -38,6 +38,10 @@ body {
     font-family: Verdana, Geneva, sans-serif;
 }
 
+.banner {
+    color: red;
+}
+
 .uploader {
     // style the label like a button
     background: linear-gradient($primary-top, $primary-mid, $primary-bottom);
@@ -58,20 +62,25 @@ body {
         box-shadow: $box-shadow;
         text-decoration: underline;
         color: $light-text;
+        outline: 1px dotted #000;
+        outline: -webkit-focus-ring-color auto 5px;
+        border: 6px solid green;
     }
 
     // focus doesn't fire on Firefox
-    &:focus {
-        background: linear-gradient(darken($primary-top, $darken-by), darken($primary-bottom, $darken-by));
-        box-shadow: $box-shadow;
-        text-decoration: underline;
-        color: $light-text;
-        outline: 1px dotted #000;
-        outline: -webkit-focus-ring-color auto 5px;
-    }
+    // &:focus {
+    //     background: linear-gradient(darken($primary-top, $darken-by), darken($primary-bottom, $darken-by));
+    //     box-shadow: $box-shadow;
+    //     text-decoration: underline;
+    //     color: $light-text;
+    //     outline: 1px dotted #000;
+    //     outline: -webkit-focus-ring-color auto 5px;
+    //     border: 6px solid green;
+    //     background: red;
+    // }
 }
 
-.uploader-input {
+.uploader-file-input {
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
@@ -79,9 +88,9 @@ body {
     position: absolute;
     z-index: -1;
 
-    &:focus+uploader {
-        border: 6px solid green;
-    }
+    // &:focus+uploader {
+    //     border: 6px solid green;
+    // }
 }
 
 // PROGRESS BAR
