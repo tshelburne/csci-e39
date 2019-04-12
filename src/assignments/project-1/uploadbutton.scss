@@ -1,0 +1,38 @@
+$primary-color: rgba(150, 143, 179, 1);
+$button-color: rgb(89, 150, 211);
+$button-font: "Verdana", sans-serif;
+$button-width: 7em;
+$button-font-color: #fff;
+$font-weight: 600;
+
+[type="file"] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+  display: none;
+}
+
+.uploader {
+  background: $button-color;
+  border-radius: 5px;
+  color: $button-font-color;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: $font-weight;
+  margin-bottom: 1rem;
+  outline: none;
+  padding: 1rem 50px;
+  // position: relative;
+  transition: all 0.3s;
+  vertical-align: middle;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+
+  &:hover {
+    background: darken(rgb(89, 150, 211), 10%);
+  }
+
+}
+
+
+/* <input multiple="" type="file"> */
