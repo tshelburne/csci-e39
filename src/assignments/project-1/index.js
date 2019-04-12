@@ -23,20 +23,13 @@ const Uploads = ({uploads, actions}) => {
 		<Uploader className="file-form" upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
+		{/* Display PendingFiles Header and List */}
 		<SectionHeader tag="h2" sectiontext="In Progress"/>
-		<ul className = "grid-container">
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
+		<Album isPendingFiles={true} photos={pendingFiles} updateFile={actions.files.updateFile}/>
 
-				return <li className = "card" key={id}>
-					<label className = "card-title">{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-
+		{/* Display CompletedFiles Header and List */}
 		<SectionHeader tag="h2" sectiontext="Completed"/>
-		<Album photos={completedFiles} updateFile={actions.files.updateFile}/>
+		<Album isPendingFiles={false} photos={completedFiles} updateFile={actions.files.updateFile}/>
 	</div>
 }
 
