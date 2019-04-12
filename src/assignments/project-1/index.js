@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
 import Greeting from './greeting'
+import PolaroidGrid from './polaroidgrid.js'
 
 import './app.scss'
 
@@ -15,17 +16,8 @@ const Uploads = ({uploads, actions}) => {
 
 		<Greeting name="Marissa" />
 			<h2>Upload as many photos as you like!</h2>
-		<div class="polaroid-grid">
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-
-				return <figure key={id} class="polaroid">
-					{!error && <img src={url} alt={name}/>}
-					{!!error && <p className="failure">{error}</p>}
-					<figcaption class="polaroid-caption">{name}</figcaption>
-				</figure>
-			})}
-		</div>
+		
+		<PolaroidGrid files={completedFiles} />
 		
 		<h1 class="header">Album Actions</h1>
 		<div class="actions">
