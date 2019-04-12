@@ -26,7 +26,7 @@ class Album extends React.Component {
                             const {id, name, url, description, error} = file
 
                             return <li key={id} className="image-card">
-                                {!error && <img src={url} style={{maxWidth: `200px`}}/>}
+                                {!error && <a href={url} target="one_image"><img src={url} style={{maxWidth: `200px`}}/> </a>}
                                 {!!error && <p className="failure">{error}</p>}
                                 <label>{name}</label>
                                 <p class="image-description">{description}</p>
