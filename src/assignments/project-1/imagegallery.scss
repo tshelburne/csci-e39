@@ -18,4 +18,14 @@ $font-weight: 600;
   padding: 10px;
 
   list-style-type:none;
+  border-radius: 20px;
+
+
+}
+
+@media screen
+and (max-width: 1024px) {
+  .imagegallery-container {
+    grid-template-columns: auto;
+  }
 }

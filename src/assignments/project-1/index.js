@@ -11,6 +11,7 @@ import './progressbar.css';
 import './uploadbutton.scss';
 import './imagegallery.scss';
 import './imagecard.scss';
+import './index.scss';
 
 const Uploads = ({uploads, actions}) => {
 
@@ -18,16 +19,16 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return (
-		<div>
-			<h1 >Upload Images Test</h1>
+		<div className="main-container">
+			<h1 className="main title">Album Uploader</h1>
 			{/* do not delete this uploader component */}
 			 <Uploader upload={actions.upload} />
 			{/* do not delete this uploader component */}
 
-			<h2>In Progress</h2>
+			<h2 className="inprogress title">In Progress</h2>
 			<PendingUpload uploaddata= {pendingFiles} />
 
-			<h2>Completed</h2>
+			<h2 className="inprogress title">Gallery</h2>
 			<div className="container-completed">
 				<ImageGallery images= {completedFiles} ></ImageGallery>
 			</div>
