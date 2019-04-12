@@ -4,6 +4,9 @@ $primary: #EC407A;
 $light-secondary: #efefef;;
 $dark-secondary: #90A4AE;
 
+$heading-font: 'Pacifico', cursive;
+$text-font: 'Open Sans', sans-serif;
+
 
 // Ignore the styles below unless you want to change them for fun
 
@@ -15,11 +18,11 @@ body {
 }
 
 h1, h2, h3, h4 {
-	font-family: 'Pacifico', cursive;
+	font-family: $heading-font
 }
 
-ul, ol {
-	font-family: 'Open Sans', sans-serif;
+ul, ol, p {
+	font-family: $text-font
 }
 
 // **** BUTTON
@@ -92,4 +95,17 @@ progress::-moz-progress-bar {
 img {
 	max-width:140px;
 	height: auto;
+}
+
+a {
+	font-family: $text-font;
+	color: black;
+}
+
+a:hover, a:focus {
+	font-weight: bold;
+	color: black;
+}
+a:visited {
+	color: black;
 }
