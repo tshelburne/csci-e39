@@ -22,33 +22,28 @@ const Uploads = ({uploads, actions}) => {
 			
 			<PolaroidGrid files={completedFiles} />
 			
-			<h1 class="header">Album Actions</h1>
+			<h1 class="header">Not enough {albumColor}? Add more.</h1>
 			<div class="actions-container">
 				<div class="group-actions">
 					{/* do not delete this uploader component */}
 					<Uploader upload={actions.upload} class="button"/>
 					{/* do not delete this uploader component */}
 
-					<h2>In Progress</h2>
-					<ul>
-						{pendingFiles.map(file => {
+					{pendingFiles.map(file => {
 							const {id, name, progress} = file
 
 							return <li key={id}>
 								<label>{name}</label>
 								<progress value={progress} max="100">{progress}%</progress>
 							</li>
-						})}
-					</ul>
+					})}
 				</div>
 				
-				<div class="group-actions">
-					<Completed completedFiles={completedFiles}/>
-				</div>
+				<Completed completedFiles={completedFiles}/>
 				
 			</div>
 
-			{/*<h2>In Progress</h2>
+			{/* <h2>In Progress</h2>
 			<progress value="20" max="100"></progress> {/* put it here for now, remove vars progress
 			<ul>
 				{pendingFiles.map(file => {
@@ -59,7 +54,7 @@ const Uploads = ({uploads, actions}) => {
 						<progress value={progress} max="100">{progress}%</progress>
 					</li>
 				})}
-			</ul>*/}	
+			</ul>*/}
 
 		</div>
 

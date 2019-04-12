@@ -17,11 +17,9 @@ class Completed extends React.Component {
     }
 
     render(){
-        //const completedFiles = this.props.completedFiles;
         return (
             <div class="group-actions">
-                <h2>Completed</h2>
-                <button class="button details" onClick={this.clicked}>{ this.state.buttonClicked ? 'Hide List' : 'Display List' }</button>
+                <button class="button" onClick={this.clicked}>{ this.state.buttonClicked ? 'Hide List' : 'Display Completed Uploads' }</button>
                 {this.state.buttonClicked && <List files={this.props.completedFiles} />}
             </div>
         )
