@@ -12,17 +12,17 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div class="wrapper">
-	  <header class="box header"> Header </header>
-		<nav class="box nav">
+	  <header class="header"> Header </header>
+		<nav class="nav">
 	  {/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
   	<Album/>
 		</nav>
-    <article class="box content">
+    <article class="content">
 			<ProgressBar inProgress={pendingFiles}/>
 			<PhotoGallery completedFiles={completedFiles}/>
 		</article>
-		<footer class="box footer"> Footer </footer>
+		<footer class="footer"> Footer </footer>
 	</div>
 }
 

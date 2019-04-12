@@ -21,6 +21,8 @@ class SaveAlbum extends React.Component {
 
 	 handleSubmit(e){
 	//	alert('Add to album submitted: ' + this.state.value);
+	  e.preventDefault();
+		var imageIds = this.props.imageIds;
 		this.props.action(this.state.value);
 	}
 

@@ -12,9 +12,12 @@ class Album extends React.Component {
 		this.state = {
 			createAlbum: false,
 			showAlbumId: -1,
-			albums:[]
+			albums:[],
+			//selectedIds: [],
+			albumsDict:{}
 		};
 		this.handleUpdate = this.handleUpdate.bind(this);
+		//this.updateSelectedIds = this.updateSelectedIds.bind(this);
 
 	}
 
@@ -29,31 +32,33 @@ class Album extends React.Component {
  	}
 
 	handleUpdate(albumToAdd){
-		 //e.preventDefault();
 		 var updatedAlbums = this.state.albums.concat(albumToAdd);
+		 var updatedDict = this.state.albumsDict
+		// var imageIdForAlbum = this.props.imageIds
 		 this.setState((state) =>{
 			 return{albums: updatedAlbums}
 		 });
-		 //this.setState({didChange: 2});
-		 // this.setState({albums: updatedAlbums}, () => {
-  	 // 	console.log(this.state.albums, updatedAlbums);
-			// });
-		 // this.setState({
-  	 // 		albums: [...this.state.albums, ...updatedAlbums]
-	 		// });
-		 //alert('addToAlbum called in parents: '+ albumToAdd);
-		 //console.log(this.state);
-		 //console.log(this.state.didChange);
+		// also set createAlbum to false
+    this.setState({createAlbum : !this.state.createAlbum});
 	}
 
+	// saveSelectedIds(selectedIds){
+  //    alert('update called');
+	// 	 this.setState({selectedIds: selectedIds});
+	//
+	// }
+
+
 	render() {
+		//const {imageIds, ...otherProps} = this.props
 		return (
 			<p>
 			<button class="album-button" onClick={this.handleButtonClick}> Create Album </button>
+
 			{this.state.createAlbum  && <SaveAlbum action={this.handleUpdate}/>}
 					<ul>
 					  {this.state.albums.map((name, i) =>
-							<li key={i}>{name}</li>)
+							<li key={i} onClick={this.handleLiClick.bind(this, i)} >{name}</li>)
 						}
 	 				</ul>
 			</p>

@@ -4,11 +4,12 @@
 // $margin: 10px;
 
 
-$primary-color: thistle;
+//$primary-color: thistle;
 $uploader-color: #61dafb;
 $font-family: calibri;
-$background-gallery:lighten(#8a7f80, 20%);
-$gallary-background: #c7e3ec;
+$primary-color:lighten(#8a7f80, 20%);
+$background-gallery: #c7e3ec;
+$uploader-inprogress-color: thistle;
 
 
 // *{
@@ -34,31 +35,37 @@ $gallary-background: #c7e3ec;
    grid-area: nav;
    display: flex;
    flex-flow: column;
+   border-right: solid 2px;
    //border-right: 20px inset;
  }
 
 .content {
    grid-area: content;
+   padding-bottom: 20px;
  }
 
  .header {
    grid-area: header;
+   border-bottom: solid 2px;
+   padding: 20px;
  }
 
  .footer {
    grid-area: footer;
+   border-top: solid 2px;
+   padding: 20px;
  }
 
 .wrapper{
   display: grid;
-  //width: 90%;
   max-width: 1024px;
   margin: 20px;
-  background-color: $gallary-background;
-  grid-gap: 5px;
+  background-color: $primary-color;
+  grid-gap: 1px;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto 1fr auto;
-  height: 100vh;
+  //grid-template-rows: auto 1fr auto;
+  //min-height: 50vh;
+  border: solid 1px;
   grid-template-areas: "header header header"
                        "nav content content"
                        "footer footer footer";
@@ -71,7 +78,7 @@ $gallary-background: #c7e3ec;
   .header,
   .nav,
   .footer {
-    background-color: $background-gallery;
+    background-color: $primary-color;
     //border: 1px solid;
 
   }
@@ -85,6 +92,9 @@ $gallary-background: #c7e3ec;
   padding: 2px;
   grid-auto-flow: dense;
   overflow: hidden;
+  height: 100%;
+  width: 100%;
+  background-color: $primary-color;
 }
 
 .grid-item-caption {
@@ -100,9 +110,10 @@ $gallary-background: #c7e3ec;
   img {
 		width: 100%;
       &:hover, &:active, &:focus{
-      transform: scale(1.5);
+      //transform: scale(1.5);
     }
 	}
+
 }
 
 // uploader list styling
@@ -112,13 +123,58 @@ ul, ol {
 	padding: 0;
 }
 
-li{ // grid items
+.grid-li{ // grid items
   display: flex;
   flex-flow: column;
   padding: 0;
   margin: 0;
 
+  cursor: pointer;
+  position: relative;
+  transition: 0.2s;
+
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+
+ }
+
+.grid-li.selected {
+    background-color: #D4AF37;
 }
+
+.grid-li.selected:after {
+    position: absolute;
+     content:  "\2713 ";
+    font-size:34px;
+    color:black;
+    top:50%;
+    margin-top:-17px; /* 50% of height */
+    left:50%;
+    margin-left: -17px; /* 50% of width */
+
+}
+//   .checked{
+//   background: #888;
+//   color: #fff;
+//  }
+//
+//  .checked::before {
+//   content: '';
+//   position: absolute;
+//   border-color: green;
+//   border-style: solid;
+//   border-width: 2px 2px 2px 2px;
+//   top: 10px;
+//   left: 16px;
+//   transform: rotate(45deg);
+//   height: 15px;
+//   width: 7px;
+// }
+
+//}
 
 // upload button
 input[type="file"] {
@@ -129,7 +185,7 @@ input[type="file"] {
 .uploader {
   padding: 5px;
 	margin: 0;
- 	background: $background-gallery;
+ 	background: $primary-color;
 	font-family: $font-family;
   font-size: 1rem;
   cursor: pointer;
@@ -139,7 +195,7 @@ input[type="file"] {
   //border-radius: 10px;
 
   &:hover, &:active, &:focus {
-    background: darken($primary-color, 40%);
+    background: darken($uploader-inprogress-color, 40%);
   }
   //margin-top: 10px;
   float: left;
@@ -150,7 +206,7 @@ input[type="file"] {
 }
 
 .album-button{
-background: $background-gallery;
+background: $primary-color;
 font-family: $font-family;
 color: black;
 //padding: 0.5rem;
@@ -211,7 +267,7 @@ progress::-webkit-progress-value { background: blue; }
 
 .modal-content {
   margin: auto;
-  background-color: $gallary-background;
+  background-color: $primary-color;
   border-radius: 5px;
   padding: 20px;
 }
