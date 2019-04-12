@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
 
 import './app.scss'
-
+//import exif from 'exif-js'; //tried to use image parser as the bonus, couldnt do it on local files?
 
 
 class ClickableImage extends React.Component {
@@ -16,9 +16,17 @@ class ClickableImage extends React.Component {
 
   handleClick() {
     console.log('handling click');
+    /* attempted to use exif-js parse to find image metadata. unfortunately it didn't work. I think with local files...
+    // var img2 = document.getElementById("1");
+    // debugger;
+    // exif.getData(img2, function() {
+    //     var allMetaData = exif.getAllTags(this);
+    //     console.log('metadata', allMetaData);     
+    // });
+    */
     this.setState(state => ({
       zoomed: !state.zoomed
-    }));
+    }))
   }
 
   render() {
@@ -26,22 +34,27 @@ class ClickableImage extends React.Component {
     console.log('this.state', this.state);
     return (
       <img 
+        id={this.props.id}
+        className={'gallery-image'}
         src={this.props.url} 
-        alt={this.props.name} 
-        style={{maxWidth: this.state.zoomed ? '500px' : this.props.maxWidth }} 
+        alt={this.props.name}         
         onClick={this.handleClick}
       />
     );
   }
 }
 
+const PendingImage = ({ progress, name }) => (
+  <div className="pendingImage">
+    <progress value={progress} max="100">{progress}%</progress>  
+  </div>
+);
 
 
-
-const GalleryImage = ({ name, error, url, maxWidth = '200px'}) => (
+const GalleryImage = ({ progress, name, error, url, maxWidth = '200px', id}) => (
   <>
-    <label>{name}</label>
-    {!error && <ClickableImage name={name} url={url} maxWidth={maxWidth} />}
+    {!error && !url && progress && <PendingImage name={name} progress={progress} /> }
+    {!error && url && <ClickableImage name={name} url={url} maxWidth={maxWidth} id={id} />}
     {!!error && <p className="failure">{error}</p>}
   </>
 );
@@ -50,36 +63,26 @@ const GalleryImage = ({ name, error, url, maxWidth = '200px'}) => (
 
 
 const Uploads = ({uploads, actions}) => {
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
-
-	return <div>
-		<h1>Upload Images</h1>
+  const allFiles = uploads.files;
+	return <div className="wrapper">
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
 
-		<h2>In Progress</h2>
-		<ul>
-			{pendingFiles.map(file => {
-				const {id, name, progress} = file
-
-				return <li key={id}>
-					<label>{name}</label>
-					<progress value={progress} max="100">{progress}%</progress>
-				</li>
-			})}
-		</ul>
-
-		<h2>Completed</h2>
-		<ul>
-			{completedFiles.map(file => {
-				const {id, name, url, error} = file
-				return <li key={id}>
-          <GalleryImage name={name} url={url} error={error}/>
-				</li>
-			})}
-		</ul>
+    <div id="gallery-grid">
+      <header>
+        <h1>Matthew Kim</h1>
+        <h2>{allFiles.length} Photos</h2>
+        <p>Welcome to my photo album! I tried to make it similar to instagram. Clicking upload will placeholder boxes and refresh the image when upload is complete. Try uploading multiple photos! Enjoy!</p>
+        
+      </header>
+      <div class="galleryList">
+        {allFiles.map(file => {
+          const {id, name, url, error, progress} = file
+          return <GalleryImage name={name} url={url} error={error} id={id} progress={progress}/>
+        })}
+      </div>    
+    </div>
 	</div>
 }
 
