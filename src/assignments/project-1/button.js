@@ -6,6 +6,6 @@ return <Text> display: flex; </Text>;
 
 };
 
-ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<Button/>, document.getElementById('button'));
 
 	export default Button

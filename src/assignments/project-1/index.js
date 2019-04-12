@@ -5,20 +5,25 @@ import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
 import Greeting from './greeting' 
 
+/* import Photogrid from './photgrid 
+	import Clock from 'clock'
+	import Listitems from './fancylist'
 
-/* import Photogrid from './photgrid */
+*/
 
 import './app.scss'
 
 
 /*
+
+<h2> Top Ten Places to Visit in the World</div> 
+
+Return <div>
+<div className="list Countainer ListItmes" id="list"></div>;
  
 return React.createElement('div', {id: 'photogrid'},</>
 
-*/
-
-
-		/* return<div>
+/* return < Button id=button >
 		<button onClick={this.clicked}>#Muscles<button>
 		onPress={() => console.log('Pressed!')}
 		<div/>;

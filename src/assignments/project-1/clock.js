@@ -1,5 +1,5 @@
 
-
+import React from 'react'
 
 
 class Clock extends React.Component {
@@ -11,3 +11,18 @@ class Clock extends React.Component {
    
 
     );
+  }
+}
+
+function tick() {
+  ReactDOM.render(
+    <Clock date={new Date()} />,
+    document.getElementById('clock')
+  );
+}
+
+setInterval(tick, 1000);
+
+
+
+export default Clock

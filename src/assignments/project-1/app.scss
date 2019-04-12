@@ -1,8 +1,9 @@
 $primary-color: rgba(150, 143, 179, 1);
 
+$font: 'Permanent Marker', sans-serif;
+
 $input-color: hotpink;
 
-// Style your components here
 button {
 	display: inline-block;
 	position: relative;
@@ -85,8 +86,6 @@ progress[value]::-webkit-progress-bar {
 	color: $input-color;
 }
 
-// Ignore the styles below unless you want to change them for fun
-
 body {
 	background: crimson;
 	padding: 30px;
@@ -98,27 +97,16 @@ body {
 	min-height: 100vh;
 }
 
-.example-container {
-	background: hsla(0, 0, 100%, 0.8);
-	margin-top: 7vh;
-	padding: 5vh 2vh;
-	box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
-	text-align: center;
-}
 
 .header {
 	margin-top: 0;
 	font-family: "Permanent Marker", sans-serif;
 }
 
-$primary-color1: #fff0f5;
+$fun-color1: #fff0f5;
 $primary-accent: #003366;
 $primary-row-gap: 15px;
 
-body {
-	background-color: $primary-color1;
-	font-family: "Delius", sans-serif;
-}
 
 h1,
 h2 {
@@ -127,7 +115,7 @@ h2 {
 }
 
 h1 {
-	border-bottom: 1px solid $primary-color1;
+	border-bottom: 1px solid $fun-color1;
 	padding: 10px;
 }
 
@@ -137,30 +125,9 @@ h1 {
 	padding: 20px 30px;
 	margin-top: 50px;
 	border-radius: 30px 0 /30px 60px;
-	box-shadow: 0px 1px 2px 1px darken($primary-color1, 7);
+	box-shadow: 0px 1px 2px 1px darken($fun-color1, 7);
 }
 
-.polaroid-grid {
-	margin-bottom: 50px;
-	margin-right: 50px;
-	margin-left: 50px;
-
-	@supports (display: grid) {
-		display: grid;
-		grid-template-columns: 3fr 2fr 1fr;
-		grid-row-gap: $primary-row-gap;
-		grid-column-gap: 10px;
-	}
-}
-.polaroid-grid2 {
-	margin-bottom: 50px;
-	@supports (display: grid) {
-		display: grid;
-		grid-template-columns: 0.7fr 7fr.5fr 3fr;
-		grid-row-gap: $primary-row-gap;
-		grid-column-gap: 18px;
-	}
-}
 
 .polaroid-grid3 {
 	margin-bottom: 50px;
@@ -208,4 +175,59 @@ h1 {
 		width: 100%;
 	}
 }
+
+
+$List-color: papayawhip;
+$List-accent: lightseagreen;
+
+.listcontainer {
+  max-width: 600px;
+  margin: auto;
+  background: white;
+  padding: 20px 30px;
+  margin-top: 50px;
+  border-radius: 30px 0 /30px 60px;
+  box-shadow: 0px 1px 2px 1px darken($List-color, 7);
+}
+
+
+
+
+.ListItmens{
+ li:nth-child(1n) {
+    padding: 13px;
+  }
+
+ li:last-child {
+    padding: 0px;
+  }
+
+   li:nth-child(even) {
+    background-color: $List-color;
+  }
+
+ li:nth-child(3n) {
+    list-style: square;
+  }
+
+ li:nth-child(0n+5) {
+    color: orange;
+  }
+ li:nth-child(0n+1) {
+    color: $List-accent;
+  }
+
+li:nth-child(6):hover + li {
+    color:white;
+    background-color:$List-accent;
+  
+  }
+  
+ li:nth-child(2n+1) {
+  
+  &:hover{
+    color:white;
+    background-color:$List-accent;
+      } }
+
 
