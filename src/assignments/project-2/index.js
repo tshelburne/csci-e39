@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
+import Member from '../../ui/components/member'
 
 import './app.scss'
 
@@ -53,13 +54,7 @@ class Chat extends React.Component {
 
 		return <div>
 			<h1>Chatroom</h1>
-
-			<h2>Members</h2>
-			<ul>
-				{classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
-				)}
-			</ul>
+			<Member classroom={classroom}/>
 
 			<h2>Messages</h2>
 			<ul>
