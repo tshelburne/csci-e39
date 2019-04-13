@@ -51,29 +51,35 @@ class Chat extends React.Component {
 		const {classroom, chat, actions} = this.props
 		const {currentText} = this.state
 
-		return <div>
-			<h1>Chatroom</h1>
+		return <div className='chat-grid'>
+			<h1 className='chat-header'>Chatroom</h1>
 
-			<h2>Members</h2>
-			<ul>
-				{classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
-				)}
-			</ul>
+			<section className='chat-members'>
+				<h2>Members</h2>
+				<ul>
+					{classroom.students.map(({id, name}) =>
+						<li key={id}><span>{name}</span></li>
+					)}
+				</ul>
+			</section>
 
-			<h2>Messages</h2>
-			<ul>
-				{chat.messages.map(({id, student, text, createdAt}) =>
-					<li key={id}>
-						<label>{student.name} at {createdAt.toISOString()}</label>
-						<p>{text}</p>
-					</li>
-				)}
-			</ul>
+			<section className='chat-messages'>
+				<h2>Messages</h2>
+				<ul>
+					{chat.messages.map(({id, student, text, createdAt}) =>
+						<li key={id}>
+							<label>{student.name} at {createdAt.toISOString()}</label>
+							<p>{text}</p>
+						</li>
+					)}
+				</ul>
+			</section>
 
-			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-			<p>{this.getTypingMessage()}</p>
+			<section className='chat-input'>
+				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
+				<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
+				<p>{this.getTypingMessage()}</p>
+			</section>
 		</div>
 	}
 

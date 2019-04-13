@@ -1,0 +1,27 @@
+.chat-grid {
+    display: grid;
+    grid-template-areas:
+        'title title'
+        'members messages'
+        'members input';
+    grid-template-columns: 2fr 8fr;
+    grid-template-rows: 50px 80vh 1fr;
+    grid-gap: 10px;
+
+    .chat-header {
+        grid-area: title;
+    }
+
+    .chat-messages {
+        grid-area: messages;
+        overflow: scroll;
+    }
+
+    .chat-members {
+        grid-area: members;
+    }
+
+    .chat-input {
+        grid-area: input;
+    }
+}
