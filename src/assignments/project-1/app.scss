@@ -230,4 +230,172 @@ li:nth-child(6):hover + li {
     background-color:$List-accent;
       } }
 
+ <!-- app.js -->
 
+
+ * {
+  box-sizing: border-box;
+}
+
+
+body {
+  margin: 0;
+}
+
+
+.navbar {
+  display: flex;
+  background-color: #333;
+}
+
+div.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+
+.navbar a {
+  color: white;
+  padding: 14px 20px;
+  text-decoration: none;
+  text-align: center;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+  background-color: #CBBBC9;
+  color: black;
+}
+
+
+.header {
+  padding: 50px;
+  text-align: center;
+  color: white;
+}
+ 
+
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://www.fillmurray.com/300/200");
+  height: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 10px;
+  
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row {  
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.side {
+  flex: 70%;
+  background-color: #ffefd5;
+  padding: 20px;
+}
+
+.main {
+  flex: 30%;
+  background-color: #CBBBC9;
+  padding: 20px;
+}
+
+.padding{
+  padding: 15px;
+  align-content: center;
+}
+
+.aligncenter{
+  text-align: center;
+}
+
+.raleway{
+  font-family: 'Raleway', sans-serif;
+}
+
+img {
+  background-color: #aaa;
+  width: 80%;
+  padding: 20px;
+  justify-content: center;
+}
+
+
+.button {
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.ad1{
+
+ background-color:#aaa;
+}
+
+.ad2{
+
+background-color:#bbb;
+}
+
+.ad3{
+
+  background-color:#ccc;
+}
+
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: #ddd;
+}
+
+@media screen and (max-width: 700px) {
+  .row, .navbar {   
+    flex-direction: column;
+  }
+
+  @media screen and (max-width: 700px) {
+    .column 
+  {
+    width: auto;
+  }
+
+  @media screen and (max-width: 768px) {
+     .hero-image{
+    background-image: url("https://www.placecage.com/140/100");
+    }
+    
+  }
+  
+}

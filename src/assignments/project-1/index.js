@@ -8,6 +8,7 @@ import Greeting from './greeting'
 /* import Photogrid from './photgrid 
 	import Clock from 'clock'
 	import Listitems from './fancylist'
+	import App from app.js
 
 */
 
