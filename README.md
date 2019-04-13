@@ -30,7 +30,10 @@ To see all tasks, see the package.json file, under "scripts".
 ### Development
 
 1. `npm run clean` resets the directory to a fresh installation
-1. Open the src/ui/app.jsx.js file and update the path to the correct assignment module
+1. Open the src/ui/app.js file and update the path to the correct assignment module
+
+    For example, to enable Project 1, change `import Module from '../assignments/module-0'` to
+    `import Module from '../assignments/project-1'`
 
 ### DevOps
 
