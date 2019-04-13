@@ -5,6 +5,7 @@ import Input from './components/input'
 
 import './app.scss'
 import Members from './components/members';
+import Messages from './components/messages';
 
 class Chat extends React.Component {
 
@@ -56,17 +57,9 @@ class Chat extends React.Component {
 		return <div className="chatApp">
 			<h1 className="header">Chatroom</h1>
 
-      		<Members classroom={classroom}></Members>
+      <Members classroom={classroom}></Members>
 
-			<h2>Messages</h2>
-			<ul>
-				{chat.messages.map(({id, student, text, createdAt}) =>
-					<li key={id}>
-						<label>{student.name} at {createdAt.toISOString()}</label>
-						<p>{text}</p>
-					</li>
-				)}
-			</ul>
+      <Messages chat={chat} />
 
 			<Input value={currentText} onType={this.onType} onSend={this.onSend} />
 			<p>{this.getTypingMessage()}</p>

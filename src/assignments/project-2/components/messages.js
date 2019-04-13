@@ -13,7 +13,7 @@ export default class Messages extends React.Component {
 	// }
 
   render() {
-    const { items } = this.props;
+    const { chat } = this.props;
     // console.log(items);
 
     return (
