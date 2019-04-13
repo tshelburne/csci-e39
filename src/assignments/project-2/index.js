@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
+import Input from './components/input'
 
 import './app.scss'
 
@@ -51,7 +52,7 @@ class Chat extends React.Component {
 		const {classroom, chat, actions} = this.props
 		const {currentText} = this.state
 
-		return <div>
+		return <div className="chatApp">
 			<h1>Chatroom</h1>
 
 			<h2>Members</h2>
@@ -71,8 +72,7 @@ class Chat extends React.Component {
 				)}
 			</ul>
 
-			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
+			<Input value={currentText} onType={this.onType} onSend={this.onSend} />
 			<p>{this.getTypingMessage()}</p>
 		</div>
 	}
