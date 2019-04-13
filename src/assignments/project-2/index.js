@@ -1,6 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
+import Members from './components/Members'
+import Messages from './components/Messages'
+import Form from './components/Form'
+
 
 import './app.scss'
 
@@ -54,14 +58,7 @@ class Chat extends React.Component {
 		return <div className='chat-grid'>
 			<h1 className='chat-header'>Chatroom</h1>
 
-			<section className='chat-members'>
-				<h2>Members</h2>
-				<ul>
-					{classroom.students.map(({id, name}) =>
-						<li key={id}><span>{name}</span></li>
-					)}
-				</ul>
-			</section>
+		<Members students={classroom.students} /> 
 
 			<section className='chat-messages'>
 				<h2>Messages</h2>
