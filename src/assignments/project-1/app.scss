@@ -25,6 +25,18 @@ $paragraph-text-color: darken($file-input-button-color, 40%);
 $header-text-color: darken($file-input-button-color, 60%);
 $header-font-size: 28px;
 
+$faq_question-font-size-large: 24px;
+$faq_question-font-size-small: 16 px;
+$faq_answer-font-size-large: 24px;
+$faq_answer-font-size-small: 16px;
+
+$faq_question-font-color-1: crimson;
+$faq_question-font-color-2: darken($faq_question-font-color-1, 30%);
+$faq_answer-font-color-1: darken($file-input-button-color, 40%);
+$faq_answer-font-color-2: darken($faq_answer-font-color-1, 30%);
+
+$faq_answer-margin-bottom: 15px;
+
 $card-border-radius: 5px;
 $card-padding: 10px;
 
@@ -194,6 +206,36 @@ body {
 .paragraph_text {
   font-family: $default-font-family;
   color: $paragraph-text-color;
+}
+
+.faq_question1 {
+  font-family: $default-font-family;
+  font-size: $faq_question-font-size-large;
+  color: $faq_question-font-color-1;
+  text-align: center;
+}
+
+.faq_answer1 {
+  font-family: $default-font-family;
+  font-size: $faq_answer-font-size-small;
+  color: $faq_answer-font-color-1;
+  text-align: center;
+  margin-bottom: $faq_answer-margin-bottom;
+}
+
+.faq_question2 {
+  font-family: $default-font-family;
+  font-size: $faq_question-font-size-large;
+  color: $faq_question-font-color-2;
+  text-align: center;
+}
+
+.faq_answer2 {
+  font-family: $default-font-family;
+  font-size: $faq_answer-font-size-small;
+  color: $faq_answer-font-color-2;
+  text-align: center;
+  margin-bottom: $faq_answer-margin-bottom;
 }
 
 .form-input {
