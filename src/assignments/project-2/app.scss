@@ -32,5 +32,31 @@ ul{
   li:nth-of-type(2n) {
     background-color: $li_alt_color;
   }
+}
 
+.container {
+    display: grid;
+	grid-template-columns: 0.2fr 1fr;
+    grid-template-rows: 0.3fr 1fr 0.2fr;
+    grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "footer footer";
+    border: black;
+}
+
+header {
+    grid-area: header;
+}
+
+nav {
+    grid-area: sidebar;
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    grid-area: footer;
 }

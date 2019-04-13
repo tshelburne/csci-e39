@@ -52,23 +52,39 @@ class Chat extends React.Component {
 		const {classroom, chat, actions} = this.props
 		const {currentText} = this.state
 
-		return <div>
-			<h1>Chatroom</h1>
-			<Member classroom={classroom}/>
-
-			<h2>Messages</h2>
-			<ul>
-				{chat.messages.map(({id, student, text, createdAt}) =>
-					<li key={id}>
-						<label>{student.name} at {createdAt.toISOString()}</label>
-						<p>{text}</p>
-					</li>
-				)}
-			</ul>
-
-			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-			<p>{this.getTypingMessage()}</p>
+		return <div class="container">
+			<header>
+				<h1>Chatroom</h1>
+				<Member classroom={classroom}/>
+			</header>
+			
+			<nav>
+				<h2>Members</h2>
+				<ul>
+					{classroom.students.map(({id, name}) =>
+						<li key={id}><span>{name}</span></li>
+					)}
+				</ul>
+			</nav>
+			
+			<main>
+				<h2>Messages</h2>
+				<ul>
+					{chat.messages.map(({id, student, text, createdAt}) =>
+						<li key={id}>
+							<label>{student.name} at {createdAt.toISOString()}</label>
+							<p>{text}</p>
+						</li>
+					)}
+				</ul>
+			</main>
+			
+			<footer>
+				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
+				<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
+				<p>{this.getTypingMessage()}</p>
+			</footer>
+			
 		</div>
 	}
 
