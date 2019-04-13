@@ -6,21 +6,24 @@ import Banner from './banner'
 import './app.scss'
 
 const Uploads = ({uploads, actions}) => {
+	
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
+	console.log('is array? ' + Array.isArray(completedFiles)); 
 
 	return (
 		<React.Fragment>
 			
 			<Banner className="banner" first={USER.name.firstName} last={USER.name.lastName} uname={USER.name.userName}/>
 			
-			<label className="uploader">{USER.name.username}: Click here to upload more photos.
+			<label className="uploader">{USER.name.userName}: Click here to upload more photos.
 			{/* do not delete this uploader component */}
 			<Uploader className="uploader-file-input" upload={actions.upload} />
 			{/* do not delete this uploader component */}
 			</label>
 
-			<h2>In Progress</h2>
+			{pendingFiles && <h2>In Progress</h2>}
+			
 			<ul>
 				{pendingFiles.map(file => {
 					const {id, name, progress} = file
@@ -32,7 +35,8 @@ const Uploads = ({uploads, actions}) => {
 				})}
 			</ul>
 
-			<h2>Completed</h2>
+			{completedFiles && <h2>Completed</h2>}
+
 			<ul>
 				{completedFiles.map(file => {
 					const {id, name, url, error} = file
