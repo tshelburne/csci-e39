@@ -55,17 +55,11 @@ class Chat extends React.Component {
 		return <div class="container">
 			<header>
 				<h1>Chatroom</h1>
-				<Member classroom={classroom}/>
 			</header>
-			
-			<nav>
-				<h2>Members</h2>
-				<ul>
-					{classroom.students.map(({id, name}) =>
-						<li key={id}><span>{name}</span></li>
-					)}
-				</ul>
-			</nav>
+
+			{/*<div id='body-container'>*/}
+
+			<Member classroom={classroom}/>
 			
 			<main>
 				<h2>Messages</h2>
@@ -78,6 +72,7 @@ class Chat extends React.Component {
 					)}
 				</ul>
 			</main>
+			{/*</div>*/}
 			
 			<footer>
 				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />

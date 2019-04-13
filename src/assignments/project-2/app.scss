@@ -1,7 +1,37 @@
 $background-color: #8addea;
 $primary-gray: #edf1f2;
 $white: #fcfcfc;
+$header-font: 'Pacifico', cursive;
+$body-font: 'Montserrat', sans-serif;
 $li_alt_color : darken($primary-gray, 10);
+
+body {
+  background: linear-gradient(
+                  130deg,
+                  $primary-gray,
+                  $background-color
+  );
+  max-height: 100vh;
+}
+
+#message-container {
+  background-color: $primary-gray;
+}
+
+#member-list {
+  background-color: $white;
+}
+
+#member-list > ul > li {
+  background-color: $white;
+  border: solid 1px $primary-gray;
+  font-family: $body-font;
+  font-size: 20px;
+}
+
+#member-list > ul > li:hover {
+  background-color: $background-color;
+}
 
 // box size reset
 
@@ -42,7 +72,7 @@ ul{
 .container {
     display: grid;
 	grid-template-columns: 0.2fr 1fr;
-    grid-template-rows: 0.3fr 1fr 0.2fr;
+    grid-template-rows: 100px 1fr 50px;
     grid-template-areas: 
         "header header"
         "sidebar main"
@@ -59,14 +89,23 @@ header {
 
 nav {
     grid-area: sidebar;
+  overflow-y: scroll;
 }
 
 main {
     grid-area: main;
+  overflow-y: scroll;
 }
 
 footer {
     grid-area: footer;
+}
+
+//#body-container {
+//  max-height:80vh;
+//  overflow-y: auto;
+//}
+
     background-color: $background-color;
 	color: $primary-gray;
 	text-align: center;
