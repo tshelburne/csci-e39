@@ -63,12 +63,7 @@ class Chat extends React.Component {
 			<section className='chat-messages'>
 				<h2>Messages</h2>
 				<ul>
-					{chat.messages.map(({id, student, text, createdAt}) =>
-						<li key={id}>
-							<label>{student.name} at {createdAt.toISOString()}</label>
-							<p>{text}</p>
-						</li>
-					)}
+					<Messages message={chat.messages} /> 
 				</ul>
 			</section>
 
