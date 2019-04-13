@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
 import Greeting from './greeting'
-import Faq from './faq'
+import Project from './project'
+import Btn from './btn'
 
 import './app.scss'
 
@@ -17,12 +18,10 @@ const Uploads = ({uploads, actions}) => {
 
 
 
-
 	return <div>
 
 		<React.Fragment>
-			<Faq  />
-
+			<Project number="1" application="Upload Images App"/>
 		</React.Fragment>
 
 		<React.Fragment>
@@ -33,8 +32,10 @@ const Uploads = ({uploads, actions}) => {
 
 
 		<div className="example-container">
-			<h2>Button</h2>
-			<button className="button">Add more</button>
+
+
+		<h2>Button</h2>
+			<Btn />
 		</div>
 
 
