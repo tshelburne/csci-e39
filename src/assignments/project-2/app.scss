@@ -15,11 +15,16 @@ footer,header,hgroup,menu,nav,section {
 
 
 // starting styles
+html {
+	font-size: 16px;
+}
 
 body {
   background: $background-color;
   font-family: "Arial", sans-serif;
   color: #060606;
+  border: 0;
+  margin: 0;
 }
 
 ul{
@@ -47,6 +52,9 @@ ul{
 
 header {
     grid-area: header;
+    background-color: $background-color;
+	color: $primary-gray;
+	text-align: center;
 }
 
 nav {
@@ -59,4 +67,7 @@ main {
 
 footer {
     grid-area: footer;
+    background-color: $background-color;
+	color: $primary-gray;
+	text-align: center;
 }
