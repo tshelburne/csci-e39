@@ -42,23 +42,9 @@ const Uploads = ({uploads, actions}) => {
 				<Completed completedFiles={completedFiles}/>
 				
 			</div>
-
-			{/* <h2>In Progress</h2>
-			<progress value="20" max="100"></progress> {/* put it here for now, remove vars progress
-			<ul>
-				{pendingFiles.map(file => {
-					const {id, name, progress} = file
-
-					return <li key={id}>
-						<label>{name}</label>
-						<progress value={progress} max="100">{progress}%</progress>
-					</li>
-				})}
-			</ul>*/}
-
 		</div>
 
-		<Footer color={albumColor} />
+		<Footer />
 	</body>
 }
 

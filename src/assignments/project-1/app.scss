@@ -89,6 +89,7 @@ h1 {
 	color: $primary-color;
 	outline: none;
 	box-shadow: 2px 2px 10px 0 darken($primary-color, 11);
+	margin-bottom: 10px;
 }
 .button:hover {
 	background-color: $hover-color;
@@ -163,5 +164,11 @@ footer {
 	a {
 		color: white;
 		text-decoration: none;
+	}
+}
+
+@media (max-width:750px) {
+	.actions-container {
+		flex-direction: column;
 	}
 }

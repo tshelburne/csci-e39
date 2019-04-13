@@ -1,7 +1,6 @@
 import React from 'react'
 
-const Footer = ({color}) => {
-    // Couldn't figure out how to create a component without passing in a prop, so I have a useless prop here.
+const Footer = () => {
     return <footer class="album-container">
         <ul>
             <li>
