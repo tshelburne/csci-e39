@@ -3,6 +3,7 @@ $primary-gray: #edf1f2;
 $white: #fcfcfc;
 $header-font: 'Pacifico', cursive;
 $body-font: 'Montserrat', sans-serif;
+$li_alt_color : darken($primary-gray, 10);
 
 body {
   background: linear-gradient(
@@ -31,8 +32,60 @@ body {
   background-color: $background-color;
 }
 
+// box size reset
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+  display:block;
+}
 
 
+// starting styles
 
+body {
+  background: $background-color;
+  font-family: "Arial", sans-serif;
+  color: #060606;
+}
 
+ul{
 
+  list-style: none;
+
+  li {padding:5px
+  }
+
+  li:nth-of-type(2n) {
+    background-color: $li_alt_color;
+  }
+}
+
+.container {
+    display: grid;
+	grid-template-columns: 0.2fr 1fr;
+    grid-template-rows: 0.3fr 1fr 0.2fr;
+    grid-template-areas: 
+        "header header"
+        "sidebar main"
+        "footer footer";
+    border: black;
+}
+
+header {
+    grid-area: header;
+}
+
+nav {
+    grid-area: sidebar;
+}
+
+main {
+    grid-area: main;
+}
+
+footer {
+    grid-area: footer;
+}
