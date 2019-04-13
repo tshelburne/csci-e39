@@ -4,7 +4,8 @@ import Uploader from '../../ui/components/uploader'
 
 import ImageGallery from './imagegallery.js'
 import PendingUpload from './pendingupload.js'
-
+import MyContent from './content.js'
+import Modal from './imagemodal';
 
 import './app.scss'
 import './pendingupload.scss';
@@ -12,6 +13,7 @@ import './uploadbutton.scss';
 import './imagegallery.scss';
 import './imagecard.scss';
 import './index.scss';
+import './content.scss';
 
 const Uploads = ({uploads, actions}) => {
 
@@ -30,7 +32,9 @@ const Uploads = ({uploads, actions}) => {
 			<h2 className="inprogress title">In Progress</h2>
 			<PendingUpload uploaddata= {pendingFiles} />
 
-			<h2 className="inprogress title">Gallery</h2>
+			<MyContent />
+
+			<h2 className="completed title">Gallery</h2>
 			<div className="container-completed">
 				<ImageGallery images= {completedFiles} ></ImageGallery>
 			</div>
