@@ -1,27 +1,19 @@
-.chat-grid {
-    display: grid;
-    grid-template-areas:
-        'title title'
-        'members messages'
-        'members input';
-    grid-template-columns: 2fr 8fr;
-    grid-template-rows: 50px 80vh 1fr;
-    grid-gap: 10px;
+@import 'styles/grid';
 
-    .chat-header {
-        grid-area: title;
-    }
+*, *::before, *::after {
+    box-sizing: border-box;
+}
 
-    .chat-messages {
-        grid-area: messages;
-        overflow: scroll;
-    }
+body {
+    @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy%7CRoboto');
+    font-family: Roboto, sans-serif;
+    background: repeating-linear-gradient(to bottom right,
+        AliceBlue 3%,
+        lightblue 7%,
+        blue 10%
+    );
 
-    .chat-members {
-        grid-area: members;
-    }
-
-    .chat-input {
-        grid-area: input;
+    h1 {
+        font-family: Luckiest Guy, cursive;
     }
 }
