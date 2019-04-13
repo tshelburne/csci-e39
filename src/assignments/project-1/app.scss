@@ -341,6 +341,10 @@ body {
   margin: 0 auto;
   border: none;
   border-radius: $update_submit_border_radius;
+
+  &:hover {
+      background: darken($file-input-button-color, 10%);
+  }
 }
 
 .example-container {
