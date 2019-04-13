@@ -7,9 +7,15 @@ import './app.scss'
 
 const Uploads = ({uploads, actions}) => {
 	
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
+	// const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
+	const pendingFiles = uploads.files.filter(isPending)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 	console.log('is array? ' + Array.isArray(completedFiles)); 
+
+	// all the following are equivalent
+	// function isPending(file) { return file.progress && file.progress < 100 }
+	// const isPending = (file) => file.progress && file.progress < 100
+	// const isPending = (file) => { return file.progress && file.progress < 100 }
 
 	return (
 		<React.Fragment>
