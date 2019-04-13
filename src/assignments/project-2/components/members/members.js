@@ -1,7 +1,7 @@
-import React from 'react'
-import List from './list'
+import React, { Component } from 'react'
+import List from '../list/list'
 
-class Members extends React.Component {
+export default class Members extends Component {
 
   constructor(props) {
     super(props);   
@@ -20,9 +20,3 @@ class Members extends React.Component {
     );
   }
 }
-
-
-//usage will be
-//<Members classroom={classroom} />
-
-export default Members

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uuid } from '../../../util/functions';
+import { uuid } from '../../../../util/functions';
 import './list.scss';
 
 const List = (props) => {

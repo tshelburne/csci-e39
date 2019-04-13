@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-class Member extends React.Component {
+export default class Member extends Component {
 
   constructor(props) {
     super(props);   
@@ -14,5 +14,3 @@ class Member extends React.Component {
     );
   }
 }
-
-export default Member

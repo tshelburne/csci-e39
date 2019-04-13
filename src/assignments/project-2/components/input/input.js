@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-class Input extends React.Component {
+export default class Input extends Component {
 
 	constructor(props) {
 		super(props);
@@ -16,5 +16,3 @@ class Input extends React.Component {
 		);
 	}
 }
-
-export default Input

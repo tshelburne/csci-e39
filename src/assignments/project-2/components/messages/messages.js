@@ -1,20 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-
-
-export default class Messages extends React.Component {
+export default class Messages extends Component {
 	constructor(props) {
 		super(props);
 	}
-	
-	// this.state = {
-
-	// }
 
   render() {
     const { chat } = this.props;
-    // console.log(items);
 
     return (
       <article className={'messages'}>
@@ -35,7 +28,7 @@ export default class Messages extends React.Component {
 const studentPropType = PropTypes.shape({
 	id: PropTypes.number.isRequired,
 	name: PropTypes.string.isRequired,
-})
+});
 
 Messages.propTypes = {
 	chat: PropTypes.shape({
@@ -45,5 +38,5 @@ Messages.propTypes = {
 			student: studentPropType,
 			createdAt: PropTypes.instanceOf(Date).isRequired,
 		})).isRequired
-	}),
+	})
 }

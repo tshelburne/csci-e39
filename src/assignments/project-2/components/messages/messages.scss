@@ -1,11 +1,20 @@
-@import "../global-styles";
+@import "../../global-styles";
 
-.members {
+.messages {
     display: grid;
-    grid-template-rows: 50px 1fr;
+    grid-template-rows: 50px 1fr 50px;
     grid-template-areas: 
     'header'    
-    'members-list';
+    'history'
+    'input';
+}
+
+.history {
+    grid-area: history;
+}
+
+.input {
+    grid-area: input;
 }
 
 h2 {
@@ -14,8 +23,4 @@ h2 {
     font-weight: 300;
     font-size: 1.25rem;
     color: $primary-color;
-}
-
-.members-list {
-    grid-area: members-list;
 }
