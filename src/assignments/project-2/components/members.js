@@ -1,4 +1,5 @@
 import React from 'react'
+import List from './list'
 
 class Members extends React.Component {
 
@@ -10,11 +11,11 @@ class Members extends React.Component {
     return (
       <>
         <h2>Members</h2>
-        <ul>
-          {this.props.classroom.students.map(({id, name}) =>
-            <li key={id}><span>{name}</span></li>
+        <List>
+          {this.props.classroom.students.map(({name}) =>
+            <span>{name}</span>
           )}
-        </ul>
+        </List>
       </>
     );
   }
