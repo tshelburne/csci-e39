@@ -17,15 +17,16 @@ $font-weight: 600;
   border-radius: 5px;
   color: $button-font-color;
   cursor: pointer;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
   font-weight: $font-weight;
-  margin-bottom: 1rem;
+
   outline: none;
   padding: 1rem 50px;
-  // position: relative;
+
   transition: all 0.3s;
-  vertical-align: middle;
-  align-items: center;
+  
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
 
@@ -34,6 +35,14 @@ $font-weight: 600;
   }
 
 }
+
+.uploader-container {
+  // text-align: center;
+  display:flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
 
 
 /* <input multiple="" type="file"> */

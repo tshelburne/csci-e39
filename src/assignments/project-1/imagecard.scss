@@ -1,18 +1,3 @@
-//
-// .image-card {
-//   vertical-align: top;
-//   display: inline-block;
-//   text-align: center;
-//   width: auto;
-//   cursor: pointer;
-//   background-color: grey;
-//
-//   &:hover {
-//     background: darken(rgb(89, 150, 211), 10%);
-//   }
-//   border-radius: 10px;
-// }
-
 .img-key {
   vertical-align: top;
   display: inline-block;
@@ -28,7 +13,7 @@
 
   height: auto;
   align-items: center;
- 
+
   border: 2px dashed #fff;
   border-radius: 10px;
 

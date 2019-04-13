@@ -7,7 +7,7 @@ import PendingUpload from './pendingupload.js'
 
 
 import './app.scss'
-import './progressbar.css';
+import './pendingupload.scss';
 import './uploadbutton.scss';
 import './imagegallery.scss';
 import './imagecard.scss';
@@ -22,7 +22,9 @@ const Uploads = ({uploads, actions}) => {
 		<div className="main-container">
 			<h1 className="main title">Album Uploader</h1>
 			{/* do not delete this uploader component */}
-			 <Uploader upload={actions.upload} />
+			<div className="uploader-container">
+			 	<Uploader upload={actions.upload} />
+			</div>
 			{/* do not delete this uploader component */}
 
 			<h2 className="inprogress title">In Progress</h2>

@@ -1,0 +1,65 @@
+$primary-color: rgba(150, 143, 179, 1);
+$button-color: rgb(89, 150, 211);
+$button-font: "Verdana", sans-serif;
+$button-width: 7em;
+$button-font-color: #fff;
+$font-weight: 600;
+
+.upload-progress {
+  // background: $button-color;
+  border-radius: 5px;
+  // color: $button-font-color;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  // font-weight: $font-weight;
+  outline: none;
+  padding: 1rem 50px;
+  transition: all 0.3s;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+
+}
+
+.upload-progressbar {
+  display:flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+progress[value] {
+	/* Reset the default appearance */
+	-webkit-appearance: none;
+	appearance: none;
+	width: 250px;
+	height: 20px;
+}
+
+progress[value]::-webkit-progress-bar {
+	background-color: #eee;
+	border-radius: 2px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+	background-image: -webkit-linear-gradient(
+			-45deg,
+			transparent 33%,
+			rgba(0, 0, 0, 0.1) 33%,
+			rgba(0, 0, 0, 0.1) 66%,
+			transparent 66%
+		),
+		-webkit-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.25)),
+		-webkit-linear-gradient(left, $button-color, $button-color);
+
+	border-radius: 2px;
+	background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+progress[value]::-webkit-progress-value::before {
+	content: "80%";
+	position: absolute;
+	right: 0;
+	top: -125%;
+}
