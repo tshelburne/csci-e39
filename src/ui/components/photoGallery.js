@@ -16,10 +16,9 @@ class PhotoGallery extends React.Component {
 	}
 
    handleClick(imageId){
-		 		//alert('Item clicked' );
-				var imageSelected = !this.state.selectImage;
-				this.setState({selectImage: imageSelected});
-				if(imageSelected){
+		 	var imageSelected = !this.state.selectImage;
+			this.setState({selectImage: imageSelected});
+			if(imageSelected){
 				var updatedSelectedImageIds = this.state.selectedImageIds.concat(imageId);
 		 		this.setState({selectedImageIds: updatedSelectedImageIds});
 			}
@@ -29,10 +28,12 @@ class PhotoGallery extends React.Component {
 			}
 	 }
 
+
+
 	render() {
 		const {completedFiles, ...inputProps} = this.props
+		if(completedFiles.length > 0){
 		 return(
-			 //	<Album imageIds={this.state.selectedImageIds} />
 			 <ul class="grid-container">
 			 		{completedFiles.map(file => {
 	 					const {id, name, url, error} = file
@@ -50,7 +51,10 @@ class PhotoGallery extends React.Component {
 						}
 						})}
 	 		</ul>
-		)
+		)}
+		else{
+			return<h3> The area where uploaded pictures will be displayed ! </h3>
+		}
 	}
 
 }

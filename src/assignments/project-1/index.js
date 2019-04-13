@@ -12,7 +12,10 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div class="wrapper">
-	  <header class="header"> Header </header>
+	  <header class="header">
+		<p> <h3> My first React app !! This app can be used to upload pictures. In the next release it will also support
+		album functionality</h3></p>
+		</header>
 		<nav class="nav">
 	  {/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
@@ -22,7 +25,7 @@ const Uploads = ({uploads, actions}) => {
 			<ProgressBar inProgress={pendingFiles}/>
 			<PhotoGallery completedFiles={completedFiles}/>
 		</article>
-		<footer class="footer"> Footer </footer>
+		<footer class="footer"></footer>
 	</div>
 }
 

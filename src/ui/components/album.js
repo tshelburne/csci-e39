@@ -50,7 +50,6 @@ class Album extends React.Component {
 
 
 	render() {
-		//const {imageIds, ...otherProps} = this.props
 		return (
 			<p>
 			<button class="album-button" onClick={this.handleButtonClick}> Create Album </button>
