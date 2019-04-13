@@ -11,6 +11,7 @@ body {
                   $primary-gray,
                   $background-color
   );
+  max-height: 100vh;
 }
 
 #message-container {
@@ -66,7 +67,7 @@ ul{
 .container {
     display: grid;
 	grid-template-columns: 0.2fr 1fr;
-    grid-template-rows: 0.3fr 1fr 0.2fr;
+    grid-template-rows: 100px 1fr 50px;
     grid-template-areas: 
         "header header"
         "sidebar main"
@@ -80,12 +81,19 @@ header {
 
 nav {
     grid-area: sidebar;
+  overflow-y: scroll;
 }
 
 main {
     grid-area: main;
+  overflow-y: scroll;
 }
 
 footer {
     grid-area: footer;
 }
+
+//#body-container {
+//  max-height:80vh;
+//  overflow-y: auto;
+//}
