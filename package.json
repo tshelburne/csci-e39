@@ -17,7 +17,7 @@
     "start.server": "cross-env DEBUG=csci-e39:* babel-node src/server.js",
     "start:stage": "run-p web:run start.client -- --mode=development",
     "start:prod": "npm run start.client -- --mode=production",
-    "start": "run-p start.* -- --mode=development",
+    "start": "run-p \"start.client -- --mode=development\" start.server",
     "web:container": "docker build -t tshelburne/csci-e39:master .",
     "web:run": "docker run -t -i --expose 3000 -p 3000:3000 --expose 35729 -p 35729:35729 tshelburne/csci-e39:master",
     "web:publish": "docker push tshelburne/csci-e39:master",
@@ -42,6 +42,7 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-router-dom": "^5.0.0",
     "socket.io": "^2.2.0",
     "supports-color": "^5.5.0",
     "xstream": "^11.7.0"
