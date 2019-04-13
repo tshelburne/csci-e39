@@ -1,5 +1,38 @@
 $background-color: #8addea;
 $primary-gray: #edf1f2;
 $white: #fcfcfc;
+$header-font: 'Pacifico', cursive;
+$body-font: 'Montserrat', sans-serif;
+
+body {
+  background: linear-gradient(
+                  130deg,
+                  $primary-gray,
+                  $background-color
+  );
+}
+
+#message-container {
+  background-color: $primary-gray;
+}
+
+#member-list {
+  background-color: $white;
+}
+
+#member-list > ul > li {
+  background-color: $white;
+  border: solid 1px $primary-gray;
+  font-family: $body-font;
+  font-size: 20px;
+}
+
+#member-list > ul > li:hover {
+  background-color: $background-color;
+}
+
+
+
+
 
 
