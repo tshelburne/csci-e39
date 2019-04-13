@@ -22,7 +22,7 @@ const Uploads = ({uploads, actions}) => {
 			{/* do not delete this uploader component */}
 			</label>
 
-			{pendingFiles && <h2>In Progress</h2>}
+			{pendingFiles.length>0 && <h2>In Progress</h2>}
 			
 			<ul>
 				{pendingFiles.map(file => {
