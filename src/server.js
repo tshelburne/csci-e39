@@ -51,7 +51,7 @@ io.on(`connection`, async socket => {
 	g.classroom.students = addStudent(g.classroom.students)
 
 	socket.broadcast.emit(`student:join`, student)
-	io.emit(`student:self`, student)
+	socket.emit(`student:self`, student)
 	io.emit(`student:all`, g.classroom.students)
 
 	socket.on(`disconnect`, () => {
