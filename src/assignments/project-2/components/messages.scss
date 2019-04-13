@@ -2,10 +2,11 @@
 
 .messages {
     display: grid;
-    grid-template-rows: 1fr 100px;
+    grid-template-rows: 50px 1fr 50px;
     grid-template-areas: 
-        'history'
-        'input'
+    'header'    
+    'history'
+    'input';
 }
 
 .history {
@@ -17,6 +18,7 @@
 }
 
 h2 {
+    grid-area: header;
     font-family: $font-family;
     font-weight: 300;
     font-size: 1.25rem;
