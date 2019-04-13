@@ -14,63 +14,78 @@ $text-shadow: 0 0 3px white;
         max-width: 1024px;
         margin: 0 auto;
         font: 1.2em Helvetica, arial, sans-serif;
+        display: grid;
+        grid-gap: 10px;
+        grid-template-areas: 
+          "header"
+          "nav"
+          "content" 
+          "footer";
     }
-    ul, ol {
+    .photo-ul {
         list-style-type: none;
         margin: 0;
         padding: 0;
+        columns: 1;
     }
     .wrapper > * {
         background: hsla(0, 0, 100%, 0.8);
         margin-top: 7vh;
         padding: 5vh 2vh;
         box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4); 
-    }
-
+    } 
     nav ul {
         list-style: none;
         margin: 0;
         padding: 0;
     }
-.main-head {
-  grid-area: header;
-}
-.content {
-  grid-area: content;
-}
-.main-nav {
-  grid-area: nav;
-} 
-.main-footer {
-  grid-area: footer;
-}
-.wrapper {
-  display: grid;
-  grid-gap: 10px;
-  grid-template-areas: 
-    "header"
-    "nav"
-    "content" 
-    "footer";
-}
-@media (min-width: 600px) {
- 
-  nav ul {
+    .header-photo{
+        width: 50;
+    }
+    .main-head {
+    grid-area: header;
     display: flex;
-    justify-content: space-between;
-  }
-}
-@media (min-width: 650px) {
-  .wrapper {
-    grid-template-columns: 1fr 3fr ;
-    grid-template-areas: 
-      "header header   "
-      "nav    content " 
-      "footer footer   "
-   }
+    align-items:center;
+    font-size: 1em;
+    }
+    .content {
+    grid-area: content;
+    }
+    .main-nav {
+    grid-area: nav;
+    } 
+    .main-footer {
+    grid-area: footer;
+    }
+ 
+ 
+@media (min-width: 700px) {
+    .wrapper {
+      grid-template-columns: 1fr 3fr ;
+      grid-template-areas: 
+        "header header  "
+        "nav    content "
+        "nav    content "
+        "footer footer  "
+     }
    nav ul {
      flex-direction: column;
    }
+   .photo-ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    columns: 2;
+    }
+    .header-photo{
+        width: 250;
+    }
+    .main-head {
+        grid-area: header;
+        display: flex;
+        align-items:center;
+        font-size: 2em;
+        }
 }
 
 
@@ -171,8 +186,7 @@ button{
 }
  
 .uploader
-{  
-     
+{   
     display: inline-block;
     padding: 6px 12px;
     cursor: pointer; 
@@ -181,18 +195,16 @@ button{
  
 //Button
 input[type="file"]::before {
-    
-  content: 'Choose Files';
-  display: inline-block;
-  
+    content: 'Choose Files';
+    display: inline-block;
 	margin-top: 5px;
-  margin-bottom: 5px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin:  block;
-  padding: 4px; 
-  background: #fff;
-  border-radius: $button-radius;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin:  block;
+    padding: 4px; 
+    background: #fff;
+    border-radius: $button-radius;
 	box-shadow:$shadow2;  
 	animation: pulse 2s infinite;
 }
@@ -207,16 +219,40 @@ input[type="file"]:hover::before  {
 } 
   
 body {
-	background: rgb(83, 83, 83);
+    background: rgb(83, 83, 83);
+    
 	padding: 30px;
 	background: linear-gradient(
 		to bottom,
 		rgb(92, 104, 95) 0%,
 		rgb(129, 129, 129) 100%
-	);
+    );
+    
+    background: linear-gradient( 90deg,
+    rgba(255, 225, 132, .7) 50%, rgba(255,255,255, 0) 50%),
+  linear-gradient( 90deg,
+    rgba(32, 113, 120, .3) 50%, rgba(255,255,255, 0) 50%),
+  linear-gradient( 90deg,
+    rgba(255, 150, 102, .3) 50%, rgba(255,255,255, 0) 50%),
+  linear-gradient( 90deg,
+    rgba(23, 76, 79, .1) 50%, rgba(255,255,255, 0) 50%);
+background-size: 7em 7em, 5em 5em, 3em 3em, 1em 1em;
+background-color: #F5E9BE;
 	min-height: 100vh;
 }
-
+.photo-card {
+	background: rgba(255, 255, 255, 0.8);
+    width: 250px ;
+    height: 310px; 
+    margin: 3vh;
+	padding: 2vh 2vh;
+	box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
+    text-align: center;
+    display: inline-block ;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
 .container {
 	background: hsla(0, 0, 100%, 0.8);
 	margin-top: 7vh;
@@ -229,6 +265,7 @@ body {
 	margin-top: 0;
 	font-family: "Permanent Marker", sans-serif;
 }
+
 .photo{
     width: calc((100%/5) - 16px);
     box-shadow: 0 1px 4px 0 rgba(0,0,0,0.37);
