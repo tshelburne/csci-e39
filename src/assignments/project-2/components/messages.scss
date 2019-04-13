@@ -1,0 +1,15 @@
+.messages {
+    display: grid;
+    grid-template-rows: 1fr 100px;
+    grid-template-areas: 
+        'history'
+        'input'
+}
+
+.history {
+    grid-area: history;
+}
+
+.input {
+    grid-area: input;
+}
