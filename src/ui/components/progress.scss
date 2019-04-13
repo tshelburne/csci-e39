@@ -1,4 +1,11 @@
-@import "./theme.scss";
+@import "./global-vars";
+
+label {
+	font-family: "Roboto", "Helvetica";
+	font-weight: 300;
+	font-size: 1rem;
+	color: $foreground-color;
+}
 
 progress[value] {
 	-webkit-appearance: none;

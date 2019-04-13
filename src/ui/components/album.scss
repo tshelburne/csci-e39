@@ -1,0 +1,68 @@
+@import "./global-vars";
+
+.album {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    grid-template-rows: 200px 1fr;
+    grid-template-areas: 
+        'upload in-progress'
+        'photos photos'
+}
+
+h2 {
+    font-family: "Roboto", "Helvetica";
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: $primary-color;
+}
+
+p {
+    font-family: "Helvetica";
+    font-weight: 300;
+    font-size: 1rem;
+    color: $primary-color;
+}
+
+.upload {
+    grid-area: upload;
+}
+
+.in-progress {
+    grid-area: in-progress;
+}
+
+.photos {
+    grid-area: photos;
+    .list {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+@media (max-width: $medium-width) {
+    .album {
+        grid-template-columns: 1fr;
+        grid-template-rows: 100px 200px 1fr;
+        grid-template-areas: 
+            'upload'
+            'in-progress'
+            'photos'
+      }
+      .photos {
+        .list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+}
+
+@media (max-width: $small-width) {
+      .photos {
+        .list {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+    }
+}

@@ -1,5 +1,6 @@
-@import "../../ui/components/theme.scss";
+@import "../../ui/components/global-vars";
 
 body {
     background-color: $background-color;
+    text-align: center;
 }

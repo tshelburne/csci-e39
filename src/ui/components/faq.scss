@@ -1,0 +1,14 @@
+@import "./global-vars";
+
+.faq {
+    display: grid;
+    grid-template-columns: 300px 400px;
+    grid-template-rows: 20px;
+
+    p {
+        font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+        font-weight: 200;
+        color: $foreground-color;
+    }
+}
+

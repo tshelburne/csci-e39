@@ -1,0 +1,24 @@
+@import "./global-vars";
+
+.image {
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+    align-items: center;
+    
+    label {
+        float: bottom;
+        font-family: "Roboto", "Helvetica";
+        font-weight: 500;
+        font-size: 1.25rem;
+        color: $foreground-color;
+    }
+
+    img {
+        width: 300px;
+        height: 300px;
+        object-fit: contain;
+        padding: 5px;
+        background-color: $foreground-color;
+    }
+}
