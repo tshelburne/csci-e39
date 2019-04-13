@@ -1,13 +1,13 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import autobind from 'class-autobind'
-import Input from './components/input'
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import autobind from 'class-autobind';
+import Input from './components/input/input';
+import Members from './components/members/members';
+import Messages from './components/messages/messages';
 
-import './app.scss'
-import Members from './components/members';
-import Messages from './components/messages';
+import './app.scss';
 
-class Chat extends React.Component {
+export default class Chat extends Component {
 
 	constructor() {
 		super(...arguments)
@@ -57,9 +57,9 @@ class Chat extends React.Component {
 		return <div className="chatApp">
 			<h1 className="header">Chatroom</h1>
 
-      <Members classroom={classroom}></Members>
+      		<Members classroom={classroom}></Members>
 
-      <Messages chat={chat} />
+      		<Messages chat={chat} />
 
 			<Input value={currentText} onType={this.onType} onSend={this.onSend} />
 			<p>{this.getTypingMessage()}</p>
@@ -93,5 +93,3 @@ Chat.propTypes = {
 	}),
 	actions: PropTypes.object.isRequired,
 }
-
-export default Chat
