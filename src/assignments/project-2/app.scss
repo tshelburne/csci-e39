@@ -5,11 +5,11 @@ body {
     text-align: center;
 }
 
-#app {
+.chatApp {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 5px;
-    grid-template-rows: 150px 1fr;
+    grid-template-rows: 70px 1fr;
     grid-template-areas: 
         'header header'
         'messages members'

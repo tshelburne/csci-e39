@@ -54,9 +54,9 @@ class Chat extends React.Component {
 		const {currentText} = this.state
 
 		return <div className="chatApp">
-			<h1>Chatroom</h1>
+			<h1 className="header">Chatroom</h1>
 
-      <Members classroom={classroom}></Members>
+      		<Members classroom={classroom}></Members>
 
 			<h2>Messages</h2>
 			<ul>

@@ -10,9 +10,11 @@ const List = (props) => {
         const id = item.id ? `${item.id}-li` : uuid();
         return (<li className="list-item" id={id}>{item}</li>);
     });
-    return (<ul className="list">
-        {listItems}
-    </ul>);
+    return (
+        <ul className="list">
+            {listItems}
+        </ul>
+    );
 }
 
 List.propTypes = {

@@ -9,14 +9,14 @@ class Members extends React.Component {
 
   render() {
     return (
-      <>
+      <article className='members'>
         <h2>Members</h2>
         <List>
           {this.props.classroom.students.map(({name}) =>
             <span>{name}</span>
           )}
         </List>
-      </>
+      </article>
     );
   }
 }
