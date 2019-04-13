@@ -87,10 +87,6 @@ io.on(`connection`, async socket => {
 	socket.on(`file:update`, updateFile)
 	socket.on(`file:delete`, deleteFile)
 	socket.on(`file:share`, shareFile)
-	socket.on(`file:create-album`, createAlbum)
-	socket.on(`file:add-to-album`, addFileToAlbum)
-
-	socket.on(`album:promote`, promoteAlbum)
 
 	// SEND INITIAL DATA
 
@@ -161,18 +157,6 @@ io.on(`connection`, async socket => {
 			log(e)
 			return socket.emit(`file:share:failure`, {message: `Unexpected failure - please try again`})
 		}
-	}
-
-	async function createAlbum(ids, name) {
-
-	}
-
-	async function addFileToAlbum(id, albumId) {
-
-	}
-
-	async function promoteAlbum(albumId) {
-
 	}
 
 	// ================= CHAT =================
