@@ -11,23 +11,25 @@ export default class Messages extends React.Component {
 	// this.state = {
 
 	// }
-}
 
-render() {
-	const { items } = this.props;
-	// console.log(items);
+  render() {
+    const { chat } = this.props;
+    // console.log(items);
 
-	return (
-		<h2>Messages</h2>
-			<ul>
-				{chat.messages.map(({id, student, text, createdAt}) =>
-					<li key={id}>
-						<label>{student.name} at {createdAt.toISOString()}</label>
-						<p>{text}</p>
-					</li>
-				)}
-			</ul>
-	)
+    return (
+      <article className={'messages'}>
+        <h2>Messages</h2>
+          <ul>
+            {chat.messages.map(({id, student, text, createdAt}) =>
+              <li key={id}>
+                <label>{student.name} at {createdAt.toISOString()}</label>
+                <p>{text}</p>
+              </li>
+            )}
+        </ul>
+      </article>
+    )
+  }
 }
 
 const studentPropType = PropTypes.shape({
