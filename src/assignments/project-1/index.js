@@ -1,8 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom'
 import Uploader from '../../ui/components/uploader'
 
 import './app.scss'
+
+const RoutedApp = (props) =>
+	<Router>
+		<nav>
+			<ul>
+				<li><Link to="/">Gallery</Link></li>
+				<li><Link to="/faq">FAQ</Link></li>
+			</ul>
+		</nav>
+
+		<Route exact path="/" render={() => <Uploads {...props} />} />
+		<Route path="/faq" component={FAQ} />
+	</Router>
+
+export default RoutedApp
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
@@ -62,4 +78,4 @@ Uploads.propTypes = {
 	actions: PropTypes.object.isRequired,
 }
 
-export default Uploads
+const FAQ = () => <p>Test FAQ - wooo!</p>
