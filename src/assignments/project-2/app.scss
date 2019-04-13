@@ -1,0 +1,21 @@
+.app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5px;
+    grid-template-rows: 150px 1fr;
+    grid-template-areas: 
+        'header header'
+        'messages members'
+}
+
+.header {
+    grid-area: header;
+}
+
+.messages {
+    grid-area: messages;
+}
+
+.members {
+    grid-area: members;
+}
