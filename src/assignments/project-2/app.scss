@@ -1,5 +1,36 @@
 $background-color: #8addea;
 $primary-gray: #edf1f2;
 $white: #fcfcfc;
+$li_alt_color : darken($primary-gray, 10);
+
+// box size reset
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+  display:block;
+}
 
 
+// starting styles
+
+body {
+  background: $background-color;
+  font-family: "Arial", sans-serif;
+  color: #060606;
+}
+
+ul{
+
+  list-style: none;
+
+  li {padding:5px
+  }
+
+  li:nth-of-type(2n) {
+    background-color: $li_alt_color;
+  }
+
+}
