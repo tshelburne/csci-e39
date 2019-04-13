@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 
 import './app.scss'
+import Members from './components/members';
 
 class Chat extends React.Component {
 
@@ -54,12 +55,7 @@ class Chat extends React.Component {
 		return <div>
 			<h1>Chatroom</h1>
 
-			<h2>Members</h2>
-			<ul>
-				{classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
-				)}
-			</ul>
+      <Members classroom={classroom}></Members>
 
 			<h2>Messages</h2>
 			<ul>
