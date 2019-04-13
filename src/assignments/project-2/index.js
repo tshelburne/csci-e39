@@ -54,7 +54,7 @@ class Chat extends React.Component {
 		return <div>
 			<h1>Natalya's Chatroom</h1>
 
-			<h2>Members</h2>
+			<h2 className="project-2-heading">Members</h2>
 			<ul>
 				{classroom.students.map(({id, name}) =>
 					<li key={id}><span>{name}</span></li>
