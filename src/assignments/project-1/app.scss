@@ -140,19 +140,34 @@ label.uploader-btn input[type="file"] {
   background: $component-color-lighten;
 }
 
+.formgrid  {
+  display: inline-block;
+  vertical-align: baseline;
+}
+.formgrid input {
+  display: inline-block;
+  vertical-align: baseline;
+  margin-top:50px;
 
-// Idea for form as grid .https://www.sitepoint.com/css-grid-web-form-layout/
-.formgrid {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-gap: 5px 5px;
-  grid-auto-flow: dense;
-  align-items: center;
+}
 
-  input, output, textarea, select, button {
-    grid-column: 2 / 4;
-    width: auto;
-    margin: 0;
+// Idea for fo'rm as grid .https://www.sitepoint.com/css-grid-web-form-layout/
+@media only screen and (min-width: 720px) {
+
+  .formgrid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 5px 5px;
+    grid-auto-flow: dense;
+    align-items: center;
+
+    input, output, textarea, select, button {
+      grid-column: 2 / 4;
+      width: auto;
+      margin: 0;
+      padding-bottom: 20px;
+      clear: both;
+    }
+
   }
-
 }

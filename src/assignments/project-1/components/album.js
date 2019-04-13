@@ -29,7 +29,7 @@ class Album extends React.Component {
                                 {!error && <a href={url} target="one_image"><img src={url} style={{maxWidth: `200px`}}/> </a>}
                                 {!!error && <p className="failure">{error}</p>}
                                 <label>{name}</label>
-                                <p class="image-description">{description}</p>
+                                <p class="image-description"><b>{description}</b></p>
 
                             </li>
                         })}

@@ -12,35 +12,35 @@ const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
-	return <main className="main_page">
+	return <main className="main-container">
 
-		<header className="main-heading"> Online Image Album csci-e39 </header>
+		<header className="heading"> Online Image Album csci-e39</header>
 
-		<div className="grid-container">
 
-			<aside className="sidebar">
+		<aside className="sidebar">
 
-				<h2>Upload Images</h2>
+			<h2>Upload Images</h2>
 
-				{/* do not delete this uploader component */}
-				<Uploader upload={actions.upload} label="Choose Files to Upload!"/>
-				{/* do not delete this uploader component */}
+			{/* do not delete this uploader component */}
+			<Uploader upload={actions.upload} label="Choose Files to Upload!"/>
+			{/* do not delete this uploader component */}
 
-			</aside>
+		</aside>
 
-			<main className="main">
+		<main className="main">
 
-				<h2>Albums</h2>
+			<h2>Albums</h2>
 
-				<p> This a where you can view the upload status and view recently uploaded images</p>
-				<p> Click to embiggen image.</p>
+			<p> This a where you can view the upload status and view recently uploaded images</p>
+			<p> Click to embiggen image.</p>
 
-				<p> Currently the album contain nature photos taken at great meadows national wildlife sactuary in Concord Ma. The sactuary contains a lot of wildlife including many species of migratory birds. </p>
-						<AlbumUpload imgData={pendingFiles} albumName="In Progress Files"/>
-				<Album imgData={completedFiles} albumName="Completed Files"/>
+			<p> Currently the album contain nature photos taken at great meadows national wildlife sactuary in Concord
+				Ma. The sactuary contains a lot of wildlife including many species of migratory birds. </p>
+			<AlbumUpload imgData={pendingFiles} albumName="In Progress Files"/>
+			<Album imgData={completedFiles} albumName="Completed Files"/>
 
-			</main>
-		</div>
+		</main>
+
 	</main>
 
 // Components

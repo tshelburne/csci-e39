@@ -30,12 +30,12 @@ class Uploader extends React.Component {
 
 			<label for="image-description"> Description:			</label>
 				<input type="text" name="image-description" id="image-description" />
-
-				<span></span>
+				<p></p>
 			<label class="uploader-btn">
 				<input class="uploader-btn" {...inputProps} multiple type="file" onChange={this.handleFiles}/>
 				<span> {label} </span>
 			</label>
+				<p></p>
 			</div>
 		</div>)
 	}

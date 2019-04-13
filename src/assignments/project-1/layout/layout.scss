@@ -3,38 +3,25 @@ $font-default: 'Oswald', sans-serif;
 $font-heading: 'Oswald', sans-serif;
 $border-color: #868686;
 
-.grid-container {
+.main-container {
     padding: 0px;
 
 }
 
 
 @media only screen and (min-width: 720px) {
-  .grid-container {
-    display: flex;
+  .main-container {
+    display: grid;
+    grid-template-columns: minmax(350px,20%) auto;
+    grid-template-areas:
+            "heading heading"
+            "sidebar main";
     border: 1px solid $border-color;
   }
 }
 
-
-.main {
-  flex:3;
-  background: lighten($react-background, 77);
-  padding: 10px;
-  mid-width :400px;
-  flex-direction: column;
-
-}
-
-.sidebar {
-  flex:1;
-  padding: 10px;
-  flex-direction: column;
-
-}
-
-
-.main-heading {
+.heading {
+  grid-area: heading;
   font-size: 3rem;
   font-weight: bold;
   text-align: left;
@@ -42,4 +29,20 @@ $border-color: #868686;
   margin: 0;
   padding: 30px 0px 30px 20px;
   border: 1px solid $border-color;
+  background: lighten($react-background, 50);
 }
+
+.main {
+  grid-area: main;
+  background: lighten($react-background, 77);
+  padding: 10px;
+  min-width :300px;
+}
+
+.sidebar{
+  grid-area: sidebar;
+  padding: 10px;
+  min-width: 300px;
+}
+
+
