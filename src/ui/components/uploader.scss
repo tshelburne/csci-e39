@@ -1,0 +1,20 @@
+
+@import "./theme.scss";
+
+.uploader {
+	color: $foreground-color;
+	background-color: $primary-color;
+	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+	font-weight: 800;
+	border-radius: 4px;
+	box-sizing: border-box;
+	padding: 6px 16px;
+	text-transform: uppercase;
+}
+
+input {
+    position: absolute;
+    margin-top: -40px;
+    opacity: 0;
+}
+

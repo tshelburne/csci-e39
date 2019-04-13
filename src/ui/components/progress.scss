@@ -1,0 +1,21 @@
+@import "./theme.scss";
+
+progress[value] {
+	-webkit-appearance: none;
+	background-color: $foreground-color;
+	border-radius: 2px;
+	box-shadow: 0 1px 3px black inset;
+}
+
+progress::-moz-progress-bar {
+	background: $primary-color;
+}
+progress::-webkit-progress-bar {
+	background-color: $primary-color;
+	border-radius: 2px;
+	box-shadow: 0 1px 3px black inset;
+}
+
+progress::-webkit-progress-value {
+	background: $primary-color;
+}

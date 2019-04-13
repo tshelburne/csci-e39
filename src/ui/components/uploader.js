@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
-
+import {uuid} from '../../util/functions'
+import './uploader.scss'
 class Uploader extends React.Component {
 
 	constructor() {
@@ -17,7 +18,13 @@ class Uploader extends React.Component {
 
 	render() {
 		const {upload, ...inputProps} = this.props
-		return <input {...inputProps} multiple type="file" onChange={this.handleFiles} />
+		const id = uuid();
+		return (
+			<React.Fragment>
+			<label for={id} class="uploader">Upload Files</label>
+			<input {...inputProps} id={id} multiple type="file" onChange={this.handleFiles} />
+			</React.Fragment>
+		);
 	}
 
 }
