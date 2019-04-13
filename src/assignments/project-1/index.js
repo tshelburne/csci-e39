@@ -7,17 +7,17 @@ import Nav from './components/nav'
 import Footer from './components/footer'
 import './app.scss'
 
-
+ 
 const sideNavItems = [{ name: 'Photo Album' }, { name: 'FAQ' }, { name: 'Help' }, { name: 'What is PickleBall?' }];
 const Uploads = ({ uploads, actions }) => {
-	
+
 	const pendingFiles = uploads.files.filter(({ progress }) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({ progress }) => !progress)
 
 	return <div className="wrapper">
 		<Header imgSrc="https://www.stevensegallery.com/284/196" text="Famous People Play PickleBall" />
 		{/* Array of li items */}
-		<Nav listItems={sideNavItems}/>
+		<Nav listItems={sideNavItems} />
 		<article className="content">
 			<h1>Pickleball is Now for Movie Stars</h1>
 			<p>Pickle ball which has its origins in the tennis ball court has found its place among a new array of sports communities as well as prior tennis pros.
