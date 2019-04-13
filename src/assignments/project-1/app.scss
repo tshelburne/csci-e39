@@ -130,8 +130,24 @@ label.uploader {
   .gallery-image {
     width: 200px;
     height: 200px;
-    object-fit: cover;
-    margin:0;
+    caption {
+      cursor: pointer;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #eee;
+      color: darkslategray;
+    }
+    img {
+      object-fit: cover;
+      margin:0;
+      transition: transform .2s;
+      &:hover { 
+        cursor: pointer;
+        transform: scale(1.1);
+      }  
+    }
   }
 }
 

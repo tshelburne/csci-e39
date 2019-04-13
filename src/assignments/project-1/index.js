@@ -33,13 +33,17 @@ class ClickableImage extends React.Component {
     console.log('this.props', this.props);
     console.log('this.state', this.state);
     return (
-      <img 
-        id={this.props.id}
-        className={'gallery-image'}
-        src={this.props.url} 
-        alt={this.props.name}         
-        onClick={this.handleClick}
-      />
+      <div className="gallery-image" onClick={this.handleClick}>
+        {this.state.zoomed && <caption>
+          <div className="image-info">{this.props.name}</div>
+        </caption>}
+        {!this.state.zoomed && <img 
+          id={this.props.id}
+          className={'gallery-image'}
+          src={this.props.url} 
+          alt={this.props.name}                   
+        />}
+      </div>
     );
   }
 }
@@ -54,7 +58,7 @@ const PendingImage = ({ progress, name }) => (
 const GalleryImage = ({ progress, name, error, url, maxWidth = '200px', id}) => (
   <>
     {!error && !url && progress && <PendingImage name={name} progress={progress} /> }
-    {!error && url && <ClickableImage name={name} url={url} maxWidth={maxWidth} id={id} />}
+    {!error && url && <ClickableImage name={name} url={url} maxWidth={maxWidth} id={id}/>}
     {!!error && <p className="failure">{error}</p>}
   </>
 );
@@ -74,7 +78,6 @@ const Uploads = ({uploads, actions}) => {
         <h1>Matthew Kim</h1>
         <h2>{allFiles.length} Photos</h2>
         <p>Welcome to my photo album! I tried to make it similar to instagram. Clicking upload will placeholder boxes and refresh the image when upload is complete. Try uploading multiple photos! Enjoy!</p>
-        
       </header>
       <div class="galleryList">
         {allFiles.map(file => {
