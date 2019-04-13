@@ -186,7 +186,7 @@ body {
 	margin: 0px;
 }
 
-button.favorite-button {
+.favorite-button {
 	font-size: 1.4rem;
   background-color: white;
   border: thin #A9A9A9 solid;
@@ -198,7 +198,11 @@ button.favorite-button {
   padding: 0px;
 }
 
-button.favorite-button[data-favorite="true"] {
+.favorite-button[data-favorite="true"] {
 	color: #005e8f;
 	border: 2px #005e8f solid;
+}
+
+ul[data-filter="true"] > li[data-favorite="false"] {
+	display: none;
 }

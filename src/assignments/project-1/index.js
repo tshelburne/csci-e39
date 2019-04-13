@@ -39,7 +39,7 @@ const Uploads = ({uploads, actions}) => {
 
 		{failedFiles.length > 0 && 	<div>
 				<h2>Failed Uploads</h2>
-				<ul>
+				<ul data-filter="true">
 					{failedFiles.map(file => {
 						const {id, name, url, error} = file
 						return <FailureCard { ...file } />
