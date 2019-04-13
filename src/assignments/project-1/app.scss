@@ -13,6 +13,15 @@ body{
 	color: darken($primary-color, 15%);
 }
 
+.copy-text {
+	color: darken($primary-color, 15%);
+}
+
+.copy-text p {
+	padding: 0px;
+	margin-bottom: 0px;
+}
+
 .button {
 	background-color: $primary-color;
 	color: white;

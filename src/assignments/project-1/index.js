@@ -13,6 +13,9 @@ const Uploads = ({uploads, actions}) => {
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
 
 	return <div className="grid-container">
+		<div className="copy-text">
+			<p>Upload your favourite photoes by clicking on the button and create your albulm! </p>
+		</div>
 		<Header title="Upload Images" />
 			<div className="grid-upload">
 				<Button name="Upload Files" id="upload" />
