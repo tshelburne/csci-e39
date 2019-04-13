@@ -13,6 +13,10 @@ const Faq = (props) => {
             <p>30</p>
             <p>What are your hobbies?</p>
             <p>Board games, powerlifting</p>
+            <p>What are the photos?</p>
+            <p>Random photos from my computer </p>
+            <p>Do they have any special meaning?</p>
+            <p>No they do not </p>
         </section>
     );
 }
