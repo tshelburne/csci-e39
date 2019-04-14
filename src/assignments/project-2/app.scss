@@ -85,9 +85,12 @@ ul{
 
 header {
     grid-area: header;
-    background-color: $background-color;
-	color: $primary-gray;
+    background-color: $white;
+	color: $background-color;
 	text-align: center;
+	padding: 1rem;
+	border-bottom: 0.3rem solid $primary-gray;
+
 }
 
 nav {
@@ -101,10 +104,12 @@ main {
 }
 
 footer {
-  grid-area: footer;
-  background-color: $background-color;
-  color: $primary-gray;
-  text-align: center;
+    grid-area: footer;
+    background-color: $white;
+	color: $background-color;
+	text-align: center;
+	padding: 1rem;
+	border-top: 0.3rem solid $primary-gray;
 }
 
 .chat-item {
@@ -137,4 +142,17 @@ footer {
 .friend-message {
 	background-color: $friend-color;
 	text-align: right;
+}
+
+button {
+	background-color: $white;
+	border: 0.3rem outset $primary-gray;
+	border-radius: 25px;
+	color: $background-color;
+	font-weight: 900;
+}
+
+input {
+	border: 0.3rem inset $primary-gray;
+	border-radius: 25px;
 }
