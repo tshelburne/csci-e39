@@ -37,10 +37,10 @@ export default class Chat extends Component {
 
       		<Members classroom={classroom}></Members>
 
-      		<Messages chat={chat} value={currentText} onType={this.onType} onSend={this.onSend} />
+      		<Messages chat={chat} value={currentText} actions={actions} />
 
-			<Input value={currentText} actions={actions} />
-			<p>{this.getTypingMessage()}</p>
+			    
+			    <p>{this.getTypingMessage()}</p>
 		</div>
 	}
 

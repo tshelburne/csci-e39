@@ -7,12 +7,13 @@ import Message from '../message/message';
 import List from '../list/list'
 export default class Messages extends Component {
 	constructor(props) {
-		super(props);
+    super(props);
+    this.state = {currentText: ``}
 	}
 
   render() {
-    const { chat, currentText, onType, onSend } = this.props;
-
+    const { chat, actions } = this.props;
+    const {currentText} = this.state;
     return (
       <article className={'messages'}>
         <h2>Messages</h2>
@@ -21,7 +22,7 @@ export default class Messages extends Component {
               <Message name={student.name} text={text} createdAt={createdAt.toISOString()}></Message>
             )}
           </List>
-        <Input value={currentText} onType={onType} onSend={onSend} />
+        <Input value={currentText} actions={actions} />
       </article>
     )
   }
