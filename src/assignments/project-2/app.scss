@@ -164,17 +164,25 @@ h2 {
 }
 
 .message > span{
-	background-color: $my-color;
+  background-color: $my-color;
   font-size: 20px;
   font-family: $handwriting-font;
+  //float: left;
 }
 
 .friend-message > span{
   background-color: $friend-color;
-  text-align: right;
+  justify-items: right;
   font-family: $handwriting-font;
   font-size: 20px;
+  position: absolute;
+  right: 10px;
 
+}
+
+.friend-message {
+  position: relative;
+  padding-bottom: 20px
 }
 
 button {
