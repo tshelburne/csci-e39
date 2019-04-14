@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 
 import Layout from './components/layout'
+import Chatbox from './components/chatbox'
 
 import './app.scss'
 
@@ -69,42 +70,19 @@ class Chat extends React.Component {
 	}
 
 	render() {
-		const {classroom, chat, actions} = this.props
+		const {classroom, chat, actions, upload} = this.props
 		const {currentText} = this.state
+		const {self } = this.props.classroom;
 
 		return (
-		
+
 		<Layout>
 			<Layout.Header title="I am a nav - please style me differently" />
 			<Layout.Content title="I am main content">
-				
-
-				<h1>Chatroom</h1>
-
-			<h2>Members</h2>
-			<ul>
-				{classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
-				)}
-			</ul>
-
-			<h2>Messages</h2>
-			<ul>
-				{chat.messages.map(({id, student, text, createdAt}) =>
-					<li key={id}>
-						<label>{student.name} at {createdAt.toISOString()}</label>
-						<p>{text}</p>
-					</li>
-				)}
-			</ul>
-
-			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-			<p>{this.getTypingMessage()}</p>
-
-			
+			<Chatbox chat = {chat} upload= {upload} self={self} currentText="sampleCurrentText" />
+ 
 			</Layout.Content>
-			
+
 			<Layout.Sidebar title="I am a Sidebar">
 				<ul className="item-list">
 					<li>I am in the sidebar  </li>
