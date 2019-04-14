@@ -4,19 +4,14 @@
     grid-area: header;
     display: grid;
     grid-template-columns: 250px 1fr;
-    font-family: $font-family;
-    font-weight: 800;
-    font-size: 1.75rem;
-    color: $primary-color;
     padding:10px;
 
 	.site-logo {
-	width: 100%;
+	    width: 100%;
 	}
 
 	.site-title {
-	text-align: center;
-	vertical-align: center;
+	    text-align: center;
 	}
 }
 

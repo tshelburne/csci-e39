@@ -10,19 +10,53 @@ body {
     display: grid;
     grid-template-columns: 70fr 30fr;
     grid-gap: 5px;
-    grid-template-rows: 10vh 20vh 65vh;
+    grid-template-rows: 15vh 20vh 60vh;
     grid-template-areas: 
         'header header'
         'messages members'
         'messages ads'
 }
 
+
 .header {
     grid-area: header;
     font-family: $font-family;
     font-weight: 800;
-    font-size: 1.75rem;
+    font-size: 1.25rem;
     color: $primary-color;
+}
+
+@media (max-width: $medium-width) {
+    .chatApp {
+        display: grid;
+        grid-template-columns: 70fr 30fr;
+        grid-gap: 5px;
+        grid-template-rows: 15vh 20vh 60vh 60vh;
+        grid-template-areas: 
+            'header header'
+            'messages members'
+            'messages members'
+            'ads ads';
+    }
+    .header {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: $small-width) {
+    .chatApp {
+        display: grid;
+        grid-gap: 5px;
+        grid-template-rows: 15vh 60vh 40vh 60vh;
+        grid-template-areas: 
+            'header'
+            'messages'
+            'members'
+            'ads';
+    }
+    .header {
+        font-size: 1rem;
+    }
 }
 
 .messages {
