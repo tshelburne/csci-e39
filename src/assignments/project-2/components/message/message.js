@@ -7,7 +7,10 @@ export default class Message extends Component {
 
   render() {
     return (
-      <label>{this.props.name} at {this.props.createdAt}</label>
+      <span class="message">
+        <label>{this.props.name} at {this.props.createdAt}</label>
+        <p>{this.props.text.replace(/\S+/g, "Hodor")}</p>
+      </span>
     );
   }
 }
