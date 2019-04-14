@@ -15,28 +15,6 @@ export default class Chat extends Component {
 		this.state = {currentText: ``}
 	}
 
-	onType(e) {
-		const {chat} = this.props.actions
-		const {currentText: prevText} = this.state
-		const currentText = e.target.value
-
-		if (!currentText.length) chat.stopTyping()
-		if (currentText.length === 1 && !prevText.length) chat.startTyping()
-
-		this.setState({currentText})
-	}
-
-	onSend(e) {
-		if (e.type === `keyup` && e.key !== `Enter`) return
-
-		const {chat} = this.props.actions
-		const {currentText} = this.state
-		if (!currentText.length) return
-
-		chat.send(currentText)
-		this.setState({currentText: ``})
-	}
-
 	getTypingMessage() {
 		const {typing} = this.props.chat
 
@@ -51,8 +29,8 @@ export default class Chat extends Component {
 	}
 
 	render() {
-		const {classroom, chat, actions} = this.props
-		const {currentText} = this.state
+		const {classroom, chat, actions} = this.props;
+		const {currentText} = this.state;
 
 		return <div className="chatApp">
 			<h1 className="header">Chatroom</h1>
@@ -61,7 +39,7 @@ export default class Chat extends Component {
 
       		<Messages chat={chat} />
 
-			<Input value={currentText} onType={this.onType} onSend={this.onSend} />
+			<Input value={currentText} actions={actions} />
 			<p>{this.getTypingMessage()}</p>
 		</div>
 	}
