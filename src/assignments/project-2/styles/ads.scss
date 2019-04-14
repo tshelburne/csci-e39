@@ -1,0 +1,23 @@
+.chat-adspace {
+    .ads-list {
+       padding: 0;
+        li {
+            width: 100%;
+            list-style: none;
+        }
+    }
+    .ad-img {
+        width: 100%;
+        max-width: 500px;
+    }
+    .ad-link {
+        width: 100%;
+        display: inline-block;
+        text-decoration: none;
+        text-align: center;
+        &:hover {
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
+}

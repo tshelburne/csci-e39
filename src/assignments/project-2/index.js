@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 import Members from './components/Members'
 import Messages from './components/Messages'
-import Form from './components/Form' 
+import Form from './components/Form'
+import Ads from './components/Ads'
+
+
 import './app.scss'
 
 class Chat extends React.Component {
@@ -52,11 +55,6 @@ class Chat extends React.Component {
 	render() {
 		const {classroom, chat, actions} = this.props
 		const {currentText} = this.state
-		// console.log("classroom", classroom)
-		// 	console.log("classroom.self", classroom.self)
-
-	console.log("classroom.self", classroom.self)
-
 
 		return <div className='chat-grid'>
 			<h1 className="chat-header">Candy Cane Chat</h1> 
@@ -72,9 +70,7 @@ class Chat extends React.Component {
 				<small className='chat-typing'>{this.getTypingMessage()}</small>
 			</section>
 
-			<section className='chat-adspace'>
-				<p>ADS WILL GO HERE</p>
-			</section>
+			<Ads adsList={ads} />
 		</div>
 	}
 
@@ -84,6 +80,10 @@ const studentPropType = PropTypes.shape({
 	id: PropTypes.number.isRequired,
 	name: PropTypes.string.isRequired,
 })
+
+const ads = [{img:"http://placekitten.com/500/300", text:"Hello! I am a fancy ad"}, 
+{img:"http://placekitten.com/500/300", text:"Hello! I am a fancy ad"},
+{img:"http://placekitten.com/500/300", text:"Hello! I am a fancy ad"}];
 
 Chat.propTypes = {
 	classroom: PropTypes.shape({
