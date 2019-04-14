@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import './messages.scss'
 import Input from '../input/input';
 import Message from '../message/message';
+import List from '../list/list'
 export default class Messages extends Component {
 	constructor(props) {
 		super(props);
@@ -15,13 +16,11 @@ export default class Messages extends Component {
     return (
       <article className={'messages'}>
         <h2>Messages</h2>
-          <ul>
+          <List>
             {chat.messages.map(({id, student, text, createdAt}) =>
-              <li key={id}>
-                <Message name={student.name} text={text} createdAt={createdAt.toISOString()}></Message>                
-              </li>
+              <Message name={student.name} text={text} createdAt={createdAt.toISOString()}></Message>
             )}
-        </ul>
+          </List>
         <Input value={currentText} onType={onType} onSend={onSend} />
       </article>
     )
