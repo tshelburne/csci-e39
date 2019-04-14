@@ -1,0 +1,38 @@
+$input-color: lightblue;
+
+.chat-form {
+
+    .chat-form-group {
+        display: flex;
+        height: 2em;
+
+        .chat-input {
+            flex: 1;
+            padding-left: 1rem;
+            border-radius: 15px 0 0 15px;
+            font-size: 1em;
+            border: 1px solid $input-color;
+            border-right: none;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        .chat-btn {
+            width: 5em;
+            border-radius: 0 15px 15px 0;
+            font-size: 1em;
+            border-style: solid;
+            border-color: $input-color;
+            background-color: $input-color;
+            color: black;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    }
+
+    .chat-typing {
+        padding-left: 10px;
+    }
+}

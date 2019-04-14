@@ -67,10 +67,12 @@ class Chat extends React.Component {
 
 			<Messages messages={chat.messages} self={classroom.self} />
 
-			<section className='chat-input'>
-				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-				<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-				<p>{this.getTypingMessage()}</p>
+			<section className='chat-form'>
+				<section className='chat-form-group'>
+					<input className='chat-input' value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
+					<button className='chat-btn' disabled={currentText === ``} onClick={this.onSend}>Send</button>
+				</section>
+				<small className='chat-typing'>{this.getTypingMessage()}</small>
 			</section>
 		</div>
 	}
