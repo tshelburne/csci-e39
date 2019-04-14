@@ -18,8 +18,7 @@ export default class Messages extends Component {
           <ul>
             {chat.messages.map(({id, student, text, createdAt}) =>
               <li key={id}>
-                <Message name={name} createdAt={createdAt.toISOString()}></Message>
-                <p>{text}</p>
+                <Message name={student.name} text={text} createdAt={createdAt.toISOString()}></Message>                
               </li>
             )}
         </ul>
