@@ -3,7 +3,8 @@
     flex-direction: column;
 
     .message-list {
-        overflow: scroll;
+        overflow-y: scroll;
+        overflow-x: initial;
         list-style-type: none;
         padding: 0;
 
