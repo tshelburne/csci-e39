@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import './messages.scss'
 
 export default class Messages extends Component {
 	constructor(props) {

@@ -1,0 +1,27 @@
+@import "../../global-styles";
+
+.member {
+    display: flex;
+    align-items: center;
+
+    img {
+        margin-right: 5px;
+        border-radius: 50%;
+        background-color: $primary-color;
+        height: 50px;
+    }
+
+    p {
+            font-weight: 250;
+            font-size: 1rem;
+            color: $primary-color;
+    }
+}
+
+@media (max-width: $medium-width) {
+    .member {
+        p {
+            display: none;
+        }
+    }
+}

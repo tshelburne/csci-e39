@@ -7,10 +7,5 @@ ul {
 }
 
 li {
-    // stops shrinking items in overflow flexbox
-    min-height: min-content;
-}
-
-.list-item {
     list-style-type: none;
 }
