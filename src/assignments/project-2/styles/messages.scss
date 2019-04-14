@@ -1,3 +1,5 @@
+$message-color: lightblue;
+
 .chat-messages {
     display: flex;
     flex-direction: column;
@@ -18,7 +20,7 @@
             .message-text {
                 border-radius: 15px;
                 padding: 15px;
-                background-color: pink;
+                background-color: $message-color;
             }
 
             .message-timestamp {
