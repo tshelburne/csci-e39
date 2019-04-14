@@ -1,0 +1,29 @@
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+
+    .message-list {
+        overflow-y: scroll;
+        overflow-x: initial;
+        list-style-type: none;
+        padding: 0;
+
+        .message-content {
+            display: flex;
+            flex-direction: column;
+            &:not(:last-child) {
+                margin-bottom: 5px;
+            }
+
+            .message-text {
+                border-radius: 15px;
+                padding: 15px;
+                background-color: pink;
+            }
+
+            .message-timestamp {
+                align-self: flex-end;
+            }
+        }
+    }
+}
