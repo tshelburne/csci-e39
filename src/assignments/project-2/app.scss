@@ -1,11 +1,12 @@
-$background-color: #8addea;
+$background-color: #FFA500; //linear-gradient(orange, rgb(255, 140, 0));
+$secondary-color: #87CEEB;
 $primary-gray: #edf1f2;
 $white: #fcfcfc;
-$header-font: 'Pacifico', cursive;
-$body-font: 'Montserrat', sans-serif;
+$primary-font: 'Dokdo', cursive;
+$body-font: $primary-font;
 $li_alt_color : darken($primary-gray, 10);
-$my-color: blue;
-$friend-color: pink;
+$my-color: $background-color;
+$friend-color: $secondary-color;
 $font-list: Calibri, Arial, sans-serif;
 
 
@@ -14,13 +15,13 @@ $font-list: Calibri, Arial, sans-serif;
 }
 
 #member-list {
- background-color: $white;
+ background-color: $secondary-color;
 }
 
 #member-list > ul > li {
  background-color: $white;
  border: solid 1px $primary-gray;
- font-family: $body-font;
+ font-family: $primary-font;
  font-size: 20px;
 }
 
@@ -51,7 +52,6 @@ body {
                   $background-color
   );
   max-height: 100vh;
-  font-family: "Arial", sans-serif;
   color: #060606;
   border: 0;
   margin: 0;
@@ -81,18 +81,18 @@ ul{
 }
 
 header {
-    grid-area: header;
-    background-color: $white;
+  grid-area: header;
+  background-color: $white;
 	color: $background-color;
 	text-align: center;
 	padding: 1rem;
-	border-bottom: 0.3rem solid $primary-gray;
-
+  border-bottom: 0.3rem solid $primary-gray;
 }
 
 header > h1 {
-  font-family: $header-font;
-  font-size: 36px;
+  font-family: $primary-font;
+  font-size: 48px;
+  text-align: center;
 }
 
 nav {
@@ -122,7 +122,8 @@ footer {
 
 h2 {
   text-align: center;
-  font-family: 'Pacifico', cursive;
+  font-family: $primary-font;
+  font-size: 36px;
 }
 
 #body-container {
