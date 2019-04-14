@@ -10,6 +10,8 @@ function Messages (props) {
 
 	var messages = props.messages;
 	var self = props.self;
+	var regBadWords = /drugs|politics|wtf/gi;
+
 
 	return (
 		<main id="message-container">
@@ -19,9 +21,9 @@ function Messages (props) {
 
 						<KidName name={student.name} self={self} />
 
-						<label className="timestamp"> at {createdAt.toISOString()}</label>
+						<label className="timestamp"> at {createdAt.toLocaleTimeString()} on {createdAt.toLocaleDateString()}</label>
 
-						<KidMessage name={student.name} self={self} text={text}/>
+						<KidMessage name={student.name} self={self} text={text.replace(regBadWords, "!@%#")}/>
 
 					</li>
 				)}
