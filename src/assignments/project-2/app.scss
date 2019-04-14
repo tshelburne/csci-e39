@@ -8,7 +8,7 @@ $li_alt_color : darken($primary-gray, 10);
 $my-color: $background-color;
 $friend-color: $secondary-color;
 $font-list: Calibri, Arial, sans-serif;
-$handwriting-font: 'Shadow into Light', cursive;
+$handwriting-font: 'Shadow Into Light', cursive;
 
 
 #message-container {
@@ -165,11 +165,19 @@ h2 {
 }
 
 .message > span{
-  background-color: $my-color;
-  font-size: 20px;
-  font-family: $handwriting-font;
-  //float: left;
-}
+   background-color: $my-color;
+   font-size: 20px;
+   font-family: $handwriting-font;
+   padding: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+
+ }
 
 .friend-message > span{
   background-color: $friend-color;
@@ -178,6 +186,13 @@ h2 {
   font-size: 20px;
   position: absolute;
   right: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-bottom-left-radius: 15px;
 
 }
 
