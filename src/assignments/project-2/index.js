@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 import Member from '../../ui/components/member'
+//import Messages from '../../ui/components/messages'
 
 import './app.scss'
 
@@ -18,11 +19,11 @@ function Messages (props) {
 					<li className="chat-item" key={id}>
 
 						<KidName name={student.name} self={self} />
-						
+
 						<label className="timestamp"> at {createdAt.toISOString()}</label>
-						
+
 						<KidMessage name={student.name} self={self} text={text}/>
-						
+
 					</li>
 				)}
 			</ul>
@@ -40,7 +41,7 @@ function KidName (props) {
 	else {
 		return <label className="friend-name">{firstLetter}</label>;
 	}
-	
+
 }
 
 
@@ -54,7 +55,7 @@ function KidMessage (props) {
 	else {
 		return <p className="friend-message">{text}</p>;
 	}
-	
+
 }
 
 class Chat extends React.Component {
@@ -112,18 +113,18 @@ class Chat extends React.Component {
 			{/*<div id='body-container'>*/}
 
 			<Member classroom={classroom}/>
-			
+
 			<main>
 				<h2>Messages</h2>
 				<Messages messages={chat.messages} self={classroom.self}/>
 			</main>
-			
+
 			<footer>
 				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
 				<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
 				<p>{this.getTypingMessage()}</p>
 			</footer>
-			
+
 		</div>
 
 	}
