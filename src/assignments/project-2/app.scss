@@ -10,10 +10,10 @@ body {
     display: grid;
     grid-template-columns: 70fr 30fr;
     grid-gap: 5px;
-    grid-template-rows: 70px 1fr;
+    grid-template-rows: 10vh 85vh;
     grid-template-areas: 
         'header header'
-        'messages members'
+        'messages members';
 }
 
 .header {

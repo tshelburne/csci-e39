@@ -14,13 +14,14 @@
         font-size: 1.25rem;
         color: $primary-color;
     }
-}
 
-.history {
-    grid-area: history;
-}
+    ul {
+        grid-area: history;
+        overflow: auto;
+    }
 
-.input {
-    grid-area: input;
+    .input {
+        grid-area: input;
+    }
 }
 

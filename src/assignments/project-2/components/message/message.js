@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import './message.scss'
 import moment from 'moment';
+
 export default class Message extends Component {
 
   constructor(props) {
