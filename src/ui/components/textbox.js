@@ -52,11 +52,13 @@ class Textbox extends React.Component {
 
         const {currentText} = this.state
 
-        return <div className="chat-text-input-div">
-            <input className="chat-text-input" value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-            <button className="chat-text-button" disabled={currentText === ``} onClick={this.onSend}>Send</button>
+        return <footer>
+            <div class="chat-footer-grid">
+            <input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
+            <button disabled={currentText === ``} onClick={this.onSend}>Send</button>
             <p className="chat-text-typing">{this.getTypingMessage()}</p>
-        </div>
+            </div>
+        </footer>
     }
 }
 
