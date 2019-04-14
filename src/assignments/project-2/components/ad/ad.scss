@@ -1,0 +1,15 @@
+@import "../../global-styles";
+
+.ad {
+    img {
+        height: 100px;
+        width: 100px;
+        object-fit: scale-down;
+    }
+
+    p {
+        color: $foreground-color;
+        font-weight: 90;
+        font-size: .7rem;
+    }
+}
