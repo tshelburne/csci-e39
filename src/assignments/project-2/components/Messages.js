@@ -1,10 +1,9 @@
 
 import React from 'react'
+import Section from './Section'
 
-function Messages({ messages, self }) {
-
-    return (<section className='chat-messages'>
-      <h2>Messages</h2>
+function Messages({ messages }) {
+    return (<Section title='Messages' styleName='chat-messages'>
       <ul className="message-list">
         {messages.map(({ id, student, text, createdAt }) =>
         <li className={((student.id == self.id) ? "message-content self" : "message-content")} key={id} >
@@ -16,7 +15,7 @@ function Messages({ messages, self }) {
         </li>
         )}
       </ul>
-    </section>)
+  </Section>)
 }
 
 export default Messages

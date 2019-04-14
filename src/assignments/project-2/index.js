@@ -61,7 +61,7 @@ class Chat extends React.Component {
 
 
 		return <div className='chat-grid'>
-			<h1 className='chat-header'>Chatroom</h1>
+			<h1>Chatroom</h1>
 
 			<Members students={classroom.students} self={classroom.self} />
 
@@ -74,6 +74,7 @@ class Chat extends React.Component {
 				</section>
 				<small className='chat-typing'>{this.getTypingMessage()}</small>
 			</section>
+
 		</div>
 	}
 
