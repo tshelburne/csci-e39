@@ -1,0 +1,22 @@
+
+$self-color: pink;
+$gray: #92959E;
+
+.chat-members {
+  width: 260px;
+  float: left;
+  border-radius: 3px;
+  border: none;
+  padding: 14px;
+  color: white;
+  background: $gray;
+  width: 90%;
+  font-size: 14px;
+
+  ul ol {
+    list-style-type: none;
+  }
+  .self {
+    background: $self-color;
+  }
+}

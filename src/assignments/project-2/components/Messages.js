@@ -1,6 +1,5 @@
 
-import React from 'react'
-import Message from './Message'
+import React from 'react' 
 
 function Messages({ messages }) {
     return (<section className='chat-messages'>

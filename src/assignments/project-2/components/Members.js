@@ -6,7 +6,7 @@ function Members({ students }) {
         <h2>Members</h2>
         <ul>
             {students.map(({ id, name }) =>
-                <li onClick={() => handleClick(name)} key={id}><span>{name}</span></li>
+                <li className="name" onClick={() => handleClick(name)} key={id}><span>{name}</span></li>
             )}
         </ul>
     </section>
