@@ -1,0 +1,36 @@
+<<<<<<< Updated upstream
+=======
+@import "./global-styles";
+
+body {
+    background-color: $background-color;
+    text-align: center;
+    font-family: $font-family;
+}
+
+.chatApp {
+    display: grid;
+    grid-template-columns: 70fr 30fr;
+    grid-gap: 5px;
+    grid-template-rows: 15vh 80vh;
+    grid-template-areas: 
+        'header header'
+        'messages members';
+}
+
+.header {
+    grid-area: header;
+    font-family: $font-family;
+    font-weight: 800;
+    font-size: 1.75rem;
+    color: $primary-color;
+}
+
+.messages {
+    grid-area: messages;
+}
+
+.members {
+    grid-area: members;
+}
+>>>>>>> Stashed changes

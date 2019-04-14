@@ -1,6 +1,16 @@
+<<<<<<< Updated upstream
 import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
+=======
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import autobind from 'class-autobind';
+import Input from './components/input/input';
+import Members from './components/members/members';
+import Messages from './components/messages/messages';
+import Header from './components/header/header'
+>>>>>>> Stashed changes
 
 import './app.scss'
 
@@ -51,8 +61,14 @@ class Chat extends React.Component {
 		const {classroom, chat, actions} = this.props
 		const {currentText} = this.state
 
+<<<<<<< Updated upstream
 		return <div>
 			<h1>Chatroom</h1>
+=======
+		return <div className="chatApp">
+			<Header title= "WINTER IS COMING"/>
+			
+>>>>>>> Stashed changes
 
 			<h2>Members</h2>
 			<ul>
