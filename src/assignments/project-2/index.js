@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 import Member from '../../ui/components/member'
 import Textbox from '../../ui/components/textbox'
-import Messages from '../../ui/components/messages'
 import './app.scss'
 
 
