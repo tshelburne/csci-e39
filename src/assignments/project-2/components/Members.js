@@ -1,6 +1,5 @@
 
 import React from 'react'
-import Member from './Member'
 
 function Members({ students }) {
     return (<section className='chat-members'>

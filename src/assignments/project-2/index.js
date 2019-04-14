@@ -58,8 +58,10 @@ class Chat extends React.Component {
 		return <div className='chat-grid'>
 			<h1 className='chat-header'>Chatroom</h1>
 
-			<Members students={classroom.students} /> 
-			<Messages chatMessages={chat.messages} />
+			<Members students={classroom.students} />
+
+			<Messages messages={chat.messages} />
+
 			<section className='chat-input'>
 				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
 				<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
