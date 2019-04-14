@@ -74,7 +74,7 @@ class Chat extends React.Component {
 
 		return <div class="container">
 			<header>
-				<h1>Chatroom</h1>
+				<h1>Kids Chatroom</h1>
 			</header>
 
 			<Member classroom={classroom}/>
