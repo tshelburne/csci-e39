@@ -1,0 +1,27 @@
+@import "../../global-styles";
+
+.messages {
+    display: grid;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas: 
+    'header'    
+    'history'
+    'input';
+
+    h2 {
+        grid-area: header;
+        font-weight: 300;
+        font-size: 1.25rem;
+        color: $primary-color;
+    }
+
+    ul {
+        grid-area: history;
+        overflow: auto;
+    }
+
+    .input {
+        grid-area: input;
+    }
+}
+

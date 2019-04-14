@@ -1,8 +1,3 @@
-<<<<<<< Updated upstream
-import React from 'react'
-import PropTypes from 'prop-types'
-import autobind from 'class-autobind'
-=======
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'class-autobind';
@@ -10,38 +5,16 @@ import Input from './components/input/input';
 import Members from './components/members/members';
 import Messages from './components/messages/messages';
 import Header from './components/header/header'
->>>>>>> Stashed changes
 
-import './app.scss'
 
-class Chat extends React.Component {
+import './app.scss';
+
+export default class Chat extends Component {
 
 	constructor() {
 		super(...arguments)
 		autobind(this)
 		this.state = {currentText: ``}
-	}
-
-	onType(e) {
-		const {chat} = this.props.actions
-		const {currentText: prevText} = this.state
-		const currentText = e.target.value
-
-		if (!currentText.length) chat.stopTyping()
-		if (currentText.length === 1 && !prevText.length) chat.startTyping()
-
-		this.setState({currentText})
-	}
-
-	onSend(e) {
-		if (e.type === `keyup` && e.key !== `Enter`) return
-
-		const {chat} = this.props.actions
-		const {currentText} = this.state
-		if (!currentText.length) return
-
-		chat.send(currentText)
-		this.setState({currentText: ``})
 	}
 
 	getTypingMessage() {
@@ -58,38 +31,17 @@ class Chat extends React.Component {
 	}
 
 	render() {
-		const {classroom, chat, actions} = this.props
-		const {currentText} = this.state
+		const {classroom, chat, actions} = this.props;
+		const {currentText} = this.state;
 
-<<<<<<< Updated upstream
-		return <div>
-			<h1>Chatroom</h1>
-=======
 		return <div className="chatApp">
 			<Header title= "WINTER IS COMING"/>
-			
->>>>>>> Stashed changes
 
-			<h2>Members</h2>
-			<ul>
-				{classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
-				)}
-			</ul>
+      		<Members classroom={classroom}></Members>
 
-			<h2>Messages</h2>
-			<ul>
-				{chat.messages.map(({id, student, text, createdAt}) =>
-					<li key={id}>
-						<label>{student.name} at {createdAt.toISOString()}</label>
-						<p>{text}</p>
-					</li>
-				)}
-			</ul>
+      		<Messages chat={chat} value={currentText} actions={actions} />
 
-			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-			<p>{this.getTypingMessage()}</p>
+			    <p>{this.getTypingMessage()}</p>
 		</div>
 	}
 
@@ -120,5 +72,3 @@ Chat.propTypes = {
 	}),
 	actions: PropTypes.object.isRequired,
 }
-
-export default Chat

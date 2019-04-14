@@ -1,0 +1,15 @@
+@import "../../global-styles";
+
+.message {
+    label {
+        color: $primary-color;
+        font-weight: 90;
+        font-size: .5rem;
+    }
+
+    p {
+        color: $foreground-color;
+        font-weight: 100;
+        font-size: .8rem;
+    }
+}

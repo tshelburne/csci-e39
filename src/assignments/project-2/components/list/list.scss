@@ -1,0 +1,11 @@
+@import "../../global-styles";
+
+ul {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+}
+
+li {
+    list-style-type: none;
+}
