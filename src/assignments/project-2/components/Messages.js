@@ -1,12 +1,13 @@
 
 import React from 'react'
 
-function Messages({ messages }) {
+function Messages({ messages, self }) {
+
     return (<section className='chat-messages'>
       <h2>Messages</h2>
       <ul className="message-list">
         {messages.map(({ id, student, text, createdAt }) =>
-        <li className="message-content" key={id}>
+        <li className={((student.id == self.id) ? "message-content self" : "message-content")} key={id} >
             <label>{student.name}</label>
             <span className="message-text">{text}</span>
             <small className="message-timestamp">

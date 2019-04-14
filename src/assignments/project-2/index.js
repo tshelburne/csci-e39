@@ -54,13 +54,18 @@ class Chat extends React.Component {
 	render() {
 		const {classroom, chat, actions} = this.props
 		const {currentText} = this.state
+		// console.log("classroom", classroom)
+		// 	console.log("classroom.self", classroom.self)
+
+	console.log("classroom.self", classroom.self)
+
 
 		return <div className='chat-grid'>
 			<h1 className='chat-header'>Chatroom</h1>
 
-			<Members students={classroom.students} />
+			<Members students={classroom.students} self={classroom.self} />
 
-			<Messages messages={chat.messages} />
+			<Messages messages={chat.messages} self={classroom.self} />
 
 			<section className='chat-input'>
 				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />

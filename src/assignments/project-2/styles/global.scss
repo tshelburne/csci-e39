@@ -16,11 +16,15 @@ body {
     }
 }
 
-.chat-grid {    
+.chat-grid {
     height: 95%;
     margin: 30px;
     padding: 15px;
     background: white;
     box-shadow: 0 0 2px 1px;
     border-radius: 25px;
+}
+
+.self {
+  color: red;
 }
