@@ -58,14 +58,9 @@ class Chat extends React.Component {
 		return <div className='chat-grid'>
 			<h1 className='chat-header'>Chatroom</h1>
 
-		<Members students={classroom.students} /> 
+			<Members students={classroom.students} />
 
-			<section className='chat-messages'>
-				<h2>Messages</h2>
-				<ul>
-					<Messages message={chat.messages} /> 
-				</ul>
-			</section>
+			<Messages messages={chat.messages} />
 
 			<section className='chat-input'>
 				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
