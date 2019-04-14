@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import List from '../list/list'
+import Member from '../member/member'
+import './members.scss'
 
 export default class Members extends Component {
 
@@ -13,7 +15,7 @@ export default class Members extends Component {
         <h2>Members</h2>
         <List>
           {this.props.classroom.students.map(({name}) =>
-            <span>{name}</span>
+            <Member name={name}/>
           )}
         </List>
       </article>

@@ -1,6 +1,14 @@
+@font-face {
+    font-family: 'Got';
+    src: url('https://res.cloudinary.com/mattkim/raw/upload/v1555247722/gamefont_w3c4iv.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
 $foreground-color: rgb(241, 240, 240);
-$primary-color: rgb(103, 135, 223);
-$background-color: #3a3e42;
-$medium-width: 1050px;
-$small-width: 750px;
-$font-family: "Roboto", "Helvetica";
+$primary-color: #777777;
+$background-color: #2C302F;
+$medium-width: 700px;
+$small-width: 400px;
+$font-family: Got;
+

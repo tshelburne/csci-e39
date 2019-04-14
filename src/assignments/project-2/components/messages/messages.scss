@@ -7,6 +7,25 @@
     'header'    
     'history'
     'input';
+
+    h2 {
+        grid-area: header;
+        font-weight: 300;
+        font-size: 1.25rem;
+        color: $primary-color;
+    }
+
+    label {
+        color: $primary-color;
+        font-weight: 90;
+        font-size: .5rem;
+    }
+
+    p {
+        color: $foreground-color;
+        font-weight: 100;
+        font-size: .8rem;
+    }
 }
 
 .history {
@@ -17,10 +36,3 @@
     grid-area: input;
 }
 
-h2 {
-    grid-area: header;
-    font-family: $font-family;
-    font-weight: 300;
-    font-size: 1.25rem;
-    color: $primary-color;
-}
