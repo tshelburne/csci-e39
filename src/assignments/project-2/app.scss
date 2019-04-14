@@ -87,12 +87,21 @@ header {
 	text-align: center;
 	padding: 1rem;
   border-bottom: 0.3rem solid $primary-gray;
+  display: flex;
+  justify-content: center;
+  //align-items: baseline;
 }
 
 header > h1 {
   font-family: $primary-font;
   font-size: 48px;
   text-align: center;
+  margin: 20px;
+}
+
+.kids-images {
+  max-width: 50px;
+  //padding: 10px;
 }
 
 nav {

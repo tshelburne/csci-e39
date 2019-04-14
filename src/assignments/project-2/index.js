@@ -74,7 +74,9 @@ class Chat extends React.Component {
 
 		return <div class="container">
 			<header>
+				<img src="https://d29fhpw069ctt2.cloudfront.net/icon/image/49181/preview.svg" class="kids-images" alt="crayon" />
 				<h1>Kids Chatroom</h1>
+				<img src="https://d29fhpw069ctt2.cloudfront.net/icon/image/49181/preview.svg" class="kids-images" alt="crayon" />
 			</header>
 
 			<Member classroom={classroom}/>
