@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import autobind from 'class-autobind';
-import Input from './components/input/input';
 import Members from './components/members/members';
 import Messages from './components/messages/messages';
+import Ads from './components/ads/ads';
 
 import './app.scss';
 
@@ -36,6 +36,8 @@ export default class Chat extends Component {
 			<h1 className="header">WINTER HAS COME</h1>
 
       		<Members classroom={classroom}></Members>
+
+          <Ads></Ads>
 
       		<Messages chat={chat} value={currentText} actions={actions} />
 
