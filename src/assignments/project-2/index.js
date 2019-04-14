@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 
 import Layout from './components/layout'
+import Menu from './components/menu'
 
 import './app.scss'
 
@@ -75,7 +76,10 @@ class Chat extends React.Component {
 		return (
 		
 		<Layout>
-			<Layout.Header title="I am a nav - please style me differently" />
+			<Layout.Header title="Pizza Lover's Chat" >
+				<Menu menuItems={[MENUITEM1,MENUITEM2,MENUITEM3,MENUITEM4]}/>
+			</Layout.Header>
+
 			<Layout.Content title="I am main content">
 				
 
@@ -143,6 +147,26 @@ Chat.propTypes = {
 		}).isRequired
 	}),
 	actions: PropTypes.object.isRequired,
+}
+
+const MENUITEM1 = {
+	name: "Home",
+	url: "/home",
+}
+
+const MENUITEM2 = {
+	name: "Avatars",
+	url: "/avatars",
+}
+
+const MENUITEM3 = {
+	name: "Members",
+	url: "/members",
+}
+
+const MENUITEM4 = {
+	name: "Login",
+	url: "/login",
 }
 
 export default Chat
