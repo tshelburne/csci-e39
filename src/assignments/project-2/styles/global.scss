@@ -6,9 +6,9 @@ body {
     @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy%7CRoboto');
     font-family: Roboto, sans-serif;
     background: repeating-linear-gradient(to bottom right,
-        AliceBlue 3%,
-        lightblue 7%,
-        blue 10%
+        Salmon 3%,
+        pink 7%,
+        red 10%
     );
 
     .chat-header {
@@ -16,7 +16,7 @@ body {
     }
 }
 
-.chat-grid {    
+.chat-grid {
     height: 95%;
     margin: 30px;
     padding: 15px;
