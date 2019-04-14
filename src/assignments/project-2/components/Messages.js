@@ -1,9 +1,9 @@
 
 import React from 'react'
+import Section from './Section'
 
 function Messages({ messages }) {
-    return (<section className='chat-messages'>
-      <h2>Messages</h2>
+    return (<Section title='Messages' styleName='chat-messages'>
       <ul className="message-list">
         {messages.map(({ id, student, text, createdAt }) =>
         <li className="message-content" key={id}>
@@ -15,7 +15,7 @@ function Messages({ messages }) {
         </li>
         )}
       </ul>
-    </section>)
+  </Section>)
 }
 
 export default Messages

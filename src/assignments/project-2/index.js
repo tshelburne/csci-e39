@@ -56,7 +56,7 @@ class Chat extends React.Component {
 		const {currentText} = this.state
 
 		return <div className='chat-grid'>
-			<h1 className='chat-header'>Chatroom</h1>
+			<h1>Chatroom</h1>
 
 			<Members students={classroom.students} />
 
@@ -67,6 +67,7 @@ class Chat extends React.Component {
 				<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
 				<p>{this.getTypingMessage()}</p>
 			</section>
+
 		</div>
 	}
 
