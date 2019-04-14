@@ -76,7 +76,7 @@ class Chat extends React.Component {
 		return (
 		
 		<Layout>
-			<Layout.Header title="I am a nav - please style me differently" >
+			<Layout.Header title="Pizza Lover's Chat" >
 				<Menu menuItems={[MENUITEM1,MENUITEM2,MENUITEM3,MENUITEM4]}/>
 			</Layout.Header>
 

@@ -12,7 +12,7 @@ constructor() {
 	render() {
 		const {menuItems} = this.props
 		return( 
-			<div>
+			<div className="menu-item">
 				<ul>
 					{
 						menuItems.map(item => {
