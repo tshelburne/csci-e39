@@ -5,6 +5,8 @@ $font-family: 'Permanent Marker', sans-serif;
 $border-radius: 8px;
 $font-weight: 200;
 
+$sidebar-background-color: blue;
+
 $breakpoint: 768px;
 
 body {
@@ -43,7 +45,7 @@ footer {
 .main-content {
     display: grid;
     grid-column-gap: 10px;
-    grid-template-columns: repeat(3, auto);
+    //grid-template-columns: repeat(3, auto);
 }
 
 
@@ -120,9 +122,11 @@ footer {
 
     @media(min-width: $breakpoint) {
         grid-template-areas: 
-            "header header"
-            "side main"
-            "footer footer";
+            "header header header"
+            "side main main"
+            "side main main"
+            "side main main"
+            "footer footer footer";
 
         .layout--header {
             grid-area: header;
@@ -134,6 +138,7 @@ footer {
 
         .layout--sidebar {
             grid-area: side;
+            background-color: invert($sidebar-background-color);
         }
 
         .layout--footer {

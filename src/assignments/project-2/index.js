@@ -78,11 +78,30 @@ class Chat extends React.Component {
 			<Layout.Header title="I am a nav - please style me differently" />
 			<Layout.Content title="I am main content">
 				
-				<ItemCard
-					title={"name"}
-					src={"url"}
-					description={"some content about a student"}
-				/>
+
+				<h1>Chatroom</h1>
+
+			<h2>Members</h2>
+			<ul>
+				{classroom.students.map(({id, name}) =>
+					<li key={id}><span>{name}</span></li>
+				)}
+			</ul>
+
+			<h2>Messages</h2>
+			<ul>
+				{chat.messages.map(({id, student, text, createdAt}) =>
+					<li key={id}>
+						<label>{student.name} at {createdAt.toISOString()}</label>
+						<p>{text}</p>
+					</li>
+				)}
+			</ul>
+
+			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
+			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
+			<p>{this.getTypingMessage()}</p>
+
 			
 			</Layout.Content>
 			
