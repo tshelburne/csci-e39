@@ -1,10 +1,10 @@
 .chat-grid {
     display: grid;
     grid-template-areas:
-        'title title'
-        'members messages'
-        'members input';
-    grid-template-columns: 2.5fr 7.5fr;
+        'title title title'
+        'members messages adspace'
+        'members input adspace';
+    grid-template-columns: 2.5fr 6fr 1.5fr;
     grid-template-rows: 50px 80% 50px;
     grid-gap: 10px;
 
@@ -24,5 +24,9 @@
     .chat-form {
         grid-area: input;
         overflow-x: hidden;
+    }
+
+    .chat-adspace {
+        grid-area: adspace;
     }
 }
