@@ -75,6 +75,9 @@ class Chat extends React.Component {
 				<small className='chat-typing'>{this.getTypingMessage()}</small>
 			</section>
 
+			<section className='chat-adspace'>
+				<p>ADS WILL GO HERE</p>
+			</section>
 		</div>
 	}
 

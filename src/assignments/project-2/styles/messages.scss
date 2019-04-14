@@ -1,8 +1,13 @@
 $message-color: lightblue;
+$self-color: pink;
 
 .chat-messages {
     display: flex;
     flex-direction: column;
+
+    h2 {
+        margin-bottom: 0;
+    }
 
     .message-list {
         overflow-y: scroll;
@@ -13,18 +18,41 @@ $message-color: lightblue;
         .message-content {
             display: flex;
             flex-direction: column;
+            max-width: 53%;
+
             &:not(:last-child) {
                 margin-bottom: 5px;
+            }
+
+            .message-name {
+                font-weight: bold;
+                padding: 0 1em;
             }
 
             .message-text {
                 border-radius: 15px;
                 padding: 15px;
+                margin: 0;
+                width: 100%;
                 background-color: $message-color;
             }
 
             .message-timestamp {
                 align-self: flex-end;
+            }
+
+            &.self {
+                align-items: flex-end;
+                margin-left: auto;
+
+                .message-text {
+                    text-align: right;
+                    background-color: $self-color;
+                }
+
+                .message-timestamp {
+                    align-self: flex-start;
+                }
             }
         }
     }
