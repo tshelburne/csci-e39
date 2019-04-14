@@ -1,15 +1,15 @@
 
 import React from 'react'
+import Section from './Section'
 
-function Members({ students }) {
-    return (<section className='chat-members'>
-        <h2>Members</h2>
-        <ul>
+function Members({ students, self }) {
+    return (<Section title='Candy Lovers' styleName='chat-members'>
+        <ul className="memberUL">
             {students.map(({ id, name }) =>
-                <li className="name" onClick={() => handleClick(name)} key={id}><span>{name}</span></li>
+                <li key={id} className={(id === self.id) && "self"}><span>{name}</span> </li>
             )}
         </ul>
-    </section>
+    </Section>
     )
 }
 export default Members

@@ -3,9 +3,7 @@ import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 import Members from './components/Members'
 import Messages from './components/Messages'
-import Form from './components/Form'
-
-
+import Form from './components/Form' 
 import './app.scss'
 
 class Chat extends React.Component {
@@ -52,20 +50,30 @@ class Chat extends React.Component {
 	}
 
 	render() {
-		const { classroom, chat, actions } = this.props
-		const { currentText } = this.state
+		const {classroom, chat, actions} = this.props
+		const {currentText} = this.state
+		// console.log("classroom", classroom)
+		// 	console.log("classroom.self", classroom.self)
+
+	console.log("classroom.self", classroom.self)
+
 
 		return <div className='chat-grid'>
-			<h1 className='chat-header'>Chatroom</h1>
+			<h1 className="chat-header">Candy Cane Chat</h1> 
+			<Members students={classroom.students} self={classroom.self} />
 
-			<Members students={classroom.students} />
+			<Messages messages={chat.messages} self={classroom.self} />
 
-			<Messages messages={chat.messages} />
+			<section className='chat-form'>
+				<section className='chat-form-group'>
+					<input className='chat-input' value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
+					<button className='chat-btn' disabled={currentText === ``} onClick={this.onSend}>Send</button>
+				</section>
+				<small className='chat-typing'>{this.getTypingMessage()}</small>
+			</section>
 
-			<section className='chat-input'>
-				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-				<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-				<p>{this.getTypingMessage()}</p>
+			<section className='chat-adspace'>
+				<p>ADS WILL GO HERE</p>
 			</section>
 		</div>
 	}

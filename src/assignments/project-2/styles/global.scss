@@ -7,9 +7,13 @@
 $gray: #92959E;
 $self-color: pink;
 body {
-  @import url("https://fonts.googleapis.com/css?family=Luckiest+Guy%7CRoboto");
-  font-family: Roboto, sans-serif;
-  background: repeating-linear-gradient(to bottom right, AliceBlue 3%, lightblue 7%, blue 10%);
+    @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy%7CRoboto');
+    font-family: Roboto, sans-serif;
+    background: repeating-linear-gradient(to bottom right,
+        Salmon 3%,
+        pink 7%,
+        red 10%
+    );
 
   .chat-header {
     font-family: "Luckiest Guy", cursive;
@@ -17,26 +21,12 @@ body {
 }
 
 .chat-grid {
-  height: 95%;
-  margin: 30px;
-  padding: 15px;
-  background: white;
-  box-shadow: 0 0 2px 1px;
-  border-radius: 25px;
-}  
-.status {
-    color: $gray;
-  }
-.chat-members{
-    width:260px;
-    float: left;
-    border-radius: 3px;
-    border: none;
-    padding: 14px;
-    color: white;
-    background:$gray;
-    width: 90%;
-    font-size: 14px;
+    height: 95%;
+    margin: 30px;
+    padding: 15px;
+    background: white;
+    box-shadow: 0 0 2px 1px;
+    border-radius: 25px;
 }
 
 .letter::first-letter {
