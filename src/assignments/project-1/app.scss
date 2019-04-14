@@ -1,0 +1,98 @@
+
+$secondary-color: rgba(150, 143, 179, 1);
+$primary-color: slateGray;
+$primary-accent: crimson;
+$font-list: Calibri, Arial, sans-serif;
+
+.button {
+  background-color: blue;
+  border-radius: 15px;
+  font-family: $font-list;
+  color: white;
+  font-weight: bold;
+  
+  &:active {
+    background-color: gray;
+    border-radius: 0px;
+    color: black;
+    text-transform: uppercase;
+  }
+}
+
+.uploader-input {
+  color: blue;
+  font-weight: bold;
+  font-family: $font-list;
+  text-transform: lowercase;
+}
+
+
+ul {
+    list-style-type: none;
+}
+
+
+body, html {height: 100%;}
+
+.example-container {
+	display: grid;
+
+	grid-template-columns: 1fr 3fr 1fr;
+	grid-template-rows: 200px auto 200px;
+	grid-template-areas:
+		"hero hero hero"
+		". images ."
+		"footer footer footer";
+
+    grid-row-gap: 20px;
+}
+
+.photo-grid
+{
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-row-gap: 10px;
+    grid-column-gap: 10px
+}
+
+.hero {
+	background-color: $secondary-color;
+	grid-area: hero;
+	text-align: center;
+    font-family: $font-list;
+}
+
+.photo-and-label {
+    float: left;
+    align-content: center;
+    text-align: center;
+}
+
+.filename {
+    display:block;
+    font-family: $font-list;
+}
+
+.photo {
+	background-color: $secondary-color;
+	padding: 5px;
+    margin:  0px;
+}
+
+.photo:hover {
+    background-color: $primary-accent;
+}
+
+.photos {
+	grid-area: images;
+	background-color: $primary-color;
+}
+
+.footer {
+	grid-area: footer;
+	text-align: center;
+	background-color: $secondary-color;
+	padding-bottom: 10px;
+	padding-top: 10px;
+    font-family: $font-list;
+}

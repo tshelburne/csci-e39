@@ -4,6 +4,9 @@ $white: #fcfcfc;
 $header-font: 'Pacifico', cursive;
 $body-font: 'Montserrat', sans-serif;
 $li_alt_color : darken($primary-gray, 10);
+$my-color: blue;
+$friend-color: pink;
+$font-list: Calibri, Arial, sans-serif;
 
 body {
   background: linear-gradient(
@@ -106,7 +109,43 @@ footer {
 //  overflow-y: auto;
 //}
 
-    background-color: $background-color;
-	color: $primary-gray;
-	text-align: center;
+//    background-color: $background-color;
+//	color: $primary-gray;
+//	text-align: center;
+//}
+
+
+
+
+.chat-item {
+	list-style: none;
+
 }
+
+.student-name {
+	background-color: $my-color;
+	font-size: 2em;
+	border-radius: 50%;
+	padding: 10px;
+}
+
+.friend-name {
+	background-color: $friend-color;
+	font-size: 2em;
+	border-radius: 50%;
+	padding: 10px;
+}
+
+.timestamp {
+	
+}
+
+.message {
+	background-color: $my-color;
+}
+
+.friend-message {
+	background-color: $friend-color;
+	text-align: right;
+}
+
