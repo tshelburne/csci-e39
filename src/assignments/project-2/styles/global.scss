@@ -28,25 +28,3 @@ body {
     box-shadow: 0 0 2px 1px;
     border-radius: 25px;
 }
-
-.letter::first-letter {
-    -webkit-initial-letter: 4 1;
-            initial-letter: 4 1;
-    color: orange;
-    font-weight: bold;
-    margin-right: .75em; 
-  }
-  .letter {
-    background: black;
-   max-width: 10px;
-    text-overflow: none;
-    white-space: nowrap;
-    overflow: hidden; 
-  }
-ul ol {
-    list-style-type: none;
-}
-.self
-{
-background:$self-color;
-}
