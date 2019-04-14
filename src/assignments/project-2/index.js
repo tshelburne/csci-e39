@@ -2,8 +2,61 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 import Member from '../../ui/components/member'
+//import Messages from '../../ui/components/messages'
 
 import './app.scss'
+
+
+function Messages (props) {
+
+	var messages = props.messages;
+	var self = props.self;
+
+	return (
+		<main id="message-container">
+			<ul>
+				{messages.map(({id, student, text, createdAt}) =>
+					<li className="chat-item" key={id}>
+
+						<KidName name={student.name} self={self} />
+
+						<label className="timestamp"> at {createdAt.toISOString()}</label>
+
+						<KidMessage name={student.name} self={self} text={text}/>
+
+					</li>
+				)}
+			</ul>
+		</main>
+	);
+}
+
+function KidName (props) {
+	var name = props.name;
+	var firstLetter = name.charAt(0).toUpperCase();
+
+	if (name == props.self.name) {
+		return <label className="student-name">{firstLetter}</label>;
+	}
+	else {
+		return <label className="friend-name">{firstLetter}</label>;
+	}
+
+}
+
+
+function KidMessage (props) {
+	var name = props.name;
+	var text = props.text;
+
+	if (name == props.self.name) {
+		return <p className="message">{text}</p>;
+	}
+	else {
+		return <p className="friend-message">{text}</p>;
+	}
+
+}
 
 class Chat extends React.Component {
 
@@ -60,27 +113,20 @@ class Chat extends React.Component {
 			{/*<div id='body-container'>*/}
 
 			<Member classroom={classroom}/>
-			
+
 			<main>
 				<h2>Messages</h2>
-				<ul>
-					{chat.messages.map(({id, student, text, createdAt}) =>
-						<li key={id}>
-							<label>{student.name} at {createdAt.toISOString()}</label>
-							<p>{text}</p>
-						</li>
-					)}
-				</ul>
+				<Messages messages={chat.messages} self={classroom.self}/>
 			</main>
-			{/*</div>*/}
-			
+
 			<footer>
 				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
 				<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
 				<p>{this.getTypingMessage()}</p>
 			</footer>
-			
+
 		</div>
+
 	}
 
 }

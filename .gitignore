@@ -3,3 +3,6 @@ build
 public
 .id
 dev.sqlite3
+.DS_Store
+project-1-bak
+.gitignore
