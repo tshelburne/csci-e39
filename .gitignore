@@ -4,3 +4,6 @@ public
 .id
 dev.sqlite3
 .idea
+.DS_Store
+project-1-bak
+.gitignore
