@@ -84,9 +84,7 @@ class Chat extends React.Component {
 				<Messages messages={chat.messages} self={classroom.self}/>
 			</main>
 
-			<footer>
 				<Textbox chat={chat} actions={actions}/>
-			</footer>
 		</div>
 
 	}

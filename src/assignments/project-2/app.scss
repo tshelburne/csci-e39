@@ -70,14 +70,14 @@ ul{
 }
 
 .container {
-    display: grid;
+  display: grid;
 	grid-template-columns: 0.2fr 1fr;
-    grid-template-rows: 100px 1fr 50px;
-    grid-template-areas:
+  grid-template-rows: 100px 1fr 50px;
+  grid-template-areas:
         "header header"
         "sidebar main"
         "none footer";
-    border: black;
+  border: black;
 }
 
 header {
@@ -109,10 +109,6 @@ main {
 
 footer {
   grid-area: footer;
-  //background-color: $background-color;
-  //color: $primary-gray;
-  //text-align: center;
-  //grid-area: footer;
   background-color: $white;
   color: $background-color;
   text-align: center;
@@ -130,13 +126,16 @@ h2 {
 //  max-height:80vh;
 //  overflow-y: auto;
 //
-
 }
 
 
 .chat-item {
 	list-style: none;
+}
 
+.chat-footer-grid {
+   display: grid;
+   grid-template-columns: 1fr 0.2fr
 }
 
 .student-name {
