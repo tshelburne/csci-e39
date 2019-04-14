@@ -4,6 +4,7 @@ import autobind from 'class-autobind'
 import Member from '../../ui/components/member'
 import Textbox from '../../ui/components/textbox'
 import './app.scss'
+import InitialBlock from "../../ui/components/intial_block";
 
 
 function Messages (props) {
@@ -34,13 +35,12 @@ function Messages (props) {
 
 function KidName (props) {
 	var name = props.name;
-	var firstLetter = name.charAt(0).toUpperCase();
 
 	if (name == props.self.name) {
-		return <label className="student-name">{firstLetter}</label>;
+		return <InitialBlock name={name} cn="student-name" />
 	}
 	else {
-		return <label className="friend-name">{firstLetter}</label>;
+		return <InitialBlock name={name} cn="friend-name" />
 	}
 
 }

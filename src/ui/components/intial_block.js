@@ -9,13 +9,13 @@ class InitialBlock extends React.Component {
     }
 
     render() {
-        const {name, ...inputProps} = this.props
+        const {name, cn, ...inputProps} = this.props
 
         console.log ("Name" + name)
         var firstLetter = name.charAt(0).toUpperCase();
-
+        console.log ("fl" + firstLetter)
         return (
-            <label className="friend-name">{firstLetter}</label>
+            <label className={cn}> {firstLetter}</label>
 
         )
     }
