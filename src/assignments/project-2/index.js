@@ -76,8 +76,6 @@ class Chat extends React.Component {
 				<h1>Chatroom</h1>
 			</header>
 
-			{/*<div id='body-container'>*/}
-
 			<Member classroom={classroom}/>
 
 			<main>
