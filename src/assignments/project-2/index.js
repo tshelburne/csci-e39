@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import autobind from 'class-autobind';
 import Members from './components/members/members';
 import Messages from './components/messages/messages';
+import Header from './components/header/header'
 import Ads from './components/ads/ads';
 
 import './app.scss';
@@ -33,7 +34,7 @@ export default class Chat extends Component {
 		const {currentText} = this.state;
 
 		return <div className="chatApp">
-			<h1 className="header">WINTER HAS COME</h1>
+			<Header title= "WINTER IS COMING"/>
 
       		<Members classroom={classroom}></Members>
 
@@ -41,7 +42,6 @@ export default class Chat extends Component {
 
       		<Messages chat={chat} value={currentText} actions={actions} />
 
-			    
 			    <p>{this.getTypingMessage()}</p>
 		</div>
 	}
