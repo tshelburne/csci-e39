@@ -20,6 +20,7 @@ function Messages (props) {
 					<li className="chat-item" key={id}>
 
 						<KidName name={student.name} self={self} />
+						<KidFullName name={student.name} self={self}/>
 
 						<label className="timestamp"> at {createdAt.toLocaleTimeString()} on {createdAt.toLocaleDateString()}</label>
 
@@ -45,16 +46,28 @@ function KidName (props) {
 
 }
 
+function KidFullName (props) {
+    var name = props.name;
+
+    if (name == props.self.name) {
+        return <label className="student-fullname">{name}</label>;
+    }
+    else {
+        return <label className="friend-fullname">{name}</label>;
+    }
+
+}
+
 
 function KidMessage (props) {
 	var name = props.name;
 	var text = props.text;
 
 	if (name == props.self.name) {
-		return <p className="message">{text}</p>;
+		return <p className="message"><span>{text}</span></p>;
 	}
 	else {
-		return <p className="friend-message">{text}</p>;
+		return <p className="friend-message"><span>{text}</span></p>;
 	}
 
 }

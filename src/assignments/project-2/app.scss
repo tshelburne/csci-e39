@@ -8,6 +8,7 @@ $li_alt_color : darken($primary-gray, 10);
 $my-color: $background-color;
 $friend-color: $secondary-color;
 $font-list: Calibri, Arial, sans-serif;
+$handwriting-font: 'Shadow into Light', cursive;
 
 
 #message-container {
@@ -63,10 +64,6 @@ ul{
 
   li {padding:5px
   }
-
-  li:nth-of-type(2n) {
-    background-color: $li_alt_color;
-  }
 }
 
 .container {
@@ -108,6 +105,7 @@ nav {
   grid-area: sidebar;
   overflow-y: scroll;
   min-width: 250px;
+  max-height: 75vh;
 }
 
 main {
@@ -131,15 +129,16 @@ h2 {
   font-size: 36px;
 }
 
-#body-container {
-//  max-height:80vh;
-//  overflow-y: auto;
+//#body-container {
+////  max-height:80vh;
+////  overflow-y: auto;
+////
 //
-}
+
 
 
 .chat-item {
-	list-style: none;
+  list-style: none;
 }
 
 .chat-footer-grid {
@@ -165,13 +164,26 @@ h2 {
 
 }
 
-.message {
-	background-color: $my-color;
+.message > span{
+  background-color: $my-color;
+  font-size: 20px;
+  font-family: $handwriting-font;
+  //float: left;
+}
+
+.friend-message > span{
+  background-color: $friend-color;
+  justify-items: right;
+  font-family: $handwriting-font;
+  font-size: 20px;
+  position: absolute;
+  right: 10px;
+
 }
 
 .friend-message {
-	background-color: $friend-color;
-	text-align: right;
+  position: relative;
+  padding-bottom: 20px
 }
 
 button {
