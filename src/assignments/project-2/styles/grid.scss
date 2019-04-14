@@ -14,13 +14,15 @@
 
     .chat-messages {
         grid-area: messages;
+        overflow-x: hidden;
     }
 
     .chat-members {
         grid-area: members;
     }
 
-    .chat-input {
+    .chat-form {
         grid-area: input;
+        overflow-x: hidden;
     }
 }
