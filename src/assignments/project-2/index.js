@@ -33,11 +33,11 @@ export default class Chat extends Component {
 		const {currentText} = this.state;
 
 		return <div className="chatApp">
-			<h1 className="header">Chatroom</h1>
+			<h1 className="header">WINTER HAS COME</h1>
 
       		<Members classroom={classroom}></Members>
 
-      		<Messages chat={chat} />
+      		<Messages chat={chat} value={currentText} onType={this.onType} onSend={this.onSend} />
 
 			<Input value={currentText} actions={actions} />
 			<p>{this.getTypingMessage()}</p>

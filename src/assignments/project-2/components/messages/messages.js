@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './messages.scss'
 
+import './messages.scss'
+import Input from '../input/input';
+import Message from '../message/message';
 export default class Messages extends Component {
 	constructor(props) {
 		super(props);
 	}
 
   render() {
-    const { chat } = this.props;
+    const { chat, currentText, onType, onSend } = this.props;
 
     return (
       <article className={'messages'}>
@@ -16,11 +18,11 @@ export default class Messages extends Component {
           <ul>
             {chat.messages.map(({id, student, text, createdAt}) =>
               <li key={id}>
-                <label>{student.name} at {createdAt.toISOString()}</label>
-                <p>{text}</p>
+                <Message name={student.name} text={text} createdAt={createdAt.toISOString()}></Message>                
               </li>
             )}
         </ul>
+        <Input value={currentText} onType={onType} onSend={onSend} />
       </article>
     )
   }
