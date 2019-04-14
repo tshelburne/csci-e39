@@ -68,12 +68,12 @@ ul{
 
 .container {
   display: grid;
-	grid-template-columns: 0.2fr 1fr;
+	grid-template-columns: 0.2fr 1fr 0.2fr;
   grid-template-rows: 100px 1fr 50px;
   grid-template-areas:
-        "header header"
-        "sidebar main"
-        "none footer";
+        "header header header"
+        "sidebar main aside"
+        "none footer footer";
   border: black;
 }
 
@@ -113,6 +113,14 @@ main {
   overflow-y: scroll;
   max-height: 75vh;
 }
+
+aside {
+	grid-area: aside;
+	position: sticky;
+	top: 10px;
+	height: 600px;
+	width: 160px;
+} 
 
 footer {
   grid-area: footer;

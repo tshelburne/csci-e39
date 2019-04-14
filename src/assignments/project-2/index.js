@@ -85,7 +85,7 @@ class Chat extends React.Component {
 		const {classroom, chat, actions} = this.props
 		const {currentText} = this.state
 
-		return <div class="container">
+		return <div class="container">			
 			<header>
 				<img src="https://d29fhpw069ctt2.cloudfront.net/icon/image/49181/preview.svg" class="kids-images" alt="crayon" />
 				<h1>Kids Chatroom</h1>
@@ -99,7 +99,11 @@ class Chat extends React.Component {
 				<Messages messages={chat.messages} self={classroom.self}/>
 			</main>
 
-				<Textbox chat={chat} actions={actions}/>
+			<aside>
+				<img src="https://s3.envato.com/files/253842432/Preview_Screenshots/160x600.jpg" data-alt="Kids Advertisement" data-title="fake-ad" />
+			</aside>
+
+			<Textbox chat={chat} actions={actions}/>
 		</div>
 
 	}
