@@ -21,7 +21,7 @@
     "web:container": "docker build -t tshelburne/csci-e39:master .",
     "web:run": "docker run -t -i --expose 3000 -p 3000:3000 --expose 35729 -p 35729:35729 tshelburne/csci-e39:master",
     "web:publish": "docker push tshelburne/csci-e39:master",
-    "web:deploy": "heroku container:push web",
+    "web:deploy": "heroku container:push web && heroku container:release web",
     "web:migrate": "heroku run npm run db.migrate"
   },
   "author": "Tim Shelburne",
