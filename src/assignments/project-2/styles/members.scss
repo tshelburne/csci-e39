@@ -1,0 +1,36 @@
+
+$other-color: #fa8072;
+$self-color: #ffb6c1;
+$member-color: #add8e6;
+$gray: #6C6F7A;
+$radius:   15px; 
+
+.chat-members {
+  width: 260px;
+  float: left;
+  border-radius: 3px;
+  border: none;
+  padding: 14px;
+  color: white;
+  background: $gray;
+  width: 90%;
+  font-size: 14px;
+  border-radius: $radius;
+
+  .memberUL {
+    list-style-type: none;
+    li {
+        border-radius: $radius;
+        background: $member-color;
+        padding: 4px;
+        color:#00008b;
+        margin: 4px;
+    }
+    .self {
+        border-radius: $radius;
+        background: $self-color;
+        padding: 4px;
+      }
+  }
+ 
+}
