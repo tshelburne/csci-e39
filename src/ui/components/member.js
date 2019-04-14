@@ -1,4 +1,7 @@
 import React from 'react'
+import InitialBlock from '../../ui/components/intial_block'
+
+
 
 class Member extends React.Component {
 
@@ -8,7 +11,10 @@ class Member extends React.Component {
 			<h2>Members</h2>
 			<ul>
                 {classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
+					<li key={id}><span>
+						<InitialBlock name={name} />
+
+						{name}</span></li>
                 )}
 			</ul>
 		</nav>
