@@ -2,7 +2,28 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 
+import Layout from './components/layout'
+
 import './app.scss'
+
+
+
+// COMPONENTS
+
+const Img = ({children, title, src, description }) => (
+	<figure className="polaroid">
+		<img src={src}  alt={description ? description : title}/>
+		{description && <figcaption className="polaroid-caption">{description}</figcaption>}
+		{children}
+	</figure>
+);
+
+const ItemCard = ({children, title, src, description }) => (
+	<div>
+		<Img title={title} src={src} description={description}/>
+		{children}
+	</div>
+);
 
 class Chat extends React.Component {
 
@@ -51,30 +72,30 @@ class Chat extends React.Component {
 		const {classroom, chat, actions} = this.props
 		const {currentText} = this.state
 
-		return <div>
-			<h1>Chatroom</h1>
-
-			<h2>Members</h2>
-			<ul>
-				{classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
-				)}
-			</ul>
-
-			<h2>Messages</h2>
-			<ul>
-				{chat.messages.map(({id, student, text, createdAt}) =>
-					<li key={id}>
-						<label>{student.name} at {createdAt.toISOString()}</label>
-						<p>{text}</p>
-					</li>
-				)}
-			</ul>
-
-			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-			<p>{this.getTypingMessage()}</p>
-		</div>
+		return (
+		
+		<Layout>
+			<Layout.Header title="I am a nav - please style me differently" />
+			<Layout.Content title="I am main content">
+				
+				<ItemCard
+					title={"name"}
+					src={"url"}
+					description={"some content about a student"}
+				/>
+			
+			</Layout.Content>
+			
+			<Layout.Sidebar title="I am a Sidebar">
+				<ul className="item-list">
+					<li>I am in the sidebar  </li>
+				</ul>
+			</Layout.Sidebar>
+			<Layout.Footer>
+				<p>I am the footer</p>
+			</Layout.Footer>
+		</Layout>
+		)
 	}
 
 }
