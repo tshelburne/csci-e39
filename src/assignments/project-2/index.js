@@ -120,9 +120,11 @@ class Chat extends React.Component {
 			</main>
 
 			<footer>
-				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-				<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-				<p>{this.getTypingMessage()}</p>
+				<div id='textbox-container'>
+					<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
+					<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
+					<p>{this.getTypingMessage()}</p>
+				</div>
 			</footer>
 
 		</div>
