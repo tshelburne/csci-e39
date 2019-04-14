@@ -13,33 +13,33 @@ class Chat extends React.Component {
 	constructor() {
 		super(...arguments)
 		autobind(this)
-		this.state = {currentText: ``}
+		this.state = { currentText: `` }
 	}
 
 	onType(e) {
-		const {chat} = this.props.actions
-		const {currentText: prevText} = this.state
+		const { chat } = this.props.actions
+		const { currentText: prevText } = this.state
 		const currentText = e.target.value
 
 		if (!currentText.length) chat.stopTyping()
 		if (currentText.length === 1 && !prevText.length) chat.startTyping()
 
-		this.setState({currentText})
+		this.setState({ currentText })
 	}
 
 	onSend(e) {
 		if (e.type === `keyup` && e.key !== `Enter`) return
 
-		const {chat} = this.props.actions
-		const {currentText} = this.state
+		const { chat } = this.props.actions
+		const { currentText } = this.state
 		if (!currentText.length) return
 
 		chat.send(currentText)
-		this.setState({currentText: ``})
+		this.setState({ currentText: `` })
 	}
 
 	getTypingMessage() {
-		const {typing} = this.props.chat
+		const { typing } = this.props.chat
 
 		switch (typing.length) {
 			case 0: return null
@@ -52,21 +52,14 @@ class Chat extends React.Component {
 	}
 
 	render() {
-		const {classroom, chat, actions} = this.props
-		const {currentText} = this.state
+		const { classroom, chat, actions } = this.props
+		const { currentText } = this.state
 
 		return <div className='chat-grid'>
 			<h1 className='chat-header'>Chatroom</h1>
 
-		<Members students={classroom.students} /> 
-
-			<section className='chat-messages'>
-				<h2>Messages</h2>
-				<ul>
-					<Messages message={chat.messages} /> 
-				</ul>
-			</section>
-
+			<Members students={classroom.students} /> 
+			<Messages chatMessages={chat.messages} />
 			<section className='chat-input'>
 				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
 				<button disabled={currentText === ``} onClick={this.onSend}>Send</button>

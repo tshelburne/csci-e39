@@ -1,13 +1,15 @@
 
 import React from 'react'
+import Message from './Message'
 
-function Messages({ message }) {
-    message.map(({ id, student, text, createdAt }) =>
-        <li key={id}>
-            <label>{student.name} at {createdAt.toISOString()}</label>
-            <p>{text}</p>
-        </li>
+function Messages({ chatMessages }) {
+    return (
+        <section className='chat-messages'>
+            <h2>Messages</h2>
+            <ul>
+                <Message messages={chatMessages} />
+            </ul>
+        </section>
     )
 }
-
 export default Messages
