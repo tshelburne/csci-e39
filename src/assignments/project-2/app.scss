@@ -93,20 +93,20 @@ nav {
 }
 
 main {
-    grid-area: main;
+  grid-area: main;
   overflow-y: scroll;
 }
 
 footer {
-    grid-area: footer;
+  grid-area: footer;
+  background-color: $background-color;
+  color: $primary-gray;
+  text-align: center;
 }
-
 //#body-container {
 //  max-height:80vh;
 //  overflow-y: auto;
 //}
 
-    background-color: $background-color;
-	color: $primary-gray;
-	text-align: center;
-}
+
+
