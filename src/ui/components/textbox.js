@@ -28,6 +28,7 @@ class Textbox extends React.Component {
         if (!currentText.length) return
 
         chat.send(currentText)
+        console.log("reset current texts")
         this.setState({currentText: ``})
     }
 
@@ -49,7 +50,7 @@ class Textbox extends React.Component {
 
     render() {
 
-        const {currentText, ...inputProps} = this.props
+        const {currentText} = this.state
 
         return <div className="chat-text-input-div">
             <input className="chat-text-input" value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
