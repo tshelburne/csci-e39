@@ -26,17 +26,33 @@ class PhotoGallery extends React.Component {
 				var updatedSelectedImageIds = this.state.selectedImageIds.filter(id => id !== imageId);
 				this.setState({selectedImageIds: updatedSelectedImageIds});
 			}
+<<<<<<< Updated upstream
+=======
+			<Albun callME={this.state.}>
+>>>>>>> Stashed changes
 	 }
 
 
 
 	render() {
+<<<<<<< Updated upstream
 		const {completedFiles, ...inputProps} = this.props
+=======
+		const {completedFiles, selectImage, ...inputProps} = this.props
+>>>>>>> Stashed changes
 		if(completedFiles.length > 0){
 		 return(
 			 <ul class="grid-container">
 			 		{completedFiles.map(file => {
 	 					const {id, name, url, error} = file
+<<<<<<< Updated upstream
+=======
+
+						import cx from 'classnames'
+						const classes = cx(`grid-li`, {selected: isActive})
+						const isActive = this.props.selectedImages.includes(id)
+						<li className={classes} />
+>>>>>>> Stashed changes
 						const cNameForId = findImageId(this.state.selectedImageIds, id) ? "grid-li selected" : "grid-li"
 	 						if(!!error)
 	 						{
@@ -44,7 +60,11 @@ class PhotoGallery extends React.Component {
 								 <p className="failure">{message}</p></li>)
 							}
 						else{
+<<<<<<< Updated upstream
 							return<li class={cNameForId} key={id} onClick={this.handleClick.bind(this,id)}>
+=======
+							return<li class={cNameForId} key={id} onClick={() => selectImage(id)}>
+>>>>>>> Stashed changes
 										 <figure class="grid-item"><img src={url} alt={name}/></figure>
 								</li>
 
