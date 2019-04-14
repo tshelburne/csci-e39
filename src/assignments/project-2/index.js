@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 import Member from '../../ui/components/member'
-//import Messages from '../../ui/components/messages'
-
+import Textbox from '../../ui/components/textbox'
+import Messages from '../../ui/components/messages'
 import './app.scss'
 
 
@@ -66,40 +66,6 @@ class Chat extends React.Component {
 		this.state = {currentText: ``}
 	}
 
-	onType(e) {
-		const {chat} = this.props.actions
-		const {currentText: prevText} = this.state
-		const currentText = e.target.value
-
-		if (!currentText.length) chat.stopTyping()
-		if (currentText.length === 1 && !prevText.length) chat.startTyping()
-
-		this.setState({currentText})
-	}
-
-	onSend(e) {
-		if (e.type === `keyup` && e.key !== `Enter`) return
-
-		const {chat} = this.props.actions
-		const {currentText} = this.state
-		if (!currentText.length) return
-
-		chat.send(currentText)
-		this.setState({currentText: ``})
-	}
-
-	getTypingMessage() {
-		const {typing} = this.props.chat
-
-		switch (typing.length) {
-			case 0: return null
-			case 1: return `${typing[0].name} is typing...`
-			case 2: return `${typing[0].name} and ${typing[1].name} are typing...`
-			case 3: return `${typing[0].name}, ${typing[1].name}, and ${typing[2].name} are typing...`
-			// len > 3
-			default: return `${typing.length} members are typing...`
-		}
-	}
 
 	render() {
 		const {classroom, chat, actions} = this.props
@@ -120,9 +86,7 @@ class Chat extends React.Component {
 			</main>
 
 			<footer>
-				<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-				<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-				<p>{this.getTypingMessage()}</p>
+				<Textbox chat={chat} actions={actions}/>
 			</footer>
 
 		</div>
