@@ -10,10 +10,11 @@ body {
     display: grid;
     grid-template-columns: 70fr 30fr;
     grid-gap: 5px;
-    grid-template-rows: 10vh 85vh;
+    grid-template-rows: 10vh 60vh 25vh;
     grid-template-areas: 
         'header header'
-        'messages members';
+        'messages members'
+        'messages ads'
 }
 
 .header {
@@ -30,4 +31,8 @@ body {
 
 .members {
     grid-area: members;
+}
+
+.ads {
+    grid-area: ads;
 }
