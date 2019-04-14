@@ -75,8 +75,6 @@ class Chat extends React.Component {
 				<h1>Chatroom</h1>
 			</header>
 
-			{/*<div id='body-container'>*/}
-
 			<Member classroom={classroom}/>
 
 			<main>
@@ -87,11 +85,9 @@ class Chat extends React.Component {
 			<footer>
 				<Textbox chat={chat} actions={actions}/>
 			</footer>
-
 		</div>
 
 	}
-
 }
 
 const studentPropType = PropTypes.shape({

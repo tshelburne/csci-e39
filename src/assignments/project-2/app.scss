@@ -8,33 +8,25 @@ $my-color: blue;
 $friend-color: pink;
 $font-list: Calibri, Arial, sans-serif;
 
-// body {
-//   background: linear-gradient(
-//                   130deg,
-//                   $primary-gray,
-//                   $background-color
-//   );
-//   max-height: 100vh;
-// }
-//
-// #message-container {
-//   background-color: $primary-gray;
-// }
-//
-// #member-list {
-//   background-color: $white;
-// }
-//
-// #member-list > ul > li {
-//   background-color: $white;
-//   border: solid 1px $primary-gray;
-//   font-family: $body-font;
-//   font-size: 20px;
-// }
-//
-// #member-list > ul > li:hover {
-//   background-color: $background-color;
-// }
+
+#message-container {
+ background-color: $primary-gray;
+}
+
+#member-list {
+ background-color: $white;
+}
+
+#member-list > ul > li {
+ background-color: $white;
+ border: solid 1px $primary-gray;
+ font-family: $body-font;
+ font-size: 20px;
+}
+
+#member-list > ul > li:hover {
+ background-color: $background-color;
+}
 
 // box size reset
 
@@ -53,7 +45,12 @@ html {
 }
 
 body {
-  background: $background-color;
+  background: linear-gradient(
+                  130deg,
+                  $primary-gray,
+                  $background-color
+  );
+  max-height: 100vh;
   font-family: "Arial", sans-serif;
   color: #060606;
   border: 0;
@@ -79,7 +76,7 @@ ul{
     grid-template-areas:
         "header header"
         "sidebar main"
-        "footer footer";
+        "none footer";
     border: black;
 }
 
@@ -93,24 +90,48 @@ header {
 
 }
 
+header > h1 {
+  font-family: $header-font;
+  font-size: 36px;
+}
+
 nav {
-    grid-area: sidebar;
+  grid-area: sidebar;
   overflow-y: scroll;
+  min-width: 250px;
 }
 
 main {
   grid-area: main;
   overflow-y: scroll;
+  max-height: 75vh;
 }
 
 footer {
-    grid-area: footer;
-    background-color: $white;
-	color: $background-color;
-	text-align: center;
-	padding: 1rem;
-	border-top: 0.3rem solid $primary-gray;
+  grid-area: footer;
+  //background-color: $background-color;
+  //color: $primary-gray;
+  //text-align: center;
+  //grid-area: footer;
+  background-color: $white;
+  color: $background-color;
+  text-align: center;
+  padding: 1rem;
+  border-top: 0.3rem solid $primary-gray;
 }
+
+h2 {
+  text-align: center;
+  font-family: 'Pacifico', cursive;
+}
+
+#body-container {
+//  max-height:80vh;
+//  overflow-y: auto;
+//
+
+}
+
 
 .chat-item {
 	list-style: none;
