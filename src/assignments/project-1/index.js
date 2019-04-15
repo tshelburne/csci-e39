@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
-import Greeting from './greeting'
-import Project from './project'
-import Btn from './btn'
+import Greeting from './components/greeting'
+import Project from './components/project'
+import Btn from './components/btn'
 
 import './app.scss'
 
