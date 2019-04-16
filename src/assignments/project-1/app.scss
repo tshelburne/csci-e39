@@ -271,9 +271,10 @@ ul, ol {
 	
 	img {
 		width: 100%;
+    padding-bottom: 10px;
 	}
 }
 
 .item-card-title {
-	
+	color: darken($primary-color, 20%);
 }
