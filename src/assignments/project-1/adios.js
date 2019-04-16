@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 
-class Banner extends React.Component {
+class Adios extends React.Component {
 
     constructor() {
         super(...arguments)
@@ -13,12 +13,11 @@ class Banner extends React.Component {
         return (
             <React.Fragment>
 
-                <h1 className='banner'>Photos from {props.first} {props.last}</h1>
-                <div class="uname">(Username: {props.uname}) </div>
+                <div className="adios">Thank you for viewing {props.first} {props.last}'s photos</div>
 
             </React.Fragment>)
     }
 
 }
 
-export default Banner
+export default Adios
