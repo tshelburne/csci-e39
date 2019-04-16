@@ -21,7 +21,7 @@
     "web:container": "docker build -t tshelburne/csci-e39:master .",
     "web:run": "docker run -t -i --expose 3000 -p 3000:3000 --expose 35729 -p 35729:35729 tshelburne/csci-e39:master",
     "web:publish": "docker push tshelburne/csci-e39:master",
-    "web:deploy": "heroku container:push web",
+    "web:deploy": "heroku container:push web && heroku container:release web",
     "web:migrate": "heroku run npm run db.migrate"
   },
   "author": "Tim Shelburne",
@@ -30,7 +30,7 @@
     "bookshelf": "^0.14.1",
     "class-autobind": "^0.1.4",
     "cloudinary": "^1.13.2",
-    "debug": "^3.0.1",
+    "debug": "^4.1.1",
     "js-beautify": "^1.8.9",
     "jsx-to-string": "^1.4.0",
     "kcors": "^2.2.2",
@@ -66,7 +66,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.3.1"
   },
   "babel": {
     "presets": [
