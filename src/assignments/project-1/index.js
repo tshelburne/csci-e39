@@ -15,17 +15,25 @@ import './imagecard.scss';
 import './index.scss';
 import './content.scss';
 
-const Uploads = ({uploads, actions}) => {
+// const Uploads = ({uploads, actions}) => {
+class Uploads extends React.Component {
 
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
+	constructor(props) {
+		super(props);
+		autobind(this);
+		const pendingFiles = this.uploads.files.filter(({progress}) => progress && progress < 100)
+		const completedFiles = this.uploads.files.filter(({progress}) => !progress)
 
-	return (
-		<div className="main-container">
+	}
+
+	render() {
+
+		return (
+			<div className="main-container">
 			<h1 className="main title">Album Uploader</h1>
 			{/* do not delete this uploader component */}
 			<div className="uploader-container">
-			 	<Uploader upload={actions.upload} />
+			<Uploader upload={this.actions.upload} />
 			</div>
 			{/* do not delete this uploader component */}
 
@@ -36,10 +44,13 @@ const Uploads = ({uploads, actions}) => {
 
 			<h2 className="completed title">Gallery</h2>
 			<div className="container-completed">
-				<ImageGallery images= {completedFiles} ></ImageGallery>
+			<ImageGallery images= {completedFiles} ></ImageGallery>
 			</div>
-	</div>
-	)
+			</div>
+		)
+
+
+	}
 
 
 }
@@ -48,6 +59,7 @@ const statusPropType = PropTypes.shape({
 	status: PropTypes.oneOf([`init`, `pending`, `success`, `failure`]).isRequired,
 	message: PropTypes.string.isRequired,
 })
+
 
 Uploads.propTypes = {
 	uploads: PropTypes.shape({
