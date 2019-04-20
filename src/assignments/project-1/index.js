@@ -20,7 +20,7 @@ class Uploads extends React.Component {
 
 	constructor(props) {
 		super(props);
-		autobind(this);
+	 
 		const pendingFiles = this.uploads.files.filter(({progress}) => progress && progress < 100)
 		const completedFiles = this.uploads.files.filter(({progress}) => !progress)
 
