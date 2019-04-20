@@ -20,20 +20,21 @@ class Uploads extends React.Component {
 
 	constructor(props) {
 		super(props);
-	 
-		const pendingFiles = this.uploads.files.filter(({progress}) => progress && progress < 100)
-		const completedFiles = this.uploads.files.filter(({progress}) => !progress)
 
 	}
 
 	render() {
+
+				const pendingFiles = this.props.uploads.files.filter(({progress}) => progress && progress < 100)
+				const completedFiles = this.props.uploads.files.filter(({progress}) => !progress)
+
 
 		return (
 			<div className="main-container">
 			<h1 className="main title">Album Uploader</h1>
 			{/* do not delete this uploader component */}
 			<div className="uploader-container">
-			<Uploader upload={this.actions.upload} />
+			<Uploader upload={this.props.actions.upload} />
 			</div>
 			{/* do not delete this uploader component */}
 
