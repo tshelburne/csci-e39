@@ -2,6 +2,7 @@ import React, {useState, useContext} from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import ReactDOMServer from 'react-dom/server'
+import cx from 'classnames'
 import jsxToString from 'jsx-to-string'
 import beautify from 'js-beautify'
 
@@ -29,19 +30,19 @@ const Example = ({title, children}) => {
 		<div className="example--toggles">
 			<button
 				onClick={() => setActiveCode(`html`)}
-				className={activeCode === `html` ? `active` : ``}
+				className={cx({active: activeCode === `html`})}
 			>
 				HTML
 			</button>
 			<button
 				onClick={() => setActiveCode(`react`)}
-				className={activeCode === `react` ? `active` : ``}
+				className={cx({active: activeCode === `react`})}
 			>
 				React
 			</button>
 			<button
 				onClick={() => setActiveCode(`off`)}
-				className={activeCode === `off` ? `active` : ``}
+				className={cx({active: activeCode === `off`})}
 			>
 				Off
 			</button>
@@ -52,17 +53,8 @@ const Example = ({title, children}) => {
 				<h3>Code sample:</h3>
 				<pre>
 					<code>
-						{activeCode === `html` &&
-							beautify
-								.html(ReactDOMServer.renderToStaticMarkup(<div>{children}</div>))
-								.replace(/^<div>.*\n([\S\s]*)<\/div>$/, `$1`)
-						}
-
-						{activeCode === `react` &&
-							jsxToString(<div>{children}</div>)
-								.replace(/=\{true\}/g, ``)
-								.replace(/^<div>.*\n([\S\s]*)<\/div>$/, `$1`)
-						}
+						{activeCode === `html` && renderHTML(children)}
+						{activeCode === `react` && renderReactCode(children)}
 					</code>
 				</pre>
 			</div>
@@ -74,9 +66,16 @@ Example.propTypes = {
 	title: PropTypes.string,
 }
 
-Example.contextTypes = {
-	activeCode: PropTypes.string,
-	setActiveCode: PropTypes.func,
+export default Example
+
+// HELPERS
+
+function renderHTML(children) {
+	return beautify.html(ReactDOMServer.renderToStaticMarkup(<React.Fragment>{children}</React.Fragment>))
 }
 
-export default Example
+function renderReactCode(children) {
+	return jsxToString(<div>{children}</div>)
+		.replace(/=\{true\}/g, ``)
+		.replace(/^<div>.*\n([\S\s]*)<\/div>$/, `$1`)
+}
