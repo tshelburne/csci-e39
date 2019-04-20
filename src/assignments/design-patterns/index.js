@@ -1,48 +1,26 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Example from './support/example'
+import Example, {ActiveCodeProvider} from './support/example'
 
 import './app.scss'
 
-class PatternLibrary extends React.Component {
+const PatternLibrary = () =>
+	<ActiveCodeProvider>
+		<div className="style-guide">
+			<h1>My Pattern Library!</h1>
 
-	constructor(...args) {
-		super(...args)
+			<Example title="My Special <div>">
+				<div className="just-testing">HELLO DIV</div>
+			</Example>
 
-		this.state = {activeCode: `react`}
-	}
+			<Example title="My Special <span>">
+				<span className="just-testing">HELLO SPAN</span>
+			</Example>
 
-	getChildContext() {
-		return {
-			activeCode: this.state.activeCode,
-			setActiveCode: activeCode => this.setState({activeCode}),
-		}
-	}
-
-	render() {
-		return (
-			<div className="style-guide">
-				<h1>My Pattern Library!</h1>
-
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
-				</Example>
-
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
-				</Example>
-
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
-				</Example>
-			</div>
-		)
-	}
-}
-
-PatternLibrary.childContextTypes = {
-	activeCode: PropTypes.string,
-	setActiveCode: PropTypes.func,
-}
+			<Example title="My Special <h4>">
+				<h4 className="just-testing">HELLO HEADING</h4>
+			</Example>
+		</div>
+	</ActiveCodeProvider>
 
 export default PatternLibrary

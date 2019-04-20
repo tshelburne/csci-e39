@@ -29,6 +29,7 @@
   "dependencies": {
     "bookshelf": "^0.14.1",
     "class-autobind": "^0.1.4",
+    "classnames": "^2.2.6",
     "cloudinary": "^1.13.2",
     "debug": "^4.1.1",
     "js-beautify": "^1.8.9",
@@ -40,8 +41,8 @@
     "koa-static": "^5.0.0",
     "pg": "^7.7.1",
     "prop-types": "^15.6.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "socket.io": "^2.2.0",
     "supports-color": "^5.5.0",
     "xstream": "^11.7.0"
