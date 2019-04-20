@@ -5,7 +5,8 @@ import Uploader from '../../ui/components/uploader'
 import ImageGallery from './imagegallery.js'
 import PendingUpload from './pendingupload.js'
 import MyContent from './content.js'
-import Modal from './imagemodal';
+// import Modal2 from './imagemodal';
+import Modal from 'react-modal';
 
 import './app.scss'
 import './pendingupload.scss';
@@ -15,18 +16,54 @@ import './imagecard.scss';
 import './index.scss';
 import './content.scss';
 
+const customStyles = {
+	content : {
+		top                   : '50%',
+		left                  : '50%',
+		right                 : 'auto',
+		bottom                : 'auto',
+		marginRight           : '-50%',
+		transform             : 'translate(-50%, -50%)'
+	}
+};
+
+
 // const Uploads = ({uploads, actions}) => {
 class Uploads extends React.Component {
 
 	constructor(props) {
 		super(props);
 
+		this.state = {
+			modalIsOpen: false
+		};
+
+		this.openModal = this.openModal.bind(this);
+		this.afterOpenModal = this.afterOpenModal.bind(this);
+		this.closeModal = this.closeModal.bind(this);
+	}
+
+	componentWillMount() {
+		Modal.setAppElement('body');
+	}
+
+	openModal() {
+		this.setState({modalIsOpen: true});
+	}
+
+	afterOpenModal() {
+		// references are now sync'd and can be accessed.
+		// this.style.color = '#f00';
+	}
+
+	closeModal() {
+		this.setState({modalIsOpen: false});
 	}
 
 	render() {
 
-				const pendingFiles = this.props.uploads.files.filter(({progress}) => progress && progress < 100)
-				const completedFiles = this.props.uploads.files.filter(({progress}) => !progress)
+		const pendingFiles = this.props.uploads.files.filter(({progress}) => progress && progress < 100)
+		const completedFiles = this.props.uploads.files.filter(({progress}) => !progress)
 
 
 		return (
@@ -37,6 +74,16 @@ class Uploads extends React.Component {
 			<Uploader upload={this.props.actions.upload} />
 			</div>
 			{/* do not delete this uploader component */}
+
+				<button onClick={this.openModal}>Open Modal</button>
+				<Modal
+					isOpen={this.state.modalIsOpen}
+					onAfterOpen={this.afterOpenModal}
+					onRequestClose={this.closeModal}
+					ariaHideApp={false}
+					style={ customStyles }
+					contentLabel="Example Modal"
+				/>
 
 			<h2 className="inprogress title">In Progress</h2>
 			<PendingUpload uploaddata= {pendingFiles} />
