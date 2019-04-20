@@ -2,7 +2,8 @@ import React from 'react'
 
 const ImageCard = ( { file}) => {
   const {id, name, url, error} = file;
-  console.log("from imagecard");
+  // console.log("from imagecard");
+  console.log(file);
   return (
       <li key={id} className="img-key" >
       <label className="img-name">{name}</label>

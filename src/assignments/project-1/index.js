@@ -31,34 +31,23 @@ const customStyles = {
 // const Uploads = ({uploads, actions}) => {
 class Uploads extends React.Component {
 
-	constructor(props) {
-		super(props);
+	constructor (props) {
+    super(props);
+    this.state = {
+      showModal: false
+    };
 
-		this.state = {
-			modalIsOpen: false
-		};
+    this.handleOpenModal = this.handleOpenModal.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
+  }
 
-		this.openModal = this.openModal.bind(this);
-		this.afterOpenModal = this.afterOpenModal.bind(this);
-		this.closeModal = this.closeModal.bind(this);
-	}
+  handleOpenModal () {
+    this.setState({ showModal: true });
+  }
 
-	componentWillMount() {
-		Modal.setAppElement('body');
-	}
-
-	openModal() {
-		this.setState({modalIsOpen: true});
-	}
-
-	afterOpenModal() {
-		// references are now sync'd and can be accessed.
-		// this.style.color = '#f00';
-	}
-
-	closeModal() {
-		this.setState({modalIsOpen: false});
-	}
+  handleCloseModal () {
+    this.setState({ showModal: false });
+  }
 
 	render() {
 
@@ -75,15 +64,13 @@ class Uploads extends React.Component {
 			</div>
 			{/* do not delete this uploader component */}
 
-				<button onClick={this.openModal}>Open Modal</button>
-				<Modal
-					isOpen={this.state.modalIsOpen}
-					onAfterOpen={this.afterOpenModal}
-					onRequestClose={this.closeModal}
-					ariaHideApp={false}
-					style={ customStyles }
-					contentLabel="Example Modal"
-				/>
+			<button onClick={this.handleOpenModal}>Trigger Modal</button>
+			<Modal
+				 isOpen={this.state.showModal}
+				 contentLabel="Minimal Modal Example" ariaHideApp={false}
+			>
+				<button onClick={this.handleCloseModal}>Close Modal</button>
+			</Modal>
 
 			<h2 className="inprogress title">In Progress</h2>
 			<PendingUpload uploaddata= {pendingFiles} />
