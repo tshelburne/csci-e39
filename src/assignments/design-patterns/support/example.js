@@ -1,12 +1,24 @@
-import React from 'react'
+import React, {useState, useContext} from 'react'
 import PropTypes from 'prop-types'
 import ReactDOM from 'react-dom'
 import ReactDOMServer from 'react-dom/server'
 import jsxToString from 'jsx-to-string'
 import beautify from 'js-beautify'
 
-const Example = ({title, children}, context) => (
-	<div className="example">
+const ActiveCodeContext = React.createContext()
+
+export const ActiveCodeProvider = ({children}) => {
+	const [activeCode, setActiveCode] = useState(`react`)
+
+	return <ActiveCodeContext.Provider value={{activeCode, setActiveCode}}>
+		{children}
+	</ActiveCodeContext.Provider>
+}
+
+const Example = ({title, children}) => {
+	const {activeCode, setActiveCode} = useContext(ActiveCodeContext)
+
+	return <div className="example">
 		<h2 className="example--title">{title}</h2>
 
 		<div className="example--rendered">
@@ -16,37 +28,37 @@ const Example = ({title, children}, context) => (
 
 		<div className="example--toggles">
 			<button
-				onClick={() => context.setActiveCode(`html`)}
-				className={context.activeCode === `html` ? `active` : ``}
+				onClick={() => setActiveCode(`html`)}
+				className={activeCode === `html` ? `active` : ``}
 			>
 				HTML
 			</button>
 			<button
-				onClick={() => context.setActiveCode(`react`)}
-				className={context.activeCode === `react` ? `active` : ``}
+				onClick={() => setActiveCode(`react`)}
+				className={activeCode === `react` ? `active` : ``}
 			>
 				React
 			</button>
 			<button
-				onClick={() => context.setActiveCode(`off`)}
-				className={context.activeCode === `off` ? `active` : ``}
+				onClick={() => setActiveCode(`off`)}
+				className={activeCode === `off` ? `active` : ``}
 			>
 				Off
 			</button>
 		</div>
 
-		{context.activeCode !== `off` && 
+		{activeCode !== `off` &&
 			<div className="example--code">
 				<h3>Code sample:</h3>
 				<pre>
 					<code>
-						{context.activeCode === `html` &&
+						{activeCode === `html` &&
 							beautify
 								.html(ReactDOMServer.renderToStaticMarkup(<div>{children}</div>))
 								.replace(/^<div>.*\n([\S\s]*)<\/div>$/, `$1`)
 						}
-						
-						{context.activeCode === `react` &&
+
+						{activeCode === `react` &&
 							jsxToString(<div>{children}</div>)
 								.replace(/=\{true\}/g, ``)
 								.replace(/^<div>.*\n([\S\s]*)<\/div>$/, `$1`)
@@ -56,7 +68,7 @@ const Example = ({title, children}, context) => (
 			</div>
 		}
 	</div>
-)
+}
 
 Example.propTypes = {
 	title: PropTypes.string,
