@@ -203,6 +203,6 @@ body {
 	border: 2px #005e8f solid;
 }
 
-ul[data-filter="true"] > li[data-favorite="false"] {
+ul[data-filtered="true"] > li[data-favorite="false"] {
 	display: none;
 }

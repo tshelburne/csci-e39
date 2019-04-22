@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
 import Card from './components/card'
 import FailureCard from './components/failure-card'
+import Gallery from './components/gallery'
 
 import './app.scss'
 
@@ -49,15 +50,9 @@ const Uploads = ({uploads, actions}) => {
 		}
 
 		{successfulFiles.length > 0 && 	<div>
-			<h2>Gallery</h2>
-			<ul class="gallery">
-				{successfulFiles.map(file => {
-					const {id, name, url, error} = file
-					return <Card { ...file } />
-				})}
-			</ul>
-		</div>
-	}
+			<Gallery successfulFiles={successfulFiles}/>
+			</div>
+		}
 
 	</div>
 }
