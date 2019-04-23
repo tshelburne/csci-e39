@@ -8,8 +8,8 @@ import Gallery from './components/gallery'
 import './app.scss'
 
 const Uploads = ({uploads, actions}) => {
-	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
-	const completedFiles = uploads.files.filter(({progress}) => !progress)
+	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100).reverse()
+	const completedFiles = uploads.files.filter(({progress}) => !progress).reverse()
 	const failedFiles = completedFiles.filter(file => file.error)
 	const successfulFiles = completedFiles.filter(file => !file.error)
 
@@ -20,9 +20,7 @@ const Uploads = ({uploads, actions}) => {
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
-
-		<p>just a sample to test UI:</p>
-		<progress value="40" max="100"></progress>
+		<label for="fileUploader">Choose files to upload</label>
 
 		{pendingFiles.length > 0 && <div>
 				<h2>In Progress</h2>

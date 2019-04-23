@@ -19,35 +19,44 @@ $pb-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 
 // BUTTON
 
-button {
+button, #fileUploader + label {
 	background: $accent-color;
 	color: $primary-color;
 	border: 2px solid $primary-color;
 	border-radius: 10px;
 	min-height: 30px;
 	font-weight: bold;
-
+	cursor: pointer;
 }
 
 // FILE UPLOAD
+// used tutorial on file upload styling: https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
 
-.file-form label {
-	color: $primary-color;
-	font-size: 1.2em;
-	display: block;
-	font-weight: bold;
-	margin-bottom: 10px;
+// base styling above + custom styling below on the uploader label element make it
+// similar to button look and feel
+
+#fileUploader + label {
+	padding: 5px;
 }
 
-.file-form input[type=file] {
-	border: 2px solid $primary-color;
-	background-color: $accent-color;
-	color: $primary-color;
-	font-weight: bold;
-	border-radius: 5px;
+// adds focus ring for accessibility
+#fileUploader:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+// hides the original input with guidance from https://tympanus.net/codrops/2015/09/15/styling-customizing-file-inputs-smart-way/
+#fileUploader {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
 	overflow: hidden;
-width: 400px;
+	position: absolute;
+	z-index: -1;
 }
+// this solution hides the name of the uploaded file, but i've decided i don't
+// care because i reversed the arrays so the file added will be immediately visible
+// in the in progress, failed, or successful uploads.
 
 
 // PROGRESS BAR
