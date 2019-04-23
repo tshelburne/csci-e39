@@ -14,7 +14,8 @@ const Uploads = ({uploads, actions}) => {
 	const successfulFiles = completedFiles.filter(file => !file.error)
 
 	return <div>
-		<h1>Headshots</h1>
+		<h1>📸 Headshots 📸</h1>
+		<p>Having trouble keeping track of all your fabulous headshots and selfies? Add them all to your album right here, label your favorites, and quickly find the ones you love!</p>
 		<h2>Upload a Headshot</h2>
 		<p>Select an image file under 500KB to add to your headshot to the gallery.</p>
 		{/* do not delete this uploader component */}

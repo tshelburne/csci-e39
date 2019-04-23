@@ -24,6 +24,7 @@ class Gallery extends React.Component {
 		const { successfulFiles } = this.props
 		return <div>
 			<h2>Gallery</h2>
+			<p>My goodness, you're looking good!</p>
 			<button onClick={this.toggleFiltered} className="filtered-button" aria-label={this.state.isFiltered ? "Show all" : "Show only favorites"} data-filtered={this.state.isFiltered} > {this.state.isFiltered ? "Show all" : "Show only favorites"}</button>
 			<ul class="gallery" data-filtered={this.state.isFiltered}>
 				{successfulFiles.map(file => {
