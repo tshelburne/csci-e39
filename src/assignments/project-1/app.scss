@@ -195,7 +195,7 @@ body {
 	margin: 0px;
 }
 
-.favorite-button {
+.favorite-button, .demo-button {
 	font-size: 1.4rem;
   background-color: white;
   border: thin #A9A9A9 solid;
@@ -205,6 +205,10 @@ body {
 	border-radius: 17.5px;
   margin: 10px;
   padding: 0px;
+}
+
+.demo-button {
+	cursor: default;
 }
 
 .favorite-button[data-favorite="true"] {

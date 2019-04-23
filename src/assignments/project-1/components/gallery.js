@@ -14,7 +14,7 @@ class Gallery extends React.Component {
 		}
 		// This binding is necessary to make `this` work in the callback
 		this.toggleFiltered = this.toggleFiltered.bind(this);
-		this.countFavorites = this.countFavorites.bind(this);
+		this.incrementFavorites = this.incrementFavorites.bind(this);
 	}
 
 	toggleFiltered() {
@@ -23,28 +23,24 @@ class Gallery extends React.Component {
      }));
   }
 
-	countFavorites(oldFavoriteValue) {
-		console.log('in parent countFavorites and oldFavoriteValue is: ', oldFavoriteValue)
-		console.log("this.state.favoritesCount is: ", this.state.favoritesCount)
-	if (oldFavoriteValue && (this.state.favoritesCount === 1)) {
-		console.log('subtracting one and clearing filter')
-		this.setState(state => ({
-			favoritesCount: state.favoritesCount -= 1
-		}));
-		this.setState(state => ({
-			isFiltered: false
-		}));
-	} else if (oldFavoriteValue) {
-			console.log('subtracting one but don\'t need to clear filter')
+	incrementFavorites(wasFavorite) {
+		if (wasFavorite && (this.state.favoritesCount === 1)) {
+			// subtract one (to zero) and clear filter
 			this.setState(state => ({
-				favoritesCount: state.favoritesCount -= 1
+				favoritesCount: state.favoritesCount -= 1,
+				isFiltered: false
 			}));
-	} else {
-		console.log('adding one')
-		this.setState(state => ({
-			favoritesCount: state.favoritesCount += 1
-		}));
-	}
+		} else if (wasFavorite) {
+				// subtracting one but don't need to clear filter
+				this.setState(state => ({
+					favoritesCount: state.favoritesCount -= 1
+				}));
+		} else {
+			// add one
+			this.setState(state => ({
+				favoritesCount: state.favoritesCount += 1
+			}));
+		}
 		this.setState(state => ({
 			hasFavorites: state.favoritesCount > 0
 		}));
@@ -55,16 +51,18 @@ class Gallery extends React.Component {
 
 		return <div>
 			<h2>Gallery</h2>
-			<p><strong>My goodness, you are looking good!</strong></p>
 			{this.state.hasFavorites ? (
 	        <button onClick={this.toggleFiltered} className="filtered-button" aria-label={this.state.isFiltered ? "Show all" : "Show only favorites"} data-filtered={this.state.isFiltered} > {this.state.isFiltered ? "Show all" : "Show only favorites"}</button>
 	      ) : (
-	        <p>Click on the &#10084; to label your favorite photos and enable filtering!</p>
-	      )}
+	        <div>
+						<button disabled className="demo-button"> &#10084; </button>
+						<span><strong>Looking good!</strong> Why not label your favorite photos to enable filtering?</span>
+					</div>
+	    )}
 			<ul class="gallery" data-filtered={this.state.isFiltered}>
 				{successfulFiles.map(file => {
 					const {id, name, url, error} = file
-					return <Card { ...file}  countFavorites={this.countFavorites} />
+					return <Card { ...file}  incrementFavorites={this.incrementFavorites} />
 				})}
 			</ul>
 		</div>

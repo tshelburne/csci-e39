@@ -15,15 +15,14 @@ class Card extends React.Component {
 	}
 
 	toggleFavorite(e) {
-		console.log('in child and current state.isFavorite is: ', this.state.isFavorite)
-		this.props.countFavorites(this.state.isFavorite)
+		this.props.incrementFavorites(this.state.isFavorite)
      this.setState(state => ({
        isFavorite: !state.isFavorite
      }));
   }
 
 	render() {
-		const { id, name, url, error, countFavorites } = this.props
+		const { id, name, url, error, incrementFavorites } = this.props
 		return <li key={id} className="card" data-favorite={this.state.isFavorite}>
 			{!error && <img src={url} style={{maxWidth: `200px`}} />}
 			<h2>{name}</h2>
