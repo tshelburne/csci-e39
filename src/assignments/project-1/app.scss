@@ -1,34 +1,14 @@
-// @import 'normalize';
-
-// $padding: 20px;
-// $margin: 10px;
 
 
-//$primary-color: thistle;
 $uploader-color: #61dafb;
 $font-family: calibri;
-$primary-color:lighten(#8a7f80, 20%);
+$primary-color: linear-gradient(-45deg, #efefef, #efefef, #efefef, #efefef);
 $background-gallery: #c7e3ec;
 $uploader-inprogress-color: thistle;
-
-
-// *{
-//   box-sizing: border-box;
-// }
 
 *, *:before, *:after {
   box-sizing: border-box;
 }
-
-
-// .header {
-// 	margin:auto;
-// 	background: white;
-// 	padding: 20px 30px;
-// 	margin-top: 50px;
-// 	//border-radius: 30px 0 /30px 60px;
-// 	box-shadow: 0px 1px 2px 1px darken($primary-color, 7);
-// }
 
 // main page layout
 .nav {
@@ -36,7 +16,6 @@ $uploader-inprogress-color: thistle;
    display: flex;
    flex-flow: column;
    border-right: solid 2px;
-   //border-right: 20px inset;
  }
 
 .content {
@@ -50,6 +29,33 @@ $uploader-inprogress-color: thistle;
    padding: 20px;
  }
 
+ .image-container {
+		max-width: 230px;
+		float: left;
+		margin: auto 10px 15px auto ;
+	}
+
+  img {
+  	width: 100%;
+  }
+
+ figcaption {
+	font-size: 12px;
+	color: #333333;
+ }
+
+p {
+	line-height: 1.43;
+	font-size: 15px;
+ }
+
+ .text-color-emphasis {
+	font-style: oblique;
+	color: #32894f;
+	display: inline;
+  font-weight: bold;
+}
+
  .footer {
    grid-area: footer;
    border-top: solid 2px;
@@ -61,6 +67,7 @@ $uploader-inprogress-color: thistle;
   max-width: 1024px;
   margin: 20px;
   background-color: $primary-color;
+  background-image: linear-gradient(25deg, pink, thistle, lightblue);
   grid-gap: 1px;
   grid-template-columns: 1fr 1fr 1fr;
   //grid-template-rows: auto 1fr auto;
@@ -78,10 +85,11 @@ $uploader-inprogress-color: thistle;
   .header,
   .nav,
   .footer {
-    background-color: $primary-color;
-    //border: 1px solid;
-
+    background-color: $primary-color
   }
+
+h1 { color: #d54d7b; font-family: 'Rouge Script', cursive; font-size: 40px; line-height: 40px; font-weight: normal;
+  margin-bottom: 0px; margin-top: 40px; text-align: center; text-shadow: 0 1px 1px #fff; }
 
 
 // grid for photo album
@@ -109,15 +117,12 @@ $uploader-inprogress-color: thistle;
 
   img {
 		width: 100%;
-      &:hover, &:active, &:focus{
-      //transform: scale(1.5);
-    }
 	}
 
 }
 
 // uploader list styling
-ul, ol {
+ul.grid, ol.grid {
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
@@ -156,27 +161,17 @@ ul, ol {
     margin-left: -17px; /* 50% of width */
 
 }
-//   .checked{
-//   background: #888;
-//   color: #fff;
-//  }
-//
-//  .checked::before {
-//   content: '';
-//   position: absolute;
-//   border-color: green;
-//   border-style: solid;
-//   border-width: 2px 2px 2px 2px;
-//   top: 10px;
-//   left: 16px;
-//   transform: rotate(45deg);
-//   height: 15px;
-//   width: 7px;
-// }
 
-//}
 
-// upload button
+li.album{
+  cursor: pointer;
+}
+
+ol.album {
+	list-style: square;
+  margin-left: 50px;
+}
+
 input[type="file"] {
    display: none;
 	 position: relative;
@@ -192,12 +187,12 @@ input[type="file"] {
 	color: black;
 	-webkit-appearance: none;
 	-moz-appearance: none;
-  //border-radius: 10px;
 
   &:hover, &:active, &:focus {
     background: darken($uploader-inprogress-color, 40%);
   }
-  //margin-top: 10px;
+  margin-left: 40px;
+  margin-top: 40px;
   float: left;
 }
 
@@ -209,14 +204,16 @@ input[type="file"] {
 background: $primary-color;
 font-family: $font-family;
 color: black;
-//padding: 0.5rem;
 border-radius: 0;
 margin: none;
 cursor: pointer;
 border: none;
 font-size: 1rem;
-//float: center;
 padding: 5px;
+margin-left: 40px;
+&:hover, &:active, &:focus {
+  background: darken($uploader-inprogress-color, 40%);
+}
 }
 
 //progress bar styles
@@ -254,12 +251,6 @@ progress::-webkit-progress-value { background: blue; }
   display: block; /* Hidden by default */
   position: absolute;/* Stay in place */
   z-index: 1; /* Sit on top */
-  //padding-top: 100px; /* Location of the box */
-  //padding-left: 200px; /* Location of the box */
-  //left: 100px;
-  //top: 100px;
-  //width: 100%; /* Full width */
-  //height: 50px; /* Full height */
   overflow: auto; /* Enable scroll if needed */
   border: 2px solid;
   background-color: #f2f2f2;

@@ -8,63 +8,25 @@ class PhotoGallery extends React.Component {
 	constructor() {
 		super(...arguments)
 		autobind(this)
-    this.state = {
-			selectImage: false,
-			selectedImageIds : []
-		};
-		this.handleClick = this.handleClick.bind(this);
 	}
-
-   handleClick(imageId){
-		 	var imageSelected = !this.state.selectImage;
-			this.setState({selectImage: imageSelected});
-			if(imageSelected){
-				var updatedSelectedImageIds = this.state.selectedImageIds.concat(imageId);
-		 		this.setState({selectedImageIds: updatedSelectedImageIds});
-			}
-			else{
-				var updatedSelectedImageIds = this.state.selectedImageIds.filter(id => id !== imageId);
-				this.setState({selectedImageIds: updatedSelectedImageIds});
-			}
-<<<<<<< Updated upstream
-=======
-			<Albun callME={this.state.}>
->>>>>>> Stashed changes
-	 }
-
 
 
 	render() {
-<<<<<<< Updated upstream
-		const {completedFiles, ...inputProps} = this.props
-=======
-		const {completedFiles, selectImage, ...inputProps} = this.props
->>>>>>> Stashed changes
-		if(completedFiles.length > 0){
+		const {completedFiles, selectImageIds, showAlbum, albumIds, ...inputProps} = this.props
+		const displayFiles = showAlbum ? filterCompletedFiles(completedFiles, albumIds) : completedFiles
+		if(displayFiles.length > 0){
 		 return(
-			 <ul class="grid-container">
-			 		{completedFiles.map(file => {
+			 <ul class="grid-container grid">
+			 		{displayFiles.map(file => {
 	 					const {id, name, url, error} = file
-<<<<<<< Updated upstream
-=======
-
-						import cx from 'classnames'
-						const classes = cx(`grid-li`, {selected: isActive})
-						const isActive = this.props.selectedImages.includes(id)
-						<li className={classes} />
->>>>>>> Stashed changes
-						const cNameForId = findImageId(this.state.selectedImageIds, id) ? "grid-li selected" : "grid-li"
+						const cNameForId = findImageId(selectImageIds, id) ? "grid-li selected" : "grid-li"
 	 						if(!!error)
 	 						{
 								return (<li class="grid-li" key={id}>
 								 <p className="failure">{message}</p></li>)
 							}
 						else{
-<<<<<<< Updated upstream
-							return<li class={cNameForId} key={id} onClick={this.handleClick.bind(this,id)}>
-=======
-							return<li class={cNameForId} key={id} onClick={() => selectImage(id)}>
->>>>>>> Stashed changes
+							return<li class={cNameForId} key={id} onClick={() => this.props.selectImage(id)}>
 										 <figure class="grid-item"><img src={url} alt={name}/></figure>
 								</li>
 
@@ -73,7 +35,13 @@ class PhotoGallery extends React.Component {
 	 		</ul>
 		)}
 		else{
-			return<h3> The area where uploaded pictures will be displayed ! </h3>
+			return (
+				<ul class="grid-container grid">
+				<li class="grid-li">
+				<figure class="grid-item"><img src="https://ashtangayogaaustin.com/wp-content/uploads/2016/01/IMG_8611-Large.jpg" alt="priya"/></figure>
+				</li>
+				</ul>
+			)
 		}
 	}
 
@@ -90,6 +58,11 @@ function findImageId(idArray, imageId) {
 	 return !!found;
  }
 
+
+ function filterCompletedFiles(completedFiles, albumIds) {
+ 	 var filtered = completedFiles.filter(x => albumIds.includes(x.id));
+ 	 return filtered;
+  }
 
 const showError = (message) => (
 	  <p className="failure">{message}</p>
