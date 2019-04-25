@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 
 import Layout from './components/layout'
-import Menu from './components/menu'
+
 
 import './app.scss'
 
@@ -70,45 +70,22 @@ class Chat extends React.Component {
 	}
 
 	render() {
-		const {classroom, chat, actions} = this.props
+		const {classroom, chat, actions, upload} = this.props
 		const {currentText} = this.state
+		const {self } = this.props.classroom;
 
 		return (
-		
+
 		<Layout>
 			<Layout.Header title="Pizza Lover's Chat" >
 				<Menu menuItems={[MENUITEM1,MENUITEM2,MENUITEM3,MENUITEM4]}/>
 			</Layout.Header>
 
 			<Layout.Content title="I am main content">
-				
-
-				<h1>Chatroom</h1>
-
-			<h2>Members</h2>
-			<ul>
-				{classroom.students.map(({id, name}) =>
-					<li key={id}><span>{name}</span></li>
-				)}
-			</ul>
-
-			<h2>Messages</h2>
-			<ul>
-				{chat.messages.map(({id, student, text, createdAt}) =>
-					<li key={id}>
-						<label>{student.name} at {createdAt.toISOString()}</label>
-						<p>{text}</p>
-					</li>
-				)}
-			</ul>
-
-			<input value={currentText} onChange={this.onType} onKeyUp={this.onSend} />
-			<button disabled={currentText === ``} onClick={this.onSend}>Send</button>
-			<p>{this.getTypingMessage()}</p>
-
-			
+			<Chatbox chat = {chat} upload= {upload} self={self} currentText="sampleCurrentText" />
+ 
 			</Layout.Content>
-			
+
 			<Layout.Sidebar title="I am a Sidebar">
 				<ul className="item-list">
 					<li>I am in the sidebar  </li>
@@ -149,24 +126,4 @@ Chat.propTypes = {
 	actions: PropTypes.object.isRequired,
 }
 
-const MENUITEM1 = {
-	name: "Home",
-	url: "/home",
-}
 
-const MENUITEM2 = {
-	name: "Avatars",
-	url: "/avatars",
-}
-
-const MENUITEM3 = {
-	name: "Members",
-	url: "/members",
-}
-
-const MENUITEM4 = {
-	name: "Login",
-	url: "/login",
-}
-
-export default Chat
