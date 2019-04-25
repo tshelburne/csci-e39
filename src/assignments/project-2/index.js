@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import autobind from 'class-autobind'
 
 import Layout from './components/layout'
-import Chatbox from './components/chatbox'
+
 
 import './app.scss'
 
@@ -77,7 +77,10 @@ class Chat extends React.Component {
 		return (
 
 		<Layout>
-			<Layout.Header title="I am a nav - please style me differently" />
+			<Layout.Header title="Pizza Lover's Chat" >
+				<Menu menuItems={[MENUITEM1,MENUITEM2,MENUITEM3,MENUITEM4]}/>
+			</Layout.Header>
+
 			<Layout.Content title="I am main content">
 			<Chatbox chat = {chat} upload= {upload} self={self} currentText="sampleCurrentText" />
  
@@ -123,4 +126,4 @@ Chat.propTypes = {
 	actions: PropTypes.object.isRequired,
 }
 
-export default Chat
+
