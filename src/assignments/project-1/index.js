@@ -105,6 +105,10 @@ const Uploads = ({uploads, actions}) => {
 			</ul>
 		</section>
 
+		<footer className="site-info">
+    		<p>&copy;<time datetime="2009-10-10T19:10-08:00">2019 </time>Footer for Project 1</p>
+  		</footer>
+
 	</div>
 }
 
