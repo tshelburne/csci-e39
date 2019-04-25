@@ -41,6 +41,11 @@ class Uploads extends React.Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
+	onImageSelect = (image) =>  {
+      // console.log('From the APP!!!!', video );
+    this.setState({ selectedImage: video});
+  }
+
   handleOpenModal () {
     this.setState({ showModal: true });
   }

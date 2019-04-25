@@ -1,4 +1,5 @@
 import React from 'react'
+import Modal from 'react-modal';
 
 const ImageCard = ( { file}) => {
   const {id, name, url, error} = file;
@@ -9,6 +10,13 @@ const ImageCard = ( { file}) => {
       <label className="img-name">{name}</label>
       {!error && <img src={url} style={{maxWidth: `200px`}} />}
       {!!error && <p className="failure">{error}</p>}
+      <button onClick={name}>Trigger Modal</button>
+      <Modal
+         isOpen={name }
+         contentLabel="Minimal Modal Example" ariaHideApp={false}
+      >
+
+      </Modal>
       </li>
 
   )
