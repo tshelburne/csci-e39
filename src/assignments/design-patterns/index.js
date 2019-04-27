@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
+import SectionHeader from './support/sectionheader'
 
 import './app.scss'
 
@@ -24,8 +25,8 @@ class PatternLibrary extends React.Component {
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
+				<Example title="My Special <SectionHeader>">
+					<SectionHeader tag="h1" sectiontext="My FAQs"/>
 				</Example>
 
 				<Example title="My Special <span>">
