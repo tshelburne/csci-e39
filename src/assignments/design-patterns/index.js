@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Example from './support/example'
 import SectionHeader from './support/sectionheader'
 import FaqDescription from './support/faqdescription'
+import Menu from './support/menu'
 
 import './app.scss'
 
@@ -34,8 +35,8 @@ class PatternLibrary extends React.Component {
 					<FaqDescription faqs={FAQS} />
 				</Example>
 
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
+				<Example title="My Special <menu>">
+					<Menu menuItems={MENUITEMS}/>
 				</Example>
 			</div>
 		)
@@ -68,5 +69,23 @@ const FAQS = [
 	},
 ]
 
+const MENUITEMS = [
+	{
+		name: "Home",
+		url: "/home",
+	},
+	{
+		name: "Avatars",
+		url: "/avatars",
+	},
+	{
+		name: "Members",
+		url: "/members",
+	},
+	{
+		name: "Login",
+		url: "/login",
+	},
+]
 
 export default PatternLibrary

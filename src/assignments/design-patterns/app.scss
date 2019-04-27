@@ -8,13 +8,16 @@ $faq_question-font-size-large: 24px;
 $faq_question-font-size-small: 16 px;
 $faq_answer-font-size-large: 24px;
 $faq_answer-font-size-small: 16px;
-
 $faq_question-font-color-1: crimson;
 $faq_question-font-color-2: darken($faq_question-font-color-1, 30%);
 $faq_answer-font-color-1: darken(rgba(150, 143, 179, 1), 40%);
 $faq_answer-font-color-2: darken($faq_answer-font-color-1, 30%);
-
 $faq_answer-margin-bottom: 15px;
+
+$menu-background-color: #33cc33;
+$menu-background-hover-color: darken($menu-background-color, 10%);
+$menu-item-font-size: 20px;
+
 
 .style-guide {
 	width: 90%;
@@ -65,4 +68,31 @@ $faq_answer-margin-bottom: 15px;
   color: $faq_answer-font-color-1;
   text-align: center;
   margin-bottom: $faq_answer-margin-bottom;
+}
+
+.menu-item {
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: $menu-background-color;
+    }
+
+    li {
+      float: left;
+      font-size: $menu-item-font-size;
+    }
+
+    li a {
+      display: block;
+      color: white;
+      text-align: center;
+      padding: 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: $menu-background-hover-color;
+    }
 }
