@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
 import SectionHeader from './support/sectionheader'
+import FaqDescription from './support/faqdescription'
 
 import './app.scss'
 
@@ -29,8 +30,8 @@ class PatternLibrary extends React.Component {
 					<SectionHeader tag="h1" sectiontext="My FAQs"/>
 				</Example>
 
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
+				<Example title="My Special <FaqDescription>">
+					<FaqDescription faqs={[FIRSTFAQ, SECONDFAQ, THIRDFAQ]} />
 				</Example>
 
 				<Example title="My Special <h4>">
@@ -45,5 +46,27 @@ PatternLibrary.childContextTypes = {
 	activeCode: PropTypes.string,
 	setActiveCode: PropTypes.func,
 }
+
+const FIRSTFAQ = {
+	question: "Why did you create this album?",
+	question_class: "faq_question1",
+	answer: "It was required for the assignment.",
+	answer_class: "faq_answer1",
+}
+
+const SECONDFAQ = {
+	question: "What were some strange errors you observed with this assignment?",
+	question_class: "faq_question1",
+	answer: "Support for the experimental syntax 'classProperties' isn't currently enabled",
+	answer_class: "faq_answer1",
+}
+
+const THIRDFAQ = {
+	question: "What was the motivation or inspiration for your choice of photos in this album?",
+	question_class: "faq_question1",
+	answer: "Well... Many of the photos that are locally on my computer are screenshots of my company's products, images used to make content used in my company's platform, or competitive information.",
+	answer_class: "faq_answer1",
+}
+
 
 export default PatternLibrary
