@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Uploader from '../../ui/components/uploader';
-import Banner from './components/banner';
-import Profile from './components/profile';
-import Adios from './components/adios';
+import Banner from './banner';
+import Profile from './profile';
+import Adios from './adios';
 
 import './app.scss';
 
