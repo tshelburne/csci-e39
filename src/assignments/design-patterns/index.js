@@ -4,6 +4,7 @@ import Example from './support/example'
 import SectionHeader from './support/sectionheader'
 import FaqDescription from './support/faqdescription'
 import Menu from './support/menu'
+import Button from './support/button'
 
 import './app.scss'
 
@@ -26,6 +27,10 @@ class PatternLibrary extends React.Component {
 		return (
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
+
+				<Example title="My Special <Button>">
+					<Button text='Submit' type='submit' onClick={()=>{}} />
+				</Example>
 
 				<Example title="My Special <SectionHeader>">
 					<SectionHeader tag="h1" sectiontext="My FAQs"/>
