@@ -35,7 +35,9 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="My Special <SectionHeader>">
-					<SectionHeader tag="h1" sectiontext="My FAQs"/>
+					<SectionHeader tag="h1" sectiontext="My h1 Section Header"/>
+					<SectionHeader tag="h2" sectiontext="My h2 Section Header"/>
+					<SectionHeader tag="h3" sectiontext="My h3 Section Header"/>
 				</Example>
 
 				<Example title="My Special <FaqDescription>">
