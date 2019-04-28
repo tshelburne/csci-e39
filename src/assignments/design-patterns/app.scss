@@ -55,6 +55,21 @@ $menu-item-font-size: 20px;
 	}
 }
 
+.button-primary {
+	background-color: blue;
+	color: white;
+}
+
+.button-success {
+	background-color: green;
+	color: white;
+}
+
+.button-warning {
+	background-color: orange;
+	color: white;
+}
+
 .faq_question1 {
   font-family: $default-font-family;
   font-size: $faq_question-font-size-large;

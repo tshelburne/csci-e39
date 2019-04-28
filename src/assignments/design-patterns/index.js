@@ -29,7 +29,9 @@ class PatternLibrary extends React.Component {
 				<h1>My Pattern Library!</h1>
 
 				<Example title="My Special <Button>">
-					<Button text='Submit' type='submit' onClick={()=>{}} />
+					<Button text='Primary' type='submit' buttonType="button-primary" onClick={()=>{}} />
+					<Button text='Success' type='submit' buttonType="button-success" onClick={()=>{}} />
+					<Button text='Warning' type='submit' buttonType="button-warning" onClick={()=>{}} />
 				</Example>
 
 				<Example title="My Special <SectionHeader>">

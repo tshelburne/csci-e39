@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Button = ({text, onClick, type, disabled, buttonType }) => (
-  <button type={type} disabled={disabled} onClick={onClick}>
+const Button = ({text, type, onClick, disabled, buttonType }) => (
+  <button type={type} disabled={disabled} className={buttonType} onClick={onClick}>
     {text}
   </button>
 );
