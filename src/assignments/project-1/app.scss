@@ -26,209 +26,202 @@ $box-shadow: 1px 1px 4px darken($gradient-top, 20);
 $box-shadow-highlight: 1.5px 1.5px 5px darken($gradient-top, 40);
 // avoid really small font on small devices
 $font-size: calc(8px + 0.9vw);
-$font-family: Verdana,
-Geneva,
-sans-serif;
+$font-family: Verdana, Geneva, sans-serif;
 
-@mixin box-shadow ($properties) {
-    -webkit-box-shadow: $properties;
-    -moz-box-shadow: $properties;
-    box-shadow: $properties;
+@mixin box-shadow($properties) {
+  -webkit-box-shadow: $properties;
+  -moz-box-shadow: $properties;
+  box-shadow: $properties;
 }
 
 *,
 *:before,
 *:after {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: $font-family;
-    font-size: $font-size;
-    background-color: $body-background;
+  font-family: $font-family;
+  font-size: $font-size;
+  background-color: $body-background;
 }
 
 .container {
-    text-align: right;
-    width: 85vw;
-    margin: 0 auto;
+  text-align: right;
+  width: 85vw;
+  margin: 0 auto;
 }
 
 .banner {
-    font-family: 'Cute Font', cursive;
-    font-size: 450%;
-    line-height: 1;
-    letter-spacing: 0.75vw;
-    color: lighten($hover-top, 30%);
-    text-shadow: 1.5px 2px 2px black;
-    margin: 0;
-    //margin-bottom: -1vw;
+  font-family: 'Cute Font', cursive;
+  font-size: 450%;
+  line-height: 1;
+  letter-spacing: 0.75vw;
+  color: lighten($hover-top, 30%);
+  text-shadow: 1.5px 2px 2px black;
+  margin: 0;
+  //margin-bottom: -1vw;
 
-    &>.uname {
-        font-family: $font-family;
-        color: $primary-bottom;
-        font-size: $font-size;
-        text-shadow: none;
-        font-weight: normal;
-        color: black;
-        margin-bottom: 3em;
-    }
+  & > .uname {
+    font-family: $font-family;
+    color: $primary-bottom;
+    font-size: $font-size;
+    text-shadow: none;
+    font-weight: normal;
+    color: black;
+    margin-bottom: 3em;
+  }
 }
 
 ul.photoGrid {
-    max-width: 90%;
-    margin: 5em auto 0 auto;
-    text-align: center;
-    display: grid;
-    // grid-template-columns: repeat(auto-fit, 200px);
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap: 2rem;
+  max-width: 90%;
+  margin: 5em auto 0 auto;
+  text-align: center;
+  display: grid;
+  // grid-template-columns: repeat(auto-fit, 200px);
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 2rem;
 
-    &>li {
-        list-style: none;
-        padding: 0;
-    }
+  & > li {
+    list-style: none;
+    padding: 0;
+  }
 
-    & img {
-        border: 1.25px solid black;
-    }
+  & img {
+    border: 1.25px solid black;
+  }
+}
+
+.profile {
+  margin: 1em 0 0 auto;
+  color: $hover-top;
+  font-style: italic;
+}
+
+ul.profile {
+  margin-top: 0.25em;
+}
+
+ul.profile > li {
+  list-style-type: none;
 }
 
 .button {
-    // style the label like a button
-    
-    background: linear-gradient($primary-top, $primary-mid, $primary-bottom);
-    border: $border;
-    border-radius: $border-radius;
-    padding: $padding;
-    @include box-shadow($box-shadow);
-    display: inline-block;
-    font-size: 90%;
-    cursor: pointer;
-    margin-top: 1em;
-    margin-left: 1em;
+  // style the label like a button
 
-    &:first-of-type{
-        margin-top: 5em;
-    }
+  background: linear-gradient($primary-top, $primary-mid, $primary-bottom);
+  border: $border;
+  border-radius: $border-radius;
+  padding: $padding;
+  @include box-shadow($box-shadow);
+  display: inline-block;
+  font-size: 90%;
+  cursor: pointer;
+  margin-top: 1em;
+  margin-left: 1em;
 
-    &:hover {
-        background: linear-gradient($hover-top, $hover-mid, $hover-bottom);
-        box-shadow: $box-shadow-highlight;
-    }
+  &:first-of-type {
+    margin-top: 5em;
+  }
 
-    &:active {
-        background: linear-gradient($active-top, $active-mid, $active-bottom);
-        box-shadow: $box-shadow;
-        text-decoration: underline;
-        color: $light-text;
-        outline: 1px dotted #000;
-        outline: -webkit-focus-ring-color auto 5px;
-    }
+  &:hover {
+    background: linear-gradient($hover-top, $hover-mid, $hover-bottom);
+    box-shadow: $box-shadow-highlight;
+  }
+
+  &:active {
+    background: linear-gradient($active-top, $active-mid, $active-bottom);
+    box-shadow: $box-shadow;
+    text-decoration: underline;
+    color: $light-text;
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+  }
 }
 .button + .button {
-    color: red;
+  color: red;
 }
 
 .uploader-file-input {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
 
-    &:focus+uploader {
-        border: 6px solid green;
-    }
+  &:focus + uploader {
+    border: 6px solid green;
+  }
 }
 
 // PROGRESS BAR
 // https://css-tricks.com/html5-progress-element/
 progress[value] {
-    // haven't noticed what this does - only tested with modern Chrome and FF
-    appearance: none;
-    border: $border;
-    // size of progress bar
-    width: 12.5em;
-    height: 1.25em;
-    max-width: 80%;
+  // haven't noticed what this does - only tested with modern Chrome and FF
+  appearance: none;
+  border: $border;
+  // size of progress bar
+  width: 12.5em;
+  height: 1.25em;
+  max-width: 80%;
 
-    // for FF
-    background-color: $progress-bar-background-color;
-    border-radius: $border-radius;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  // for FF
+  background-color: $progress-bar-background-color;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
 
-    // for IE10, set background color with color:
-    color: $progress-bar-background-color;
+  // for IE10, set background color with color:
+  color: $progress-bar-background-color;
 }
 
-
-
 progress[value]::-webkit-progress-bar {
-    background-color: $progress-bar-background-color;
-    border-radius: $border-radius;
-    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  background-color: $progress-bar-background-color;
+  border-radius: $border-radius;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
 }
 
 progress[value]::-webkit-progress-value {
-    background-size: 35px 20px, 100% 100%, 100% 100%;
-    border-radius: $border-radius;
-    //border: $border;
-    background-image: -webkit-linear-gradient(135deg,
-        transparent,
-        transparent 33%,
-        rgba(0, 0, 0, 0.1) 33%,
-        rgba(0, 0, 0, 0.1) 67%,
-        transparent 67%),
-        -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2)),
-        -webkit-linear-gradient(left, $gradient-top, $gradient-bottom);
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  border-radius: $border-radius;
+  //border: $border;
+  background-image: -webkit-linear-gradient(
+      135deg,
+      transparent,
+      transparent 33%,
+      rgba(0, 0, 0, 0.1) 33%,
+      rgba(0, 0, 0, 0.1) 67%,
+      transparent 67%
+    ),
+    -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2)),
+    -webkit-linear-gradient(left, $gradient-top, $gradient-bottom);
 }
 
 progress[value]::-moz-progress-bar {
-    // gradient background with stripes
-    background-image: -moz-linear-gradient(135deg,
-        transparent,
-        transparent 33%,
-        rgba(0, 0, 0, 0.1) 33%,
-        rgba(0, 0, 0, 0.1) 66%,
-        transparent 66%),
-        -moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
-        -moz-linear-gradient(left, $gradient-top, $gradient-bottom);
-    // size of the stripes for FF only?
-    background-size: 35px 20px, 100% 100%, 100% 100%;
-    border-radius: $border-radius $border-radius/2 $border-radius/2 $border-radius;
+  // gradient background with stripes
+  background-image: -moz-linear-gradient(
+      135deg,
+      transparent,
+      transparent 33%,
+      rgba(0, 0, 0, 0.1) 33%,
+      rgba(0, 0, 0, 0.1) 66%,
+      transparent 66%
+    ),
+    -moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)),
+    -moz-linear-gradient(left, $gradient-top, $gradient-bottom);
+  // size of the stripes for FF only?
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  border-radius: $border-radius $border-radius/2 $border-radius/2 $border-radius;
 }
 
 .adios {
-    font-family: 'Cute Font', cursive;
-    font-size: 200%;
-    line-height: 1;
-    // letter-spacing: 0.75vw;
-    color: darken($hover-top, 30%);
-    text-align: center;
-    margin: 0;
-    margin-top: 5em;   
-}
-
-.profile {
-    border-radius: $border-radius;
-    border: 1px solid black;
-    margin: 1em 0 1em auto;
-    padding: 1em;
-    width: 40%;
-    text-align: left;
-}
-
-.hide {
-    display: none;
-}
-
-.show {
-    display: block;
-    width: 20em;
-}
-
-.red {
-    color: red;
+  position: absolute;
+  bottom: 0;
+  right: 2em;
+  font-family: 'Cute Font', cursive;
+  font-size: 200%;
+  line-height: 1;
+  // letter-spacing: 0.75vw;
+  color: $hover-top;
+  text-align: right;
 }

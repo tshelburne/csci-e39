@@ -1,39 +1,37 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import autobind from 'class-autobind'
+import React from 'react';
+import PropTypes from 'prop-types';
+import autobind from 'class-autobind';
 
 class Profile extends React.Component {
-
-    constructor() {
-        super(...arguments)
-        autobind(this)
-
-        this.state = {
-            isToggleOn: false
-        }
-    }
-
-    // https://reactjs.org/docs/handling-events.html
-    handleClick() {
-        this.setState(state => ({
-            isToggleOn: !state.isToggleOn
-        }));
-    }
-
-    render() {
-        const { ...props } = this.props
-        const specialClass = this.state.isToggledOn ? 'show' : 'hide'
-        return (
-
-            <React.Fragment>
-                <div className={specialClass}>
-                    {props.about}
-                </div>
-
-            </React.Fragment>
-        )
-    }
-
+  constructor() {
+    super(...arguments);
+    autobind(this);
+  }
+  render() {
+    const className = this.props.className;
+    const traits = this.props.user.traits;
+    console.log(traits);
+    console.log(this.props.className);
+    return (
+      <React.Fragment>
+        <div class={className}>{this.props.user.name.firstName} is:</div>
+        <ul class={className}>
+          {traits.map((trait, idx) => (
+            <li key={trait}>
+              {idx === traits.length - 1 ? 'and ' : ''}
+              {trait +
+                (idx === traits.length - 1
+                  ? '.'
+                  : idx === traits.length - 2
+                  ? ''
+                  : ',')}
+            </li>
+            // console.log(arguments.length)
+          ))}
+        </ul>
+      </React.Fragment>
+    );
+  }
 }
 
-export default Profile
+export default Profile;

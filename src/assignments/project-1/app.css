@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css?family=Cute+Font");
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: calc(8px + 0.9vw);
+  background-color: whiteSmoke;
+}
+
+.container {
+  text-align: right;
+  width: 85vw;
+  margin: 0 auto;
+}
+
+.banner {
+  font-family: 'Cute Font', cursive;
+  font-size: 450%;
+  line-height: 1;
+  letter-spacing: 0.75vw;
+  color: #d0d0d0;
+  text-shadow: 1.5px 2px 2px black;
+  margin: 0;
+}
+
+.banner > .uname {
+  font-family: Verdana, Geneva, sans-serif;
+  color: #aaa;
+  font-size: calc(8px + 0.9vw);
+  text-shadow: none;
+  font-weight: normal;
+  color: black;
+  margin-bottom: 3em;
+}
+
+ul.photoGrid {
+  max-width: 90%;
+  margin: 5em auto 0 auto;
+  text-align: center;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 2rem;
+}
+
+ul.photoGrid > li {
+  list-style: none;
+  padding: 0;
+}
+
+ul.photoGrid img {
+  border: 1.25px solid black;
+}
+
+.profile {
+  margin: 1em 0 0 auto;
+  color: #848484;
+  font-style: italic;
+}
+
+ul.profile {
+  margin-top: 0.25em;
+}
+
+ul.profile > li {
+  list-style-type: none;
+}
+
+.button {
+  background: -webkit-gradient(linear, left top, left bottom, from(#aaa), color-stop(#d0d0d0), to(#aaa));
+  background: linear-gradient(#aaa, #d0d0d0, #aaa);
+  border: 2px solid #6a6a6a;
+  border-radius: 0.25rem;
+  padding: 0.5em;
+  -webkit-box-shadow: 1px 1px 4px #9d9d9d;
+  box-shadow: 1px 1px 4px #9d9d9d;
+  display: inline-block;
+  font-size: 90%;
+  cursor: pointer;
+  margin-top: 1em;
+  margin-left: 1em;
+}
+
+.button:first-of-type {
+  margin-top: 5em;
+}
+
+.button:hover {
+  background: -webkit-gradient(linear, left top, left bottom, from(#848484), color-stop(#aaaaaa), to(#848484));
+  background: linear-gradient(#848484, #aaaaaa, #848484);
+  -webkit-box-shadow: 1.5px 1.5px 5px #6a6a6a;
+          box-shadow: 1.5px 1.5px 5px #6a6a6a;
+}
+
+.button:active {
+  background: -webkit-gradient(linear, left top, left bottom, from(#5e5e5e), color-stop(#848484), to(#5e5e5e));
+  background: linear-gradient(#5e5e5e, #848484, #5e5e5e);
+  -webkit-box-shadow: 1px 1px 4px #9d9d9d;
+          box-shadow: 1px 1px 4px #9d9d9d;
+  text-decoration: underline;
+  color: whiteSmoke;
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
+
+.button + .button {
+  color: red;
+}
+
+.uploader-file-input {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.uploader-file-input:focus + uploader {
+  border: 6px solid green;
+}
+
+progress[value] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 2px solid #6a6a6a;
+  width: 12.5em;
+  height: 1.25em;
+  max-width: 80%;
+  background-color: whiteSmoke;
+  border-radius: 0.25rem;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+          box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+  color: whiteSmoke;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: whiteSmoke;
+  border-radius: 0.25rem;
+  -webkit-box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+          box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  border-radius: 0.25rem;
+  background-image: -webkit-linear-gradient(135deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 67%, transparent 67%), -webkit-linear-gradient(top, rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2)), -webkit-linear-gradient(left, #d0d0d0, #d0d0d0);
+}
+
+progress[value]::-moz-progress-bar {
+  background-image: -moz-linear-gradient(135deg, transparent, transparent 33%, rgba(0, 0, 0, 0.1) 33%, rgba(0, 0, 0, 0.1) 66%, transparent 66%), -moz-linear-gradient(top, rgba(255, 255, 255, 0.25), rgba(0, 0, 0, 0.2)), -moz-linear-gradient(left, #d0d0d0, #d0d0d0);
+  background-size: 35px 20px, 100% 100%, 100% 100%;
+  border-radius: 0.25rem 0.125rem 0.125rem 0.25rem;
+}
+
+.adios {
+  position: absolute;
+  bottom: 0;
+  right: 2em;
+  font-family: 'Cute Font', cursive;
+  font-size: 200%;
+  line-height: 1;
+  color: #848484;
+  text-align: right;
+}
+/*# sourceMappingURL=app.css.map */
