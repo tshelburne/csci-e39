@@ -11,7 +11,7 @@ class Adios extends React.Component {
     const { ...props } = this.props;
     return (
       <React.Fragment>
-        <div className='adios'>
+        <div className={props.className}>
           Thank you for visiting {props.first} {props.last}'s photos
         </div>
       </React.Fragment>

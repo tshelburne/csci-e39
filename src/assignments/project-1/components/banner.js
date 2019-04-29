@@ -14,7 +14,7 @@ class Banner extends React.Component {
         <h1 className='banner'>
           Photos from {userName.firstName} {userName.lastName}
         </h1>
-        <div>(Username: {userName.userName}) </div>
+        <div className='uname'>(Username: {userName.userName}) </div>
       </React.Fragment>
     );
   }

@@ -6,10 +6,13 @@
           box-sizing: border-box;
 }
 
+html,
 body {
   font-family: Verdana, Geneva, sans-serif;
   font-size: calc(8px + 0.9vw);
   background-color: whiteSmoke;
+  height: 100%;
+  min-height: 100%;
 }
 
 .container {
@@ -28,19 +31,18 @@ body {
   margin: 0;
 }
 
-.banner > .uname {
+.banner + .uname {
   font-family: Verdana, Geneva, sans-serif;
   color: #aaa;
   font-size: calc(8px + 0.9vw);
   text-shadow: none;
   font-weight: normal;
-  color: black;
-  margin-bottom: 3em;
+  color: #848484;
 }
 
 ul.photoGrid {
   max-width: 90%;
-  margin: 5em auto 0 auto;
+  margin: 5em 0 0 auto;
   text-align: center;
   display: -ms-grid;
   display: grid;
@@ -56,6 +58,20 @@ ul.photoGrid > li {
 
 ul.photoGrid img {
   border: 1.25px solid black;
+}
+
+ul.photoGrid li label {
+  display: inline-block;
+  width: 200px;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 70%;
+}
+
+article {
+  width: 80%;
+  margin: 5em 0 0 auto;
 }
 
 .profile {
@@ -161,13 +177,12 @@ progress[value]::-moz-progress-bar {
 }
 
 .adios {
-  position: absolute;
-  bottom: 0;
   right: 2em;
   font-family: 'Cute Font', cursive;
   font-size: 200%;
   line-height: 1;
   color: #848484;
   text-align: right;
+  margin-top: 1em;
 }
 /*# sourceMappingURL=app.css.map */
