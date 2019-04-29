@@ -1,9 +1,21 @@
 @import './pattern-library';
 
-/* Site settings */
-@import "./site-settings";
+/* SETTINGS -Preprocessor variables and methods (no actual CSS output)*/
+@import "./settings/site-settings";
+
+/* TOOLS -Mixins and functions (no actual CSS output)*/
+
+/* GENERIC -CSS resets which might include Eric Meyer’s reset, Normalize.css, or your own batch of code ... normalize via pattern-library*/
+
+/* ELEMENTS -Single HTML element selectors without classes*/
 
 
+/* OBJECTS -Classes for page structure typically following the OOCSS methodology*/
 
-/* Site alteration */
-@import "./alteration";
+
+/* COMPONENTS -Aesthetic classes for styling any & all page elements (often combined with the structure of object classes)*/
+@import "./components/login";
+
+
+/* ALTERATIONS - The most specific styles for overriding anything else in the triangle */
+@import "./alterations/alteration";
