@@ -34,13 +34,21 @@ class PatternLibrary extends React.Component {
 					      <Header  title="Header Title"  text="This is my header text"></Header>
 				</Example>
 
+				<Example title="My Special <Footer>">
+					<Footer name="Footer">Footer</Footer>
+				</Example>
+
 				<Example title="My Special <toggle>">
 					<Toggle/>
 				</Example>
 
-				<Example title="My Special <Footer>">
-					<Footer name="Footer">Footer</Footer>
+				<Example title="Putting all 3 components together">
+					<Toggle>
+						<Header  title="Header Title"  text="This is my header text"></Header> 
+						<Footer name="Footer">Footer</Footer>
+					</Toggle>
 				</Example>
+
 			</div>
 		)
 	}

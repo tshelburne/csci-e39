@@ -38,7 +38,7 @@ class Toggle extends React.Component {
            <label>{myClassName}</label>
         </button>
    
-        
+        {this.props.children}
 
       </div>
     )
