@@ -1,9 +1,7 @@
 import React from 'react'
 
 const PendingUpload = ( { uploaddata }) => {
-
-    console.log("from pendingupload")
-    console.log(  uploaddata)
+ 
     return (
 
       <ul className="upload-progress">

@@ -32,27 +32,30 @@ const customStyles = {
 class Uploads extends React.Component {
 
 	constructor (props) {
-    super(props);
-    this.state = {
-      showModal: false
-    };
+		super(props);
+		this.state = {
+			showModal: false ,
+			selectedImage: []
+		};
 
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-  }
+		this.handleOpenModal = this.handleOpenModal.bind(this);
+		this.handleCloseModal = this.handleCloseModal.bind(this);
+	}
 
 	onImageSelect = (image) =>  {
-      // console.log('From the APP!!!!', video );
-    this.setState({ selectedImage: video});
-  }
+		console.log('From the image!!!!' );
 
-  handleOpenModal () {
-    this.setState({ showModal: true });
-  }
+		this.setState({ selectedImage: image,  showModal: true});
+		console.log( );
+	}
 
-  handleCloseModal () {
-    this.setState({ showModal: false });
-  }
+	handleOpenModal () {
+		this.setState({ showModal: true });
+	}
+
+	handleCloseModal () {
+		this.setState({ showModal: false });
+	}
 
 	render() {
 
@@ -68,13 +71,24 @@ class Uploads extends React.Component {
 			<Uploader upload={this.props.actions.upload} />
 			</div>
 			{/* do not delete this uploader component */}
-
-			<button onClick={this.handleOpenModal}>Trigger Modal</button>
+ 
 			<Modal
-				 isOpen={this.state.showModal}
-				 contentLabel="Minimal Modal Example" ariaHideApp={false}
-			>
-				<button onClick={this.handleCloseModal}>Close Modal</button>
+			id="modal_with_forms"
+			isOpen={this.state.showModal}
+			closeTimeoutMS={150}
+			contentLabel="modalB"
+			shouldCloseOnOverlayClick={true}
+			onRequestClose={this.toggleModal}
+			aria={{
+				labelledby: "heading",
+				describedby: "fulldescription"
+			}}>
+			<h1 id="heading">{this.state.selectedImage.name}</h1>
+			<div id="fulldescription" tabIndex="0" role="document">
+
+			<img className="modalImage" src={this.state.selectedImage.url} height="500" width="500"  onClick={this.handleCloseModal} />
+			</div>
+			<button onClick={this.handleCloseModal}>Close Modal</button>
 			</Modal>
 
 			<h2 className="inprogress title">In Progress</h2>
@@ -84,7 +98,7 @@ class Uploads extends React.Component {
 
 			<h2 className="completed title">Gallery</h2>
 			<div className="container-completed">
-			<ImageGallery images= {completedFiles} ></ImageGallery>
+			<ImageGallery images= {completedFiles} onImageSelect= {this.onImageSelect} ></ImageGallery>
 			</div>
 			</div>
 		)

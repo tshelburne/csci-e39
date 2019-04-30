@@ -1,10 +1,10 @@
 import React from 'react';
 import ImageCard from './imagecard.js'
 
-const ImageGallery = ({ images }) => {
+const ImageGallery = ({ images, onImageSelect }) => {
   return (  <div className="imagegallery-container">
               {images.map(file =>
-                 <ImageCard file={file}/>
+                 <ImageCard file={file} onImageSelect={onImageSelect} />
                 )
               }
             </div>
