@@ -1,1 +1,32 @@
 @import 'normalize';
+
+.img-card {
+    display: grid;
+    grid-gap: 30px;
+    padding: 15px;
+    box-shadow: 2px 2px 7px gray;
+    border-radius: 3px;
+    width: fit-content;
+
+    img {
+        width: 100%;
+        max-width: 300px;
+        border-radius: 5px;
+    }
+
+    @media(min-width: 768px) {
+        grid-auto-columns: 1fr 2fr;
+
+        img:only-child {
+            grid-column: 1 / span 2; 
+        }
+
+        div {
+            grid-column: 2;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+    }
+}
