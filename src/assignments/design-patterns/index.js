@@ -30,9 +30,6 @@ class PatternLibrary extends React.Component {
 
 					<ImageCard imgSrc="https://via.placeholder.com/300" imgAlt="place holder image" />
 
-				</Example>
-
-				<Example title="Image Card with Side Content">
 
 					<ImageCard imgSrc="https://via.placeholder.com/300" imgAlt="place holder image">
 						<p>
@@ -42,6 +39,12 @@ class PatternLibrary extends React.Component {
 							Content items will center vertically, and stack on top of eachother.
 						</p>
 					</ImageCard>
+
+				</Example>
+
+				<Example title="Image Card with Side Content">
+
+				<span className="just-testing">HELLO SPAN</span>
 
 				</Example>
 
