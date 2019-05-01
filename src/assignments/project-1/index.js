@@ -1,18 +1,49 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Uploader from '../../ui/components/uploader'
+import Clock from './clock'
+import Greeting from './greeting'
+
+
+
 
 import './app.scss'
+
+
+
 
 const Uploads = ({uploads, actions}) => {
 	const pendingFiles = uploads.files.filter(({progress}) => progress && progress < 100)
 	const completedFiles = uploads.files.filter(({progress}) => !progress)
+	const name= "Jordan"
 
-	return <div>
+	return <div className="uploader-input file-form">
+
+	<Greeting name="Ready Player One"/>
+
+
+
+	
+	<div>"Let's get retro, this is a throwback to the 80s! A lot of great things were made in the 80s, including myself. The coolest hipster trend in my opinion is retro 80s style. Therefore, let us all become hipsters and travel back in time lol. If you feel yourself wanting to say... I didn't even realize that beards were trendy. I just feel drawn to them, naturally, I guess. That's okay we love you anyway. And etc...Yada, Yada, Yada "</div>
+
+<div> 
+<button> Wow, Cool</button>
+</div>
+
+
+<div> 
+<h2> It's {name}!</h2>
+</div>
+
+
+
 		<h1>Upload Images</h1>
 		{/* do not delete this uploader component */}
 		<Uploader upload={actions.upload} />
 		{/* do not delete this uploader component */}
+
+		<h4> #Muscles </h4>
+       <h4> Display:Flex ;) </h4>
 
 		<h2>In Progress</h2>
 		<ul>
@@ -25,6 +56,8 @@ const Uploads = ({uploads, actions}) => {
 				</li>
 			})}
 		</ul>
+
+
 
 		<h2>Completed</h2>
 		<ul>
@@ -63,3 +96,5 @@ Uploads.propTypes = {
 }
 
 export default Uploads
+
+
