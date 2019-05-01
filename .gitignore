@@ -3,3 +3,4 @@ build
 public
 .id
 dev.sqlite3
+.DS_Store
