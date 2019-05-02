@@ -1,22 +1,64 @@
 @import 'normalize';
 
+
+
+/* FONTS */
+@import url(https://fonts.googleapis.com/css?family=Merriweather|Oswald:300,400,600);
+@import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);
+$heading-font: 'Oswald', sans-serif;
+$body-font: 'Merriweather', serif;
+
+/*COLORS*/
+$secondary-color: #e24e4b;
+$primary-color: crimson;
+$primary-desaturated: desaturate($primary-color, 50%);
+$secondary-desaturated: desaturate($secondary-color, 50%);
+$white: #fefefe;
+$black: #1d1616;
+
+/* MEASUREMENTS */
+$gap: 20px;
+$type-scale: 1.333;
+
+html {
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: $body-font;
+    color: $black;
+    font-weight: 300;
+    max-width: 1200px;
+    min-width: 320px;
+    margin: auto;
+}
+img {
+    width: 100%
+}
+
 .img-card {
-    margin: 20px;
+    margin: 20px 0;
     display: grid;
-    grid-gap: 30px;
+    grid-gap: $gap;
     padding: 15px;
     box-shadow: 2px 2px 7px gray;
     border-radius: 3px;
     width: fit-content;
 
+
     img {
         width: 100%;
-        max-width: 300px;
         border-radius: 5px;
     }
 
     @media(min-width: 768px) {
-        grid-auto-columns: 1fr 2fr;
+        grid-auto-columns: mintomax(1fr, 500px) 2fr;
+        max-width: 600px;
 
         img:only-child {
             grid-column: 1 / span 2; 
@@ -29,5 +71,24 @@
             flex-direction: column;
         }
 
+    }
+
+    &.vertical-card {
+        display: block;
+        max-width: 500px;
+    }
+}
+
+.three-up-layout{
+   
+    @media (min-width: 768px) {
+        grid-gap: $gap;
+        display: grid;
+        grid-template-columns: repeat(2,  1fr);
+    }
+    @media (min-width: 900px) {
+        grid-gap: $gap;
+        display: grid;
+        grid-template-columns: repeat(3,  1fr);
     }
 }
