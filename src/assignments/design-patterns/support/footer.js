@@ -4,20 +4,45 @@ import ReactDOM from 'react-dom'
 import ReactDOMServer from 'react-dom/server'
 import jsxToString from 'jsx-to-string'
 import beautify from 'js-beautify'
-
+import Logo from './logo'
+import '../logo.scss'
 
 
 function Footer(props) {
-  return (
-  	<div className="footer">
-      <h3>{props.name}</h3>
-    </div> 
-    )
+	  
+  
+  
+  if (!props.links) {
+      
+      return <div>Wait for it... </div>;
+      
+    } else {
+
+      return (  
+      	<div className="footer">
+           <h3 className="footer-title">{props.title}</h3>
+           <Logo size="small"  cssClassName="logo-fancy footer-logo"/>
+
+           <ul className="footer-ul">
+            {props.links
+              .filter(link => (link.id < 12))
+              .map(link => (
+                <li className="footer-link" key={link.id}>
+                  <a href={link.thumbnailUrl}>{link.title}</a>
+                </li>
+              ))    
+            }
+
+           </ul>
+           
+        </div> 
+        )
+  }    
 }
 
 
 Footer.propTypes = {
-	name: PropTypes.string,
+	title: PropTypes.string,
 }
 
 Footer.contextTypes = {

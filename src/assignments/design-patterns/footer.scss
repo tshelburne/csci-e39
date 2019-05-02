@@ -6,6 +6,33 @@ body {
 
 .footer {
   font-size: 15px;
+  display: grid;
+  grid-template-areas: "footer-logo footer-title footer-title footer-title" 
+                        "footer-ul footer-ul footer-ul footer-ul";
+  grid-row-gap: 10px;
+  justify-content: start;
 }
+
+
+.footer-title {
+  grid-area: footer-title;
+  font-weight: bold;
+}
+
+.footer-logo {
+  grid-area: footer-logo;
+}
+
+.footer-ul {
+  grid-area: footer-ul;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  list-style: none;
+}
+
+.footer-link {
+  
+}
+
 
 
