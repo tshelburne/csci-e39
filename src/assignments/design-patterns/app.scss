@@ -12,7 +12,7 @@ $margin: 10px;
 .example {
 	padding: $padding;
 	margin-bottom: $margin;
-	border: thin solid;
+	border: 15px solid green;
 
 	&:last-child {
 		margin-bottom: 0;
@@ -21,20 +21,27 @@ $margin: 10px;
 	.example--rendered {
 		padding: $padding;
 		margin-bottom: $margin;
-		border: thin dotted #ccc;
+		border: inset thick solid green;
+		border-radius: 15px;
 	}
 
 	.example--toggles {
 		margin-bottom: $margin;
 
 		.active {
-			background: pink;
+			background: blue;
+			color: white;
+			text-transform: uppercase;
+			border-radius: 0;
 		}
 	}
 
 	.example--code {
 		padding: $padding;
 		background: #eee;
-		border: thin dotted #ccc;
+		border: inset thin dotted #ccc;
+		color: green;
+		font-weight: bold;
+		border-radius: 15px;
 	}
 }

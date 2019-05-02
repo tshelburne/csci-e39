@@ -64,7 +64,7 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="My Special <Footer>">
-					<Footer title="This text is a prop. The <Footer> component has 2 nested grid layouts. 
+					<Footer title="This text is a prop. The <Footer> component has 2 nested css grid layouts. 
 								   The outer grid contains the <Logo>, text, and a 3-column inner grid of links. 
 						           The links come dynamically from a JSON service and are filtered to show just the first links.
 						           The code sample below displays as if I hard coded the JSON data but in my actual code I 
@@ -72,14 +72,18 @@ class PatternLibrary extends React.Component {
 						    links={links}/>
 				</Example>
 
-				<Example title="My Special <toggle>">
-					<Toggle/>
+				<Example title="My Special <Toggle>">
+					<Toggle onText="Uppercase" offText="Lowercase" onStyle="uppercase" offStyle="lowercase">
+							Some text wrapped by the Toggle component
+					</Toggle>
 				</Example>
 
-				<Example title="Putting all 3 components together">
-					<Toggle>
-						<Header  title="Header Title"  text="This is my header text"></Header> 
-						<Footer title="Learn More at these Links" links={links}/>
+				<Example title="Putting all the components together, including nesting 2 examples of the Toggle which nest the <Header> and <Footer> which both contain a <Logo>">
+					<Toggle onText="daytime" offText="night-time" onStyle="day-view" offStyle="night-view">
+						<Toggle onText="serif" offText="sans-serif" onStyle="toggle-serif" offStyle="toggle-sans-serif">
+							<Header  title="Header Title"  text="This is my header text"></Header> 
+							<Footer title="Learn More at these Links" links={links}/>
+						</Toggle>
 					</Toggle>
 				</Example>
 

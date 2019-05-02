@@ -23,11 +23,15 @@ class Toggle extends React.Component {
   
   render() {
   	var myClassName;
+  	var buttonText;
     
     if (this.state.isDayView == true) {
-    	myClassName = "day-view"
+    	myClassName = this.props.onStyle;
+      	buttonText = this.props.onText;
+      
     } else {
-    	myClassName = "night-view"
+    	myClassName = this.props.offStyle;
+      	buttonText = this.props.offText;
     }
   
     return (
@@ -35,7 +39,7 @@ class Toggle extends React.Component {
          
 
         <button onClick={this.handleClick}>
-           <label>{myClassName}</label>
+           <label>{buttonText}</label>
         </button>
    
         {this.props.children}
