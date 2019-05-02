@@ -11,9 +11,9 @@ import '../logo.scss'
 function Header(props) {
   return (
   	<div className="header">
-    <Logo size="large"  cssClassName="logo-standard"/>
       <h1>{props.title}</h1>
       <h4>{props.text}</h4>
+      <Logo size="large"  cssClassName="logo-standard"/>
     </div> 
     );
 }

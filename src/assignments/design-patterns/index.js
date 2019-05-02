@@ -56,7 +56,11 @@ class PatternLibrary extends React.Component {
 				<h1>James Massa's Pattern Library!</h1>
 
 				<Example title="My Special <Header>">
-					      <Header  title="This Title is a prop"  text="This text is a prop but photo is a <Logo> component"></Header>
+					      <Header  title="This Title is a prop"  
+					      		   text="This text is a prop but the photo is a <Logo> component which should be the same on every page"></Header>
+					      
+					      <Header  title="This is another Header component"  
+					      		   text="See... the text is different.  Hooray for props!"></Header>
 				</Example>
 
 				<Example title="My Special <Footer>">
