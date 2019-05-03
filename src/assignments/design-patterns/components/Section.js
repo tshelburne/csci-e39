@@ -9,4 +9,5 @@ function Section ({ title, styleName, children }) {
         </section>
     )
 }
-export default Section
+
+export default Section;

@@ -3,6 +3,8 @@
 $padding: 20px;
 $margin: 10px;
 
+$light-border: 1px solid darken($light-gray, 20%);
+
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
@@ -10,11 +12,14 @@ $margin: 10px;
 }
 
 .example {
+	padding: $padding;
+	margin-bottom: $margin;
+	border: 5px solid $secondary-color;
+
 	/*
 		warp preformated code
 		borrowed from https://css-tricks.com/snippets/css/make-pre-text-wrap/
 	*/
-	
 	pre {
 		white-space: pre-wrap;       /* css-3 */
 		white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
@@ -23,10 +28,6 @@ $margin: 10px;
 		word-wrap: break-word;       /* Internet Explorer 5.5+ */
 	}
 
-	padding: $padding;
-	margin-bottom: $margin;
-	border: thin solid;
-
 	&:last-child {
 		margin-bottom: 0;
 	}
@@ -34,21 +35,37 @@ $margin: 10px;
 	.example--rendered {
 		padding: $padding;
 		margin-bottom: $margin;
-		border: thin dotted #ccc;
+		border: $light-border;
 	}
 
 	.example--toggles {
 		margin-bottom: $margin;
 
+		button {
+			background: $light-gray;
+			color: $black;
+			border: $light-border;
+			padding: .5rem;
+			margin-left: .1rem;
+			font-family: $sans-serif;
+			text-transform: uppercase;
+		}
+		
 		.active {
-			background: pink;
+			background: $primary-color;
+			color: $white;
 		}
 	}
 
 	.example--code {
-
 		padding: $padding;
-		background: #eee;
-		border: thin dotted #ccc;
+		background: $black;
+		color: lighten($secondary-color, 10%);
+		color: #8FB2FF;
+		border: $light-border;
+
+		h3 {
+			color: $white;
+		}
 	}
 }

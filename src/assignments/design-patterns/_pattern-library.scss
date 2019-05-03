@@ -1,7 +1,5 @@
 @import 'normalize';
 
-
-
 /* FONTS */
 @import url(https://fonts.googleapis.com/css?family=Merriweather|Oswald:300,400,600);
 @import url(https://use.fontawesome.com/releases/v5.7.2/css/all.css);
@@ -11,15 +9,12 @@ $serif: 'Merriweather', serif;
 /*COLORS*/
 $secondary-color: #e24e4b;
 $primary-color: crimson;
-$primary-desaturated: desaturate($primary-color, 50%);
-$secondary-desaturated: desaturate($secondary-color, 50%);
 $white: #fefefe;
-$light-gray:#EBEBEB; 
+$light-gray:#ebebeb;
 $black: #1d1616;
 
 /* MEASUREMENTS */
 $gap: 20px;
-$type-scale: 1.333;
 $break-point: 48em;
 
 html {
@@ -36,7 +31,6 @@ body {
     font-family: $serif;
     color: $black;
     font-weight: 300;
-    margin: auto;
 }
 
 img {
@@ -107,9 +101,11 @@ a {
     font-weight: bold;
     color: $primary-color;
     text-decoration: none;
+
     &:hover {
         color: $secondary-color;
     }
+
     .email-icon {
         background: url('./assets/email.svg');
         background-repeat: no-repeat;
@@ -117,6 +113,7 @@ a {
         width: .95rem;
         height: .9rem;
     }
+
     &.block-link {
         display: block;
         width: fit-content;
