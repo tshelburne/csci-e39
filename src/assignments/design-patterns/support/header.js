@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import ReactDOMServer from 'react-dom/server'
 import jsxToString from 'jsx-to-string'
 import beautify from 'js-beautify'
-import Logo from './logo'
+import Logo, {LogoSmall, LogoLarge} from './logo'
 import '../logo.scss'
 
 
@@ -13,7 +13,7 @@ function Header(props) {
   	<div className="header">
       <h1>{props.title}</h1>
       <h4>{props.text}</h4>
-      <Logo size="large"  cssClassName="logo-standard"/>
+      <LogoLarge/>
     </div> 
     );
 }

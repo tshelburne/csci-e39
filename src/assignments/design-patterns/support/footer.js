@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import ReactDOMServer from 'react-dom/server'
 import jsxToString from 'jsx-to-string'
 import beautify from 'js-beautify'
-import Logo from './logo'
+import Logo, {LogoSmall, LogoLarge} from './logo'
 import '../logo.scss'
 
 
@@ -21,7 +21,8 @@ function Footer(props) {
       return (  
       	<div className="footer">
            <h3 className="footer-title">{props.title}</h3>
-           <Logo size="small"  cssClassName="logo-fancy footer-logo"/>
+           
+           <LogoSmall/>
 
            <ul className="footer-ul">
             {props.links
