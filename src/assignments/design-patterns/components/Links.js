@@ -2,7 +2,7 @@ import React from 'react'
 
 export const Link = ({ linkText, linkAddress, title, newTab, blockDisplay }) => {
     return (
-        <a href={linkAddress} title={title} traget={newTab ? `_blank` : ``} className={blockDisplay ? `block-link` : ``}>
+        <a href={linkAddress} title={title} className={blockDisplay ? `block-link` : ``}>
             {linkText}
         </a>
     )

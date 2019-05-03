@@ -86,7 +86,7 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="Links">
-					<Link linkText="Example Text Link" title="An existing placeholder page" linkAddress="https://example.com/" newTab blockDisplay />
+					<Link linkText="Example Text Link" title="An existing placeholder page" linkAddress="https://example.com/" blockDisplay />
 					<EmailLink linkText="emaillink@example.com" title="An example email placeholder" emailAddress="example@example.com" blockDisplay />
 				</Example>
 
@@ -101,7 +101,7 @@ class PatternLibrary extends React.Component {
 									<li key={id}>
 										<ImageCard imgSrc={img} imgAlt={name} vertical>
 											<h3>{name}</h3>
-											<Link linkText={websiteName} linkAddress={website} newTab blockDisplay />
+											<Link linkText={websiteName} linkAddress={website} blockDisplay />
 											<EmailLink linkText={email} emailAddress={email} blockDisplay />
 										</ImageCard>
 									</li>)
