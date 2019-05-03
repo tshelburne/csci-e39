@@ -11,9 +11,20 @@ import './app.scss'
 
 
 
-const peopleImages = [{ imgUrl: "https://picsum.photos/300", imgAlt: "placeholder person", cardContent: `<Link linkText="Example Text Link" title="An existing placeholder page" linkAddress="https://example.com/" newTab blockDisplay />` },
-{ imgUrl: "https://picsum.photos/300", imgAlt: "placeholder person", cardContent: "placeholder content" },
-{ imgUrl: "https://picsum.photos/300", imgAlt: "placeholder person", cardContent: "placeholder content" }];
+const peopleList = [
+	{ img: "https://placeimg.com/400/400/people", 
+	name: "A. Person", website:"https://www.aperson.com", 
+	email: "aperson@example.com" },
+
+	{ img: "https://placeimg.com/450/450/people", 
+	name: "B. Someone", website:"https://www.bsomeone.com", 
+	email: "bsomeone@example.com" },
+
+	{ img: "https://placeimg.com/300/300/people", 
+	name: "C. Persona", website:"https://www.cpersona.com", 
+	email: "cpersona@example.com" }
+]
+
 
 class PatternLibrary extends React.Component {
 
@@ -72,30 +83,28 @@ class PatternLibrary extends React.Component {
 
 				<Example title="Links">
 					<Link linkText="Example Text Link" title="An existing placeholder page" linkAddress="https://example.com/" newTab blockDisplay />
-					<EmailLink linkText="emaillink@example.com" title="This email does not exist" emailAddress="example@example.com" blockDisplay />
+					<EmailLink linkText="emaillink@example.com" title="An example email placeholder" emailAddress="example@example.com" blockDisplay />
 				</Example>
 
 				<Example title="Putting It All Together">
+				
 					<Section title="Meet Our Team" styleName="box-padding">
 						<ul class="vertical-image-card-list">
-							<ImageCard imgSrc="https://placeimg.com/400/400/people" imgAlt="placeholder person" vertical>
-								<h3>A. Someone</h3>
-								<Link linkText="A. Someone's Website" linkAddress="https://example.com/" newTab blockDisplay />
-								<EmailLink linkText="asomeone@example.com" title="This email does not exist" emailAddress="asomeone@example.com" blockDisplay />
+
+						{peopleList.map((person, id) => {
+							const {img, name, email, website} = person;
+							const websiteName = website.replace(/^https?:\/\//,'');
+
+						return(
+						<li key={id}>
+
+							<ImageCard imgSrc={img} imgAlt={name} vertical>
+								<h3>{name}</h3>
+								<Link linkText={websiteName} linkAddress={website} newTab blockDisplay />
+								<EmailLink linkText={email}  emailAddress={email} blockDisplay />
 							</ImageCard>
 
-							<ImageCard imgSrc="https://placeimg.com/407/407/people" imgAlt="placeholder person" vertical>
-								<h3>B. Someone</h3>
-								<Link linkText="B. Someone's Website" linkAddress="https://example.com/" newTab blockDisplay />
-								<EmailLink linkText="bsomeone@example.com" emailAddress="bsomeone@example.com" blockDisplay />
-							</ImageCard>
-
-							<ImageCard imgSrc="https://placeimg.com/405/405/people" imgAlt="placeholder person" vertical>
-								<h3>C. Someone</h3>
-								<Link linkText="C. Someone's Website" linkAddress="https://example.com/" newTab blockDisplay />
-								<EmailLink linkText="csomeone@example.com" emailAddress="csomeone@example.com" blockDisplay />
-							</ImageCard>
-
+						</li>)})}
 
 						</ul>
 
