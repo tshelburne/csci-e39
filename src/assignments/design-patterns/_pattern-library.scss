@@ -19,6 +19,7 @@ $black: #1d1616;
 /* MEASUREMENTS */
 $gap: 20px;
 $type-scale: 1.333;
+$break-point: 48em;
 
 html {
     box-sizing: border-box;
@@ -33,10 +34,9 @@ body {
     font-family: $body-font;
     color: $black;
     font-weight: 300;
-    max-width: 1200px;
-    min-width: 320px;
     margin: auto;
 }
+
 img {
     width: 100%
 }
@@ -49,19 +49,21 @@ img {
     box-shadow: 2px 2px 7px gray;
     border-radius: 3px;
     width: fit-content;
-
+    max-width: 550px;
+    height: fit-content;
 
     img {
         width: 100%;
         border-radius: 5px;
+        margin-bottom: $gap;
     }
 
-    @media(min-width: 768px) {
-        grid-auto-columns: mintomax(1fr, 500px) 2fr;
-        max-width: 600px;
+    @media(min-width: $break-point) {
+        grid-auto-columns: repeat(2, 1fr);
 
         img:only-child {
-            grid-column: 1 / span 2; 
+            margin-bottom: 0;
+            grid-column: 1 / span 2;
         }
 
         div {
@@ -70,25 +72,24 @@ img {
             justify-content: center;
             flex-direction: column;
         }
-
     }
 
     &.vertical-card {
         display: block;
-        max-width: 500px;
     }
 }
 
-.three-up-layout{
-   
-    @media (min-width: 768px) {
-        grid-gap: $gap;
-        display: grid;
-        grid-template-columns: repeat(2,  1fr);
-    }
-    @media (min-width: 900px) {
+.image-card-list {
+    list-style: none;
+    padding-left: 0;
+
+    @media (min-width: $break-point) {
         grid-gap: $gap;
         display: grid;
         grid-template-columns: repeat(3,  1fr);
     }
+}
+
+.text-center {
+    text-align: center
 }
