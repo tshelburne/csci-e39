@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Link = ({ linkText, linkAddress, title, newTab, blockDisplay }) => {
+export const Link = ({ linkText, linkAddress, title, blockDisplay }) => {
     return (
         <a href={linkAddress} title={title} className={blockDisplay ? `block-link` : ``}>
             {linkText}
