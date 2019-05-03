@@ -1,0 +1,14 @@
+$padding: 20px;
+$margin: 10px;
+$base-color: #f3eee9;
+$text-color: darken($base-color, 80%);
+$accent-color: #3898be;
+
+$heading-text: 'Londrina Solid', cursive;
+$normal-text: 'Raleway', sans-serif;
+
+body {
+	font-family: $normal-text;
+	background-color: $base-color;
+	color: $text-color;
+}

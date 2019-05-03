@@ -1,0 +1,102 @@
+
+//STYLE GUIDE
+.style-guide {
+	width: 90%;
+	max-width: 1024px;
+	margin: 0 auto;
+}
+
+.example {
+	padding: $padding;
+	margin-bottom: $margin;
+	border: thin solid;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	.example--rendered {
+		padding: $padding;
+		margin-bottom: $margin;
+		background: lighten($base-color, 5%);
+		border: thin dotted #ccc;
+	}
+
+
+	button {
+		border: none;
+		background-color: darken($base-color, 30%);
+		&:active, &:focus {
+			background-color: $accent-color;
+		}
+
+	}
+	.example--toggles {
+		margin-bottom: $margin;
+		.active {
+			background: $accent-color;
+		}
+	}
+
+	.example--code {
+		padding: $padding;
+		background: darken($base-color, 5%);
+        border: thin dotted #ccc;
+	}
+}
+
+//Fix the code wrap in the pre tag
+pre {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+ }
+
+// SECTION
+h1, h2, h3, h4, h5, h6 {
+	font-family: $heading-text;
+}
+
+//INPUT
+  
+.div-top {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.div-left {
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.label-top {
+    margin-bottom: 4px;
+
+}
+
+.label-left {
+    margin-right: 4px;
+}
+
+
+
+//EMAIL SIGNUP
+form {
+    display: flex;
+    align-items: flex-end;
+    button {
+        border-radius: 2px;
+        height: 1.8em;
+        margin-left: .25em;
+    }
+    input {
+        height: 1.8em;
+    }
+}
+

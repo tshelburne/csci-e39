@@ -21,7 +21,6 @@ const Example = ({title, children}) => {
 
 	return <div className="example">
 		<h2 className="example--title">{title}</h2>
-
 		<div className="example--rendered">
 			<h3>Rendered output:</h3>
 			{children}
