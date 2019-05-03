@@ -3,15 +3,17 @@ import PropTypes from 'prop-types'
 import Example from './support/example'
 
 import ImageCard from './components/ImageCard'
-import ImageCardList from './components/ImageCardList'
 import Section from './components/Section'
+import { EmailLink, Link } from './components/Links'
 
 
 import './app.scss'
 
-const images = [{ imgUrl: "https://picsum.photos/300", imgAlt: "cute cat placeholder", cardContent: "placeholder content" },
-{ imgUrl: "https://picsum.photos/300", imgAlt: "cute cat placeholder", cardContent: "placeholder content" },
-{ imgUrl: "https://picsum.photos/300", imgAlt: "cute cat placeholder", cardContent: "placeholder content" }]
+
+
+const peopleImages = [{ imgUrl: "https://picsum.photos/300", imgAlt: "placeholder person", cardContent: `<Link linkText="Example Text Link" title="An existing placeholder page" linkAddress="https://example.com/" newTab blockDisplay />` },
+{ imgUrl: "https://picsum.photos/300", imgAlt: "placeholder person", cardContent: "placeholder content" },
+{ imgUrl: "https://picsum.photos/300", imgAlt: "placeholder person", cardContent: "placeholder content" }];
 
 class PatternLibrary extends React.Component {
 
@@ -31,10 +33,9 @@ class PatternLibrary extends React.Component {
 	render() {
 		return (
 			<div className="style-guide">
-				<h1>My Pattern Library!</h1>
+				<h1>Create Kit Patterns</h1>
 
 				<Example title="Simple Image Card">
-
 					<ImageCard imgSrc="https://picsum.photos/300" imgAlt="place holder image" />
 				</Example>
 
@@ -60,26 +61,45 @@ class PatternLibrary extends React.Component {
 					</ImageCard>
 				</Example>
 
-				<Example title="Image Card List">
-
-					<ImageCardList itemList={images} />
-
-				</Example>
 
 				<Example title="Section">
-					<Section title="Section Heading" styleName="text-center">
-						<p>The styleName attribute takes a CSS class name.
-							In this case the class centers the text in the section.
+					<Section title="Section Heading" styleName="box-padding dark-mode">
+						<p>The styleName attribute takes one or more CSS class name.
+							In this case the classes add padding to the section and set a dark color scheme.
 						</p>
 					</Section>
 				</Example>
 
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
+				<Example title="Links">
+					<Link linkText="Example Text Link" title="An existing placeholder page" linkAddress="https://example.com/" newTab blockDisplay />
+					<EmailLink linkText="emaillink@example.com" title="This email does not exist" emailAddress="example@example.com" blockDisplay />
 				</Example>
 
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
+				<Example title="Putting It All Together">
+					<Section title="Meet Our Team" styleName="box-padding">
+						<ul class="vertical-image-card-list">
+							<ImageCard imgSrc="https://placeimg.com/400/400/people" imgAlt="placeholder person" vertical>
+								<h3>A. Someone</h3>
+								<Link linkText="A. Someone's Website" linkAddress="https://example.com/" newTab blockDisplay />
+								<EmailLink linkText="asomeone@example.com" title="This email does not exist" emailAddress="asomeone@example.com" blockDisplay />
+							</ImageCard>
+
+							<ImageCard imgSrc="https://placeimg.com/407/407/people" imgAlt="placeholder person" vertical>
+								<h3>B. Someone</h3>
+								<Link linkText="B. Someone's Website" linkAddress="https://example.com/" newTab blockDisplay />
+								<EmailLink linkText="bsomeone@example.com" emailAddress="bsomeone@example.com" blockDisplay />
+							</ImageCard>
+
+							<ImageCard imgSrc="https://placeimg.com/405/405/people" imgAlt="placeholder person" vertical>
+								<h3>C. Someone</h3>
+								<Link linkText="C. Someone's Website" linkAddress="https://example.com/" newTab blockDisplay />
+								<EmailLink linkText="csomeone@example.com" emailAddress="csomeone@example.com" blockDisplay />
+							</ImageCard>
+
+
+						</ul>
+
+					</Section>
 				</Example>
 			</div>
 		)
