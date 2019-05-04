@@ -38,3 +38,44 @@ $margin: 10px;
 		border: thin dotted #ccc;
 	}
 }
+
+@mixin alert-color($color) {
+	border-color: $color;
+	color: $color;
+	background-color: lighten($color, 60%);
+}
+
+.alert {
+	margin: 5px 0;
+	padding: 5px;
+	border-style: solid;
+	border-width: 1px;
+	border-radius: 5px;
+
+	&.mod-success {
+		@include alert-color(#0f5911);
+	}
+
+	&.mod-warning {
+		@include alert-color(#750808);
+	}
+
+	&.mod-info {
+		@include alert-color(#686110)
+	}
+}
+
+.list-block {
+	list-style: none;
+	border: 1px solid #000000;
+	border-radius: 5px;
+	padding: 10px;
+
+	.list-block-item {
+		margin: 0 8px;
+		padding: 8px;
+		&:not(:last-child) {
+			border-bottom: 1px solid #d3d3d3;
+		}
+	}
+}
