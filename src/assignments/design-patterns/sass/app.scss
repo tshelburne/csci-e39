@@ -6,6 +6,7 @@
 /* TOOLS -Mixins and functions (no actual CSS output)*/
 
 /* GENERIC -CSS resets which might include Eric Meyer’s reset, Normalize.css, or your own batch of code ... normalize via pattern-library*/
+@import "./generic/box";
 
 /* ELEMENTS -Single HTML element selectors without classes*/
 
@@ -14,7 +15,10 @@
 
 
 /* COMPONENTS -Aesthetic classes for styling any & all page elements (often combined with the structure of object classes)*/
+@import "./components/header";
 @import "./components/login";
+@import "./components/logo";
+
 
 
 /* ALTERATIONS - The most specific styles for overriding anything else in the triangle */

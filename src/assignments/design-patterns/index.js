@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
 import Header from './components/header'
+import Logo from './components/logo';
+
 
 import './sass/app.scss'
 
@@ -24,6 +26,16 @@ class PatternLibrary extends React.Component {
 		return (
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
+
+					<p>In order to get individual letters to animate or flipUp independently, place the svg code in its own component as I did with logo.js. Then apply a className and transitions to each path. Otherwise React will try to animate the entire logo.svg as a single keyframe animation similar to how they spin or rotate their own React logo in the demo files.</p>
+					<p>I've included tutorial on how to <a target="_blank" href="https://youtu.be/9Ngz1aLzL6c">create an svg file</a> in Illustrator. And another that covers <a target="_blank" href="https://youtu.be/zHUpx90NerM">animating keyframes in css</a>.</p>
+					<p>Convert svg links to camelCase, i.e., xmlns:xlink= would be xmlnsXlink= <img src="/Users/lucillekenney/projects/csci-e39/src/assignments/design-patterns/assets/test-img.svg" alt="Example SVG File" />SVG Example File</p>
+
+				<Example title="My CSS Animated Logo">
+					<div className="just-testing">My Logo</div>
+
+					<Logo />
+				</Example>
 
 				<Example title="My Special <div>">
 					<div className="just-testing">HELLO DIV</div>
@@ -69,12 +81,7 @@ class PatternLibrary extends React.Component {
 
 				</Example>
 
-				<Example title="My Special <span>">
 
-
-				
-					<span className="just-testing">HELLO SPAN</span>
-				</Example>
 			</div>
 		)
 	}

@@ -1,0 +1,114 @@
+/*.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}*/
+
+
+/* Logo Animation */
+
+/*  .wrapper {
+      margin-top:10em;
+      text-align: center;
+      perspective: 800px;
+      }
+*/
+
+    #logo {
+      margin: 0 auto;
+      height: 200px;
+      }
+
+
+.wrapper {
+    margin-top:10em;
+    text-align: center;
+
+    /* applying perspective to a parent element allows all child elements to inherit the same positioning */
+    perspective: 500px;
+}
+
+.heart4 {
+    margin: 0 auto;
+    height: 400px;
+
+    /*transform: translate3d(200px,200px,-200px);*/
+    transform: rotateY(45deg);
+
+}
+
+     #logo #blue-heart {
+      transform: translate(-181px, -21px) scale(3);
+       transition:  1s;
+       /*transition: background 1s ease-in, transform .25s ease-in-out;*/
+       animation: beat 1s infinite;
+       animation-play-state: paused;
+      }
+
+      #logo:hover #blue-heart {
+/*      transform: translate(-181px, -21px) scale(3);
+*/      fill: #E81E40;
+       animation-play-state: running;
+
+      }
+
+      @keyframes beat {
+        0%{transform: scale(1);}
+      }
+
+
+      [class*='letter-'] {
+        transform-origin: 0 70%;
+      }
+
+      .letter-l1 {
+        animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) both;
+      }
+      .letter-u {
+        animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) .2s both;
+      }
+      .letter-c {
+        animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) .4s both;
+      }
+      .letter-l2 {
+        animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) .6s both;
+      }
+      .letter-l3 {
+        animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) .8s both;
+      }
+      .letter-e1 {
+        animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 1s both;
+      }
+
+      .letter-k {
+        animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 1.2s both;
+      }
+      .letter-e2 {
+        animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 1.4s both;
+      }
+      .letter-n1 {
+        animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 1.6s both;
+      }
+      .letter-n2 {
+        animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 1.8s both;
+      }
+      .letter-e3 {
+        animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 2s both;
+      }
+      .letter-y {
+        animation: flipUp 1s cubic-bezier(0.68, -0.55, 0.26, 1.55) 2.2s both;
+      }
+
+      @keyframes flipUp {
+        from {transform: rotateX(90deg);}
+        to {tranform: rotateX(0deg);}
+      }
