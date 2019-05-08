@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf build/* public/* node_modules dev.sqlite3",
     "build.client": "webpack --mode=production",
-    "build.server": "mkdir -p build && babel -d ./build ./src -s",
+    "build.server": "mkdir build && babel -d ./build ./src -s",
     "build": "npm run build.server && npm run build.client",
     "knex": "babel-node node_modules/knex/bin/cli.js",
     "migration": "npm run knex migrate:make",
