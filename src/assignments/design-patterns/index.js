@@ -35,7 +35,7 @@ class PatternLibrary extends React.Component {
 				<Example title="Card Item Component">
 					<CardItem>Card Item with text as children</CardItem>
 					<CardItem>
-						Card Item with component as children
+						Card Item with text and component as children
 						<Button onClickMessage="Nested Components">Child Button</Button>
 					</CardItem>
 				</Example>
