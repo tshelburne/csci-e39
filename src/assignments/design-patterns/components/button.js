@@ -5,7 +5,7 @@ const Button = (props) => {
     const { onClickMessage } = props;
 
     return (
-        <button onClick={() => alert(onClickMessage)}>{props.children}</button>
+        <button className="button" onClick={() => alert(onClickMessage)}>{props.children}</button>
     )
 }
 

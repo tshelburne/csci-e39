@@ -27,8 +27,8 @@ class PatternLibrary extends React.Component {
 				<h1>Etienne's Pattern Library!</h1>
 
 				<Example title="My Special Button Component">
-					<Button className="button" onClickMessage="Component taking props">Etienne's Button Component</Button>
-					<Button className="button" onClickMessage="Secondary button">Secondary Button Component</Button>
+					<Button onClickMessage="Component taking props">Etienne's Button Component</Button>
+					<Button onClickMessage="Secondary button">Secondary Button Component</Button>
 				</Example>
 			</div>
 		)
