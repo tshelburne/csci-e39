@@ -1,0 +1,13 @@
+$primary-color: rgba(150, 143, 179, 1);
+$etienne-color: darken(salmon, 10);
+$etienne-radius: 6px;
+// Style your components here
+
+.button {
+	color: white;
+	border: none;
+	background-color: $etienne-color;
+	border-radius: $etienne-radius;
+	-webkit-border-radius: $etienne-radius; 
+  -moz-border-radius: $etienne-radius; 
+}

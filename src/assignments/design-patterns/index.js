@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
+import Button from './components/button';
 
 import './app.scss'
+import './styles/main.scss'
 
 class PatternLibrary extends React.Component {
 
@@ -22,18 +24,11 @@ class PatternLibrary extends React.Component {
 	render() {
 		return (
 			<div className="style-guide">
-				<h1>My Pattern Library!</h1>
+				<h1>Etienne's Pattern Library!</h1>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
-				</Example>
-
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
-				</Example>
-
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
+				<Example title="My Special Button Component">
+					<Button className="button" onClickMessage="Component taking props">Etienne's Button Component</Button>
+					<Button className="button" onClickMessage="Secondary button">Secondary Button Component</Button>
 				</Example>
 			</div>
 		)
