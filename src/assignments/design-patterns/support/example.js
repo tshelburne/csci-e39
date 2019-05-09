@@ -6,6 +6,7 @@ import cx from 'classnames'
 import jsxToString from 'jsx-to-string'
 import beautify from 'js-beautify'
 
+
 const ActiveCodeContext = React.createContext()
 
 export const ActiveCodeProvider = ({children}) => {
@@ -34,6 +35,7 @@ const Example = ({title, children}) => {
 			>
 				HTML
 			</button>
+			
 			<button
 				onClick={() => setActiveCode(`react`)}
 				className={cx({active: activeCode === `react`})}

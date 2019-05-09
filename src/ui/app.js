@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import Module from '../assignments/project-1'
+import Module from '../assignments/design-patterns'
 
 const App = ({auth, ...props}) => {
 	switch (auth.status) {
