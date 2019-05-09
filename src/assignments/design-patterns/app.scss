@@ -1,5 +1,12 @@
 @import 'pattern-library';
 
+$primary-color: #337ab7;
+$color: #fff;
+$primary-accent: royalblue;
+$font-family: 'Permanent Marker', sans-serif;
+$border-radius: 8px;
+$font-weight: 200;
+
 $padding: 20px;
 $margin: 10px;
 
@@ -38,3 +45,39 @@ $margin: 10px;
 		border: thin dotted #ccc;
 	}
 }
+
+.nav--content {
+	text-align: center;
+}
+
+.card {
+	margin: 10px auto;
+	background-color: hsl(0,1, 90%);
+	box-shadow: 1px 2px 3px 1px hsla(0,0,10%, .5);
+	padding: 20px 20px 40px 20px;
+	max-width: 600px;
+	
+	img {
+		width: 100%;
+	}
+}
+
+.button {
+	margin: 2px;
+	padding: 4px;
+	border-radius: 2px;
+	background-color: $primary-accent;
+}
+
+.mod-primary {
+	background-color: aquamarine;
+}
+
+.mod-secondary {
+	background-color: crimson;
+}
+
+.mod-block {
+	width: 40%;
+}
+
