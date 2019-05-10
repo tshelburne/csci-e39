@@ -3,6 +3,22 @@
 $padding: 20px;
 $margin: 10px;
 
+$font-default: 'Oswald', sans-serif;
+$background-color : #ffefb4;
+$font-color : #274bff;
+
+body {
+	font-family: $font-default;
+	margin: $margin;
+	color: $font-color;
+	background: $background-color;
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
@@ -22,6 +38,7 @@ $margin: 10px;
 		padding: $padding;
 		margin-bottom: $margin;
 		border: thin dotted #ccc;
+		background: #FFFFFF;
 	}
 
 	.example--toggles {
@@ -37,4 +54,17 @@ $margin: 10px;
 		background: #eee;
 		border: thin dotted #ccc;
 	}
+
+	code {
+		font-family:  Monaco, "Courier New", monospace;
+		overflow: scroll;
+		display: block;
+		padding:5px;
+		overflow-x: auto;
+		line-height: 1.6em;
+		background: #00222d;
+		color: #17cb00;
+	}
+
+
 }
