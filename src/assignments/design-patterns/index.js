@@ -22,7 +22,11 @@ class PatternLibrary extends React.Component {
 	render() {
 		return (
 			<div className="style-guide">
-				<h1>My Pattern Library!</h1>
+				<h1>UI Patterns!</h1>
+
+				<Example title="My Button <button>">
+					<button className="button-primary">PRIMARY</button>
+				</Example>
 
 				<Example title="My Special <div>">
 					<div className="just-testing">HELLO DIV</div>
