@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Example from './support/example'
 import Button from './components/button';
 import CardItem from './components/cardItem';
+import Image from './components/image';
 
 import './app.scss'
 import './styles/main.scss'
@@ -38,12 +39,18 @@ class PatternLibrary extends React.Component {
 					<Button onClickMessage="Secondary button">Secondary Button Component</Button>
 				</Example>
 
-				<Example title="Card Item Component">
+				<Example title="My Image Component">
+					<Image src="incorrect/filePath/notReal.jpg" title="Image Title" alt="Unfound Image" description="Image Component rendering when an image was not found" />
+					<Image src="./assets/luke-and-dorris.JPG" title="Luke and Dorris" alt="My two cats Luke Skywalker and Dorris Pringle-Brule-Salahari" description="Luke Skywalker the gray tuxedo and Dorris Pringle-Brule-Salahari the tortie/tabby" />
+				</Example>
+
+				<Example title="My Card Item Component">
 					<CardItem>Card Item with text as children</CardItem>
 					<CardItem>
 						Card Item with text and component as children
-						<Button onClickMessage="Nested Components">Child Button with Message Prop</Button>
-						<Button handleClick={this.handleOnClick}>Child Button Function Prop</Button>
+						<Button className="" handleClick={this.handleOnClick}>Child Button Function Prop</Button>
+						<div className={this.state.isVisible ? '' : 'isHidden'}>Div element to show/hide based on click</div>
+						<Button className="" onClickMessage="Nested Components">Child Button with Message Prop</Button>
 					</CardItem>
 				</Example>
 			</div>
