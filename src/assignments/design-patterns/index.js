@@ -44,7 +44,7 @@ class PatternLibrary extends React.Component {
 					<FaqDescription faqs={FAQS} />
 				</Example>
 
-				<Example title="My Special <menu>">
+				<Example title="My Special <Menu>">
 					<Menu menuItems={MENUITEMS1} classes="menu-item1"/>
 					<br></br>
 					<Menu menuItems={MENUITEMS2} classes="menu-item2"/>
