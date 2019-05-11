@@ -11,8 +11,9 @@ class PatternLibrary extends React.Component {
 
 	constructor(...args) {
 		super(...args)
+		this.handleOnClick = this.handleOnClick.bind(this);
 
-		this.state = {activeCode: `react`}
+		this.state = {activeCode: `react`, isVisible: false}
 	}
 
 	getChildContext() {
@@ -20,6 +21,11 @@ class PatternLibrary extends React.Component {
 			activeCode: this.state.activeCode,
 			setActiveCode: activeCode => this.setState({activeCode}),
 		}
+	}
+
+	handleOnClick() {
+		this.setState({isVisible: !this.state.isVisible});
+		console.log(this.state.isVisible);
 	}
 
 	render() {
@@ -36,7 +42,8 @@ class PatternLibrary extends React.Component {
 					<CardItem>Card Item with text as children</CardItem>
 					<CardItem>
 						Card Item with text and component as children
-						<Button onClickMessage="Nested Components">Child Button</Button>
+						<Button onClickMessage="Nested Components">Child Button with Message Prop</Button>
+						<Button handleClick={this.handleOnClick}>Child Button Function Prop</Button>
 					</CardItem>
 				</Example>
 			</div>
@@ -47,6 +54,7 @@ class PatternLibrary extends React.Component {
 PatternLibrary.childContextTypes = {
 	activeCode: PropTypes.string,
 	setActiveCode: PropTypes.func,
+	handleOnClick: PropTypes.func
 }
 
 export default PatternLibrary
