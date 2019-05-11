@@ -42,7 +42,7 @@ const PatternLibrary = () =>
 						<Success>
 							Even another ListBlock!
 						</Success>
-						<span>Isn't that cool?</span>
+						<li>Or just a regular li.</li>
 					</ListBlock>
 				</ListBlock>
 			</Example>

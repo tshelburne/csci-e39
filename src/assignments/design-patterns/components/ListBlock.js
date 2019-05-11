@@ -5,6 +5,7 @@ const ListBlock = ({children, ...props}) => {
     return <ul className='list-block'>
         {React.Children.map(children, (child) => {
             keyIdx++
+            if (child.type == "li") child = child.props.children
             return <li key={keyIdx} className='list-block-item'>
                 {child}
             </li>
