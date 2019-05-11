@@ -2,7 +2,7 @@ import React from 'react'
 
 const ListBlock = ({children, ...props}) => {
     let keyIdx = 0
-    return <ul className='list-block'>
+    return <ul {...props} className='list-block'>
         {React.Children.map(children, (child) => {
             keyIdx++
             if (child.type == "li") child = child.props.children

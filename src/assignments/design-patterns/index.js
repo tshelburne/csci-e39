@@ -3,13 +3,14 @@ import PropTypes from 'prop-types'
 import Example, {ActiveCodeProvider} from './support/example'
 import {Success, Warning, Info} from './components/Alert'
 import ListBlock from './components/ListBlock'
+import ColorMapper from './components/ColorMapper'
 
 import './app.scss'
 
 const PatternLibrary = () =>
 	<ActiveCodeProvider>
 		<div className="style-guide">
-			<h1>My Pattern Library!</h1>
+			<h1>Adam's Pattern Library!</h1>
 
 			<Example title="<Alert>">
 				<Success>
@@ -45,6 +46,19 @@ const PatternLibrary = () =>
 						<li>Or just a regular li.</li>
 					</ListBlock>
 				</ListBlock>
+			</Example>
+
+			<Example title="<ColorMapper>">
+				<ColorMapper effects="red blue green">
+					<span>Map a list of colors</span>
+					<span>to a group</span>
+					<span>of elements!</span>
+				</ColorMapper>
+				<ColorMapper effects="purple orange">
+					<span>There can even</span>
+					<p>be more elements</p>
+					<span>than colors.</span>
+				</ColorMapper>
 			</Example>
 		</div>
 	</ActiveCodeProvider>

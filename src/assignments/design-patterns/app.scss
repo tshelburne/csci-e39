@@ -3,6 +3,10 @@
 $padding: 20px;
 $margin: 10px;
 
+body {
+	background: aliceblue;
+}
+
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
@@ -12,7 +16,7 @@ $margin: 10px;
 .example {
 	padding: $padding;
 	margin-bottom: $margin;
-	border: thin solid;
+	border: thin solid salmon;
 
 	&:last-child {
 		margin-bottom: 0;
@@ -61,7 +65,7 @@ $margin: 10px;
 	}
 
 	&.mod-info {
-		@include alert-color(#686110)
+		@include alert-color(#686110);
 	}
 }
 
@@ -77,4 +81,12 @@ $margin: 10px;
 			border-bottom: 1px solid #d3d3d3;
 		}
 	}
+}
+
+.color-mapper {
+	margin: $margin;
+}
+
+.color-mapper-item {
+	color: var(--mult-effect);
 }
