@@ -14,18 +14,33 @@ $faq_answer-font-color-1: darken(rgba(150, 143, 179, 1), 40%);
 $faq_answer-font-color-2: darken($faq_answer-font-color-1, 30%);
 $faq_answer-margin-bottom: 15px;
 
-$menu-background-color: #33cc33;
-$menu-background-hover-color: darken($menu-background-color, 10%);
-$menu-item-font-size: 20px;
+$menu-font-color-1: white;
+$menu-background-color-1: #33cc33;
+$menu-background-hover-color-1: darken($menu-background-color-1, 10%);
+$menu-item-font-size-1: 20px;
+
+
+$menu-font-color-2: white;
+$menu-hover-font-color-2: blue;
+$menu-background-color-2: #4274c4;
+$menu-background-hover-color-2: darken($menu-background-color-2, 10%);
+$menu-item-font-size-2: 20px;
+
+$menu-font-color-3: black;
+$menu-hover-font-color-3: white;
+$menu-background-color-3: #f1f1f1;
+$menu-background-hover-color-3: darken($menu-background-color-3, 20%);
+$menu-item-font-size-3: 20px;
 
 
 .style-guide {
 	width: 90%;
-	max-width: 1024px;
+	max-width: 1280px;
 	margin: 0 auto;
 }
 
 .example {
+	width: 100%;
 	padding: $padding;
 	margin-bottom: $margin;
 	border: thin solid;
@@ -52,8 +67,20 @@ $menu-item-font-size: 20px;
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
+		overflow-wrap: break-word;
+		word-break: break-word;
+		word-wrap: break-word;
 	}
 }
+
+		.mycode {
+			display: block;
+			width: 50%;
+			overflow-wrap: break-word;
+			word-wrap: break-word;
+			hyphens: auto;	
+			background: pink;
+		}
 
 .button-primary {
 	background-color: blue;
@@ -85,29 +112,84 @@ $menu-item-font-size: 20px;
   margin-bottom: $faq_answer-margin-bottom;
 }
 
-.menu-item {
+.menu-item1 {
     ul {
       list-style-type: none;
       margin: 0;
       padding: 0;
       overflow: hidden;
-      background-color: $menu-background-color;
+      background-color: $menu-background-color-1;
     }
 
     li {
       float: left;
-      font-size: $menu-item-font-size;
+      font-size: $menu-item-font-size-1;
     }
 
     li a {
       display: block;
-      color: white;
+      color: $menu-font-color-1;
       text-align: center;
       padding: 16px;
       text-decoration: none;
     }
 
     li a:hover {
-      background-color: $menu-background-hover-color;
+      background-color: $menu-background-hover-color-1;
     }
+}
+
+.menu-item2 {
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: $menu-background-color-2;
+    }
+
+    li {
+      float: left;
+      font-size: $menu-item-font-size-2;
+    }
+
+    li a {
+      display: block;
+      color: $menu-font-color-2;
+      text-align: center;
+      padding: 16px;
+      text-decoration: none;
+    }
+
+    li a:hover {
+      background-color: $menu-background-hover-color-2;
+    }
+}
+
+
+.menu-item3 {
+	ul {
+	  list-style-type: none;
+	  margin: 0;
+	  padding: 0;
+	  width: 200px;
+	  background-color: $menu-background-color-3;
+	}
+
+	li {
+      font-size: $menu-item-font-size-3;
+    }
+
+	li a {
+	  display: block;
+	  color: $menu-font-color-3;
+	  padding: 8px 16px;
+	  text-decoration: none;
+	}
+
+	/* Change the link color on hover */
+	li a:hover {
+	  background-color: $menu-background-hover-color-3;
+	  color: $menu-hover-font-color-3;
+	}
 }

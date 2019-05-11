@@ -1,27 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import autobind from 'class-autobind'
 
-class Menu extends React.Component {
-
-constructor() {
-		super(...arguments)
-		autobind(this)
-	}
-
-	render() {
-		const {menuItems} = this.props
+const Menu = ({menuItems, classes}) => {
 		return( 
-			<div className="menu-item">
+			<div className={classes}>
 				<ul>
 					{
 						menuItems.map((item,i) => {
-							return <li key={i}><a>{item.name}</a></li>
+							return <li key={i}><a href={item.url}>{item.name}</a></li>
 						})
 					}
 				</ul>
 			</div>
 			 )
 		}
-	}
 export default Menu

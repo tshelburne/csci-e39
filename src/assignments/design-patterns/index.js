@@ -45,7 +45,11 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="My Special <menu>">
-					<Menu menuItems={MENUITEMS}/>
+					<Menu menuItems={MENUITEMS1} classes="menu-item1"/>
+					<br></br>
+					<Menu menuItems={MENUITEMS2} classes="menu-item2"/>
+					<br></br>
+					<Menu menuItems={MENUITEMS3} classes="menu-item3"/>
 				</Example>
 			</div>
 		)
@@ -78,22 +82,64 @@ const FAQS = [
 	},
 ]
 
-const MENUITEMS = [
+const MENUITEMS1 = [
 	{
 		name: "Home",
-		url: "/home",
+		url: "#home",
 	},
 	{
 		name: "Avatars",
-		url: "/avatars",
+		url: "#avatars",
 	},
 	{
 		name: "Members",
-		url: "/members",
+		url: "#members",
 	},
 	{
 		name: "Login",
-		url: "/login",
+		url: "#login",
+	},
+]
+
+const MENUITEMS2 = [
+	{
+		name: "Home",
+		url: "#home",
+	},
+	{
+		name: "News",
+		url: "#news",
+	},
+	{
+		name: "About",
+		url: "#about",
+	},
+	{
+		name: "Blog",
+		url: "#blog",
+	},
+	{
+		name: "Contact",
+		url: "#contact",
+	},
+]
+
+const MENUITEMS3 = [
+	{
+		name: "Home",
+		url: "#home",
+	},
+	{
+		name: "News",
+		url: "#news",
+	},
+	{
+		name: "About",
+		url: "#about",
+	},
+	{
+		name: "Contact",
+		url: "#contact",
 	},
 ]
 
