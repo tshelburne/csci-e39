@@ -46,8 +46,10 @@ $slider-thumb-size-large: 30px;
 $slider-thumb-size-extra-large: 40px;
 
 $slider-border-radius: 5px;
-$slider-border-raidus-pct: 50%;
+$slider-border-radius-pct: 50%;
 
+$combined-example-font-family: cursive;
+$combined-example-text-block-font-size: 18px;
 
 .style-guide {
 	width: 90%;
@@ -333,9 +335,18 @@ $slider-border-raidus-pct: 50%;
 }
 
 .slider-round::-webkit-slider-thumb {
-  border-radius: $slider-border-raidus-pct; 
+  border-radius: $slider-border-radius-pct; 
 }
 
 .slider-round::-moz-range-thumb {
-  border-radius: $slider-border-raidus-pct;
+  border-radius: $slider-border-radius-pct;
+}
+
+.combined-example {
+	font-family: $combined-example-font-family;
+}
+
+.example-text-block {
+	font-family: $combined-example-font-family;
+	font-size: $combined-example-text-block-font-size;
 }

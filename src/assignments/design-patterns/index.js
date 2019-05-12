@@ -7,6 +7,7 @@ import Menu from './support/menu'
 import Button from './support/button'
 import TextBlock from './support/textblock'
 import Slider from './support/slider'
+import Section from './support/section'
 
 import './app.scss'
 
@@ -71,7 +72,7 @@ class PatternLibrary extends React.Component {
 					<Menu menuItems={MENUITEMS3} classes="menu-item3"/>
 				</Example>
 
-				<Example title="My Special Combined Example">
+				<Example title="My Special <Slider>">
 					<Slider sliderType="Range" min="1" max="100" />
 					<br></br>
 					<Slider sliderType="Range" min="1" max="100" classes="slider slider-round slider-bar-size-small slider-thumb-small"/>
@@ -91,7 +92,25 @@ class PatternLibrary extends React.Component {
 					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-secondary slider-bar-size-small slider-thumb-medium"/>
 					<br></br>
 					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-secondary slider-bar-size-small slider-thumb-large"/>
+				</Example>
 
+				<Example title="My Special Combined Example">
+					<Section sectionClass="combined-example">
+						<SectionHeader tag="h1" sectiontext="The First Section"/>
+						<TextBlock classes="example-text-block">
+							<p>
+								This is a text block within a section placed underneath a section header. This seems like extra work here to make
+								a text block component over just a paragraph?
+							</p>
+  						</TextBlock>
+  					<SectionHeader tag="h1" sectiontext="The Second Section"/>
+  						<TextBlock classes="example-text-block">
+							<p>
+								This is another text block with a section placed under a section header. It seems like it would be more efficient
+								to just put the text as &#123;children&#125; but that is not allowed.
+							</p>
+  						</TextBlock>
+					</Section>
 				</Example>
 			</div>
 		)
