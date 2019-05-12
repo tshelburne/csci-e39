@@ -101,10 +101,29 @@ $combined-example-text-block-font-size: 18px;
 		}
 
 .button-std {
+	display: block;
 	padding: 5px;
-	margin: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
 	border-radius: 5px;
 	width: 100px;
+}
+
+.button-width-narrow {
+	width: 50px;
+}
+
+.button-width-normal {
+	width: 100px;
+}
+
+.button-width-wide {
+	width: 200px;
+}
+
+.button-center {
+	margin-right: auto;
+	margin-left: auto;
 }
 
 .button-primary {
