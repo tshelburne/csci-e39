@@ -1,17 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = (props) => {
+export const Button = (props) => {
     const { onClickMessage, handleClick } = props;
-    
+
     return (
-        <button className="button" onClick={handleClick ? handleClick : () => alert(onClickMessage)}>{props.children}</button>
+        <button className="button" onClick={() => alert(onClickMessage)}>{props.children}</button>
+    )
+}
+
+export const ButtonFunction = (props) => {
+    const { handleClick } = props;
+
+    return (
+        <button className="button" onClick={handleClick}>{props.children}</button>
     )
 }
 
 Button.propTypes = {
-    onClickMessage: PropTypes.string,
-    handleClick: PropTypes.func
+    onClickMessage: PropTypes.string
 }
 
-export default Button;
+ButtonFunction.propTypes = {
+    handleClick: PropTypes.func
+}

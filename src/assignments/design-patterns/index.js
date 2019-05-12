@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
-import Button from './components/button';
+import { Button, ButtonFunction } from './components/button';
 import CardItem from './components/cardItem';
 import Image from './components/image';
 
@@ -26,7 +26,6 @@ class PatternLibrary extends React.Component {
 
 	handleOnClick() {
 		this.setState({isVisible: !this.state.isVisible});
-		console.log(this.state.isVisible);
 	}
 
 	render() {
@@ -36,7 +35,8 @@ class PatternLibrary extends React.Component {
 
 				<Example title="My Special Button Component">
 					<Button onClickMessage="Component taking props">Etienne's Button Component</Button>
-					<Button onClickMessage="Secondary button">Secondary Button Component</Button>
+					<ButtonFunction handleClick={this.handleOnClick}>Etienne's Functional Button Component</ButtonFunction>
+					<div className={this.state.isVisible ? '' : 'isHidden'}>Show/hide div element based on ButtonFunction click</div>
 				</Example>
 
 				<Example title="My Image Component">
@@ -60,7 +60,7 @@ class PatternLibrary extends React.Component {
 					<CardItem>Card Item with text as children</CardItem>
 					<CardItem>
 						Card Item with text and component as children
-						<Button className="" handleClick={this.handleOnClick}>Child Button Function Prop</Button>
+						<ButtonFunction handleClick={this.handleOnClick}>Child Button Function Prop</ButtonFunction>
 						<Image
 							visible={this.state.isVisible}
 							src="./assets/luke-and-dorris.JPG"
@@ -68,7 +68,7 @@ class PatternLibrary extends React.Component {
 							alt="My two cats Luke Skywalker and Dorris Pringle-Brule-Salahari"
 							description="Graduate Requirement: Using 3 components together. Luke Skywalker the gray tuxedo and Dorris Pringle-Brule-Salahari the tortie/tabby"
 						/>
-						<Button className="" onClickMessage="Nested Components">Child Button with Message Prop</Button>
+						<Button onClickMessage="Nested Components">Child Button with Message Prop</Button>
 					</CardItem>
 				</Example>
 			</div>
