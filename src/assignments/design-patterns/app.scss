@@ -4,6 +4,20 @@ $padding: 20px;
 $margin: 10px;
 
 $default-font-family: "Roboto", san-serif;
+
+
+$button-primary-background-color: blue;
+$button-success-background-color: green;
+$button-warning-background-color: orange;
+
+$button-primary-background-hover-color: darken($button-primary-background-color, 20%);
+$button-success-background-hover-color: darken($button-success-background-color, 20%);
+$button-warning-background-hover-color: darken($button-warning-background-color, 20%);
+
+$button-primary-font-color: white;
+$button-success-font-color: white;
+$button-warning-font-color: white;
+
 $faq_question-font-size-large: 24px;
 $faq_question-font-size-small: 16 px;
 $faq_answer-font-size-large: 24px;
@@ -127,18 +141,30 @@ $combined-example-text-block-font-size: 18px;
 }
 
 .button-primary {
-	background-color: blue;
-	color: white;
+	background-color: $button-primary-background-color;
+	color: $button-primary-font-color;
+
+	&:hover {
+      background-color: $button-primary-background-hover-color;
+    }
 }
 
 .button-success {
-	background-color: green;
-	color: white;
+	background-color: $button-success-background-color;
+	color: $button-success-font-color;
+
+	&:hover {
+      background-color: $button-success-background-hover-color;
+    }
 }
 
 .button-warning {
-	background-color: orange;
-	color: white;
+	background-color: $button-warning-background-color;
+	color: $button-warning-font-color;
+
+	&:hover {
+      background-color: $button-warning-background-hover-color;
+    }
 }
 
 .faq_question1 {
