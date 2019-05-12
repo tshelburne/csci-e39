@@ -1,8 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
+import Header2 from './components/header2'
+import Card from './components/card'
 
 import './app.scss'
+import './components/card.scss'
 
 class PatternLibrary extends React.Component {
 
@@ -22,10 +25,16 @@ class PatternLibrary extends React.Component {
 	render() {
 		return (
 			<div className="style-guide">
+
 				<h1>My Pattern Library!</h1>
 
+				<Header2 headingText="two"/>
+
+
+
+
 				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
+					<Card heading="One Card" label="Bill Murray" image_url="https://www.fillmurray.com/300/300" > Children..</Card>
 				</Example>
 
 				<Example title="My Special <span>">
