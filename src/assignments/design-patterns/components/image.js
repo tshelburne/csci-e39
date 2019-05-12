@@ -1,15 +1,15 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 const Image = (props) => {
-    const { src, title, alt, description } = props;
+    const { src, title, alt, description, visible } = props;
 
     return (
-        <Fragment>
+        <main className={visible ? '' : 'isHidden'}>
             <h3>{title}</h3>
-            <img src={src} alt={alt} />
+            <img className="image-sizing" src={src} alt={alt} />
             <div>{description}</div>
-        </Fragment>
+        </main>
     );
 }
 

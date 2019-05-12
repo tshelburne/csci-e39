@@ -40,8 +40,18 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="My Image Component">
-					<Image src="incorrect/filePath/notReal.jpg" title="Image Title" alt="Unfound Image" description="Image Component rendering when an image was not found" />
-					<Image src="./assets/luke-and-dorris.JPG" title="Luke and Dorris" alt="My two cats Luke Skywalker and Dorris Pringle-Brule-Salahari" description="Luke Skywalker the gray tuxedo and Dorris Pringle-Brule-Salahari the tortie/tabby" />
+					<Image
+						src="./assets/luke-and-dorris.JPG"
+						title="Luke and Dorris"
+						alt="My two cats Luke Skywalker and Dorris Pringle-Brule-Salahari"
+						description="Luke Skywalker the gray tuxedo and Dorris Pringle-Brule-Salahari the tortie/tabby"
+					/>
+					<Image 
+						src="incorrect/filePath/notReal.jpg"
+						title="Image Title"
+						alt="Unfound Image"
+						description="Image Component rendering when an image was not found"
+					/>
 				</Example>
 
 				<Example title="My Card Item Component">
@@ -49,7 +59,13 @@ class PatternLibrary extends React.Component {
 					<CardItem>
 						Card Item with text and component as children
 						<Button className="" handleClick={this.handleOnClick}>Child Button Function Prop</Button>
-						<div className={this.state.isVisible ? '' : 'isHidden'}>Div element to show/hide based on click</div>
+						<Image
+							visible={this.state.isVisible}
+							src="./assets/luke-and-dorris.JPG"
+							title="Luke and Dorris"
+							alt="My two cats Luke Skywalker and Dorris Pringle-Brule-Salahari"
+							description="Graduate Requirement: Using 3 components together. Luke Skywalker the gray tuxedo and Dorris Pringle-Brule-Salahari the tortie/tabby"
+						/>
 						<Button className="" onClickMessage="Nested Components">Child Button with Message Prop</Button>
 					</CardItem>
 				</Example>
