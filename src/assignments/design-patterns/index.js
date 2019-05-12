@@ -41,12 +41,14 @@ class PatternLibrary extends React.Component {
 
 				<Example title="My Image Component">
 					<Image
+						visible="true"
 						src="./assets/luke-and-dorris.JPG"
 						title="Luke and Dorris"
 						alt="My two cats Luke Skywalker and Dorris Pringle-Brule-Salahari"
 						description="Luke Skywalker the gray tuxedo and Dorris Pringle-Brule-Salahari the tortie/tabby"
 					/>
 					<Image 
+						visible="true"
 						src="incorrect/filePath/notReal.jpg"
 						title="Image Title"
 						alt="Unfound Image"
