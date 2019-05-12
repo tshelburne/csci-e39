@@ -18,6 +18,8 @@ body {
 	padding: $padding;
 	margin-bottom: $margin;
 	border: thin solid;
+	display: grid;
+	grid-template: 1fr / 1fr;
 
 	&:last-child {
 		margin-bottom: 0;
