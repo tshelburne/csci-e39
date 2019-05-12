@@ -32,9 +32,12 @@ class PatternLibrary extends React.Component {
 
 
 
+				<Example title="My Card with Image">
+					<Card heading="One Card" label="Bill Murray!" image_url="https://www.fillmurray.com/300/300" > Child Html..</Card>
+				</Example>
 
-				<Example title="My Special <div>">
-					<Card heading="One Card" label="Bill Murray" image_url="https://www.fillmurray.com/300/300" > Children..</Card>
+				<Example title="My Card no Image">
+					<Card heading="One Card" label="No Bill Murray Imaage"> Child Html..</Card>
 				</Example>
 
 				<Example title="My Special <span>">
