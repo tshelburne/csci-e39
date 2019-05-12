@@ -1,11 +1,16 @@
 @import 'pattern-library';
+$etienne-color: darken(salmon, 10);
+$primary-color: rgba(150, 143, 179, 1);
 
 $padding: 20px;
 $margin: 10px;
 
+body {
+	background: lightgray;
+}
+
 .style-guide {
 	width: 90%;
-	max-width: 1024px;
 	margin: 0 auto;
 }
 
@@ -21,14 +26,16 @@ $margin: 10px;
 	.example--rendered {
 		padding: $padding;
 		margin-bottom: $margin;
-		border: thin dotted #ccc;
+		border: thin dotted $primary-color;
+		background: whitesmoke;
+		text-align: center;
 	}
 
 	.example--toggles {
 		margin-bottom: $margin;
 
 		.active {
-			background: pink;
+			background: $etienne-color;
 		}
 	}
 
@@ -36,5 +43,6 @@ $margin: 10px;
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
+		overflow: auto;
 	}
 }

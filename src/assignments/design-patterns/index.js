@@ -50,7 +50,7 @@ class PatternLibrary extends React.Component {
 					<Image 
 						visible="true"
 						src="incorrect/filePath/notReal.jpg"
-						title="Image Title"
+						title="Unfound Image Title"
 						alt="Unfound Image"
 						description="Image Component rendering when an image was not found"
 					/>
