@@ -123,7 +123,7 @@ class PatternLibrary extends React.Component {
 							<p>
 								Some more filler text in a text block underneath the button. I have been wondering how the button above should
 								be positioned within the section. Should it be left justified or centered? Should this control be within the
-								button or outside? I ended putting control in the button using css and altering the margin.
+								button or outside? I ended up putting control in the button using css and altering the margin.
 							</p>
   						</TextBlock>
 					</Section>
