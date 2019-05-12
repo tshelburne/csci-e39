@@ -4,7 +4,7 @@ import Example from './support/example'
 import SectionHeader from './support/sectionheader'
 import FaqDescription from './support/faqdescription'
 import Menu from './support/menu'
-import Button from './support/button'
+import Button, {SubmitButton, CancelButton} from './support/button'
 import TextBlock from './support/textblock'
 import Slider from './support/slider'
 import Section from './support/section'
@@ -37,6 +37,10 @@ class PatternLibrary extends React.Component {
 					<Button text='Success' type='submit' classes="button-std button-success" onClick={()=>{}} />
 					<br></br>
 					<Button text='Warning' type='submit' classes="button-std button-warning" onClick={()=>{}} />
+					<br></br>
+					<SubmitButton onClick={()=> alert('Submitted!')} />
+					<br></br>
+					<CancelButton onClick={()=> alert('Cancelled!')} />
 				</Example>
 
 				<Example title="My Special <SectionHeader>">
