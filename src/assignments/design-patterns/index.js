@@ -6,6 +6,7 @@ import FaqDescription from './support/faqdescription'
 import Menu from './support/menu'
 import Button from './support/button'
 import TextBlock from './support/textblock'
+import Slider from './support/slider'
 
 import './app.scss'
 
@@ -68,6 +69,29 @@ class PatternLibrary extends React.Component {
 					<Menu menuItems={MENUITEMS2} classes="menu-item2"/>
 					<br></br>
 					<Menu menuItems={MENUITEMS3} classes="menu-item3"/>
+				</Example>
+
+				<Example title="My Special Combined Example">
+					<Slider sliderType="Range" min="1" max="100" />
+					<br></br>
+					<Slider sliderType="Range" min="1" max="100" classes="slider slider-round slider-bar-size-small slider-thumb-small"/>
+					<br></br>
+					<Slider sliderType="Range" min="1" max="100" classes="slider slider-round slider-bar-size-small slider-thumb-medium"/>
+					<br></br>
+					<Slider sliderType="Range" min="1" max="100" classes="slider slider-round slider-bar-size-small slider-thumb-large"/>
+					<br></br>
+					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-primary slider-round slider-bar-size-small slider-thumb-small"/>
+					<br></br>
+					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-primary slider-round slider-bar-size-small slider-thumb-medium"/>
+					<br></br>
+					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-primary slider-round slider-bar-size-small slider-thumb-large"/>
+					<br></br>
+					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-secondary slider-bar-size-small slider-thumb-small"/>
+					<br></br>
+					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-secondary slider-bar-size-small slider-thumb-medium"/>
+					<br></br>
+					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-secondary slider-bar-size-small slider-thumb-large"/>
+
 				</Example>
 			</div>
 		)
