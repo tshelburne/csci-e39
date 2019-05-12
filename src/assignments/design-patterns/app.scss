@@ -112,6 +112,17 @@ $menu-item-font-size-3: 20px;
   margin-bottom: $faq_answer-margin-bottom;
 }
 
+.text-block1 {
+	font-family: $default-font-family;
+}
+
+.text-block2 {
+	font-family: monospace;
+	background-color: black;
+	color: white;
+	padding: 10px;
+}
+
 .menu-item1 {
     ul {
       list-style-type: none;

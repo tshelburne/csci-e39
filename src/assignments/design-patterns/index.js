@@ -5,6 +5,7 @@ import SectionHeader from './support/sectionheader'
 import FaqDescription from './support/faqdescription'
 import Menu from './support/menu'
 import Button from './support/button'
+import TextBlock from './support/textblock'
 
 import './app.scss'
 
@@ -38,6 +39,23 @@ class PatternLibrary extends React.Component {
 					<SectionHeader tag="h1" sectiontext="My h1 Section Header"/>
 					<SectionHeader tag="h2" sectiontext="My h2 Section Header"/>
 					<SectionHeader tag="h3" sectiontext="My h3 Section Header"/>
+				</Example>
+
+				<Example title="My Special <TextBlock>">
+					<TextBlock classes="text-block1">
+						<p>
+							This is a very simple component that allows the user to pass in text inside HTML tags as the component uses children.
+							The styling can be passed into the component using classes.
+						</p>
+  					</TextBlock>
+  					<TextBlock classes="text-block2">
+						<p>
+							I initially tried to implement a code block but that proved to be very difficult.
+							There are a lot of reserved words in code that have difficulty rendering and cause many errors in this code.
+							Lots of characters would need to be escaped so I took the easy way out and just created a text block. This text block
+							uses a monospaced font family in the styling to make it look like a code block but this is not code.... :)
+						</p>
+  					</TextBlock>
 				</Example>
 
 				<Example title="My Special <FaqDescription>">
