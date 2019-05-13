@@ -3,10 +3,69 @@
 $padding: 20px;
 $margin: 10px;
 
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
 	margin: 0 auto;
+}
+
+.article-grid{
+	display: grid;
+	grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+	grid-column-gap: 10px;
+	padding: 5px;
+}
+
+.footer {
+	background-color: thistle;
+	width: 100%;
+	color: blue;
+	margin: 5px;
+	padding: 10px;
+}
+
+.header {
+	background-color: thistle;
+	width: 100%;
+	color: blue;
+	margin: 5px;
+	padding:10px;
+}
+
+.image-container {
+	 max-width: 230px;
+	 display: inline-block;
+	 //float: left;
+   // margin: auto 10px 15px auto ;
+	}
+
+ img {
+	 width: 100%;
+ }
+
+figcaption {
+ font-size: 12px;
+ color: #333333;
+}
+
+p {
+ line-height: 1.43;
+ font-size: 15px;
+}
+
+.text-color-emphasis {
+ font-style: oblique;
+ color: #32894f;
+ display: inline;
+ font-weight: bold;
 }
 
 .example {
