@@ -1,40 +1,188 @@
-@import 'pattern-library';
+@import "pattern-library";
+@import "./components/styles/calendar.scss";
+$primary-color: rgba(150, 143, 179, 1);
+
+// Style your components here
+$transition: width 2s ease;
+$shadow3: inset 0 -2px 4px rgba(0, 0, 0, 0.4), 0 2px 5px 0px rgba(0, 0, 0, 0.3);
+$shadow: inset 0px 1px 1px darken($primary-color, 44%), 0px 1px 0px rgba(255, 255, 255, 0.2);
+$shadow-glow: inset 0 1px 1px rgba(0, 0, 0, 0.4), 0 2px 5px 0px darken($primary-color, 44%), /*glow*/ 0 1px 8px white;
+$shadow2: inset 0 -2px 4px rgba(0, 0, 0, 0.4), 0 2px 5px 0px darken($primary-color, 44%);
+$button-radius: 14px;
+$text-shadow: 0 0 3px white;
 
 $padding: 20px;
 $margin: 10px;
 
 .style-guide {
-	width: 90%;
-	max-width: 1024px;
-	margin: 0 auto;
+  width: 90%;
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+#clock {
+  .h1 {
+    font-size: 13px;
+  }
+  font-family: "Share Tech Mono", monospace;
+  color: #ffffff;
+  text-align: center;
+  color: #daf6ff;
+  background: #222;
+  text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
+  .time {
+    letter-spacing: 0.05em;
+    font-size: 32px;
+  }
+  .date {
+    letter-spacing: 0.1em;
+    font-size: 18px;
+  }
 }
 
 .example {
-	padding: $padding;
-	margin-bottom: $margin;
-	border: thin solid;
+  padding: $padding;
+  margin-bottom: $margin;
+  border: thin solid;
 
-	&:last-child {
-		margin-bottom: 0;
-	}
+  //////////////
+  progress::-webkit-progress-value {
+    transition: $transition;
+    -webkit-transition: $transition;
+    -moz-transition: $transition;
+    -o-transition: $transition;
+    transition: $transition;
+  }
+  progress::-moz-progress-bar {
+    border-radius: $button-radius;
+    background: #fff;
+    box-shadow: $shadow-glow;
+  }
+  /* webkit */
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    progress {
+      height: 1.3em;
+    }
+  }
+  progress::-webkit-progress-bar {
+    background: transparent;
+  }
 
-	.example--rendered {
-		padding: $padding;
-		margin-bottom: $margin;
-		border: thin dotted #ccc;
-	}
+  progress::-webkit-progress-value {
+    border-radius: $button-radius;
+    background: #fff;
+    box-shadow: $shadow;
+    animation: pulse-progress 2s infinite;
+    &:hover {
+      background: lighten($primary-color, 45%);
+      color: #fff;
+      transition: 0.3s;
+      box-shadow: $shadow-glow;
+    }
+  }
 
-	.example--toggles {
-		margin-bottom: $margin;
+  .button {
+    width: 100px;
+    margin: 2em auto;
+    padding: 4px;
+    border: 0 none;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: $shadow2;
+    animation: pulse 2s infinite;
+    &:hover {
+      background: darken($primary-color, 5%);
+      color: #fff;
+      transition: 0.3s;
+      box-shadow: $shadow3;
+      text-shadow: $text-shadow;
+      animation: none;
+    }
+  }
 
-		.active {
-			background: pink;
-		}
-	}
+  @keyframes pulse-progress {
+    0% {
+    }
+    50% {
+      background: lighten($primary-color, 29%);
+    }
+    100% {
+    }
+  }
+  @keyframes pulse {
+    0% {
+    }
+    50% {
+      background: lighten($primary-color, 29%);
+      color: darkblue;
+      box-shadow: $shadow3;
+      text-shadow: $text-shadow;
+    }
+    100% {
+    }
+  }
 
-	.example--code {
-		padding: $padding;
-		background: #eee;
-		border: thin dotted #ccc;
-	}
+ 
+    
+  /////////////////
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .example--rendered {
+    padding: $padding;
+    margin-bottom: $margin;
+    border: thin dotted #ccc;
+  }
+
+  .example--toggles {
+    margin-bottom: $margin;
+
+    .active {
+      background: pink;
+    }
+  }
+
+  .example--code {
+    padding: $padding;
+    background: #eee;
+    border: thin dotted #ccc;
+  }
+}
+
+progress {
+  display: block; /* default: inline-block */
+  width: 45%; //width
+  margin: auto; // center
+  padding: 4px; //inner bar
+  border: 0 none;
+  background: darken($primary-color, 34%); //bar color
+  border-radius: $button-radius; //rounded
+  box-shadow: $shadow;
+}
+
+// Ignore the styles below unless you want to change them for fun
+
+body {
+  background: crimson;
+  padding: 30px;
+  background: linear-gradient(to bottom, rgba(150, 143, 179, 1) 0%, crimson 100%);
+  min-height: 100vh;
+}
+
+.example-container {
+  background: hsla(0, 0, 100%, 0.8);
+  margin-top: 7vh;
+  padding: 5vh 2vh;
+  box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-top: 0;
+  font-family: "Permanent Marker", sans-serif;
 }
