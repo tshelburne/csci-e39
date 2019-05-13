@@ -28,8 +28,6 @@ const Uploads = ({uploads, actions}) => {
 		<ul>
 			{pendingFiles.length==0 && <progress value="0" data-label="0% Complete" max="100"></progress>}
 			{pendingFiles.map(file => {
-
-					console.log("altText:" + altText);
 					
 					const {id, className, progress} = file
 
@@ -49,7 +47,8 @@ const Uploads = ({uploads, actions}) => {
 				return <li className="item-card" key={id}>
 					{!error && <Picture src={url} alt={name}/>}
 					{!!error && <p className="failure">{error}</p>}
-					<p className="image-label">{name}</p>
+					{!altText=="" && <p className="image-label">{altText}</p>}
+					{!!altText=="" && <p className="image-label">{name}</p>}
 				</li>
 			})}
 		</ul>
