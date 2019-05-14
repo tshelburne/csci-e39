@@ -6,3 +6,11 @@ const Slider = ({sliderType, min, max, value, classes}) =>
  	</div>
 
 export default Slider
+
+export const RoundSlider = ({sliderType, min, max, classes}) => (
+	<Slider sliderType={sliderType} min={min} max={max} classes={[classes, "slider-round"].join(" ")} />
+	);
+
+export const SquareSlider = ({sliderType, min, max, classes}) => (
+	<Slider sliderType={sliderType} min={min} max={max} classes={[classes, "slider-square"].join(" ")} />
+	);

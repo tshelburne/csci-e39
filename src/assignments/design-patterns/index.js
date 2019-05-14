@@ -6,7 +6,7 @@ import FaqDescription from './support/faqdescription'
 import Menu from './support/menu'
 import Button, {SubmitButton, CancelButton} from './support/button'
 import TextBlock from './support/textblock'
-import Slider from './support/slider'
+import Slider, {RoundSlider, SquareSlider} from './support/slider'
 import Section from './support/section'
 
 import './app.scss'
@@ -81,23 +81,23 @@ class PatternLibrary extends React.Component {
 				<Example title="My Special <Slider>">
 					<Slider sliderType="Range" min="1" max="100" />
 					<br></br>
-					<Slider sliderType="Range" min="1" max="100" classes="slider slider-round slider-bar-size-small slider-thumb-small"/>
+					<RoundSlider sliderType="Range" min="1" max="100" classes="slider slider-bar-size-small slider-thumb-small"/>
 					<br></br>
-					<Slider sliderType="Range" min="1" max="100" classes="slider slider-round slider-bar-size-small slider-thumb-medium"/>
+					<RoundSlider sliderType="Range" min="1" max="100" classes="slider slider-bar-size-small slider-thumb-medium"/>
 					<br></br>
-					<Slider sliderType="Range" min="1" max="100" classes="slider slider-round slider-bar-size-small slider-thumb-large"/>
+					<RoundSlider sliderType="Range" min="1" max="100" classes="slider slider-bar-size-small slider-thumb-large"/>
 					<br></br>
-					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-primary slider-round slider-bar-size-small slider-thumb-small"/>
+					<RoundSlider sliderType="Range" min="1" max="100" classes="slider slider-thumb-primary slider-bar-size-small slider-thumb-small"/>
 					<br></br>
-					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-primary slider-round slider-bar-size-small slider-thumb-medium"/>
+					<RoundSlider sliderType="Range" min="1" max="100" classes="slider slider-thumb-primary slider-bar-size-small slider-thumb-medium"/>
 					<br></br>
-					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-primary slider-round slider-bar-size-small slider-thumb-large"/>
+					<RoundSlider sliderType="Range" min="1" max="100" classes="slider slider-thumb-primary slider-bar-size-small slider-thumb-large"/>
 					<br></br>
-					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-secondary slider-bar-size-small slider-thumb-small"/>
+					<SquareSlider sliderType="Range" min="1" max="100" classes="slider slider-thumb-secondary slider-bar-size-small slider-thumb-small"/>
 					<br></br>
-					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-secondary slider-bar-size-small slider-thumb-medium"/>
+					<SquareSlider sliderType="Range" min="1" max="100" classes="slider slider-thumb-secondary slider-bar-size-small slider-thumb-medium"/>
 					<br></br>
-					<Slider sliderType="Range" min="1" max="100" classes="slider slider-thumb-secondary slider-bar-size-small slider-thumb-large"/>
+					<SquareSlider sliderType="Range" min="1" max="100" classes="slider slider-thumb-secondary slider-bar-size-small slider-thumb-large"/>
 				</Example>
 
 				<Example title="My Special Combined Example">
