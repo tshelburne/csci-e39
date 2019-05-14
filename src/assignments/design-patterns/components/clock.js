@@ -13,7 +13,7 @@ class Clock extends React.Component {
             'mod-dateTime': dateTime,
         })
         this.state = {
-            time: new Date().toLocaleString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })  
+            time: new Date().toLocaleString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
         }
     }
     componentDidMount() {
@@ -32,7 +32,7 @@ class Clock extends React.Component {
     }
     render() {
         const { time, date, dateTime, ...props } = this.props;
-         
+
         Clock.propTypes = {
             time: PropTypes.bool,
             date: PropTypes.bool,
@@ -41,8 +41,8 @@ class Clock extends React.Component {
 
         //finish converting to a class. .. 
         return (
-            <React.Fragment> 
-                    <p className="time">{this.state.time}</p> 
+            <React.Fragment>
+                <p className="time">{this.state.time}</p>
             </React.Fragment>
         )
     }
@@ -52,22 +52,22 @@ class Clock extends React.Component {
 export default Clock
 export const ClockArea = ({ children, ...props }) => {
 
-    return   <div {...props} id="clock">
-    <h1>Current:</h1>
-    {children}
-    </div> 
-    
+    return <div {...props} id="clock">
+        <h1>Current:</h1>
+        {children}
+    </div>
+
 
 }
 
 
 export const ClockDate = (props) => {
     return <div>
-           <p className="date">{new Date().toLocaleString([], { day: '2-digit', month: '2-digit', year: '2-digit' })} </p>
+        <p className="date">{new Date().toLocaleString([], { day: '2-digit', month: '2-digit', year: '2-digit' })} </p>
     </div>
 }
 
-export const ClockTime = Clock  
+export const ClockTime = Clock
 
 
 
