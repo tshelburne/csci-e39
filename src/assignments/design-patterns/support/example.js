@@ -15,6 +15,7 @@ const Example = ({title, children}, context) => (
 		</div>
 
 		<div className="example--toggles">
+			<span>View Code Sample: </span>
 			<button
 				onClick={() => context.setActiveCode(`html`)}
 				className={context.activeCode === `html` ? `active` : ``}
@@ -31,13 +32,16 @@ const Example = ({title, children}, context) => (
 				onClick={() => context.setActiveCode(`off`)}
 				className={context.activeCode === `off` ? `active` : ``}
 			>
-				Off
+				Hide
 			</button>
 		</div>
 
-		{context.activeCode !== `off` && 
+		{context.activeCode !== `off` &&
 			<div className="example--code">
-				<h3>Code sample:</h3>
+				<h3>Code sample
+					{context.activeCode === `html` && <span> (HTML)</span>}
+					{context.activeCode === `react` && <span> (React)</span>}
+				</h3>
 				<pre>
 					<code>
 						{context.activeCode === `html` &&
@@ -45,7 +49,7 @@ const Example = ({title, children}, context) => (
 								.html(ReactDOMServer.renderToStaticMarkup(<div>{children}</div>))
 								.replace(/^<div>.*\n([\S\s]*)<\/div>$/, `$1`)
 						}
-						
+
 						{context.activeCode === `react` &&
 							jsxToString(<div>{children}</div>)
 								.replace(/=\{true\}/g, ``)
