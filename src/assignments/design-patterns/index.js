@@ -1,28 +1,38 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
+import Navbar from './components/nav'
+import Buttonstyle from './components/button'
 
 import './app.scss'
 
 class PatternLibrary extends React.Component {
 
 	constructor(...args) {
-		super(...args)
+		super(...args);
 
-		this.state = {activeCode: `react`}
+		this.state = {activeCode: `react`};
 	}
 
 	getChildContext() {
 		return {
 			activeCode: this.state.activeCode,
 			setActiveCode: activeCode => this.setState({activeCode}),
-		}
+		};
 	}
 
 	render() {
 		return (
 			<div className="style-guide">
 				<h1>UI Patterns!</h1>
+
+				<Example title="Button">
+					<Buttonstyle />
+				</Example>
+
+				<Example title="My Navigation">
+					<Navbar />
+				</Example>
 
 				<Example title="My Button <button>">
 					<button className="button-primary">PRIMARY</button>
@@ -39,7 +49,7 @@ class PatternLibrary extends React.Component {
 				<Example title="My Special <h4>">
 					<h4 className="just-testing">HELLO HEADING</h4>
 				</Example>
-			</div>
+			</div> 
 		)
 	}
 }

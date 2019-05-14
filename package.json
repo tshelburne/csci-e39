@@ -27,6 +27,8 @@
   "author": "Tim Shelburne",
   "license": "UNLICENSED",
   "dependencies": {
+    "@material-ui/core": "^3.9.3",
+    "@material-ui/styles": "^3.0.0-alpha.10",
     "bookshelf": "^0.14.1",
     "class-autobind": "^0.1.4",
     "cloudinary": "^1.13.2",

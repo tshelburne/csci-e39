@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import ReactDOMServer from 'react-dom/server'
 import jsxToString from 'jsx-to-string'
 import beautify from 'js-beautify'
+import './example.scss'
 
 const Example = ({title, children}, context) => (
 	<div className="example">
@@ -20,7 +21,8 @@ const Example = ({title, children}, context) => (
 				className={context.activeCode === `html` ? `active` : ``}
 			>
 				HTML
-			</button>
+			</button> 
+
 			<button
 				onClick={() => context.setActiveCode(`react`)}
 				className={context.activeCode === `react` ? `active` : ``}
