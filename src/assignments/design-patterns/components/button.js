@@ -2,6 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
+import cx from 'classnames'
 import Button from '@material-ui/core/Button';
 
 const styles = {
@@ -16,15 +17,34 @@ const styles = {
   },
 };
 
-function HigherOrderComponent(props) {
-  const { classes } = props;
-  return <Button className={classes.root}>Higher-order component</Button>;
+const StyledComponent=(props) => {
+  const { classes, name } = props;
+  return <Button className={classes.root}>{name}</Button>;
 }
 
-HigherOrderComponent.propTypes = {
+StyledComponent.propTypes = {
   classes: PropTypes.object.isRequired,
+  name: PropTypes.string,
 };
 
-const Buttonstyle = withStyles(styles)(HigherOrderComponent)
+export const ButtonStyle = withStyles(styles, {name:'styled-button'})(StyledComponent)
 
-export default Buttonstyle;
+const ButtonStandard = ({block, primary, secondary, ...props}) => {
+	const classes = cx('button', {
+		'mod-block': block, 
+		'mod-primary': primary, 
+		'mod-secondary': secondary
+	})
+
+	return <button {...props} className = {classes} />
+}
+
+ButtonStandard.propTypes = {
+	block:PropTypes.bool,
+	primary:PropTypes.bool, 
+	secondary: PropTypes.bool
+}
+
+export default ButtonStandard
+
+//export const ButtonGroup = ({children, ...props}) =>

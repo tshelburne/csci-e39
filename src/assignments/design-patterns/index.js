@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
 import Navbar from './components/nav'
-import Buttonstyle from './components/button'
+import {ButtonStyle} from './components/button'
 
 import './app.scss'
 
@@ -27,7 +27,7 @@ class PatternLibrary extends React.Component {
 				<h1>UI Patterns!</h1>
 
 				<Example title="Button">
-					<Buttonstyle />
+					<ButtonStyle />
 				</Example>
 
 				<Example title="My Navigation">
