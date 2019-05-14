@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import Example from './support/example'
 import Header2 from './components/header2'
 import Card from './components/card'
-
 import './app.scss'
 import './components/card.scss'
+import {CloseButton, ToggleButton ,DiceButton } from './components/buttons.js'
+
 
 class PatternLibrary extends React.Component {
 
@@ -29,8 +30,10 @@ class PatternLibrary extends React.Component {
 				<h1>My Pattern Library!</h1>
 
 				<Header2 headingText="two"/>
-
-
+				<CloseButton button_text="X"> </CloseButton>
+				<ToggleButton></ToggleButton>
+				<DiceButton dice_sides="4"></DiceButton>
+				<DiceButton></DiceButton>
 
 				<Example title="My Card with Image">
 					<Card heading="One Card" label="Bill Murray!" image_url="https://www.fillmurray.com/300/300" > Child Html..</Card>
