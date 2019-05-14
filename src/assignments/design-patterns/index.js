@@ -33,7 +33,7 @@ class PatternLibrary extends React.Component {
 				<CloseButton button_text="X"> </CloseButton>
 				<ToggleButton></ToggleButton>
 				<DiceButton dice_sides="4"></DiceButton>
-				<DiceButton></DiceButton>
+
 
 				<Example title="My Card with Image">
 					<Card heading="One Card" label="Bill Murray!" image_url="https://www.fillmurray.com/300/300" > Child Html..</Card>
@@ -43,12 +43,16 @@ class PatternLibrary extends React.Component {
 					<Card heading="One Card" label="No Bill Murray Imaage"> Child Html..</Card>
 				</Example>
 
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
+				<Example title="<ToggleButton> sets state on or off">
+					<ToggleButton > </ToggleButton>
 				</Example>
 
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
+				<Example title="<DiceButton>. Click to roll.  Defaults to six sides.">
+					<DiceButton ></DiceButton>
+				</Example>
+
+				<Example title="<DiceButton>. Click to roll.  Set to N sides!">
+					<DiceButton dice_sides="4" > </DiceButton>
 				</Example>
 			</div>
 		)

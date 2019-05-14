@@ -53,9 +53,8 @@ class DiceButton extends React.Component {
 
     constructor(props) {
         super(props)
-        console.log(props);
 
-        console.log(props.dice_sides);
+        //console.log(props.dice_sides);
 
         // use default value of 6
         if(props.dice_sides){
@@ -64,7 +63,7 @@ class DiceButton extends React.Component {
             console.log("setting to 6")
             var mydice_sides = 6;
         }
-        this.state = {dice_sides: mydice_sides, dice_value:0};
+        this.state = {dice_sides: mydice_sides, dice_value:'click to roll'};
 
         // This binding is necessary to make `this` work in the callback
         this.handleClick = this.handleClick.bind(this);
@@ -72,7 +71,6 @@ class DiceButton extends React.Component {
     }
 
     handleClick() {
-        console.log (this.props.dice_sides);
         this.setState(state => ({
             dice_value: Math.floor(Math.random() * this.state.dice_sides)+1
         }));
