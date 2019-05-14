@@ -49,12 +49,12 @@ const PatternLibrary = () =>
 			</Example>
 
 			<Example title="<ColorMapper>">
-				<ColorMapper effects="red blue green">
+				<ColorMapper colors="red blue green">
 					<span>Map a list of colors</span>
 					<span>to a group</span>
 					<span>of elements!</span>
 				</ColorMapper>
-				<ColorMapper effects="purple orange">
+				<ColorMapper colors="purple orange">
 					<span>There can even</span>
 					<p>be more elements</p>
 					<span>than colors.</span>

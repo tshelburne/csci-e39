@@ -1,18 +1,18 @@
 import React from 'react'
 
-const ColorMapper = ({effects, children, ...props}) => {
-    const values = effects.split(' ')
+const ColorMapper = ({colors, children, ...props}) => {
+    const colorList = colors.split(' ')
     return (
         <section {...props} className="color-mapper">
             {React.Children.map(children, (child, idx) => {
-                let val = idx
-                while (val >= values.length) val -= values.length
+                let col = idx
+                while (col >= colorList.length) col -= colorList.length
                 return (
                     <div
                         key={`multiple-${idx}`}
                         className="color-mapper-item"
                         style={{
-                            '--mult-effect': values[val]
+                            '--mult-effect': colorList[col]
                         }}
                     >
                         {child}
