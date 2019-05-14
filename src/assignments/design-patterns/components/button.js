@@ -17,7 +17,7 @@ const styles = {
   },
 };
 
-const StyledComponent=(props) => {
+export const StyledComponent=(props) => {
   const { classes, name } = props;
   return <Button className={classes.root}>{name}</Button>;
 }
@@ -27,24 +27,30 @@ StyledComponent.propTypes = {
   name: PropTypes.string,
 };
 
-export const ButtonStyle = withStyles(styles, {name:'styled-button'})(StyledComponent)
+export const ButtonStyled = withStyles(styles, {name:'styled-button'})(StyledComponent)
 
-const ButtonStandard = ({block, primary, secondary, ...props}) => {
+export const ButtonStandard = ({block, primary, secondary, disabled, children}) => {
 	const classes = cx('button', {
 		'mod-block': block, 
 		'mod-primary': primary, 
 		'mod-secondary': secondary
 	})
 
-	return <button {...props} className = {classes} />
+	return (
+    <button 
+    className = {classes}
+    disabled = {disabled} 
+    >
+    {children}
+    </button>
+    ); 
 }
 
 ButtonStandard.propTypes = {
 	block:PropTypes.bool,
 	primary:PropTypes.bool, 
-	secondary: PropTypes.bool
+	secondary: PropTypes.bool,
+  disabled: PropTypes.bool
 }
 
-export default ButtonStandard
 
-//export const ButtonGroup = ({children, ...props}) =>
