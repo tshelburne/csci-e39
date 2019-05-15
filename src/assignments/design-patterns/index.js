@@ -4,25 +4,32 @@ import Example, { ActiveCodeProvider } from "./support/example";
 import ImageCard from "./components/imagecard.js";
 
 import "./app.scss";
+import "./components/imagecard.scss";
 
-const file = [];
-const onImageSelect = (file) =>  {
-  console.log('From the image!!!!' );
+const file = [{id:'station one',name:'000', url:'https://www.fillmurray.com/200/300', error:false}];
+const onImageSelect = file => {
+  console.log("From the image!!!!");
 
-
-  console.log( );
-}
+};
 
 const PatternLibrary = () => (
   <ActiveCodeProvider>
     <div className="style-guide">
       <h1>My Pattern Library!</h1>
 
-      <Example title="My ICONS">
-        <h4 className="just-testing">ICONS example</h4>
+      <Example title="My Icons">
+        <h4 className="just-testing">Icons example</h4>
       </Example>
 
-      <Example title="My CARD">
+      <Example title="My Card">
+        <ImageCard file={file} onImageSelect={onImageSelect} />
+      </Example>
+
+      <Example title="My Gallery">
+        <ImageCard file={file} onImageSelect={onImageSelect} />
+      </Example>
+
+      <Example title="My Upload Bar">
         <ImageCard file={file} onImageSelect={onImageSelect} />
       </Example>
 

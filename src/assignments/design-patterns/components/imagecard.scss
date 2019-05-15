@@ -1,0 +1,39 @@
+.img-key {
+  vertical-align: top;
+  display: inline-block;
+  text-align: center;
+  width: auto;
+  cursor: pointer;
+  background-color: rgb(153, 204, 255);
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+
+  height: 150px;
+  align-items: center;
+
+  border: 2px dashed #fff;
+  border-radius: 10px;
+
+  &:hover {
+    background: darken(rgb(153, 204, 255), 20%);
+  }
+  border-radius: 10px;
+}
+
+
+.img-name {
+  word-wrap: break-word;
+  display: block;
+  border-radius: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Trebuchet MS", Verdana, san-serif;
+  font-size: 1.5em;
+
+  white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
