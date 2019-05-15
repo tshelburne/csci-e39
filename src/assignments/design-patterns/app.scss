@@ -66,7 +66,16 @@ $primary-color: MidnightBlue;
 }
 
 .card.back {
-	
+	background-color: $primary-color;
+}
+.card.back.patterned {
+	background-image: url("https://i.pinimg.com/originals/90/92/41/909241e43cffbca0ba6bfd0d5107b4c3.png");
+}
+
+
+
+.card.back h2, .card.back p, .card.back img, {
+	visibility: hidden;
 }
 
 .card h2 {
@@ -85,10 +94,20 @@ $primary-color: MidnightBlue;
 	cursor: pointer;
 }
 
-.button.light {
-background: white;
-color: $primary-color;
-border: 2px solid $primary-color;
+.button.light, .card.back button {
+	background: white;
+	color: $primary-color;
+	border: 2px solid $primary-color;
+}
+
+.card.back button {
+	border: none;
+}
+
+.card.back.patterned button {
+	background: black;
+	color: white;
+	border: none;
 }
 
 img {

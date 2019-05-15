@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
-import Card from './components/card'
+import { Card, PlayingCard } from './components/card'
 import Image from './components/image'
 import Button from './components/button'
 
@@ -54,33 +54,6 @@ class PatternLibrary extends React.Component {
 
 				</Example>
 
-
-				<Example title="Reusable cards"
-					componentName="<Card>"
-					description={
-						<div>
-						<p>A versatile card component can be used for lots of stuff.</p>
-						</div>
-					}>
-					<Card title="Mittens the Kitten"
-						description="Mittens loves playing with yarn and chasing laser pointers."
-						image= {{
-							subject: "kitten",
-							height: "200",
-							width: "200",
-							alt: "Mittens"
-						}}
-						button = {{
-							text: "Flip"
-						}}
-						>
-					</Card>
-					<Card title="Sam"
-						description="Sam has no photo :("
-						>
-					</Card>
-				</Example>
-
 				<Example title="Button"
 					componentName="<Button>"
 					description={
@@ -101,6 +74,57 @@ class PatternLibrary extends React.Component {
 					<Button text="Click me!" style="light"></Button>
 					<Button text="Say hello" style="dark" alertMessage="hello"></Button>
 				</Example>
+
+				<Example title="Reusable cards"
+					componentName="<Card>"
+					description={
+						<div>
+						<p>A versatile card component can be used for lots of stuff.</p>
+						</div>
+					}>
+					<Card title="Mittens the Kitten"
+						description="Mittens loves playing with yarn and chasing laser pointers."
+						image= {{
+							subject: "kitten",
+							height: "200",
+							width: "200",
+							alt: "Mittens"
+						}}
+						button = {{
+							text: "Speak",
+							alertMessage: "Meow"
+						}}
+						>
+					</Card>
+					<Card title="Super Sam"
+						description="Sam is a superhero. His superpower is invisibility, which means he's also very good at evading the paparazzi, and he has no photo."
+						>
+					</Card>
+
+					<PlayingCard
+						title="Bill Murr"
+						image={{
+							subject: "murray",
+							height: "200",
+							width: "200",
+							alt: "Bill Murray"
+						}}
+						description="Bill Murray is an actor. You probably already knew that."
+					></PlayingCard>
+
+					<PlayingCard
+						title="Zombie"
+						image={{
+							subject: "zombie",
+							height: "200",
+							width: "200",
+						}}
+						description="Zombies like to eat brains. Watch out!!!"
+						patterned
+					></PlayingCard>
+
+				</Example>
+
 			</div>
 		)
 	}

@@ -4,7 +4,7 @@ import Image from './image.js'
 import Button from './button.js'
 import autobind from 'class-autobind'
 
-class Card extends React.Component {
+export class Card extends React.Component {
 
   constructor() {
   super(...arguments)
@@ -17,16 +17,14 @@ class Card extends React.Component {
   }
 
   flipCard(e) {
-    console.log('flipCard')
    this.setState(state => ({
      displayBack: !state.displayBack
    }));
   }
 
   render() {
-    const { title, description, image, button, playingCard } = this.props
-
-    return <div className="card">
+    const { title, description, image, button, playingCard, patterned } = this.props
+    return <div className={`card${(playingCard && this.state.displayBack) ? ` back` : ``}${(playingCard && patterned && this.state.displayBack) ? ` patterned` : ``}`}>
       <h2>{title}</h2>
       <p> {description} </p>
       {!!image && <Image
@@ -37,10 +35,18 @@ class Card extends React.Component {
       </Image>}
       {!!button && <Button
         text={button.text}
+        onClick={button.onClick}
+        alertMessage={button.alertMessage}
+        style={button.style}>
+      </Button>}
+      {!!playingCard && <Button
+        text="Flip"
         onClick={this.flipCard}>
       </Button>}
     </div>
   }
 }
 
-export default Card
+
+export const PlayingCard = (props) =>
+  <Card {...props} playingCard="true"/>
