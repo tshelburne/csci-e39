@@ -1,6 +1,5 @@
 @import "pattern-library";
-@import "./components/styles/calendar.scss";
-$primary-color: rgba(150, 143, 179, 1);
+$primary-color: rgb(186, 201, 186);
 
 // Style your components here
 $transition: width 2s ease;
@@ -19,7 +18,12 @@ $margin: 10px;
   max-width: 1024px;
   margin: 0 auto;
 }
-
+code {
+  display: inline-block;
+  max-width: 100%;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
 #clock {
   .h1 {
     font-size: 13px;
@@ -27,8 +31,12 @@ $margin: 10px;
   font-family: "Share Tech Mono", monospace;
   color: #ffffff;
   text-align: center;
-  color: #daf6ff;
-  background: #222;
+  color: lighten($primary-color, 45%);
+  background: linear-gradient(135deg, black 25%, transparent 25%) -50px 0,
+    linear-gradient(225deg, black 25%, transparent 25%) -50px 0, linear-gradient(315deg, black 25%, transparent 25%),
+    linear-gradient(45deg, black 25%, transparent 25%);
+  background-size: 1em 1em;
+  background-color: darken($primary-color, 65%);
   text-shadow: 0 0 20px rgba(10, 175, 230, 1), 0 0 20px rgba(10, 175, 230, 0);
   .time {
     letter-spacing: 0.05em;
@@ -114,7 +122,7 @@ $margin: 10px;
     }
     50% {
       background: lighten($primary-color, 29%);
-      color: darkblue;
+      color: darken($primary-color, 65%);
       box-shadow: $shadow3;
       text-shadow: $text-shadow;
     }
@@ -122,8 +130,6 @@ $margin: 10px;
     }
   }
 
- 
-    
   /////////////////
 
   &:last-child {
@@ -162,15 +168,6 @@ progress {
   box-shadow: $shadow;
 }
 
-// Ignore the styles below unless you want to change them for fun
-
-body {
-  background: crimson;
-  padding: 30px;
-  background: linear-gradient(to bottom, rgba(150, 143, 179, 1) 0%, crimson 100%);
-  min-height: 100vh;
-}
-
 .example-container {
   background: hsla(0, 0, 100%, 0.8);
   margin-top: 7vh;
@@ -185,4 +182,73 @@ h3,
 h4 {
   margin-top: 0;
   font-family: "Permanent Marker", sans-serif;
+}
+
+$color-3: rgb(206, 215, 196);
+$color-3-t: transparentize($color-3, 1);
+
+$color-4: $primary-color;
+$color-4-t: transparentize($color-4, 1);
+
+$size: 2.8em;
+$size-half: $size/2;
+$begin: $size/9.53;
+$step: $size/18;
+$space: $size/8.4;
+$step-s: $step/1.5;
+
+$step-b: $space;
+$step-e: $space + $step;
+$step-b-2: $space * 2 + $step;
+$step-e-2: $space * 2 + $step * 2;
+$step-b-3: $space * 3 + $step * 2;
+$step-e-3: $space * 3 + $step * 3;
+
+$small-b: ($space * 3 + $step)/2;
+$small-e: $small-b + $step;
+$small-b-2: $small-b + $step + $space;
+$small-e-2: $small-b + $step * 2 + $space;
+
+$small-c: $size + $space - $step/1.9;
+$bgcolor: $color-4;
+
+html {
+  height: 100%;
+}
+
+body {
+  background: radial-gradient(
+        circle at right,
+        $color-3-t $step-b,
+        $color-3 $step-b,
+        $color-3 $step-e,
+        $color-3-t $step-e,
+        $color-3-t $step-b-2,
+        $color-3 $step-b-2,
+        $color-3 $step-e-2,
+        $color-3-t $step-e-2,
+        $color-3-t $step-b-3,
+        $color-3 $step-b-3,
+        $color-3 $step-e-3,
+        $color-3-t $step-e-3
+      )
+      0 0,
+    radial-gradient(
+        circle at left,
+        $color-3-t $small-b,
+        $color-3 $small-b,
+        $color-3 $small-e,
+        $color-3-t $small-e,
+        $color-3-t $small-b-2,
+        $color-3 $small-b-2,
+        $color-3 $small-e-2,
+        $color-3-t $small-e-2
+      )
+      0 $small-c,
+    linear-gradient(to right top, $color-3 $step, $color-3-t $step) $small-e-2 $step,
+    linear-gradient(to left top, $color-3 $step, $color-3-t $step) $small-e-2 $step,
+    linear-gradient(to right bottom, $color-3 $step, $color-3-t $step) $small-e-2 $step,
+    linear-gradient(to left bottom, $color-3 $step, $color-3-t $step) $small-e-2 $step;
+  background-size: $size $size;
+  background-color: $bgcolor;
 }

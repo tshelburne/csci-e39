@@ -13,7 +13,8 @@ class Clock extends React.Component {
             'mod-dateTime': dateTime,
         })
         this.state = {
-            time: new Date().toLocaleString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+            time: new Date().toLocaleString([], { hour: '2-digit', minute: '2-digit', second: '2-digit'}),
+            seconds: new Date().toLocaleString([], { hour: '2-digit', minute: '2-digit', second: '2-digit'})
         }
     }
     componentDidMount() {
