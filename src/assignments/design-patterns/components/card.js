@@ -10,20 +10,21 @@ class Card extends React.Component {
   super(...arguments)
   autobind(this)
   this.state = {
-    displayImage: true
+    displayBack: true
   }
   // This binding is necessary to make `this` work in the callback
-  this.toggleDisplay = this.toggleDisplay.bind(this);
+  this.flipCard = this.flipCard.bind(this);
   }
 
-  toggleDisplay(e) {
+  flipCard(e) {
+    console.log('flipCard')
    this.setState(state => ({
-     displayImage: !state.displayImage
+     displayBack: !state.displayBack
    }));
   }
 
   render() {
-    const { title, description, image, button } = this.props
+    const { title, description, image, button, playingCard } = this.props
 
     return <div className="card">
       <h2>{title}</h2>
@@ -34,7 +35,9 @@ class Card extends React.Component {
         height={image.height}>
         alt={image.alt}
       </Image>}
-      {!!button && <Button text={button.text}>
+      {!!button && <Button
+        text={button.text}
+        onClick={this.flipCard}>
       </Button>}
     </div>
   }

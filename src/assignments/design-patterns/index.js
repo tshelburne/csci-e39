@@ -46,7 +46,7 @@ class PatternLibrary extends React.Component {
 							<p> The numeric <code>height</code> and <code>width</code> properties will default to 150px unless another value is specified.</p>
 						</div>}>
 
-					<Image subject="kitten" width="100" height="200"> </Image>
+					<Image subject="kitten" width="100" height="200"/>
 					<Image subject="cage" width="300" height="200" alt="Nicholas Cage"> </Image>
 					<Image subject="bacon" width="200" height="200"> </Image>
 					<Image></Image>
@@ -81,17 +81,25 @@ class PatternLibrary extends React.Component {
 					</Card>
 				</Example>
 
-
-
 				<Example title="Button"
 					componentName="<Button>"
 					description={
 						<div>
-						<p>A versatile button component can be used for lots of stuff.</p>
+							<p>A versatile button component can be used for lots of stuff.</p>
+							<p>The <code>style</code> property accepts <code>light</code> or
+							<code>dark</code> (default) as strings and affects the button color.</p>
+							<p>To set an associated action, you may:</p>
+							<ul>
+								<li>pass in as <code>onClick</code> a function available in the
+								component from which you call the <code>Button</code> component </li>
+								<li>pass in a string <code>alertMessage</code> that will be alerted
+								when the button is clicked.</li>
+								<li> do nothing and your button will alert "You clicked me!"</li>
+							</ul>
 						</div>
 					}>
 					<Button text="Click me!" style="light"></Button>
-					<Button text="Flip Card" style="dark"></Button>
+					<Button text="Say hello" style="dark" alertMessage="hello"></Button>
 				</Example>
 			</div>
 		)
