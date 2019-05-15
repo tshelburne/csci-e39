@@ -40,7 +40,7 @@ class ToggleButton extends React.Component {
     render() {
         return(
         <button onClick={this.handleClick}>
-            {this.state.isToggleOn ? 'ON' : 'OFF'}
+            {this.state.isToggleOn ? 'on' : 'off'}
         </button>
         )
     }
@@ -71,6 +71,7 @@ class DiceButton extends React.Component {
     }
 
     handleClick() {
+        console.log(this.props)
         this.setState(state => ({
             dice_value: Math.floor(Math.random() * this.state.dice_sides)+1
         }));

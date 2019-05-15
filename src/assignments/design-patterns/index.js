@@ -6,8 +6,10 @@ import Card from './components/card'
 import './app.scss'
 import './components/card.scss'
 import {CloseButton, ToggleButton ,DiceButton } from './components/buttons.js'
-
-
+import {ColorCard, RadomButton} from './components/color_randomizer.js'
+function twoalert(one,two){
+	alert(one +'- '+two);
+}
 class PatternLibrary extends React.Component {
 
 	constructor(...args) {
@@ -23,6 +25,7 @@ class PatternLibrary extends React.Component {
 		}
 	}
 
+
 	render() {
 		return (
 			<div className="style-guide">
@@ -35,16 +38,20 @@ class PatternLibrary extends React.Component {
 				<DiceButton dice_sides="4"></DiceButton>
 
 
+				<RadomButton onChange={twoalert}></RadomButton>
+
+				<ColorCard></ColorCard>
+
 				<Example title="My Card with Image">
-					<Card heading="One Card" label="Bill Murray!" image_url="https://www.fillmurray.com/300/300" > Child Html..</Card>
+					<Card heading="One Card" label="Bill Murray!" image_url="https://www.fillmurray.com/300/300" > Child Html..</Card >
 				</Example>
 
 				<Example title="My Card no Image">
-					<Card heading="One Card" label="No Bill Murray Imaage"> Child Html..</Card>
+					<Card heading="One Card" label="No Bill Murray Imaage" > Child Html..</Card >
 				</Example>
 
 				<Example title="<ToggleButton> sets state on or off">
-					<ToggleButton > </ToggleButton>
+					< ToggleButton > < /ToggleButton >
 				</Example>
 
 				<Example title="<DiceButton>. Click to roll.  Defaults to six sides.">
