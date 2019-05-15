@@ -11,7 +11,7 @@ const Example = ({title, children}, context) => (
 
 		<div className="example--rendered">
 			<h3>Rendered output:</h3>
-			{children}
+			<div className='example--rendered-container'>{children}</div>
 		</div>
 
 		<div className="example--toggles">

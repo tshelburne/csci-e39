@@ -1,40 +1,10 @@
-@import 'pattern-library';
+// *** Components ***
+@import "./scss/components/_component-variables";
+@import "./scss/components/_button";
+@import "./scss/components/_button-group";
+@import "./scss/components/_icon";
 
-$padding: 20px;
-$margin: 10px;
-
-.style-guide {
-	width: 90%;
-	max-width: 1024px;
-	margin: 0 auto;
-}
-
-.example {
-	padding: $padding;
-	margin-bottom: $margin;
-	border: thin solid;
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-
-	.example--rendered {
-		padding: $padding;
-		margin-bottom: $margin;
-		border: thin dotted #ccc;
-	}
-
-	.example--toggles {
-		margin-bottom: $margin;
-
-		.active {
-			background: pink;
-		}
-	}
-
-	.example--code {
-		padding: $padding;
-		background: #eee;
-		border: thin dotted #ccc;
-	}
-}
+// *** Base ***
+@import "./scss/base/_normalize";
+@import "./scss/base/_main-variables";
+@import "./scss/base/_main";

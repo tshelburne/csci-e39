@@ -1,6 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
+import {SubmitButton, ShowButton, ShowBalloonIcon} from './components/buttons'
+import ButtonGroup from './components/buttonGroup'
+import BalloonIcon from './components/balloonIcon'
+import SmallBalloonIcon from './components/smallBalloonIcon'
+import ToggleVisibility from './components/ToggleVisibility'
 
 import './app.scss'
 
@@ -21,19 +26,33 @@ class PatternLibrary extends React.Component {
 
 	render() {
 		return (
-			<div className="style-guide">
+			<div className='style-guide balloon-border'>
 				<h1>My Pattern Library!</h1>
+				
+				<Example title='My Special Interactive Icon'>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
+						<SmallBalloonIcon>Press the [show icon] button below.</SmallBalloonIcon>
+
 				</Example>
 
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
+				<Example title='My Special Buttons'>
+
+						<SubmitButton></SubmitButton>
+
+						<ShowButton></ShowButton>
+
 				</Example>
 
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
+				<Example title='My Special Button Group'>
+
+						<ButtonGroup></ButtonGroup>
+
+				</Example>
+
+				<Example title='My Special Icon'>
+
+						<BalloonIcon></BalloonIcon>
+
 				</Example>
 			</div>
 		)
