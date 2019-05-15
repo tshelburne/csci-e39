@@ -30,17 +30,17 @@ class ScoreButton extends React.Component {
             //reset the progress
             newScore =  this.state.score + this.state.increment
         }
-        this.setState((prevState, { score }) => ({
-           
+        this.setState((prevState, { score }) => ({ 
             score: newScore
         }))
     }
 
     render() {
         return (
-            <React.Fragment>
+          
+                <p>
                 <button className="button score" onClick={this.handleClick}>Score: {this.state.score}</button>
-            </React.Fragment>
+                </p> 
         )
     }
 }

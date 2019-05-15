@@ -1,11 +1,10 @@
 import React from 'react'
-let currentLocalTime = new Date().toLocaleString();
 import cx from 'classnames'
 import PropTypes from 'prop-types'
 
 class Clock extends React.Component {
     constructor(props) {
-        super(props) //call super props first before 'this' 
+        super(props) //call super props first before using 'this' 
         const { time, date, dateTime, } = this.props
         var classes = cx(`clock`, {
             'mod-time': time,
@@ -13,8 +12,8 @@ class Clock extends React.Component {
             'mod-dateTime': dateTime,
         })
         this.state = {
-            time: new Date().toLocaleString([], { hour: '2-digit', minute: '2-digit', second: '2-digit'}),
-            seconds: new Date().toLocaleString([], { hour: '2-digit', minute: '2-digit', second: '2-digit'})
+            time: new Date().toLocaleString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+            seconds: new Date().toLocaleString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
         }
     }
     componentDidMount() {
@@ -39,8 +38,6 @@ class Clock extends React.Component {
             date: PropTypes.bool,
             dateTime: PropTypes.bool,
         }
-
-        //finish converting to a class. .. 
         return (
             <React.Fragment>
                 <p className="time">{this.state.time}</p>
@@ -48,27 +45,22 @@ class Clock extends React.Component {
         )
     }
 }
-
-
 export default Clock
-export const ClockArea = ({ children, ...props }) => {
+//const exports
+export const ClockArea = ({ children, text, ...props }) => {
 
     return <div {...props} id="clock">
-        <h1>Current:</h1>
+        <h2>{text}</h2>
         {children}
     </div>
-
-
 }
-
-
 export const ClockDate = (props) => {
     return <div>
         <p className="date">{new Date().toLocaleString([], { day: '2-digit', month: '2-digit', year: '2-digit' })} </p>
     </div>
 }
 
-export const ClockTime = Clock
-
-
-
+export const ClockTime = (props) =>
+    <Clock />
+export const GameClock = (props) =>
+    <ClockArea text="Current Date and Time" ><ClockDate /><ClockTime /></ClockArea>

@@ -18,12 +18,7 @@ $margin: 10px;
   max-width: 1024px;
   margin: 0 auto;
 }
-code {
-  display: inline-block;
-  max-width: 100%;
-  white-space: normal;
-  overflow-wrap: anywhere;
-}
+
 #clock {
   .h1 {
     font-size: 13px;
@@ -152,8 +147,17 @@ code {
 
   .example--code {
     padding: $padding;
-    background: #eee;
+    background: #333;
     border: thin dotted #ccc;
+    color: #fff;
+  }
+  code {
+    display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  
+    color:#ccc;
   }
 }
 
