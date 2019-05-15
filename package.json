@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rm -rf build/* public/* node_modules dev.sqlite3",
     "build.client": "webpack --mode=production",
-    "build.server": "mkdir -p build && babel -d ./build ./src -s",
+    "build.server": "mkdir build && babel -d ./build ./src -s",
     "build": "npm run build.server && npm run build.client",
     "knex": "babel-node node_modules/knex/bin/cli.js",
     "migration": "npm run knex migrate:make",
@@ -21,7 +21,7 @@
     "web:container": "docker build -t tshelburne/csci-e39:master .",
     "web:run": "docker run -t -i --expose 3000 -p 3000:3000 --expose 35729 -p 35729:35729 tshelburne/csci-e39:master",
     "web:publish": "docker push tshelburne/csci-e39:master",
-    "web:deploy": "heroku container:push web",
+    "web:deploy": "heroku container:push web && heroku container:release web",
     "web:migrate": "heroku run npm run db.migrate"
   },
   "author": "Tim Shelburne",
@@ -29,8 +29,9 @@
   "dependencies": {
     "bookshelf": "^0.14.1",
     "class-autobind": "^0.1.4",
+    "classnames": "^2.2.6",
     "cloudinary": "^1.13.2",
-    "debug": "^3.0.1",
+    "debug": "^4.1.1",
     "js-beautify": "^1.8.9",
     "jsx-to-string": "^1.4.0",
     "kcors": "^2.2.2",
@@ -40,8 +41,8 @@
     "koa-static": "^5.0.0",
     "pg": "^7.7.1",
     "prop-types": "^15.6.2",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
     "socket.io": "^2.2.0",
     "supports-color": "^5.5.0",
     "xstream": "^11.7.0"
@@ -66,7 +67,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.27.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.3.1"
   },
   "babel": {
     "presets": [
