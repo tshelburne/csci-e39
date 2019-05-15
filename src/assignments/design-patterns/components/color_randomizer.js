@@ -23,6 +23,7 @@ class CallbackButton extends React.Component {
 
         // my understanding is setting props to state isn't always a great idea.
         // But props aren't available during the call back, so I'm setting as state.
+        // oddly the onChange function prop seemed to be ok
 
         if(props.dice_sides){
             var mydice_sides = props.dice_sides;

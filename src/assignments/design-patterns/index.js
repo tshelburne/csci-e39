@@ -5,11 +5,13 @@ import Header2 from './components/header2'
 import Card from './components/card'
 import './app.scss'
 import './components/card.scss'
-import {CloseButton, LimitedToggleButton ,DiceButton } from './components/buttons.js'
-import {ColorCard, RadomButton} from './components/color_randomizer.js'
-function twoalert(one,two){
-	alert(one +'- '+two);
-}
+import {CloseButton, LimitedToggleButton, DiceButton, DoSomethingButton } from './components/buttons.js'
+import {ColorCard, CallbackButton} from './components/color_randomizer.js'
+
+
+
+
+
 class PatternLibrary extends React.Component {
 
 	constructor(...args) {
@@ -25,6 +27,9 @@ class PatternLibrary extends React.Component {
 		}
 	}
 
+	twoAlert(){
+		alert("two");
+	}
 
 	render() {
 		return (
@@ -33,10 +38,11 @@ class PatternLibrary extends React.Component {
 				<h1>Aram Comjean Pattern Library</h1>
 
 				<Header2 headingText="CSCI-e39, Spring 2019"/>
-				<CloseButton button_text="X"> </CloseButton>
 
 
-
+				<Example title="Button Component that runs Javascript">
+					<DoSomethingButton button_text="button that runs javascript"> </DoSomethingButton>
+				</Example>
 
 
 

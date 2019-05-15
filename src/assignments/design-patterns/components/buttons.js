@@ -22,15 +22,25 @@ class CloseButton extends React.Component {
 class DoSomethingButton extends React.Component {
 
 
-    constructor() {
-        super(...arguments)
+    constructor(props) {
+        super(props)
+        console.log(props)
+        this.doSomething = this.doSomething.bind(this);
     }
 
+
+    // Run the function passed in as a prop
+    doSomething(){
+        console.log("in DoSomething");
+        console.log(this.props);
+        alert("click");
+
+    }
 
     render() {
         const {button_text, ...inputProps} = this.props
             return (
-                <button> {button_text} </button>
+                <button onClick={this.doSomething} > {button_text} </button>
             )
     }
 }
@@ -125,7 +135,7 @@ class DiceButton extends React.Component {
 }
 
 
-export  {CloseButton, LimitedToggleButton, DiceButton }
+export  {CloseButton, LimitedToggleButton, DiceButton, DoSomethingButton }
 
 
 
