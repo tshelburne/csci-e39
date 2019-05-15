@@ -1,17 +1,20 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import Example from './support/example'
+import PropTypes from 'prop-types' 
+import Example from './support/example' 
 import './app.scss'
 //import Datepicker from './components/cal-datepicker';
 import GameProgressBar from './components/gameProgressBar';
 import ScoreButton, { TouchDownScoreButton, TennisScoreButton } from './components/scoreButton' //trying out * 
 import Clock, { ClockArea, ClockDate, ClockTime, GameClock } from './components/clock'
 
-class PatternLibrary extends React.Component {
+const PatternLibrary = () =>
+	<ActiveCodeProvider>
+		<div className="style-guide">
+			<h1>My Pattern Library!</h1>
 
-	constructor(...args) {
-		super(...args)
-
+			<Example title="My Special <div>">
+				<div className="just-testing">HELLO DIV</div>
+			</Example> 
 		this.state = { activeCode: `react` }
 	}
 
@@ -78,6 +81,6 @@ class PatternLibrary extends React.Component {
 PatternLibrary.childContextTypes = {
 	activeCode: PropTypes.string,
 	setActiveCode: PropTypes.func,
-}
+} 
 
 export default PatternLibrary
