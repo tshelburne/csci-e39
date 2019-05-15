@@ -58,13 +58,14 @@ class PatternLibrary extends React.Component {
 					componentName="<Button>"
 					description={
 						<div>
-							<p>A versatile button component can be used for lots of stuff.</p>
 							<p>The <code>style</code> property accepts <code>light</code> or
-							<code>dark</code> (default) as strings and affects the button color.</p>
+							<code>dark</code> (default) as strings and affects the button color,
+							except when used in a <code>PlayingCard</code>.</p>
 							<p>To set an associated action, you may:</p>
 							<ul>
 								<li>pass in as <code>onClick</code> a function available in the
 								component from which you call the <code>Button</code> component </li>
+								(see examples in the <code>PlayingCard</code> component below)
 								<li>pass in a string <code>alertMessage</code> that will be alerted
 								when the button is clicked.</li>
 								<li> do nothing and your button will alert "You clicked me!"</li>
@@ -79,7 +80,17 @@ class PatternLibrary extends React.Component {
 					componentName="<Card>"
 					description={
 						<div>
-						<p>A versatile card component can be used for lots of stuff.</p>
+							<p>The versatile <code>Card</code> element can be used to display:</p>
+							<ul>
+								<li>a <code>title</code> (string)</li>
+								<li>an optional <code>description</code> (string)</li>
+								<li>an optional <code>image</code> (an object containing the props required
+								by the <code>Image</code> component as described above)</li>
+								<li>an optional <code>button</code> (an object containing the props required
+								by the <code>Button</code> component as described above)</li>
+							</ul>
+							<p>To enable a flippable card for use in games, please use the related
+							<code>PlayingCard</code> component described below.</p>
 						</div>
 					}>
 					<Card title="Mittens the Kitten"
@@ -100,6 +111,23 @@ class PatternLibrary extends React.Component {
 						description="Sam is a superhero. His superpower is invisibility, which means he's also very good at evading the paparazzi, and he has no photo."
 						>
 					</Card>
+
+				</Example>
+
+				<Example title="Flippable playing cards"
+					componentName="<PlayingCard>"
+					description={
+						<div>
+							<p>Designed for use in games, the <code>PlayingCard</code> component
+							creates the effect of a two-sided playing card which starts face down,
+							with a built-in "Flip" button.</p>
+							<p>The back of the card is solid by default, but you can pass in the prop
+							<code>patterened</code> for a patterned background image reminiscent
+							of a traditional card deck.</p>
+							<p>It takes <code>text</code>, <code>description</code>, and <code>image</code>
+							properties as described in the <code>Card</code> documentation above.</p>
+						</div>
+					}>
 
 					<PlayingCard
 						title="Bill Murr"
