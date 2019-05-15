@@ -2,6 +2,14 @@
 
 $padding: 20px;
 $margin: 10px;
+$primary-accent: SlateGrey;
+$main-color: mistyrose;
+$hover-color: Salmon;
+$button-color: lighten($hover-color, 11);
+$head-foot-background: rgba(200, 54, 54, 0.5); /*transparent pink background with 50% opacity*/
+$default-font: "Muli", sans-serif;
+$border-radius: 10px;
+
 
 .style-guide {
 	width: 90%;
@@ -28,7 +36,7 @@ $margin: 10px;
 		margin-bottom: $margin;
 
 		.active {
-			background: pink;
+			background: $main-color;
 		}
 	}
 
@@ -36,5 +44,119 @@ $margin: 10px;
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
+	}
+}
+
+pre {
+	overflow: hidden;
+}
+
+body {
+	font-family: $default-font;
+	color: $primary-accent;
+}
+
+h1 {
+	display: flex;
+	align-items: center;
+	color: $button-color;
+	letter-spacing: 2px;
+}
+
+.sakura {
+	max-width: 50px;
+}
+
+button {
+	background-color: $button-color;
+	transition: background-color .3s ease;
+	padding: 10px 15px;
+	border-radius: 12px;
+	border: 0px;
+	font-size: 14px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	color: $primary-accent;
+	box-shadow: 1px 1px 2px 0 darken($primary-accent, 11);
+	margin-bottom: 10px;
+	margin-right: 10px;
+}
+button:hover {
+	background-color: $hover-color;
+}
+
+.secondary-button {
+	border: 2px solid $primary-accent;
+	border-radius: 12px;
+}
+
+.polaroid {
+	background-color: $main-color;
+	box-shadow: 1px 2px 3px 1px hsla(0,0,10%, .5);
+	min-width: 200px;
+	text-align: center;
+	margin: 0 auto;
+	display: inline-block;
+	margin: 20px;
+}
+img {
+	width: 100%; // allows img to resize with screen stretch/shrink
+	height: auto;
+	max-width: 180px;
+	margin: 10px;
+}
+
+.img-details {
+	text-align: left;
+	padding: 20px;
+}
+
+.align-follow-btn {
+	float: right;
+}
+
+.interact-buttons{
+	flex-direction: row;
+	margin-right: -10px;
+}
+
+.post {
+	display: flex;
+	flex-direction: row;
+	background-color: white;
+}
+
+@media (max-width:600px)
+{
+	.post {
+		flex-direction: column;
+	}
+	.polaroid {
+		min-width: 150px;
+	}
+	img {
+		max-width: 130px;
+	}
+}
+
+footer {
+	padding: 20px 30px 50px; // top | right | {bottom=top} | {left=right}
+	margin-top: 10px;
+	border-radius: 30px 0 /30px 60px;
+	box-shadow: 0px 1px 2px 1px darken($primary-accent, 7);
+	margin-right: 10px;
+	background-color: $head-foot-background;
+	li {
+		display: inline-block;
+		margin-right: 15px;
+		margin-bottom: 10px;
+		letter-spacing: 2px;
+	}
+	a {
+		color: white;
+		text-decoration: none;
+	}
+	a:hover {
+		color: $primary-accent;
 	}
 }

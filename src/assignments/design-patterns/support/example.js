@@ -16,12 +16,12 @@ export const ActiveCodeProvider = ({children}) => {
 	</ActiveCodeContext.Provider>
 }
 
-const Example = ({title, children}) => {
+const Example = ({title, description, children}) => {
 	const {activeCode, setActiveCode} = useContext(ActiveCodeContext)
 
 	return <div className="example">
 		<h2 className="example--title">{title}</h2>
-
+		<p>{description}</p>
 		<div className="example--rendered">
 			<h3>Rendered output:</h3>
 			{children}
