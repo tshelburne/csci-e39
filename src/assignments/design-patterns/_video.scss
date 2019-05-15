@@ -1,0 +1,10 @@
+.video {
+  width: 320px;
+  padding: 10px;
+  border: 1px solid $secondaryColor;
+  background-color: $primaryColor;
+  color: #fff;
+  .caption {
+    padding-top: 5px;
+  }
+}

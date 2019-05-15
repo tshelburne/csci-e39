@@ -1,4 +1,31 @@
+$primaryColor: #F58426; //knicks orange
+$secondaryColor: #006BB6; //knicks blue
+$grayColor: #BEC0C2; //knicks gray
+@import url('https://fonts.googleapis.com/css?family=Oswald');
 @import 'pattern-library';
+@import 'button';
+@import 'list';
+@import 'player';
+@import 'video';
+
+a {
+  color: $secondaryColor;
+  &:hover, &:active, &:focus {
+    color: darken($secondaryColor, 20%);
+  }
+}
+
+p {
+  line-height: 1.5;
+}
+body {
+  font-family: 'Oswald', sans-serif;
+}
+
+h1,h2,h3,h4,h5 {
+  color: $primaryColor;
+}
+
 
 $padding: 20px;
 $margin: 10px;
@@ -12,8 +39,8 @@ $margin: 10px;
 .example {
 	padding: $padding;
 	margin-bottom: $margin;
-	border: thin solid;
-
+  border: thin solid;
+  border-color: $secondaryColor;
 	&:last-child {
 		margin-bottom: 0;
 	}
@@ -34,7 +61,7 @@ $margin: 10px;
 
 	.example--code {
 		padding: $padding;
-		background: #eee;
-		border: thin dotted #ccc;
+		background: lighten($secondaryColor, 60%);
+		border: thin dotted lighten($secondaryColor, 20%);
 	}
 }
