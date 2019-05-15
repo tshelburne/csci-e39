@@ -1,20 +1,25 @@
 import React from 'react'
 
 
+/**
+ * Color Card.  The ColorCard Tag uses two type of components (3 buttons, 1 Card)
+ *
+ * Clicking the buttons changes the R,G or B settings.
+ *
+ * In hindsight sliders would be more usefull.
+ *
+ */
 
-//https://stackoverflow.com/questions/27864951/how-to-access-childs-state-in-react
 
+/**
+ *  Call back buttons, generate a random number and pass that with the key to the creating component.
+ *
+ */
 
-// Here I exptend the state.  The button is showing a dice rool.
-
-class RadomButton extends React.Component {
+class CallbackButton extends React.Component {
 
     constructor(props) {
         super(props)
-
-
-        console.log ("BUTTON Contsructor")
-        console.log(props)
 
         // my understanding is setting props to state isn't always a great idea.
         // But props aren't available during the call back, so I'm setting as state.
@@ -27,10 +32,11 @@ class RadomButton extends React.Component {
         }
         this.state= {'dice_sides': mydice_sides, 'dice_value' :0, 'keys':props.keys};
 
-        // This binding is necessary to make `this` work in the callback
+        // This binding is required to make `this` work in the callback.  I tried without and no dice..
         this.handleClick = this.handleClick.bind(this);
 
     }
+
 
     handleClick() {
         console.log("handle Click");
@@ -43,6 +49,7 @@ class RadomButton extends React.Component {
         this.props.onChange(this.state.keys,newRoll);
     }
 
+
     render() {
         return(
             <button onClick={this.handleClick}>
@@ -53,6 +60,12 @@ class RadomButton extends React.Component {
 }
 
 
+/**
+ *
+ * The Color Card impliments the 3 button and one card part component.
+ *
+ */
+
 
 
 class ColorCard extends React.Component {
@@ -61,18 +74,25 @@ class ColorCard extends React.Component {
         super(props)
 
         this.state={red:0, green:0, blue:0}
+
         // This binding is necessary to make `this` work in the callback, when called from the random number component
-        this.handleFieldChange = this.handleFieldChange.bind(this);
+        this.handleButtonChange = this.handleButtonChange.bind(this);
 
     }
+    
 
-    handleFieldChange (fieldId, value)  {
-        console.log("color card handleFieldChange"+fieldId+ '  ' + value);
+
+    handleButtonChange (fieldId, value)  {
+        console.log("color card handleButtonChange"+fieldId+ '  ' + value);
 
         this.setState(state => ({ [fieldId]: value }));
         var setColorTo =  "RGBA("+ this.state.red+','+this.state.green+','+this.state.blue+",.99)";
         console.log (this.state);
         console.log (setColorTo);
+
+        // Use Javascript to set Class color. If multiple boxes with same class they'll all change.
+        // use id based to make color card individual.
+
         var elements = document.getElementsByClassName('color-card');
         for (var i = 0; i < elements.length; i++) {
             elements[i].style.backgroundColor=setColorTo;
@@ -80,30 +100,23 @@ class ColorCard extends React.Component {
     }
 
 
-/*    <div style="background color: RGBA({this.state.red},{this.state.green},{this.state.blue},.99)">
-                <RadomButton dice_sides="100" key="red" onChange={this.handleFieldChange} />
-                <RadomButton dice_sides="100" key="green" onChange={this.handleFieldChange} />
-                <RadomButton dice_sides="100" key="blue" onChange={this.handleFieldChange} />
-            </div>
-*/
+
     render() {
-        //const {heading,label,image_url, ...inputProps} = this.props
-// RGBA({this.state.red},{this.state.green},{this.state.blue},.99) ">
         return (
             <div className="color-card" >
-                R:<RadomButton dice_sides="100" keys="red" onChange={this.handleFieldChange} /><br />
-                G:<RadomButton dice_sides="100" keys="green" onChange={this.handleFieldChange} /><br />
-                B:<RadomButton dice_sides="100" keys="blue" onChange={this.handleFieldChange} /><br />
+                R:<CallbackButton dice_sides="100" keys="red" onChange={this.handleButtonChange} /><br />
+                G:<CallbackButton dice_sides="100" keys="green" onChange={this.handleButtonChange} /><br />
+                B:<CallbackButton dice_sides="100" keys="blue" onChange={this.handleButtonChange} /><br />
 
-                Color Card
-        {this.state.red}       -          {this.state.green}                {this.state.blue}
+                Color Card:
+        - R: {this.state.red} - G: {this.state.green} - B: {this.state.blue}
             </div>
         )
     }
 }
 
 
-export  {ColorCard, RadomButton}
+export  {ColorCard, CallbackButton}
 
 
 

@@ -4,9 +4,28 @@ import React from 'react'
 
 class CloseButton extends React.Component {
 
+
     constructor() {
         super(...arguments)
     }
+
+
+    render() {
+        return (
+            <button> X </button>
+        )
+    }
+}
+
+
+
+class DoSomethingButton extends React.Component {
+
+
+    constructor() {
+        super(...arguments)
+    }
+
 
     render() {
         const {button_text, ...inputProps} = this.props
@@ -20,22 +39,35 @@ class CloseButton extends React.Component {
 // So add some state.  This a toggle.
 // basically  slightly modified.   https://reactjs.org/docs/handling-events.html
 
-class ToggleButton extends React.Component {
+class LimitedToggleButton extends React.Component {
 
     constructor() {
         super(...arguments)
-        this.state = {isToggleOn: true};
+        this.state = {isToggleOn: true, clickCount:0};
 
         // This binding is necessary to make `this` work in the callback
         this.handleClick = this.handleClick.bind(this);
 
     }
 
+
     handleClick() {
+
         this.setState(state => ({
-            isToggleOn: !state.isToggleOn
+            clickCount: this.state.clickCount+1
         }));
+
+        // switch the state if the button hasen't been overused
+        if (this.state.clickCount<4){
+            this.setState(state => ({
+                isToggleOn: !state.isToggleOn
+            }));
+
+        } else {
+            alert ("enough already  "+ this.state.clickCount + " times is too much")
+        }
     }
+
 
     render() {
         return(
@@ -47,7 +79,12 @@ class ToggleButton extends React.Component {
 }
 
 
-// Here I exptend the state.  The button is showing a dice rool.
+/**
+ *
+ * A self contained button that generates a random number when clicked.
+ *
+ *
+ */
 
 class DiceButton extends React.Component {
 
@@ -77,6 +114,7 @@ class DiceButton extends React.Component {
         }));
     }
 
+
     render() {
         return(
             <button onClick={this.handleClick}>
@@ -87,7 +125,7 @@ class DiceButton extends React.Component {
 }
 
 
-export  {CloseButton, ToggleButton, DiceButton }
+export  {CloseButton, LimitedToggleButton, DiceButton }
 
 
 

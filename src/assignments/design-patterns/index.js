@@ -5,7 +5,7 @@ import Header2 from './components/header2'
 import Card from './components/card'
 import './app.scss'
 import './components/card.scss'
-import {CloseButton, ToggleButton ,DiceButton } from './components/buttons.js'
+import {CloseButton, LimitedToggleButton ,DiceButton } from './components/buttons.js'
 import {ColorCard, RadomButton} from './components/color_randomizer.js'
 function twoalert(one,two){
 	alert(one +'- '+two);
@@ -30,17 +30,17 @@ class PatternLibrary extends React.Component {
 		return (
 			<div className="style-guide">
 
-				<h1>My Pattern Library!</h1>
+				<h1>Aram Comjean Pattern Library</h1>
 
-				<Header2 headingText="two"/>
+				<Header2 headingText="CSCI-e39, Spring 2019"/>
 				<CloseButton button_text="X"> </CloseButton>
-				<ToggleButton></ToggleButton>
-				<DiceButton dice_sides="4"></DiceButton>
 
 
-				<RadomButton onChange={twoalert}></RadomButton>
 
-				<ColorCard></ColorCard>
+
+
+
+
 
 				<Example title="My Card with Image">
 					<Card heading="One Card" label="Bill Murray!" image_url="https://www.fillmurray.com/300/300" > Child Html..</Card >
@@ -50,17 +50,28 @@ class PatternLibrary extends React.Component {
 					<Card heading="One Card" label="No Bill Murray Imaage" > Child Html..</Card >
 				</Example>
 
-				<Example title="<ToggleButton> sets state on or off">
-					< ToggleButton > < /ToggleButton >
+
+				<Example title="<LimitedToggleButton> sets state on or off, for up to 4 clicks.">
+					<LimitedToggleButton > </LimitedToggleButton>
 				</Example>
 
-				<Example title="<DiceButton>. Click to roll.  Defaults to six sides.">
+
+				<Example title="<DiceButton>. Click to roll.  Defaults to six sides. Click again to re-roll">
+					Click to roll.  Click again to re-roll
+					<hr/>
 					<DiceButton ></DiceButton>
 				</Example>
 
-				<Example title="<DiceButton>. Click to roll.  Set to N sides!">
+				<Example title="<DiceButton>. Click to roll.  Set to 4 sides">
 					<DiceButton dice_sides="4" > </DiceButton>
 				</Example>
+
+				<Example title="<ColorCard>. Generate RGB based Random Colors.">
+					<ColorCard></ColorCard>
+				</Example>
+
+
+
 			</div>
 		)
 	}
