@@ -58,11 +58,12 @@ $primary-color: MidnightBlue;
 
 .card {
 	text-align: center;
-	margin: 5px auto;
+	margin: 20px;
 	background-color: hsl(0,1, 90%);
 	box-shadow: 1px 2px 3px 1px hsla(0,0,10%, .5);
 	padding: 10px 10px 20px 10px;
 	max-width: 300px;
+	display: inline-block;
 }
 
 .card.back {
@@ -92,6 +93,11 @@ $primary-color: MidnightBlue;
 	min-height: 30px;
 	font-weight: bold;
 	cursor: pointer;
+	display: block;
+}
+
+.card .button {
+	margin: 10px auto;
 }
 
 .button.light, .card.back button {
@@ -105,9 +111,9 @@ $primary-color: MidnightBlue;
 }
 
 .card.back.patterned button {
-	background: black;
+	background: red;
 	color: white;
-	border: none;
+	border: thin solid black;
 }
 
 img {
