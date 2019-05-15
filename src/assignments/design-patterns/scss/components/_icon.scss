@@ -1,0 +1,66 @@
+svg {
+  display: inline !important;
+}
+
+.balloon-icon-container {
+	max-width: 10rem;
+	svg {
+		g.balloon-icon {
+			.body-blue {
+				fill: $icon-color-2;
+				stroke: none;
+				stroke-miterlimit: $primary-stroke-miterlimit;
+	      	}
+			.body-green {
+				fill: $icon-color-1;
+				stroke: none;
+				stroke-miterlimit: $primary-stroke-miterlimit;
+			}
+			.body-black {
+				fill: $icon-primary-color;
+				stroke: none;
+				stroke-miterlimit: $primary-stroke-miterlimit;
+			}
+			.line-black {
+				fill: none;
+				stroke: $icon-primary-color;
+				stroke-miterlimit: $primary-stroke-miterlimit;
+			}
+		}
+	}
+}
+
+.invisible {
+  visibility: hidden;
+}
+
+.small-icon-container {
+	width: 2.5rem;
+	background: #eee;
+	border: thin dotted #ccc;
+}
+
+.small-balloon-icon {
+	g {
+		.body-blue {
+			fill: $icon-color-2;
+			stroke: none;
+			stroke-miterlimit: $primary-stroke-miterlimit;
+      	}
+		.body-green {
+			fill: $icon-color-1;
+			stroke: none;
+			stroke-miterlimit: $primary-stroke-miterlimit;
+		}
+		.body-black {
+			fill: $icon-primary-color;
+			stroke: none;
+			stroke-miterlimit: $primary-stroke-miterlimit;
+		}
+		.line-black {
+			fill: none;
+			stroke: $icon-primary-color;
+			stroke-miterlimit: $primary-stroke-miterlimit;
+		}
+	}
+}

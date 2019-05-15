@@ -1,0 +1,60 @@
+.button-group {
+	display: flex;
+	justify-content: space-around;
+	max-width: 95%;
+
+	.button-with-arrow {
+		background-color: $button-group-primary-accent;
+		border: none;
+		color: $button-group-primary-color;
+		text-align: center;
+		text-decoration: none;
+		font-size: 1em;
+		cursor: pointer;
+		width: $button-group-arrow-border-size * ($button-group-arrow-width-multiplier +
+					$button-group-arrow-width-multiplier/3);
+		height: $button-group-arrow-border-size * 2;
+
+		position: relative;
+
+		&:hover {
+			background-color: darken($button-group-primary-accent, 11);
+			transition: background-color 0.3s;
+		}
+	}
+
+	.button-with-arrow:nth-last-child(n + 4),
+	.button-with-arrow:nth-last-child(n + 4) ~ .button-with-arrow {
+		width: $button-group-arrow-border-size * $button-group-arrow-width-multiplier;
+	}
+
+	.button-with-arrow:nth-child(-n + 3):nth-last-child(n + 2):before {
+		content: "";
+		position: absolute;
+		right: -$button-group-arrow-border-size;
+		bottom: 0;
+		width: 0;
+		height: 0;
+		border-left: $button-group-arrow-border-size solid $button-group-primary-accent;
+		border-top: $button-group-arrow-border-size solid transparent;
+		border-bottom: $button-group-arrow-border-size solid transparent;
+		z-index: 1;
+	}
+
+	.button-with-arrow:nth-child(-n + 3):nth-last-child(n + 2):hover:before {
+		border-left: $button-group-arrow-border-size solid darken($button-group-primary-accent, 11);
+		transition: border-left 0.3s;
+	}
+
+	.button-with-arrow:nth-child(n + 2):nth-last-child(-n + 3):after {
+		content: "";
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 0;
+		height: 0;
+		border-left: $button-group-arrow-border-size solid white;
+		border-top: $button-group-arrow-border-size solid transparent;
+		border-bottom: $button-group-arrow-border-size solid transparent;
+	}
+}
