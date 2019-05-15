@@ -82,17 +82,17 @@ const images = [
   {
     url: 'https://farm3.staticflickr.com/2021/2055667192_a80a5fd883_b.jpg',
     title: 'Premium',
-    width: '30%',
+    width: '100%',
   },
   {
     url: 'https://farm3.staticflickr.com/2237/2055692618_e205691c87_b.jpg',
     title: 'Standard',
-    width: '30%',
+    width: '100%',
   },
   {
     url: 'https://farm1.staticflickr.com/42/74271051_8403e323f5.jpg',
     title: 'Single',
-    width: '30%',
+    width: '100%',
   },
 ];
 

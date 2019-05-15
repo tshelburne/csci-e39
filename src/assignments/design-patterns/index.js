@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
-import Navbar from './components/nav'
+import Header from './components/nav'
 import {ButtonGroup, ButtonStandard} from './components/button'
 import {ImageButton} from './components/imagebutton'
 import {ButtonStyled} from './components/styledbutton'
+import Footer from './components/footer'
 
 import './app.scss'
 
@@ -49,8 +50,11 @@ class PatternLibrary extends React.Component {
 					<ButtonStandard disabled> DISABLED BASIC </ButtonStandard>
 				</Example>
 
+				<Example title="My Header">
+					<Header />
+				</Example>
 				<Example title="My Navigation">
-					<Navbar />
+					<Footer />
 				</Example>
 
 			</div> 
