@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
+import Button from './components/button'
+import Card from './components/card'
+import List from './components/list'
 
 import './app.scss'
 
@@ -9,13 +12,13 @@ class PatternLibrary extends React.Component {
 	constructor(...args) {
 		super(...args)
 
-		this.state = {activeCode: `react`}
+		this.state = { activeCode: `react` }
 	}
 
 	getChildContext() {
 		return {
 			activeCode: this.state.activeCode,
-			setActiveCode: activeCode => this.setState({activeCode}),
+			setActiveCode: activeCode => this.setState({ activeCode }),
 		}
 	}
 
@@ -24,16 +27,26 @@ class PatternLibrary extends React.Component {
 			<div className="style-guide">
 				<h1>My Pattern Library!</h1>
 
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
+				<Example title="Button">
+					<Button
+						onClick={() => alert('Button was clicked')}
+						name={'Button Name'}
+					/>
 				</Example>
 
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
+				<Example title="Card">
+					<Card
+						title={'Card Title'}
+						content={'This is the card content. It can be long and wraps around'}
+					/>
 				</Example>
 
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
+				<Example title="List">
+					<List>
+						<p>An item</p>
+						<p>Another item</p>
+						<p>A third item</p>
+					</List>
 				</Example>
 			</div>
 		)
