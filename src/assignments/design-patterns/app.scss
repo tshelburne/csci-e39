@@ -2,6 +2,7 @@
 
 $padding: 20px;
 $margin: 10px;
+$dark-footer: #1f1f1f;
 
 body {
 	font-family: 'Lato', sans-serif;
@@ -28,4 +29,23 @@ body {
 		color:#fff;
 }
 
+.footer {
+	.container{
+		background-color:$dark-footer;
+		color:lightgrey;
+		padding: 20px;
+	}
 
+	.footer-list {
+		list-style: none;
+	}
+
+	a {
+		 color: steelblue;
+		 text-decoration: none;
+	}
+	a:hover {
+  		text-decoration: underline;
+}
+
+}

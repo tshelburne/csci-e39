@@ -30,7 +30,7 @@ const Footer = () => {
 						</a>
 					</li>
 					<li>
-						<span className="footer-link"> © {getYear()} Website </span>
+						<span className="footer-link"> © {getYear()} Website | Address | Phone | Email </span>
 					</li>
 				</ul>
 			</div>

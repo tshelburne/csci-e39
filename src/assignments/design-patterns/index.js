@@ -50,10 +50,10 @@ class PatternLibrary extends React.Component {
 					<ButtonStandard disabled> DISABLED BASIC </ButtonStandard>
 				</Example>
 
-				<Example title="My Header">
+				<Example title="Header">
 					<Header />
 				</Example>
-				<Example title="My Navigation">
+				<Example title="Footer">
 					<Footer />
 				</Example>
 
