@@ -5,15 +5,15 @@ import ReactDOMServer from 'react-dom/server'
 import jsxToString from 'jsx-to-string'
 import beautify from 'js-beautify'
 
-const Example = ({title, children}, context) => (
+const Example = ({title, componentName, description, children}, context) => (
 	<div className="example">
-		<h2 className="example--title">{title}</h2>
-
+		<h2 className="example--title"><span className="example--component-name">{componentName}</span>{title}</h2>
 		<h3>Rendered output:</h3>
 		<div className="example--rendered">
-
 			{children}
 		</div>
+		<h3>Usage:</h3>
+		<div className="example--usage">{description}</div>
 
 		<div className="example--toggles">
 

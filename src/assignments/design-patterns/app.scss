@@ -25,6 +25,12 @@ $margin: 10px;
 		border: thin dotted #ccc;
 	}
 
+	.example--component-name {
+		background-color: MediumAquamarine;
+		margin-right: $margin;
+		padding: 5px;
+	}
+
 	.example--toggles {
 		margin-bottom: $margin;
 
@@ -38,4 +44,50 @@ $margin: 10px;
 		background: #eee;
 		border: thin dotted #ccc;
 	}
+}
+
+code {
+	background: #eee;
+	padding-right: 4px;
+	padding-left: 4px;
+}
+
+// Component styling
+
+$primary-color: MidnightBlue;
+
+.card {
+	text-align: center;
+	margin: 5px auto;
+	background-color: hsl(0,1, 90%);
+	box-shadow: 1px 2px 3px 1px hsla(0,0,10%, .5);
+	padding: 10px 10px 20px 10px;
+	max-width: 300px;
+}
+
+.card h2 {
+	color: $primary-color;
+	display: block;
+	font-size: 1rem;
+}
+
+.button {
+	background: $primary-color;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	min-height: 30px;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.button.light {
+background: white;
+color: $primary-color;
+border: 2px solid $primary-color;
+}
+
+img {
+	border: thin solid black;
+	margin: $margin;
 }
