@@ -1,7 +1,40 @@
-body {
-	font-family: 'Lato', sans-serif;
-}
+$react-background: #292c34;
+$padding: 20px;
+$margin: 10px;
 
-.example--code {
-	overflow: auto;
+
+.example {
+	padding: $padding;
+	margin-bottom: $margin;
+	border: thin solid;
+	border-radius: 5px;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+
+	.example--rendered {
+		padding: $padding;
+		margin-bottom: $margin;
+		border: thin dotted #ccc;
+
+		button {
+			margin: 5px;
+		}
+	}
+
+	.example--toggles {
+		margin-bottom: $margin;
+
+		.active {
+			background: pink;
+		}
+	}
+
+	.example--code {
+		padding: $padding;
+		background: #eee;
+		border: thin dotted #ccc;
+		overflow: auto;
+	}
 }

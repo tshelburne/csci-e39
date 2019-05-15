@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
 import Navbar from './components/nav'
-import {ButtonStandard, ButtonStyled} from './components/button'
+import {ButtonGroup, ButtonStandard} from './components/button'
+import {ImageButton} from './components/imagebutton'
+import {ButtonStyled} from './components/styledbutton'
 
 import './app.scss'
 
@@ -24,32 +26,33 @@ class PatternLibrary extends React.Component {
 	render() {
 		return (
 			<div className="style-guide">
-				<h1>UI Patterns!</h1>
+				<h1>UI Patterns</h1>
+				<i>With Material UI</i>
 
-				<Example title="Button">
-					<ButtonStyled />
-					<ButtonStandard> OK </ButtonStandard>
+				<Example title="Image Buttons">
+				<ImageButton/>
+				</Example>
+
+
+				<Example title="Styled Button">
+					<ButtonStyled name="Styled Button"/>	
+				</Example>
+
+				
+
+				<Example title="Buttons">
+					<ButtonGroup title ="group" />
+					<br></br>
+					
+					<ButtonStandard primary> PRIMARY BASIC </ButtonStandard>
+					<ButtonStandard secondary block> SECONDARY BASIC </ButtonStandard>
+					<ButtonStandard disabled> DISABLED BASIC </ButtonStandard>
 				</Example>
 
 				<Example title="My Navigation">
 					<Navbar />
 				</Example>
 
-				<Example title="My Button <button>">
-					<button className="button-primary">PRIMARY</button>
-				</Example>
-
-				<Example title="My Special <div>">
-					<div className="just-testing">HELLO DIV</div>
-				</Example>
-
-				<Example title="My Special <span>">
-					<span className="just-testing">HELLO SPAN</span>
-				</Example>
-
-				<Example title="My Special <h4>">
-					<h4 className="just-testing">HELLO HEADING</h4>
-				</Example>
 			</div> 
 		)
 	}

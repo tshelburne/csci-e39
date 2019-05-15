@@ -3,38 +3,29 @@
 $padding: 20px;
 $margin: 10px;
 
+body {
+	font-family: 'Lato', sans-serif;
+}
+
 .style-guide {
 	width: 90%;
 	max-width: 1024px;
 	margin: 0 auto;
 }
 
-.example {
+
+.button{
 	padding: $padding;
-	margin-bottom: $margin;
-	border: thin solid;
-
-	&:last-child {
-		margin-bottom: 0;
-	}
-
-	.example--rendered {
-		padding: $padding;
-		margin-bottom: $margin;
-		border: thin dotted #ccc;
-	}
-
-	.example--toggles {
-		margin-bottom: $margin;
-
-		.active {
-			background: pink;
-		}
-	}
-
-	.example--code {
-		padding: $padding;
-		background: #eee;
-		border: thin dotted #ccc;
-	}
+	font-size: 12px;
 }
+
+.mod-primary {	
+		background-color: #4d6df9;
+		color:#fff;
+}
+.mod-secondary {	
+		background-color: #333;
+		color:#fff;
+}
+
+
