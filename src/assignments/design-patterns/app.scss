@@ -2,33 +2,52 @@
 
 $padding: 20px;
 $margin: 10px;
+$font-family-fun: 'Pacifico', cursive;
+$font-family-serious: 'Abril Fatface', cursive;
+
 
 .style-guide {
-	width: 90%;
-	max-width: 1024px;
+	// width: 90%;
+	max-width: 100%;
 	margin: 0 auto;
 	display: grid;
-	grid-template-columns: 0.2fr 1fr;
+	grid-template-columns: 0.2fr .8fr;
   grid-template-rows: 100px 1fr;
   grid-template-areas:
-        "header header"
+        "none header"
         "sidebar main"
 }
 
 header {
-	grid-area: sidebar;
-
+	grid-area: header;
+	font-family: $font-family-fun;
 }
 
 nav {
 	grid-area: sidebar;
-
+	font-family: $font-family-serious;
 }
 
 main {
 	grid-area: main;
+	background-color: rgb(227, 232, 237);
 
 }
+
+.mod-block {
+	border: white solid .5px;
+	border-radius: 5px;
+}
+
+.mod-primary {
+	background-color: red;
+}
+
+.mod-secondary {
+	background-color: dodgerblue;
+}
+
+
 
 .example {
 	padding: $padding;
@@ -57,5 +76,6 @@ main {
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
+		overflow-wrap: break-word;
 	}
 }

@@ -11,7 +11,7 @@ class CardBody extends React.Component {
 
       <p className="body-content">{this.props.text}</p>
 
-      <Button block primary> Read More..</Button>
+      <Button block> Read More..</Button>
     </div>
     )
   }

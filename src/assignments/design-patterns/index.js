@@ -12,19 +12,13 @@ import CardFooter from './components/card-footer'
 
 import './app.scss'
 
-const carouselSlidesData = [
-  {
-    content:
-      "Tomorrow, you will be released. If you are bored of brawling with thieves and want to achieve something there is a rare blue flower that grows on the eastern slopes. Pick one of these flowers. If you can carry it to the top of the mountain, you may find what you were looking for in the first place.",
-    author: "Bane",
-    source: "facebook"
-  }, {
-    content:
-      "You have learn to bury your guilt with anger. I will teach you to confront it and to face the truth.",
-    author: "Ra's Al Ghul",
-    source: "Snapchat"
-  }
-]
+$("nav").find("a").click(function(e) {
+    e.preventDefault();
+    var section = $(this).attr("href");
+    $("html, body").animate({
+        scrollTop: $(section).offset().top
+    });
+});
 
 const PatternLibrary = () =>
 	<ActiveCodeProvider>
@@ -32,8 +26,18 @@ const PatternLibrary = () =>
 		<header>
 			<h1>Yan's Pattern Library!</h1>
 		</header>
+		<nav id="navigation-menu">
+			<ul>
+				<a href="#card-header-container"><li>CardHeader</li></a>
+				<a href="#card-body-container"><li>CardBody</li></a>
+				<a href="#card-container"><li>Card</li></a>
+				<a href="#text-block-container"><li>TextBlock</li></a>
+				<a href="#button-container"><li>Button</li></a>
+				<a href="#icons-container"><li>Icons</li></a>
+			</ul>
+		</nav>
 		<main>
-			<section>
+			<section id="card-header-container">
 				<Example title="<CardHeader>">
 					<CardHeader image={'https://source.unsplash.com/user/erondu/600x400'} />
 					A CardHeader is a component that creates a header banner and is can be used with <b>CardBody </b>
@@ -47,7 +51,7 @@ const PatternLibrary = () =>
 				</Example>
 			</section>
 
-			<section>
+			<section id="card-body-container">
 			<Example title="<CardBody>">
 				<CardBody title={'Title'} date={'March 19 2019'} text={'CardBody Content. Wow so cool! This is a really long paragraph. BLAH BLAH BLAH'}/>
 				A CardBody is a component that holds text content and can be used in
@@ -62,7 +66,7 @@ const PatternLibrary = () =>
 			</Example>
 			</section>
 
-			<section>
+			<section id="card-container">
 			<Example title="<Card>">
 				<Card title={'Title'} image={'https://source.unsplash.com/user/erondu/600x400'} date={'December 11 2017'}>
 				A Card is a component that can be used as
@@ -81,26 +85,7 @@ const PatternLibrary = () =>
 			</Example>
 			</section>
 
-			<section>
-			<Example title="<Card>">
-				<Card title={'Title'} image={'https://source.unsplash.com/user/erondu/600x400'} date={'December 11 2017'}>
-				A Card is a component that can be used as
-				a container to standardized and as a wrapper for the appearance of information
-				such as images, text, etc.
-				</Card>
-				<hr/>
-				<CardFooter title={'Props'}>
-					<ul>
-						<li>image :  <i> An image source for the CardHeader background</i> </li>
-						<li>title :  <i> Title for the CardHeader and CardBody</i></li>
-						<li>children : <i>Elements between the opening and closing tags </i> </li>
-					</ul>
-				</CardFooter>
-
-			</Example>
-			</section>
-
-			<section>
+			<section id="text-block-container">
 			<Example title="<TextBlock>">
 				<TextBlock>
 				<p>A Textblock is a component that can be used as
@@ -116,7 +101,7 @@ const PatternLibrary = () =>
 			</Example>
 			</section>
 
-			<section>
+			<section id="button-container">
 			<Example title="<Button>">
 				<Button> Standard Button </Button>
 				<Button block primary> Important Button </Button>
@@ -134,7 +119,7 @@ const PatternLibrary = () =>
 			</Example>
 			</section>
 
-			<section>
+			<section id="icons-container">
 			<Example title="<Icons>">
 				<Icons.Notification/>
 				<Icons.Close md/>
