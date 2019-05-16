@@ -13,7 +13,7 @@ export default createState
 export const connect = (state_, selector=state => state) => Component => {
 	return class Connected extends React.Component {
 
-		componentWillMount() {
+		componentDidMount() {
 			this.unsubscribe = state_.map(selector).subscribe({
 				next: state => this.setState(state),
 			})
@@ -24,7 +24,9 @@ export const connect = (state_, selector=state => state) => Component => {
 		}
 
 		render() {
-			return <Component {...this.state} {...this.props} />
+			return this.state
+				? <Component {...this.state} {...this.props} />
+				: <React.Fragment>Connecting...</React.Fragment>
 		}
 
 	}
