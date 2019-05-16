@@ -1,0 +1,44 @@
+$primary-color: rgba(150, 143, 179, 1);
+$button-color: rgb(89, 150, 211);
+$button-font: "Verdana", sans-serif;
+$button-width: 7em;
+$button-font-color: #fff;
+$font-weight: 600;
+
+[type="file"] {
+  height: 0;
+  overflow: hidden;
+  width: 0;
+  display: none;
+}
+
+.uploader {
+  background: $button-color;
+  border-radius: 5px;
+  color: $button-font-color;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  font-weight: $font-weight;
+
+  outline: none;
+  padding: 1rem 50px;
+
+  transition: all 0.3s;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+
+  &:hover {
+    background: darken(rgb(89, 150, 211), 10%);
+  }
+
+}
+
+.uploader-container {
+  // text-align: center;
+  display:flex;
+  justify-content: center;
+  margin: 0 auto;
+}
