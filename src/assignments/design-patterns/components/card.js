@@ -41,7 +41,8 @@ export class Card extends React.Component {
       </Button>}
       {!!playingCard && <Button
         text="Flip"
-        onClick={this.flipCard}>
+        onClick={this.flipCard}
+        flip>
       </Button>}
     </div>
   }

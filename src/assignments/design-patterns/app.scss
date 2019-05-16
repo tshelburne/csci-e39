@@ -85,7 +85,7 @@ $primary-color: MidnightBlue;
 	font-size: 1rem;
 }
 
-.button {
+.btn {
 	background: $primary-color;
 	color: white;
 	border: none;
@@ -94,13 +94,14 @@ $primary-color: MidnightBlue;
 	font-weight: bold;
 	cursor: pointer;
 	display: block;
+	margin: 5px;
 }
 
-.card .button {
+.card button {
 	margin: 10px auto;
 }
 
-.button.light, .card.back button {
+button.light, .card.back button {
 	background: white;
 	color: $primary-color;
 	border: 2px solid $primary-color;

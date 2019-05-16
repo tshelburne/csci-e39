@@ -1,7 +1,7 @@
 import React from 'react'
 
 import autobind from 'class-autobind'
-//import icon from './flip.png'
+
 class Button extends React.Component {
 
   constructor() {
@@ -21,14 +21,20 @@ class Button extends React.Component {
     }
 
   render() {
-    const { text, active, onClick, style, alertMessage} = this.props
-    let className = 'button'
-    if (style) {
-      className = className + ' ' + style
-    }
+    const { text, active, onClick, style, alertMessage, flip } = this.props
+    let classString = 'btn'
+      if (style) {
+        classString = classString + ' ' + style
+      }
+      if (flip) {
+        classString = classString + ' flip'
+      }
+
+    console.log(classString)
+
 
 	return <button
-      className={className}
+      className={classString}
       onClick={onClick || this.defaultOnClick }>
 			{!!text && <span data-message={alertMessage}>{text}</span>}
       {!text && <span data-message={alertMessage}>Click me!</span>}
