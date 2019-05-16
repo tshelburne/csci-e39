@@ -47,10 +47,10 @@ class PatternLibrary extends React.Component {
 						</div>}>
 
 					<Image subject="kitten" width="100" height="200"/>
-					<Image subject="cage" width="300" height="200" alt="Nicholas Cage"> </Image>
-					<Image subject="bacon" width="200" height="200"> </Image>
-					<Image></Image>
-					<Image subject="cat"> </Image>
+					<Image subject="cage" width="300" height="200" alt="Nicholas Cage" />
+					<Image subject="bacon" width="200" height="200" />
+					<Image />
+					<Image subject="cat" />
 
 				</Example>
 
@@ -72,8 +72,8 @@ class PatternLibrary extends React.Component {
 							</ul>
 						</div>
 					}>
-					<Button text="Click me!" style="light"></Button>
-					<Button text="Say hello" style="dark" alertMessage="hello"></Button>
+					<Button text="Click me!" style="light" />
+					<Button text="Say hello" style="dark" alertMessage="hello" />
 				</Example>
 
 				<Example title="Multi-purpose card"
@@ -93,6 +93,7 @@ class PatternLibrary extends React.Component {
 							<code>PlayingCard</code> component described below.</p>
 						</div>
 					}>
+
 					<Card title="Mittens the Kitten"
 						description="Mittens loves playing with yarn and chasing laser pointers."
 						image= {{
@@ -105,12 +106,11 @@ class PatternLibrary extends React.Component {
 							text: "Speak",
 							alertMessage: "Meow"
 						}}
-						>
-					</Card>
+						/>
+
 					<Card title="Super Sam"
 						description="Sam is a superhero. His superpower is invisibility, which means he's also very good at evading the paparazzi, and he has no photo."
-						>
-					</Card>
+						/>
 
 				</Example>
 
@@ -138,7 +138,7 @@ class PatternLibrary extends React.Component {
 							alt: "Bill Murray"
 						}}
 						description="Bill Murray is an actor. You probably already knew that."
-					></PlayingCard>
+					/>
 
 					<PlayingCard
 						title="Zombie"
@@ -149,7 +149,7 @@ class PatternLibrary extends React.Component {
 						}}
 						description="Zombies like to eat brains. Watch out!!!"
 						patterned
-					></PlayingCard>
+					/>
 
 				</Example>
 

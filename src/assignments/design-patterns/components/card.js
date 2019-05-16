@@ -30,20 +30,17 @@ export class Card extends React.Component {
       {!!image && <Image
         subject={image.subject}
         width={image.width}
-        height={image.height}>
-        alt={image.alt}
-      </Image>}
+        height={image.height}
+        alt={image.alt} />
       {!!button && <Button
         text={button.text}
         onClick={button.onClick}
         alertMessage={button.alertMessage}
-        style={button.style}>
-      </Button>}
+        style={button.style} />}
       {!!playingCard && <Button
         text="Flip"
         onClick={this.flipCard}
-        flip>
-      </Button>}
+        flip />}
     </div>
   }
 }
