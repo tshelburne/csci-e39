@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 
 const Logo = () => (
+	<div className="wrapper">
 		<svg id="logo" className="logo" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" x="0" y="0" width="374" height="43" viewBox="-6.17 -3.58 374 43" overflow="visible" enableBackground="new -6.168 -3.581 374 43" xmlSpace="preserve">
 
 		<g id="name">
@@ -25,6 +26,7 @@ const Logo = () => (
 
 	<rect id="i_1_" x="88.21" y="17.52" fill="#44AFC8" width="4.4" height="16.76"/>
 	</svg>
+	</div>
 	)
 
 export default Logo

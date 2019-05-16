@@ -1,13 +1,10 @@
 // Login
-* {
-box-sizing: border-box;
-}
 
 *:focus {
 	outline: none;
 }
 body {
-font-family: Arial;
+font-family: $font1;
 /*background-color: #3498DB;*/
 padding: 50px;
 }
