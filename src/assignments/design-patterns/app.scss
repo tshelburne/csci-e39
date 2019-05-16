@@ -1,4 +1,5 @@
 @import 'pattern-library';
+@import "global-vars";
 
 $padding: 20px;
 $margin: 10px;
@@ -36,5 +37,73 @@ $margin: 10px;
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
+	}
+}
+
+.styled-button {
+	color: $foreground-color;
+	background-color: $primary-color;
+	font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+	font-weight: 800;
+	border-radius: 8px;
+	box-sizing: border-box;
+	padding: 6px 16px;
+    text-transform: uppercase;
+}
+
+.custom-button {
+	color: magenta;
+	background-color: cyan;
+	font-family: "Arial", sans-serif;
+	font-weight: bold;
+	border-radius: 50%;
+	box-sizing: border-box;
+	padding: 6px 16px;
+    text-transform: uppercase;
+}
+
+.card {
+	height: 300px;
+	width: 300px;
+	background-color: $background-color;
+	color: $primary-color;
+	border-radius: 6%;
+
+	.card-title {
+		font-weight: bolder;
+		color: $foreground-color;
+		font-size: 2rem;
+	}
+
+	.card-content {
+		color: teal;
+	}
+}
+
+.list {
+	background-color: $background-color;
+	.list-item {
+		font-weight: bolder;
+		color: $foreground-color;
+		font-size: 2rem;
+	}
+}
+
+.custom-list {
+	list-style: none;
+	display: flex;
+	flex-direction: column;
+
+	.custom-list-item {
+		display:inline-block;
+	}
+
+	.custom-list-item::before {
+		display: inline-block;
+		height: 20px;
+		width: 20px;
+		margin-right: 20px;
+		content: '';
+		background-color: $primary-color;
 	}
 }

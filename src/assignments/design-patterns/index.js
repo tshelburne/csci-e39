@@ -34,6 +34,14 @@ class PatternLibrary extends React.Component {
 					/>
 				</Example>
 
+				<Example title="Custom Class Button">
+					<Button
+						onClick={() => alert('Custom button was clicked')}
+						name={'Button Name'}
+						className={'custom-button'}
+					/>
+				</Example>
+
 				<Example title="Card">
 					<Card
 						title={'Card Title'}
@@ -46,6 +54,35 @@ class PatternLibrary extends React.Component {
 						<p>An item</p>
 						<p>Another item</p>
 						<p>A third item</p>
+					</List>
+				</Example>
+
+				<Example title="Custom Class List">
+					<List
+						listClass={'custom-list'}
+						listItemClass={'custom-list-item'}
+					>
+						<p>An item</p>
+						<p>Another item</p>
+						<p>A third item</p>
+					</List>
+				</Example>
+
+				<Example title="Nested">
+					<List>
+						<Card
+							title={'Card Title'}
+							content={'This is the card content. It can be long and wraps around'}
+						/>
+						<Button
+							onClick={() => alert('Custom button was clicked')}
+							name={'Button Name'}
+							className={'custom-button'}
+						/>
+						<Card
+							title={'Card Title'}
+							content={'This is the card content. It can be long and wraps around'}
+						/>
 					</List>
 				</Example>
 			</div>

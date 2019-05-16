@@ -5,10 +5,10 @@ const Card = (props) => {
     const { content, title } = props
     return (
         <div className='card'>
-            <p className='cardTitle'>
+            <p className='card-title'>
                 {title}
             </p>
-            <span className='cardContent'>
+            <span className='card-content'>
                 {content}
             </span>
         </div>
