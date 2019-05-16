@@ -54,7 +54,7 @@ class PatternLibrary extends React.Component {
 
 				</Example>
 
-				<Example title="Button"
+				<Example title="Customizable button"
 					componentName="<Button>"
 					description={
 						<div>
@@ -76,7 +76,7 @@ class PatternLibrary extends React.Component {
 					<Button text="Say hello" style="dark" alertMessage="hello"></Button>
 				</Example>
 
-				<Example title="Reusable cards"
+				<Example title="Multi-purpose card"
 					componentName="<Card>"
 					description={
 						<div>
@@ -114,7 +114,7 @@ class PatternLibrary extends React.Component {
 
 				</Example>
 
-				<Example title="Flippable playing cards"
+				<Example title="Flippable playing card"
 					componentName="<PlayingCard>"
 					description={
 						<div>
@@ -130,11 +130,11 @@ class PatternLibrary extends React.Component {
 					}>
 
 					<PlayingCard
-						title="Bill Murr"
+						title="Bill Murray"
 						image={{
 							subject: "murray",
 							height: "200",
-							width: "200",
+							width: "150",
 							alt: "Bill Murray"
 						}}
 						description="Bill Murray is an actor. You probably already knew that."
