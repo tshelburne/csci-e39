@@ -29,20 +29,25 @@ const carouselSlidesData = [
 const PatternLibrary = () =>
 	<ActiveCodeProvider>
 		<div className="style-guide">
+		<header>
 			<h1>Yan's Pattern Library!</h1>
+		</header>
+		<main>
+			<section>
+				<Example title="<CardHeader>">
+					<CardHeader image={'https://source.unsplash.com/user/erondu/600x400'} />
+					A CardHeader is a component that creates a header banner and is can be used with <b>CardBody </b>
+					inside a <b>Card</b>.
+					<hr/>
+					<CardFooter title={'Props'}>
+					<ul>
+						<li>image :  <i> An image for the header background </i> </li>
+					</ul>
+					</CardFooter>
+				</Example>
+			</section>
 
-			<Example title="<CardHeader>">
-				<CardHeader image={'https://source.unsplash.com/user/erondu/600x400'} />
-				A CardHeader is a component that creates a header banner and is can be used with <b>CardBody </b>
-				inside a <b>Card</b>.
-				<hr/>
-				<CardFooter title={'Props'}>
-				<ul>
-					<li>image :  <i> An image for the header background </i> </li>
-				</ul>
-				</CardFooter>
-			</Example>
-
+			<section>
 			<Example title="<CardBody>">
 				<CardBody title={'Title'} date={'March 19 2019'} text={'CardBody Content. Wow so cool! This is a really long paragraph. BLAH BLAH BLAH'}/>
 				A CardBody is a component that holds text content and can be used in
@@ -55,7 +60,9 @@ const PatternLibrary = () =>
 				</ul>
 				</CardFooter>
 			</Example>
+			</section>
 
+			<section>
 			<Example title="<Card>">
 				<Card title={'Title'} image={'https://source.unsplash.com/user/erondu/600x400'} date={'December 11 2017'}>
 				A Card is a component that can be used as
@@ -72,7 +79,28 @@ const PatternLibrary = () =>
 				</CardFooter>
 
 			</Example>
+			</section>
 
+			<section>
+			<Example title="<Card>">
+				<Card title={'Title'} image={'https://source.unsplash.com/user/erondu/600x400'} date={'December 11 2017'}>
+				A Card is a component that can be used as
+				a container to standardized and as a wrapper for the appearance of information
+				such as images, text, etc.
+				</Card>
+				<hr/>
+				<CardFooter title={'Props'}>
+					<ul>
+						<li>image :  <i> An image source for the CardHeader background</i> </li>
+						<li>title :  <i> Title for the CardHeader and CardBody</i></li>
+						<li>children : <i>Elements between the opening and closing tags </i> </li>
+					</ul>
+				</CardFooter>
+
+			</Example>
+			</section>
+
+			<section>
 			<Example title="<TextBlock>">
 				<TextBlock>
 				<p>A Textblock is a component that can be used as
@@ -86,7 +114,9 @@ const PatternLibrary = () =>
 					</ul>
 				</CardFooter>
 			</Example>
+			</section>
 
+			<section>
 			<Example title="<Button>">
 				<Button> Standard Button </Button>
 				<Button block primary> Important Button </Button>
@@ -102,7 +132,9 @@ const PatternLibrary = () =>
 					</ul>
 				</CardFooter>
 			</Example>
+			</section>
 
+			<section>
 			<Example title="<Icons>">
 				<Icons.Notification/>
 				<Icons.Close md/>
@@ -121,6 +153,8 @@ const PatternLibrary = () =>
 					</ul>
 				</CardFooter>
 			</Example>
+			</section>
+		</main>
 
 		</div>
 	</ActiveCodeProvider>

@@ -7,6 +7,27 @@ $margin: 10px;
 	width: 90%;
 	max-width: 1024px;
 	margin: 0 auto;
+	display: grid;
+	grid-template-columns: 0.2fr 1fr;
+  grid-template-rows: 100px 1fr;
+  grid-template-areas:
+        "header header"
+        "sidebar main"
+}
+
+header {
+	grid-area: sidebar;
+
+}
+
+nav {
+	grid-area: sidebar;
+
+}
+
+main {
+	grid-area: main;
+
 }
 
 .example {
