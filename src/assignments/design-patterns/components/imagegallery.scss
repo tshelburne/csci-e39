@@ -1,0 +1,30 @@
+$primary-color: rgba(150, 143, 179, 1);
+$button-color: rgb(89, 150, 211);
+$button-font: "Verdana", sans-serif;
+$button-width: 7em;
+$button-font-color: #fff;
+$font-weight: 600;
+
+
+.imagegallery-container {
+  display:grid;
+  // grid-auto-columns: 33.3%;
+  grid-template-columns: repeat(3, 1fr);
+  background-color: $primary-color;
+  grid-row-gap: 100px;
+  grid-column-gap: 20px;
+
+  color: $button-font-color;
+  padding: 10px;
+
+  list-style-type:none;
+  border-radius: 20px;
+
+}
+
+@media screen
+and (max-width: 1300px) {
+  .imagegallery-container {
+    grid-template-columns: auto;
+  }
+}

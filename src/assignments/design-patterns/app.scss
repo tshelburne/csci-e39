@@ -13,6 +13,8 @@ $margin: 10px;
 	padding: $padding;
 	margin-bottom: $margin;
 	border: thin solid;
+	border-radius: 8px;
+	box-shadow: 5px 5px #888888;
 
 	&:last-child {
 		margin-bottom: 0;
@@ -36,5 +38,6 @@ $margin: 10px;
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
+		word-wrap: break-word;
 	}
 }

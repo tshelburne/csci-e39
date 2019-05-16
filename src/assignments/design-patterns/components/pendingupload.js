@@ -1,4 +1,5 @@
 import React from 'react'
+import './progressbar.scss'
 
 const PendingUpload = ( { uploaddata }) => {
 

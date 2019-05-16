@@ -1,14 +1,17 @@
-import React from 'react';
-import ImageCard from './imagecard.js'
+import React from "react";
+import ImageCard from "./imagecard.js";
+import "./imagegallery.scss";
 
 const ImageGallery = ({ images, onImageSelect }) => {
-  return (  <div className="imagegallery-container">
-              {images.map(file =>
-                 <ImageCard file={file} onImageSelect={onImageSelect} />
-                )
-              }
-            </div>
-          )
-}
+  console.log(images);
+  console.log("From imagegallery");
+  return (
+    <div className="imagegallery-container">
+      {images.map(file => (
+        <ImageCard file={file} onImageSelect={onImageSelect} />
+      ))}
+    </div>
+  );
+};
 
 export default ImageGallery;
