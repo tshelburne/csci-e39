@@ -124,7 +124,7 @@ class PatternLibrary extends React.Component {
 							<p>The back of the card is solid by default, but you can pass in the prop
 							<code>patterened</code> for a patterned background image reminiscent
 							of a traditional card deck.</p>
-							<p>It takes <code>text</code>, <code>description</code>, and <code>image</code>
+							<p>It takes <code>title</code>, <code>description</code>, and <code>image</code>
 							properties as described in the <code>Card</code> documentation above.</p>
 						</div>
 					}>
