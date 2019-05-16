@@ -66,14 +66,17 @@ $primary-color: MidnightBlue;
 	display: inline-block;
 }
 
+.card.playing {
+	border-radius: 15px;
+}
+
 .card.back {
 	background-color: $primary-color;
 }
 .card.back.patterned {
 	background-image: url("https://i.pinimg.com/originals/90/92/41/909241e43cffbca0ba6bfd0d5107b4c3.png");
+	border: thick solid red;
 }
-
-
 
 .card.back h2, .card.back p, .card.back img, {
 	visibility: hidden;

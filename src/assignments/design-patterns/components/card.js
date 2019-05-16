@@ -24,7 +24,7 @@ export class Card extends React.Component {
 
   render() {
     const { title, description, image, button, playingCard, patterned } = this.props
-    return <div className={`card${(playingCard && this.state.displayBack) ? ` back` : ``}${(playingCard && patterned && this.state.displayBack) ? ` patterned` : ``}`}>
+    return <div className={`card ${playingCard ? ` playing` : ``}${(playingCard && this.state.displayBack) ? ` back` : ``}${(playingCard && patterned && this.state.displayBack) ? ` patterned` : ``}`}>
       <h2>{title}</h2>
       <p> {description} </p>
       {!!image && <Image
