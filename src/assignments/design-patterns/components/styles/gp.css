@@ -1,0 +1,11 @@
+*,
+*::before,
+*::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.gp {
+  border: 1px solid darkred;
+}
+/*# sourceMappingURL=gp.css.map */

@@ -1,0 +1,14 @@
+$background-color: whiteSmoke;
+$color-statics-primary: darkred;
+$color-strength-primary: darkgreen;
+$color-water-primary: mediumAquamarine;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.gp {
+  border: 1px solid $color-statics-primary;
+}

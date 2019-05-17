@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAKA,AAAA,CAAC;AACD,CAAC,AAAA,QAAQ;AACT,CAAC,AAAA,OAAO,CAAC;EACP,UAAU,EAAE,UAAU;CACvB;;AAED,AAAA,GAAG,CAAC;EACF,MAAM,EAAE,GAAG,CAAC,KAAK,CAXK,OAAO;CAY9B",
+    "sources": [
+        "gp.scss"
+    ],
+    "names": [],
+    "file": "gp.css"
+}
