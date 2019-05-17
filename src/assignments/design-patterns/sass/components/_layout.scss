@@ -1,0 +1,21 @@
+.layout-two-up {
+	@media(min-width: 600px) {
+		display: grid;
+		grid-gap: 15px;
+		grid-template-columns: 3fr minmax(330px, 2fr);
+	}
+  .layout-two-up--header, .layout-two-up--footer {
+	grid-column: 1 / span 2;
+	text-align: center;
+  }
+  
+  .layout-two-up--main {
+	background: $brand-section-color;
+	min-height: 100vh;
+	padding: 40px;
+  }
+  
+  .layout-two-up--sidebar {
+  }
+  
+}
