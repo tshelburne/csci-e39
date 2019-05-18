@@ -1,27 +1,40 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Example, {ActiveCodeProvider} from './support/example'
+import Greeting from './greeting'
+import Button from './button'
+import Timer from './timer'
 
 
 import './app.scss'
 
 const PatternLibrary = () =>
 	<ActiveCodeProvider>
-		<div className="style-guide">
-			<h1>My Pattern Library!</h1>
+		<div className="style-guide font">
+			
+			<h1 className="header"> The Lets Get Retro Pattern Library!</h1>
 
-			<Example title="My Special <div>">
-				<div className="just-testing">HELLO DIV</div>
+
+
+			<Example title="My Totally Rad Greeting: ">
+			<Greeting name="Jordan">
+			<h2>You look Totally Awesome Today 😍 </h2>
+			</Greeting>
 			</Example>
 
-			<Example title="My Special <span>">
-				<span className="just-testing">HELLO SPAN</span>
+
+			<Example title="My Button < #Muscles >">
+				<Button/>
 			</Example>
 
-			<Example title="My Special <h4>">
-				<h4 className="just-testing">HELLO HEADING</h4>
+			<Example title= "Count it Down ... 3, 2, 1">
+				<Timer startCount='1000'/>
 			</Example>
+		
 		</div>
+
+		
+
 	</ActiveCodeProvider>
 
 export default PatternLibrary

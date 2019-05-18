@@ -38,3 +38,131 @@ $margin: 10px;
 		border: thin dotted #ccc;
 	}
 }
+
+$primary-color: rgba(150, 143, 179, 1);
+
+$input-color: hotpink;
+
+// Style your components here
+button {
+	display: inline-block;
+	position: relative;
+	padding: 25px 25px;
+	top: 0;
+	font-size: 25px;
+	font-family: "Open Sans", Helvetica;
+	border-radius: 4px;
+	background: $primary-color;
+	color: #fff;
+	box-shadow: 0px 0px 0px rgba(15, 165, 60, 0.1);
+
+	-webkit-transform: translateZ(0);
+	-moz-transform: translateZ(0);
+	-ms-transform: translateZ(0);
+	transform: translateZ(0);
+
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: all 0.2s ease;
+	-ms-transition: all 0.2s ease;
+	transition: all 0.2s ease;
+}
+
+button:hover {
+	top: -10px;
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+		0 17px 50px 0 rgba(0, 0, 0, 0.19);
+
+	-webkit-transform: rotateX(20deg);
+	-moz-transform: rotateX(20deg);
+	-ms-transform: rotateX(20deg);
+	transform: rotateX(20deg);
+}
+
+progress[value] {
+	-webkit-appearance: none;
+
+	width: 250px;
+	height: 15px;
+	color: $input-color;
+}
+
+progress[value]::-webkit-progress-bar {
+	color: $input-color;
+	background-color: $primary-color;
+	box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+		0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.file-form {
+	font-size: 1em;
+	font-weight: 500;
+	color: $input-color;
+	background-color: lavender;
+	padding: 1em;
+}
+
+.file-form:hover {
+	background-color: $primary-color;
+}
+
+.uploader {
+	font-size: 1.25em;
+	font-weight: 500;
+	color: $input-color;
+}
+
+.uploader-input {
+	font-size: 1.25em;
+	font-weight: 500;
+	color: $input-color;
+}
+
+// Ignore the styles below unless you want to change them for fun
+
+body {
+	background: crimson;
+	padding: 30px;
+	background: linear-gradient(
+		to bottom,
+		rgba(150, 143, 179, 1) 0%,
+		crimson 100%
+	);
+	min-height: 100vh;
+}
+
+.example-container {
+	background: hsla(0, 0, 100%, 0.8);
+	margin-top: 7vh;
+	padding: 5vh 2vh;
+	box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
+	text-align: center;
+}
+
+.header {
+	margin: 20px;
+	font-family: "Permanent Marker", sans-serif;
+	color: white;
+}
+.font {
+	margin-top: 0;
+	font-family: "Permanent Marker", sans-serif;
+}
+
+.specialbackground{
+background: thistle;
+}
+
+.background{
+background: Pink;
+
+}
+
