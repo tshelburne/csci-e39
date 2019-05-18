@@ -45,6 +45,7 @@ $input-color: hotpink;
 
 // Style your components here
 button {
+	margin: 4px;
 	display: inline-block;
 	position: relative;
 	padding: 25px 25px;
@@ -164,5 +165,43 @@ background: thistle;
 .background{
 background: Pink;
 
+
 }
+
+.todoList .header input{
+padding: 10px;
+font-size: 12px;
+border: 2px solid #fff;
+width: 350px;
+
+      }
+
+.todolist .thelist li {
+
+	color: lightseagreen;
+	background-color: rgba(255,255,255,.5) ;
+	padding: 15px;
+	margin-bottom: 15px;
+	border-radius: 5px;
+	list-style: none;
+
+
+
+}
+
+.todoList .theList li:hover {
+	color: white;
+background-color: papayawhip;
+
+
+}
+
+.todoList .theList li:hover {
+	color: thistle;
+background-color: papayawhip;
+
+
+}
+
+
 

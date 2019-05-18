@@ -4,7 +4,7 @@ import Example, {ActiveCodeProvider} from './support/example'
 import Greeting from './greeting'
 import Button from './button'
 import Timer from './timer'
-
+import TodoList from './list'
 
 import './app.scss'
 
@@ -12,7 +12,7 @@ const PatternLibrary = () =>
 	<ActiveCodeProvider>
 		<div className="style-guide font">
 			
-			<h1 className="header"> The Lets Get Retro Pattern Library!</h1>
+			<h1 className="header"> The Totally 80s Retro Pattern Library!</h1>
 
 
 
@@ -23,12 +23,16 @@ const PatternLibrary = () =>
 			</Example>
 
 
-			<Example title="My Button < #Muscles >">
+			<Example title="My Button < #Muscles 💪 >">
 				<Button/>
 			</Example>
 
-			<Example title= "Count it Down ... 3, 2, 1">
+			<Example title= "Count it Down ... 3, 2, 1 🚀">
 				<Timer startCount='1000'/>
+			</Example>
+
+			<Example title= "My Awesome Todo List ✔️">
+				<TodoList/>
 			</Example>
 		
 		</div>

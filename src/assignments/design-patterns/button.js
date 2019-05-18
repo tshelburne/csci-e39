@@ -8,7 +8,7 @@ constructor (){
 super();
 this.state ={
 
-	text:"display"
+	text:""
 };
 
 }
@@ -26,7 +26,7 @@ return (
 	
 	<div className="header">
 
-	<button onClick={ (e) => {this.clicked(" display: flex;");}}> #Muscles </button>
+	<button onClick={ (e) => {this.clicked(" { display: flex; }");}}> #Muscles </button>
 
 		{this.state.text}
 
