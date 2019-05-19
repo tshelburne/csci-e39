@@ -1,7 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Example, { ActiveCodeProvider } from './support/example';
+
 import TextBlock from './components/textblock';
+import Section from './components/section';
+import Button, {
+  ButtonGroup,
+  ConfirmButton,
+  CancelButton
+} from './components/button';
+import CloseIcon from './components/close-icon';
+import Fieldset from './components/fieldset';
 
 import './app.scss';
 
@@ -10,17 +19,43 @@ const PatternLibrary = () => (
     <div className='style-guide'>
       <h1>My Pattern Library!</h1>
 
-      <Example title='My Special <section>'>
-        <TextBlock>hi2</TextBlock>
+      <Example title='<ButtonGroups and Buttons>'>
+        <Fieldset legend='Default Button'>
+          <ButtonGroup>
+            <Button>Plain old button</Button>
+            <Button block primary>
+              Success!
+            </Button>
+            <Button block secondary>
+              Oops!
+            </Button>
+            <ConfirmButton>OK</ConfirmButton>
+            <CancelButton>Cancel</CancelButton>
+          </ButtonGroup>
+        </Fieldset>
+
+        <Fieldset legend='Arrow-Button'>
+          <ButtonGroup arrow>
+            <Button>1</Button>
+            <Button>2</Button>
+            <Button>3</Button>
+            <Button>4</Button>
+            <Button>5</Button>
+          </ButtonGroup>
+        </Fieldset>
       </Example>
 
-      {/* <Example title='My Special <span>'>
-        <span className='just-testing'>HELLO SPAN</span>
+      {/* <Example title='<Section>'>
+        <Section title='Section title goes here...'>
+          <TextBlock>
+            <p>this is some text</p>
+          </TextBlock>
+        </Section>
+      </Example>
+
+      <Example>
+        <CloseIcon />
       </Example> */}
-
-      <Example title='My Special <h4>'>
-        <h4 className='just-testing'>HELLO HEADING</h4>
-      </Example>
     </div>
   </ActiveCodeProvider>
 );

@@ -1,0 +1,90 @@
+$primary-button-background: lime;
+$primary-button-color: black;
+
+$secondary-button-background: salmon;
+$secondary-button-color: black;
+
+$arrow-button-background: peachpuff;
+$arrow-button-color: black;
+
+.button-group {
+  padding: 0.5em;
+  text-align: center;
+
+  button.mod-primary {
+    background-color: $primary-button-background;
+    color: $primary-button-color;
+  }
+
+  button.mod-secondary {
+    background-color: $secondary-button-background;
+    color: $secondary-button-color;
+  }
+}
+.mod-bg-arrow {
+  padding: 0.5em;
+  text-align: center;
+
+  button {
+    margin-right: 0.1em;
+    height: 2em;
+    position: relative;
+    padding: 0.5em 1em 0.5em 1.75em;
+    cursor: pointer;
+    border: none;
+    background: $arrow-button-background;
+    & + button {
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        // border sorcery to draw a white triangle for the tail
+        border-left: 1em solid white;
+        border-top: 1em solid transparent;
+        border-bottom: 1em solid transparent;
+      }
+    }
+    // select all but last button for drawing arrow
+    &:not(:last-child) {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: -1em;
+        width: 0;
+        height: 0;
+        border-left: 1em solid $arrow-button-background;
+        border-top: 1em solid transparent;
+        border-bottom: 1em solid transparent;
+        // ensure that the arrow is on top of the tail of the next button to the right
+        z-index: 100;
+      }
+    }
+    &:hover,
+    &:active,
+    &:focus {
+      transition: background-color 0.3s ease;
+      background-color: darken($arrow-button-background, 11);
+      &::after {
+        transition: border-left 0.3s ease;
+        border-left: 1em solid darken($arrow-button-background, 11);
+      }
+    }
+    // why do I need this? Shouldn't mousing out just reverse the transition?
+    &:not(:hover) {
+      transition: background-color 0.3s ease;
+      background-color: $arrow-button-background;
+      &::after {
+        transition: border-left 0.3s ease;
+        border-left: 1em solid $arrow-button-background;
+      }
+    }
+  }
+}
+
+fieldset {
+  margin-top: 1em;
+}

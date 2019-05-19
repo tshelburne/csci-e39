@@ -1,4 +1,5 @@
 // generic Icon not exported, only explicit icons are available
+// have to import font iconic ?
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -10,7 +11,7 @@ export const Facebook = props => <Icon {...props} name='facebook' />;
 export const Twitter = props => <Icon {...props} name='twitter' />;
 export const Instagram = props => <Icon {...props} name='instagram' />;
 
-// private, only available within this module (file)
+// private, only available within this module (i.e.,file)
 const Icon = ({ name, inverse, sm, md, lg }) => {
   const classes = cx('iconic iconic-${name}', {
     'mod-inverse': inverse,

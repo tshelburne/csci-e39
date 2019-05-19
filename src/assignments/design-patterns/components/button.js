@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
+import './styles/button.css';
+
 const Button = ({ block, primary, secondary, ...props }) => {
   const classes = cx('button', {
     'mod-block': block,
@@ -15,24 +17,26 @@ Button.propTypes = {
   block: PropTypes.bool,
   primary: PropTypes.bool,
   secondary: PropTypes.bool
+  // onClick: PropTypes.func.isRequired
 };
 
 export default Button;
 
-export const ButtonGroup = ({ children, ...props }) => (
-  <div {...props} className='button-group'>
-    {children}
-  </div>
+export const ConfirmButton = props => (
+  <Button {...props} primary secondary={false} />
 );
 
-export const ConfirmButton = ({ props }) => (
-  <div {...props} primary secondary={false}>
-    {childrpn}
-  </div>
+export const CancelButton = props => (
+  <Button {...props} secondary primary={false} />
 );
 
-export const CancelButton = ({ props }) => (
-  <div {...props} primary={false}>
-    {childrpn}
-  </div>
-);
+export const ButtonGroup = ({ children, arrow, ...props }) => {
+  const classes = cx('button-group', {
+    'mod-bg-arrow': arrow
+  });
+  return (
+    <div {...props} className={classes}>
+      {children}
+    </div>
+  );
+};

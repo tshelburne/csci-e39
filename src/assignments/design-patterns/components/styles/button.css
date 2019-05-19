@@ -1,0 +1,83 @@
+.button-group {
+  padding: 0.5em;
+  text-align: center;
+}
+
+.button-group button.mod-primary {
+  background-color: lime;
+  color: black;
+}
+
+.button-group button.mod-secondary {
+  background-color: salmon;
+  color: black;
+}
+
+.mod-bg-arrow {
+  padding: 0.5em;
+  text-align: center;
+}
+
+.mod-bg-arrow button {
+  margin-right: 0.1em;
+  height: 2em;
+  position: relative;
+  padding: 0.5em 1em 0.5em 1.75em;
+  cursor: pointer;
+  border: none;
+  background: peachpuff;
+}
+
+.mod-bg-arrow button + button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-left: 1em solid white;
+  border-top: 1em solid transparent;
+  border-bottom: 1em solid transparent;
+}
+
+.mod-bg-arrow button:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -1em;
+  width: 0;
+  height: 0;
+  border-left: 1em solid peachpuff;
+  border-top: 1em solid transparent;
+  border-bottom: 1em solid transparent;
+  z-index: 100;
+}
+
+.mod-bg-arrow button:hover, .mod-bg-arrow button:active, .mod-bg-arrow button:focus {
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  background-color: #ffbc81;
+}
+
+.mod-bg-arrow button:hover::after, .mod-bg-arrow button:active::after, .mod-bg-arrow button:focus::after {
+  -webkit-transition: border-left 0.3s ease;
+  transition: border-left 0.3s ease;
+  border-left: 1em solid #ffbc81;
+}
+
+.mod-bg-arrow button:not(:hover) {
+  -webkit-transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease;
+  background-color: peachpuff;
+}
+
+.mod-bg-arrow button:not(:hover)::after {
+  -webkit-transition: border-left 0.3s ease;
+  transition: border-left 0.3s ease;
+  border-left: 1em solid peachpuff;
+}
+
+fieldset {
+  margin-top: 1em;
+}
+/*# sourceMappingURL=button.css.map */
