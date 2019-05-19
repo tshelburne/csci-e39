@@ -7,7 +7,8 @@ import Section from './components/section';
 import Button, {
   ButtonGroup,
   ConfirmButton,
-  CancelButton
+  CancelButton,
+  RoundedButtonGroup
 } from './components/button';
 import CloseIcon from './components/close-icon';
 import Fieldset from './components/fieldset';
@@ -34,7 +35,7 @@ const PatternLibrary = () => (
           </ButtonGroup>
         </Fieldset>
 
-        <Fieldset legend='Arrow-Button'>
+        <Fieldset legend='Arrow button, using CSS class'>
           <ButtonGroup arrow>
             <Button>1</Button>
             <Button>2</Button>
@@ -42,6 +43,16 @@ const PatternLibrary = () => (
             <Button>4</Button>
             <Button>5</Button>
           </ButtonGroup>
+        </Fieldset>
+
+        <Fieldset legend='RoundedButtonGroup component'>
+          <RoundedButtonGroup>
+            <Button>6</Button>
+            <Button>7</Button>
+            <Button>8</Button>
+            <Button>9</Button>
+            <Button>10</Button>
+          </RoundedButtonGroup>
         </Fieldset>
       </Example>
 

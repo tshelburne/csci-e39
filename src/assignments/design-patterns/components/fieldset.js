@@ -1,4 +1,5 @@
 import React from 'react';
+import './styles/fieldset.css';
 
 const Fieldset = ({ legend, children }) => (
   <fieldset>

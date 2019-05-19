@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAC;EACP,UAAU,EAAE,GAAG;CAChB",
+    "sources": [
+        "fieldset.scss"
+    ],
+    "names": [],
+    "file": "fieldset.css"
+}

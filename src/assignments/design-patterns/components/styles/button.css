@@ -22,6 +22,7 @@
   margin-right: 0.1em;
   height: 2em;
   position: relative;
+  min-width: 4em;
   padding: 0.5em 1em 0.5em 1.75em;
   cursor: pointer;
   border: none;
@@ -54,30 +55,62 @@
 }
 
 .mod-bg-arrow button:hover, .mod-bg-arrow button:active, .mod-bg-arrow button:focus {
-  -webkit-transition: background-color 0.3s ease;
-  transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
   background-color: #ffbc81;
 }
 
 .mod-bg-arrow button:hover::after, .mod-bg-arrow button:active::after, .mod-bg-arrow button:focus::after {
-  -webkit-transition: border-left 0.3s ease;
-  transition: border-left 0.3s ease;
+  -webkit-transition: border-left 0.5s ease;
+  transition: border-left 0.5s ease;
   border-left: 1em solid #ffbc81;
 }
 
 .mod-bg-arrow button:not(:hover) {
-  -webkit-transition: background-color 0.3s ease;
-  transition: background-color 0.3s ease;
+  -webkit-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
   background-color: peachpuff;
 }
 
 .mod-bg-arrow button:not(:hover)::after {
-  -webkit-transition: border-left 0.3s ease;
-  transition: border-left 0.3s ease;
+  -webkit-transition: border-left 0.5s ease;
+  transition: border-left 0.5s ease;
   border-left: 1em solid peachpuff;
 }
 
-fieldset {
-  margin-top: 1em;
+.rounded-button-group {
+  padding: 0.5em;
+  text-align: center;
+}
+
+.rounded-button-group button {
+  margin-right: 0.1em;
+  height: 2em;
+  position: relative;
+  padding: 0.5em 1em;
+  min-width: 4em;
+  cursor: pointer;
+  border: none;
+  background: #f5b8f5;
+}
+
+.rounded-button-group button:first-child {
+  border-radius: 0.65em 0 0 0.65em;
+}
+
+.rounded-button-group button:last-child {
+  border-radius: 0 0.65em 0.65em 0;
+}
+
+.rounded-button-group button:hover, .rounded-button-group button:active, .rounded-button-group button:focus {
+  -webkit-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+  background-color: #ec75ec;
+}
+
+.rounded-button-group button:not(:hover) {
+  -webkit-transition: background-color 0.5s ease;
+  transition: background-color 0.5s ease;
+  background-color: #f5b8f5;
 }
 /*# sourceMappingURL=button.css.map */

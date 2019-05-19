@@ -6,6 +6,10 @@ $secondary-button-color: black;
 
 $arrow-button-background: peachpuff;
 $arrow-button-color: black;
+$rounded-button-background: lighten(violet, 12%);
+$rounded-button-color: black;
+
+$border-radius: 0.65em;
 
 .button-group {
   padding: 0.5em;
@@ -29,6 +33,7 @@ $arrow-button-color: black;
     margin-right: 0.1em;
     height: 2em;
     position: relative;
+    min-width: 4em;
     padding: 0.5em 1em 0.5em 1.75em;
     cursor: pointer;
     border: none;
@@ -66,25 +71,54 @@ $arrow-button-color: black;
     &:hover,
     &:active,
     &:focus {
-      transition: background-color 0.3s ease;
+      transition: background-color 0.5s ease;
       background-color: darken($arrow-button-background, 11);
       &::after {
-        transition: border-left 0.3s ease;
+        transition: border-left 0.5s ease;
         border-left: 1em solid darken($arrow-button-background, 11);
       }
     }
     // why do I need this? Shouldn't mousing out just reverse the transition?
     &:not(:hover) {
-      transition: background-color 0.3s ease;
+      transition: background-color 0.5s ease;
       background-color: $arrow-button-background;
       &::after {
-        transition: border-left 0.3s ease;
+        transition: border-left 0.5s ease;
         border-left: 1em solid $arrow-button-background;
       }
     }
   }
 }
 
-fieldset {
-  margin-top: 1em;
+.rounded-button-group {
+  padding: 0.5em;
+  text-align: center;
+
+  button {
+    margin-right: 0.1em;
+    height: 2em;
+    position: relative;
+    padding: 0.5em 1em;
+
+    min-width: 4em;
+    cursor: pointer;
+    border: none;
+    background: $rounded-button-background;
+    &:first-child {
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+    &:last-child {
+      border-radius: 0 $border-radius $border-radius 0;
+    }
+    &:hover,
+    &:active,
+    &:focus {
+      transition: background-color 0.5s ease;
+      background-color: darken($rounded-button-background, 15%);
+    }
+    &:not(:hover) {
+      transition: background-color 0.5s ease;
+      background-color: $rounded-button-background;
+    }
+  }
 }
