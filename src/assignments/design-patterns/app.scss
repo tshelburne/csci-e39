@@ -1,6 +1,7 @@
 @import 'pattern-library';
 
-$padding: 20px;
+
+$padding: 0px 20px 20px 20px;
 $margin: 10px;
 $primary-color: rgba(150, 143, 179, 1);
 $font-default: 'Oswald', sans-serif;
@@ -15,35 +16,47 @@ $font-default: 'Oswald', sans-serif;
 	padding: $padding;
 	margin-bottom: $margin;
 	border: thin solid;
+	font-family: $font-default;
 
 	&:last-child {
 		margin-bottom: 0;
+	}
+
+	.example--title {
+		margin: 20px 0 20px 0;
 	}
 
 	.example--rendered {
 		padding: $padding;
 		margin-bottom: $margin;
 		border: thin dotted #ccc;
-		min-height: 200px;
+		overflow: auto;
 	}
 
 	.example--toggles {
 		margin-bottom: $margin;
-
+		button {
+			margin-right: 5px;
+			border-radius: 4px;
+			outline: none;
+		} 
 		.active {
 			background: pink;
 		}
 	}
 
 	.example--code {
+		overflow: auto;
 		padding: $padding;
 		background: #eee;
 		border: thin dotted #ccc;
+		font-size: 75%;
+		color: red;
 	}
 
 }
 
-.button {
+.basic-button {
 	background-color: $primary-color;
 	color: white;
 	padding: 8px 16px;
@@ -52,9 +65,9 @@ $font-default: 'Oswald', sans-serif;
 	border: none;
 	border-radius: 8px;
 	float: left;
-//	margin-bottom: 16px;
-//	margin-right:16px;
-	width: 125px;
+	clear: left;
+	width: 110px;
+	outline: none;
 	
 	&:hover {
 		background: darken($primary-color, 15%);
@@ -64,24 +77,21 @@ $font-default: 'Oswald', sans-serif;
 
 .item-card {
 	background: $primary-color;
-	height: 100px;
+	height: 150px;
+	width: 100px;
 	padding: 5px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-	overflow: hidden;
-	margin: 10px;
+	margin: 10px 10px 10px 0;
 	border-radius: 4px;
 	float: left;
+	clear: left;
+	display: block;
 
 	.item-card-image {
-		width: 100%;
-		margin-bottom: 15px;
-		float: left;
-		display: block;
 		img {
 			border-radius: 4px;
 			width: 100%;
 			height: 100%;
-//
 		}
 	}
 }
@@ -89,8 +99,11 @@ $font-default: 'Oswald', sans-serif;
 .heading {
 	font-family: "Permanent Marker", sans-serif;
 	color: darken($primary-color, 15%);
-	margin: 0;
-	padding: 0;
+	margin: 5px 0 5px 0;
+	clear: left;
+}
+
+.toggle-picture {
 }
 
 ol {

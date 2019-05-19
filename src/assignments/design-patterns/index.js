@@ -2,9 +2,12 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Example from './support/example'
 
+//import ReactDOM from 'react-dom';
 import Button from './components/button'
 import Picture from './components/picture'
+import Toggle from './components/toggle'
 import Heading, {HeadingH2, HeadingH3, HeadingH4} from './components/heading'
+
 
 import './app.scss'
 
@@ -29,7 +32,7 @@ class PatternLibrary extends React.Component {
 				<HeadingH2 title="My Pattern Library!" />
 
 				<Example title="Constant <Heading>">
-					<p>The Heading library can be used to select different size of headings in the application, and keep the heading style consistent for the headings across the application.</p>
+					<p>The Heading component can be used to select different size of headings in the application.</p>
 					<ol>
 						<Heading title="H1: Hello" />
 						<HeadingH2 title="H2: Hello" />
@@ -39,21 +42,18 @@ class PatternLibrary extends React.Component {
 				</Example>
 
 				<Example title="Basic <Button>">
-					<Button name="Basic Button" id="submit" />
+					<p>The Button component can be used to style a basic button and also pass onClick as a prop.</p>
+					<Button name="Button" id="submit" />
 				</Example>
 
 				<Example title="Random <Picture>">
-					<div className="item-card">
-						<Picture src="http://lorempixel.com/100/200/" alt="Random Picture" />
-					</div>
+					<p>The Picture component can be used to style a item-card.</p>
+					<Picture src="http://lorempixel.com/100/150/" alt="Name" />
 				</Example>
 
-				<Example title="Refresh <Picture>">
-					<HeadingH4 title="Random Picture" />
-					<div className="item-card">
-						<Picture src="http://lorempixel.com/100/200/" alt="Random Picture" />
-					</div>
-					<Button name="Refresh" id="submit" onClick={() => { this.Picture.forceUpdate() }}/>
+				<Example title="Toggle <Picture>">
+					<p>The Toggle component uses Heading, Button and Pitcure components together.</p>
+					<Toggle src="http://lorempixel.com/100/150/" alt="Name" title="Heading"/>
 				</Example>
 
 			</div>
