@@ -14,7 +14,7 @@ const Uploads = ({uploads, actions}) => {
 
 	return <div className="grid-container">
 		<div className="copy-text">
-			<p>Upload your favourite photoes by clicking on the button and create your albulm! </p>
+			<p>Upload your favourite photos by clicking on the button and create your album! </p>
 		</div>
 		<Header title="Upload Images" />
 			<div className="grid-upload">
