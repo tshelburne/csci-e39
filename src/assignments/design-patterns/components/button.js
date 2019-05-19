@@ -1,7 +1,9 @@
 import React from 'react'
+import Picture from './picture'
+
 
 const Button = ({name, id, onClick}) => {
-	return <button htmlFor={id} className="button" onClick={onClick}>{name}</button>
+	return <button htmlFor={id} className="basic-button" onClick={onClick}>{name}</button>
 }
 
 export default Button
