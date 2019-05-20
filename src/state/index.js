@@ -5,6 +5,7 @@ import createClassroom from './classroom'
 import createChat from './chat'
 import createUploads from './uploads'
 import create from './support/create'
+import './app.scss'
 
 const INITIAL_STATE = {
 	auth: {status: `init`, message: ``},
