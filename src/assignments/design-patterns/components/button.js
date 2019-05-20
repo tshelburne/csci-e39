@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
 
-import './styles/button.css';
+import '../styles/button.css';
 
 // Button component as per Tim's video
 const Button = ({ block, primary, secondary, ...props }) => {

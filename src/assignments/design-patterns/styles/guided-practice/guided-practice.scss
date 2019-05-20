@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Boogaloo&display=swap');
+
+$letter-spacing-tight: -0.125em;
+
+$primary-statics: #800;
+
+article.gp-card {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 1px 1px 10px 0 #666;
+  background: white;
+  margin: 1em auto 3em auto;
+  padding: 1em;
+  font-size: 2vmin;
+
+  & .gp-title {
+    color: $primary-statics;
+    letter-spacing: 0.1em;
+    font-family: 'Boogaloo', cursive;
+    margin-top: 0;
+    // margin-bottom: 0;
+    text-shadow: 1px 1px 1px #000;
+    padding: 0.125em;
+    border-top: 2px solid $primary-statics;
+    border-bottom: 2px solid $primary-statics;
+    font-weight: normal;
+
+    & span.tighten {
+      letter-spacing: -0.125em;
+    }
+  }
+
+  & .gp-statement {
+    margin: 0;
+    padding: 0 1em;
+
+    & p:first-child {
+      margin-top: 0;
+    }
+  }
+  & .image {
+    display: block;
+    width: 70%;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+}
