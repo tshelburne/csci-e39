@@ -1,58 +1,126 @@
+@import url(https://fonts.googleapis.com/css?family=Delius);
+@import url(https://use.fontawesome.com/releases/v5.8.1/css/all.css);
 $primary-color: rgba(55, 55, 55, 1);
+$primary-bgcolor: rgba(225, 255, 255, 1);
+$primary-font: Delius;
 
-// Style your components here
+body {
+  background-color: $primary-bgcolor;
+  font-family: $primary-font;
+  padding: 5px;
+}
 
-.button {
-	padding: 1em;
-	font-size: 1em;
-	background-color: $primary-color;
-	color: white;
-	border: solid 2px red;
-	border-radius: 4px;
-	font-family: "Montserrat", sans-serif;
-} /* end button */
+h1,
+h2 {
+  text-align: center;
+}
 
-.button:hover {
-	background-color: lighten($primary-color, 11%);
-	box-shadow: 1px 1px 2px 1px hsla(0, 0%, 0%, 0.4);
-	transition: 1s;
+h1 {
+  border-bottom: 1px solid $primary-color;
+  padding: 10px;
+}
+
+.polaroidGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-auto-rows: minmax(150px, auto);
+  grid-gap: 2em;
+}
+
+.polaroid-caption {
+  padding: 10px 0;
+}
+
+.polaroid {
+  margin: 10px auto;
+  background-color: hsl(0, 1, 90%);
+  box-shadow: 1px 2px 3px 1px hsla(0, 0, 10%, 0.5);
+  padding: 20px 20px 40px 20px;
+  max-width: 300px;
+
+  &.grayscale img {
+    filter: grayscale(89%);
+  }
+
+  &.saturated img {
+    filter: saturate(190%);
+  }
+
+  &.blur img {
+    filter: blur(2px);
+  }
+
+  &.hue-rotate img {
+    filter: hue-rotate(280deg);
+  }
+
+  &.brightness img {
+    filter: brightness(190%);
+  }
+
+  img {
+    width: 100%;
+    max-width: 200px;
+  }
 }
 
 progress {
-	width: 250px;
-	height: 25px;
+  width: 250px;
+  height: 25px;
 
-	border: double 2px red;
-	border-radius: 4px;
-	background-color: white;
+  border: double 2px red;
+  border-radius: 4px;
+  background-color: white;
 }
 progress::-webkit-progress-bar {
-	width: 250px;
-	height: 20px;
-	border: solid 1px gray;
-	border-radius: 4px;
-	background-color: white;
+  width: 250px;
+  height: 20px;
+  border: solid 1px gray;
+  border-radius: 4px;
+  background-color: white;
 }
 
 progress::-webkit-progress-value {
-	background-color: $primary-color;
+  background-color: $primary-color;
 }
 
 progress::-moz-progress-bar {
-	background-color: white;
+  background-color: white;
 }
 
 progress::-moz-progress-value {
-	background-color: rgba(55, 55, 55, 1);
+  background-color: rgba(55, 55, 55, 1);
 }
+
+.uploaderContainer {
+  position: relative;
+  width: 200px;
+  height: 80px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.button,
+.uploader {
+  width: 200px;
+  height: 80px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.button {
+  padding: 1em;
+  font-size: 1.3em;
+  background-color: $primary-color;
+  color: white;
+  border: solid 2px red;
+  border-radius: 8px;
+  z-index: 1;
+} /* end button */
 
 .uploader {
-	border: double 2px red;
-	display: inline-block;
-	padding: 12px 18px;
-	cursor: pointer;
-}
-
-input[type="file"] {
-
+  opacity: 0;
+  z-index: 2;
+  border: solid 2px, green;
 }
